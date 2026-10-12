@@ -1,0 +1,581 @@
+{
+  "finished_products": [
+    {
+      "product": "carrot",
+      "input_size_m": [
+        0.16,
+        0.035,
+        0.035
+      ],
+      "input_mass_kg": 0.12,
+      "washed": true,
+      "peeled": true,
+      "peel_depth_mm": [
+        0.2,
+        0.8
+      ],
+      "maximum_gouge_mm": 2,
+      "cut": "round or half-round slices",
+      "thickness_mm": [
+        4,
+        6
+      ],
+      "nominal_mm": 5,
+      "within_slice_variation_max_mm": 1,
+      "quality": [
+        "no soil, peel patches, bridges, crushed or splintered edges",
+        "ends trimmed3\u20135 mm",
+        "final10 mm stub and last5 mm edible slice retained"
+      ],
+      "edible_transfer_min_fraction": 0.98,
+      "output": "separate next-step bowl/container",
+      "inspection": "ten distributed pieces or all if fewer; all tomato wedges and all greens creases"
+    },
+    {
+      "product": "potato",
+      "input_size_m": [
+        0.09,
+        0.065,
+        0.07
+      ],
+      "input_mass_kg": 0.2,
+      "washed": true,
+      "peeled": true,
+      "peel_depth_mm": [
+        0.2,
+        0.8
+      ],
+      "maximum_gouge_mm": 2,
+      "cut": "round or half-round slices",
+      "thickness_mm": [
+        4,
+        6
+      ],
+      "nominal_mm": 5,
+      "within_slice_variation_max_mm": 1,
+      "quality": [
+        "eyes and blemishes removed; reject green, sprouted, rotten or deeply damaged inputs",
+        "post-cut2\u20133 fresh water starch rinses until no white swirl",
+        "drain20\u201330 s; no puddle; final10 mm stub included"
+      ],
+      "edible_transfer_min_fraction": 0.98,
+      "output": "separate next-step bowl/container",
+      "inspection": "ten distributed pieces or all if fewer; all tomato wedges and all greens creases"
+    },
+    {
+      "product": "leafy_greens",
+      "species": "bok choy",
+      "input_size_m": [
+        0.17,
+        0.1,
+        0.07
+      ],
+      "input_mass_kg": 0.1,
+      "washed": true,
+      "peeled": false,
+      "cut": "sections",
+      "length_mm": [
+        30,
+        50
+      ],
+      "nominal_mm": 40,
+      "stalk_width_max_mm": 15,
+      "quality": [
+        "root disk removed5\u201310 mm",
+        "every inner basal crease exposed, rubbed and inspected",
+        "no grit, uncut fibres or macerated leaves",
+        "bundle height<=30 mm; drain without wringing"
+      ],
+      "edible_transfer_min_fraction": 0.98,
+      "output": "separate next-step bowl/container",
+      "inspection": "ten distributed pieces or all if fewer; all tomato wedges and all greens creases"
+    },
+    {
+      "product": "tomato",
+      "input_size_m": [
+        0.07,
+        0.07,
+        0.06
+      ],
+      "input_mass_kg": 0.15,
+      "washed": true,
+      "peeled": false,
+      "cut": "eight radial wedges",
+      "count": 8,
+      "sector_deg": [
+        35,
+        55
+      ],
+      "nominal_deg": 45,
+      "mass_ratio_to_mean": [
+        0.65,
+        1.35
+      ],
+      "quality": [
+        "hard stem tissue removed, skin retained",
+        "every skin cut completely severed; pulp/seeds attached",
+        "no blanching, bruising, squeezed-out cavity or collapsed wedges"
+      ],
+      "edible_transfer_min_fraction": 0.98,
+      "output": "separate next-step bowl/container",
+      "inspection": "ten distributed pieces or all if fewer; all tomato wedges and all greens creases"
+    }
+  ],
+  "force_models": {
+    "carrot_cut": {
+      "nominal_N": 76.3113,
+      "design_N": 152.6226,
+      "margin_factor": 2.0,
+      "derivation": "(67.59 N /31 mm)*35 mm; multiply2 for specimen/blade variation",
+      "source_ids": [
+        "F01"
+      ],
+      "scope": "internal powered blade; isolated arm0 N",
+      "limitations": "Width scaling is a sizing approximation; use20\u201340 mm/min in initial trials. No credit for faster draw action."
+    },
+    "potato_cut": {
+      "nominal_N": 91.5809,
+      "design_N": 183.1617,
+      "margin_factor": 2.0,
+      "derivation": "(61.49 N /47 mm)*70 mm; multiply2",
+      "source_ids": [
+        "F01"
+      ],
+      "scope": "internal powered blade; isolated arm0 N",
+      "limitations": "70 mm maximum transverse chord; source specimen smaller; recalibrate before faster speeds."
+    },
+    "greens_cut": {
+      "nominal_N": 174.4258,
+      "design_N": 348.8516,
+      "margin_factor": 2.0,
+      "derivation": "Carrot-envelope surrogate(67.59/31 N/mm)*total simultaneously engaged width<=80 mm; multiply2",
+      "source_ids": [
+        "F01"
+      ],
+      "scope": "internal powered blade; isolated arm0 N",
+      "limitations": "Not measured bok-choy resistance. Conservative tissue proxy, not a statistical bound; no claim of proven sharp-edge quality."
+    },
+    "tomato_wedge": {
+      "nominal_N": 318.1826,
+      "design_N": 636.3651,
+      "margin_factor": 2.0,
+      "derivation": "Compression proxy sigma=15 N/(pi*2^2 mm2); four diametral blades total280 mm,thickness.952 mm;F=sigma*280*.952; multiply2",
+      "source_ids": [
+        "F03",
+        "F04",
+        "M10"
+      ],
+      "scope": "internal powered blade; isolated arm0 N",
+      "limitations": "Penetration stress used as conservative effective cutting stress; not a wedger measurement or permission to press this force into fruit. Skin rupture/quality require measured cartridge force-displacement trials."
+    },
+    "peel_drag": {
+      "nominal_N": 42.0,
+      "design_N": 63.0,
+      "margin_factor": 1.5,
+      "derivation": "1.68 N/mm*maximum25 mm engaged peel ribbon; multiply1.5",
+      "source_ids": [
+        "F02"
+      ],
+      "scope": "R tool; fixture takes food reaction",
+      "limitations": "Carrot-source proxy also sizes potato. No assertion that potato eyes use the same process; curved coverage inspected and repeated."
+    },
+    "peel_normal": {
+      "nominal_N": 5,
+      "design_N": 7.5,
+      "margin_factor": 1.5,
+      "derivation": "k=1000 N/m calibrated spring; deflection5 mm; F=k*delta; multiply1.5",
+      "source_ids": [
+        "physics:Hooke"
+      ],
+      "scope": "R tool",
+      "limitations": "Spring preload/design assumptions, not existing product measurement; hard stop and load cell calibration required."
+    },
+    "eye_core": {
+      "nominal_N": 26.1639,
+      "design_N": 52.3277,
+      "margin_factor": 2.0,
+      "derivation": "Carrot structural envelope per blade width*12 mm eye/core cutter perimeter engagement; multiply2",
+      "source_ids": [
+        "F01"
+      ],
+      "scope": "R eye/core spoon",
+      "limitations": "Root proxy for localized eyes and tomato stem tissue; not measured scoop torque. Thin slicing10 mm maximum lever gives screen torque0.523 Nm. Depth stop2 mm potato,8 mm tomato."
+    },
+    "root_rub": {
+      "nominal_N": 6,
+      "design_N": 9,
+      "margin_factor": 1.5,
+      "derivation": "k=1000 N/m*6 mm pad deflection; multiply1.5",
+      "source_ids": [
+        "physics:Hooke"
+      ],
+      "scope": "R/L compliant wash pad",
+      "limitations": "Springs calibrated; visible-clean endpoint controls repetition, not force escalation."
+    },
+    "leaf_rub": {
+      "nominal_N": 2,
+      "design_N": 3,
+      "margin_factor": 1.5,
+      "derivation": "k=400 N/m*5 mm pad deflection; multiply1.5",
+      "source_ids": [
+        "physics:Hooke"
+      ],
+      "scope": "L pad; stalk supported in sink insert",
+      "limitations": "Nominal2 N is bottom of inherited2\u20135 N cleaning band; crease inspection mandatory."
+    },
+    "tomato_rub": {
+      "nominal_N": 1,
+      "design_N": 1.5,
+      "margin_factor": 1.5,
+      "derivation": "k=200 N/m*5 mm pad deflection; multiply1.5",
+      "source_ids": [
+        "physics:Hooke"
+      ],
+      "scope": "L pad; tomato supported in cup",
+      "limitations": "Not a universal bruise threshold. Reject visible damage or>=10%compression."
+    },
+    "water_jet": {
+      "nominal_N": 0.1273,
+      "design_N": 0.191,
+      "margin_factor": 1.5,
+      "derivation": "Water1000 kg/m3; flow6 L/min through10 mm diameter outlet; F=rho*Q^2/A; multiply1.5",
+      "source_ids": [
+        "physics:momentum"
+      ],
+      "scope": "held colander/produce",
+      "limitations": "Declared flowcap, not measured faucet specification. Add to brush force in worst direction."
+    },
+    "drawer_insert": {
+      "nominal_N": 7.7255,
+      "design_N": 11.58825,
+      "margin_factor": 1.5,
+      "derivation": "mu_slide.5*loadedcassette1.1kg*g +1.1kg*.3m/s2 +2N latch spring; multiply1.5; CAD bare rootcassette.639kg plus key/retention/boughtfittings budgeted.90kg",
+      "source_ids": [
+        "physics:Coulomb",
+        "physics:Newton",
+        "M20"
+      ],
+      "scope": "R handle",
+      "limitations": "Conservative coefficient0.5; 0.21 dry published value not used for wet sliding. Hard-stop/jam detection; not servo saturation force."
+    },
+    "handle_carry": {
+      "nominal_N": 0.3,
+      "design_N": 0.45,
+      "margin_factor": 1.5,
+      "derivation": "Maximumwetcolander1.0kg*acceleration.3m/s2; multiply1.5; gravity separate. Per-pose actualmass is used for carry vectors.",
+      "source_ids": [
+        "physics:Newton"
+      ],
+      "scope": "R handle",
+      "limitations": "Payload masses budgeted from geometry plus produce. Full3 kg carry check is additional arm-team requirement."
+    },
+    "leaf_separate": {
+      "nominal_N": 0.03,
+      "design_N": 0.045,
+      "margin_factor": 1.5,
+      "derivation": ".1 kg loose trimmed greens*acceleration.3; multiply1.5; gravity separate",
+      "source_ids": [
+        "physics:Newton"
+      ],
+      "scope": "R/L loose-leaf transport",
+      "limitations": "Only fully detached leaves; never budget attachment tearing as inertia. If resistance remains, return to guarded root trim."
+    },
+    "cleanup_wipe": {
+      "nominal_N": 2.5,
+      "design_N": 3.75,
+      "margin_factor": 1.5,
+      "derivation": "k500 N/m*5 mm pad deflection; multiply1.5",
+      "source_ids": [
+        "physics:Hooke"
+      ],
+      "scope": "R supported washable brush",
+      "limitations": "No exposed-blade wipe; isolate drives and use guards/cassette cover."
+    },
+    "end_cup_preload": {
+      "nominal_N": 10,
+      "design_N": 15,
+      "margin_factor": 1.5,
+      "derivation": "Springtailstockk1000N/m*10mmcompression=10N;1.5factor. Oppositeaxialstopalsoevaluatedatpeeldrag63Nreaction.",
+      "source_ids": [
+        "physics:Hooke"
+      ],
+      "scope": "internalfixturepreload; R clampactuationvia11.588Nhandleenvelope",
+      "limitations": "Endcupscontactonlyfuture3\u20135mmtrimregion; foodindentationandsplinteringmustbechecked. Nofood-strengthproofinferredfromsteel/POMstrength."
+    },
+    "machine_index": {
+      "nominal_N": 5.7255,
+      "design_N": 8.58825,
+      "margin_factor": 1.5,
+      "derivation": "mu_slide.5*loadedmovingtray1.1kg*g +1.1kg*.3m/s2; multiply1.5. Feed pauses during blade engagement; no cutting side force credited to index motor.",
+      "source_ids": [
+        "physics:Coulomb",
+        "physics:Newton"
+      ],
+      "scope": "internalapplianceindexdrive, equaloppositehorizontalreactiontocountermount",
+      "limitations": "Wetfrictionandtraymass assumptions; friction/encoderandcut-interlock testsrequired."
+    }
+  },
+  "acceptance": {
+    "position_mm": 5,
+    "orientation_deg": 3,
+    "robot_environment_gap_mm": 10,
+    "arm_arm_gap_mm": 10,
+    "held_gripper_environment_gap_mm": 5,
+    "PAD": 0,
+    "mu": 0.5,
+    "SF": 1.5,
+    "normal_N": 150,
+    "key_force_N": 150,
+    "key_moment_Nm": 15
+  },
+  "source_catalog": [
+    {
+      "id": "F01",
+      "title": "Singh, Das & Das 2016, IJFS 5:22-38",
+      "url": "https://iseki-food-ejournal.com/article/69/pdf",
+      "kind": "primary paper",
+      "notes": "Whole transverse carrot peaks 47.90\u201367.59 N; potato 43.68\u201361.49 N. Table 1 intermediate diameters 31 and 47 mm. Blade 0.952 mm, edge 15\u201325 deg; speed 20\u201340 mm/min. Means, not guaranteed maxima.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "F02",
+      "title": "Xie et al., carrot peeling design and experiment, JCAM 2025(12):154-162",
+      "url": "https://www.qikan.com.cn/article/5dd020251220.html",
+      "kind": "journal abstract, indexed publisher text",
+      "notes": "Maximum cutting resistance 1.68 N/mm, reported cutting force 16\u201332 N, edge angle 10.7 deg. Published 90.72% peeling rate does not satisfy the complete-peel target by itself. Full article unavailable; potato transfer is an explicit proxy.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "F03",
+      "title": "Wu & Abbott 2002, tomato firmness",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0925521401001338",
+      "kind": "primary paper abstract",
+      "notes": "4 mm cylindrical probe, 3 mm deformation, tissue peak 2\u201315 N from red to mature-green fruit. Compression/penetration test, not knife force. Used only for an upper structural proxy.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "F04",
+      "title": "Vieira et al. 2019, tomato mechanical resistance",
+      "url": "https://repositorio.bc.ufg.br/bitstreams/71b8aa0d-e688-48a3-9207-8166a44fe47d/download",
+      "kind": "primary paper",
+      "notes": "5 mm probe; skin firmness table values are N/mm of displacement, NOT cutting resistance per mm of blade. Consequently these values are not converted directly into blade force.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M01",
+      "title": "IKEA China BLANDA BLANK 30166051",
+      "url": "https://www.ikea.cn/cn/zh/p/bu-lang-da-bu-lan-ke-shang-cai-yong-wan-bu-xiu-gang-30166051/",
+      "kind": "China manufacturer retail",
+      "notes": "CNY19.99; diameter200 mm, height90 mm, package mass0.22 kg; stainless, dishwasher suitable. Online local stock not established.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M02",
+      "title": "IKEA China UPPFYLLD 40521951",
+      "url": "https://www.ikea.cn/cn/zh/p/uppfylld-wu-pu-fei-er-de-sha-la-shuai-gan-ji-bai-se-40521951/",
+      "kind": "China manufacturer retail",
+      "notes": "CNY19.99; diameter230 mm, height165 mm; PP and synthetic rubber; hand wash only. Manual crank, not electric.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M03",
+      "title": "Robot-Coupe CL50 China manufacturer",
+      "url": "https://www.robot-coupe.com/cn/zh/p/vegetable-preparation-machines-cl-50/20672",
+      "kind": "manufacturer",
+      "notes": "5 mm slicing disc18289; genuine2.5x2.5 mm julienne disc18389. Product supports many cuts; it does not produce eight radial wedges or guarantee40 mm greens sections.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M04",
+      "title": "Shanghai Zongwang CL50 China supplier advertisement",
+      "url": "https://www.21food.cn/productshow/3244917.html",
+      "kind": "China seller primary advertisement",
+      "notes": "CNY10500 base machine without discs. Listing550 W/230V,350x320x590 mm,25 kg; generation-specific dimensions not treated as manufacturer CAD. Public ad, not verified quotation.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M05",
+      "title": "BLAUPUNKT BP-QC02 manual",
+      "url": "https://blaupunkt.com/wp-content/uploads/2024/06/BP-QC02\u7535\u52a8\u5207\u83dc\u673a-\u8bf4\u660e\u4e66.pdf",
+      "kind": "manufacturer manual",
+      "notes": "60 W,1.5 kg; continuous work<=1 min, rest>=5 min. Food-contact table includes SUS304. Does not establish the required flat5 mm slices.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M06",
+      "title": "BP-QC02 historical China promotion",
+      "url": "https://www.smzdm.com/p/118488221/",
+      "kind": "secondary price observation, 2024-07-07",
+      "notes": "CNY399 listed before coupons; promotion figures224.05/204.05 vary. Historical comparator only, not current stock or primary specification.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M07",
+      "title": "China Post 2025 kitchen procurement notice",
+      "url": "https://www.chinapost.com.cn/cn/report/2510/0438-1.htm",
+      "kind": "China public procurement ceiling",
+      "notes": "Potato peeler4190 CNY/unit,1.8 kW/220V; maximum procurement unit price, not retail transaction. Abrasive batch machine.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M08",
+      "title": "Hento carrot peeler manufacturer",
+      "url": "https://hentomachine.cn/product/Carrot-Peeling-Machine.html",
+      "kind": "China manufacturer indexed advertisement",
+      "notes": "Advertised9000\u201342000 RMB. Industrial machine class; specification/configuration and exact dimensions not established for a home countertop.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M09",
+      "title": "Starfrit Rotato Express093209002BLCK",
+      "url": "https://www.starfrit.com/en/starfrit-rotato-express-electric-peeler",
+      "kind": "manufacturer",
+      "notes": "6 V included adapter; automatically peels potato; separate eye-removal paring knife. Carrot geometry coverage and China price not established.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M10",
+      "title": "Nemco Easy Wedger55550",
+      "url": "https://nemco.com/catalog/easy-wedger/",
+      "kind": "manufacturer",
+      "notes": "4/6/8/10 section variants; replacement428-8 blade and55434 pusher. Manufacturer names tomato among uses. Claims clean wedges and low bruising, not the reference mass/angle tolerances.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M11",
+      "title": "Nemco wedger sell sheet",
+      "url": "https://nemco.com/wp-content/uploads/2025/06/c9bb50b8-9645-4786-b5ff-fd07fe8a7881.pdf",
+      "kind": "manufacturer",
+      "notes": "203.2x203.2x482.6 mm; net2.04 kg. Whole machine almost reaches cabinet underside when placed at850 mm.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M12",
+      "title": "OXO Chef mandoline2.0",
+      "url": "https://www.oxo.com/more-oxo/chef-s-mandoline-slicer-2-0.html",
+      "kind": "manufacturer",
+      "notes": "0.5 mm thickness increments, straight/wavy cuts and julienne/fry blades. Guard and terminal remnant need validation; no China price established.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M13",
+      "title": "Etac Fix board",
+      "url": "https://www.etac.com/products/small-aids-for-daily-living/kitchen-aids/etac-fix/",
+      "kind": "manufacturer",
+      "notes": "Clamping board315x295 mm in inherited reference; clamping aid is a comparison, not autonomous indexed peeling.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M14",
+      "title": "DH electric gripper brochure",
+      "url": "https://en.dh-robotics.com/wp-content/uploads/2024/07/DH_Electric-Gripper-Brochure.pdf",
+      "kind": "manufacturer",
+      "notes": "PGC14050: IP67,1 kg,40\u2013140 N per jaw,50 mm stroke,7 Nm moment limit. Its fingers are not thereby direct food-contact certified.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M15",
+      "title": "Soft Robotics mGrip",
+      "url": "https://www.softroboticsinc.com/uploads/2021/03/Soft_Robotics_ModularGripping_800129_RevD_LR.pdf",
+      "kind": "manufacturer",
+      "notes": "Food-grade sanitary IP69K gripper platform; requires controller/air. China price unavailable; not a substitute proof of3 kg payload or15 Nm interface.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M16",
+      "title": "SMC HF3A-ZP3F",
+      "url": "https://www.smc.com.cn/webcatalog/en-jp/equipment-for-the-food-manufacturing-industry/vacuum-equipment/HF3A-ZP3F-E/",
+      "kind": "manufacturer",
+      "notes": "Food-contact-compliant40 mm bellows cup; tomato skin/wet greens seal performance unestablished. Vacuum sizing must include leak monitoring.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M17",
+      "title": "SCHUNK CMS China",
+      "url": "https://schunk.com/cn/zh/press/shu-miao-nei-qing-song-huan-dao/17344",
+      "kind": "manufacturer",
+      "notes": "Manual quick changer with robot-side/tool-side halves. A manual changer is not an autonomous tool-exchange mechanism. China price unavailable.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M18",
+      "title": "ATI QC18",
+      "url": "https://www.ati-ia.com/products/toolchanger/QC.aspx?ID=QC-18",
+      "kind": "manufacturer",
+      "notes": "Electric changer; inherited public catalogue1.77 kg pair,18.14 kg suggested payload,56.5 Nm XY. China price unavailable. Excess mass for5 kg arm carrying3 kg food plus gripper.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M19",
+      "title": "JLCFA LCM manual changer",
+      "url": "https://www.jlcfa.com/item/2021230053839.html",
+      "kind": "China retail specification",
+      "notes": "75 kg robot-side part,2.64 kg,\u00b10.05 mm; no numerical price retrieved. Robot-side mass alone exceeds lightweight interface budget.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M20",
+      "title": "Ensinger TECAFORM AH natural",
+      "url": "https://www.ensingerplastics.com/en-us/shapes/acetal-tecaform-ah-natural",
+      "kind": "manufacturer",
+      "notes": "POM-C; tensile yield9300 psi~64 MPa; dry dynamic coefficient0.21. We use0.5 for uncertain wet/dirty sliding, not0.21 as a validated wet value.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M21",
+      "title": "Ensinger food-contact stock shapes",
+      "url": "https://www.ensingerplastics.com/-/media/ensinger/files/document-teaser-files/brochures/shapes/food-technology-shapes-en.pdf",
+      "kind": "manufacturer",
+      "notes": "Food-contact material families and declarations are grade-specific. TECAFORM AH density1.41 g/cm3, tensile67 MPa,1% compression20 MPa. Finished parts still require compliance and cleaning validation.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M22",
+      "title": "OMC StepperOnline23HS45-4204S",
+      "url": "https://www.omc-stepperonline.com/nema-23-bipolar-3nm-425oz-in-4-2a-57x57x114mm-4-wires-stepper-motor-cnc-23hs45-4204s",
+      "kind": "manufacturer",
+      "notes": "NEMA23,3 Nm HOLDING torque,4.2 A,57x57x113 mm. Holding torque is not continuous/running torque; motor is an envelope comparator, not approved press drive.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "M23",
+      "title": "Zhucheng Antai vegetable wash/dry line",
+      "url": "https://www.zcatspjx.com/products/show4295932.html",
+      "kind": "China manufacturer advertisement, search-indexed",
+      "notes": "Advertised58000 CNY. Narrative specifications4.6kW,3600x1440x1520mm,1200\u20132000kg/h,water300kg/h; header contradicts narrative power/dimensions. Use only as industrial scale/cost comparator; not an approved home device.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "A01",
+      "title": "UFACTORY xArm technical specifications",
+      "url": "https://docs.xarm.ufactory.cc/8.technical_specifications.html",
+      "kind": "manufacturer",
+      "notes": "xArm6:5 kg payload,12.5 kg arm,any-direction mounting; controller100\u2013240V AC. Select3 kg food/tool payload with<=1.6 kg gripper/adapter. xArm7 has3.5 kg and is rejected for this allocation.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "A02",
+      "title": "UFACTORY joint parameters",
+      "url": "https://docs.supportarticle.ufactory.cc/support_articles/hardware/ufactory-joint-parameters.html",
+      "kind": "manufacturer; inherited R01 evidence",
+      "notes": "R01 older-model motor rated torques times100 are ideal gearing estimates, not certified continuous output torques. Do not turn them into binding ratings for a new generation.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "L01",
+      "title": "Inherited R01 market prep price ledger",
+      "url": "../../../r01/market/results/prep_tools.csv",
+      "kind": "local read-only ledger",
+      "notes": "Historical foreign benchmarks: Nemco192.50 USD, mandoline34.50 USD; domestic installed2300/1300 CNY were allowances. Not real China transaction prices.",
+      "retrieved": "2026-10-07"
+    },
+    {
+      "id": "L02",
+      "title": "Inherited fixed kitchen XML",
+      "url": "../../../r01/concept/sources/permanent_kitchen.xml",
+      "kind": "local geometry",
+      "notes": "Faucet centre x=-0.4,y=.56; outlet near spout(-.4,.40,1.032)world. Sink bottom650 mm. T08 slabs and stove boundary supersede countertop-edge rounding.",
+      "retrieved": "2026-10-07"
+    }
+  ]
+}

@@ -1,0 +1,767 @@
+{
+  "act": "spatula",
+  "obj": "spatula_b",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {},
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      -1.15,
+      0.18
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.52,
+      0.36
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 292,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        -1.15,
+        0.225,
+        0.937
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        -1.15,
+        0.225,
+        0.989
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out and up",
+      "p": [
+        -1.15,
+        0.145,
+        1.109
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        -0.16,
+        -0.02,
+        1.15
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.047,
+        1.108
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "stroke start",
+      "p": [
+        0.83,
+        0.097,
+        0.958
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "pick#0": {
+      "ok": false,
+      "n_candidates": 11,
+      "start_status": {
+        "collision": 187,
+        "pose": 90,
+        "ok": 11
+      }
+    },
+    "stroke start#5": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.636,
+      "start_reserve_mm": 5.7
+    }
+  },
+  "pieces": [
+    {
+      "frm": "stroke start#5",
+      "to": "lane#3",
+      "steps": 116,
+      "time_s": 11.5,
+      "min_reserve_mm": 15.3,
+      "max_step_deg": 1.76,
+      "cart": [
+        0.634,
+        -0.346
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": 15.3,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick",
+      "cand": 0,
+      "start_reserve_mm": 5.1,
+      "cart": -0.984,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.984,
+        "step_deg": 1.38,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 1,
+      "start_reserve_mm": 5.1,
+      "cart": -1.444,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.444,
+        "step_deg": 2.35,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 2,
+      "start_reserve_mm": 5.0,
+      "cart": -0.805,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.805,
+        "step_deg": 1.25,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 3,
+      "start_reserve_mm": 5.0,
+      "cart": -1.48,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.48,
+        "step_deg": 1.71,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 4,
+      "start_reserve_mm": 5.0,
+      "cart": -0.941,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.941,
+        "step_deg": 1.41,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 5,
+      "start_reserve_mm": 5.0,
+      "cart": -1.357,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.357,
+        "step_deg": 2.84,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 6,
+      "start_reserve_mm": 5.0,
+      "cart": -1.48,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.48,
+        "step_deg": 1.81,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 7,
+      "start_reserve_mm": 5.0,
+      "cart": -0.951,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.951,
+        "step_deg": 1.53,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 8,
+      "start_reserve_mm": 5.0,
+      "cart": -0.779,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.779,
+        "step_deg": 0.98,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 9,
+      "start_reserve_mm": 5.0,
+      "cart": -0.799,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.799,
+        "step_deg": 1.28,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 10,
+      "start_reserve_mm": 5.0,
+      "cart": -1.48,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.48,
+        "step_deg": 1.91,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_potato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 0,
+      "start_reserve_mm": 5.7,
+      "cart": 1.062,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.156,
+        "step_deg": 0.68,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 1,
+      "start_reserve_mm": 5.7,
+      "cart": 1.113,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.189,
+        "step_deg": 0.67,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 2,
+      "start_reserve_mm": 5.7,
+      "cart": 1.108,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.176,
+        "step_deg": 0.67,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 3,
+      "start_reserve_mm": 5.7,
+      "cart": 0.636,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 4,
+      "start_reserve_mm": 5.7,
+      "cart": 0.421,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": -0.254,
+        "step_deg": 0.64,
+        "pose_mm": 0.0,
+        "reserve_mm": 109.3,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 5,
+      "start_reserve_mm": 5.7,
+      "cart": 0.704,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 6,
+      "start_reserve_mm": 5.7,
+      "cart": 1.051,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.154,
+        "step_deg": 0.68,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 7,
+      "start_reserve_mm": 5.7,
+      "cart": 0.472,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 8,
+      "start_reserve_mm": 5.7,
+      "cart": 1.12,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 9,
+      "start_reserve_mm": 5.7,
+      "cart": 1.096,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.851,
+        "step_deg": 0.52,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 10,
+      "start_reserve_mm": 5.7,
+      "cart": 0.671,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 11,
+      "start_reserve_mm": 5.7,
+      "cart": 0.485,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": -0.253,
+        "step_deg": 0.66,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 12,
+      "start_reserve_mm": 5.7,
+      "cart": 0.73,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.048,
+        "step_deg": 0.47,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_minus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 13,
+      "start_reserve_mm": 5.7,
+      "cart": 1.077,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.816,
+        "step_deg": 0.5,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 14,
+      "start_reserve_mm": 5.7,
+      "cart": 1.054,
+      "ok": false,
+      "fail": {
+        "at": "stroke start->over the wok",
+        "kf": null,
+        "cart": 1.064,
+        "step_deg": 1.64,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09882117688026187,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 15,
+      "start_reserve_mm": 5.7,
+      "cart": 0.947,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.626,
+        "step_deg": 0.46,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09931566398420637,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null
+  ]
+}

@@ -1,0 +1,773 @@
+{
+  "schema": "r07.v2.corrected-idle",
+  "layout": "L101",
+  "pass_": false,
+  "q": [
+    0.0,
+    0.0,
+    -0.42374983563851004,
+    0.04850506875833354,
+    -3.231503474453574,
+    0.0035709598812572975,
+    -1.2506319508638344,
+    0.5058800978492224,
+    -2.115805219243292,
+    0.0,
+    0.0
+  ],
+  "snapshot_pass": true,
+  "snapshot_hits": [],
+  "min_clearance": {
+    "robot_environment": {
+      "pair": [
+        "bfp610_complete_envelope",
+        "R_geom_26"
+      ],
+      "clearance_mm": 11.366044228270312,
+      "upper_bound_mm": 11.366070316637309,
+      "required_mm": 10.0,
+      "reserve_mm": 1.366044228270311,
+      "lower_bound": true,
+      "method": "GJK separating-projection dual / simplex primal"
+    },
+    "held_gripper_environment": {
+      "pair": [
+        "counter_right_piece2",
+        "R_finger_plus"
+      ],
+      "clearance_mm": 24.79903704876063,
+      "upper_bound_mm": null,
+      "required_mm": 5.0,
+      "reserve_mm": 19.799037048760628,
+      "lower_bound": true,
+      "method": "enclosing AABB separation lower bound"
+    },
+    "robot_door_sweep": {
+      "pair": [
+        "idle_full_sweep_cover_0_0",
+        "cable_chain_cover_0"
+      ],
+      "clearance_mm": 56.08029957123965,
+      "upper_bound_mm": 56.08030957123965,
+      "required_mm": 10.0,
+      "reserve_mm": 46.08029957123965,
+      "lower_bound": true,
+      "method": "GJK separating-projection dual / simplex primal"
+    },
+    "arm_arm_or_frame": {
+      "pair": [
+        "rail_beam_0",
+        "R_geom_base_source1"
+      ],
+      "clearance_mm": 20.974995584437384,
+      "upper_bound_mm": 20.975005584437394,
+      "required_mm": 10.0,
+      "reserve_mm": 10.974995584437384,
+      "lower_bound": true,
+      "method": "GJK separating-projection dual / simplex primal"
+    },
+    "self": {
+      "pair": [
+        "R_geom_base_source0",
+        "R_geom_10"
+      ],
+      "clearance_mm": 3.90099705039737,
+      "upper_bound_mm": null,
+      "required_mm": 0.0,
+      "reserve_mm": 3.90099705039737,
+      "lower_bound": true,
+      "method": "enclosing AABB separation lower bound"
+    }
+  },
+  "robot_parts": [
+    {
+      "name": "rail_beam_0",
+      "lo_m": [
+        -1.76,
+        0.52,
+        1.25
+      ],
+      "hi_m": [
+        0.6599999999999999,
+        0.5800000000000001,
+        1.3199999999999998
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 30.00000000000025,
+      "below_cabinet": true
+    },
+    {
+      "name": "rail_guide_0",
+      "lo_m": [
+        -1.74,
+        0.513,
+        1.266
+      ],
+      "hi_m": [
+        0.6399999999999999,
+        0.537,
+        1.3039999999999998
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 46.00000000000026,
+      "below_cabinet": true
+    },
+    {
+      "name": "cable_chain_cover_0",
+      "lo_m": [
+        -1.74,
+        0.26,
+        1.2730000000000001
+      ],
+      "hi_m": [
+        0.6399999999999999,
+        0.505,
+        1.298
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 52.00000000000004,
+      "below_cabinet": true
+    },
+    {
+      "name": "r07_wall_bracket_0",
+      "lo_m": [
+        -1.7349999999999999,
+        0.58,
+        0.8700000000000001
+      ],
+      "hi_m": [
+        -1.665,
+        0.6,
+        1.33
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 20.000000000000018,
+      "below_cabinet": true
+    },
+    {
+      "name": "r07_wall_tie_0_R",
+      "lo_m": [
+        -1.7349999999999999,
+        0.512,
+        1.265
+      ],
+      "hi_m": [
+        -1.665,
+        0.5800000000000001,
+        1.305
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 45.00000000000015,
+      "below_cabinet": true
+    },
+    {
+      "name": "r07_wall_bracket_1",
+      "lo_m": [
+        -1.085,
+        0.58,
+        0.8700000000000001
+      ],
+      "hi_m": [
+        -1.0150000000000001,
+        0.6,
+        1.33
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 20.000000000000018,
+      "below_cabinet": true
+    },
+    {
+      "name": "r07_wall_tie_1_R",
+      "lo_m": [
+        -1.085,
+        0.512,
+        1.265
+      ],
+      "hi_m": [
+        -1.0150000000000001,
+        0.5800000000000001,
+        1.305
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 45.00000000000015,
+      "below_cabinet": true
+    },
+    {
+      "name": "r07_wall_bracket_2",
+      "lo_m": [
+        -0.135,
+        0.58,
+        0.8700000000000001
+      ],
+      "hi_m": [
+        -0.065,
+        0.6,
+        1.33
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 20.000000000000018,
+      "below_cabinet": true
+    },
+    {
+      "name": "r07_wall_tie_2_R",
+      "lo_m": [
+        -0.135,
+        0.512,
+        1.265
+      ],
+      "hi_m": [
+        -0.065,
+        0.5800000000000001,
+        1.305
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 45.00000000000015,
+      "below_cabinet": true
+    },
+    {
+      "name": "r07_wall_bracket_3",
+      "lo_m": [
+        0.525,
+        0.58,
+        0.8700000000000001
+      ],
+      "hi_m": [
+        0.5950000000000001,
+        0.6,
+        1.33
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 20.000000000000018,
+      "below_cabinet": true
+    },
+    {
+      "name": "r07_wall_tie_3_R",
+      "lo_m": [
+        0.525,
+        0.512,
+        1.265
+      ],
+      "hi_m": [
+        0.5950000000000001,
+        0.5800000000000001,
+        1.305
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 45.00000000000015,
+      "below_cabinet": true
+    },
+    {
+      "name": "appliance_power_track_0",
+      "lo_m": [
+        -1.76,
+        0.5509999999999999,
+        1.1600000000000001
+      ],
+      "hi_m": [
+        -0.74,
+        0.579,
+        1.23
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 120.00000000000011,
+      "below_cabinet": true
+    },
+    {
+      "name": "appliance_power_adapter_0",
+      "lo_m": [
+        -0.8435,
+        0.4995,
+        1.1615
+      ],
+      "hi_m": [
+        -0.7765000000000001,
+        0.5425,
+        1.2285000000000001
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 121.49999999999994,
+      "below_cabinet": true
+    },
+    {
+      "name": "appliance_power_track_1",
+      "lo_m": [
+        -0.04999999999999999,
+        0.5509999999999999,
+        1.1600000000000001
+      ],
+      "hi_m": [
+        0.6599999999999999,
+        0.579,
+        1.23
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 120.00000000000011,
+      "below_cabinet": true
+    },
+    {
+      "name": "appliance_power_adapter_1",
+      "lo_m": [
+        0.5565,
+        0.4995,
+        1.1615
+      ],
+      "hi_m": [
+        0.6234999999999999,
+        0.5425,
+        1.2285000000000001
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 121.49999999999994,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_carriage_block",
+      "lo_m": [
+        -0.5137498356385101,
+        0.5125000000000001,
+        1.2425
+      ],
+      "hi_m": [
+        -0.33374983563851,
+        0.5375,
+        1.3275
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 22.500000000000185,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_mount_bracket",
+      "lo_m": [
+        -0.49874983563851005,
+        0.495,
+        1.1535
+      ],
+      "hi_m": [
+        -0.34874983563851003,
+        0.555,
+        1.297
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 53.000000000000156,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_mount_arm",
+      "lo_m": [
+        -0.49874983563851005,
+        0.505,
+        1.1535
+      ],
+      "hi_m": [
+        -0.34874983563851003,
+        0.5399999999999999,
+        1.1775
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 172.50000000000009,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_rail_brake",
+      "lo_m": [
+        -0.32624983563851007,
+        0.4975,
+        1.2449999999999999
+      ],
+      "hi_m": [
+        -0.26124983563851,
+        0.5525,
+        1.325
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 25.000000000000135,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_base_plate",
+      "lo_m": [
+        -0.5087498356385101,
+        0.52,
+        1.0685
+      ],
+      "hi_m": [
+        -0.33874983563851,
+        0.544,
+        1.2385
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 111.50000000000016,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_current151mm_base_cover",
+      "lo_m": [
+        -0.49924983563851,
+        0.512,
+        1.078
+      ],
+      "hi_m": [
+        -0.3482498356385101,
+        0.52,
+        1.2289999999999999
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 121.00000000000021,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_base_source0",
+      "lo_m": [
+        -0.4817488354915239,
+        0.4209009970503974,
+        1.095500999127495
+      ],
+      "hi_m": [
+        -0.36574883295753985,
+        0.4351249971003931,
+        1.2114989990570457
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 138.50100094295436,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_base_source1",
+      "lo_m": [
+        -0.4992488354271868,
+        0.4351129997175264,
+        1.0780010050428672
+      ],
+      "hi_m": [
+        -0.34825083962308,
+        0.5200000001603586,
+        1.2290250044155626
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 120.97499558443747,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_5",
+      "lo_m": [
+        -0.48374983563851004,
+        0.277,
+        1.0935
+      ],
+      "hi_m": [
+        -0.36374983563851004,
+        0.517,
+        1.2135
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 136.50000000000006,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_10",
+      "lo_m": [
+        -0.4819073657000269,
+        0.29700000000000004,
+        0.935685830155442
+      ],
+      "hi_m": [
+        -0.35608903957850124,
+        0.41700000000000004,
+        1.1755446933285238
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 174.45530667147625,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_11",
+      "lo_m": [
+        -0.4670587605987555,
+        0.30700000000000005,
+        0.9656623073509557
+      ],
+      "hi_m": [
+        0.03085698134113954,
+        0.4429158922545142,
+        1.0849783887337057
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 265.0216112662944,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_16",
+      "lo_m": [
+        -0.054655236450028295,
+        0.34016063552042136,
+        0.9721962290821465
+      ],
+      "hi_m": [
+        0.061163089671497355,
+        0.45016063552042135,
+        1.2020550922552284
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 147.94490774477165,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_17",
+      "lo_m": [
+        -0.028673924770937137,
+        0.3580229618188805,
+        1.1295146238695644
+      ],
+      "hi_m": [
+        0.4254653178041896,
+        0.46679136116032693,
+        1.2238706917848061
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 126.12930821519397,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_21",
+      "lo_m": [
+        0.3484858033238044,
+        0.3889638264200188,
+        1.0261084394954887
+      ],
+      "hi_m": [
+        0.4352738504655843,
+        0.46896382642001877,
+        1.2459437798640844
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 104.05622013591565,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_25",
+      "lo_m": [
+        0.33618038805334505,
+        0.36579386153622107,
+        1.0181733401133921
+      ],
+      "hi_m": [
+        0.5327775766693149,
+        0.47359781939677836,
+        1.103833334295392
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 246.166665704608,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_26",
+      "lo_m": [
+        0.44968642718074464,
+        0.3563660442282703,
+        0.9717367940952509
+      ],
+      "hi_m": [
+        0.5420510251350262,
+        0.47407731346007337,
+        1.121198847695439
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 228.801152304561,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_geom_28",
+      "lo_m": [
+        0.4625316731747872,
+        0.39880033735338855,
+        0.9571624868856292
+      ],
+      "hi_m": [
+        0.5477526760724059,
+        0.4882099241826598,
+        1.0315800745047785
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 318.4199254952216,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_gripper_palm",
+      "lo_m": [
+        0.502955736136702,
+        0.42948941292251563,
+        0.894915430082665
+      ],
+      "hi_m": [
+        0.586109685450629,
+        0.5363281120817242,
+        0.9953385494541879
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 354.6614505458122,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_finger_minus",
+      "lo_m": [
+        0.5127899146030732,
+        0.4778426686840757,
+        0.8779817316979903
+      ],
+      "hi_m": [
+        0.5541718050913997,
+        0.5166342825535157,
+        0.9518233963145637
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 398.1766036854364,
+      "below_cabinet": true
+    },
+    {
+      "name": "R_finger_plus",
+      "lo_m": [
+        0.5155955520015698,
+        0.4710604232183083,
+        0.8747990370487606
+      ],
+      "hi_m": [
+        0.5569774424898963,
+        0.5098520370877483,
+        0.948640701665334
+      ],
+      "front_strip_clear": true,
+      "corridor_clear": true,
+      "door_sweep_lower_gap_mm": 401.3592983346661,
+      "below_cabinet": true
+    }
+  ],
+  "doors": [
+    {
+      "name": "r07_open_door_0_0",
+      "width_m": 0.55,
+      "height_m": 0.6,
+      "thickness_m": 0.018,
+      "hinge_x_m": -1.8,
+      "opening_rad": [
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "r07_open_door_0_1",
+      "width_m": 0.55,
+      "height_m": 0.6,
+      "thickness_m": 0.018,
+      "hinge_x_m": -0.7,
+      "opening_rad": [
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "r07_open_door_1_0",
+      "width_m": 0.39499999999999996,
+      "height_m": 0.6,
+      "thickness_m": 0.018,
+      "hinge_x_m": -0.1,
+      "opening_rad": [
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "r07_open_door_1_1",
+      "width_m": 0.39499999999999996,
+      "height_m": 0.6,
+      "thickness_m": 0.018,
+      "hinge_x_m": 0.69,
+      "opening_rad": [
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "r07_open_door_2_0",
+      "width_m": 0.33000000000000007,
+      "height_m": 0.6,
+      "thickness_m": 0.018,
+      "hinge_x_m": 1.47,
+      "opening_rad": [
+        0,
+        1.5707963267948966
+      ]
+    }
+  ],
+  "door_sweep_pass": true,
+  "door_sweep_method": "Every full-size cabinet door remains atz>=1.35 throughout0..90deg. A robot maximumz<=1.34 is a sufficient vertical separating-plane certificate for the entire sweep.",
+  "doors_checked_against_corridor": false,
+  "front_counter_strip": {
+    "x_m": [
+      -1.8,
+      1.8
+    ],
+    "y_m": [
+      0,
+      0.23
+    ],
+    "z_m": [
+      0.85,
+      1.35
+    ]
+  },
+  "person_corridor": {
+    "x_m": [
+      -1.6,
+      0.6
+    ],
+    "y_m": [
+      -0.75,
+      -0.05
+    ],
+    "z_m": [
+      0.85,
+      1.85
+    ]
+  },
+  "fold_paths": [],
+  "scene": "Completed-meal contents in four full output bowls, stored full tools and complete fixed kitchen. No duplicated raw inputs.",
+  "model_xml": "models/L101_idle.xml",
+  "doors_model_xml": "models/L101_idle_doors.xml",
+  "meal_end_to_park_verified": false,
+  "status": "SNAPSHOT_ONLY_NOT_IDLE_ACCEPTED"
+}

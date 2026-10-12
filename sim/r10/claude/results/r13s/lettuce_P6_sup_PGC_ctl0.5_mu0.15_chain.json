@@ -1,0 +1,211 @@
+{
+ "item": "lettuce",
+ "zh": "\u751f\u83dc\uff08\u6574\u68f5\uff09",
+ "set": "P6",
+ "lip": 0.0,
+ "grasp": "support",
+ "gripper": "PGC",
+ "mode": "ctl",
+ "F": 0.5,
+ "mu": 0.15,
+ "kg": 0.4,
+ "dims": [
+  0.15,
+  0.15,
+  0.12
+ ],
+ "dmg": 2.2,
+ "dsrc": "LE1 (leaf injury)",
+ "friction_rule_ok": true,
+ "profile": "chain",
+ "shift": [
+  0.0,
+  0.0,
+  0.0
+ ],
+ "item_height_mm": 120.0,
+ "yaw_deg": 0.0,
+ "width_local_mm": 149.9,
+ "q_open": 0.007488221028979855,
+ "grasp_above_centre_mm": 0.0,
+ "dropped": "carry_A_tilt_jaw_axis",
+ "max_slip_mm": 1174.93,
+ "max_slip_deg": 179.99,
+ "finger_N_10ms_max": 4.8,
+ "finger_N_median": 0.0,
+ "finger_N_p95": 4.61,
+ "moment_Nm_10ms_max": 0.53,
+ "scene_contact_N_max": 0.0,
+ "final_pos": [
+  3.4426,
+  2.2682,
+  0.0652
+ ],
+ "in_target": false,
+ "kind": "ball",
+ "bodies_in": 0.0,
+ "extra_in": null,
+ "scene_contact_segments": {},
+ "impact_v_mps": 0.12,
+ "drop_equiv_mm": 1.0,
+ "need_N": 19.62,
+ "sim_s": 15.6,
+ "segments": [
+  {
+   "seg": "to_pregrasp",
+   "T": 1.09,
+   "slip_mm": 0.0,
+   "food": [
+    -0.0,
+    -0.0,
+    0.1003
+   ]
+  },
+  {
+   "seg": "approach",
+   "T": 1.6,
+   "slip_mm": 0.0,
+   "food": [
+    -0.0,
+    -0.0,
+    0.1003
+   ]
+  },
+  {
+   "seg": "close",
+   "finger_N": [
+    2.7,
+    0.01
+   ],
+   "q": -0.004659615814611392
+  },
+  {
+   "seg": "lift",
+   "T": 0.69,
+   "slip_mm": 8.44,
+   "food": [
+    -0.0,
+    -0.0115,
+    0.2207
+   ]
+  },
+  {
+   "seg": "raise",
+   "T": 0.41,
+   "slip_mm": 8.44,
+   "food": [
+    -0.0,
+    -0.0111,
+    0.2808
+   ]
+  },
+  {
+   "seg": "carry_A_tilt_jaw_axis",
+   "T": 0.88,
+   "slip_mm": 119.16,
+   "food": [
+    0.3047,
+    0.0313,
+    0.2063
+   ]
+  },
+  {
+   "seg": "pause",
+   "T": 0.3,
+   "slip_mm": 323.56,
+   "food": [
+    0.4333,
+    0.1,
+    0.0623
+   ]
+  },
+  {
+   "seg": "carry_B_tilt_pad_axis",
+   "T": 0.92,
+   "slip_mm": 552.73,
+   "food": [
+    0.7949,
+    0.3576,
+    0.0604
+   ]
+  },
+  {
+   "seg": "carry_C",
+   "T": 0.92,
+   "slip_mm": 825.06,
+   "food": [
+    1.1578,
+    0.6167,
+    0.0603
+   ]
+  },
+  {
+   "seg": "pause2",
+   "T": 0.2,
+   "slip_mm": 912.82,
+   "food": [
+    1.2302,
+    0.6792,
+    0.0749
+   ]
+  },
+  {
+   "seg": "lower",
+   "T": 0.6,
+   "slip_mm": 1174.93,
+   "food": [
+    1.4659,
+    0.8386,
+    0.066
+   ]
+  },
+  {
+   "seg": "pour",
+   "T": 1.1,
+   "slip_mm": 1174.93,
+   "food": [
+    2.0963,
+    1.2999,
+    0.0747
+   ]
+  },
+  {
+   "seg": "pour_hold",
+   "T": 0.6,
+   "slip_mm": 1174.93,
+   "food": [
+    2.3239,
+    1.4689,
+    0.0679
+   ]
+  },
+  {
+   "seg": "retreat",
+   "T": 1.39,
+   "slip_mm": 1174.93,
+   "food": [
+    3.0362,
+    1.9786,
+    0.0642
+   ]
+  },
+  {
+   "seg": "settle",
+   "T": 1.0,
+   "slip_mm": 1174.93,
+   "food": [
+    3.4426,
+    2.2682,
+    0.0652
+   ]
+  }
+ ],
+ "unstable": false,
+ "ok": false,
+ "fail": [
+  "dropped",
+  "slip>=10mm",
+  "not in target",
+  "force>damage"
+ ]
+}

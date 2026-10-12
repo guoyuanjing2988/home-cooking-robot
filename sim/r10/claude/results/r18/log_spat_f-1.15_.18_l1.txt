@@ -1,0 +1,27 @@
+pick start candidates 24 {'collision': 56, 'pose': 186, 'ok': 46}
+ cand 0 cart -1.0 {'at': 'pick->lifted', 'kf': None, 'cart': np.float64(-1.0), 'step_deg': 1.59, 'pose_mm': 3.96, 'reserve_mm': None, 'dt': np.float64(0.08666666666666656), 'hits': []}
+ cand 1 cart -1.24 {'at': 'out and up->lane', 'kf': None, 'cart': np.float64(-1.144), 'step_deg': 1.25, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09904011386139154), 'hits': [['R_geom_17', 'R_gripper_oem_envelope']]}
+ cand 2 cart -1.08 ok
+ cand 3 cart -1.22 {'at': 'out and up->lane', 'kf': None, 'cart': np.float64(-1.039), 'step_deg': 1.24, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09904011386139154), 'hits': [['R_geom_10', 'R_gripper_r18_spat_handle']]}
+ cand 4 cart -1.0 {'at': 'out and up->lane', 'kf': None, 'cart': np.float64(-0.73), 'step_deg': 0.94, 'pose_mm': 0.0, 'reserve_mm': 78.3, 'dt': np.float64(0.09904011386139154), 'hits': [['R_geom_17', 'R_finger_plus']]}
+ cand 5 cart -1.27 {'at': 'lifted->out and up', 'kf': None, 'cart': np.float64(-1.242), 'step_deg': 1.05, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.0961480340123731), 'hits': [['R_gripper_r18_spat_handle', 'R_base_plate']]}
+ cand 6 cart -1.11 {'at': 'lifted->out and up', 'kf': None, 'cart': np.float64(-1.098), 'step_deg': 1.76, 'pose_mm': 3.13, 'reserve_mm': None, 'dt': np.float64(0.0961480340123731), 'hits': []}
+ cand 7 cart -1.09 ok
+ cand 8 cart -1.02 {'at': 'lifted->out and up', 'kf': None, 'cart': np.float64(-1.008), 'step_deg': 1.76, 'pose_mm': 3.13, 'reserve_mm': None, 'dt': np.float64(0.0961480340123731), 'hits': []}
+ cand 9 cart -1.1 {'at': 'lifted->out and up', 'kf': None, 'cart': np.float64(-1.094), 'step_deg': 1.76, 'pose_mm': 3.13, 'reserve_mm': None, 'dt': np.float64(0.0961480340123731), 'hits': []}
+ cand 10 cart -1.05 ok
+ cand 11 cart -1.23 {'at': 'out and up->lane', 'kf': None, 'cart': np.float64(-1.06), 'step_deg': 1.28, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09904011386139154), 'hits': [['R_geom_10', 'R_gripper_r18_spat_handle']]}
+ cand 12 cart -1.41 {'at': 'pick->lifted', 'kf': None, 'cart': np.float64(-1.412), 'step_deg': 2.03, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.08666666666666656), 'hits': [['R_cart_beam', 'R_finger_plus']]}
+ cand 13 cart -1.15 {'at': 'out and up->lane', 'kf': None, 'cart': np.float64(-0.996), 'step_deg': 1.08, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09904011386139154), 'hits': [['R_geom_17', 'R_gripper_oem_envelope']]}
+ cand 14 cart -1.0 ok
+ cand 15 cart -1.17 {'at': 'out and up->lane', 'kf': None, 'cart': np.float64(-1.031), 'step_deg': 1.13, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09904011386139154), 'hits': [['R_geom_17', 'R_gripper_oem_envelope']]}
+stroke start start candidates 24 {'pose': 115, 'ok': 95, 'collision': 78}
+ cand 0 cart 1.06 ok
+ cand 1 cart 1.11 ok
+ cand 2 cart 1.11 ok
+ cand 3 cart 0.64 ok
+ cand 4 cart 0.42 ok
+ cand 5 cart 0.7 ok
+joins at lane [(1000, False), (1000, False), (1000, False), (1000, False), (1000, False), (1000, False)]
+results/r17/chain_spatula_s-1_r18f-1.15_.18_l1.json
+{"act": "spatula", "obj": "spatula_b", "grasp_sense": -1, "design": {"pot_h": 0.12, "rack": 0.04, "lid_a": 0.0, "car_a": 45.0, "rack_ry": 90.0}, "scene": {}, "wok_tilt": 0.0, "wok_grasp": "top", "tool_xy": {"spatula": [-1.15, 0.18], "ladle": [1.62, 0.24], "spider": [1.52, 0.36]}, "ok": false, "time_s": 0.0, "elapsed_s": 437, "anchors": {"pick#0": {"ok": true, "cand": 0, "cart": -1.077, "start_reserve_mm": 5.1}, "stroke start#5": {"ok": true, "cand": 0, "cart": 1.062, "start_reserve_mm": 5.7}}, "pieces": [{"frm": "pick#0", "to": "lane#3", "steps": 121, "time_s": 11.9, "min_reserve_mm": 6.3, "max_step_deg": 1.58, "cart": [-1.077, 0.518]}, {"frm": "stroke start#5", "to": "lane#3", "steps": 114, "time_s": 11.4, "min_reserve_mm": 15.4, "max_step_deg": 1.67, "cart": [1.06, 0.092]}], "joins": [{"ok": false, "arm_deg": 1000.0, "cart_m": 0.427, "reason": "shuffle or join blocked from both sides", "at": "lane", "best_pair_deg": 1000.0}], "approaches": [{"ok": true, "kf": 0, "min_reserve_mm": 9.6, "time_s": 0.6}], "min_reserve_mm": 6.3, "max_pgc_moment_Nm": null, "max_joint_ratio": null}

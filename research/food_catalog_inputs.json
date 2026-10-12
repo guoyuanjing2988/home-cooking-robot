@@ -1,0 +1,3922 @@
+[
+ {
+  "id": "carrot",
+  "name": "Carrot",
+  "name_zh": "胡萝卜",
+  "group": "root/tuber",
+  "shape": "tapered cylinder (cone)",
+  "arrival": {
+   "text": "loose, or 0.5-1 kg plastic bag; washed",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": 0.121,
+    "typ": 0.155,
+    "max": 0.185,
+    "src": "C1",
+    "note": "Iran, n=100"
+   },
+   {
+    "axis": "max diameter",
+    "min": 0.023,
+    "typ": 0.029,
+    "max": 0.034,
+    "src": "C1",
+    "note": "width"
+   }
+  ],
+  "mass_kg": {
+   "min": 0.045,
+   "typ": 0.073,
+   "max": 0.115,
+   "src": "C1",
+   "note": "Iran, n=100"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.1,
+    "typ": 0.15,
+    "max": 0.3,
+    "src": "estimate"
+   },
+   "size_note": "L 150-250 mm, D 30-50 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 56.7,
+   "type": "bruise (min of n=100)",
+   "src": "C1",
+   "basis": "lowest bruising force; round probe, 20 mm/min; occurs at 17-22 mm deformation so it is near failure, not a cosmetic onset"
+  },
+  "failure_force_N": {
+   "value": 71.9,
+   "src": "C1",
+   "basis": "mean bruising force, same test"
+  },
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": {
+   "value": 38000.0,
+   "what": "apparent whole-root modulus (bruising test) - far below typical fresh-tissue values, use with care",
+   "src": "C1"
+  },
+  "hold_force_per_finger_N": {
+   "value": 2.94,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.3 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "bruising force",
+    "value": "56.7-92.3 N, mean 71.90 N; deformation 17.4-21.7 mm",
+    "conditions": "round pressure probe, 20 mm/min",
+    "tag": "M",
+    "src": "C1"
+   },
+   {
+    "quantity": "bending / shear force",
+    "value": "48.6 N (3-point) / 41.1 N",
+    "conditions": "20 mm/min",
+    "tag": "M",
+    "src": "C1"
+   },
+   {
+    "quantity": "density, moisture",
+    "value": "1.04 g/cm3, 87.2 %",
+    "conditions": "",
+    "tag": "M",
+    "src": "C1"
+   },
+   {
+    "quantity": "friction",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Robust. Grasp mid-length across the diameter; tapered shape slides toward the tip under squeeze, so use a V or concave pad. Thin tip snaps in bending (48.6 N 3-point).",
+  "sources": {
+   "C1": {
+    "cite": "Jahanbakhshi A. et al. 2018, Food Sci Nutr 6(7):1898-1903 (carrot)",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6189625/"
+   }
+  }
+ },
+ {
+  "id": "potato",
+  "name": "Potato",
+  "name_zh": "马铃薯/土豆",
+  "group": "root/tuber",
+  "shape": "ellipsoid",
+  "arrival": {
+   "text": "loose (often soil-dusted) or net bag",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": 0.05,
+    "typ": 0.07,
+    "max": 0.087,
+    "src": "P1",
+    "note": "Marfona class means, classes 35-55/55-75/>75 mm"
+   },
+   {
+    "axis": "width",
+    "min": 0.046,
+    "typ": 0.062,
+    "max": 0.069,
+    "src": "P1",
+    "note": ""
+   },
+   {
+    "axis": "thickness",
+    "min": 0.04,
+    "typ": 0.052,
+    "max": 0.058,
+    "src": "P1",
+    "note": ""
+   }
+  ],
+  "mass_kg": {
+   "min": 0.068,
+   "typ": 0.132,
+   "max": 0.221,
+   "src": "P1",
+   "note": "class means, Marfona/Sante"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.1,
+    "typ": 0.2,
+    "max": 0.4,
+    "src": "estimate"
+   },
+   "size_note": "L 70-140 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 40.0,
+   "type": "derived",
+   "src": "derived",
+   "basis": "0.20 MPa critical contact stress (P2, drop impact, pressure film) x assumed 200 mm2 effective contact on a curved tuber; full-pad 800 mm2 would give 160 N"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": {
+    "value": 0.65,
+    "pair": "kinetic, rubber belting, clean-wet tuber (Cara)",
+    "src": "F2"
+   },
+   "dry": {
+    "value": 0.35,
+    "pair": "static, rubber, unpeeled (min of Marfona/Sante classes)",
+    "src": "P1"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 1900000.0,
+   "what": "flesh, 10 mm probe punch on peeled halves (1.81-2.11 MPa)",
+   "src": "P1"
+  },
+  "hold_force_per_finger_N": {
+   "value": 5.61,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.4 kg (largest of sourced and CN-retail max), mu=0.35 (dry, P1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "critical damage contact stress",
+    "value": "0.20 MPa",
+    "conditions": "drop impact, pressure-sensitive film",
+    "tag": "M",
+    "src": "P2"
+   },
+   {
+    "quantity": "drop damage onset",
+    "value": "300 mm onto 65Mn steel; 400 mm onto ABS/rubber/soil",
+    "conditions": "",
+    "tag": "M",
+    "src": "P2"
+   },
+   {
+    "quantity": "static mu",
+    "value": "rubber 0.35-0.53; galvanized iron 0.31-0.34; aluminium 0.37-0.42; glass 0.35-0.45",
+    "conditions": "tilting plate, dry, unpeeled",
+    "tag": "M",
+    "src": "P1"
+   },
+   {
+    "quantity": "kinetic mu (rubber belting)",
+    "value": "~0.66 clean-dry, ~0.65 clean-wet, ~0.62 wet-dirty",
+    "conditions": "Cara 50-64 mm, read from bar chart",
+    "tag": "M",
+    "src": "F2"
+   },
+   {
+    "quantity": "peeled vs unpeeled",
+    "value": "peeled tubers have higher sliding friction",
+    "conditions": "cited Dalvand 2011",
+    "tag": "O",
+    "src": "P1"
+   }
+  ],
+  "handling": "Robust. Peeled potato: surface starch/water film; sources say friction rises after peeling (dry test) - wet peeled friction not measured.",
+  "sources": {
+   "F2": {
+    "cite": "Bishop C.F.H. et al. 2012, Res. Agr. Eng. 58:114-117 (potato friction, wet/dry belting)",
+    "url": "https://rae.agriculturejournals.cz/pdfs/rae/2012/03/05.pdf"
+   },
+   "P1": {
+    "cite": "Abedi G. et al. 2019, Res. Agr. Eng. 65(3):77-84 (potato Marfona/Sante)",
+    "url": "https://www.agriculturejournals.cz/pdfs/rae/2019/03/01.pdf"
+   },
+   "P2": {
+    "cite": "Chen Z. et al. 2020, J. South China Agric. Univ. (potato drop-damage contact stress)",
+    "url": "https://journal.scau.edu.cn/article/doi/10.7671/j.issn.1001-411X.202001005"
+   }
+  }
+ },
+ {
+  "id": "daikon",
+  "name": "Daikon (white radish)",
+  "name_zh": "白萝卜",
+  "group": "root/tuber",
+  "shape": "long cylinder",
+  "arrival": {
+   "text": "loose, sometimes halved and cling-wrapped",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.5,
+    "typ": 1.0,
+    "max": 2.0,
+    "src": "estimate"
+   },
+   "size_note": "L 200-450 mm, D 60-100 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 40.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "no data; set below carrot (56.7 N) because daikon flesh is softer and juicier"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 19.62,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=2 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "compression, modulus, friction, size",
+    "value": "not found (Koide 2005 Biosyst Eng 92:335 abstract has no numbers)",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Too wide for most 2-jaw strokes when whole (60-100 mm); usually bought or handled as a cut section. Long whole root needs a 2-point or cradle grasp.",
+  "sources": {}
+ },
+ {
+  "id": "ginger",
+  "name": "Ginger",
+  "name_zh": "生姜",
+  "group": "root/tuber",
+  "shape": "branched rhizome ('hand')",
+  "arrival": {
+   "text": "loose, irregular pieces",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "piece size classes",
+    "min": 0.035,
+    "typ": null,
+    "max": 0.05,
+    "src": "Gi1",
+    "note": "Indian seed-rhizome pieces, classes <35 / 35-50 / >50 mm"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.05,
+    "typ": 0.15,
+    "max": 0.4,
+    "src": "estimate"
+   },
+   "size_note": "hand 80-200 mm long",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 55.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "failure/2: compression 110.06 N (lowest, Gi1, geometry not stated) / 2"
+  },
+  "failure_force_N": {
+   "value": 110.06,
+   "src": "Gi1",
+   "basis": "compression 110.06-154.25 N, geometry not stated"
+  },
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.31,
+    "pair": "static, stainless steel (lowest surface)",
+    "src": "Gi1"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 6.33,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.4 kg (largest of sourced and CN-retail max), mu=0.31 (dry, Gi1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "compression",
+    "value": "110.06-154.25 N",
+    "conditions": "geometry not in abstract",
+    "tag": "M",
+    "src": "Gi1"
+   },
+   {
+    "quantity": "penetration / cutting",
+    "value": "12.70-15.06 N / 218.5-252.7 N",
+    "conditions": "",
+    "tag": "M",
+    "src": "Gi1"
+   },
+   {
+    "quantity": "peel penetration",
+    "value": "0.45-0.52 N",
+    "conditions": "fresh fingers",
+    "tag": "M",
+    "src": "Gi2"
+   },
+   {
+    "quantity": "peel rupture under compression",
+    "value": "17.56-20.12 N",
+    "conditions": "seen only in a search snippet - unverified",
+    "tag": "O",
+    "src": "Gi2"
+   }
+  ],
+  "handling": "Irregular branched shape: grasp the thickest lobe. Peel tears at very low force (0.45 N penetration) - cosmetic only, since it is peeled.",
+  "sources": {
+   "Gi1": {
+    "cite": "Pandey et al. 2025, J. Agric. Eng. (India) (ginger rhizome)",
+    "url": "https://pub.isae.in/index.php/jae/article/view/1233"
+   },
+   "Gi2": {
+    "cite": "Visvanathan & Jayashree 2011, J. Spices Arom. Crops 20(2):60-65 (ginger)",
+    "url": "https://agris.fao.org/search/en/records/670527e2b1dfe472e145aba4"
+   }
+  }
+ },
+ {
+  "id": "garlic",
+  "name": "Garlic head + clove",
+  "name_zh": "大蒜（蒜头/蒜瓣）",
+  "group": "root/tuber",
+  "shape": "head: oblate sphere of cloves; clove: crescent wedge",
+  "arrival": {
+   "text": "loose heads, or net bag of 3-5 heads",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.03,
+    "typ": 0.05,
+    "max": 0.08,
+    "src": "estimate"
+   },
+   "size_note": "head D 45-65 mm; clove 3-10 g, 25-35 mm long",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 20.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "head: failure/2 = 40 N/2 (G1 horizontal peak, lowest); clove: 28 N/2 = 14 N"
+  },
+  "failure_force_N": {
+   "value": 40.0,
+   "src": "G1",
+   "basis": "head horizontal peak 40-65 N; vertical 80-110 N; clove ~28 N (P/75 platen, 0.5 mm/s)"
+  },
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.33,
+    "pair": "static, stainless steel, head (clove 0.35)",
+    "src": "G1"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 1.19,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.08 kg (largest of sourced and CN-retail max), mu=0.33 (dry, G1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "head compression peak",
+    "value": "vertical 80-110 N (~93.5 N); horizontal 40-65 N (~52 N)",
+    "conditions": "75 mm platen (P/75), 0.5 mm/s",
+    "tag": "M",
+    "src": "G1"
+   },
+   {
+    "quantity": "clove compression peak",
+    "value": "~28.05 N",
+    "conditions": "same",
+    "tag": "M",
+    "src": "G1"
+   },
+   {
+    "quantity": "clove crushing load (other study)",
+    "value": "55.6-155.0 N",
+    "conditions": "cited Bahnasawy 2007",
+    "tag": "O",
+    "src": "G1"
+   },
+   {
+    "quantity": "static mu head / clove",
+    "value": "stainless 0.33/0.35; mild steel 0.43/0.46; glass 0.24/0.27; wood 0.51/0.54",
+    "conditions": "tilting table, dry",
+    "tag": "M",
+    "src": "G1"
+   }
+  ],
+  "handling": "Clove is small (3-10 g) and smooth; papery skin flakes. Loose cloves are better handled in a container/tray than pinched one by one.",
+  "sources": {
+   "G1": {
+    "cite": "Jadhav et al. 2026, Plant Archives 26 Suppl 1:2561-2570 (garlic mechanics)",
+    "url": "https://plantarchives.org/article/343%20CHARACTERIZATION-OF-THE-MECHANICAL-PROPERTIES-OF-GARLIC-(ALLIUM-SATIVUM-L.)-FOR-PROFICIENT-EQUIPMENT-DESIGN-IN-FOOD-PROCESSING.pdf"
+   }
+  }
+ },
+ {
+  "id": "onion",
+  "name": "Onion",
+  "name_zh": "洋葱",
+  "group": "root/tuber",
+  "shape": "oblate sphere",
+  "arrival": {
+   "text": "loose or net bag",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "diameter (equatorial/polar)",
+    "min": 0.051,
+    "typ": 0.057,
+    "max": 0.062,
+    "src": "O1",
+    "note": "Egyptian cultivars"
+   }
+  ],
+  "mass_kg": {
+   "min": 0.079,
+   "typ": 0.097,
+   "max": 0.115,
+   "src": "O1",
+   "note": "cultivar means"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.15,
+    "typ": 0.25,
+    "max": 0.4,
+    "src": "estimate"
+   },
+   "size_note": "D 70-100 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 170.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "failure/2 = 341 N/2; above the 140 N max of a PGC-140, so not limiting"
+  },
+  "failure_force_N": {
+   "value": 341.0,
+   "src": "O1",
+   "basis": "crushing load 341-981 N (small red bulbs lowest), dead weights on flat plate until permanent destruction"
+  },
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.67,
+    "pair": "static, galvanized steel (rubber 0.69-1.30, bulk test)",
+    "src": "O1"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 2.93,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.4 kg (largest of sourced and CN-retail max), mu=0.67 (dry, O1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "crushing load",
+    "value": "white 443/677/820 N; red 341/803/981 N; yellow 400/679/780 N (S/M/L)",
+    "conditions": "flat plate, dead weights",
+    "tag": "M",
+    "src": "O1"
+   },
+   {
+    "quantity": "penetration",
+    "value": "26.1-45.5 N",
+    "conditions": "3 mm flat probe",
+    "tag": "M",
+    "src": "O1"
+   },
+   {
+    "quantity": "static mu",
+    "value": "rubber 0.69-1.30; galvanized steel 0.67-1.01; plywood 0.71-1.34",
+    "conditions": "tilting frame filled with bulbs; text vs table ranking inconsistent",
+    "tag": "M",
+    "src": "O1"
+   }
+  ],
+  "handling": "Robust. Dry outer skin flakes and can slip off the bulb - grip through the flesh layers, not loose skin.",
+  "sources": {
+   "O1": {
+    "cite": "Bahnasawy A.H. et al. 2004, J Food Eng 62:255-261 (onion, Egyptian cultivars)",
+    "url": "https://bu.edu.eg/portal/uploads/Agriculture/Agricultural%20Engineering/1243/publications/Adel%20hamed_onion-physical.pdf"
+   }
+  }
+ },
+ {
+  "id": "lotus_root",
+  "name": "Lotus root (segment)",
+  "name_zh": "莲藕",
+  "group": "root/tuber",
+  "shape": "sausage-shaped segment with axial air channels",
+  "arrival": {
+   "text": "loose segments, often mud-coated, or cling-wrapped washed pieces",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "segment length",
+    "min": 0.098,
+    "typ": 0.16,
+    "max": 0.239,
+    "src": "L1",
+    "note": "3 main segments, cv. E-Lian 5"
+   },
+   {
+    "axis": "width",
+    "min": 0.063,
+    "typ": 0.075,
+    "max": 0.091,
+    "src": "L1",
+    "note": ""
+   },
+   {
+    "axis": "height",
+    "min": 0.058,
+    "typ": 0.07,
+    "max": 0.086,
+    "src": "L1",
+    "note": ""
+   }
+  ],
+  "mass_kg": {
+   "min": 0.17,
+   "typ": 0.4,
+   "max": 0.88,
+   "src": "derived",
+   "note": "ellipsoid volume of L1 min/typ/max dims x assumed density 0.9 g/cm3 (estimate, air channels)"
+  },
+  "cn_retail_estimate": null,
+  "damage_limit_per_finger_N": {
+   "value": 64.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "failure/2: flesh compressive strength 0.64 MPa (L2 min) x 200 mm2 = 128 N (derived) / 2"
+  },
+  "failure_force_N": {
+   "value": 128.0,
+   "src": "derived",
+   "basis": "0.64 MPa (L2 outer flesh, 15 mm flat indenter) x 200 mm2 assumed contact"
+  },
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 8.63,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.88 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "whole-section indentation",
+    "value": "max 58.6-89.3 N (2.98-4.54 MPa)",
+    "conditions": "5 mm cylindrical indenter, 10 mm/min",
+    "tag": "M",
+    "src": "L2"
+   },
+   {
+    "quantity": "flesh compressive strength",
+    "value": "0.64-1.20 MPa (axial)",
+    "conditions": "15 mm flat indenter, 4 mm, 10 mm/min; brittle diagonal cracks",
+    "tag": "M",
+    "src": "L2"
+   },
+   {
+    "quantity": "bending / tensile",
+    "value": "min 97 N / min 182.7 N",
+    "conditions": "10 mm/min",
+    "tag": "M",
+    "src": "L2"
+   },
+   {
+    "quantity": "skin peeling cutting force",
+    "value": "9.13-12.88 N",
+    "conditions": "texture analyser",
+    "tag": "M",
+    "src": "L1"
+   },
+   {
+    "quantity": "segment size (other cvs)",
+    "value": "87x50x44 mm to 132x64x55 mm (first section)",
+    "conditions": "",
+    "tag": "M",
+    "src": "L2"
+   }
+  ],
+  "handling": "Width 60-90 mm exceeds a 50 mm stroke; grasp along the narrow neck or handle in a cradle. Brittle: cracks diagonally rather than bruising.",
+  "sources": {
+   "L1": {
+    "cite": "Chen Y. et al. 2024, J. Gansu Agric. Univ. (lotus root cv. E-Lian 5)",
+    "url": "https://www.aeeisp.com/gsnydxxb/article/doi/10.13432/j.cnki.jgsau.2024.01.034"
+   },
+   "L2": {
+    "cite": "Teng et al. 2023, Eng. Agric. 43(5) e20230128 (lotus root mechanics)",
+    "url": "https://scielo.br/j/eagri/a/SVm7Gv986N4gRQbCMVDDKYx/?lang=en"
+   }
+  }
+ },
+ {
+  "id": "chinese_yam",
+  "name": "Chinese yam",
+  "name_zh": "山药（铁棍山药/菜山药）",
+  "group": "root/tuber",
+  "shape": "long thin cylinder, slightly club-shaped",
+  "arrival": {
+   "text": "loose, often in a long box or cut to length; hairy skin",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.15,
+    "typ": 0.4,
+    "max": 1.5,
+    "src": "estimate"
+   },
+   "size_note": "tie-gun type L 500-1000 mm, D 20-40 mm; cai-shanyao L 400-900 mm, D 40-80 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 40.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "no data for Dioscorea opposita; judgement. Main risk is snapping in bending, not crushing"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.1,
+    "src": "estimate",
+    "basis": "estimate: between fish-mucus values on polypropylene (snakehead 0.04, carp 0.12-0.14, FI1); mucilage/slime acts as a lubricant"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 73.57,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=1.5 kg (largest of sourced and CN-retail max), mu=0.1 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "mechanics of D. opposita",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   },
+   {
+    "quantity": "proxy: Nigerian yams/cocoyam",
+    "value": "compressive 0.609-2.354 kN, tensile 0.091-0.822 kN; unit 41-1170 g",
+    "conditions": "different species, geometry not stated",
+    "tag": "M",
+    "src": "Y1"
+   },
+   {
+    "quantity": "peeled mucilage friction",
+    "value": "not found; mucilage is a mannan-protein complex (viscosity source) - qualitative",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Do NOT pinch peeled yam: mucilage makes it near-frictionless (estimate mu ~0.1) and the long thin tuber snaps. Grasp unpeeled (hairy skin), cut to length first, or carry peeled pieces in a tray/chute. Mucilage also irritates skin and fouls pads - wash pads.",
+  "sources": {
+   "Y1": {
+    "cite": "Arisa et al. 2024, J. Food Tech. Res. 11(2) (Nigerian yams/cocoyam - different species, proxy only)",
+    "url": "https://archive.conscientiabeam.com/index.php/58/article/view/3741"
+   }
+  }
+ },
+ {
+  "id": "taro",
+  "name": "Taro (small corm) [added]",
+  "name_zh": "芋头（毛芋头）",
+  "group": "root/tuber",
+  "shape": "ovoid, hairy fibrous skin",
+  "arrival": {
+   "text": "loose, soil-coated",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": 0.052,
+    "typ": 0.085,
+    "max": 0.118,
+    "src": "TA1",
+    "note": "8.5 +/- 3.3 cm (mean +/- SD)"
+   },
+   {
+    "axis": "width",
+    "min": 0.032,
+    "typ": 0.035,
+    "max": 0.039,
+    "src": "TA1",
+    "note": "3.52 +/- 0.33 cm"
+   }
+  ],
+  "mass_kg": {
+   "min": null,
+   "typ": 0.076,
+   "max": null,
+   "src": "TA1",
+   "note": "mean 76.21 g, Nigerian C. esculenta"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.03,
+    "typ": 0.06,
+    "max": 0.12,
+    "src": "estimate"
+   },
+   "size_note": "mao-yutou cormels; Lipu taro 1-2 kg is a different product",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 140.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "failure 1121 N (TA1) far above gripper max - not limiting"
+  },
+  "failure_force_N": {
+   "value": 1121.0,
+   "src": "TA1",
+   "basis": "average compressive force, geometry not stated"
+  },
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.2,
+    "pair": "static, stainless steel (wood/glass/galvanized 0.21)",
+    "src": "TA1"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 11980000.0,
+   "what": "Young's modulus as reported (N/mm2)",
+   "src": "TA1"
+  },
+  "hold_force_per_finger_N": {
+   "value": 2.94,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.12 kg (largest of sourced and CN-retail max), mu=0.2 (dry, TA1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "compressive force / toughness",
+    "value": "1121.08 N / 6.89 N m",
+    "conditions": "",
+    "tag": "M",
+    "src": "TA1"
+   },
+   {
+    "quantity": "static mu",
+    "value": "stainless 0.20; wood, glass, galvanized 0.21",
+    "conditions": "dry, unpeeled",
+    "tag": "M",
+    "src": "TA1"
+   }
+  ],
+  "handling": "Like yam: peeled taro is slimy and irritant - do not pinch peeled; dry unpeeled is already low-friction (0.20).",
+  "sources": {
+   "TA1": {
+    "cite": "Olalusi A.P. 2014, FUTA J. Eng. Eng. Technol. (cocoyam/taro Colocasia esculenta)",
+    "url": "https://jeet.futa.edu.ng/jeet/article/view/13"
+   }
+  }
+ },
+ {
+  "id": "corn",
+  "name": "Corn cob (fresh, husked)",
+  "name_zh": "鲜玉米",
+  "group": "root/tuber",
+  "shape": "tapered cylinder",
+  "arrival": {
+   "text": "loose, husk-on or husked in a 2-3 ear tray",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": 0.189,
+    "typ": 0.26,
+    "max": 0.28,
+    "src": "CN1",
+    "note": "CN1 260-280 (husk-on), CN2 189 mm"
+   },
+   {
+    "axis": "base diameter",
+    "min": 0.043,
+    "typ": 0.055,
+    "max": 0.066,
+    "src": "CN1",
+    "note": "CN1 64-66, CN2 43-45 mm"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.2,
+    "typ": 0.3,
+    "max": 0.45,
+    "src": "estimate"
+   },
+   "size_note": "husked ear",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 50.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "no data; judgement (kernels burst under concentrated load)"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 4.41,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.45 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "ear size",
+    "value": "L 260-280 mm, D 64-66 mm, moisture 66.5-69 %",
+    "conditions": "husk-on, peeling-machine test material",
+    "tag": "M",
+    "src": "CN1"
+   },
+   {
+    "quantity": "ear size",
+    "value": "L 189 mm, base D 45 mm, kernel moisture 70 %",
+    "conditions": "",
+    "tag": "M",
+    "src": "CN2"
+   },
+   {
+    "quantity": "compression, friction, mass",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Bumpy kernel surface gives good mechanical interlock; grasp near the butt end.",
+  "sources": {
+   "CN1": {
+    "cite": "Chen S. et al., Trans. CSAM (fresh corn peeling machine test material)",
+    "url": "https://www.aeeisp.com/nyjxxb/article/id/5f6483ef-3e1d-4c69-9a77-10bf61074feb"
+   },
+   "CN2": {
+    "cite": "Zhu et al. 2022, J. Jilin Univ. (Eng.) 52(10) (fresh corn ear)",
+    "url": "https://xuebao.jlu.edu.cn/gxb/CN/10.13229/j.cnki.jdxbgxb20210308"
+   }
+  }
+ },
+ {
+  "id": "apple",
+  "name": "Apple",
+  "name_zh": "苹果",
+  "group": "fruit",
+  "shape": "sphere",
+  "arrival": {
+   "text": "loose, or foam-net sleeve in tray",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "equatorial diameter",
+    "min": 0.075,
+    "typ": 0.078,
+    "max": 0.08,
+    "src": "A1",
+    "note": "Red Fuji test fruit"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.18,
+    "typ": 0.25,
+    "max": 0.35,
+    "src": "estimate"
+   },
+   "size_note": "D 75-90 mm (Fuji)",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 112.5,
+   "type": "internal damage onset",
+   "src": "A1",
+   "basis": "Red Fuji whole fruit, 65 mm flat cylindrical indenter, 2 mm/s; damage after ~100 N mm absorbed energy"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.85,
+    "pair": "static, silica gel (TPU rubber 0.88 +/- 0.03, A2)",
+    "src": "APL15"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 5000000.0,
+   "what": "flesh (Fuji min 5.0 MPa, A2; 3-5 MPa A3)",
+   "src": "A2"
+  },
+  "hold_force_per_finger_N": {
+   "value": 2.02,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.35 kg (largest of sourced and CN-retail max), mu=0.85 (dry, APL15 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "internal damage onset",
+    "value": "112.5 N; elastic below 2.3 mm",
+    "conditions": "65 mm flat indenter, 0.1-8 mm/s",
+    "tag": "M",
+    "src": "A1"
+   },
+   {
+    "quantity": "flesh E / yield / compressive strength",
+    "value": "5.0 / 2.2 / 2.4 MPa (min)",
+    "conditions": "Fuji",
+    "tag": "M",
+    "src": "A2"
+   },
+   {
+    "quantity": "flesh failure stress / strain",
+    "value": "~0.40-0.47 MPa / ~0.15",
+    "conditions": "20x20 mm cylinders",
+    "tag": "M",
+    "src": "A3"
+   },
+   {
+    "quantity": "static mu",
+    "value": "TPU rubber 0.88 +/- 0.03; aluminium 0.14",
+    "conditions": "Fuji, dry",
+    "tag": "M",
+    "src": "A2"
+   },
+   {
+    "quantity": "static mu",
+    "value": "0.848 vs silica gel",
+    "conditions": "push-pull gauge tester; table has odd negative entries - low quality",
+    "tag": "M",
+    "src": "APL15"
+   }
+  ],
+  "handling": "Robust to squeeze; bruises from impact/drop rather than slow grip.",
+  "sources": {
+   "A1": {
+    "cite": "Liu et al. 2022, Foods (apple compression damage)",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9265796/"
+   },
+   "A2": {
+    "cite": "Zhang X. et al. 2022, Int J Food Prop doi:10.1080/10942912.2022.2107006 (Fuji apple peel/pulp, friction)",
+    "url": "https://agris.fao.org/search/en/records/68caca8cf61e5b80b5e91c7e"
+   },
+   "A3": {
+    "cite": "Stropek & Golacki 2022, Materials (apple flesh compression)",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9655156/"
+   },
+   "APL15": {
+    "cite": "'Design on Tester of Fruit Surface Friction', Proc. KAM 2015, Atlantis Press (Fuji apple vs silica gel)",
+    "url": "https://www.atlantis-press.com/article/25445.pdf"
+   }
+  }
+ },
+ {
+  "id": "pumpkin_wintermelon",
+  "name": "Pumpkin / winter melon piece",
+  "name_zh": "南瓜/冬瓜（切块）",
+  "group": "fruit-veg",
+  "shape": "wedge or block cut from a large fruit, rind on one face",
+  "arrival": {
+   "text": "cling-wrapped cut piece on a foam tray, sold by weight",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.5,
+    "typ": 1.0,
+    "max": 2.0,
+    "src": "estimate"
+   },
+   "size_note": "piece 100-250 mm; whole pumpkin 1-3 kg",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 50.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "no data; firm flesh, judgement"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 19.62,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=2 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "anything",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Grip rind-to-cut-face across the thinnest dimension; winter melon cut face is wet and slippery, rind is waxy.",
+  "sources": {}
+ },
+ {
+  "id": "tomato",
+  "name": "Tomato",
+  "name_zh": "番茄/西红柿",
+  "group": "fruit-veg",
+  "shape": "oblate sphere",
+  "arrival": {
+   "text": "loose, or 4-6 in a tray",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "equatorial diameter",
+    "min": 0.064,
+    "typ": 0.075,
+    "max": 0.09,
+    "src": "T1",
+    "note": "Momotaro 63.8-89.7 mm"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.12,
+    "typ": 0.18,
+    "max": 0.3,
+    "src": "estimate"
+   },
+   "size_note": "D 60-90 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 11.13,
+   "type": "non-destructive clamp limit",
+   "src": "T1",
+   "basis": "shelf life >= 9 days; Dia 50 mm flat probe faced with 3 mm Dragon Skin 30 on a 3 mm DS30 pad, 30 mm/min; reached at ~4 % compression"
+  },
+  "failure_force_N": {
+   "value": 83.5,
+   "src": "T1",
+   "basis": "rupture 83.5-147.9 N, same rig"
+  },
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 1.41,
+    "pair": "static, Dragon Skin 30 silicone, moisture not stated",
+    "src": "T1"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 1.04,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.3 kg (largest of sourced and CN-retail max), mu=1.41 (dry, T1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "compression force",
+    "value": "1 %: 3.0-4.0 N; 4 %: 8.3-11.1 N; 6 %: 10.2-19.5 N; 15 %: 34-48 N",
+    "conditions": "same rig",
+    "tag": "M",
+    "src": "T1"
+   },
+   {
+    "quantity": "design guideline",
+    "value": "< 10 N per finger, 30 mm wide finger",
+    "conditions": "FEA, cites deformation < 1.5 mm elastic",
+    "tag": "M",
+    "src": "T2"
+   },
+   {
+    "quantity": "working grasp force",
+    "value": "0.20-0.50 N (set 0.30 N)",
+    "conditions": "TPU 95A auxetic fingers, tomatoes 43-57 mm, 40-81 g",
+    "tag": "M",
+    "src": "T6"
+   },
+   {
+    "quantity": "static mu",
+    "value": "1.41 (1.15-1.79) vs Dragon Skin 30",
+    "conditions": "pull test 30 mm/min",
+    "tag": "M",
+    "src": "T1"
+   }
+  ],
+  "handling": "Grip at the equator with a concave soft pad; already covered in finger_design_inputs.md (R12: ~5 N position-mode grasp).",
+  "sources": {
+   "T1": {
+    "cite": "Zhou K. et al. 2022, Int J Agric Biol Eng 15(2):13-24 (tomato clamping, Dragon Skin 30 pads)",
+    "url": "https://ijabe.org/index.php/ijabe/article/view/6672"
+   },
+   "T2": {
+    "cite": "Zheng Y. et al. 2022, Front. Plant Sci. doi:10.3389/fpls.2022.974456 (tomato gripper FEA)",
+    "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2022.974456/full"
+   },
+   "T6": {
+    "cite": "Ansari S. et al. 2026, Scientific Reports (TPU auxetic tomato gripper)",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13223203/"
+   }
+  }
+ },
+ {
+  "id": "cherry_tomato",
+  "name": "Cherry tomato",
+  "name_zh": "樱桃番茄/圣女果",
+  "group": "fruit-veg",
+  "shape": "sphere / short ellipsoid",
+  "arrival": {
+   "text": "loose in a clamshell box or bag (~300-500 g)",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "diameter",
+    "min": 0.024,
+    "typ": 0.026,
+    "max": 0.028,
+    "src": "Q23",
+    "note": "24-26 mm (Q23); 28.3 mm average cited in CT1"
+   }
+  ],
+  "mass_kg": {
+   "min": 0.012,
+   "typ": 0.0125,
+   "max": 0.013,
+   "src": "Q23",
+   "note": "12-13 g, 3 specimens"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.01,
+    "typ": 0.015,
+    "max": 0.025,
+    "src": "estimate"
+   },
+   "size_note": "D 20-35 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 1.5,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "Hertz scaling of the tomato limit (11.13 N at 4 % compression, Dia 75 mm) to Dia 28 mm at equal strain and modulus gives ~1.6 N; a UR5e harvesting study started at 1.2 N (+0.3 N steps) without bruising (CT1)"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.44,
+    "pair": "static, counter-surface not stated (range 0.44-0.65)",
+    "src": "Q23"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 410000.0,
+   "what": "single measurement, curve-fit",
+   "src": "Q23"
+  },
+  "hold_force_per_finger_N": {
+   "value": 0.28,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.025 kg (largest of sourced and CN-retail max), mu=0.44 (dry, Q23 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "working grip force",
+    "value": "start 1.2 N, +0.3 N per retry; success = detached without bruising",
+    "conditions": "gel-pad tactile gripper on UR5e",
+    "tag": "M",
+    "src": "CT1"
+   },
+   {
+    "quantity": "rupture trend",
+    "value": "green > ripe; axial > radial; no numbers in abstract",
+    "conditions": "",
+    "tag": "M",
+    "src": "CT2"
+   },
+   {
+    "quantity": "static mu",
+    "value": "0.44-0.65",
+    "conditions": "TL201Tt tester",
+    "tag": "M",
+    "src": "Q23"
+   }
+  ],
+  "handling": "Small and light (12-13 g): bulk-handle in a basket/colander; if picked singly, use position-limited closing.",
+  "sources": {
+   "CT1": {
+    "cite": "Cherry-tomato tactile harvesting on UR5e, arXiv 2602.18991",
+    "url": "https://arxiv.org/pdf/2602.18991"
+   },
+   "CT2": {
+    "cite": "Cherry tomato axial/radial compression across ripeness (Chinese, abstract)",
+    "url": "https://www.aeeisp.com/xdnyzb/cn/article/id/ccd641a3-9bc1-4640-b72a-da69cf956a52"
+   },
+   "Q23": {
+    "cite": "Qiu Z. et al. 2023, Foods 12(22):4062, 'An Evaluation System of Robotic End-Effectors for Food Handling' Table 1 (static mu by TL201Tt tester, counter-surface not stated; E by IMADA stand, single measurement)",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10670141/"
+   }
+  }
+ },
+ {
+  "id": "cucumber",
+  "name": "Cucumber",
+  "name_zh": "黄瓜",
+  "group": "fruit-veg",
+  "shape": "long cylinder, bumpy/spiny skin (mici type)",
+  "arrival": {
+   "text": "loose, or 2-3 in a cling-wrapped tray",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length class (S/M/L)",
+    "min": 0.11,
+    "typ": 0.22,
+    "max": 0.28,
+    "src": "CU1",
+    "note": "S 11-16, M 16-28, L > 28 cm"
+   },
+   {
+    "axis": "diameter",
+    "min": 0.02,
+    "typ": 0.024,
+    "max": 0.028,
+    "src": "Q23",
+    "note": "Japanese small cucumber"
+   }
+  ],
+  "mass_kg": {
+   "min": 0.089,
+   "typ": 0.11,
+   "max": 0.129,
+   "src": "Q23",
+   "note": "Japanese small cucumber, 3 specimens"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.15,
+    "typ": 0.25,
+    "max": 0.4,
+    "src": "estimate"
+   },
+   "size_note": "L 200-350 mm, D 30-45 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 19.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "0.13 x derived failure 148 N (0.13 = tomato onset/rupture ratio 11.13/83.5)"
+  },
+  "failure_force_N": {
+   "value": 148.0,
+   "src": "derived",
+   "basis": "slice fracture stress near skin > 0.74 MPa (CU2) x 200 mm2 assumed contact"
+  },
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 1.02,
+    "pair": "static, counter-surface not stated (1.02-1.23)",
+    "src": "Q23"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 987000.0,
+   "what": "single measurement, curve-fit",
+   "src": "Q23"
+  },
+  "hold_force_per_finger_N": {
+   "value": 1.92,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.4 kg (largest of sourced and CN-retail max), mu=1.02 (dry, Q23 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "slice fracture",
+    "value": "fracture at ~0.3 strain; stress > 0.74 MPa near skin, 0-0.39 MPa in seed cavity",
+    "conditions": "10 mm slices, Instron 1 mm/s",
+    "tag": "M",
+    "src": "CU2"
+   },
+   {
+    "quantity": "storage",
+    "value": "firmness/E/failure stress/energy fall 49/39/38/33 %",
+    "conditions": "Viola",
+    "tag": "M",
+    "src": "CU3"
+   },
+   {
+    "quantity": "static mu",
+    "value": "1.02-1.23",
+    "conditions": "TL201Tt tester",
+    "tag": "M",
+    "src": "Q23"
+   }
+  ],
+  "handling": "Grasp mid-length; spines (mici type) aid grip but break off. Long thin fruit bends - keep grasp near the centre of mass.",
+  "sources": {
+   "CU1": {
+    "cite": "Group standard T/XMSSAL 0084-2023 (cucumber, cites NY/T 1587)",
+    "url": "https://www.ttbz.org.cn/upload/file/20230814/6382760880430589428902716.pdf"
+   },
+   "CU2": {
+    "cite": "Cucumber slice fracture, JARQ 41(2)",
+    "url": "https://www.jircas.go.jp/sites/default/files/publication/jarq/41-02-02_0.pdf"
+   },
+   "CU3": {
+    "cite": "Cucumber 'Viola' firmness during shelf life, CIGR Journal art. 3615 (abstract)",
+    "url": "https://cigrjournal.org/index.php/Ejounral/article/view/3615"
+   },
+   "Q23": {
+    "cite": "Qiu Z. et al. 2023, Foods 12(22):4062, 'An Evaluation System of Robotic End-Effectors for Food Handling' Table 1 (static mu by TL201Tt tester, counter-surface not stated; E by IMADA stand, single measurement)",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10670141/"
+   }
+  }
+ },
+ {
+  "id": "eggplant",
+  "name": "Chinese long eggplant",
+  "name_zh": "长茄子",
+  "group": "fruit-veg",
+  "shape": "long curved cylinder, glossy skin, spongy flesh, prickly calyx",
+  "arrival": {
+   "text": "loose",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length (Japanese mid-size)",
+    "min": 0.125,
+    "typ": 0.155,
+    "max": 0.185,
+    "src": "EG1",
+    "note": "'Senryo-2', not Chinese long type"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.15,
+    "typ": 0.25,
+    "max": 0.4,
+    "src": "estimate"
+   },
+   "size_note": "L 250-400 mm, D 40-65 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 10.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "no compression data; set like tomato (11 N) because both are soft-skinned and dent visibly"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 3.92,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.4 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "penetration hardness",
+    "value": "1644 g (16.1 N) fresh -> 1433 g after 10 days",
+    "conditions": "round eggplant, CT3 texture analyser, probe not stated, n=2/day",
+    "tag": "M",
+    "src": "EG3"
+   },
+   {
+    "quantity": "gripper damage",
+    "value": "10 'Negra alargada' fruits held by a parallel pneumatic gripper: 1 slightly damaged, no skin cuts (force not given)",
+    "conditions": "",
+    "tag": "M",
+    "src": "EG2"
+   },
+   {
+    "quantity": "flesh modulus, friction",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Spongy flesh dents permanently; calyx has prickles. Grasp mid-body with wide pads; very long fruit needs grasp near centre of mass.",
+  "sources": {
+   "EG1": {
+    "cite": "Eggplant harvesting robot, JARQ 36(3)",
+    "url": "https://www.jircas.go.jp/sites/default/files/publication/jarq/36-03-07_0.pdf"
+   },
+   "EG2": {
+    "cite": "Long black eggplant handled by pneumatic parallel gripper (Univ. Burgos record)",
+    "url": "https://investigacion.ubu.es/documentos/604ac902fcf63c71c571faf7?lang=en"
+   },
+   "EG3": {
+    "cite": "Mohamad N.S. et al. 2018, J. Eng. Res. Educ. 10 SI:71-78 (round eggplant firmness, CT3 texture analyser)",
+    "url": "https://jere.unimap.edu.my/images/Artikel/JERE%20VOL%2010_Special%20Issue%20(2018)/JERE_SI_9_71-78.pdf"
+   }
+  }
+ },
+ {
+  "id": "green_pepper",
+  "name": "Bell / green pepper",
+  "name_zh": "青椒/甜椒",
+  "group": "fruit-veg",
+  "shape": "hollow blocky or conical shell, 3-4 lobes",
+  "arrival": {
+   "text": "loose",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "size",
+    "min": 0.046,
+    "typ": 0.05,
+    "max": 0.054,
+    "src": "Q23",
+    "note": "Japanese piman, smaller than Chinese bell pepper"
+   }
+  ],
+  "mass_kg": {
+   "min": 0.033,
+   "typ": 0.035,
+   "max": 0.038,
+   "src": "Q23",
+   "note": "Japanese piman"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.08,
+    "typ": 0.15,
+    "max": 0.25,
+    "src": "estimate"
+   },
+   "size_note": "D 60-90 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 3.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "no data; proxy = chili 'Round pepper' wall failure 24 N (derived) x 0.13. Likely conservative for thick-walled bell peppers"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 1.35,
+    "pair": "static, counter-surface not stated (1.35-1.53)",
+    "src": "Q23"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 166000.0,
+   "what": "single measurement, curve-fit",
+   "src": "Q23"
+  },
+  "hold_force_per_finger_N": {
+   "value": 0.91,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.25 kg (largest of sourced and CN-retail max), mu=1.35 (dry, Q23 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "compression / damage",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   },
+   {
+    "quantity": "static mu",
+    "value": "1.35-1.53",
+    "conditions": "TL201Tt tester",
+    "tag": "M",
+    "src": "Q23"
+   }
+  ],
+  "handling": "Hollow shell: walls buckle and crack; grasp across the shoulders near the stem, not mid-wall. MAJOR GAP - measure.",
+  "sources": {
+   "Q23": {
+    "cite": "Qiu Z. et al. 2023, Foods 12(22):4062, 'An Evaluation System of Robotic End-Effectors for Food Handling' Table 1 (static mu by TL201Tt tester, counter-surface not stated; E by IMADA stand, single measurement)",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10670141/"
+   }
+  }
+ },
+ {
+  "id": "chili",
+  "name": "Chili (jianjiao / xiaomila)",
+  "name_zh": "尖椒/线椒/小米辣",
+  "group": "fruit-veg",
+  "shape": "long thin cone, hollow",
+  "arrival": {
+   "text": "loose, or small bag/tray (xiaomila)",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": 0.172,
+    "typ": 0.178,
+    "max": 0.185,
+    "src": "CH1",
+    "note": "Round pepper 184.9 mm; Bo 15 line pepper 171.9 mm"
+   },
+   {
+    "axis": "diameter (mid)",
+    "min": 0.012,
+    "typ": 0.016,
+    "max": 0.02,
+    "src": "CH1",
+    "note": "Round 19.5, Bo 15 12.2 mm"
+   }
+  ],
+  "mass_kg": {
+   "min": 0.012,
+   "typ": 0.023,
+   "max": 0.034,
+   "src": "CH1",
+   "note": "Bo 15 12.17 g; Round 34.43 g"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.002,
+    "typ": 0.03,
+    "max": 0.06,
+    "src": "estimate"
+   },
+   "size_note": "xiaomila 2-8 g, L 30-70 mm; jianjiao 20-60 g",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 3.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "0.13 x derived failure 24 N"
+  },
+  "failure_force_N": {
+   "value": 24.0,
+   "src": "derived",
+   "basis": "radial compressive strength 0.1216 MPa (Round, CH1) x 200 mm2; Bo 15 0.2507 MPa -> 50 N"
+  },
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": {
+   "value": 360000.0,
+   "what": "Round pepper 0.3628 MPa; Bo 15 1.028 MPa",
+   "src": "CH1"
+  },
+  "hold_force_per_finger_N": {
+   "value": 0.59,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.06 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "radial compressive strength",
+    "value": "0.1216 (Round) / 0.2507 (Bo 15) MPa",
+    "conditions": "segments laid flat, plate 10 mm/min",
+    "tag": "M",
+    "src": "CH1"
+   },
+   {
+    "quantity": "tensile / bending / shear strength",
+    "value": "0.65/0.83; 0.24/0.58; 0.099/0.282 MPa",
+    "conditions": "same",
+    "tag": "M",
+    "src": "CH1"
+   },
+   {
+    "quantity": "grade size (Huaiji pepper)",
+    "value": "length >= 8 cm (grade 3: >= 6 cm), width >= 3 cm",
+    "conditions": "group standard",
+    "tag": "O",
+    "src": "CH2"
+   }
+  ],
+  "handling": "Xiaomila (2-8 g) should be handled in bulk (container). Long chilies: grasp mid-length. Capsaicin contaminates pads - wash.",
+  "sources": {
+   "CH1": {
+    "cite": "Chili pepper mechanics, Front. Plant Sci. 2025 doi:10.3389/fpls.2025.1542262",
+    "url": "https://www.frontiersin.org/articles/10.3389/fpls.2025.1542262/full"
+   },
+   "CH2": {
+    "cite": "Group standard, Huaiji pepper quality (Guangdong)",
+    "url": "https://www.ttbz.org.cn/upload/file/20250331/6387902756554563032581136.pdf"
+   }
+  }
+ },
+ {
+  "id": "zucchini",
+  "name": "Zucchini",
+  "name_zh": "西葫芦",
+  "group": "fruit-veg",
+  "shape": "cylinder",
+  "arrival": {
+   "text": "loose",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": null,
+    "typ": 0.112,
+    "max": null,
+    "src": "ZU1",
+    "note": "small Iranian fruit 111.7 x 34.6 x 33.9 mm"
+   },
+   {
+    "axis": "diameter",
+    "min": null,
+    "typ": 0.034,
+    "max": null,
+    "src": "ZU1",
+    "note": ""
+   }
+  ],
+  "mass_kg": {
+   "min": null,
+   "typ": 0.081,
+   "max": null,
+   "src": "ZU1",
+   "note": "80.81 g, small Iranian fruit"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.3,
+    "typ": 0.5,
+    "max": 0.8,
+    "src": "estimate"
+   },
+   "size_note": "L 180-350 mm, D 50-80 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 22.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "0.13 x whole-fruit max force 167 N"
+  },
+  "failure_force_N": {
+   "value": 167.0,
+   "src": "ZU1",
+   "basis": "max compressive force at 8.81 mm deformation; plate/probe not in abstract"
+  },
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 7.85,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.8 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "whole fruit compression",
+    "value": "max 167 N at 8.81 mm; work 762.8 N mm; penetration 1.26 N",
+    "conditions": "",
+    "tag": "M",
+    "src": "ZU1"
+   },
+   {
+    "quantity": "modulus",
+    "value": "0.73 GPa as printed - implausible for fresh tissue, not used",
+    "conditions": "",
+    "tag": "M",
+    "src": "ZU1"
+   }
+  ],
+  "handling": "Chinese xihulu is 4-10x heavier than the tested fruit - re-measure.",
+  "sources": {
+   "ZU1": {
+    "cite": "Zucchini physical and mechanical properties, CIGR Journal art. 2068",
+    "url": "https://cigrjournal.org/index.php/Ejounral/article/view/2068"
+   }
+  }
+ },
+ {
+  "id": "strawberry",
+  "name": "Strawberry",
+  "name_zh": "草莓",
+  "group": "fruit",
+  "shape": "cone/heart, seeds on surface, calyx on top",
+  "arrival": {
+   "text": "single layer in a plastic clamshell box (250-500 g)",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "size",
+    "min": 0.025,
+    "typ": 0.026,
+    "max": 0.028,
+    "src": "Q23",
+    "note": ""
+   }
+  ],
+  "mass_kg": {
+   "min": 0.014,
+   "typ": 0.016,
+   "max": 0.02,
+   "src": "Q23",
+   "note": "Q23 14-18 g; S1 used 20 g samples"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.015,
+    "typ": 0.025,
+    "max": 0.05,
+    "src": "estimate"
+   },
+   "size_note": "D 25-45 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 0.6,
+   "type": "demonstrated safe",
+   "src": "S3",
+   "basis": "stable, damage-free grasp at 0.3-0.6 N (visuotactile silicone finger); true onset lies between 0.6 N and 9.8 N"
+  },
+  "failure_force_N": {
+   "value": 9.8,
+   "src": "S1",
+   "basis": "9.8 N for 2 s with a 15 mm convex probe already gives a 197 mm3 bruise (301 mm3 at 5 s)"
+  },
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.57,
+    "pair": "static, counter-surface not stated (0.57-0.95)",
+    "src": "Q23"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 29550.0,
+   "what": "whole-fruit curve fit (Q23); inner tissue 0.53 MPa per S5 (snippet)",
+   "src": "Q23"
+  },
+  "hold_force_per_finger_N": {
+   "value": 0.43,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.05 kg (largest of sourced and CN-retail max), mu=0.57 (dry, Q23 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "static bruise",
+    "value": "9.8 N, 2 s -> 197 mm3; 5 s -> 301 mm3",
+    "conditions": "15 mm convex probe, Oso Grande",
+    "tag": "M",
+    "src": "S1"
+   },
+   {
+    "quantity": "impact bruise",
+    "value": "0.040 J -> 13 mm3; 0.083 J -> 91 mm3",
+    "conditions": "pendulum",
+    "tag": "M",
+    "src": "S1"
+   },
+   {
+    "quantity": "inner tissue failure",
+    "value": "0.093 MPa, strain 17.7 %, E 0.53 MPa",
+    "conditions": "search snippet only",
+    "tag": "O",
+    "src": "S5"
+   },
+   {
+    "quantity": "peduncle crush",
+    "value": "min peak 22.5-26.8 N; recommended limit 10 N",
+    "conditions": "UTM 1.5 mm/min",
+    "tag": "M",
+    "src": "S4"
+   },
+   {
+    "quantity": "assumed mu",
+    "value": "0.5 for silicone ('closer to 1')",
+    "conditions": "design assumption",
+    "tag": "O",
+    "src": "S2"
+   },
+   {
+    "quantity": "static mu",
+    "value": "0.57-0.95",
+    "conditions": "TL201Tt tester",
+    "tag": "M",
+    "src": "Q23"
+   }
+  ],
+  "handling": "Do not pinch the body above ~0.6 N; bruising grows with hold time. Prefer handling in the clamshell / a scoop, or grip the calyx/peduncle (2 N per finger used in S2).",
+  "sources": {
+   "Q23": {
+    "cite": "Qiu Z. et al. 2023, Foods 12(22):4062, 'An Evaluation System of Robotic End-Effectors for Food Handling' Table 1 (static mu by TL201Tt tester, counter-surface not stated; E by IMADA stand, single measurement)",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10670141/"
+   },
+   "S1": {
+    "cite": "Strawberry bruising under static compression and impact, Scientia Agricola (USP)",
+    "url": "https://revistas.usp.br/sa/article/download/22326/24350/25958"
+   },
+   "S2": {
+    "cite": "Enabling Tactile Feedback for Robotic Strawberry Handling using AST Skin, arXiv 2407.01739",
+    "url": "https://arxiv.org/pdf/2407.01739"
+   },
+   "S3": {
+    "cite": "Strawberry visuotactile grasping, Trans. CSAE doi:10.11975/j.issn.1002-6819.202411048",
+    "url": "https://www.aeeisp.com/nygcxb/article/doi/10.11975/j.issn.1002-6819.202411048"
+   },
+   "S4": {
+    "cite": "Strawberry peduncle gripper, arXiv 2207.12552",
+    "url": "https://arxiv.org/abs/2207.12552"
+   },
+   "S5": {
+    "cite": "Li et al. 2020, J Food Eng doi:10.1016/j.jfoodeng.2020.110016 (strawberry inner tissue; seen via search snippet only)",
+    "url": "https://results2021.ref.ac.uk/outputs/0bf8c794-b76c-4c5d-a2c8-7b7d4bd86c06"
+   }
+  }
+ },
+ {
+  "id": "green_beans",
+  "name": "Green beans / long beans",
+  "name_zh": "四季豆/豇豆",
+  "group": "fruit-veg",
+  "shape": "thin pods; long beans 300-700 mm, flexible",
+  "arrival": {
+   "text": "loose heap or banded bundle",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.005,
+    "typ": 0.01,
+    "max": 0.03,
+    "src": "estimate"
+   },
+   "size_note": "sijidou pod L 100-200 mm, 5-12 g; jiangdou L 300-700 mm, 10-30 g; bunch 0.25-0.5 kg",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": null,
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 0.29,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.03 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "pod detachment force",
+    "value": "6.57 N (Bronco), 12.68 N (Contender)",
+    "conditions": "snap bean, detachment not crushing; snippet only",
+    "tag": "O",
+    "src": "GB1"
+   },
+   {
+    "quantity": "size, compression, friction",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Handle as a bundle or in a container; single pods are thin and flexible (long beans drape). No pinch threshold found.",
+  "sources": {
+   "GB1": {
+    "cite": "Snap bean pod detachment force, Misr J. Agric. Eng. (search snippet; site did not resolve)",
+    "url": "https://mjae.journals.ekb.eg/article_101933_7064e68c411dd6d7294fd8fc403a2bbd.pdf"
+   }
+  }
+ },
+ {
+  "id": "bean_sprouts",
+  "name": "Bean sprouts",
+  "name_zh": "绿豆芽/黄豆芽",
+  "group": "fruit-veg",
+  "shape": "thin brittle hypocotyls with bean heads, bulk",
+  "arrival": {
+   "text": "loose bulk or 250-500 g bag",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "hypocotyl length (soybean sprout)",
+    "min": 0.086,
+    "typ": 0.09,
+    "max": 0.099,
+    "src": "BS1",
+    "note": "commercial Korean brands"
+   },
+   {
+    "axis": "hypocotyl thickness",
+    "min": 0.0021000000000000003,
+    "typ": 0.0023,
+    "max": 0.0025,
+    "src": "BS1",
+    "note": ""
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.25,
+    "typ": 0.4,
+    "max": 0.5,
+    "src": "estimate"
+   },
+   "size_note": "bag mass",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": null,
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 4.91,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.5 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "hypocotyl hardness",
+    "value": "4414-5157 g/cm2 (0.43-0.51 MPa)",
+    "conditions": "15 mm plunger, 15 mm depth",
+    "tag": "M",
+    "src": "BS1"
+   },
+   {
+    "quantity": "pack",
+    "value": "50 g in PE bag (test pack)",
+    "conditions": "",
+    "tag": "M",
+    "src": "BS2"
+   }
+  ],
+  "handling": "Bulk only: scoop or tip from a container; never pinch.",
+  "sources": {
+   "BS1": {
+    "cite": "Soybean sprout quality of commercial brands (Korea)",
+    "url": "https://koreascience.kr/article/JAKO200804748553791.pdf"
+   },
+   "BS2": {
+    "cite": "Mung bean sprout packaging study (Thailand)",
+    "url": "https://li01.tci-thaijo.org/index.php/PRRJ_Scitech/article/download/251599/173065"
+   }
+  }
+ },
+ {
+  "id": "bok_choy",
+  "name": "Bok choy (Shanghai qing)",
+  "name_zh": "上海青/小油菜",
+  "group": "leafy",
+  "shape": "vase-shaped rosette, thick spoon-shaped petioles at the base",
+  "arrival": {
+   "text": "loose heads or 3-5 in a bag",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "plant length",
+    "min": 0.16,
+    "typ": 0.177,
+    "max": 0.185,
+    "src": "BC1",
+    "note": "cv. Zhenpin 66"
+   },
+   {
+    "axis": "root diameter",
+    "min": 0.0079,
+    "typ": 0.009,
+    "max": 0.0108,
+    "src": "BC1",
+    "note": ""
+   }
+  ],
+  "mass_kg": {
+   "min": 0.073,
+   "typ": 0.09,
+   "max": 0.118,
+   "src": "BC1",
+   "note": "stem+leaf mass"
+  },
+  "cn_retail_estimate": null,
+  "damage_limit_per_finger_N": {
+   "value": 12.2,
+   "type": "clamping damage critical force (lowest)",
+   "src": "BC2",
+   "basis": "range 12.2-26.4 N across clamp conditions; best case 16.95 N at 18.03 mm (sponge belt, 15 deg, 2 cm clamp height)"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.65,
+    "pair": "static, stem on steel (rubber timing belt 0.69, BC2)",
+    "src": "BC1"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 916000.0,
+   "what": "petiole/stem; root 0.602 MPa",
+   "src": "BC1"
+  },
+  "hold_force_per_finger_N": {
+   "value": 0.89,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.118 kg (largest of sourced and CN-retail max), mu=0.65 (dry, BC1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "clamp damage critical force",
+    "value": "12.2-26.4 N; 16.95 N at 18.03 mm best case",
+    "conditions": "cloth-sponge belt; plant 176 mm, 79.7 g",
+    "tag": "M",
+    "src": "BC2"
+   },
+   {
+    "quantity": "mu vs belts",
+    "value": "rubber timing belt 0.69; patterned belt 0.79; sponge belt 0.73",
+    "conditions": "static/dynamic not stated",
+    "tag": "M",
+    "src": "BC2"
+   },
+   {
+    "quantity": "mu (static/dynamic)",
+    "value": "stem-steel 0.65/0.32; root-steel 0.89/0.36; stem-stem 1.25/0.54",
+    "conditions": "n=30",
+    "tag": "M",
+    "src": "BC1"
+   },
+   {
+    "quantity": "leaf creep spring k1",
+    "value": "whole plant 12.7-26.9 N/mm; single leaf ~23-24 N/mm",
+    "conditions": "1-inch sphere, 6-10 N for 60 s",
+    "tag": "M",
+    "src": "BC1"
+   },
+   {
+    "quantity": "baby-pakchoi stalk E (proxy)",
+    "value": "axial 3.15-3.91 MPa; radial 20.2-21.0 MPa",
+    "conditions": "",
+    "tag": "M",
+    "src": "BC3"
+   }
+  ],
+  "handling": "Grasp at the stem base (lowest clamp height had least damage). Leaves tear; never grip the blades.",
+  "sources": {
+   "BC1": {
+    "cite": "Pakchoi (Shanghai-qing) physical/mechanical parameters, PMC11218987",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11218987/"
+   },
+   "BC2": {
+    "cite": "Pakchoi clamping-damage test, J. Agric. Sci. Technol. (China) 2022 24(4):116 doi:10.13304/j.nykjdb.2021.0759",
+    "url": "https://nkdb.magtechjournal.com/CN/Y2022/V24/I4/116"
+   },
+   "BC3": {
+    "cite": "Baby pakchoi (ji mao cai) stalk compression, J. Agric. Sci. Technol. (China) 2018 20(11):85",
+    "url": "https://nkdb.magtechjournal.com/CN/Y2018/V20/I11/85"
+   }
+  }
+ },
+ {
+  "id": "cabbage",
+  "name": "Cabbage (head)",
+  "name_zh": "卷心菜/结球甘蓝",
+  "group": "leafy",
+  "shape": "sphere / flattened sphere",
+  "arrival": {
+   "text": "loose heads, sometimes halved and cling-wrapped",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "vertical diameter",
+    "min": 0.135,
+    "typ": 0.162,
+    "max": 0.19,
+    "src": "CB1",
+    "note": ""
+   },
+   {
+    "axis": "transverse diameter",
+    "min": 0.14,
+    "typ": 0.164,
+    "max": 0.185,
+    "src": "CB1",
+    "note": ""
+   }
+  ],
+  "mass_kg": {
+   "min": 1.24,
+   "typ": 1.91,
+   "max": 2.27,
+   "src": "CB1",
+   "note": "field heads; draft grades go to 3 kg (CB2)"
+  },
+  "cn_retail_estimate": null,
+  "damage_limit_per_finger_N": null,
+  "failure_force_N": {
+   "value": 1198.3,
+   "src": "CB1",
+   "basis": "max compressive force; ambiguous whether stem extrusion or whole head"
+  },
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: bok choy stem on steel 0.65 / rubber belt 0.69 (BC1, BC2) rounded down for wet leaf blades"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 22.27,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=2.27 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "grade masses",
+    "value": "loose head 1.5-2.5/1-1.5/<1 kg; tight head 2.5-3/1.5-2.5/<1.5 kg",
+    "conditions": "draft group standard",
+    "tag": "O",
+    "src": "CB2"
+   },
+   {
+    "quantity": "root cutting force",
+    "value": "137.1 N",
+    "conditions": "",
+    "tag": "M",
+    "src": "CB1"
+   },
+   {
+    "quantity": "leaves",
+    "value": "inner leaves high-moisture and brittle",
+    "conditions": "",
+    "tag": "M",
+    "src": "CB1"
+   }
+  ],
+  "handling": "Whole head (140-190 mm, ~2 kg) is beyond a 50 mm-stroke 2-jaw gripper - handle halved/quartered or as separated leaves.",
+  "sources": {
+   "CB1": {
+    "cite": "Cabbage harvest mechanics, Agriculture 13(6):1204 (2023)",
+    "url": "https://doi.org/10.3390/agriculture13061204"
+   },
+   "CB2": {
+    "cite": "Group standard draft, cabbage grades (Yu-Sui-Mian)",
+    "url": "https://www.ttbz.org.cn/upload/file/20240808/6385872707599460317969759.pdf"
+   }
+  }
+ },
+ {
+  "id": "napa_cabbage",
+  "name": "Napa cabbage",
+  "name_zh": "大白菜",
+  "group": "leafy",
+  "shape": "elongated head",
+  "arrival": {
+   "text": "loose heads; halves/quarters cling-wrapped",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "diameter",
+    "min": 0.148,
+    "typ": 0.155,
+    "max": 0.162,
+    "src": "NC1",
+    "note": "summer cv. Xiayangbai"
+   },
+   {
+    "axis": "height",
+    "min": 0.138,
+    "typ": 0.164,
+    "max": 0.19,
+    "src": "NC1",
+    "note": ""
+   }
+  ],
+  "mass_kg": {
+   "min": 2.35,
+   "typ": 2.77,
+   "max": 3.18,
+   "src": "NC1",
+   "note": "small summer type"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 1.5,
+    "typ": 3.0,
+    "max": 5.0,
+    "src": "estimate"
+   },
+   "size_note": "winter napa 300-450 mm tall",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": null,
+  "failure_force_N": {
+   "value": 820.34,
+   "src": "NC1",
+   "basis": "whole head radial crush at 27.86 mm, 10 mm/min; internal damage may start earlier"
+  },
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: bok choy stem on steel 0.65 / rubber belt 0.69 (BC1, BC2) rounded down for wet leaf blades"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 49.05,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=5 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "radial crush",
+    "value": "820.34 N at 27.86 mm",
+    "conditions": "10 mm/min",
+    "tag": "M",
+    "src": "NC1"
+   },
+   {
+    "quantity": "pull-out force",
+    "value": "222-354 N",
+    "conditions": "",
+    "tag": "M",
+    "src": "NC1"
+   }
+  ],
+  "handling": "Whole head not graspable by a 2-jaw gripper; handle cut pieces or single leaves (grip the thick white midrib).",
+  "sources": {
+   "NC1": {
+    "cite": "Napa cabbage harvesting mechanics, Agriculture 15(8):831 (2025)",
+    "url": "https://doi.org/10.3390/agriculture15080831"
+   }
+  }
+ },
+ {
+  "id": "broccoli",
+  "name": "Broccoli",
+  "name_zh": "西兰花",
+  "group": "leafy",
+  "shape": "dome of florets on a thick stem",
+  "arrival": {
+   "text": "loose head, often cling-wrapped; wholesale in foam box with ice",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "curd diameter grade",
+    "min": 0.12,
+    "typ": 0.15,
+    "max": 0.17,
+    "src": "BR1",
+    "note": "S 12-14, M 14-17, L > 17 cm; 5-7 cm stem kept"
+   },
+   {
+    "axis": "stem diameter",
+    "min": null,
+    "typ": null,
+    "max": 0.042,
+    "src": "BR2",
+    "note": ""
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.25,
+    "typ": 0.4,
+    "max": 0.6,
+    "src": "estimate"
+   },
+   "size_note": "head",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 175.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "stem grasp only: failure/2 = petiole crush 350 N/2; curd threshold not found - do not pinch the curd"
+  },
+  "failure_force_N": {
+   "value": 350.0,
+   "src": "BR3",
+   "basis": "petiole radial compression peak 350-400 N (P/36R, 0.2 mm/s)"
+  },
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": {
+   "value": 1600000.0,
+   "what": "whole-stem compressive E 1.3-2 MPa",
+   "src": "BR2"
+  },
+  "hold_force_per_finger_N": {
+   "value": 5.89,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.6 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "stem moduli",
+    "value": "rind 27-48 MPa; xylem 19-111 MPa; pith 6.5-7.5 MPa; whole-stem compressive E 1.3-2 MPa",
+    "conditions": "",
+    "tag": "M",
+    "src": "BR2"
+   },
+   {
+    "quantity": "stem radial compressive strength",
+    "value": "0.59 MPa",
+    "conditions": "FEA result",
+    "tag": "O",
+    "src": "BR2"
+   },
+   {
+    "quantity": "petiole bending peak",
+    "value": "15-20 N",
+    "conditions": "80 mm petiole, 2 mm/s",
+    "tag": "M",
+    "src": "BR3"
+   }
+  ],
+  "handling": "Grasp the stem only; florets break off. Head (120-170 mm) exceeds the stroke - present stem-first.",
+  "sources": {
+   "BR1": {
+    "cite": "Group standard draft T/NAIA 2023, broccoli grades (Ningxia)",
+    "url": "https://www.ttbz.org.cn/upload/file/20230531/6382113090778558988860743.pdf"
+   },
+   "BR2": {
+    "cite": "Broccoli stem mechanics, Agriculture 12(10):1519 (2022)",
+    "url": "https://doi.org/10.3390/agriculture12101519"
+   },
+   "BR3": {
+    "cite": "Broccoli petiole compression/bending, Agronomy 14(9):1925 (2024)",
+    "url": "https://doi.org/10.3390/agronomy14091925"
+   }
+  }
+ },
+ {
+  "id": "celery",
+  "name": "Celery",
+  "name_zh": "芹菜/西芹",
+  "group": "leafy",
+  "shape": "bunch of long petioles",
+  "arrival": {
+   "text": "banded bunch or whole plant",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "plant length",
+    "min": 0.476,
+    "typ": 0.74,
+    "max": 0.819,
+    "src": "CE1",
+    "note": "Golden Boy, 80-129 days"
+   }
+  ],
+  "mass_kg": {
+   "min": 0.309,
+   "typ": 1.5,
+   "max": 2.094,
+   "src": "CE1",
+   "note": "whole western-celery plant"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.3,
+    "typ": 0.5,
+    "max": 1.0,
+    "src": "estimate"
+   },
+   "size_note": "local qincai bunch",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 12.0,
+   "type": "estimate",
+   "src": "estimate",
+   "basis": "no data; proxy = bok choy petiole clamp damage 12.2 N"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: bok choy stem on steel 0.65 / rubber belt 0.69 (BC1, BC2) rounded down for wet leaf blades"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 20.54,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=2.094 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "petiole cutting force",
+    "value": "figure only",
+    "conditions": "Warner-Bratzler, 0.4 mm/s",
+    "tag": "M",
+    "src": "CE1"
+   },
+   {
+    "quantity": "compression, friction, modulus",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Long (0.5-0.8 m): grasp the bunch at the base; single petioles are crisp and snap.",
+  "sources": {
+   "CE1": {
+    "cite": "Celery 'Golden Boy' growth and harvest quality, Hortic. Bras.",
+    "url": "https://www.scielo.br/j/hb/a/hNXtzFJPzCjPFS6YTMVxCLx/?lang=en"
+   }
+  }
+ },
+ {
+  "id": "scallion",
+  "name": "Scallion (xiaocong) / Welsh onion (dacong)",
+  "name_zh": "小葱/大葱",
+  "group": "leafy",
+  "shape": "hollow tubular leaves on a white shaft",
+  "arrival": {
+   "text": "banded bunch (xiaocong) or single long stalks (dacong)",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.1,
+    "typ": 0.2,
+    "max": 0.5,
+    "src": "estimate"
+   },
+   "size_note": "xiaocong bunch 0.1-0.25 kg (single stalk 5-20 g); dacong single stalk 0.15-0.5 kg, L 500-700 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 16.5,
+   "type": "estimate (white shaft only)",
+   "src": "estimate",
+   "basis": "failure/2 = 33 N/2 for the white shaft; the green tubular leaves permanently deform at ~1 N (SC2, chive proxy) - never grip the leaves"
+  },
+  "failure_force_N": {
+   "value": 33.0,
+   "src": "derived",
+   "basis": "dacong white shaft compressive strength 0.33 MPa (SC1, upper part) x assumed 100 mm2 contact"
+  },
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: bok choy stem on steel 0.65 / rubber belt 0.69 (BC1, BC2) rounded down for wet leaf blades"
+   }
+  },
+  "modulus_Pa": {
+   "value": 2440000.0,
+   "what": "dacong white shaft, upper (2.44-2.76 MPa)",
+   "src": "SC1"
+  },
+  "hold_force_per_finger_N": {
+   "value": 4.91,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.5 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "white-shaft compressive strength",
+    "value": "upper 0.33 / middle 0.37 / lower 0.39 MPa",
+    "conditions": "4-factor test",
+    "tag": "M",
+    "src": "SC1"
+   },
+   {
+    "quantity": "white-shaft shear strength",
+    "value": "0.19-0.21 MPa",
+    "conditions": "",
+    "tag": "M",
+    "src": "SC1"
+   },
+   {
+    "quantity": "chive damage onset",
+    "value": "~1 N; leaf diameter 2-3 mm",
+    "conditions": "bunch compression",
+    "tag": "M",
+    "src": "SC2"
+   }
+  ],
+  "handling": "Grasp the bunch at the white base (SC1: clamp upper/lower parts of the white). Green tubes crush at ~1 N.",
+  "sources": {
+   "SC1": {
+    "cite": "Welsh onion (da cong) white-stalk mechanics, J. Agric. Mech. Res. 2023 doi:10.13427/j.cnki.njyi.2023.05.036",
+    "url": "https://www.aeeisp.com/njhyj/article/doi/10.13427/j.cnki.njyi.2023.05.036"
+   },
+   "SC2": {
+    "cite": "Castillo et al. 2013, Agron. Colomb. (chives Allium schoenoprasum mechanics)",
+    "url": "https://revistas.unal.edu.co/index.php/agrocol/article/view/34328"
+   }
+  }
+ },
+ {
+  "id": "chinese_chives",
+  "name": "Chinese chives",
+  "name_zh": "韭菜",
+  "group": "leafy",
+  "shape": "flat narrow leaves, banded bunch",
+  "arrival": {
+   "text": "banded bunch (ba)",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "bundle diameter (harvester feed)",
+    "min": 0.005,
+    "typ": 0.015,
+    "max": 0.025,
+    "src": "CV1",
+    "note": "not a retail bunch"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.25,
+    "typ": 0.4,
+    "max": 0.5,
+    "src": "estimate"
+   },
+   "size_note": "retail bunch, leaves 250-400 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 140.0,
+   "type": "not limiting at the banded base",
+   "src": "CV1",
+   "basis": "bundle compressed 13 mm at 40 mm/min showed no visible breakage up to 225 N (above a 140 N gripper max); leaf blades permanently deform at ~1 N (SC2, chive proxy), so grip only the base"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: bok choy stem on steel 0.65 / rubber belt 0.69 (BC1, BC2) rounded down for wet leaf blades"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 4.91,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.5 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "bundle compression",
+    "value": "no visible damage up to 225 N",
+    "conditions": "TMS-Pro 40 mm/min, 13 mm",
+    "tag": "M",
+    "src": "CV1"
+   },
+   {
+    "quantity": "max shear force",
+    "value": "129 N",
+    "conditions": "",
+    "tag": "M",
+    "src": "CV1"
+   }
+  ],
+  "handling": "Grasp the whole bunch near the white base (where it is banded). Treat 1 N vs 225 N as the bruise vs breakage bounds.",
+  "sources": {
+   "CV1": {
+    "cite": "Chinese chive harvester mechanics, IJABE art. 7067",
+    "url": "https://ijabe.org/index.php/ijabe/article/view/7067"
+   }
+  }
+ },
+ {
+  "id": "spinach",
+  "name": "Spinach",
+  "name_zh": "菠菜",
+  "group": "leafy",
+  "shape": "rosette with red crown and taproot",
+  "arrival": {
+   "text": "banded bunch",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.02,
+    "typ": 0.04,
+    "max": 0.08,
+    "src": "estimate"
+   },
+   "size_note": "single plant; bunch 0.25-0.5 kg",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 2.2,
+   "type": "leaf injury observed (proxy)",
+   "src": "LE1",
+   "basis": "lettuce: 2.2 N per finger on the leaf surface already left 275 mm2 injury"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: bok choy stem on steel 0.65 / rubber belt 0.69 (BC1, BC2) rounded down for wet leaf blades"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 0.78,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.08 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "main root shear / axial compression peak",
+    "value": "31.2 N / 113.8 N",
+    "conditions": "WDW-5E",
+    "tag": "M",
+    "src": "SP1"
+   },
+   {
+    "quantity": "size, leaf compression, friction",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Grasp the bunch at the crown/roots (113.8 N axial root compression); leaves bruise at ~2 N.",
+  "sources": {
+   "LE1": {
+    "cite": "Soft-finger lettuce grasping injury, PMC10346448",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10346448/"
+   },
+   "SP1": {
+    "cite": "Spinach root mechanics, J. Agric. Mech. Res. 2021 doi:10.13427/j.cnki.njyi.2021.08.032",
+    "url": "https://www.aeeisp.com/njhyj/article/doi/10.13427/j.cnki.njyi.2021.08.032"
+   }
+  }
+ },
+ {
+  "id": "lettuce",
+  "name": "Lettuce",
+  "name_zh": "生菜",
+  "group": "leafy",
+  "shape": "loose-leaf rosette or head",
+  "arrival": {
+   "text": "loose plant, often in a bag",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "height / leaf spread",
+    "min": 0.0865,
+    "typ": null,
+    "max": 0.1953,
+    "src": "LE1",
+    "note": "hydroponic Naiyou lettuce, 30 days"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.2,
+    "typ": 0.4,
+    "max": 0.6,
+    "src": "estimate"
+   },
+   "size_note": "plant/head",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 2.2,
+   "type": "leaf injury observed",
+   "src": "LE1",
+   "basis": "~2.2 N per finger (1.67-2.33 N), 4 soft fingers: injury 275.5 mm2 on leaf surface, 120.3 mm2 with 2 fingers at leaf junctions"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: bok choy stem on steel 0.65 / rubber belt 0.69 (BC1, BC2) rounded down for wet leaf blades"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 5.89,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.6 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "grasp injury",
+    "value": "2.2 N -> 275.5 / 206.8 / 120.3 mm2 by finger placement",
+    "conditions": "pneumatic soft fingers",
+    "tag": "M",
+    "src": "LE1"
+   },
+   {
+    "quantity": "pile compression",
+    "value": "safe pile height 80 cm; density 0.21 kg/L",
+    "conditions": "packaging study",
+    "tag": "M",
+    "src": "LE2"
+   }
+  ],
+  "handling": "Grip at leaf junctions / the core, not on blades - halves the injury area.",
+  "sources": {
+   "LE1": {
+    "cite": "Soft-finger lettuce grasping injury, PMC10346448",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10346448/"
+   },
+   "LE2": {
+    "cite": "Lettuce pile compression / packaging, Ciencia e Agrotecnologia",
+    "url": "https://scielo.br/j/cagro/a/QLKFzzjtJQvPw74bMfnbwfk/?lang=en"
+   }
+  }
+ },
+ {
+  "id": "shiitake",
+  "name": "Shiitake",
+  "name_zh": "香菇",
+  "group": "mushroom",
+  "shape": "cap (umbrella) on short stipe",
+  "arrival": {
+   "text": "loose, or 150-300 g foam tray, cling-wrapped",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "cap diameter",
+    "min": 0.05,
+    "typ": 0.062,
+    "max": 0.074,
+    "src": "SH1",
+    "note": "62 +/- 12.2 mm"
+   },
+   {
+    "axis": "cap height",
+    "min": 0.017,
+    "typ": 0.021,
+    "max": 0.025,
+    "src": "SH1",
+    "note": "21.1 +/- 4.2"
+   },
+   {
+    "axis": "stipe diameter",
+    "min": 0.0106,
+    "typ": 0.0132,
+    "max": 0.0158,
+    "src": "SH1",
+    "note": "13.2 +/- 2.6"
+   },
+   {
+    "axis": "stipe height",
+    "min": 0.027,
+    "typ": 0.033,
+    "max": 0.038,
+    "src": "SH1",
+    "note": "32.6 +/- 5.5"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.015,
+    "typ": 0.025,
+    "max": 0.04,
+    "src": "estimate"
+   },
+   "size_note": "",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 42.0,
+   "type": "derived (stipe only)",
+   "src": "derived",
+   "basis": "stipe bio-yield stress 0.418 MPa (SH1) x assumed 100 mm2 contact on a 13 mm stipe; cap/gills: not found, do not pinch"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": {
+   "value": 871000.0,
+   "what": "stipe, radial (Poisson 0.322)",
+   "src": "SH1"
+  },
+  "hold_force_per_finger_N": {
+   "value": 0.39,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.04 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "stipe E / bio-yield",
+    "value": "0.871 MPa / 0.418 MPa",
+    "conditions": "10 mm cubes, 1 mm/s, n=10",
+    "tag": "M",
+    "src": "SH1"
+   },
+   {
+    "quantity": "stipe stress relaxation",
+    "value": "0.123 -> 0.101 MPa over 60 s",
+    "conditions": "FEA validated within 5 %",
+    "tag": "O",
+    "src": "SH1"
+   },
+   {
+    "quantity": "twist-off torque",
+    "value": "0.092-0.137 N m",
+    "conditions": "",
+    "tag": "M",
+    "src": "SH1"
+   }
+  ],
+  "handling": "Grip the stipe only (SH1 used 1 mm silicone pads); cap and gills are soft and bruise. Grip force decays by relaxation.",
+  "sources": {
+   "SH1": {
+    "cite": "Shiitake picking end-effector, Machines 12(4):241 (2024)",
+    "url": "https://doi.org/10.3390/machines12040241"
+   }
+  }
+ },
+ {
+  "id": "enoki",
+  "name": "Enoki",
+  "name_zh": "金针菇",
+  "group": "mushroom",
+  "shape": "cluster of thin long stems joined at a base block",
+  "arrival": {
+   "text": "sealed plastic bag (~100-200 g)",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.1,
+    "typ": 0.15,
+    "max": 0.2,
+    "src": "estimate"
+   },
+   "size_note": "bag, L 120-150 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": null,
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 1.96,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.2 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "anything",
+    "value": "not found",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Handle as one cluster by the root block (cut off before cooking); stems are thin and separate.",
+  "sources": {}
+ },
+ {
+  "id": "king_oyster",
+  "name": "King oyster mushroom",
+  "name_zh": "杏鲍菇",
+  "group": "mushroom",
+  "shape": "thick cylindrical stem, small cap",
+  "arrival": {
+   "text": "2-4 in a cling-wrapped tray or bag",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.04,
+    "typ": 0.08,
+    "max": 0.15,
+    "src": "estimate"
+   },
+   "size_note": "L 100-200 mm, D 30-60 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 84.0,
+   "type": "estimate (proxy)",
+   "src": "estimate",
+   "basis": "proxy = shiitake stipe bio-yield 0.418 MPa x 200 mm2 (thicker stem); no data for P. eryngii"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: middle of the measured dry produce values in this catalog on rubber/TPU/silicone/steel (0.33-1.41); no wet data"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 1.47,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.15 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "anything",
+    "value": "not found (hypobaric-storage paper reports texture only qualitatively)",
+    "conditions": "",
+    "tag": "",
+    "src": ""
+   }
+  ],
+  "handling": "Firm, dense stem: grasp the stem body.",
+  "sources": {}
+ },
+ {
+  "id": "egg",
+  "name": "Chicken egg (in shell)",
+  "name_zh": "鸡蛋",
+  "group": "protein",
+  "shape": "ovoid",
+  "arrival": {
+   "text": "pulp or plastic egg tray (6/10/30)",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": null,
+    "typ": 0.058,
+    "max": null,
+    "src": "EGG2",
+    "note": "class L eggs, Serbia"
+   },
+   {
+    "axis": "width",
+    "min": null,
+    "typ": 0.0455,
+    "max": null,
+    "src": "EGG2",
+    "note": ""
+   }
+  ],
+  "mass_kg": {
+   "min": 0.044,
+   "typ": 0.055,
+   "max": 0.065,
+   "src": "EGG1",
+   "note": "weight class boundaries 44/50/55/60/65 g (cites GB/T 39438-2020)"
+  },
+  "cn_retail_estimate": null,
+  "damage_limit_per_finger_N": {
+   "value": 10.0,
+   "type": "lowest single-egg rupture",
+   "src": "EGG2",
+   "basis": "rupture range 10.03-58.96 N (Hisex Brown, cited Nedomova); breed means 38-56 N (EGG3)"
+  },
+  "failure_force_N": {
+   "value": 38.0,
+   "src": "EGG3",
+   "basis": "lowest breed-mean rupture, equator (short axis) between parallel plates, 0.167 mm/s"
+  },
+  "friction": {
+   "wet": null,
+   "dry": {
+    "value": 0.47,
+    "pair": "static, rubber - QUAIL egg (snippet); chicken egg order only: rubber > plywood > metal > glass",
+    "src": "EGG6"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 32000000000.0,
+   "what": "eggshell, mean of 40 wild bird species (no chicken-specific value)",
+   "src": "EGG4"
+  },
+  "hold_force_per_finger_N": {
+   "value": 0.68,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.065 kg (largest of sourced and CN-retail max), mu=0.47 (dry, EGG6 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "rupture force by axis",
+    "value": "blunt 41.6-53.4; equator 38.0-45.0; sharp 43.8-56.5 N",
+    "conditions": "parallel plates 0.167 mm/s, 4 breeds",
+    "tag": "M",
+    "src": "EGG3"
+   },
+   {
+    "quantity": "rupture (Hisex Brown)",
+    "value": "36.4 N short axis, 34.9 N long axis; range 10.03-58.96 N",
+    "conditions": "cited",
+    "tag": "O",
+    "src": "EGG2"
+   },
+   {
+    "quantity": "puncture force",
+    "value": "26.34 N",
+    "conditions": "2 mm probe at equator",
+    "tag": "M",
+    "src": "EGG2"
+   },
+   {
+    "quantity": "static stiffness",
+    "value": "145-211 (probably N/mm)",
+    "conditions": "plates",
+    "tag": "M",
+    "src": "EGG3"
+   },
+   {
+    "quantity": "size / shell",
+    "value": "L 58.05 mm, W 45.46 mm, 65.89 g, shell 0.48 mm",
+    "conditions": "class L",
+    "tag": "M",
+    "src": "EGG2"
+   },
+   {
+    "quantity": "friction order",
+    "value": "rubber > plywood > chipboard > galvanized > glass; mu rises with egg mass",
+    "conditions": "abstract, no numbers",
+    "tag": "M",
+    "src": "EGG5"
+   }
+  ],
+  "handling": "Shell cracks with no bruise warning; force-limited grasp across the equator with soft concave pads. Out of shell: never pinch (container only).",
+  "sources": {
+   "EGG1": {
+    "cite": "Group standard draft T/CAAA, quality classification of shell eggs (cites GB/T 39438-2020)",
+    "url": "https://www.ttbz.org.cn/upload/file/20220620/6379132951523607096814028.pdf"
+   },
+   "EGG2": {
+    "cite": "Egg quality, class L eggs, J. Process. Energy Agric. (Serbia)",
+    "url": "https://asistent.ceon.rs/index.php/jpea/article/download/32280/19038"
+   },
+   "EGG3": {
+    "cite": "Egg rupture force by orientation, Acta Univ. Agric. Silvic. Mendel. Brun. 2016 64(4)",
+    "url": "https://acta.mendelu.cz/pdfs/acu/2016/04/11.pdf"
+   },
+   "EGG4": {
+    "cite": "Eggshell Young's modulus of 40 bird species, PMC5660176",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5660176/"
+   },
+   "EGG5": {
+    "cite": "Altuntas & Sekeroglu 2010, egg friction on surfaces (abstract)",
+    "url": "https://agris.fao.org/search/fr/records/65df1c4e4c5aef494fdfce9f"
+   },
+   "EGG6": {
+    "cite": "Quail egg friction, J. Soil Sci. Agric. Eng. (search snippet only)",
+    "url": "https://jssae.journals.ekb.eg/article_226623.html"
+   }
+  }
+ },
+ {
+  "id": "tofu_silken",
+  "name": "Tofu, silken",
+  "name_zh": "嫩豆腐/内酯豆腐",
+  "group": "protein",
+  "shape": "rectangular block in water-filled sealed box",
+  "arrival": {
+   "text": "sealed plastic box (often with water)",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.3,
+    "typ": 0.4,
+    "max": 0.5,
+    "src": "estimate"
+   },
+   "size_note": "box ~ 100 x 100 x 50-60 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 3.0,
+   "type": "derived",
+   "src": "derived",
+   "basis": "peak stress 3.74 kPa at 30 % strain (TF1, confined compression, 8 mm cylinders) x 800 mm2 pad; equilibrium stress 1.26 kPa -> 1.0 N"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.1,
+    "src": "estimate",
+    "basis": "estimate: between fish-mucus values on polypropylene (snakehead 0.04, carp 0.12-0.14, FI1); mucilage/slime acts as a lubricant"
+   }
+  },
+  "modulus_Pa": {
+   "value": 9000.0,
+   "what": "estimate E = 3G from shear modulus G = 3.0 kPa (TF2, DMA 14 Hz)",
+   "src": "estimate"
+  },
+  "hold_force_per_finger_N": {
+   "value": 24.52,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.5 kg (largest of sourced and CN-retail max), mu=0.1 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "peak compressive stress at 30 % strain",
+    "value": "silken 3.74 +/- 0.86 kPa",
+    "conditions": "confined compression, 8x10 mm cylinders, 20 %/s",
+    "tag": "M",
+    "src": "TF1"
+   },
+   {
+    "quantity": "equilibrium stress",
+    "value": "1.26 kPa",
+    "conditions": "model fit",
+    "tag": "M",
+    "src": "TF1"
+   },
+   {
+    "quantity": "shear modulus",
+    "value": "soft 3.0 +/- 0.40 kPa",
+    "conditions": "poroelastic DMA 14 Hz",
+    "tag": "M",
+    "src": "TF2"
+   },
+   {
+    "quantity": "water fraction",
+    "value": "0.89",
+    "conditions": "label",
+    "tag": "M",
+    "src": "TF1"
+   }
+  ],
+  "handling": "Never pinch: move in its box, or slide/tip it out onto a plate or into a tray. Even a full-pad hold is only ~1-3 N before damage.",
+  "sources": {
+   "TF1": {
+    "cite": "Tofu mechanics (silken/firm/extra-firm), Stanford biomechanics bioRxiv preprint",
+    "url": "https://biomechanics.stanford.edu/paper/bioRxiv26.pdf"
+   },
+   "TF2": {
+    "cite": "Tofu poroelastic DMA, PMC4510837",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4510837/"
+   }
+  }
+ },
+ {
+  "id": "tofu_firm",
+  "name": "Tofu, firm",
+  "name_zh": "老豆腐/北豆腐",
+  "group": "protein",
+  "shape": "rectangular block",
+  "arrival": {
+   "text": "box with water, or loose block on a tray at wet markets",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": {
+   "min": null,
+   "typ": 0.4,
+   "max": null,
+   "src": "TF3",
+   "note": "Taiwan traditional tofu 400 g box"
+  },
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.25,
+    "typ": 0.4,
+    "max": 0.5,
+    "src": "estimate"
+   },
+   "size_note": "block ~ 100 x 80 x 40-60 mm",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 15.0,
+   "type": "derived",
+   "src": "derived",
+   "basis": "peak stress 18.91 kPa at 30 % strain (TF1) x 800 mm2 pad"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.1,
+    "src": "estimate",
+    "basis": "estimate: between fish-mucus values on polypropylene (snakehead 0.04, carp 0.12-0.14, FI1); mucilage/slime acts as a lubricant"
+   }
+  },
+  "modulus_Pa": {
+   "value": 24000.0,
+   "what": "estimate E = 3G, G = 8.1 kPa (TF2); stiffness 26.4 kPa per St. Pierre 2024 (TF1, cited)",
+   "src": "estimate"
+  },
+  "hold_force_per_finger_N": {
+   "value": 24.52,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.5 kg (largest of sourced and CN-retail max), mu=0.1 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "peak stress at 30 % strain",
+    "value": "firm 18.91 +/- 5.50 kPa; extra-firm 42.84 +/- 16.22 kPa",
+    "conditions": "confined compression",
+    "tag": "M",
+    "src": "TF1"
+   },
+   {
+    "quantity": "shear modulus",
+    "value": "firm 8.1 +/- 1.2; extra-firm 15 +/- 2.4 kPa",
+    "conditions": "DMA",
+    "tag": "M",
+    "src": "TF2"
+   }
+  ],
+  "handling": "Flat faces: use the full pad area; slippery wet surface (no friction data).",
+  "sources": {
+   "TF1": {
+    "cite": "Tofu mechanics (silken/firm/extra-firm), Stanford biomechanics bioRxiv preprint",
+    "url": "https://biomechanics.stanford.edu/paper/bioRxiv26.pdf"
+   },
+   "TF2": {
+    "cite": "Tofu poroelastic DMA, PMC4510837",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4510837/"
+   },
+   "TF3": {
+    "cite": "Costco Taiwan retail listing, traditional tofu 400 g",
+    "url": "https://www.costco.com.tw/Warehouse-Only/Food-Beverages/Chilled/Pure-Chilled-Non-GMO-Traditional-Tofu-400-g-X-3-Pack/p/126249"
+   }
+  }
+ },
+ {
+  "id": "chicken_breast",
+  "name": "Chicken breast (raw)",
+  "name_zh": "鸡胸肉",
+  "group": "protein",
+  "shape": "flattened teardrop fillet",
+  "arrival": {
+   "text": "chilled tray, 2-3 pieces, cling-wrapped",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": 0.144,
+    "typ": 0.172,
+    "max": 0.176,
+    "src": "CK1",
+    "note": "modelled fillets"
+   },
+   {
+    "axis": "width",
+    "min": null,
+    "typ": 0.072,
+    "max": null,
+    "src": "CK1",
+    "note": ""
+   },
+   {
+    "axis": "thickness",
+    "min": 0.032,
+    "typ": 0.04,
+    "max": 0.04,
+    "src": "CK1",
+    "note": ""
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.15,
+    "typ": 0.25,
+    "max": 0.35,
+    "src": "estimate"
+   },
+   "size_note": "single fillet",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 56.0,
+   "type": "derived (deformation, not damage)",
+   "src": "derived",
+   "basis": "TPA hardness ~3.5 N on 8 mm cylinders at 50 % strain (CK2) = ~70 kPa x 800 mm2: force that squashes it to half thickness. Raw meat has no bruise criterion for immediate cooking"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": {
+    "value": 0.5,
+    "pair": "static, stainless steel SAE304; wetting did not change the sliding angle (tilt test + DEM calibration)",
+    "src": "CK1"
+   },
+   "dry": null,
+   "sim_estimate": null
+  },
+  "modulus_Pa": {
+   "value": 48600.0,
+   "what": "raw fillet blocks 35x35x10 mm, < 3 % strain",
+   "src": "CK1"
+  },
+  "hold_force_per_finger_N": {
+   "value": 3.43,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.35 kg (largest of sourced and CN-retail max), mu=0.5 (wet, CK1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "Young's modulus",
+    "value": "48.6 +/- 1.64 kPa",
+    "conditions": "1 mm/min",
+    "tag": "M",
+    "src": "CK1"
+   },
+   {
+    "quantity": "TPA hardness / E",
+    "value": "median ~3.5 N / ~40 kPa",
+    "conditions": "8 mm cylinders, 50 % strain, 3 mm/s; read from box plot",
+    "tag": "M",
+    "src": "CK2"
+   },
+   {
+    "quantity": "cooked comparison",
+    "value": "0.37 MPa",
+    "conditions": "cooked breast (Ko 2023)",
+    "tag": "O",
+    "src": "CK1"
+   }
+  ],
+  "handling": "Floppy and wet; pinch grasps sag. Prefer a scoop/plate or full-length pads; friction on steel 0.5 even when wet.",
+  "sources": {
+   "CK1": {
+    "cite": "Vink et al. 2026, Appl. Food Res. 6:101880 (raw chicken fillet E, friction on steel, DEM)",
+    "url": "https://repository.tudelft.nl/file/File_dfebf4e4-3f77-40b9-8e32-e6fbf9116ace"
+   },
+   "CK2": {
+    "cite": "Meat TPA comparison, Sci. Rep. 2022 doi:10.1038/s41598-022-07785-1",
+    "url": "https://www.nature.com/articles/s41598-022-07785-1"
+   }
+  }
+ },
+ {
+  "id": "pork",
+  "name": "Pork (lean chunk / belly)",
+  "name_zh": "猪肉（瘦肉块/五花肉）",
+  "group": "protein",
+  "shape": "irregular block / slab (belly layered fat-lean-skin)",
+  "arrival": {
+   "text": "chilled tray or loose at the butcher",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.2,
+    "typ": 0.5,
+    "max": 1.0,
+    "src": "estimate"
+   },
+   "size_note": "chunk or belly strip",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": {
+   "value": 56.0,
+   "type": "proxy chicken breast",
+   "src": "estimate",
+   "basis": "no usable raw-pork compression number; proxy = chicken breast"
+  },
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.5,
+    "src": "estimate",
+    "basis": "estimate: proxy chicken fillet on steel 0.5 (CK1)"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 9.81,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=1 kg (largest of sourced and CN-retail max), mu=0.5 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "compression behaviour",
+    "value": "~50 % of stress viscous at 0.5 %/s; stress at 30 % strain x5 from 0.05 to 10 %/s; cross-fibre 1.2x stiffer",
+    "conditions": "fresh porcine muscle cubes, < 2 h post-mortem",
+    "tag": "M",
+    "src": "PK1"
+   },
+   {
+    "quantity": "stress magnitude",
+    "value": "order 1 kPa at ~25 % strain, 1 %/s (figure axis, low confidence)",
+    "conditions": "",
+    "tag": "M",
+    "src": "PK1"
+   }
+  ],
+  "handling": "Belly skin side is the grippiest face; lean chunk is wet and slippery. No sourced friction.",
+  "sources": {
+   "PK1": {
+    "cite": "Van Loocke et al. 2009, viscoelastic passive porcine muscle in compression (UMONS repository)",
+    "url": "https://orbi.umons.ac.be/bitstream/20.500.12907/9791/1/viscoelastic%20properties%20of%20passive%20skeletal%20muscle%20in%20compression_cyclic%20behaviour2009.pdf"
+   }
+  }
+ },
+ {
+  "id": "fish_whole",
+  "name": "Whole fish (sea bass)",
+  "name_zh": "鲈鱼（整条）",
+  "group": "protein",
+  "shape": "fusiform body, scales, mucus",
+  "arrival": {
+   "text": "live from tank or chilled on ice; scaled/gutted at the stall",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "body length",
+    "min": 0.336,
+    "typ": 0.352,
+    "max": 0.367,
+    "src": "FI3",
+    "note": "commercial L. maculatus, 35.21 +/- 1.45 cm (snippet)"
+   },
+   {
+    "axis": "body height",
+    "min": 0.093,
+    "typ": 0.096,
+    "max": 0.1,
+    "src": "FI3",
+    "note": "9.64 +/- 0.38 cm"
+   }
+  ],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.4,
+    "typ": 0.6,
+    "max": 1.0,
+    "src": "estimate"
+   },
+   "size_note": "whole fish",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": null,
+  "failure_force_N": null,
+  "friction": {
+   "wet": {
+    "value": 0.12,
+    "pair": "static, mucus intact, on polypropylene - common carp (0.124-0.141); snakehead 0.037-0.043",
+    "src": "FI1"
+   },
+   "dry": {
+    "value": 0.5,
+    "pair": "static, mucus wiped off, carp on polypropylene (0.499-0.550)",
+    "src": "FI1"
+   },
+   "sim_estimate": null
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 40.88,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=1 kg (largest of sourced and CN-retail max), mu=0.12 (wet, FI1 = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "static mu, mucus intact",
+    "value": "carp 0.141 fwd / 0.124 back; snakehead 0.037 / 0.043",
+    "conditions": "freshly euthanised fish towed on a PP table",
+    "tag": "M",
+    "src": "FI1"
+   },
+   {
+    "quantity": "static mu, mucus wiped",
+    "value": "carp 0.550 / 0.499; snakehead 1.07 / 1.18",
+    "conditions": "same",
+    "tag": "M",
+    "src": "FI1"
+   },
+   {
+    "quantity": "max size",
+    "value": "102 cm, 8.7 kg",
+    "conditions": "",
+    "tag": "O",
+    "src": "FI2"
+   }
+  ],
+  "handling": "Very slippery with mucus (mu ~0.12): a 0.6 kg fish needs ~25 N per finger just to hang - wipe/rinse mucus, grip at the caudal peduncle (tail wrist), or carry on a tray. 350 mm long: centre of mass far from a tail grasp.",
+  "sources": {
+   "FI1": {
+    "cite": "Lopez-Chilel & Bressman 2025, Integr. Comp. Biol. 65(1):94 (fish mucus static friction on polypropylene table and turf)",
+    "url": "https://academic.oup.com/icb/article/65/1/94/7989456"
+   },
+   "FI2": {
+    "cite": "Wikipedia, Lateolabrax maculatus",
+    "url": "https://en.wikipedia.org/wiki/Lateolabrax_maculatus"
+   },
+   "FI3": {
+    "cite": "2025 Progress in Fishery Sciences abstract, commercial Lateolabrax maculatus (search snippet only)",
+    "url": "https://yykxjz.ijournals.cn/yykxjz/article/abstract/20251024001"
+   }
+  }
+ },
+ {
+  "id": "fish_fillet",
+  "name": "Fish fillet",
+  "name_zh": "鱼片/鱼柳",
+  "group": "protein",
+  "shape": "flat slab, skin-on or skinless",
+  "arrival": {
+   "text": "chilled tray",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [],
+  "mass_kg": null,
+  "cn_retail_estimate": {
+   "mass_kg": {
+    "min": 0.1,
+    "typ": 0.2,
+    "max": 0.3,
+    "src": "estimate"
+   },
+   "size_note": "fillet",
+   "how": "estimate: typical Chinese retail unit, author's judgement (not measured) - weigh 10 samples before relying on it"
+  },
+  "damage_limit_per_finger_N": null,
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.1,
+    "src": "estimate",
+    "basis": "estimate: between fish-mucus values on polypropylene (snakehead 0.04, carp 0.12-0.14, FI1); mucilage/slime acts as a lubricant"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 14.71,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.3 kg (largest of sourced and CN-retail max), mu=0.1 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "fibre damage onset",
+    "value": "fibres break at 6-8 mm penetration; no yield at 5 mm (25.4 mm sphere)",
+    "conditions": "raw salmon fillet, 20 mm flat cylinder, 2 mm/s; forces only in figures",
+    "tag": "M",
+    "src": "FI4"
+   }
+  ],
+  "handling": "Deformation-limited: keep pad indentation < 5 mm (FI4). Flaky and slippery - support from below (spatula/tray) rather than pinch.",
+  "sources": {
+   "FI4": {
+    "cite": "Matis report AquNut vol. 32 (raw salmon fillet texture)",
+    "url": "https://matis.is/media/utgafa/AquNutVol32.pdf"
+   }
+  }
+ },
+ {
+  "id": "shrimp",
+  "name": "Shrimp (shell-on, raw)",
+  "name_zh": "虾（带壳，白虾/基围虾）",
+  "group": "protein",
+  "shape": "curved segmented body, antennae, legs",
+  "arrival": {
+   "text": "live in water, chilled on ice, or frozen block",
+   "src": "estimate",
+   "how": "estimate (common knowledge of Chinese supermarkets/wet markets)"
+  },
+  "dims_m": [
+   {
+    "axis": "length",
+    "min": 0.07,
+    "typ": 0.075,
+    "max": 0.08,
+    "src": "SR1",
+    "note": "Fuzhou market L. vannamei"
+   }
+  ],
+  "mass_kg": {
+   "min": 0.011,
+   "typ": 0.012,
+   "max": 0.033,
+   "src": "SR1",
+   "note": "11-13 g (SR1); 29-33 g at 30-35/kg (SR2)"
+  },
+  "cn_retail_estimate": null,
+  "damage_limit_per_finger_N": null,
+  "failure_force_N": null,
+  "friction": {
+   "wet": null,
+   "dry": null,
+   "sim_estimate": {
+    "value": 0.1,
+    "src": "estimate",
+    "basis": "estimate: between fish-mucus values on polypropylene (snakehead 0.04, carp 0.12-0.14, FI1); mucilage/slime acts as a lubricant"
+   }
+  },
+  "modulus_Pa": null,
+  "hold_force_per_finger_N": {
+   "value": 1.62,
+   "src": "derived",
+   "how": "m_max*g/(2*mu); m_max=0.033 kg (largest of sourced and CN-retail max), mu=0.1 (sim estimate, estimate = lowest available); static, vertical slip, SF=1"
+  },
+  "evidence": [
+   {
+    "quantity": "TPA hardness",
+    "value": "6900.8 +/- 484.9 g (~67.7 N)",
+    "conditions": "36 mm probe, 6 mm, beheaded/peeled, possibly cooked - not raw shell-on",
+    "tag": "M",
+    "src": "SR1"
+   },
+   {
+    "quantity": "count",
+    "value": "30-35 per kg",
+    "conditions": "farm harvest, India",
+    "tag": "M",
+    "src": "SR2"
+   }
+  ],
+  "handling": "Bulk-handle in a colander/basket (washing step). Single-shrimp pinch not characterised.",
+  "sources": {
+   "SR1": {
+    "cite": "Foods 14:4041 (2025), L. vannamei from a Fuzhou market",
+    "url": "https://mdpi-res.com/d_attachment/foods/foods-14-04041/article_deploy/foods-14-04041.pdf"
+   },
+   "SR2": {
+    "cite": "Fishery Technology (ICAR), farmed shrimp count",
+    "url": "https://epubs.icar.org.in/index.php/FT/article/download/81769/33950/208460"
+   }
+  }
+ }
+]

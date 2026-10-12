@@ -1,0 +1,437 @@
+{
+  "index": 3,
+  "name": "peel_load",
+  "target": {
+    "name": "peel_load",
+    "points": [
+      [
+        -1.21,
+        0.05500000000000001,
+        0.9884999999999999
+      ],
+      [
+        -1.21,
+        0.05500000000000001,
+        0.9485
+      ]
+    ],
+    "held": "carrot",
+    "approach": [
+      0,
+      0,
+      -1
+    ],
+    "force": null,
+    "kind": "transfer"
+  },
+  "endpoints": [
+    {
+      "ok": true,
+      "counts": {
+        "collision": 55,
+        "pose": 37,
+        "ok": 4
+      },
+      "best_reserve": 28.500000000030727,
+      "best": {
+        "q": [
+          -1.0138990129983267,
+          -0.21,
+          0.0,
+          3.3610707643332565,
+          3.633312067733657,
+          -2.3367848935433932,
+          -3.093767053918197,
+          5.501008415723125,
+          3.4556285147471866,
+          0.015,
+          0.015
+        ],
+        "rotation": [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "reserve_mm": 28.500000000030727,
+        "check": {
+          "ok": true,
+          "identity_ok": true,
+          "hits": [],
+          "clearance": {
+            "robot_environment": {
+              "pair": [
+                "R_geom_28",
+                "linear_peeler_peeler_y_head"
+              ],
+              "clearance_mm": 73.75020491138243,
+              "upper_bound_mm": null,
+              "required_mm": 10.0,
+              "reserve_mm": 63.75020491138243,
+              "lower_bound": true,
+              "method": "enclosing AABB separation lower bound"
+            },
+            "held_gripper_environment": {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "clearance_mm": 33.500000000030724,
+              "upper_bound_mm": null,
+              "required_mm": 5.0,
+              "reserve_mm": 28.500000000030727,
+              "lower_bound": true,
+              "method": "enclosing AABB separation lower bound"
+            },
+            "arm_arm_or_frame": {
+              "pair": [
+                "R_cart_beam",
+                "R_geom_25"
+              ],
+              "clearance_mm": 112.5124746424297,
+              "upper_bound_mm": null,
+              "required_mm": 10.0,
+              "reserve_mm": 102.5124746424297,
+              "lower_bound": true,
+              "method": "enclosing AABB separation lower bound"
+            },
+            "self": {
+              "pair": [
+                "R_geom_base_source0",
+                "R_geom_10"
+              ],
+              "clearance_mm": 3.9009105400612296,
+              "upper_bound_mm": 3.9011134706631148,
+              "required_mm": 0.0,
+              "reserve_mm": 3.9009105400612296,
+              "lower_bound": true,
+              "method": "GJK separating-projection dual / simplex primal"
+            }
+          },
+          "ranges": true,
+          "load": {
+            "ok": true,
+            "ratios": {
+              "R_shoulder_pan_joint": 0.2773587549406581,
+              "R_shoulder_lift_joint": 0.2389004582075509,
+              "R_elbow_joint": 0.10727331423122044,
+              "R_wrist_1_joint": 0.10967952024839507,
+              "R_wrist_2_joint": 0.05507762400325795,
+              "R_wrist_3_joint": 2.4664602721099863e-05
+            },
+            "max_ratio": 0.2773587549406581,
+            "grip": {
+              "mode": "wet_pad_friction",
+              "mu": 0.5,
+              "normal_sum_N": 150.0,
+              "force_demand_N": 1.1784378812648548,
+              "force_capacity_N": 75.0,
+              "SF": 63.643575272291926,
+              "margin": 42.42905018152795
+            },
+            "PGC_moment_Nm": 0.0009449999999999999,
+            "PGC_moment_limit_Nm": 7,
+            "payload_kg": 1.3200000000000003,
+            "flange_com_radius_m": 0.06850816559545635,
+            "held_com_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "work_local_m": [
+              0.0175,
+              0.0,
+              0.0
+            ],
+            "force_cases_N": [
+              [
+                -0.054,
+                -0.0,
+                -0.0
+              ],
+              [
+                0.054,
+                0.0,
+                0.0
+              ],
+              [
+                -0.0,
+                -0.054,
+                -0.0
+              ],
+              [
+                0.0,
+                0.054,
+                0.0
+              ],
+              [
+                -0.0,
+                -0.0,
+                -0.054
+              ],
+              [
+                0.0,
+                0.0,
+                0.054
+              ]
+            ]
+          },
+          "proof": {
+            "eligible_pairs": 5092,
+            "narrow_queries": 18,
+            "absent_contact_assumption": false
+          },
+          "mobile": {
+            "ok": true,
+            "docked": true,
+            "footprint_ok": true,
+            "cable_ok": true,
+            "wheel_to_cable_channel_m": 0.03999999999999999,
+            "cable_hits": [],
+            "note": "docked cart; chassis floor at z=.09 passes over the 30 mm toe channel"
+          },
+          "stability": {
+            "ok": true,
+            "min_margin_m": 0.12326190796244386,
+            "mass_kg": 64.34490399999999,
+            "worst": {
+              "factor": 1.5,
+              "force_sign": -1,
+              "inertial_axis": 1,
+              "inertial_sign": 1,
+              "margin_m": 0.12326190796244386,
+              "bumper_force_N": 0.0,
+              "lateral_margin_m": 0.15257040275126624,
+              "back_margin_m": 0.18799665596044943,
+              "front_margin_m": 0.12326190796244386,
+              "zmp_local_m": [
+                -0.06742959724873376,
+                0.08799665596044942
+              ]
+            },
+            "max_bumper_force_N": 0.0,
+            "dynamic_factor": 1.5,
+            "model": "docked: forward tip resisted by bumper on cabinet front (<=250 N and <= mu*W), lateral/back by wheel polygon"
+          }
+        }
+      },
+      "elapsed": 6.98399999999674
+    },
+    {
+      "ok": false,
+      "counts": {
+        "pose": 45,
+        "collision": 51
+      },
+      "best_reserve": null,
+      "best": {
+        "start": 55,
+        "position_mm": 3.377615028303031e-09,
+        "orientation_deg": 2.9391817236342295e-10,
+        "q": [
+          -0.9087382866731926,
+          -0.21,
+          0.0,
+          3.232030885586406,
+          -2.7786705325185173,
+          -2.4885849175054866,
+          0.4595831176563468,
+          -5.5217493771055945,
+          0.13127532180856505,
+          0.015,
+          0.015
+        ],
+        "check": {
+          "ok": false,
+          "identity_ok": true,
+          "hits": [
+            {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "real_gap_mm": -3.25,
+              "required_gap_mm": 5.0
+            },
+            {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "real_gap_mm": -3.25,
+              "required_gap_mm": 5.0
+            },
+            {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "real_gap_mm": -3.25,
+              "required_gap_mm": 5.0
+            },
+            {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "real_gap_mm": -3.25,
+              "required_gap_mm": 5.0
+            },
+            {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "real_gap_mm": -3.2499999999729168,
+              "required_gap_mm": 5.0,
+              "reason": "strict real-object grasp identity / full held pair"
+            },
+            {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "real_gap_mm": -3.2499999999374842,
+              "required_gap_mm": 5.0,
+              "reason": "strict real-object grasp identity / full held pair"
+            },
+            {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "real_gap_mm": -3.2499999999953344,
+              "required_gap_mm": 5.0,
+              "reason": "strict real-object grasp identity / full held pair"
+            },
+            {
+              "pair": [
+                "R_held_carrot",
+                "P16_guide"
+              ],
+              "real_gap_mm": -3.249999999959902,
+              "required_gap_mm": 5.0,
+              "reason": "strict real-object grasp identity / full held pair"
+            }
+          ],
+          "clearance": {},
+          "ranges": true,
+          "load": {
+            "ok": true,
+            "ratios": {
+              "R_shoulder_pan_joint": 0.2861292627716931,
+              "R_shoulder_lift_joint": 0.2625709662688372,
+              "R_elbow_joint": 0.11481204474183758,
+              "R_wrist_1_joint": 0.09490881855190159,
+              "R_wrist_2_joint": 0.056740255238460956,
+              "R_wrist_3_joint": 3.46397990789104e-14
+            },
+            "max_ratio": 0.2861292627716931,
+            "grip": {
+              "mode": "wet_pad_friction",
+              "mu": 0.5,
+              "normal_sum_N": 150.0,
+              "force_demand_N": 1.1784378812648548,
+              "force_capacity_N": 75.0,
+              "SF": 63.643575272291926,
+              "margin": 42.42905018152795
+            },
+            "PGC_moment_Nm": 0.0009449999999999996,
+            "PGC_moment_limit_Nm": 7,
+            "payload_kg": 1.3200000000000003,
+            "flange_com_radius_m": 0.0685081655954563,
+            "held_com_local_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "work_local_m": [
+              0.0175,
+              0.0,
+              0.0
+            ],
+            "force_cases_N": [
+              [
+                -0.054,
+                -0.0,
+                -0.0
+              ],
+              [
+                0.054,
+                0.0,
+                0.0
+              ],
+              [
+                -0.0,
+                -0.054,
+                -0.0
+              ],
+              [
+                0.0,
+                0.054,
+                0.0
+              ],
+              [
+                -0.0,
+                -0.0,
+                -0.054
+              ],
+              [
+                0.0,
+                0.0,
+                0.054
+              ]
+            ]
+          },
+          "proof": {},
+          "mobile": {
+            "ok": true,
+            "docked": true,
+            "footprint_ok": true,
+            "cable_ok": true,
+            "wheel_to_cable_channel_m": 0.03999999999999999,
+            "cable_hits": [],
+            "note": "docked cart; chassis floor at z=.09 passes over the 30 mm toe channel"
+          },
+          "stability": {
+            "ok": true,
+            "min_margin_m": 0.1184519074859244,
+            "mass_kg": 64.34490399999999,
+            "worst": {
+              "factor": 1.5,
+              "force_sign": -1,
+              "inertial_axis": 1,
+              "inertial_sign": 1,
+              "margin_m": 0.1184519074859244,
+              "bumper_force_N": 0.0,
+              "lateral_margin_m": 0.15044551516863516,
+              "back_margin_m": 0.1928066564369689,
+              "front_margin_m": 0.1184519074859244,
+              "zmp_local_m": [
+                -0.06955448483136484,
+                0.09280665643696889
+              ]
+            },
+            "max_bumper_force_N": 0.0,
+            "dynamic_factor": 1.5,
+            "model": "docked: forward tip resisted by bumper on cabinet front (<=250 N and <= mu*W), lateral/back by wheel polygon"
+          }
+        },
+        "status": "collision"
+      },
+      "elapsed": 8.64100000000326
+    }
+  ],
+  "static_ok": false
+}

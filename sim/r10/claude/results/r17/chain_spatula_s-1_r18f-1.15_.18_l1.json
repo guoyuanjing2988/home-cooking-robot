@@ -1,0 +1,590 @@
+{
+  "act": "spatula",
+  "obj": "spatula_b",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {},
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      -1.15,
+      0.18
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.52,
+      0.36
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 437,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        -1.122,
+        0.208,
+        0.899
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        -1.122,
+        0.208,
+        0.951
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out and up",
+      "p": [
+        -1.122,
+        0.128,
+        1.071
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        -0.146,
+        -0.02,
+        1.15
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.047,
+        1.108
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "stroke start",
+      "p": [
+        0.83,
+        0.097,
+        0.958
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "pick#0": {
+      "ok": true,
+      "cand": 0,
+      "cart": -1.077,
+      "start_reserve_mm": 5.1
+    },
+    "stroke start#5": {
+      "ok": true,
+      "cand": 0,
+      "cart": 1.062,
+      "start_reserve_mm": 5.7
+    }
+  },
+  "pieces": [
+    {
+      "frm": "pick#0",
+      "to": "lane#3",
+      "steps": 121,
+      "time_s": 11.9,
+      "min_reserve_mm": 6.3,
+      "max_step_deg": 1.58,
+      "cart": [
+        -1.077,
+        0.518
+      ]
+    },
+    {
+      "frm": "stroke start#5",
+      "to": "lane#3",
+      "steps": 114,
+      "time_s": 11.4,
+      "min_reserve_mm": 15.4,
+      "max_step_deg": 1.67,
+      "cart": [
+        1.06,
+        0.092
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "ok": false,
+      "arm_deg": 1000.0,
+      "cart_m": 0.427,
+      "reason": "shuffle or join blocked from both sides",
+      "at": "lane",
+      "best_pair_deg": 1000.0
+    }
+  ],
+  "approaches": [
+    {
+      "ok": true,
+      "kf": 0,
+      "min_reserve_mm": 9.6,
+      "time_s": 0.6
+    }
+  ],
+  "min_reserve_mm": 6.3,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick",
+      "cand": 0,
+      "start_reserve_mm": 5.9,
+      "cart": -1.0,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.0,
+        "step_deg": 1.59,
+        "pose_mm": 3.96,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 1,
+      "start_reserve_mm": 5.1,
+      "cart": -1.243,
+      "ok": false,
+      "fail": {
+        "at": "out and up->lane",
+        "kf": null,
+        "cart": -1.144,
+        "step_deg": 1.25,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09904011386139154,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 2,
+      "start_reserve_mm": 5.1,
+      "cart": -1.077,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "pick",
+      "cand": 3,
+      "start_reserve_mm": 5.1,
+      "cart": -1.22,
+      "ok": false,
+      "fail": {
+        "at": "out and up->lane",
+        "kf": null,
+        "cart": -1.039,
+        "step_deg": 1.24,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09904011386139154,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r18_spat_handle"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 4,
+      "start_reserve_mm": 5.0,
+      "cart": -1.005,
+      "ok": false,
+      "fail": {
+        "at": "out and up->lane",
+        "kf": null,
+        "cart": -0.73,
+        "step_deg": 0.94,
+        "pose_mm": 0.0,
+        "reserve_mm": 78.3,
+        "dt": 0.09904011386139154,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 5,
+      "start_reserve_mm": 5.0,
+      "cart": -1.27,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out and up",
+        "kf": null,
+        "cart": -1.242,
+        "step_deg": 1.05,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.0961480340123731,
+        "hits": [
+          [
+            "R_gripper_r18_spat_handle",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 6,
+      "start_reserve_mm": 5.0,
+      "cart": -1.109,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out and up",
+        "kf": null,
+        "cart": -1.098,
+        "step_deg": 1.76,
+        "pose_mm": 3.13,
+        "reserve_mm": null,
+        "dt": 0.0961480340123731,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 7,
+      "start_reserve_mm": 5.0,
+      "cart": -1.087,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "pick",
+      "cand": 8,
+      "start_reserve_mm": 5.0,
+      "cart": -1.02,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out and up",
+        "kf": null,
+        "cart": -1.008,
+        "step_deg": 1.76,
+        "pose_mm": 3.13,
+        "reserve_mm": null,
+        "dt": 0.0961480340123731,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 9,
+      "start_reserve_mm": 5.0,
+      "cart": -1.105,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out and up",
+        "kf": null,
+        "cart": -1.094,
+        "step_deg": 1.76,
+        "pose_mm": 3.13,
+        "reserve_mm": null,
+        "dt": 0.0961480340123731,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 10,
+      "start_reserve_mm": 5.0,
+      "cart": -1.046,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "pick",
+      "cand": 11,
+      "start_reserve_mm": 5.0,
+      "cart": -1.228,
+      "ok": false,
+      "fail": {
+        "at": "out and up->lane",
+        "kf": null,
+        "cart": -1.06,
+        "step_deg": 1.28,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09904011386139154,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r18_spat_handle"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 12,
+      "start_reserve_mm": 5.0,
+      "cart": -1.412,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.412,
+        "step_deg": 2.03,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "R_cart_beam",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 13,
+      "start_reserve_mm": 5.0,
+      "cart": -1.149,
+      "ok": false,
+      "fail": {
+        "at": "out and up->lane",
+        "kf": null,
+        "cart": -0.996,
+        "step_deg": 1.08,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09904011386139154,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 14,
+      "start_reserve_mm": 5.0,
+      "cart": -1.0,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "pick",
+      "cand": 15,
+      "start_reserve_mm": 5.0,
+      "cart": -1.172,
+      "ok": false,
+      "fail": {
+        "at": "out and up->lane",
+        "kf": null,
+        "cart": -1.031,
+        "step_deg": 1.13,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09904011386139154,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 0,
+      "start_reserve_mm": 5.7,
+      "cart": 1.062,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 1,
+      "start_reserve_mm": 5.7,
+      "cart": 1.113,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 2,
+      "start_reserve_mm": 5.7,
+      "cart": 1.108,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 3,
+      "start_reserve_mm": 5.7,
+      "cart": 0.636,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 4,
+      "start_reserve_mm": 5.7,
+      "cart": 0.421,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 5,
+      "start_reserve_mm": 5.7,
+      "cart": 0.704,
+      "ok": true,
+      "fail": null
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    [
+      [
+        -1.0769121413368818,
+        -0.21,
+        0.0,
+        -0.19690682852403288,
+        6.200683610428274,
+        1.3161263386712119,
+        5.810899788097793,
+        -2.2672686090136347,
+        2.4085714784970427,
+        0.025,
+        0.025
+      ],
+      [
+        -1.0839143940028786,
+        -0.21,
+        0.0,
+        -0.1826058774572278,
+        6.201892547087584,
+        1.3150454329963939,
+        5.802642447229477,
+        -2.256875781205215,
+        2.3958203080323184,
+        0.025,
+        0.025
+      ],
+      [
+        -1.0909166466688753,
+        -0.21,
+        0.0,
+        -0.16828589129973878,
+        6.203240354926924,
+        1.3135282375030155,
+        5.794911057121586,
+        -2.2463906158722526,
+        2.383268575984948,
+        0.025,
+        0.025
+      ],
+      [
+        -1.0979188993348719,
+        -0.21,
+        0.0,
+        -0.153952809766393,
+        6.204726055829191,
+        1.3115754080373074,
+        5.787703991405344,
+        -2.2358201626423964,
+        2.3709155838288396,
+        0.025,
+        0.025
+      ],
+      [
+        -1.1049211520008686,
+        -0.21,
+        0.0,
+        -0.1396125697337396,
+        6.206348839155459,
+        1.3091875702042335,
+        5.781019208600219,
+        -2.2251714995592886,
+        2.3587603800148367,
+        0.025,
+        0.025
+      ],
+      [
+        -1.1119234046668653,
+        -0.21,
+        0.0,
+        -0.12527109062375574,
+        6.208108070491383,
+        1.3063653018715373,
+        5.774854282239214,
+        -2.214451713847605,
+        2.346801778688752,
+        0.025,
+        0.025
+      ],
+      [
+        -1.118925657332862,
+        -0.21,
+        0.0,
+        -0.11093425999718393,
+        6.210003299818245,
+        1.3031091147880942,
+        5.769206432106886,
+        -2.2036678831387695,
+        2.3350383780213675,
+        0.025,
+        0.025
+      ]
+    ]
+  ]
+}

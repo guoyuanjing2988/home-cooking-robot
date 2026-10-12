@@ -1,0 +1,981 @@
+{
+  "act": "spatula",
+  "obj": "spatula_b",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {},
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      0.2,
+      0.5
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.52,
+      0.36
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 103,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        0.2,
+        0.512,
+        0.881
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.2,
+        0.512,
+        0.933
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out and up",
+      "p": [
+        0.2,
+        0.432,
+        1.053
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        0.515,
+        -0.02,
+        1.15
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.047,
+        1.108
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "stroke start",
+      "p": [
+        0.83,
+        0.097,
+        0.958
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "pick#0": {
+      "ok": false,
+      "n_candidates": 24,
+      "start_status": {
+        "ok": 53,
+        "collision": 59,
+        "pose": 176
+      }
+    },
+    "stroke start#5": {
+      "ok": false,
+      "n_candidates": 24,
+      "start_status": {
+        "pose": 115,
+        "ok": 95,
+        "collision": 78
+      }
+    }
+  },
+  "pieces": [],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": null,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick",
+      "cand": 0,
+      "start_reserve_mm": 5.0,
+      "cart": -0.158,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.158,
+        "step_deg": 2.57,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 1,
+      "start_reserve_mm": 5.0,
+      "cart": -0.138,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.138,
+        "step_deg": 6.22,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.10367622286333027,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 2,
+      "start_reserve_mm": 2.6,
+      "cart": 0.621,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.621,
+        "step_deg": 2.52,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 3,
+      "start_reserve_mm": 2.6,
+      "cart": 0.445,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.445,
+        "step_deg": 1.48,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 4,
+      "start_reserve_mm": 2.6,
+      "cart": 0.411,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.411,
+        "step_deg": 1.46,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 5,
+      "start_reserve_mm": 2.6,
+      "cart": 0.54,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.54,
+        "step_deg": 1.62,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 6,
+      "start_reserve_mm": 2.6,
+      "cart": -0.19,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.19,
+        "step_deg": 2.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 7,
+      "start_reserve_mm": 2.6,
+      "cart": 0.015,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.015,
+        "step_deg": 1.97,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 8,
+      "start_reserve_mm": 2.6,
+      "cart": 0.569,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.569,
+        "step_deg": 1.77,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 9,
+      "start_reserve_mm": 2.6,
+      "cart": 0.005,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.005,
+        "step_deg": 1.45,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 10,
+      "start_reserve_mm": 2.6,
+      "cart": 0.61,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.61,
+        "step_deg": 2.52,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 11,
+      "start_reserve_mm": 2.6,
+      "cart": 0.436,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.436,
+        "step_deg": 2.44,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 12,
+      "start_reserve_mm": 2.6,
+      "cart": 0.358,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.358,
+        "step_deg": 2.08,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 13,
+      "start_reserve_mm": 2.6,
+      "cart": -0.193,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.193,
+        "step_deg": 2.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 14,
+      "start_reserve_mm": 2.6,
+      "cart": 0.597,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": 0.597,
+        "step_deg": 2.53,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 15,
+      "start_reserve_mm": 2.6,
+      "cart": -0.183,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -0.183,
+        "step_deg": 1.44,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666674,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_minus"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 0,
+      "start_reserve_mm": 5.7,
+      "cart": 1.062,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 1.155,
+        "step_deg": 1.53,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 1,
+      "start_reserve_mm": 5.7,
+      "cart": 1.113,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 1.171,
+        "step_deg": 1.56,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 2,
+      "start_reserve_mm": 5.7,
+      "cart": 1.108,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 1.17,
+        "step_deg": 1.56,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 3,
+      "start_reserve_mm": 5.7,
+      "cart": 0.636,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.645,
+        "step_deg": 1.04,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_5",
+            "R_gripper_r18_spat_handle"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 4,
+      "start_reserve_mm": 5.7,
+      "cart": 0.421,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.54,
+        "step_deg": 1.26,
+        "pose_mm": 0.0,
+        "reserve_mm": 66.4,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_gripper_r18_spat_blade0",
+            "R_geom_base_source1"
+          ],
+          [
+            "R_geom_5",
+            "R_gripper_r18_spat_blade0"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 5,
+      "start_reserve_mm": 5.7,
+      "cart": 0.704,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.676,
+        "step_deg": 1.04,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_5",
+            "R_gripper_r18_spat_handle"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 6,
+      "start_reserve_mm": 5.7,
+      "cart": 1.051,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 1.152,
+        "step_deg": 1.53,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 7,
+      "start_reserve_mm": 5.7,
+      "cart": 0.472,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.583,
+        "step_deg": 1.15,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_gripper_r18_spat_blade0",
+            "R_geom_base_source1"
+          ],
+          [
+            "R_geom_5",
+            "R_gripper_r18_spat_handle"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 8,
+      "start_reserve_mm": 5.7,
+      "cart": 1.12,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 1.321,
+        "step_deg": 9.04,
+        "pose_mm": 0.05,
+        "reserve_mm": null,
+        "dt": 0.1507431194079149,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_palm"
+          ],
+          [
+            "R_geom_21",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 9,
+      "start_reserve_mm": 5.7,
+      "cart": 1.096,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 1.086,
+        "step_deg": 1.63,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 10,
+      "start_reserve_mm": 5.7,
+      "cart": 0.671,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.662,
+        "step_deg": 1.04,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_5",
+            "R_gripper_r18_spat_handle"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 11,
+      "start_reserve_mm": 5.7,
+      "cart": 0.485,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.607,
+        "step_deg": 1.14,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_5",
+            "R_gripper_r18_spat_handle"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 12,
+      "start_reserve_mm": 5.7,
+      "cart": 0.73,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.657,
+        "step_deg": 1.3,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_5",
+            "R_gripper_r18_spat_handle"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 13,
+      "start_reserve_mm": 5.7,
+      "cart": 1.077,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 1.078,
+        "step_deg": 1.62,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 14,
+      "start_reserve_mm": 5.7,
+      "cart": 1.054,
+      "ok": false,
+      "fail": {
+        "at": "stroke start->over the wok",
+        "kf": null,
+        "cart": 1.064,
+        "step_deg": 1.64,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09882117688026187,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 15,
+      "start_reserve_mm": 5.7,
+      "cart": 0.947,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 1.041,
+        "step_deg": 1.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.044444444444444446,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null
+  ]
+}

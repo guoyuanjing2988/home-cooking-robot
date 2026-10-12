@@ -1,0 +1,29 @@
+lifted start candidates 4 {'pose': 184, 'collision': 100, 'ok': 4}
+ cand 0 cart 0.25 {'at': 'lifted->pick', 'kf': None, 'cart': np.float64(0.25), 'step_deg': 1.26, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.0733333333333334), 'hits': [['R_geom_11', 'r15_plate']]}
+ cand 1 cart 0.31 {'at': 'lifted->pick', 'kf': None, 'cart': np.float64(0.313), 'step_deg': 1.52, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.0733333333333334), 'hits': [['R_geom_16', 'counter_right_piece2']]}
+ cand 2 cart 0.32 {'at': 'lifted->pick', 'kf': None, 'cart': np.float64(0.317), 'step_deg': 1.54, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.0733333333333334), 'hits': [['R_geom_16', 'counter_right_piece2']]}
+ cand 3 cart 0.47 {'at': 'lifted->pick', 'kf': None, 'cart': np.float64(0.469), 'step_deg': 3.47, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.0733333333333334), 'hits': [['R_geom_16', 'counter_right_piece2']]}
+over the plate start candidates 22 {'pose': 200, 'ok': 24, 'collision': 64}
+ cand 0 cart -0.23 ok
+ cand 1 cart -0.2 ok
+ cand 2 cart -0.21 ok
+ cand 3 cart -0.21 ok
+ cand 4 cart -0.2 ok
+ cand 5 cart -0.22 ok
+under the tap start candidates 24 {'pose': 105, 'collision': 129, 'ok': 54}
+ cand 0 cart -1.06 ok
+ cand 1 cart -1.06 ok
+ cand 2 cart -1.06 ok
+ cand 3 cart -1.06 ok
+ cand 4 cart -1.06 ok
+ cand 5 cart -1.06 ok
+lowered start candidates 4 {'pose': 184, 'collision': 100, 'ok': 4}
+ cand 0 cart 0.25 {'at': 'lowered->', 'kf': None, 'cart': np.float64(0.232), 'step_deg': 0.53, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.08975274678557514), 'hits': [['R_geom_16', 'r15_plate']]}
+ cand 1 cart 0.31 {'at': 'lowered->', 'kf': None, 'cart': np.float64(0.306), 'step_deg': 1.18, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.08975274678557514), 'hits': [['R_geom_16', 'r15_cooker'], ['R_geom_16', 'r15_cooker']]}
+ cand 2 cart 0.32 {'at': 'lowered->', 'kf': None, 'cart': np.float64(0.315), 'step_deg': 1.81, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.08975274678557514), 'hits': [['R_geom_16', 'r15_cooker'], ['R_geom_16', 'r15_cooker']]}
+ cand 3 cart 0.47 {'at': 'lowered->', 'kf': None, 'cart': np.float64(0.464), 'step_deg': 2.54, 'pose_mm': 0.01, 'reserve_mm': None, 'dt': np.float64(0.08975274678557514), 'hits': [['R_geom_16', 'counter_right_piece2']]}
+joins at lane []
+joins at lane [(15, True), (15, True), (15, True), (15, True), (15, True), (15, True)]
+joins at lane []
+results/r17/chain_wok_s-1_bowl_t30.json
+{"act": "wok", "obj": "wok", "grasp_sense": -1, "design": {"pot_h": 0.12, "rack": 0.04, "lid_a": 0.0, "car_a": 45.0, "rack_ry": 90.0}, "scene": {"r17_lever": 30.0, "r15_plate_h": 0.08}, "wok_tilt": 30.0, "wok_grasp": "top", "tool_xy": {"spatula": [1.52, 0.3], "ladle": [1.62, 0.24], "spider": [1.52, 0.36]}, "ok": false, "time_s": 0.0, "elapsed_s": 207, "anchors": {"lifted#1": {"ok": false, "n_candidates": 4, "start_status": {"pose": 184, "collision": 100, "ok": 4}}, "lowered#15": {"ok": false, "n_candidates": 4, "start_status": {"pose": 184, "collision": 100, "ok": 4}}, "over the plate#4": {"ok": true, "cand": 0, "cart": -0.228, "start_reserve_mm": 38.0}, "under the tap#8": {"ok": true, "cand": 0, "cart": -1.06, "start_reserve_mm": 40.9}}, "pieces": [{"frm": "over the plate#4", "to": "lane#3", "steps": 20, "time_s": 2.0, "min_reserve_mm": 6.8, "max_step_deg": 0.32, "cart": [-0.218, -0.032]}, {"frm": "over the plate#4", "to": "lane#7", "steps": 159, "time_s": 13.5, "min_reserve_mm": 9.3, "max_step_deg": 3.68, "cart": [-0.234, -0.879]}, {"frm": "under the tap#8", "to": "lane#7", "steps": 17, "time_s": 6.7, "min_reserve_mm": 42.5, "max_step_deg": 0.59, "cart": [-1.054, -0.946]}, {"frm": "under the tap#8", "to": "lane#12", "steps": 116, "time_s": 8.2, "min_reserve_mm": 10.1, "max_step_deg": 3.88, "cart": [-1.065, -0.946]}], "joins": [{"ok": true, "arm_deg": 14.7, "s": 0.88, "cart_m": 0.067, "shuffle_s": 0.3, "at": "lane", "best_pair_deg": 14.7}], "approaches": [{"ok": false, "kf": 0, "reason": "no arm state at this keyframe"}, {"ok": false, "kf": 16, "reason": "no arm state at this keyframe"}], "min_reserve_mm": 6.8, "max_pgc_moment_Nm": null, "max_joint_ratio": null}

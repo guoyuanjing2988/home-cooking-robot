@@ -1,0 +1,24 @@
+import json,sys,csv
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import numpy as np
+H=Path(__file__).resolve().parent;O=H/'results';ID=sys.argv[1];d=json.loads((O/'reachability'/ID/'R.json').read_text());rows=d['rows'];fig,axes=plt.subplots(1,3,figsize=(15,5),subplot_kw={'projection':'3d'})
+flat=[]
+for ax,orientation in zip(axes,('down','front','side')):
+ subset=[r for r in rows if r['orientation']==orientation]
+ for ok,color,label in [(False,'#bb7777','No admitted seed'),(True,'#197f78','Clear seed')]:
+  points=np.array([r['pos'] for r in subset if bool(r['pass_'])==ok])
+  if len(points):ax.scatter(points[:,0],points[:,1],points[:,2],c=color,s=16,label=label,alpha=.7)
+ ax.set(xlabel='X (m)',ylabel='Y (m)',zlabel='Z (m)',title=orientation);ax.view_init(elev=25,azim=-65)
+axes[0].legend(fontsize=8);fig.suptitle(ID+' UR5e:'+str(sum(r['pass_'] for r in rows))+'/'+str(len(rows))+' clear seed targets; movable fixtures excluded\nExploratory map, not full-scene stroke or meal acceptance',fontsize=13);fig.tight_layout();fig.savefig(H/'renders/reachability_study.png',dpi=100);plt.close(fig)
+for n in range(36,int(ID[1:])+1):
+ for side in ('R','L'):
+  p=O/'reachability'/('L'+str(n))/(side+'.json')
+  if not p.exists():continue
+  data=json.loads(p.read_text())
+  for i,r in enumerate(data['rows']):
+   best=r.get('best') or {};dex=best.get('dexterity') or {};flat.append(dict(layout='L'+str(n),side=side,target=i,x_m=r['pos'][0],y_m=r['pos'][1],z_m=r['pos'][2],orientation=r['orientation'],region=r.get('region'),clear=r['pass_'],starts=r['starts'],min_singular_value=dex.get('min_singular_value'),condition_number=dex.get('condition_number'),source=str(p.relative_to(H)),reuse_note=data.get('reuse_note')))
+with (O/'reachability_map_v4.csv').open('w',newline='',encoding='utf-8') as f:w=csv.DictWriter(f,fieldnames=flat[0]);w.writeheader();w.writerows(flat)
+print('MAP_ROWS',len(flat))

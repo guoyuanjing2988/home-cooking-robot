@@ -1,0 +1,520 @@
+<mujoco model="R03_integrated">
+  <compiler angle="radian" autolimits="true" />
+  <option gravity="0 0 -9.81" integrator="implicitfast" />
+  <visual>
+    <global offwidth="1440" offheight="960" />
+  </visual>
+  <default>
+    <geom margin=".01" />
+    <default class="R_ur5e">
+      <material specular="0.5" shininess="0.25" />
+      <joint axis="0 1 0" range="-6.28319 6.28319" armature="0.1" />
+      <general gaintype="fixed" biastype="affine" ctrlrange="-6.2831 6.2831" gainprm="2000" biasprm="0 -2000 -400" forcerange="-150 150" />
+      <default class="R_size3">
+        <default class="R_size3_limited">
+          <joint range="-3.1415 3.1415" />
+          <general ctrlrange="-3.1415 3.1415" />
+        </default>
+      </default>
+      <default class="R_size1">
+        <general gainprm="500" biasprm="0 -500 -100" forcerange="-28 28" />
+      </default>
+      <default class="R_visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="R_collision">
+        <geom type="capsule" group="3" />
+        <default class="R_eef_collision">
+          <geom type="cylinder" />
+        </default>
+      </default>
+      <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4" />
+    </default>
+  </default>
+  <asset>
+    <material class="R_ur5e" name="R_black" rgba="0.033 0.033 0.033 1" />
+    <material class="R_ur5e" name="R_jointgray" rgba="0.278 0.278 0.278 1" />
+    <material class="R_ur5e" name="R_linkgray" rgba="0.82 0.82 0.82 1" />
+    <material class="R_ur5e" name="R_urblue" rgba="0.49 0.678 0.8 1" />
+    <mesh file="C:\Users\admin\Documents\YJGames\robot_rail\sim\r09\integrator\assets\base_0.obj" name="R_base_0" />
+    <mesh file="C:\Users\admin\Documents\YJGames\robot_rail\sim\r09\integrator\assets\base_1.obj" name="R_base_1" />
+  </asset>
+  <worldbody>
+    <geom name="floor" type="plane" size="3 3 .1" rgba=".85 .85 .85 1" contype="1" conaffinity="2" />
+    <geom name="north_cabinet_left" type="box" pos="-1.675 0.3 0.41" size="0.125 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_left_piece1" type="box" pos="-1.425 0.3 0.41" size="0.125 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_left_piece2" type="box" pos="-1.175 0.3 0.41" size="0.125 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_left_piece3" type="box" pos="-0.925 0.3 0.41" size="0.125 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_right" type="box" pos="0.195833333333 0.3 0.41" size="0.145833333333 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_right_piece1" type="box" pos="0.4875 0.3 0.41" size="0.145833333333 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_right_piece2" type="box" pos="0.779166666667 0.3 0.41" size="0.145833333333 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_right_piece3" type="box" pos="1.07083333333 0.3 0.41" size="0.145833333333 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_right_piece4" type="box" pos="1.3625 0.3 0.41" size="0.145833333333 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_cabinet_right_piece5" type="box" pos="1.65416666667 0.3 0.41" size="0.145833333333 0.3 0.41" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="sink_cabinet" type="box" pos="-0.658333333333 0.3 0.3" size="0.141666666667 0.3 0.3" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="sink_cabinet_piece1" type="box" pos="-0.375 0.3 0.3" size="0.141666666667 0.3 0.3" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="sink_cabinet_piece2" type="box" pos="-0.0916666666667 0.3 0.3" size="0.141666666667 0.3 0.3" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets" type="box" pos="-1.65 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece1" type="box" pos="-1.35 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece2" type="box" pos="-1.05 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece3" type="box" pos="-0.75 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece4" type="box" pos="-0.45 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece5" type="box" pos="-0.15 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece6" type="box" pos="0.15 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece7" type="box" pos="0.45 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece8" type="box" pos="0.75 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece9" type="box" pos="1.05 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece10" type="box" pos="1.35 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_cabinets_piece11" type="box" pos="1.65 -1.5 0.425" size="0.15 0.3 0.425" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="north_wall" type="box" pos="0.0 0.62 1.2" size="1.85 0.020000000000000018 1.2" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="south_wall" type="box" pos="-1.70769230769 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece1" type="box" pos="-1.42307692308 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece2" type="box" pos="-1.13846153846 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece3" type="box" pos="-0.853846153846 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece4" type="box" pos="-0.569230769231 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece5" type="box" pos="-0.284615384615 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece6" type="box" pos="0 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece7" type="box" pos="0.284615384615 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece8" type="box" pos="0.569230769231 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece9" type="box" pos="0.853846153846 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece10" type="box" pos="1.13846153846 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece11" type="box" pos="1.42307692308 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="south_wall_piece12" type="box" pos="1.70769230769 -1.82 1.2" size="0.142307692308 0.02 1.2" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_left" type="box" pos="-1.6625 0.3 0.835" size="0.1375 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_left_piece1" type="box" pos="-1.3875 0.3 0.835" size="0.1375 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_left_piece2" type="box" pos="-1.1125 0.3 0.835" size="0.1375 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_left_piece3" type="box" pos="-0.8375 0.3 0.835" size="0.1375 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_right" type="box" pos="0.0264285714286 0.3 0.835" size="0.136428571429 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_right_piece1" type="box" pos="0.299285714286 0.3 0.835" size="0.136428571429 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_right_piece2" type="box" pos="0.572142857143 0.3 0.835" size="0.136428571429 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_right_piece3" type="box" pos="0.845 0.3 0.835" size="0.136428571429 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_right_piece4" type="box" pos="1.11785714286 0.3 0.835" size="0.136428571429 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_right_piece5" type="box" pos="1.39071428571 0.3 0.835" size="0.136428571429 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="counter_right_piece6" type="box" pos="1.66357142857 0.3 0.835" size="0.136428571429 0.3 0.015" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="sink_front_rim" type="box" pos="-0.39999999999999997 0.04 0.835" size="0.3 0.04 0.015000000000000013" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="sink_back_rim" type="box" pos="-0.39999999999999997 0.56 0.835" size="0.3 0.03999999999999998 0.015000000000000013" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="sink_bottom" type="box" pos="-0.39999999999999997 0.3 0.64" size="0.3 0.22 0.010000000000000009" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="sink_left" type="box" pos="-0.71 0.3 0.75" size="0.010000000000000009 0.22 0.09999999999999998" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="sink_right" type="box" pos="-0.09 0.3 0.75" size="0.010000000000000002 0.22 0.09999999999999998" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="sink_front" type="box" pos="-0.39999999999999997 0.07 0.75" size="0.3 0.010000000000000002 0.09999999999999998" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="sink_back" type="box" pos="-0.39999999999999997 0.53 0.75" size="0.3 0.010000000000000009 0.09999999999999998" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="dish_rack_base" type="box" pos="1.6400000000000001 0.325 0.86" size="0.14 0.175 0.010000000000000009" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="dish_rack_back" type="box" pos="1.6400000000000001 0.49 1.015" size="0.14 0.010000000000000009 0.14499999999999996" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="stove" type="box" pos="0.825333333333 0.3 0.879" size="0.125333333333 0.26 0.029" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="stove_piece1" type="box" pos="1.076 0.3 0.879" size="0.125333333333 0.26 0.029" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="stove_piece2" type="box" pos="1.32666666667 0.3 0.879" size="0.125333333333 0.26 0.029" rgba="0.65 0.65 0.65 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="gas_knob" type="box" pos="1.075 0.11 0.931" size="0.020000000000000018 0.020000000000000004 0.01599999999999996" rgba="0.65 0.65 0.65 1.0" contype="1" conaffinity="2" />
+    <geom name="upper_cabinet_0" type="box" pos="-1.6625 0.415 1.65" size="0.1375 0.185 0.3" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="upper_cabinet_0_piece1" type="box" pos="-1.3875 0.415 1.65" size="0.1375 0.185 0.3" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="upper_cabinet_0_piece2" type="box" pos="-1.1125 0.415 1.65" size="0.1375 0.185 0.3" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="upper_cabinet_0_piece3" type="box" pos="-0.8375 0.415 1.65" size="0.1375 0.185 0.3" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="upper_cabinet_1" type="box" pos="0.0316666666667 0.415 1.65" size="0.131666666667 0.185 0.3" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="upper_cabinet_1_piece1" type="box" pos="0.295 0.415 1.65" size="0.131666666667 0.185 0.3" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="upper_cabinet_1_piece2" type="box" pos="0.558333333333 0.415 1.65" size="0.131666666667 0.185 0.3" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="upper_cabinet_2" type="box" pos="1.635 0.415 1.5" size="0.165 0.185 0.15" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="upper_cabinet_2_piece1" type="box" pos="1.635 0.415 1.8" size="0.165 0.185 0.15" rgba="0.85 0.82 0.75 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="outlet_access_0" type="box" pos="-0.9 0.56 1.01" size="0.05 0.04 0.04" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="outlet_access_1" type="box" pos="0.15 0.56 1.01" size="0.05 0.04 0.04" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="protected_stove" type="box" pos="1.076 0.3 1.1" size="0.386 0.3 0.25" rgba="0.7 0.3 0.2 0.1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="faucet_v3_wall_bracket_mating" type="box" pos="-0.58 0.596 0.94" size="0.03 0.004 0.03" rgba="0.65 0.69 0.72 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="faucet_v3_fixed_spout_full_envelope" type="box" pos="-0.58 0.496 0.94" size="0.03 0.096 0.03" rgba="0.65 0.69 0.72 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="faucet_v3_concealed_thread_and_connector" type="box" pos="-0.58 0.645 0.94" size="0.012 0.055 0.012" rgba="0.65 0.69 0.72 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="faucet_v3_concealed_supply_pipe" type="box" pos="-0.58 0.645 0.57" size="0.015 0.015 0.37" rgba="0.65 0.69 0.72 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="faucet_v3_under_counter_supply" type="box" pos="-0.78 0.59 0.2" size="0.215 0.07 0.015" rgba="0.65 0.69 0.72 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="faucet_v3_water_valve_service" type="box" pos="-0.98 0.54 0.155" size="0.075 0.06 0.055" rgba="0.65 0.69 0.72 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="r07_closed_door_0_0" type="box" pos="-1.525 0.221 1.65" size="0.275 0.009 0.3" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="5.94" />
+    <geom name="door_pause_sensor_0_0" type="box" pos="-1.775 0.258 1.94" size="0.006 0.008 0.01" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="r07_closed_door_0_1" type="box" pos="-0.975 0.221 1.65" size="0.275 0.009 0.3" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="5.94" />
+    <geom name="door_pause_sensor_0_1" type="box" pos="-0.725 0.258 1.94" size="0.006 0.008 0.01" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="r07_closed_door_1_0" type="box" pos="0.0975 0.221 1.65" size="0.1975 0.009 0.3" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="5.94" />
+    <geom name="door_pause_sensor_1_0" type="box" pos="-0.075 0.258 1.94" size="0.006 0.008 0.01" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="r07_closed_door_1_1" type="box" pos="0.4925 0.221 1.65" size="0.1975 0.009 0.3" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="5.94" />
+    <geom name="door_pause_sensor_1_1" type="box" pos="0.665 0.258 1.94" size="0.006 0.008 0.01" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="r07_closed_door_2_0" type="box" pos="1.635 0.221 1.65" size="0.165 0.009 0.3" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="5.94" />
+    <geom name="door_pause_sensor_2_0" type="box" pos="1.495 0.258 1.94" size="0.006 0.008 0.01" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" />
+    <geom name="appliance_power_track_0" type="box" pos="-1.25 0.565 1.195" size="0.51 0.014 0.035" rgba="0.35 0.4 0.45 1" contype="8" conaffinity="7" margin=".01" mass="0.6" />
+    <geom name="appliance_power_adapter_0" type="box" pos="-0.81 0.521 1.195" size="0.0335 0.0215 0.0335" rgba="0.35 0.4 0.45 1" contype="8" conaffinity="7" margin=".01" mass="0.15" />
+    <geom name="appliance_power_track_1" type="box" pos="0.305 0.565 1.195" size="0.355 0.014 0.035" rgba="0.35 0.4 0.45 1" contype="8" conaffinity="7" margin=".01" mass="0.6" />
+    <geom name="appliance_power_adapter_1" type="box" pos="0.59 0.521 1.195" size="0.0335 0.0215 0.0335" rgba="0.35 0.4 0.45 1" contype="8" conaffinity="7" margin=".01" mass="0.15" />
+    <body name="rail_structure">
+      <joint name="R_carriage_x" type="slide" axis="1 0 0" range="-1.48 2.46" />
+      <joint name="base_y" type="slide" axis="0 1 0" range="-.60 -.30" />
+      <joint name="base_yaw" type="hinge" axis="0 0 1" range="-3.14159265359 3.14159265359" />
+      <geom name="R_cart_chassis" type="box" pos="0 0 .165" size=".30 .25 .075" mass="18" rgba=".2 .3 .4 1" contype="2" conaffinity="3" margin=".01" />
+      <geom name="R_cart_ballast" type="box" pos="0 0 .255" size=".27 .22 .025" mass="46.6" rgba=".25 .25 .28 1" contype="2" conaffinity="3" margin=".01" />
+      <geom name="R_cart_controller" type="box" pos="0 0 .419" size=".2375 .2115 .134" mass="13.6" rgba=".2 .3 .4 1" contype="2" conaffinity="3" margin=".01" />
+      <geom name="R_cart_electrics" type="box" pos="0 -.16 .595" size=".20 .07 .042" mass="5" rgba=".2 .3 .4 1" contype="2" conaffinity="3" margin=".01" />
+      <geom name="R_cart_mast" type="box" pos="0 0 0.6895" size="0.06 0.06 0.1365" mass="6" rgba=".2 .3 .4 1" contype="2" conaffinity="3" margin=".01" />
+      <geom name="R_cart_wheel_-0.24_-0.2" type="cylinder" pos="-0.24 -0.2 .0825" size=".0835 .0445" quat=".707106781187 .707106781187 0 0" mass="4.85" rgba=".08 .08 .08 1" contype="2" conaffinity="3" margin=".01" />
+      <geom name="R_cart_wheel_-0.24_0.2" type="cylinder" pos="-0.24 0.2 .0825" size=".0835 .0445" quat=".707106781187 .707106781187 0 0" mass="4.85" rgba=".08 .08 .08 1" contype="2" conaffinity="3" margin=".01" />
+      <geom name="R_cart_wheel_0.24_-0.2" type="cylinder" pos="0.24 -0.2 .0825" size=".0835 .0445" quat=".707106781187 .707106781187 0 0" mass="4.85" rgba=".08 .08 .08 1" contype="2" conaffinity="3" margin=".01" />
+      <geom name="R_cart_wheel_0.24_0.2" type="cylinder" pos="0.24 0.2 .0825" size=".0835 .0445" quat=".707106781187 .707106781187 0 0" mass="4.85" rgba=".08 .08 .08 1" contype="2" conaffinity="3" margin=".01" />
+      <body name="R_mount" quat="0.984807753012 0.173648177667 0 0" pos="0 0 0.85">
+        <body name="R_arm_base" quat="0 0 0 -1" childclass="R_ur5e">
+          <inertial mass="4.0" pos="0 0 0" diaginertia="0.00443333156 0.00443333156 0.0072" />
+          <geom mesh="R_base_0" material="R_black" name="R_geom_base_source0" type="mesh" mass="1e-9" contype="2" conaffinity="3" margin=".01" />
+          <geom mesh="R_base_1" material="R_jointgray" name="R_geom_base_source1" type="mesh" mass="1e-9" contype="2" conaffinity="3" margin=".01" />
+          <body name="R_arm_shoulder_link" pos="0 0 0.163">
+            <inertial mass="3.7" pos="0 0 0" diaginertia="0.0102675 0.0102675 0.00666" />
+            <joint name="R_shoulder_pan_joint" class="R_size3" axis="0 0 1" />
+            <geom class="R_collision" size="0.06 0.06" pos="0 0 -0.04" name="R_geom_5" contype="2" conaffinity="3" margin=".01" />
+            <body name="R_arm_upper_arm_link" pos="0 0.138 0" quat="1 0 1 0">
+              <inertial mass="8.393" pos="0 0 0.2125" diaginertia="0.133886 0.133886 0.0151074" />
+              <joint name="R_shoulder_lift_joint" class="R_size3" />
+              <geom class="R_collision" pos="0 -0.04 0" quat="1 1 0 0" size="0.06 0.06" name="R_geom_10" contype="2" conaffinity="3" margin=".01" />
+              <geom class="R_collision" size="0.05 0.2" pos="0 0 0.2" name="R_geom_11" contype="2" conaffinity="3" margin=".01" />
+              <body name="R_arm_forearm_link" pos="0 -0.131 0.425">
+                <inertial mass="2.275" pos="0 0 0.196" diaginertia="0.0311796 0.0311796 0.004095" />
+                <joint name="R_elbow_joint" class="R_size3_limited" range="-2.792526803190927 2.792526803190927" />
+                <geom class="R_collision" pos="0 0.08 0" quat="1 1 0 0" size="0.055 0.06" name="R_geom_16" contype="2" conaffinity="3" margin=".01" />
+                <geom class="R_collision" size="0.038 0.19" pos="0 0 0.2" name="R_geom_17" contype="2" conaffinity="3" margin=".01" />
+                <body name="R_arm_wrist_1_link" pos="0 0 0.392" quat="1 0 1 0">
+                  <inertial mass="1.219" pos="0 0.127 0" diaginertia="0.0025599 0.0025599 0.0021942" />
+                  <joint name="R_wrist_1_joint" class="R_size1" />
+                  <geom class="R_collision" pos="0 0.05 0" quat="1 1 0 0" size="0.04 0.07" name="R_geom_21" contype="2" conaffinity="3" margin=".01" />
+                  <body name="R_arm_wrist_2_link" pos="0 0.127 0">
+                    <inertial mass="1.219" pos="0 0 0.1" diaginertia="0.0025599 0.0025599 0.0021942" />
+                    <joint name="R_wrist_2_joint" axis="0 0 1" class="R_size1" />
+                    <geom class="R_collision" size="0.04 0.06" pos="0 0 0.04" name="R_geom_25" contype="2" conaffinity="3" margin=".01" />
+                    <geom class="R_collision" pos="0 0.02 0.1" quat="1 1 0 0" size="0.04 0.04" name="R_geom_26" contype="2" conaffinity="3" margin=".01" />
+                    <body name="R_arm_wrist_3_link" pos="0 0 0.1">
+                      <inertial mass="0.1889" pos="0 0.0771683 0" quat="1 0 0 1" diaginertia="0.000132134 9.90863e-05 9.90863e-05" />
+                      <joint name="R_wrist_3_joint" class="R_size1" />
+                      <geom class="R_eef_collision" pos="0 0.08 0" quat="1 1 0 0" size="0.04 0.02" name="R_geom_28" contype="2" conaffinity="3" margin=".01" />
+                      <site name="R_attachment_site" pos="0 0.1 0" quat="-1 1 0 0" />
+                      <body name="R_tool" pos="0 0.21 0" quat="-0.371458740599 0.371458740599 0.601679652334 -0.601679652334">
+                        <inertial mass="1" pos="-0.06 0 0" diaginertia=".001 .003 .003" />
+                        <geom name="R_gripper_palm" type="box" pos="-0.07 0 0" size="0.035 0.04 0.02" rgba="0.35 0.4 0.45 1" contype="2" conaffinity="3" margin=".01" />
+                        <body name="R_jaw_minus" pos="-0.02 -0.004 0">
+                          <joint name="R_jaw_minus" type="slide" axis="0 -1 0" range="0 .045" />
+                          <inertial mass=".1" pos="-.015 0 0" diaginertia=".00002 .00008 .00008" />
+                          <geom name="R_finger_minus" type="box" pos="-0.015 0 0" size="0.0375 0.004 0.01" rgba="0.35 0.4 0.45 1" contype="2" conaffinity="3" margin=".01" />
+                        </body>
+                        <body name="R_jaw_plus" pos="-0.02 0.004 0">
+                          <joint name="R_jaw_plus" type="slide" axis="0 1 0" range="0 .045" />
+                          <inertial mass=".1" pos="-.015 0 0" diaginertia=".00002 .00008 .00008" />
+                          <geom name="R_finger_plus" type="box" pos="-0.015 0 0" size="0.0375 0.004 0.01" rgba="0.35 0.4 0.45 1" contype="2" conaffinity="3" margin=".01" />
+                        </body>
+                        <site name="R_prep" pos="0 0 0" size=".004" />
+                        <geom name="R_gripper_oem_envelope" type="box" pos="-0.10425 0 0" size="0.06925 0.0375 0.0375" rgba="0.15 0.2 0.25 1" contype="2" conaffinity="3" mass=".000001" />
+                        <geom name="R_held_carrot" type="box" pos="0 0 0" size="0.0175 0.0175 0.08" rgba="0.9 0.4 0.1 1" contype="2" conaffinity="3" mass=".000001" />
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+        <geom name="R_base_plate" type="box" pos="0 0 -0.012" size="0.085 0.085 0.012" rgba="0.35 0.4 0.45 1" contype="8" conaffinity="7" margin=".01" mass="1.1" />
+        <geom name="R_current151mm_base_cover" type="cylinder" size=".0755 .004" pos="0 0 .004" mass=".03" contype="8" conaffinity="7" rgba=".2 .4 .8 1" />
+      </body>
+      <geom name="R_cart_wheel_-0.24_-0.2_spindle" type="cylinder" pos="-0.24 -0.13475 0.0825" size=".012 .021" quat=".707106781187 .707106781187 0 0" mass=".000001" contype="2" conaffinity="3" rgba=".4 .4 .4 1" />
+      <geom name="R_cart_wheel_-0.24_0.2_spindle" type="cylinder" pos="-0.24 0.13475 0.0825" size=".012 .021" quat=".707106781187 .707106781187 0 0" mass=".000001" contype="2" conaffinity="3" rgba=".4 .4 .4 1" />
+      <geom name="R_cart_wheel_0.24_-0.2_spindle" type="cylinder" pos="0.24 -0.13475 0.0825" size=".012 .021" quat=".707106781187 .707106781187 0 0" mass=".000001" contype="2" conaffinity="3" rgba=".4 .4 .4 1" />
+      <geom name="R_cart_wheel_0.24_0.2_spindle" type="cylinder" pos="0.24 0.13475 0.0825" size=".012 .021" quat=".707106781187 .707106781187 0 0" mass=".000001" contype="2" conaffinity="3" rgba=".4 .4 .4 1" />
+    </body>
+    <geom name="reel_case" type="box" pos="2.52 0.15 0.45" size="0.24 0.07 0.16" rgba="0.8 0.7 0.12 1" contype="1" conaffinity="2" mass=".000001" />
+    <geom name="floor_cable_guide" type="box" pos="0.5 -0.025 0.015" size="2.3 0.015 0.015" rgba="0.8 0.7 0.12 1" contype="1" conaffinity="2" mass=".000001" />
+    <body name="mandoline_station" pos="0.435 0.135 0.85" quat="1 0 0 0">
+      <geom name="mandoline_deck" type="box" pos="0 0 0.08" size="0.165 0.06 0.03" rgba="0.25 0.45 0.62 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="mandoline_guard-1" type="box" pos="0 -0.095 0.09" size="0.185 0.005 0.09" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="mandoline_foot-1" type="box" pos="-0.135 0 0.025" size="0.0175 0.085 0.025" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="mandoline_guard1" type="box" pos="0 0.095 0.09" size="0.185 0.005 0.09" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="mandoline_foot1" type="box" pos="0.135 0 0.025" size="0.0175 0.085 0.025" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="mandoline_blade" type="box" pos="0 0 0.112" size="0.0005 0.06 0.002" rgba="0.8 0.8 0.8 1" contype="1" conaffinity="2" mass=".000001" />
+      <body name="stored_catch_tray" pos="0 -0.11 0.044" quat="-0.5 0.5 0.5 -0.5">
+        <geom name="stored_tray_handle" type="box" pos="0 0 0" size="0.03 0.015 0.012" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+        <geom name="stored_tray_stem" type="box" pos="0.045 0.02 0" size="0.045 0.01 0.01" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+        <geom name="stored_tray_floor" type="box" pos="0.11 0.04 0" size="0.08 0.004 0.16" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+        <geom name="stored_tray_side-1" type="box" pos="0.11 0.018 -0.157" size="0.074 0.022 0.003" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+        <geom name="stored_tray_end-1" type="box" pos="0.033 0.018 0" size="0.003 0.022 0.16" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+        <geom name="stored_tray_side1" type="box" pos="0.11 0.018 0.157" size="0.074 0.022 0.003" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+        <geom name="stored_tray_end1" type="box" pos="0.187 0.018 0" size="0.003 0.022 0.16" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+        <geom name="stored_key_shoulder-1" type="box" pos="-0.036 0 0" size="0.004 0.023 0.015" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+        <geom name="stored_key_shoulder1" type="box" pos="0.036 0 0" size="0.004 0.023 0.015" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      </body>
+    </body>
+    <body name="peeler_station" pos="-1.21 0.135 0.85" quat="1 0 0 0">
+      <geom name="P16_drive" type="box" pos="0 0.095 0.1" size="0.24 0.025 0.025" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="P16_guide" type="box" pos="0 0.04 0.075" size="0.18 0.0175 0.0125" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="peel_drawer_floor" type="box" pos="0 -0.045 0.009" size="0.155 0.09 0.009" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="peel_cradle-1" type="box" pos="-0.07 -0.045 0.045" size="0.008 0.0275 0.036" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="peel_guard_side-1" type="box" pos="-0.19 -0.01 0.09" size="0.003 0.11 0.09" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="peel_cradle1" type="box" pos="0.07 -0.045 0.045" size="0.008 0.0275 0.036" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="peel_guard_side1" type="box" pos="0.19 -0.01 0.09" size="0.003 0.11 0.09" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="peel_guard_back" type="box" pos="0 0.125 0.09" size="0.193 0.003 0.09" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="peel_guard_roof" type="box" pos="0 -0.01 0.183" size="0.193 0.113 0.003" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="peel_door_pocket" type="box" pos="0.24 -0.12 0.09" size="0.045 0.004 0.09" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <body name="linear_peeler_cutter" pos="0 -.045 .09">
+        <body name="linear_peeler_object" quat="1 0 0 0">
+          <geom name="linear_peeler_peeler_handle" type="box" pos="-0.01 0 0" size="0.0325 0.014 0.01" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+          <geom name="linear_peeler_peeler_y_head" type="box" pos="0.055 0 0" size="0.0125 0.038 0.0125" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+          <geom name="linear_peeler_peeler_edge" type="box" pos="0.065 0 0" size="0.0005 0.0125 0.003" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+          <geom name="linear_peeler_key_shoulder-1" type="box" pos="-0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+          <geom name="linear_peeler_key_shoulder1" type="box" pos="0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        </body>
+      </body>
+    </body>
+    <body name="greens_station" pos="-0.835 0.16 0.85" quat="0.707106781187 0 0 0.707106781187">
+      <geom name="greens_base" type="box" pos="0 0 0.01" size="0.13 0.105 0.01" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="greens_blade_guard" type="box" pos="0 0.09 0.095" size="0.13 0.006 0.095" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="greens_guillotine" type="box" pos="0 0 0.13" size="0.001 0.08 0.045" rgba="0.5 0.65 0.5 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="greens_split_comb" type="box" pos="0.09 0 0.045" size="0.01 0.08 0.035" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+    </body>
+    <body name="tomato_station" pos="0.015 0.14 0.85" quat="1 0 0 0">
+      <geom name="wedger_base" type="box" pos="0 0 0.01" size="0.1 0.1 0.01" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="wedger_guard-1" type="box" pos="-0.093 0 0.075" size="0.005 0.1 0.075" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="wedger_guard1" type="box" pos="0.093 0 0.075" size="0.005 0.1 0.075" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="wedger_pusher" type="box" pos="0 0 0.14" size="0.0375 0.0375 0.0125" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="wedger_lever" type="box" pos="0 -0.025 0.18" size="0.0125 0.125 0.0125" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="wedger_blade0" type="box" pos="0 0 0.065" size="0.05 0.000476 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="2" mass=".000001" quat="1 0 0 0" />
+      <geom name="wedger_blade1" type="box" pos="0 0 0.065" size="0.05 0.000476 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="2" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+      <geom name="wedger_blade2" type="box" pos="0 0 0.065" size="0.05 0.000476 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="2" mass=".000001" quat="0.707106781187 0 0 0.707106781187" />
+      <geom name="wedger_blade3" type="box" pos="0 0 0.065" size="0.05 0.000476 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="2" mass=".000001" quat="0.382683432365 0 0 0.923879532511" />
+    </body>
+    <body name="stored_bowl_carrot" pos="-1.67 0.39423906935 1.01476093065" quat="-0.270598050073 0.653281482438 0.270598050073 -0.653281482438">
+      <body name="stored_bowl_carrot_object" quat="1 0 0 0">
+        <geom name="stored_bowl_carrot_bowl_outer_bottom" type="box" pos="0.154164736573 0.0611647365726 0" size="0.1 0.1 0.0005" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall0" type="box" pos="0.12269848481 0.0296984848098 -0.0995" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall1" type="box" pos="0.0957739788276 0.0566229907921 -0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.58793780121 -0.137949689642 0.693519922661 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall2" type="box" pos="0.0729484848098 0.0794484848099 -0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.5 -1.89848137211e-14 0.707106781187 0.5" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall3" type="box" pos="0.0576969773072 0.0946999923125 -0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.392847479193 0.137949689642 0.693519922661 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall4" type="box" pos="0.0523413600818 0.100055609538 -6.09261782576e-18" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.270598050073 0.270598050073 0.653281482438 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall5" type="box" pos="0.0576969773072 0.0946999923125 0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.137949689642 0.392847479193 0.58793780121 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall6" type="box" pos="0.0729484848098 0.0794484848099 0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-1.89848137211e-14 0.5 0.5 0.707106781187" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall7" type="box" pos="0.0957739788276 0.0566229907921 0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.137949689642 0.58793780121 0.392847479193 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall8" type="box" pos="0.12269848481 0.0296984848098 0.0995" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall9" type="box" pos="0.149622990792 0.00277397882758 0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.392847479193 0.693519922661 0.137949689642 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall10" type="box" pos="0.17244848481 -0.0200515151902 0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.5 0.707106781187 1.89848137211e-14 0.5" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall11" type="box" pos="0.187699992312 -0.0353030226928 0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.58793780121 0.693519922661 -0.137949689642 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall12" type="box" pos="0.193055609538 -0.0406586399182 1.82778534773e-17" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.653281482438 0.653281482438 -0.270598050073 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall13" type="box" pos="0.187699992312 -0.0353030226928 -0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.58793780121 -0.392847479193 0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall14" type="box" pos="0.17244848481 -0.0200515151902 -0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.707106781187 0.5 -0.5 -1.89848137211e-14" mass=".000001" />
+        <geom name="stored_bowl_carrot_bowl_outer_wall15" type="box" pos="0.149622990792 0.00277397882758 -0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.392847479193 -0.58793780121 -0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_carrot_key" type="box" pos="0 0 0" size="0.01 0.014 0.03" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_carrot_bail_bridge" type="box" pos="0.006 0 0" size="0.006 0.006 0.089" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_carrot_bail_leg-1" type="box" pos="0.0455 0 -0.083" size="0.0455 0.006 0.006" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_tab-1" type="box" pos="0.093 -4.22177362884e-18 -0.0905" size="0.003 0.006 0.0135" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+        <geom name="stored_bowl_carrot_bail_leg1" type="box" pos="0.0455 0 0.083" size="0.0455 0.006 0.006" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_tab1" type="box" pos="0.093 -4.22177362884e-18 0.0905" size="0.003 0.006 0.0135" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+        <geom name="stored_bowl_carrot_collar_bottom" type="box" pos="0.0954748737342 0.00247487373415 0" size="0.104 0.104 0.0015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall0" type="box" pos="0.0937071067812 0.000707106781187 -0.1025" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall1" type="box" pos="0.0659708066487 0.0284434069137 -0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.58793780121 -0.137949689642 0.693519922661 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall2" type="box" pos="0.0424571067812 0.0519571067812 -0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.5 -1.89848137211e-14 0.707106781187 0.5" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall3" type="box" pos="0.0267457548313 0.0676684587311 -0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.392847479193 0.137949689642 0.693519922661 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall4" type="box" pos="0.0212286617096 0.0731855518528 -6.27631484563e-18" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.270598050073 0.270598050073 0.653281482438 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall5" type="box" pos="0.0267457548313 0.0676684587311 0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.137949689642 0.392847479193 0.58793780121 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall6" type="box" pos="0.0424571067812 0.0519571067812 0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-1.89848137211e-14 0.5 0.5 0.707106781187" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall7" type="box" pos="0.0659708066487 0.0284434069137 0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.137949689642 0.58793780121 0.392847479193 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall8" type="box" pos="0.0937071067812 0.000707106781187 0.1025" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall9" type="box" pos="0.121443406914 -0.0270291933513 0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.392847479193 0.693519922661 0.137949689642 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall10" type="box" pos="0.144957106781 -0.0505428932188 0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.5 0.707106781187 1.89848137211e-14 0.5" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall11" type="box" pos="0.160668458731 -0.0662542451687 0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.58793780121 0.693519922661 -0.137949689642 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall12" type="box" pos="0.166185551853 -0.0717713382904 1.88289445369e-17" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.653281482438 0.653281482438 -0.270598050073 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall13" type="box" pos="0.160668458731 -0.0662542451687 -0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.58793780121 -0.392847479193 0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall14" type="box" pos="0.144957106781 -0.0505428932188 -0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.707106781187 0.5 -0.5 -1.89848137211e-14" mass=".000001" />
+        <geom name="stored_bowl_carrot_collar_wall15" type="box" pos="0.121443406914 -0.0270291933513 -0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.392847479193 -0.58793780121 -0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_carrot_key_shoulder-1" type="box" pos="-0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_carrot_key_shoulder1" type="box" pos="0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_carrot_bail_lock_pin-1" type="cylinder" pos="0.093 -4.22177362884e-18 -0.0905" size=".003 .006" mass=".000001" contype="1" conaffinity="15" />
+        <geom name="stored_bowl_carrot_bail_lock_stop-1" type="box" pos="0.0915857864376 -0.0155563491861 -0.0905" size="0.005 0.006 0.007" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_carrot_bail_lock_pin1" type="cylinder" pos="0.093 -4.22177362884e-18 0.0905" size=".003 .006" mass=".000001" contype="1" conaffinity="15" />
+        <geom name="stored_bowl_carrot_bail_lock_stop1" type="box" pos="0.0915857864376 -0.0155563491861 0.0905" size="0.005 0.006 0.007" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+      </body>
+    </body>
+    <body name="stored_bowl_potato" pos="-1.4 0.39423906935 1.01476093065" quat="-0.270598050073 0.653281482438 0.270598050073 -0.653281482438">
+      <body name="stored_bowl_potato_object" quat="1 0 0 0">
+        <geom name="stored_bowl_potato_bowl_outer_bottom" type="box" pos="0.154164736573 0.0611647365726 0" size="0.1 0.1 0.0005" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall0" type="box" pos="0.12269848481 0.0296984848098 -0.0995" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall1" type="box" pos="0.0957739788276 0.0566229907921 -0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.58793780121 -0.137949689642 0.693519922661 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall2" type="box" pos="0.0729484848098 0.0794484848099 -0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.5 -1.89848137211e-14 0.707106781187 0.5" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall3" type="box" pos="0.0576969773072 0.0946999923125 -0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.392847479193 0.137949689642 0.693519922661 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall4" type="box" pos="0.0523413600818 0.100055609538 -6.09261782576e-18" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.270598050073 0.270598050073 0.653281482438 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall5" type="box" pos="0.0576969773072 0.0946999923125 0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.137949689642 0.392847479193 0.58793780121 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall6" type="box" pos="0.0729484848098 0.0794484848099 0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-1.89848137211e-14 0.5 0.5 0.707106781187" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall7" type="box" pos="0.0957739788276 0.0566229907921 0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.137949689642 0.58793780121 0.392847479193 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall8" type="box" pos="0.12269848481 0.0296984848098 0.0995" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall9" type="box" pos="0.149622990792 0.00277397882758 0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.392847479193 0.693519922661 0.137949689642 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall10" type="box" pos="0.17244848481 -0.0200515151902 0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.5 0.707106781187 1.89848137211e-14 0.5" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall11" type="box" pos="0.187699992312 -0.0353030226928 0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.58793780121 0.693519922661 -0.137949689642 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall12" type="box" pos="0.193055609538 -0.0406586399182 1.82778534773e-17" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.653281482438 0.653281482438 -0.270598050073 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall13" type="box" pos="0.187699992312 -0.0353030226928 -0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.58793780121 -0.392847479193 0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall14" type="box" pos="0.17244848481 -0.0200515151902 -0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.707106781187 0.5 -0.5 -1.89848137211e-14" mass=".000001" />
+        <geom name="stored_bowl_potato_bowl_outer_wall15" type="box" pos="0.149622990792 0.00277397882758 -0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.392847479193 -0.58793780121 -0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_potato_key" type="box" pos="0 0 0" size="0.01 0.014 0.03" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_potato_bail_bridge" type="box" pos="0.006 0 0" size="0.006 0.006 0.089" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_potato_bail_leg-1" type="box" pos="0.0455 0 -0.083" size="0.0455 0.006 0.006" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_tab-1" type="box" pos="0.093 -4.22177362884e-18 -0.0905" size="0.003 0.006 0.0135" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+        <geom name="stored_bowl_potato_bail_leg1" type="box" pos="0.0455 0 0.083" size="0.0455 0.006 0.006" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_tab1" type="box" pos="0.093 -4.22177362884e-18 0.0905" size="0.003 0.006 0.0135" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+        <geom name="stored_bowl_potato_collar_bottom" type="box" pos="0.0954748737342 0.00247487373415 0" size="0.104 0.104 0.0015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall0" type="box" pos="0.0937071067812 0.000707106781187 -0.1025" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall1" type="box" pos="0.0659708066487 0.0284434069137 -0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.58793780121 -0.137949689642 0.693519922661 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall2" type="box" pos="0.0424571067812 0.0519571067812 -0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.5 -1.89848137211e-14 0.707106781187 0.5" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall3" type="box" pos="0.0267457548313 0.0676684587311 -0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.392847479193 0.137949689642 0.693519922661 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall4" type="box" pos="0.0212286617096 0.0731855518528 -6.27631484563e-18" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.270598050073 0.270598050073 0.653281482438 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall5" type="box" pos="0.0267457548313 0.0676684587311 0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.137949689642 0.392847479193 0.58793780121 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall6" type="box" pos="0.0424571067812 0.0519571067812 0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-1.89848137211e-14 0.5 0.5 0.707106781187" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall7" type="box" pos="0.0659708066487 0.0284434069137 0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.137949689642 0.58793780121 0.392847479193 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall8" type="box" pos="0.0937071067812 0.000707106781187 0.1025" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall9" type="box" pos="0.121443406914 -0.0270291933513 0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.392847479193 0.693519922661 0.137949689642 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall10" type="box" pos="0.144957106781 -0.0505428932188 0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.5 0.707106781187 1.89848137211e-14 0.5" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall11" type="box" pos="0.160668458731 -0.0662542451687 0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.58793780121 0.693519922661 -0.137949689642 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall12" type="box" pos="0.166185551853 -0.0717713382904 1.88289445369e-17" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.653281482438 0.653281482438 -0.270598050073 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall13" type="box" pos="0.160668458731 -0.0662542451687 -0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.58793780121 -0.392847479193 0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall14" type="box" pos="0.144957106781 -0.0505428932188 -0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.707106781187 0.5 -0.5 -1.89848137211e-14" mass=".000001" />
+        <geom name="stored_bowl_potato_collar_wall15" type="box" pos="0.121443406914 -0.0270291933513 -0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.392847479193 -0.58793780121 -0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_potato_key_shoulder-1" type="box" pos="-0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_potato_key_shoulder1" type="box" pos="0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_potato_bail_lock_pin-1" type="cylinder" pos="0.093 -4.22177362884e-18 -0.0905" size=".003 .006" mass=".000001" contype="1" conaffinity="15" />
+        <geom name="stored_bowl_potato_bail_lock_stop-1" type="box" pos="0.0915857864376 -0.0155563491861 -0.0905" size="0.005 0.006 0.007" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_potato_bail_lock_pin1" type="cylinder" pos="0.093 -4.22177362884e-18 0.0905" size=".003 .006" mass=".000001" contype="1" conaffinity="15" />
+        <geom name="stored_bowl_potato_bail_lock_stop1" type="box" pos="0.0915857864376 -0.0155563491861 0.0905" size="0.005 0.006 0.007" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+      </body>
+    </body>
+    <body name="stored_bowl_leafy_greens" pos="-1.13 0.39423906935 1.01476093065" quat="-0.270598050073 0.653281482438 0.270598050073 -0.653281482438">
+      <body name="stored_bowl_leafy_greens_object" quat="1 0 0 0">
+        <geom name="stored_bowl_leafy_greens_bowl_outer_bottom" type="box" pos="0.154164736573 0.0611647365726 0" size="0.1 0.1 0.0005" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall0" type="box" pos="0.12269848481 0.0296984848098 -0.0995" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall1" type="box" pos="0.0957739788276 0.0566229907921 -0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.58793780121 -0.137949689642 0.693519922661 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall2" type="box" pos="0.0729484848098 0.0794484848099 -0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.5 -1.89848137211e-14 0.707106781187 0.5" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall3" type="box" pos="0.0576969773072 0.0946999923125 -0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.392847479193 0.137949689642 0.693519922661 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall4" type="box" pos="0.0523413600818 0.100055609538 -6.09261782576e-18" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.270598050073 0.270598050073 0.653281482438 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall5" type="box" pos="0.0576969773072 0.0946999923125 0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.137949689642 0.392847479193 0.58793780121 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall6" type="box" pos="0.0729484848098 0.0794484848099 0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-1.89848137211e-14 0.5 0.5 0.707106781187" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall7" type="box" pos="0.0957739788276 0.0566229907921 0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.137949689642 0.58793780121 0.392847479193 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall8" type="box" pos="0.12269848481 0.0296984848098 0.0995" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall9" type="box" pos="0.149622990792 0.00277397882758 0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.392847479193 0.693519922661 0.137949689642 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall10" type="box" pos="0.17244848481 -0.0200515151902 0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.5 0.707106781187 1.89848137211e-14 0.5" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall11" type="box" pos="0.187699992312 -0.0353030226928 0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.58793780121 0.693519922661 -0.137949689642 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall12" type="box" pos="0.193055609538 -0.0406586399182 1.82778534773e-17" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.653281482438 0.653281482438 -0.270598050073 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall13" type="box" pos="0.187699992312 -0.0353030226928 -0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.58793780121 -0.392847479193 0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall14" type="box" pos="0.17244848481 -0.0200515151902 -0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.707106781187 0.5 -0.5 -1.89848137211e-14" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bowl_outer_wall15" type="box" pos="0.149622990792 0.00277397882758 -0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.392847479193 -0.58793780121 -0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_key" type="box" pos="0 0 0" size="0.01 0.014 0.03" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bail_bridge" type="box" pos="0.006 0 0" size="0.006 0.006 0.089" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_bail_leg-1" type="box" pos="0.0455 0 -0.083" size="0.0455 0.006 0.006" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_tab-1" type="box" pos="0.093 -4.22177362884e-18 -0.0905" size="0.003 0.006 0.0135" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+        <geom name="stored_bowl_leafy_greens_bail_leg1" type="box" pos="0.0455 0 0.083" size="0.0455 0.006 0.006" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_tab1" type="box" pos="0.093 -4.22177362884e-18 0.0905" size="0.003 0.006 0.0135" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+        <geom name="stored_bowl_leafy_greens_collar_bottom" type="box" pos="0.0954748737342 0.00247487373415 0" size="0.104 0.104 0.0015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall0" type="box" pos="0.0937071067812 0.000707106781187 -0.1025" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall1" type="box" pos="0.0659708066487 0.0284434069137 -0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.58793780121 -0.137949689642 0.693519922661 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall2" type="box" pos="0.0424571067812 0.0519571067812 -0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.5 -1.89848137211e-14 0.707106781187 0.5" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall3" type="box" pos="0.0267457548313 0.0676684587311 -0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.392847479193 0.137949689642 0.693519922661 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall4" type="box" pos="0.0212286617096 0.0731855518528 -6.27631484563e-18" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.270598050073 0.270598050073 0.653281482438 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall5" type="box" pos="0.0267457548313 0.0676684587311 0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.137949689642 0.392847479193 0.58793780121 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall6" type="box" pos="0.0424571067812 0.0519571067812 0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-1.89848137211e-14 0.5 0.5 0.707106781187" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall7" type="box" pos="0.0659708066487 0.0284434069137 0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.137949689642 0.58793780121 0.392847479193 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall8" type="box" pos="0.0937071067812 0.000707106781187 0.1025" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall9" type="box" pos="0.121443406914 -0.0270291933513 0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.392847479193 0.693519922661 0.137949689642 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall10" type="box" pos="0.144957106781 -0.0505428932188 0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.5 0.707106781187 1.89848137211e-14 0.5" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall11" type="box" pos="0.160668458731 -0.0662542451687 0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.58793780121 0.693519922661 -0.137949689642 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall12" type="box" pos="0.166185551853 -0.0717713382904 1.88289445369e-17" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.653281482438 0.653281482438 -0.270598050073 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall13" type="box" pos="0.160668458731 -0.0662542451687 -0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.58793780121 -0.392847479193 0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall14" type="box" pos="0.144957106781 -0.0505428932188 -0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.707106781187 0.5 -0.5 -1.89848137211e-14" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_collar_wall15" type="box" pos="0.121443406914 -0.0270291933513 -0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.392847479193 -0.58793780121 -0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_leafy_greens_key_shoulder-1" type="box" pos="-0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_leafy_greens_key_shoulder1" type="box" pos="0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_leafy_greens_bail_lock_pin-1" type="cylinder" pos="0.093 -4.22177362884e-18 -0.0905" size=".003 .006" mass=".000001" contype="1" conaffinity="15" />
+        <geom name="stored_bowl_leafy_greens_bail_lock_stop-1" type="box" pos="0.0915857864376 -0.0155563491861 -0.0905" size="0.005 0.006 0.007" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_leafy_greens_bail_lock_pin1" type="cylinder" pos="0.093 -4.22177362884e-18 0.0905" size=".003 .006" mass=".000001" contype="1" conaffinity="15" />
+        <geom name="stored_bowl_leafy_greens_bail_lock_stop1" type="box" pos="0.0915857864376 -0.0155563491861 0.0905" size="0.005 0.006 0.007" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+      </body>
+    </body>
+    <body name="stored_bowl_tomato" pos="-0.79423906935 0.46 1.01476093065" quat="0.270598050073 0.270598050073 0.653281482438 -0.653281482438">
+      <body name="stored_bowl_tomato_object" quat="1 0 0 0">
+        <geom name="stored_bowl_tomato_bowl_outer_bottom" type="box" pos="0.154164736573 0.0611647365726 0" size="0.1 0.1 0.0005" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall0" type="box" pos="0.12269848481 0.0296984848098 -0.0995" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall1" type="box" pos="0.0957739788276 0.0566229907921 -0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.58793780121 -0.137949689642 0.693519922661 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall2" type="box" pos="0.0729484848098 0.0794484848099 -0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.5 -1.89848137211e-14 0.707106781187 0.5" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall3" type="box" pos="0.0576969773072 0.0946999923125 -0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.392847479193 0.137949689642 0.693519922661 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall4" type="box" pos="0.0523413600818 0.100055609538 -6.09261782576e-18" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.270598050073 0.270598050073 0.653281482438 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall5" type="box" pos="0.0576969773072 0.0946999923125 0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.137949689642 0.392847479193 0.58793780121 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall6" type="box" pos="0.0729484848098 0.0794484848099 0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-1.89848137211e-14 0.5 0.5 0.707106781187" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall7" type="box" pos="0.0957739788276 0.0566229907921 0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.137949689642 0.58793780121 0.392847479193 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall8" type="box" pos="0.12269848481 0.0296984848098 0.0995" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall9" type="box" pos="0.149622990792 0.00277397882758 0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.392847479193 0.693519922661 0.137949689642 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall10" type="box" pos="0.17244848481 -0.0200515151902 0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.5 0.707106781187 1.89848137211e-14 0.5" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall11" type="box" pos="0.187699992312 -0.0353030226928 0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.58793780121 0.693519922661 -0.137949689642 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall12" type="box" pos="0.193055609538 -0.0406586399182 1.82778534773e-17" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.653281482438 0.653281482438 -0.270598050073 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall13" type="box" pos="0.187699992312 -0.0353030226928 -0.0380770015203" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.58793780121 -0.392847479193 0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall14" type="box" pos="0.17244848481 -0.0200515151902 -0.0703571247281" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.707106781187 0.5 -0.5 -1.89848137211e-14" mass=".000001" />
+        <geom name="stored_bowl_tomato_bowl_outer_wall15" type="box" pos="0.149622990792 0.00277397882758 -0.0919260134849" size="0.0005 0.019891236738 0.045" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.392847479193 -0.58793780121 -0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_tomato_key" type="box" pos="0 0 0" size="0.01 0.014 0.03" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_tomato_bail_bridge" type="box" pos="0.006 0 0" size="0.006 0.006 0.089" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_tomato_bail_leg-1" type="box" pos="0.0455 0 -0.083" size="0.0455 0.006 0.006" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_tab-1" type="box" pos="0.093 -4.22177362884e-18 -0.0905" size="0.003 0.006 0.0135" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+        <geom name="stored_bowl_tomato_bail_leg1" type="box" pos="0.0455 0 0.083" size="0.0455 0.006 0.006" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_tab1" type="box" pos="0.093 -4.22177362884e-18 0.0905" size="0.003 0.006 0.0135" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+        <geom name="stored_bowl_tomato_collar_bottom" type="box" pos="0.0954748737342 0.00247487373415 0" size="0.104 0.104 0.0015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall0" type="box" pos="0.0937071067812 0.000707106781187 -0.1025" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.653281482438 -0.270598050073 0.653281482438 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall1" type="box" pos="0.0659708066487 0.0284434069137 -0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.58793780121 -0.137949689642 0.693519922661 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall2" type="box" pos="0.0424571067812 0.0519571067812 -0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.5 -1.89848137211e-14 0.707106781187 0.5" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall3" type="box" pos="0.0267457548313 0.0676684587311 -0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.392847479193 0.137949689642 0.693519922661 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall4" type="box" pos="0.0212286617096 0.0731855518528 -6.27631484563e-18" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.270598050073 0.270598050073 0.653281482438 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall5" type="box" pos="0.0267457548313 0.0676684587311 0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="0.137949689642 0.392847479193 0.58793780121 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall6" type="box" pos="0.0424571067812 0.0519571067812 0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-1.89848137211e-14 0.5 0.5 0.707106781187" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall7" type="box" pos="0.0659708066487 0.0284434069137 0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.137949689642 0.58793780121 0.392847479193 0.693519922661" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall8" type="box" pos="0.0937071067812 0.000707106781187 0.1025" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall9" type="box" pos="0.121443406914 -0.0270291933513 0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.392847479193 0.693519922661 0.137949689642 0.58793780121" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall10" type="box" pos="0.144957106781 -0.0505428932188 0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.5 0.707106781187 1.89848137211e-14 0.5" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall11" type="box" pos="0.160668458731 -0.0662542451687 0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.58793780121 0.693519922661 -0.137949689642 0.392847479193" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall12" type="box" pos="0.166185551853 -0.0717713382904 1.88289445369e-17" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.653281482438 0.653281482438 -0.270598050073 0.270598050073" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall13" type="box" pos="0.160668458731 -0.0662542451687 -0.0392250518174" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.58793780121 -0.392847479193 0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall14" type="box" pos="0.144957106781 -0.0505428932188 -0.0724784450716" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.707106781187 0.5 -0.5 -1.89848137211e-14" mass=".000001" />
+        <geom name="stored_bowl_tomato_collar_wall15" type="box" pos="0.121443406914 -0.0270291933513 -0.0946976520824" size="0.0015 0.0206868862075 0.004" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" quat="-0.693519922661 0.392847479193 -0.58793780121 -0.137949689642" mass=".000001" />
+        <geom name="stored_bowl_tomato_key_shoulder-1" type="box" pos="-0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_tomato_key_shoulder1" type="box" pos="0.036 0 0" size="0.004 0.023 0.015" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_tomato_bail_lock_pin-1" type="cylinder" pos="0.093 -4.22177362884e-18 -0.0905" size=".003 .006" mass=".000001" contype="1" conaffinity="15" />
+        <geom name="stored_bowl_tomato_bail_lock_stop-1" type="box" pos="0.0915857864376 -0.0155563491861 -0.0905" size="0.005 0.006 0.007" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+        <geom name="stored_bowl_tomato_bail_lock_pin1" type="cylinder" pos="0.093 -4.22177362884e-18 0.0905" size=".003 .006" mass=".000001" contype="1" conaffinity="15" />
+        <geom name="stored_bowl_tomato_bail_lock_stop1" type="box" pos="0.0915857864376 -0.0155563491861 0.0905" size="0.005 0.006 0.007" rgba="0.35 0.4 0.45 1" contype="1" conaffinity="2" margin=".01" mass="1e-06" />
+      </body>
+    </body>
+    <body name="wash_basket" pos="-0.55 0.36 0.67" quat="1 0 0 0">
+      <geom name="wash_basket_bottom" type="cylinder" pos="0 0 .001" size="0.118 0.001" rgba=".42 .6 .7 1" contype="1" conaffinity="2" />
+      <geom name="wash_basket_wall0" type="box" pos="0.119 0 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="1 0 0 0" />
+      <geom name="wash_basket_wall1" type="box" pos="0.116713448368 0.0232157483199 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.995184726672 0 0 0.0980171403296" />
+      <geom name="wash_basket_wall2" type="box" pos="0.109941664369 0.0455393284514 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.980785280403 0 0 0.195090322016" />
+      <geom name="wash_basket_wall3" type="box" pos="0.098944883864 0.0661128577293 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.956940335732 0 0 0.290284677254" />
+      <geom name="wash_basket_wall4" type="box" pos="0.0841457069612 0.0841457069612 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.923879532511 0 0 0.382683432365" />
+      <geom name="wash_basket_wall5" type="box" pos="0.0661128577293 0.098944883864 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.881921264348 0 0 0.471396736826" />
+      <geom name="wash_basket_wall6" type="box" pos="0.0455393284514 0.109941664369 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.831469612303 0 0 0.55557023302" />
+      <geom name="wash_basket_wall7" type="box" pos="0.0232157483199 0.116713448368 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.773010453363 0 0 0.634393284164" />
+      <geom name="wash_basket_wall8" type="box" pos="7.28664845493e-18 0.119 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.707106781187 0 0 0.707106781187" />
+      <geom name="wash_basket_wall9" type="box" pos="-0.0232157483199 0.116713448368 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.634393284164 0 0 0.773010453363" />
+      <geom name="wash_basket_wall10" type="box" pos="-0.0455393284514 0.109941664369 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.55557023302 0 0 0.831469612303" />
+      <geom name="wash_basket_wall11" type="box" pos="-0.0661128577293 0.098944883864 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.471396736826 0 0 0.881921264348" />
+      <geom name="wash_basket_wall12" type="box" pos="-0.0841457069612 0.0841457069612 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.382683432365 0 0 0.923879532511" />
+      <geom name="wash_basket_wall13" type="box" pos="-0.098944883864 0.0661128577293 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.290284677254 0 0 0.956940335732" />
+      <geom name="wash_basket_wall14" type="box" pos="-0.109941664369 0.0455393284514 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.195090322016 0 0 0.980785280403" />
+      <geom name="wash_basket_wall15" type="box" pos="-0.116713448368 0.0232157483199 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="0.0980171403296 0 0 0.995184726672" />
+      <geom name="wash_basket_wall16" type="box" pos="-0.119 1.45732969099e-17 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="6.12323399574e-17 0 0 1" />
+      <geom name="wash_basket_wall17" type="box" pos="-0.116713448368 -0.0232157483199 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.0980171403296 0 0 0.995184726672" />
+      <geom name="wash_basket_wall18" type="box" pos="-0.109941664369 -0.0455393284514 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.195090322016 0 0 0.980785280403" />
+      <geom name="wash_basket_wall19" type="box" pos="-0.098944883864 -0.0661128577293 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.290284677254 0 0 0.956940335732" />
+      <geom name="wash_basket_wall20" type="box" pos="-0.0841457069612 -0.0841457069612 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.382683432365 0 0 0.923879532511" />
+      <geom name="wash_basket_wall21" type="box" pos="-0.0661128577293 -0.098944883864 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.471396736826 0 0 0.881921264348" />
+      <geom name="wash_basket_wall22" type="box" pos="-0.0455393284514 -0.109941664369 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.55557023302 0 0 0.831469612303" />
+      <geom name="wash_basket_wall23" type="box" pos="-0.0232157483199 -0.116713448368 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.634393284164 0 0 0.773010453363" />
+      <geom name="wash_basket_wall24" type="box" pos="-2.18599453648e-17 -0.119 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.707106781187 0 0 0.707106781187" />
+      <geom name="wash_basket_wall25" type="box" pos="0.0232157483199 -0.116713448368 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.773010453363 0 0 0.634393284164" />
+      <geom name="wash_basket_wall26" type="box" pos="0.0455393284514 -0.109941664369 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.831469612303 0 0 0.55557023302" />
+      <geom name="wash_basket_wall27" type="box" pos="0.0661128577293 -0.098944883864 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.881921264348 0 0 0.471396736826" />
+      <geom name="wash_basket_wall28" type="box" pos="0.0841457069612 -0.0841457069612 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.923879532511 0 0 0.382683432365" />
+      <geom name="wash_basket_wall29" type="box" pos="0.098944883864 -0.0661128577293 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.956940335732 0 0 0.290284677254" />
+      <geom name="wash_basket_wall30" type="box" pos="0.109941664369 -0.0455393284514 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.980785280403 0 0 0.195090322016" />
+      <geom name="wash_basket_wall31" type="box" pos="0.116713448368 -0.0232157483199 0.07" size="0.001 0.0118189684029 0.07" rgba="0.55 0.62 0.66 1" contype="1" conaffinity="2" mass=".000001" quat="-0.995184726672 0 0 0.0980171403296" />
+      <geom name="wash_cradle_pad0" type="box" pos="-0.055 -0.035 -0.01" size="0.0125 0.0125 0.01" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="wash_cradle_pad1" type="box" pos="0.055 -0.035 -0.01" size="0.0125 0.0125 0.01" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="2" mass=".000001" />
+      <geom name="wash_cradle_pad2" type="box" pos="0 0.065 -0.01" size="0.0125 0.0125 0.01" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="2" mass=".000001" />
+    </body>
+    <geom name="raw_tray" type="box" pos="-1.625 0.19 0.859" size="0.16 0.15 0.009" rgba="0.5 0.6 0.4 1" contype="1" conaffinity="2" mass=".000001" />
+    <geom name="raw_potato" type="box" pos="-1.515 0.12 0.903" size="0.045 0.0325 0.035" rgba="0.85 0.5 0.15 1" contype="1" conaffinity="2" mass=".000001" />
+    <geom name="raw_greens" type="box" pos="-1.68 0.265 0.903" size="0.085 0.05 0.035" rgba="0.85 0.6 0.15 1" contype="1" conaffinity="2" mass=".000001" />
+    <geom name="raw_tomato" type="box" pos="-1.515 0.27 0.898" size="0.035 0.035 0.03" rgba="0.85 0.7 0.15 1" contype="1" conaffinity="2" mass=".000001" />
+  </worldbody>
+  <contact />
+</mujoco>

@@ -1,0 +1,591 @@
+{
+  "act": "spider",
+  "obj": "spider",
+  "grasp_sense": 1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 76,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        1.66,
+        0.25,
+        0.95
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "",
+      "p": [
+        1.66,
+        0.25,
+        0.972
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out and up",
+      "p": [
+        1.66,
+        0.15,
+        1.092
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        1.4,
+        0.0,
+        1.15
+      ],
+      "c": null,
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the pot",
+      "p": [
+        1.295,
+        0.23,
+        1.107
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "scoop",
+      "p": [
+        1.295,
+        0.23,
+        0.987
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 6,
+      "label": "drain",
+      "p": [
+        1.295,
+        0.23,
+        1.107
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 7,
+      "label": "lane",
+      "p": [
+        1.295,
+        0.0,
+        1.12
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 8,
+      "label": "lane middle",
+      "p": [
+        0.862,
+        0.0,
+        1.12
+      ],
+      "c": null,
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 9,
+      "label": "",
+      "p": [
+        0.43,
+        0.0,
+        1.12
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 10,
+      "label": "over the plate",
+      "p": [
+        0.43,
+        0.13,
+        1.035
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 11,
+      "label": "tip 110 deg",
+      "p": [
+        0.39,
+        0.09,
+        0.995
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 12,
+      "label": "level again",
+      "p": [
+        0.43,
+        0.13,
+        1.035
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 13,
+      "label": "lane",
+      "p": [
+        0.43,
+        0.0,
+        1.12
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 14,
+      "label": "lane middle",
+      "p": [
+        0.862,
+        0.0,
+        1.12
+      ],
+      "c": null,
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 15,
+      "label": "lane",
+      "p": [
+        1.4,
+        0.0,
+        1.15
+      ],
+      "c": null,
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 16,
+      "label": "out and up",
+      "p": [
+        1.66,
+        0.15,
+        1.092
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 17,
+      "label": "",
+      "p": [
+        1.66,
+        0.25,
+        0.972
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 18,
+      "label": "on the rest",
+      "p": [
+        1.66,
+        0.25,
+        0.95
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "pick#0": {
+      "ok": false,
+      "n_candidates": 1,
+      "start_status": {
+        "pose": 86,
+        "collision": 105,
+        "ok": 1
+      }
+    },
+    "scoop#5": {
+      "ok": true,
+      "cart": 1.051,
+      "start_reserve_mm": 3.4
+    },
+    "over the plate#10": {
+      "ok": false,
+      "n_candidates": 16,
+      "start_status": {
+        "pose": 87,
+        "ok": 67,
+        "collision": 38
+      }
+    },
+    "on the rest#18": {
+      "ok": false,
+      "n_candidates": 1,
+      "start_status": {
+        "pose": 86,
+        "collision": 105,
+        "ok": 1
+      }
+    }
+  },
+  "pieces": [
+    {
+      "frm": "scoop#5",
+      "to": "lane#3",
+      "steps": 39,
+      "time_s": 3.8,
+      "min_reserve_mm": 2.2,
+      "max_step_deg": 1.9,
+      "cart": [
+        1.051,
+        1.1
+      ]
+    },
+    {
+      "frm": "scoop#5",
+      "to": "lane middle#8",
+      "steps": 86,
+      "time_s": 12.8,
+      "min_reserve_mm": 2.2,
+      "max_step_deg": 1.9,
+      "cart": [
+        1.051,
+        0.562
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    },
+    {
+      "ok": false,
+      "kf": 18,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": 2.2,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick",
+      "cand": 0,
+      "start_reserve_mm": 2.1,
+      "cart": 1.412,
+      "ok": false,
+      "fail": {
+        "at": "pick->",
+        "kf": null,
+        "cart": 1.412,
+        "step_deg": 1.37,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.0733333333333334,
+        "hits": [
+          [
+            "r16_lid_rim",
+            "R_gripper_r16_spider_bowl"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "scoop",
+      "cand": 0,
+      "start_reserve_mm": 6.6,
+      "cart": 1.093,
+      "ok": false,
+      "fail": {
+        "at": "scoop->over the pot",
+        "kf": null,
+        "cart": 1.093,
+        "step_deg": 1.44,
+        "pose_mm": 6.61,
+        "reserve_mm": null,
+        "dt": 0.09230769230769238,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "scoop",
+      "cand": 1,
+      "start_reserve_mm": 3.4,
+      "cart": 0.87,
+      "ok": false,
+      "fail": {
+        "at": "scoop->over the pot",
+        "kf": null,
+        "cart": 0.87,
+        "step_deg": 1.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09230769230769238,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "scoop",
+      "cand": 2,
+      "start_reserve_mm": 3.4,
+      "cart": 1.051,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 0,
+      "start_reserve_mm": 68.0,
+      "cart": 0.734,
+      "ok": false,
+      "fail": {
+        "at": "->lane middle",
+        "kf": null,
+        "cart": 0.679,
+        "step_deg": 1.75,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09829545454545453,
+        "hits": [
+          [
+            "R_gripper_r16_spider_bowl",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 1,
+      "start_reserve_mm": 68.0,
+      "cart": 0.662,
+      "ok": false,
+      "fail": {
+        "at": "->lane middle",
+        "kf": null,
+        "cart": 0.64,
+        "step_deg": 1.55,
+        "pose_mm": 0.0,
+        "reserve_mm": 53.1,
+        "dt": 0.09829545454545453,
+        "hits": [
+          [
+            "R_gripper_r16_spider_bowl",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 2,
+      "start_reserve_mm": 68.0,
+      "cart": 0.119,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tip 110 deg",
+        "kf": null,
+        "cart": 0.119,
+        "step_deg": 0.35,
+        "pose_mm": 0.94,
+        "reserve_mm": null,
+        "dt": 0.043650793650793655,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 3,
+      "start_reserve_mm": 68.0,
+      "cart": 0.651,
+      "ok": false,
+      "fail": {
+        "at": "->lane middle",
+        "kf": null,
+        "cart": 0.633,
+        "step_deg": 1.5,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09829545454545453,
+        "hits": [
+          [
+            "R_gripper_r16_spider_bowl",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 4,
+      "start_reserve_mm": 68.0,
+      "cart": 0.708,
+      "ok": false,
+      "fail": {
+        "at": "->lane middle",
+        "kf": null,
+        "cart": 0.665,
+        "step_deg": 1.7,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09829545454545453,
+        "hits": [
+          [
+            "R_gripper_r16_spider_bowl",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 5,
+      "start_reserve_mm": 68.0,
+      "cart": 0.676,
+      "ok": false,
+      "fail": {
+        "at": "->lane middle",
+        "kf": null,
+        "cart": 0.648,
+        "step_deg": 2.07,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09829545454545453,
+        "hits": [
+          [
+            "R_gripper_r16_spider_bowl",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 6,
+      "start_reserve_mm": 68.0,
+      "cart": 0.622,
+      "ok": false,
+      "fail": {
+        "at": "->lane middle",
+        "kf": null,
+        "cart": 0.612,
+        "step_deg": 1.42,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09829545454545453,
+        "hits": [
+          [
+            "R_gripper_r16_spider_bowl",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 7,
+      "start_reserve_mm": 68.0,
+      "cart": 0.75,
+      "ok": false,
+      "fail": {
+        "at": "->lane middle",
+        "kf": null,
+        "cart": 0.686,
+        "step_deg": 1.81,
+        "pose_mm": 0.0,
+        "reserve_mm": 50.7,
+        "dt": 0.09829545454545453,
+        "hits": [
+          [
+            "R_gripper_r16_spider_bowl",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "on the rest",
+      "cand": 0,
+      "start_reserve_mm": 2.1,
+      "cart": 1.412,
+      "ok": false,
+      "fail": {
+        "at": "on the rest->",
+        "kf": null,
+        "cart": 1.412,
+        "step_deg": 1.37,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.0733333333333334,
+        "hits": [
+          [
+            "r16_lid_rim",
+            "R_gripper_r16_spider_bowl"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null,
+    null
+  ]
+}

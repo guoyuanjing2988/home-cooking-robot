@@ -1,0 +1,185 @@
+{
+ "item": "lotus_root",
+ "zh": "\u83b2\u85d5",
+ "set": "H1",
+ "lip": 0.0,
+ "grasp": "pinch",
+ "gripper": "HE100",
+ "mode": "force",
+ "F": 20.0,
+ "mu": 0.15,
+ "kg": 0.4,
+ "dims": [
+  0.075,
+  0.16,
+  0.07
+ ],
+ "dmg": 64,
+ "dsrc": "est",
+ "friction_rule_ok": true,
+ "profile": "stress",
+ "shift": [
+  0.0,
+  0.0,
+  0.0
+ ],
+ "yaw_deg": -0.1,
+ "width_local_mm": 70.0,
+ "q_open": 0.042515647378883956,
+ "grasp_above_centre_mm": 0.0,
+ "dropped": "lift",
+ "max_slip_mm": 674.29,
+ "max_slip_deg": 90.0,
+ "finger_N_10ms_max": 20.47,
+ "finger_N_median": 0.0,
+ "finger_N_p95": 0.0,
+ "moment_Nm_10ms_max": 1.5,
+ "scene_contact_N_max": 0.0,
+ "final_pos": [
+  0.0002,
+  -0.0,
+  0.0409
+ ],
+ "in_target": false,
+ "scene_contact_segments": {},
+ "impact_v_mps": 0.0,
+ "drop_equiv_mm": 0.0,
+ "need_N": 19.62,
+ "sim_s": 9.73,
+ "segments": [
+  {
+   "seg": "to_pregrasp",
+   "T": 1.3,
+   "slip_mm": 0.0,
+   "food": [
+    0.0,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "approach",
+   "T": 1.35,
+   "slip_mm": 0.0,
+   "food": [
+    0.0,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "close",
+   "finger_N": [
+    19.97,
+    19.98
+   ],
+   "q": 0.0344197013497932
+  },
+  {
+   "seg": "lift",
+   "T": 0.65,
+   "slip_mm": 119.98,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "raise",
+   "T": 0.41,
+   "slip_mm": 179.98,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "carry_A_tilt_jaw_axis_estop",
+   "T": 0.8,
+   "slip_mm": 281.02,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "pause",
+   "T": 0.3,
+   "slip_mm": 281.04,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "carry_B_tilt_pad_axis",
+   "T": 0.86,
+   "slip_mm": 472.66,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "carry_C",
+   "T": 0.8,
+   "slip_mm": 674.26,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "pause2",
+   "T": 0.2,
+   "slip_mm": 674.29,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "lower",
+   "T": 0.0,
+   "slip_mm": 674.29,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "retreat",
+   "T": 0.95,
+   "slip_mm": 674.29,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  },
+  {
+   "seg": "settle",
+   "T": 1.0,
+   "slip_mm": 674.29,
+   "food": [
+    0.0002,
+    -0.0,
+    0.0409
+   ]
+  }
+ ],
+ "ok": false,
+ "fail": [
+  "dropped",
+  "slip>=10mm",
+  "not in target"
+ ]
+}

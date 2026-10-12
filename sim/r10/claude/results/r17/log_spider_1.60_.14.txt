@@ -1,0 +1,28 @@
+pick start candidates 16 {'pose': 87, 'ok': 71, 'collision': 34}
+ cand 0 cart 1.39 ok
+scoop start candidates 16 {'collision': 40, 'ok': 28, 'pose': 124}
+ cand 0 cart 1.09 {'at': 'scoop->over the pot', 'kf': None, 'cart': np.float64(1.093), 'step_deg': 1.44, 'pose_mm': 6.61, 'reserve_mm': None, 'dt': np.float64(0.09230769230769238), 'hits': []}
+ cand 1 cart 0.87 {'at': 'scoop->over the pot', 'kf': None, 'cart': np.float64(0.87), 'step_deg': 1.54, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09230769230769238), 'hits': [['R_geom_17', 'R_finger_plus']]}
+ cand 2 cart 1.05 ok
+over the plate start candidates 16 {'pose': 87, 'ok': 67, 'collision': 38}
+ cand 0 cart 0.73 {'at': '->lane middle', 'kf': None, 'cart': np.float64(0.679), 'step_deg': 1.75, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09829545454545453), 'hits': [['R_gripper_r16_spider_bowl', 'R_base_plate']]}
+ cand 1 cart 0.66 {'at': '->lane middle', 'kf': None, 'cart': np.float64(0.64), 'step_deg': 1.55, 'pose_mm': 0.0, 'reserve_mm': 53.1, 'dt': np.float64(0.09829545454545453), 'hits': [['R_gripper_r16_spider_bowl', 'R_base_plate']]}
+ cand 2 cart 0.12 {'at': 'over the plate->tip 110 deg', 'kf': None, 'cart': np.float64(0.119), 'step_deg': 0.35, 'pose_mm': 0.94, 'reserve_mm': None, 'dt': np.float64(0.043650793650793655), 'hits': []}
+ cand 3 cart 0.65 {'at': '->lane middle', 'kf': None, 'cart': np.float64(0.633), 'step_deg': 1.5, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09829545454545453), 'hits': [['R_gripper_r16_spider_bowl', 'R_base_plate']]}
+ cand 4 cart 0.71 {'at': '->lane middle', 'kf': None, 'cart': np.float64(0.665), 'step_deg': 1.7, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09829545454545453), 'hits': [['R_gripper_r16_spider_bowl', 'R_base_plate']]}
+ cand 5 cart 0.68 {'at': '->lane middle', 'kf': None, 'cart': np.float64(0.648), 'step_deg': 2.07, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09829545454545453), 'hits': [['R_gripper_r16_spider_bowl', 'R_base_plate']]}
+ cand 6 cart 0.62 {'at': '->lane middle', 'kf': None, 'cart': np.float64(0.612), 'step_deg': 1.42, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09829545454545453), 'hits': [['R_gripper_r16_spider_bowl', 'R_base_plate']]}
+ cand 7 cart 0.75 {'at': '->lane middle', 'kf': None, 'cart': np.float64(0.686), 'step_deg': 1.81, 'pose_mm': 0.0, 'reserve_mm': 50.7, 'dt': np.float64(0.09829545454545453), 'hits': [['R_gripper_r16_spider_bowl', 'R_base_plate']]}
+on the rest start candidates 16 {'pose': 87, 'ok': 71, 'collision': 34}
+ cand 0 cart 1.39 ok
+Traceback (most recent call last):
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r17chain.py", line 216, in <module>
+    apps.append(approach(k,world,q))
+                ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r17chain.py", line 145, in approach
+    if key not in _empty:_empty[key]=model(world)
+                                     ^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r17chain.py", line 93, in model
+    cfg=chain.chain_cfg('SD',**BASE,**SCENE,**extra);tree,meta=build(cfg,None);return Checker(tree,meta)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: chain.chain_cfg() got multiple values for keyword argument 'r16_tools'
