@@ -1,0 +1,18 @@
+pick (seated under the blade plate) start candidates 8 {'collision': 47, 'ok': 22, 'pose': 27}
+ cand 0 cart -0.6 ok
+ cand 1 cart -0.6 ok
+over the pan on the folded cradle start candidates 8 {'ok': 40, 'pose': 56}
+ cand 0 cart -0.6 {'at': 'over the pan on the folded cradle->lane', 'kf': None, 'cart': np.float64(-0.6), 'step_deg': 2.29, 'pose_mm': 0.0, 'reserve_mm': None, 'plume_mm': None, 'dt': np.float64(0.09887818153038133), 'hits': [['R_geom_enc2_ua_1', 'R_cart_beam']]}
+ cand 1 cart -0.6 ok
+ cand 2 cart -0.6 ok
+in front of the lever base start candidates 8 {'ok': 39, 'pose': 34, 'collision': 23}
+ cand 0 cart -0.6 ok
+ cand 1 cart -0.6 ok
+joins at lane [(180, False), (180, False), (180, False), (180, False)]
+  join (0, 0) cart gap None object moves 25 mm / 15 deg in the join
+  join (0, 1) cart gap None object moves 25 mm / 15 deg in the join
+  join (1, 0) cart gap None object moves 24 mm / 15 deg in the join
+  join (1, 1) cart gap None object moves 24 mm / 15 deg in the join
+joins at lane [(0, True), (0, True), (0, True), (0, True)]
+results/r19/prep5/chain_ct2s_s3_ur5e_enc2_pgc.json
+{"act": "ct2s", "obj": "ctray", "arm": "ur5e_enc2_pgc", "grasp_sense": 1, "argv": ["ACT=ct2s", "CP=-.60", "KFC=pick:-.60;in front of the lever base:-.60", "LANEC=-.60", "SEEDS=1", "TRIES=8", "KEEP=2", "TAG=s3", "ARM=ur5e_enc2_pgc", "PLUME=0"], "ok": false, "time_s": 0.0, "elapsed_s": 62, "rinse_dwell_s_est": 3.0, "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker", "anchors": {"pick (seated under the blade plate)#0": {"ok": true, "cand": 0, "cart": -0.6, "start_reserve_mm": 2.0}, "over the pan on the folded cradle#5": {"ok": true, "cand": 0, "cart": -0.6, "start_reserve_mm": 27.5}, "in front of the lever base#9": {"ok": true, "cand": 0, "cart": -0.6, "start_reserve_mm": 32.5}}, "pieces": [{"frm": "pick (seated under the blade plate)#0", "to": "lane#4", "steps": 54, "time_s": 5.2, "min_reserve_mm": 2.0, "min_plume_mm": null, "max_step_deg": 2.3, "cart": [-0.6, -0.6]}, {"frm": "over the pan on the folded cradle#5", "to": "lane#4", "steps": 26, "time_s": 2.6, "min_reserve_mm": 21.7, "min_plume_mm": null, "max_step_deg": 3.5, "cart": [-0.6, -0.6]}, {"frm": "over the pan on the folded cradle#5", "to": "lane#8", "steps": 146, "time_s": 10.1, "min_reserve_mm": 19.6, "min_plume_mm": null, "max_step_deg": 3.5, "cart": [-0.6, -0.6]}, {"frm": "in front of the lever base#9", "to": "lane#8", "steps": 27, "time_s": 2.7, "min_reserve_mm": 54.4, "min_plume_mm": null, "max_step_deg": 1.71, "cart": [-0.6, -0.6]}, {"frm": "in front of the lever base#9", "to": "set down (8 mm)#12", "steps": 27, "time_s": 2.5, "min_reserve_mm": 2.0, "min_plume_mm": null, "max_step_deg": 2.3, "cart": [-0.6, -0.6]}], "joins": [{"ok": false, "arm_deg": 180.0, "at": "lane", "reason": "object moves 25 mm / 15 deg in the join", "best_pair_deg": 180.0}, {"ok": true, "arm_deg": 0.0, "s": 0.6, "at": "lane", "best_pair_deg": 0.0}], "approaches": [{"ok": true, "kf": 0, "object_in_world": true, "window": false, "lift_mm": 0.0, "min_food_gap_mm": null, "min_reserve_mm": 5.0, "time_s": 0.5}, {"ok": true, "kf": 12, "object_in_world": true, "window": false, "lift_mm": 8.0, "min_food_gap_mm": null, "min_reserve_mm": 5.0, "time_s": 0.5}], "min_reserve_mm": 2.0, "plume_m": 0.0, "min_plume_mm": null, "p4_info": null, "p5_info": {"fold_angle": 90.0, "pour_cart": -0.6, "pan_bottom_world": [-1.14, -0.38, 0.93], "pour_deg": 120.0, "mouth_over_pan_rim_m": 0.1, "food_kg_est": 0.15, "lane": [-0.994, -0.16, 1.052], "note": "prep time (cooker off): run with PLUME=0"}, "max_pgc_moment_Nm": null, "max_joint_ratio": null, "push": null}

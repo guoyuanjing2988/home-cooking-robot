@@ -1,0 +1,266 @@
+{
+ "summary": {
+  "mode": "deployed",
+  "parts_cfg": {
+   "r19p5": {
+    "state": "deployed",
+    "pan": true,
+    "kind": "swing"
+   }
+  },
+  "prefix": [
+   "R_cart_p5_"
+  ],
+  "paths": 6,
+  "errors": 0,
+  "states": 3794,
+  "hit_paths": [],
+  "worst": {
+   "kind": "prep",
+   "name": "stgwok_full_ur5e_enc2_pgc",
+   "min_gate_mm": 2.0,
+   "min_dist_mm": 12.0,
+   "pair": [
+    "R_gripper_p4_stg_body",
+    "R_cart_p5_leaf_plate"
+   ]
+  },
+  "by_kind": {
+   "prep": 2.0,
+   "play": null,
+   "app": null,
+   "edge": null,
+   "other": null,
+   "stir": null
+  },
+  "prep_sets": {
+   "stgwok_full_ur5e_enc2_pgc": {
+    "hit_states": 0,
+    "max_depth_mm": 0.0,
+    "min_gate_mm": 2.0,
+    "parts": {
+     "stgwok_full_ur5e_enc2_pgc": {
+      "states": 1795,
+      "hits": 0,
+      "max_depth_mm": null
+     },
+     "stgwok_full_ur5e_enc2_pgc@app0": {
+      "states": 51,
+      "hits": 0,
+      "max_depth_mm": null
+     },
+     "stgwok_full_ur5e_enc2_pgc@app1": {
+      "states": 51,
+      "hits": 0,
+      "max_depth_mm": null
+     }
+    }
+   },
+   "stgwok_m5_ur5e_enc2_pgc": {
+    "hit_states": 0,
+    "max_depth_mm": 0.0,
+    "min_gate_mm": 2.0,
+    "parts": {
+     "stgwok_m5_ur5e_enc2_pgc": {
+      "states": 1795,
+      "hits": 0,
+      "max_depth_mm": null
+     },
+     "stgwok_m5_ur5e_enc2_pgc@app0": {
+      "states": 51,
+      "hits": 0,
+      "max_depth_mm": null
+     },
+     "stgwok_m5_ur5e_enc2_pgc@app1": {
+      "states": 51,
+      "hits": 0,
+      "max_depth_mm": null
+     }
+    }
+   }
+  },
+  "potzone": {
+   "RACK": "keyed",
+   "SPX": "1.56",
+   "SPY": ".20"
+  },
+  "arm": "ur5e_enc2_pgc"
+ },
+ "method": "R19 prep step 5 (#38, T2L vs prep): screens of cart-mounted T2L hardware against stored certified paths, with WHERE,\nWHICH LINK and HOW DEEP. New file; r19prep4_screen.py / r19pot_screen.py are imported for their scene builders and\nstored-path lists and are not changed; writes only to results/r19/prep5/.\nMethod (as r19prep4_screen.py): each stored state is replayed in its own scene with the new cart parts added and ONLY\nthe pairs (moving robot / held geom) x (new part) are measured: enclosing-AABB separation, refined by the checker's\nown GJK lower bound (distance.Bounds.pair) within 30 mm of the gap; gate = distance - the checker's required gap for the\npair (ch.required: 10 mm arm / held object vs a CART part). Stored states 2pi-unwrapped, joint-linear between them, cut\nto <= 4 mm (r19smooth.sample_poly); the pot-zone layer (RACK=keyed, SPX 1.56, SPY 0.20) installed.\nNEW here, for every state with a violated pair:\n - depth = the exact penetration depth (minimum translation distance) of the two convex shapes, by the separating-axis\n   test over all face normals of both hulls and all edge x edge cross products (complete for convex polytopes; the\n   checker's own hull vertices; a capsule is its two end spheres sampled at 642 points each, i.e. under-estimated by\n   < 0.1 mm). A pair that does not intersect reports depth 0 and its distance.\n - depth is computed on every DSTRIDE-th (default 3rd) hit state of a path and on every hit state within DSTRIDE of the\n   deepest one found (a local refinement); hit counts, links and parts are from every state.\n - where = the centre of the two geoms' AABB overlap, in the CART frame (x from the arm base axis, +y toward the counter,\n   z world) and the world; the nearest keyframe of the set (by TCP distance to the keyframe's TCP pose; approaches are\n   labelled by their grasp keyframe).\nMODE=t2l | t2l_empty  the step-4 T2L cradle + bracket (+ the parked pan) of kitchen19p4 (prefix R_cart_p4_)\nMODE=fold | deployed  the kitchen19p5 fold-away cradle, folded / deployed (prefix R_cart_p5_)\nKINDS=prep[,play,app,edge,other,stir]  prep = the certified prep sets listed in SETS (default: the #38 step-5 list);\n      the others are r19prep4_screen's cooking chains (+ approaches), hub edges, cup chains, stir cycle.\npython r19prep5_screen.py MODE=t2l [KINDS=prep] [SETS=f1,f2] [WORKERS=16] [TAG=..] ARM=ur5e_enc2_pgc PY=.15\n -> results/r19/prep5/screen_<MODE>[_TAG].json",
+ "rows": [
+  {
+   "kind": "prep",
+   "name": "stgwok_full_ur5e_enc2_pgc",
+   "states": 1795,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 5,
+   "pairs": 120,
+   "min_gate_mm": 2.0,
+   "min_dist_mm": 12.0,
+   "pair": [
+    "R_gripper_p4_stg_body",
+    "R_cart_p5_leaf_plate"
+   ],
+   "state": 1794,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 1,
+   "hits_sample": [],
+   "elapsed_s": 3.8
+  },
+  {
+   "kind": "prep",
+   "name": "stgwok_full_ur5e_enc2_pgc@app0",
+   "states": 51,
+   "max_step_bound_mm": 3.727,
+   "new_geoms": 8,
+   "pairs": 176,
+   "min_gate_mm": 9.22,
+   "min_dist_mm": 19.22,
+   "pair": [
+    "R_finger_minus",
+    "R_cart_p5_stg_body"
+   ],
+   "state": 0,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 1,
+   "hits_sample": [],
+   "elapsed_s": 2.6
+  },
+  {
+   "kind": "prep",
+   "name": "stgwok_full_ur5e_enc2_pgc@app1",
+   "states": 51,
+   "max_step_bound_mm": 3.727,
+   "new_geoms": 8,
+   "pairs": 176,
+   "min_gate_mm": 9.22,
+   "min_dist_mm": 19.22,
+   "pair": [
+    "R_finger_minus",
+    "R_cart_p5_stg_body"
+   ],
+   "state": 0,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 1,
+   "hits_sample": [],
+   "elapsed_s": 2.5
+  },
+  {
+   "kind": "prep",
+   "name": "stgwok_m5_ur5e_enc2_pgc",
+   "states": 1795,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 5,
+   "pairs": 120,
+   "min_gate_mm": 2.0,
+   "min_dist_mm": 12.0,
+   "pair": [
+    "R_gripper_p4_stg_body",
+    "R_cart_p5_leaf_plate"
+   ],
+   "state": 0,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 1,
+   "hits_sample": [],
+   "elapsed_s": 3.8
+  },
+  {
+   "kind": "prep",
+   "name": "stgwok_m5_ur5e_enc2_pgc@app0",
+   "states": 51,
+   "max_step_bound_mm": 3.727,
+   "new_geoms": 8,
+   "pairs": 176,
+   "min_gate_mm": 9.22,
+   "min_dist_mm": 19.22,
+   "pair": [
+    "R_finger_minus",
+    "R_cart_p5_stg_body"
+   ],
+   "state": 0,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 1,
+   "hits_sample": [],
+   "elapsed_s": 2.6
+  },
+  {
+   "kind": "prep",
+   "name": "stgwok_m5_ur5e_enc2_pgc@app1",
+   "states": 51,
+   "max_step_bound_mm": 3.727,
+   "new_geoms": 8,
+   "pairs": 176,
+   "min_gate_mm": 9.22,
+   "min_dist_mm": 19.22,
+   "pair": [
+    "R_finger_minus",
+    "R_cart_p5_stg_body"
+   ],
+   "state": 0,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 1,
+   "hits_sample": [],
+   "elapsed_s": 2.5
+  }
+ ]
+}

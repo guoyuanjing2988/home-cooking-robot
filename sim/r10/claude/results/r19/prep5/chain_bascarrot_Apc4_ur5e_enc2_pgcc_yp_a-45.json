@@ -1,0 +1,839 @@
+{
+  "act": "bascarrot",
+  "obj": "carrot",
+  "arm": "ur5e_enc2_pgcc_yp_a-45",
+  "grasp_sense": 1,
+  "layout": {
+    "slicer": [
+      -1.69,
+      0.225,
+      90.0
+    ],
+    "lever": [
+      -0.86,
+      0.21,
+      0.0
+    ],
+    "cold_box": [
+      -0.86,
+      0.17,
+      90.0
+    ],
+    "tray_dxy": [
+      0.0,
+      0.0
+    ],
+    "drop_bowls": [
+      "tomato"
+    ]
+  },
+  "argv": [
+    "ACT=bascarrot",
+    "SEEDS=2",
+    "TRIES=8",
+    "KEEP=2",
+    "KFC=pick:-0.90;over the basket:-0.55",
+    "T2L=pan",
+    "TAG=Apc4",
+    "ARM=ur5e_enc2_pgcc_yp_a-45"
+  ],
+  "scene": {
+    "r19": {
+      "stations": {
+        "slicer": [
+          -1.69,
+          0.225,
+          90.0
+        ]
+      },
+      "tray_dxy": [
+        0.0,
+        0.0
+      ],
+      "drop_bowls": [
+        "tomato"
+      ],
+      "objs": [
+        [
+          "tomato",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.245,
+            0.12,
+            0.9430000000000001
+          ]
+        ],
+        [
+          "basket_open",
+          [
+            [
+              0.9396926207859084,
+              0.3420201433256687,
+              0.0
+            ],
+            [
+              -0.3420201433256687,
+              0.9396926207859084,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -0.86,
+            0.15,
+            0.85
+          ]
+        ]
+      ]
+    },
+    "r19p4": {
+      "t2l": {
+        "cx": -0.32,
+        "cy": 0.05,
+        "zb": 0.93,
+        "yaw": 0.0,
+        "present": true
+      }
+    }
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 126,
+  "rinse_dwell_s_est": 3.0,
+  "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker",
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        -1.42,
+        0.12,
+        0.9385
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -0.9,
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.008
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        -1.42,
+        0.12,
+        0.9805
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 2,
+      "label": "out and up",
+      "p": [
+        -1.42,
+        0.07999999999999999,
+        1.0805
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        -1.05,
+        0.06,
+        1.12
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 4,
+      "label": "upright, in front of the basket",
+      "p": [
+        -0.8099999999999999,
+        0.063,
+        1.15
+      ],
+      "R": [
+        [
+          5.3028761936245346e-17,
+          -0.49999999999999994,
+          0.8660254037844387
+        ],
+        [
+          3.0616169978683824e-17,
+          0.8660254037844387,
+          0.49999999999999994
+        ],
+        [
+          -1.0,
+          0.0,
+          6.123233995736766e-17
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 5,
+      "label": "over the basket",
+      "p": [
+        -0.86,
+        0.15,
+        1.09
+      ],
+      "R": [
+        [
+          5.3028761936245346e-17,
+          -0.49999999999999994,
+          0.8660254037844387
+        ],
+        [
+          3.0616169978683824e-17,
+          0.8660254037844387,
+          0.49999999999999994
+        ],
+        [
+          -1.0,
+          0.0,
+          6.123233995736766e-17
+        ]
+      ],
+      "c": -0.55,
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 6,
+      "label": "in the basket (bottom 20 mm under the rim)",
+      "p": [
+        -0.86,
+        0.15,
+        1.01
+      ],
+      "R": [
+        [
+          5.3028761936245346e-17,
+          -0.49999999999999994,
+          0.8660254037844387
+        ],
+        [
+          3.0616169978683824e-17,
+          0.8660254037844387,
+          0.49999999999999994
+        ],
+        [
+          -1.0,
+          0.0,
+          6.123233995736766e-17
+        ]
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    }
+  ],
+  "anchors": {
+    "over the basket#5": {
+      "ok": false,
+      "n_candidates": 10,
+      "start_status": {
+        "pose": 97,
+        "collision": 85,
+        "ok": 10,
+        "plume": 0
+      }
+    },
+    "pick#0": {
+      "ok": true,
+      "cand": 0,
+      "cart": -0.9,
+      "start_reserve_mm": 5.0
+    }
+  },
+  "pieces": [
+    {
+      "frm": "pick#0",
+      "to": "lane#3",
+      "steps": 54,
+      "time_s": 5.2,
+      "min_reserve_mm": 34.3,
+      "min_plume_mm": 1000.0,
+      "max_step_deg": 1.86,
+      "cart": [
+        -0.9,
+        -0.49
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": true,
+      "kf": 0,
+      "object_in_world": true,
+      "window": true,
+      "lift_mm": 0.0,
+      "min_food_gap_mm": 22.5,
+      "min_reserve_mm": 4.5,
+      "time_s": 0.5
+    },
+    {
+      "ok": false,
+      "kf": 6,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": 34.3,
+  "plume_m": 0.2,
+  "min_plume_mm": 1000.0,
+  "p4_info": null,
+  "p5_info": null,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "push": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick",
+      "cand": 0,
+      "start_reserve_mm": 5.0,
+      "cart": -0.9,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "pick",
+      "cand": 1,
+      "start_reserve_mm": 5.0,
+      "cart": -0.9,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "over the basket",
+      "cand": 0,
+      "start_reserve_mm": 31.8,
+      "cart": -0.55,
+      "ok": false,
+      "fail": {
+        "at": "over the basket->upright, in front of the basket",
+        "kf": null,
+        "cart": -0.549,
+        "step_deg": 1.88,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 1000.0,
+        "dt": 0.09742874889431301,
+        "hits": [
+          [
+            "R_geom_enc2_ua_0",
+            "R_geom_enc2_w2_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the basket",
+      "cand": 1,
+      "start_reserve_mm": 31.8,
+      "cart": -0.55,
+      "ok": false,
+      "fail": {
+        "at": "over the basket->upright, in front of the basket",
+        "kf": null,
+        "cart": -0.549,
+        "step_deg": 1.88,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 1000.0,
+        "dt": 0.09742874889431301,
+        "hits": [
+          [
+            "R_geom_enc2_ua_0",
+            "R_geom_enc2_w2_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the basket",
+      "cand": 2,
+      "start_reserve_mm": 31.8,
+      "cart": -0.55,
+      "ok": false,
+      "fail": {
+        "at": "over the basket->upright, in front of the basket",
+        "kf": null,
+        "cart": -0.549,
+        "step_deg": 1.88,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 1000.0,
+        "dt": 0.09742874889431301,
+        "hits": [
+          [
+            "R_geom_enc2_ua_0",
+            "R_geom_enc2_w2_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the basket",
+      "cand": 3,
+      "start_reserve_mm": 31.8,
+      "cart": -0.55,
+      "ok": false,
+      "fail": {
+        "at": "over the basket->upright, in front of the basket",
+        "kf": null,
+        "cart": -0.549,
+        "step_deg": 1.88,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 1000.0,
+        "dt": 0.09742874889431301,
+        "hits": [
+          [
+            "R_geom_enc2_ua_0",
+            "R_geom_enc2_w2_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the basket",
+      "cand": 4,
+      "start_reserve_mm": 31.8,
+      "cart": -0.55,
+      "ok": false,
+      "fail": {
+        "at": "over the basket->upright, in front of the basket",
+        "kf": null,
+        "cart": -0.549,
+        "step_deg": 1.88,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 1000.0,
+        "dt": 0.09742874889431301,
+        "hits": [
+          [
+            "R_geom_enc2_ua_0",
+            "R_geom_enc2_w2_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the basket",
+      "cand": 5,
+      "start_reserve_mm": 31.8,
+      "cart": -0.55,
+      "ok": false,
+      "fail": {
+        "at": "over the basket->upright, in front of the basket",
+        "kf": null,
+        "cart": -0.549,
+        "step_deg": 1.88,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 1000.0,
+        "dt": 0.09742874889431301,
+        "hits": [
+          [
+            "R_geom_enc2_ua_0",
+            "R_geom_enc2_w2_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the basket",
+      "cand": 6,
+      "start_reserve_mm": 31.8,
+      "cart": -0.55,
+      "ok": false,
+      "fail": {
+        "at": "over the basket->upright, in front of the basket",
+        "kf": null,
+        "cart": -0.549,
+        "step_deg": 1.88,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 1000.0,
+        "dt": 0.09742874889431301,
+        "hits": [
+          [
+            "R_geom_enc2_ua_0",
+            "R_geom_enc2_w2_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the basket",
+      "cand": 7,
+      "start_reserve_mm": 31.8,
+      "cart": -0.55,
+      "ok": false,
+      "fail": {
+        "at": "over the basket->upright, in front of the basket",
+        "kf": null,
+        "cart": -0.549,
+        "step_deg": 1.88,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 1000.0,
+        "dt": 0.09742874889431301,
+        "hits": [
+          [
+            "R_geom_enc2_ua_0",
+            "R_geom_enc2_w2_1"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    [
+      [
+        -0.9,
+        -0.21,
+        0.0,
+        -3.1098324103199966,
+        -3.018975473336037,
+        -0.9596369590817729,
+        3.406211775391446,
+        -5.6833522525389535,
+        3.7920758376939054,
+        0.025,
+        0.025
+      ],
+      [
+        -0.9,
+        -0.21,
+        0.0,
+        -3.0949124195098587,
+        -3.019983215843104,
+        -0.9677218904238402,
+        3.4268586721642658,
+        -5.670763707159136,
+        3.7780175713738946,
+        0.025,
+        0.025
+      ],
+      [
+        -0.9,
+        -0.21,
+        0.0,
+        -3.0799657243158256,
+        -3.021481660469183,
+        -0.9747483416491334,
+        3.446450413356187,
+        -5.658062710094305,
+        3.7644321513397587,
+        0.025,
+        0.025
+      ],
+      [
+        -0.9,
+        -0.21,
+        0.0,
+        -3.0649988337957366,
+        -3.0234517209394105,
+        -0.980741371182632,
+        3.4650124730753027,
+        -5.645259837457572,
+        3.751300788829282,
+        0.025,
+        0.025
+      ],
+      [
+        -0.9,
+        -0.21,
+        0.0,
+        -3.0500183417168776,
+        -3.0258759862118207,
+        -0.9857231261470975,
+        3.482568473748247,
+        -5.632365535779389,
+        3.738605335451497,
+        0.025,
+        0.025
+      ],
+      [
+        -0.9,
+        -0.21,
+        0.0,
+        -3.035030909869283,
+        -3.02873860711139,
+        -0.9897130992765434,
+        3.4991403164959918,
+        -5.619390115332514,
+        3.726328295102308,
+        0.025,
+        0.025
+      ]
+    ],
+    null
+  ],
+  "grasps": [
+    {
+      "kf": 0,
+      "world": {
+        "r19": {
+          "stations": {
+            "slicer": [
+              -1.69,
+              0.225,
+              90.0
+            ]
+          },
+          "tray_dxy": [
+            0.0,
+            0.0
+          ],
+          "drop_bowls": [
+            "tomato"
+          ],
+          "objs": [
+            [
+              "tomato",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.245,
+                0.12,
+                0.9430000000000001
+              ]
+            ],
+            [
+              "basket_open",
+              [
+                [
+                  0.9396926207859084,
+                  0.3420201433256687,
+                  0.0
+                ],
+                [
+                  -0.3420201433256687,
+                  0.9396926207859084,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -0.86,
+                0.15,
+                0.85
+              ]
+            ]
+          ]
+        }
+      },
+      "object_in_world": true
+    },
+    {
+      "kf": 6,
+      "world": {
+        "r19": {
+          "stations": {
+            "slicer": [
+              -1.69,
+              0.225,
+              90.0
+            ]
+          },
+          "tray_dxy": [
+            0.0,
+            0.0
+          ],
+          "drop_bowls": [
+            "tomato"
+          ],
+          "objs": [
+            [
+              "tomato",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.245,
+                0.12,
+                0.9430000000000001
+              ]
+            ],
+            [
+              "basket_open",
+              [
+                [
+                  0.9396926207859084,
+                  0.3420201433256687,
+                  0.0
+                ],
+                [
+                  -0.3420201433256687,
+                  0.9396926207859084,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -0.86,
+                0.15,
+                0.85
+              ]
+            ]
+          ]
+        }
+      },
+      "object_in_world": false
+    }
+  ]
+}

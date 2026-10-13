@@ -595,3 +595,20 @@ Nothing bought.
 - **Why:** 0 pieces spilled on 8 seeds for both arms. The bench spills 5 and the old cycles 11–12. Hot share is unchanged, and grip-moment spikes stay low.
 - **Cost:** the food is flipped about 40 % less often (2.0–2.2 vs 3.5 per 10 s). Watch this when the real stir is tested.
 - **Open:** a jam on seed 8 drives the sustained grip moment above the PGC's 7 N·m with every driver (#16).
+
+## 2026-10-14 — Pan cradle at T2L swings away (Route B; orchestrator decision under "其他你定", GitHub #38)
+- **Problem:** the fixed T2L pan cradle sits in the arm's low-left pocket. Five certified prep sets hit it: carrot, tomato, ctray, bascarrot and ct2p, by up to 66.6 mm with the cradle empty and 116.6 mm with the pan parked.
+- **Decision:** the cradle plate and its arm become one leaf on a vertical pin at the mast bar (`kitchen19p5.py`, `P5_kind=swing`).
+  - The leaf swings 90° toward the left wall, with the pan still on it.
+  - The robot turns it by a keyed knob, gripped from above with a straight 50 mm approach.
+  - The mast bar comes down 42 mm to make room for the pin.
+  - Each meal runs: fold → prep → `ct2s` (the catch tray poured straight into the pan on the folded cradle) → unfold → `stgwok` → fold.
+- **Why:** with the leaf folded and the pan aboard, every certified set clears it with 0 hits. That covers prep (≥ 25.2 mm), cooking chains, hub, cups, stir and the 14 FR5 prep files. No certified set needs redoing, and future prep sets are not constrained. It also gives the staging flow that p2t2l lacked.
+  - **Cost:** 9.2 s per meal for the fold and unfold sets (4.6 s each).
+  - **Rejected, Route A:** re-planning around the fixed cradle costs about 0 s, but it redoes 5 UR5e sets and at least 4 FR5 files. Bascarrot with the pan parked also stays cable-unclean, and A gives no complete flow.
+- **Mechanism risk (moderate) [E]:**
+  - about 2.2 N·m cantilever on the pin;
+  - detent torque ≥ 0.3 N·m;
+  - the deployed stop must repeat to about 1–2 mm (`stgwok` keeps 2.0 mm reserve).
+  - Hinge sourcing is open.
+- **Report:** `sim/r10/claude/R19_PREP_T2L.md`.
