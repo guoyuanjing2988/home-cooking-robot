@@ -34,6 +34,8 @@ GIFS = [
      'Physics bench with 90 rigid dice. R19: executable at about 3.6 s per stroke.'),
     ('plating_tip', REN / 'r15/stir_plate.mp4', '640:450:640:60', 0, 13.5, 'Bench, no arm: plating spill (R15)',
      '81–91 % of rigid dice on the plate (98 % at half load).'),
+    ('cup_pour', REN / 'mac/cup_pour.mp4', '960:500:0:40', 0, 9.4, 'Seasoning cup: station -> wok -> pour -> station (R19 Mac)',
+     'One continuous checked path, 20.6 s, 2.2 mm reserve; the station pad moved 10 cm left.'),
     ('wok_plate_rinse', REN / 'r17/wok_sink.mp4', '960:500:0:40', 0, 32, 'Wok: plate, rinse at the sink, back on the cooker (R17)',
      'One continuous path, 48.9 s, every step checked; 2.0 mm min reserve (R19 re-check).'),
     ('faucet_lever', REN / 'r17/lever.mp4', '960:500:0:40', 0, 0.77, 'Faucet: lever lifted 30° from the right (R17)',

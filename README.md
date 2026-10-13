@@ -99,6 +99,7 @@ The UR5e on its cart running a stored path; every state was checked (10 mm robot
 | <img src="docs/motions/spatula_rest.gif" width="420" alt="Spatula: counter rest to the first stroke (R18b)"><br>**Spatula: counter rest to the first stroke (R18b)**<br>26.9 s, one continuous checked path, 6.0 mm reserve. 1.3× | <img src="docs/motions/wok_plate_rinse.gif" width="420" alt="Wok: plate, rinse at the sink, back (R17)"><br>**Wok: plate, rinse at the sink, back (R17)**<br>One continuous path, 48.9 s, 2.0 mm min clearance (R19 re-check). 2.7× |
 | <img src="docs/motions/faucet_lever.gif" width="420" alt="Faucet lever lifted 30° (R17)"><br>**Faucet lever lifted 30° (R17)**<br>3.5 s; clip-on block on the single-lever faucet. Slowed 3×. | <img src="docs/motions/lid_rack.gif" width="420" alt="Lid off the pot, upright into the rack (R17)"><br>**Lid off the pot, upright into the rack (R17)**<br>20.2 s, 1.0 mm clearance: needs a keyed tab (#8). 1.2× |
 | <img src="docs/motions/spider.gif" width="420" alt="Spider: scoop, drain, tip onto the plate (R17)"><br>**Spider: scoop, drain, tip onto the plate (R17)**<br>52.6 s, 2.1 mm clearance. 3.1× |   |
+| <img src="docs/motions/cup_pour.gif" width="420" alt="Seasoning cup: station to wok, pour, back (R19 Mac)"><br>**Seasoning cup: station → wok → pour → back (R19, Mac)**<br>One continuous checked path, 20.6 s, 2.2 mm reserve, 0 hits on a full re-check. The station pad moves 10 cm left. | |
 
 ### Physics benches, no arm
 
