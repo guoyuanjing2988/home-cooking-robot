@@ -1,0 +1,641 @@
+{
+ "arm": "fr5_j6_pgc_sp20",
+ "spatula_chain": "results/r17/chain_spatula_s-1_r18roll-1.15_.30_fr5_j6_pgc_sp20.json",
+ "cycle": "results/r19/stir/lib_stir_cycle_fr5_j6_pgc_sp20.json",
+ "labels": {
+  "unwrap_net_2pi": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "roadmap_shift_2pi": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "roadmap": "none (no hub roadmap for this arm): unwrapped labels",
+  "cycle_relabel_2pi": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   -1
+  ],
+  "certified_states_in_range": true,
+  "geometry_in_range_2000_per_segment": true,
+  "cycle_min_deg": [
+   -110.74,
+   -110.84,
+   -156.53,
+   -91.8,
+   108.67,
+   -158.24
+  ],
+  "cycle_max_deg": [
+   -79.68,
+   -47.64,
+   -108.54,
+   -36.3,
+   142.83,
+   -101.41
+  ],
+  "spatula_play_in_range": true,
+  "spatula_min_deg": [
+   -133.67,
+   -153.6,
+   -149.59,
+   -112.17,
+   109.84,
+   -170.57
+  ],
+  "spatula_max_deg": [
+   -84.88,
+   -83.83,
+   -88.81,
+   -7.32,
+   161.23,
+   -98.46
+  ]
+ },
+ "ends": {
+  "spatula_end": [
+   0.4073614724750793,
+   -0.21,
+   0.0,
+   -1.4814600496735923,
+   -1.4989965628675488,
+   -2.0043926076936107,
+   -1.2626252227481265,
+   1.9402459815584931,
+   -1.718370895532159,
+   0.015,
+   0.015
+  ],
+  "h_stir0": [
+   0.55,
+   -0.21,
+   0.0,
+   -1.545963179206994,
+   -1.1407760714154305,
+   -2.255964856859458,
+   -1.3940486837507844,
+   1.9359888864035801,
+   -1.7873355755243194,
+   0.015,
+   0.015
+  ],
+  "h_stir0_stored": [
+   0.55,
+   -0.21,
+   0.0,
+   -1.545963179206994,
+   -1.1407760714154305,
+   -2.255964856859458,
+   -1.3940486837507844,
+   1.9359888864035801,
+   4.495849731655267,
+   0.015,
+   0.015
+  ],
+  "joint_diff_deg": [
+   -3.696,
+   20.525,
+   -14.414,
+   -7.53,
+   -0.244,
+   -3.951
+  ],
+  "cart_m": 0.14264
+ },
+ "spatula_chain_ends_at_rest": "yes: r17chain ends every action at rest; R19_SMOOTH times the spatula chain rest to rest per piece (results/r19/smooth/spatula.json); so the join is timed from rest",
+ "geometry": {
+  "kind": "tool-fixed self-motion (cart stepped 0.001 m, 6 joints solved for the unchanged tool pose)",
+  "ik_states": 144,
+  "ik_max_pose_err_m": 1.591043780143588e-10,
+  "end_vs_h_stir0_deg": 1.0558552259369939e-07,
+  "spline": "interpolating quintic over (cart, q1..q6), u = cart travel (m)",
+  "length_m": 0.14263852752492073,
+  "tool_dev_mm_deg": [
+   0.0,
+   0.0
+  ]
+ },
+ "certificate": {
+  "states": 189,
+  "max_step_bound_mm": 3.999,
+  "scenes": {
+   "stir": {
+    "ok": true,
+    "states": 189,
+    "hit_states": 0,
+    "out_of_range_states": 0,
+    "hit_pairs": {},
+    "min_env_reserve_mm": 5.71,
+    "min_env_pair": [
+     "r15_wok_t4_8",
+     "R_gripper_spatula_blade4"
+    ],
+    "min_self_reserve_mm": 2.01,
+    "min_self_pair": [
+     "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+     "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+    ],
+    "min_reserve_by_category": {
+     "arm_arm_or_frame": {
+      "mm": 111.88,
+      "pair": [
+       "R_cart_beam",
+       "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+      ]
+     },
+     "held_gripper_environment": {
+      "mm": 5.71,
+      "pair": [
+       "r15_wok_t4_8",
+       "R_gripper_spatula_blade4"
+      ]
+     },
+     "robot_environment": {
+      "mm": 53.36,
+      "pair": [
+       "r07_closed_door_1_1",
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+      ]
+     },
+     "self": {
+      "mm": 2.01,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+      ]
+     }
+    },
+    "min_plume_mm": 94.03,
+    "min_plume_geom": "R_base_plate",
+    "plume_violations": 0
+   },
+   "std": {
+    "ok": true,
+    "states": 189,
+    "hit_states": 0,
+    "out_of_range_states": 0,
+    "hit_pairs": {},
+    "min_env_reserve_mm": 5.71,
+    "min_env_pair": [
+     "r15_wok_t4_8",
+     "R_gripper_r18_spat_blade4"
+    ],
+    "min_self_reserve_mm": 2.01,
+    "min_self_pair": [
+     "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+     "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+    ],
+    "min_reserve_by_category": {
+     "arm_arm_or_frame": {
+      "mm": 111.88,
+      "pair": [
+       "R_cart_beam",
+       "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+      ]
+     },
+     "held_gripper_environment": {
+      "mm": 5.71,
+      "pair": [
+       "r15_wok_t4_8",
+       "R_gripper_r18_spat_blade4"
+      ]
+     },
+     "robot_environment": {
+      "mm": 53.36,
+      "pair": [
+       "r07_closed_door_1_1",
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+      ]
+     },
+     "self": {
+      "mm": 2.01,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+      ]
+     }
+    },
+    "min_plume_mm": 94.03,
+    "min_plume_geom": "R_base_plate",
+    "plume_violations": 0
+   }
+  },
+  "std_scene": {
+   "rack": "keyed",
+   "spider": [
+    1.56,
+    0.2
+   ],
+   "plate_y": 0.15,
+   "spider_rest": [
+    1.56,
+    0.2
+   ],
+   "rack_geoms": 7,
+   "plate_c": [
+    0.43,
+    0.15,
+    0.85
+   ]
+  },
+  "checker": "Checker.check(full=True) + r19enc_check.one (10 / 5 / 0 mm, joint ranges, R11 held-box mesh rule), plume rule"
+ },
+ "line_comparison": {
+  "states": 189,
+  "tool_dev_mm": 6.85,
+  "ok": true,
+  "hit_states": 0,
+  "min_env_reserve_mm": 2.0,
+  "min_env_pair": [
+   "r15_wok_t2_8",
+   "R_gripper_spatula_blade2"
+  ],
+  "min_plume_mm": 94.03
+ },
+ "laws": {
+  "entry_A_UR_fastcart": {
+   "time_s": 1.64,
+   "peak_v": {
+    "cart_mps": 0.1964,
+    "joints_degps": [
+     5.1,
+     28.3,
+     20.1,
+     11.0,
+     0.3,
+     5.4
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.373,
+    "joints_degps2": [
+     11.8,
+     56.9,
+     44.8,
+     30.2,
+     0.8,
+     12.6
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 4.023,
+    "joints_degps3": [
+     126.0,
+     613.0,
+     476.0,
+     316.0,
+     9.0,
+     135.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.7857,
+    "a": 0.7459,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "exit_A_UR_fastcart": {
+   "time_s": 1.64,
+   "peak_v": {
+    "cart_mps": 0.1964,
+    "joints_degps": [
+     5.1,
+     28.3,
+     20.1,
+     11.0,
+     0.3,
+     5.4
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.373,
+    "joints_degps2": [
+     11.8,
+     56.9,
+     44.8,
+     30.2,
+     0.8,
+     12.6
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 4.023,
+    "joints_degps3": [
+     126.0,
+     614.0,
+     475.0,
+     317.0,
+     9.0,
+     135.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.7857,
+    "a": 0.7459,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "entry_A_UR_same": {
+   "time_s": 2.516,
+   "peak_v": {
+    "cart_mps": 0.1238,
+    "joints_degps": [
+     3.2,
+     17.8,
+     12.7,
+     6.8,
+     0.2,
+     3.4
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.1352,
+    "joints_degps2": [
+     4.7,
+     21.2,
+     17.2,
+     12.6,
+     0.4,
+     5.1
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 1.5,
+    "joints_degps3": [
+     43.0,
+     223.0,
+     168.0,
+     101.0,
+     3.0,
+     46.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.4951,
+    "a": 0.9016,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "exit_A_UR_same": {
+   "time_s": 2.516,
+   "peak_v": {
+    "cart_mps": 0.1238,
+    "joints_degps": [
+     3.2,
+     17.8,
+     12.7,
+     6.8,
+     0.2,
+     3.4
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.1352,
+    "joints_degps2": [
+     4.7,
+     21.2,
+     17.2,
+     12.6,
+     0.4,
+     5.1
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 1.5,
+    "joints_degps3": [
+     43.0,
+     223.0,
+     168.0,
+     101.0,
+     3.0,
+     46.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.4951,
+    "a": 0.9016,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "entry_A_R15_fastcart": {
+   "time_s": 1.64,
+   "peak_v": {
+    "cart_mps": 0.1964,
+    "joints_degps": [
+     5.1,
+     28.3,
+     20.1,
+     11.0,
+     0.3,
+     5.4
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.373,
+    "joints_degps2": [
+     11.8,
+     56.9,
+     44.8,
+     30.2,
+     0.8,
+     12.6
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 4.023,
+    "joints_degps3": [
+     126.0,
+     613.0,
+     476.0,
+     316.0,
+     9.0,
+     135.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.7857,
+    "a": 0.7459,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "exit_A_R15_fastcart": {
+   "time_s": 1.64,
+   "peak_v": {
+    "cart_mps": 0.1964,
+    "joints_degps": [
+     5.1,
+     28.3,
+     20.1,
+     11.0,
+     0.3,
+     5.4
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.373,
+    "joints_degps2": [
+     11.8,
+     56.9,
+     44.8,
+     30.2,
+     0.8,
+     12.6
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 4.023,
+    "joints_degps3": [
+     126.0,
+     614.0,
+     475.0,
+     317.0,
+     9.0,
+     135.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.7857,
+    "a": 0.7459,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "entry_A_R15_same": {
+   "time_s": 2.516,
+   "peak_v": {
+    "cart_mps": 0.1238,
+    "joints_degps": [
+     3.2,
+     17.8,
+     12.7,
+     6.8,
+     0.2,
+     3.4
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.1352,
+    "joints_degps2": [
+     4.7,
+     21.2,
+     17.2,
+     12.6,
+     0.4,
+     5.1
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 1.5,
+    "joints_degps3": [
+     43.0,
+     223.0,
+     168.0,
+     101.0,
+     3.0,
+     46.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.4951,
+    "a": 0.9016,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "exit_A_R15_same": {
+   "time_s": 2.516,
+   "peak_v": {
+    "cart_mps": 0.1238,
+    "joints_degps": [
+     3.2,
+     17.8,
+     12.7,
+     6.8,
+     0.2,
+     3.4
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.1352,
+    "joints_degps2": [
+     4.7,
+     21.2,
+     17.2,
+     12.6,
+     0.4,
+     5.1
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 1.5,
+    "joints_degps3": [
+     43.0,
+     223.0,
+     168.0,
+     101.0,
+     3.0,
+     46.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.4951,
+    "a": 0.9016,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  }
+ },
+ "cycle_ramp_from_rest_s": {
+  "value": 0.249,
+  "note": "three_cycles_from_rest_s - 3 x period of the stored entry: the extra time to start the cycle from rest at H_stir0 and stop it there again"
+ },
+ "limits": {
+  "joint_v_degps": [
+   180.0,
+   180.0,
+   180.0,
+   180.0,
+   180.0,
+   180.0
+  ],
+  "joint_v_source": "as fr5",
+  "A_UR": "800 deg/s^2: UR forum guidance (R19_STIR.md 1); ASSUMPTION for a non-UR arm",
+  "A_R15": "360 deg/s^2: R15 ASSUMPTION",
+  "cart": "v 0.25 m/s (r17chain CW); a 0.5 m/s^2 fastcart (R19_SMOOTH: tip-over model, r19smooth_cart.py) / 0.15 m/s^2 same (mobile.py design case); W 0.2 s keeps cart jerk <= 5 m/s^3 (R19_SMOOTH ASSUMPTION)",
+  "jerk_limit_degps3": null
+ },
+ "elapsed_s": 28
+}
