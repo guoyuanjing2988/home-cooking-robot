@@ -1,0 +1,6182 @@
+{
+  "method": "R19 prep layout fixes (issue #4 step 1; new file, nothing else changed).\nWhere can the prep stations stand in today's (R18b) kitchen without blocking the checked cooking motion,\nand can the arm reach them?\n\nModes (python r19prep_layout.py MODE [KEY=VALUE ...], run from sim/r10/claude):\n map     free-space ceiling over the counters from the stored swept volumes: for every 2 cm column the\n         lowest swept voxel above the counter top (the 84 stored segments of the 6 checked cooking chains,\n         dilated 2 voxels, as r19prim_swept.py, plus the 22 checked hub edges, every 4th state, dilated 3,\n         as r19prep_screen.py). A fixture lower than the ceiling everywhere under it cannot be hit\n         (conservative). -> results/r19/prep/layout_map.json (+ .png)\n screen  every candidate spot (kitchen19.CANDIDATES): static overlap with the fixed items of today's\n         kitchen (raw tray, spatula + pad, prep bowls, fridge, faucet, sink, power track, counter ends)\n         and the voxel screen against all 106 stored segments -> results/r19/prep/layout_screen.json\n replay  ground truth for the named candidates (NAMES=a,b,..): every stored state of the 6 checked\n         chains (plus their grasp approach states) and EVERY state of the hub edges the screen flagged,\n         with the candidate's envelope boxes in the scene; fast checker (full=False, as\n         r18spatreplay.py / r19prep_spotreplay.py): a SCREEN-LEVEL replay, not a full check.\n         -> results/r19/prep/layout_replay_<name>.json   (NPAR=n parallel processes, one per name)\n reach   96-start collision-aware IK (solver.solve, unchanged checker, as r14reach.py) at the working\n         poses of the named candidates (kitchen19.REACH_PROBES), with the station geometry in the scene\n         and the cooking fixtures of today's kitchen -> results/r19/prep/layout_reach_<probe>.json\nGaps, checker and arm are unchanged (ARM=<id> as everywhere; default UR5e).",
+  "swept_build_s": 35.8,
+  "segments": 106,
+  "rows": [
+    {
+      "name": "tool_R11",
+      "item": "tool",
+      "desc": "R11/R12 work spot (reference; cooking corridor)",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -1.0,
+            0.13,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -1.0,
+            0.095,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -1.071,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -1.075,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.929,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.925,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -1.0,
+            0.165,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -1.0,
+            0.095,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -1.0,
+            0.095,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -1.0,
+            0.095,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "r16_rest_spatula",
+          "gap_mm": 0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 35,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "faucet_open": 3,
+        "hub_edge": 10,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 4
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_FL",
+      "item": "tool",
+      "desc": "far-left front: counter end to 1 cm left of the raw tray, blade plate at the R11 y",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -1.665,
+            0.13,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -1.665,
+            0.095,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -1.736,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -1.74,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -1.594,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -1.59,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -1.665,
+            0.165,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -1.665,
+            0.095,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -1.665,
+            0.095,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -1.665,
+            0.095,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "tool_FL_b",
+      "item": "tool",
+      "desc": "far-left front, 4 cm further back",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -1.665,
+            0.17,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -1.665,
+            0.135,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -1.736,
+            0.135,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -1.74,
+            0.18,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -1.594,
+            0.135,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -1.59,
+            0.18,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -1.665,
+            0.205,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -1.665,
+            0.135,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -1.665,
+            0.135,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -1.665,
+            0.135,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "tool_BK14",
+      "item": "tool",
+      "desc": "back strip instead of the potato staging bowl",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -1.4,
+            0.43,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -1.4,
+            0.395,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -1.471,
+            0.395,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -1.475,
+            0.44,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -1.329,
+            0.395,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -1.325,
+            0.44,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -1.4,
+            0.465,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -1.4,
+            0.395,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -1.4,
+            0.395,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -1.4,
+            0.395,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "raw_tray",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall0",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall1",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall2",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall3",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall4",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall5",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall6",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall10",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall11",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall12",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall13",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall14",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall15",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall2",
+          "gap_mm": -9.1
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall3",
+          "gap_mm": -16.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall4",
+          "gap_mm": -16.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall5",
+          "gap_mm": -16.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_bowl_outer_wall6",
+          "gap_mm": -9.1
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_collar_wall2",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_collar_wall3",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_collar_wall4",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_collar_wall5",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_potato_collar_wall6",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -1.0
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "stored_bowl_potato_bowl_outer_wall6",
+          "gap_mm": -19.8
+        },
+        {
+          "box": "lever_rail-1",
+          "fixture": "stored_bowl_potato_bail_leg1",
+          "gap_mm": -4.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -1.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "stored_bowl_potato_bowl_outer_wall2",
+          "gap_mm": -19.8
+        },
+        {
+          "box": "lever_rail1",
+          "fixture": "stored_bowl_potato_bail_leg-1",
+          "gap_mm": -4.0
+        },
+        {
+          "box": "lever_bin_back",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -1.0
+        },
+        {
+          "box": "lever_pusher",
+          "fixture": "stored_bowl_potato_key_shoulder-1",
+          "gap_mm": -7.3
+        }
+      ],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "tool_BK09",
+      "item": "tool",
+      "desc": "back strip by the sink instead of the tomato staging bowl",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.88,
+            0.43,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.88,
+            0.395,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.951,
+            0.395,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.955,
+            0.44,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.809,
+            0.395,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.805,
+            0.44,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.88,
+            0.465,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.88,
+            0.395,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.88,
+            0.395,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.88,
+            0.395,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall0",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall1",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall2",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall3",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall5",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall11",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall12",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall13",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall14",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall15",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -16.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -16.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -16.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": -16.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall11",
+          "gap_mm": -1.1
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_bail_leg1",
+          "gap_mm": 2.2
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_collar_tab1",
+          "gap_mm": 2.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_collar_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_collar_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_collar_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_collar_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_collar_wall10",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_collar_wall11",
+          "gap_mm": 0.4
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "stored_bowl_tomato_bail_lock_pin1",
+          "gap_mm": 0.8
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -1.0
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": 0.2
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall11",
+          "gap_mm": -13.1
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall12",
+          "gap_mm": 2.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -1.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": -1.1
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -11.6
+        },
+        {
+          "box": "lever_rail1",
+          "fixture": "stored_bowl_tomato_key",
+          "gap_mm": -12.2
+        },
+        {
+          "box": "lever_rail1",
+          "fixture": "stored_bowl_tomato_bail_bridge",
+          "gap_mm": -8.0
+        },
+        {
+          "box": "lever_rail1",
+          "fixture": "stored_bowl_tomato_key_shoulder1",
+          "gap_mm": -1.0
+        },
+        {
+          "box": "lever_bin_back",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -1.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "slicer_R11",
+      "item": "slicer",
+      "desc": "R11 spot (reference; both plating spots)",
+      "boxes": [
+        {
+          "name": "slicer_base",
+          "center": [
+            0.3,
+            0.13,
+            0.95
+          ],
+          "size": [
+            0.33,
+            0.21,
+            0.2
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y-1",
+          "center": [
+            0.22,
+            0.092,
+            1.09
+          ],
+          "size": [
+            0.112,
+            0.006,
+            0.08
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x-1",
+          "center": [
+            0.167,
+            0.13,
+            1.09
+          ],
+          "size": [
+            0.006,
+            0.07,
+            0.08
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y1",
+          "center": [
+            0.22,
+            0.168,
+            1.09
+          ],
+          "size": [
+            0.112,
+            0.006,
+            0.08
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x1",
+          "center": [
+            0.273,
+            0.13,
+            1.09
+          ],
+          "size": [
+            0.006,
+            0.07,
+            0.08
+          ]
+        },
+        {
+          "name": "slicer_spout",
+          "center": [
+            0.495,
+            0.13,
+            0.97
+          ],
+          "size": [
+            0.06,
+            0.1,
+            0.04
+          ]
+        },
+        {
+          "name": "out_bowl",
+          "center": [
+            0.575,
+            0.13,
+            0.896
+          ],
+          "size": [
+            0.17,
+            0.17,
+            0.09
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "slicer_base",
+          "fixture": "r15_plate",
+          "gap_mm": -25.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "r17_plate2",
+          "gap_mm": -25.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "r15_cooker",
+          "gap_mm": -30.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "r15_plate",
+          "gap_mm": -24.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 51,
+      "of": 106,
+      "by_action": {
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
+        "wok_plate2_rinse": 14,
+        "hub_edge": 15,
+        "spatula_fetch": 2
+      },
+      "flagged_segments": [
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_WOK__H_POT",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__LID_POT__H_WOK",
+        "hub_edge__LID_RACK__H_WOK",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__SPIDER__H_WOK",
+        "hub_edge__WOK__H_POT",
+        "hub_edge__WOK__H_SINK",
+        "hub_edge__WOK__H_WOK",
+        "spatula_fetch__3-4",
+        "spatula_fetch__4-5",
+        "spider_pot_to_plate__10-11",
+        "spider_pot_to_plate__11-12",
+        "spider_pot_to_plate__12-13",
+        "spider_pot_to_plate__13-14",
+        "spider_pot_to_plate__8-9",
+        "spider_pot_to_plate__9-10",
+        "wok_plate2_rinse__0-1",
+        "wok_plate2_rinse__1-2",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "wok_plate2_rinse__14-15",
+        "wok_plate2_rinse__15-16",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__approach_0",
+        "wok_plate2_rinse__approach_16",
+        "wok_plate2_rinse__join_3",
+        "wok_plate_rinse__0-1",
+        "wok_plate_rinse__1-2",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate_rinse__14-15",
+        "wok_plate_rinse__15-16",
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__approach_0",
+        "wok_plate_rinse__approach_16",
+        "wok_plate_rinse__join_3"
+      ]
+    },
+    {
+      "name": "slicer_BK10",
+      "item": "slicer",
+      "desc": "left counter back (audit candidate), long axis along x, chute under the cabinet",
+      "boxes": [
+        {
+          "name": "slicer_base",
+          "center": [
+            -1.0,
+            0.475,
+            0.95
+          ],
+          "size": [
+            0.33,
+            0.21,
+            0.2
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y-1",
+          "center": [
+            -1.08,
+            0.437,
+            1.09
+          ],
+          "size": [
+            0.112,
+            0.006,
+            0.08
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x-1",
+          "center": [
+            -1.133,
+            0.475,
+            1.09
+          ],
+          "size": [
+            0.006,
+            0.07,
+            0.08
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y1",
+          "center": [
+            -1.08,
+            0.513,
+            1.09
+          ],
+          "size": [
+            0.112,
+            0.006,
+            0.08
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x1",
+          "center": [
+            -1.027,
+            0.475,
+            1.09
+          ],
+          "size": [
+            0.006,
+            0.07,
+            0.08
+          ]
+        },
+        {
+          "name": "slicer_spout",
+          "center": [
+            -0.805,
+            0.475,
+            0.97
+          ],
+          "size": [
+            0.06,
+            0.1,
+            0.04
+          ]
+        },
+        {
+          "name": "out_bowl",
+          "center": [
+            -0.725,
+            0.475,
+            0.896
+          ],
+          "size": [
+            0.17,
+            0.17,
+            0.09
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "slicer_base",
+          "fixture": "outlet_access_0",
+          "gap_mm": -60.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_bottom",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall0",
+          "gap_mm": -102.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall1",
+          "gap_mm": -70.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall2",
+          "gap_mm": -34.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall3",
+          "gap_mm": -6.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall5",
+          "gap_mm": -6.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall11",
+          "gap_mm": -15.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall12",
+          "gap_mm": -21.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall13",
+          "gap_mm": -36.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall14",
+          "gap_mm": -64.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall15",
+          "gap_mm": -100.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_key",
+          "gap_mm": -41.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bail_bridge",
+          "gap_mm": -37.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bail_leg-1",
+          "gap_mm": -92.8
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_tab-1",
+          "gap_mm": -96.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_bottom",
+          "gap_mm": -97.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall0",
+          "gap_mm": -102.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall1",
+          "gap_mm": -70.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall2",
+          "gap_mm": -33.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall3",
+          "gap_mm": -4.6
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall5",
+          "gap_mm": -4.6
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall11",
+          "gap_mm": -15.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall12",
+          "gap_mm": -19.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall13",
+          "gap_mm": -34.6
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall14",
+          "gap_mm": -63.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_collar_wall15",
+          "gap_mm": -100.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_key_shoulder-1",
+          "gap_mm": -17.9
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_key_shoulder1",
+          "gap_mm": -50.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bail_lock_pin-1",
+          "gap_mm": -94.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_leafy_greens_bail_lock_stop-1",
+          "gap_mm": -96.8
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall0",
+          "gap_mm": -21.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall1",
+          "gap_mm": -5.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -5.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -6.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": -34.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall11",
+          "gap_mm": -70.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall12",
+          "gap_mm": -102.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall13",
+          "gap_mm": -100.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall14",
+          "gap_mm": -64.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall15",
+          "gap_mm": -36.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bail_leg-1",
+          "gap_mm": -27.8
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_tab-1",
+          "gap_mm": -31.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bail_leg1",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_tab1",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_bottom",
+          "gap_mm": -97.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall0",
+          "gap_mm": -19.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall1",
+          "gap_mm": -5.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall7",
+          "gap_mm": -4.6
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall9",
+          "gap_mm": -4.6
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall10",
+          "gap_mm": -33.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall11",
+          "gap_mm": -70.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall12",
+          "gap_mm": -102.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall13",
+          "gap_mm": -100.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall14",
+          "gap_mm": -63.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_collar_wall15",
+          "gap_mm": -34.6
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_key_shoulder1",
+          "gap_mm": -3.8
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bail_lock_pin-1",
+          "gap_mm": -29.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bail_lock_stop-1",
+          "gap_mm": -36.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bail_lock_pin1",
+          "gap_mm": -5.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_tomato_bail_lock_stop1",
+          "gap_mm": -6.5
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall2",
+          "gap_mm": -2.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall3",
+          "gap_mm": -1.1
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall5",
+          "gap_mm": -1.1
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_tomato_collar_bottom",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_tomato_collar_wall2",
+          "gap_mm": -2.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_tomato_collar_wall3",
+          "gap_mm": 0.4
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_tomato_collar_wall5",
+          "gap_mm": 0.4
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_tomato_key_shoulder1",
+          "gap_mm": -19.8
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "sink_back_rim",
+          "gap_mm": 1.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "sink_left",
+          "gap_mm": 1.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "sink_back",
+          "gap_mm": 1.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall1",
+          "gap_mm": -6.6
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall2",
+          "gap_mm": -34.8
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall3",
+          "gap_mm": -50.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall4",
+          "gap_mm": -50.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall5",
+          "gap_mm": -50.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": -14.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_collar_bottom",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_collar_wall1",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_collar_wall2",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_collar_wall3",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_collar_wall4",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_collar_wall5",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_tomato_collar_wall6",
+          "gap_mm": 3.0
+        }
+      ],
+      "off_counter": [
+        "out_bowl"
+      ],
+      "flagged": 5,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 3,
+        "wok_plate2_rinse": 1,
+        "wok_plate_rinse": 1
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__approach_0",
+        "wok_plate2_rinse__7-8",
+        "wok_plate_rinse__7-8"
+      ]
+    },
+    {
+      "name": "slicer_FLT",
+      "item": "slicer",
+      "desc": "far-left column, turned 90 deg: chute at the front (open strip), out bowl under the cabinet",
+      "boxes": [
+        {
+          "name": "slicer_base",
+          "center": [
+            -1.69,
+            0.225,
+            0.95
+          ],
+          "size": [
+            0.20999999999999994,
+            0.32999999999999996,
+            0.19999999999999996
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y-1",
+          "center": [
+            -1.652,
+            0.145,
+            1.09
+          ],
+          "size": [
+            0.005999999999999998,
+            0.11199999999999997,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x-1",
+          "center": [
+            -1.69,
+            0.092,
+            1.09
+          ],
+          "size": [
+            0.06999999999999999,
+            0.005999999999999998,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y1",
+          "center": [
+            -1.728,
+            0.145,
+            1.09
+          ],
+          "size": [
+            0.005999999999999998,
+            0.11199999999999997,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x1",
+          "center": [
+            -1.69,
+            0.198,
+            1.09
+          ],
+          "size": [
+            0.06999999999999999,
+            0.005999999999999998,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_spout",
+          "center": [
+            -1.69,
+            0.42,
+            0.97
+          ],
+          "size": [
+            0.09999999999999998,
+            0.059999999999999984,
+            0.039999999999999994
+          ]
+        },
+        {
+          "name": "out_bowl",
+          "center": [
+            -1.69,
+            0.5,
+            0.896
+          ],
+          "size": [
+            0.17,
+            0.17,
+            0.09
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "slicer_BKT12",
+      "item": "slicer",
+      "desc": "turned 90 deg over the raw tray position (raw tray moved), chute at the front",
+      "boxes": [
+        {
+          "name": "slicer_base",
+          "center": [
+            -1.36,
+            0.225,
+            0.95
+          ],
+          "size": [
+            0.20999999999999994,
+            0.32999999999999996,
+            0.19999999999999996
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y-1",
+          "center": [
+            -1.322,
+            0.145,
+            1.09
+          ],
+          "size": [
+            0.005999999999999998,
+            0.11199999999999997,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x-1",
+          "center": [
+            -1.36,
+            0.092,
+            1.09
+          ],
+          "size": [
+            0.06999999999999999,
+            0.005999999999999998,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y1",
+          "center": [
+            -1.398,
+            0.145,
+            1.09
+          ],
+          "size": [
+            0.005999999999999998,
+            0.11199999999999997,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x1",
+          "center": [
+            -1.36,
+            0.198,
+            1.09
+          ],
+          "size": [
+            0.06999999999999999,
+            0.005999999999999998,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_spout",
+          "center": [
+            -1.36,
+            0.42,
+            0.97
+          ],
+          "size": [
+            0.09999999999999998,
+            0.059999999999999984,
+            0.039999999999999994
+          ]
+        },
+        {
+          "name": "out_bowl",
+          "center": [
+            -1.36,
+            0.5,
+            0.896
+          ],
+          "size": [
+            0.17,
+            0.17,
+            0.09
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "slicer_base",
+          "fixture": "raw_tray",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_rib1",
+          "gap_mm": -63.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_carrot",
+          "gap_mm": -77.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_potato",
+          "gap_mm": -35.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_greens",
+          "gap_mm": -88.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_tomato",
+          "gap_mm": -25.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall2",
+          "gap_mm": -14.8
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall3",
+          "gap_mm": -30.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall4",
+          "gap_mm": -30.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall5",
+          "gap_mm": -30.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall6",
+          "gap_mm": -9.1
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_key",
+          "gap_mm": -12.7
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bail_bridge",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bail_leg-1",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": -34.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall2",
+          "gap_mm": -18.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall3",
+          "gap_mm": -34.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall4",
+          "gap_mm": -34.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall5",
+          "gap_mm": -34.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall6",
+          "gap_mm": -8.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_key_shoulder-1",
+          "gap_mm": -28.9
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_bowl_outer_wall1",
+          "gap_mm": -2.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_bowl_outer_wall2",
+          "gap_mm": -2.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_bail_leg-1",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_collar_tab-1",
+          "gap_mm": 4.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_collar_wall1",
+          "gap_mm": -2.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_collar_wall2",
+          "gap_mm": -2.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_key_shoulder1",
+          "gap_mm": -19.8
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall0",
+          "gap_mm": -26.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall1",
+          "gap_mm": -25.5
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall11",
+          "gap_mm": -25.5
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall12",
+          "gap_mm": -26.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall13",
+          "gap_mm": -41.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall14",
+          "gap_mm": -69.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall15",
+          "gap_mm": -41.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_tab-1",
+          "gap_mm": 5.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall0",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall1",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall11",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall12",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall13",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall14",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall15",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bail_lock_pin-1",
+          "gap_mm": 3.8
+        }
+      ],
+      "off_counter": [],
+      "flagged": 14,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 6,
+        "spatula_fetch": 4,
+        "wok_plate2_rinse": 2,
+        "wok_plate_rinse": 2
+      },
+      "flagged_segments": [
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__9-10"
+      ]
+    },
+    {
+      "name": "peeler_R11",
+      "item": "peeler",
+      "desc": "R11/R12 spot (reference; overlaps the spatula)",
+      "boxes": [
+        {
+          "name": "P16_drive",
+          "center": [
+            -1.0,
+            0.295,
+            0.95
+          ],
+          "size": [
+            0.48,
+            0.05,
+            0.05
+          ]
+        },
+        {
+          "name": "P16_guide",
+          "center": [
+            -1.0,
+            0.24,
+            0.925
+          ],
+          "size": [
+            0.36,
+            0.035,
+            0.025
+          ]
+        },
+        {
+          "name": "peel_drawer_floor",
+          "center": [
+            -1.0,
+            0.175,
+            0.859
+          ],
+          "size": [
+            0.31,
+            0.14,
+            0.018
+          ]
+        },
+        {
+          "name": "peel_cradle-1",
+          "center": [
+            -1.07,
+            0.155,
+            0.895
+          ],
+          "size": [
+            0.016,
+            0.035,
+            0.072
+          ]
+        },
+        {
+          "name": "peel_guard_side-1",
+          "center": [
+            -1.19,
+            0.2,
+            0.94
+          ],
+          "size": [
+            0.006,
+            0.2,
+            0.18
+          ]
+        },
+        {
+          "name": "peel_cradle1",
+          "center": [
+            -0.93,
+            0.155,
+            0.895
+          ],
+          "size": [
+            0.016,
+            0.035,
+            0.072
+          ]
+        },
+        {
+          "name": "peel_guard_side1",
+          "center": [
+            -0.81,
+            0.2,
+            0.94
+          ],
+          "size": [
+            0.006,
+            0.2,
+            0.18
+          ]
+        },
+        {
+          "name": "peel_guard_back",
+          "center": [
+            -1.0,
+            0.325,
+            0.94
+          ],
+          "size": [
+            0.386,
+            0.006,
+            0.18
+          ]
+        },
+        {
+          "name": "peel_lid_open",
+          "center": [
+            -1.0,
+            0.334,
+            1.143
+          ],
+          "size": [
+            0.386,
+            0.006,
+            0.226
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_handle",
+          "center": [
+            -1.165,
+            0.155,
+            1.0
+          ],
+          "size": [
+            0.065,
+            0.028,
+            0.02
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_y_head",
+          "center": [
+            -1.1,
+            0.155,
+            1.0
+          ],
+          "size": [
+            0.025,
+            0.076,
+            0.025
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_edge",
+          "center": [
+            -1.09,
+            0.155,
+            1.0
+          ],
+          "size": [
+            0.001,
+            0.025,
+            0.006
+          ]
+        },
+        {
+          "name": "linear_peeler_key_shoulder-1",
+          "center": [
+            -1.191,
+            0.155,
+            1.0
+          ],
+          "size": [
+            0.008,
+            0.046,
+            0.03
+          ]
+        },
+        {
+          "name": "linear_peeler_key_shoulder1",
+          "center": [
+            -1.119,
+            0.155,
+            1.0
+          ],
+          "size": [
+            0.008,
+            0.046,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "P16_drive",
+          "fixture": "raw_tomato",
+          "gap_mm": -3.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "r16_spatula_blade0",
+          "gap_mm": -3.8
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "r16_spatula_blade1",
+          "gap_mm": -5.7
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "r16_spatula_blade2",
+          "gap_mm": -6.3
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "r16_spatula_blade3",
+          "gap_mm": -5.7
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "r16_spatula_blade4",
+          "gap_mm": -3.8
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "r16_spatula_handle",
+          "gap_mm": -2.4
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "r16_spatula_blade0",
+          "gap_mm": -2.7
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "r16_spatula_blade1",
+          "gap_mm": 3.3
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "r16_spatula_blade3",
+          "gap_mm": 3.3
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "r16_spatula_blade4",
+          "gap_mm": -0.2
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "r16_spatula_handle",
+          "gap_mm": -38.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "raw_tray",
+          "gap_mm": 2.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "r16_rest_spatula",
+          "gap_mm": -3.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "r16_spatula_blade4",
+          "gap_mm": -13.2
+        },
+        {
+          "box": "peel_guard_back",
+          "fixture": "raw_tray",
+          "gap_mm": 2.0
+        },
+        {
+          "box": "peel_guard_back",
+          "fixture": "r16_rest_spatula",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "peel_guard_back",
+          "fixture": "r16_spatula_blade0",
+          "gap_mm": -15.2
+        },
+        {
+          "box": "peel_guard_back",
+          "fixture": "r16_spatula_blade1",
+          "gap_mm": -21.3
+        },
+        {
+          "box": "peel_guard_back",
+          "fixture": "r16_spatula_blade2",
+          "gap_mm": -23.2
+        },
+        {
+          "box": "peel_guard_back",
+          "fixture": "r16_spatula_blade3",
+          "gap_mm": -21.3
+        },
+        {
+          "box": "peel_guard_back",
+          "fixture": "r16_spatula_blade4",
+          "gap_mm": -13.2
+        }
+      ],
+      "off_counter": [],
+      "flagged": 22,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "spatula_fetch": 4,
+        "wok_plate2_rinse": 9
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "peeler_FLT",
+      "item": "peeler",
+      "desc": "far-left column turned 90 deg (cradles along y, back guard and lid toward the counter end, loaded from +x)",
+      "boxes": [
+        {
+          "name": "P16_drive",
+          "center": [
+            -1.755,
+            0.25,
+            0.95
+          ],
+          "size": [
+            0.04999999999999999,
+            0.47999999999999987,
+            0.04999999999999999
+          ]
+        },
+        {
+          "name": "P16_guide",
+          "center": [
+            -1.7,
+            0.25,
+            0.925
+          ],
+          "size": [
+            0.034999999999999996,
+            0.35999999999999993,
+            0.024999999999999994
+          ]
+        },
+        {
+          "name": "peel_drawer_floor",
+          "center": [
+            -1.635,
+            0.25,
+            0.859
+          ],
+          "size": [
+            0.13999999999999999,
+            0.30999999999999994,
+            0.017999999999999995
+          ]
+        },
+        {
+          "name": "peel_cradle-1",
+          "center": [
+            -1.615,
+            0.18,
+            0.895
+          ],
+          "size": [
+            0.034999999999999996,
+            0.015999999999999997,
+            0.07199999999999998
+          ]
+        },
+        {
+          "name": "peel_guard_side-1",
+          "center": [
+            -1.66,
+            0.06,
+            0.94
+          ],
+          "size": [
+            0.19999999999999996,
+            0.005999999999999998,
+            0.17999999999999997
+          ]
+        },
+        {
+          "name": "peel_cradle1",
+          "center": [
+            -1.615,
+            0.32,
+            0.895
+          ],
+          "size": [
+            0.034999999999999996,
+            0.015999999999999997,
+            0.07199999999999998
+          ]
+        },
+        {
+          "name": "peel_guard_side1",
+          "center": [
+            -1.66,
+            0.44,
+            0.94
+          ],
+          "size": [
+            0.19999999999999996,
+            0.005999999999999998,
+            0.17999999999999997
+          ]
+        },
+        {
+          "name": "peel_guard_back",
+          "center": [
+            -1.785,
+            0.25,
+            0.94
+          ],
+          "size": [
+            0.005999999999999998,
+            0.3859999999999999,
+            0.17999999999999997
+          ]
+        },
+        {
+          "name": "peel_lid_open",
+          "center": [
+            -1.794,
+            0.25,
+            1.143
+          ],
+          "size": [
+            0.005999999999999998,
+            0.3859999999999999,
+            0.22599999999999995
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_handle",
+          "center": [
+            -1.615,
+            0.085,
+            1.0
+          ],
+          "size": [
+            0.027999999999999994,
+            0.06499999999999999,
+            0.019999999999999997
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_y_head",
+          "center": [
+            -1.615,
+            0.15,
+            1.0
+          ],
+          "size": [
+            0.07599999999999998,
+            0.024999999999999994,
+            0.024999999999999994
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_edge",
+          "center": [
+            -1.615,
+            0.16,
+            1.0
+          ],
+          "size": [
+            0.024999999999999994,
+            0.0009999999999999998,
+            0.005999999999999998
+          ]
+        },
+        {
+          "name": "linear_peeler_key_shoulder-1",
+          "center": [
+            -1.615,
+            0.059,
+            1.0
+          ],
+          "size": [
+            0.04599999999999999,
+            0.007999999999999998,
+            0.029999999999999992
+          ]
+        },
+        {
+          "name": "linear_peeler_key_shoulder1",
+          "center": [
+            -1.615,
+            0.131,
+            1.0
+          ],
+          "size": [
+            0.04599999999999999,
+            0.007999999999999998,
+            0.029999999999999992
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 6,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "name": "peeler_BK",
+      "item": "peeler",
+      "desc": "left counter back by the sink, front-loaded under the cabinet (staging bowls moved)",
+      "boxes": [
+        {
+          "name": "P16_drive",
+          "center": [
+            -0.95,
+            0.557,
+            0.95
+          ],
+          "size": [
+            0.48,
+            0.05,
+            0.05
+          ]
+        },
+        {
+          "name": "P16_guide",
+          "center": [
+            -0.95,
+            0.502,
+            0.925
+          ],
+          "size": [
+            0.36,
+            0.035,
+            0.025
+          ]
+        },
+        {
+          "name": "peel_drawer_floor",
+          "center": [
+            -0.95,
+            0.437,
+            0.859
+          ],
+          "size": [
+            0.31,
+            0.14,
+            0.018
+          ]
+        },
+        {
+          "name": "peel_cradle-1",
+          "center": [
+            -1.02,
+            0.417,
+            0.895
+          ],
+          "size": [
+            0.016,
+            0.035,
+            0.072
+          ]
+        },
+        {
+          "name": "peel_guard_side-1",
+          "center": [
+            -1.14,
+            0.462,
+            0.94
+          ],
+          "size": [
+            0.006,
+            0.2,
+            0.18
+          ]
+        },
+        {
+          "name": "peel_cradle1",
+          "center": [
+            -0.88,
+            0.417,
+            0.895
+          ],
+          "size": [
+            0.016,
+            0.035,
+            0.072
+          ]
+        },
+        {
+          "name": "peel_guard_side1",
+          "center": [
+            -0.76,
+            0.462,
+            0.94
+          ],
+          "size": [
+            0.006,
+            0.2,
+            0.18
+          ]
+        },
+        {
+          "name": "peel_guard_back",
+          "center": [
+            -0.95,
+            0.587,
+            0.94
+          ],
+          "size": [
+            0.386,
+            0.006,
+            0.18
+          ]
+        },
+        {
+          "name": "peel_lid_open",
+          "center": [
+            -0.95,
+            0.596,
+            1.143
+          ],
+          "size": [
+            0.386,
+            0.006,
+            0.226
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_handle",
+          "center": [
+            -1.115,
+            0.417,
+            1.0
+          ],
+          "size": [
+            0.065,
+            0.028,
+            0.02
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_y_head",
+          "center": [
+            -1.05,
+            0.417,
+            1.0
+          ],
+          "size": [
+            0.025,
+            0.076,
+            0.025
+          ]
+        },
+        {
+          "name": "linear_peeler_peeler_edge",
+          "center": [
+            -1.04,
+            0.417,
+            1.0
+          ],
+          "size": [
+            0.001,
+            0.025,
+            0.006
+          ]
+        },
+        {
+          "name": "linear_peeler_key_shoulder-1",
+          "center": [
+            -1.141,
+            0.417,
+            1.0
+          ],
+          "size": [
+            0.008,
+            0.046,
+            0.03
+          ]
+        },
+        {
+          "name": "linear_peeler_key_shoulder1",
+          "center": [
+            -1.069,
+            0.417,
+            1.0
+          ],
+          "size": [
+            0.008,
+            0.046,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "P16_drive",
+          "fixture": "outlet_access_0",
+          "gap_mm": -5.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall10",
+          "gap_mm": -4.1
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall11",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall12",
+          "gap_mm": -23.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall13",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall14",
+          "gap_mm": -12.8
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_collar_bottom",
+          "gap_mm": -22.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_collar_wall10",
+          "gap_mm": -3.2
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_collar_wall11",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_collar_wall12",
+          "gap_mm": -21.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_collar_wall13",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_leafy_greens_collar_wall14",
+          "gap_mm": -16.2
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall0",
+          "gap_mm": -23.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall1",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall2",
+          "gap_mm": -12.8
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall14",
+          "gap_mm": -12.8
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall15",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_bail_leg-1",
+          "gap_mm": -17.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_collar_tab-1",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_collar_bottom",
+          "gap_mm": -22.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_collar_wall0",
+          "gap_mm": -21.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_collar_wall1",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_collar_wall2",
+          "gap_mm": -16.2
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_collar_wall14",
+          "gap_mm": -16.2
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_collar_wall15",
+          "gap_mm": -27.0
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_bail_lock_pin-1",
+          "gap_mm": -24.5
+        },
+        {
+          "box": "P16_drive",
+          "fixture": "stored_bowl_tomato_bail_lock_stop-1",
+          "gap_mm": -21.8
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall0",
+          "gap_mm": 4.6
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall14",
+          "gap_mm": -3.6
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall15",
+          "gap_mm": -32.1
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall2",
+          "gap_mm": -3.6
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall3",
+          "gap_mm": -6.1
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall12",
+          "gap_mm": 4.6
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall13",
+          "gap_mm": -32.1
+        },
+        {
+          "box": "P16_guide",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall14",
+          "gap_mm": -3.6
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_bottom",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall0",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall1",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall2",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall3",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall15",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall11",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall12",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_drawer_floor",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall13",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "peel_cradle-1",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_bottom",
+          "gap_mm": 2.0
+        },
+        {
+          "box": "peel_cradle-1",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall1",
+          "gap_mm": 2.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_bottom",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall4",
+          "gap_mm": 1.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall12",
+          "gap_mm": -3.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_key",
+          "gap_mm": -23.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_bail_bridge",
+          "gap_mm": -28.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_collar_bottom",
+          "gap_mm": -86.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_collar_wall4",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_collar_wall12",
+          "gap_mm": -1.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_key_shoulder-1",
+          "gap_mm": -8.0
+        },
+        {
+          "box": "peel_guard_side-1",
+          "fixture": "stored_bowl_leafy_greens_key_shoulder1",
+          "gap_mm": -8.0
+        },
+        {
+          "box": "peel_cradle1",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -4.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -3.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall3",
+          "gap_mm": -3.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall4",
+          "gap_mm": -3.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall5",
+          "gap_mm": -3.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_collar_bottom",
+          "gap_mm": -7.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_collar_wall3",
+          "gap_mm": -7.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_collar_wall4",
+          "gap_mm": -2.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_collar_wall5",
+          "gap_mm": -7.0
+        },
+        {
+          "box": "peel_guard_side1",
+          "fixture": "stored_bowl_tomato_key_shoulder-1",
+          "gap_mm": -8.9
+        },
+        {
+          "box": "peel_guard_back",
+          "fixture": "outlet_access_0",
+          "gap_mm": -16.0
+        },
+        {
+          "box": "peel_lid_open",
+          "fixture": "outlet_access_0",
+          "gap_mm": -7.0
+        },
+        {
+          "box": "linear_peeler_peeler_handle",
+          "fixture": "stored_bowl_leafy_greens_key",
+          "gap_mm": -8.2
+        },
+        {
+          "box": "linear_peeler_peeler_handle",
+          "fixture": "stored_bowl_leafy_greens_bail_bridge",
+          "gap_mm": -4.0
+        },
+        {
+          "box": "linear_peeler_peeler_handle",
+          "fixture": "stored_bowl_leafy_greens_key_shoulder1",
+          "gap_mm": -18.4
+        },
+        {
+          "box": "linear_peeler_peeler_y_head",
+          "fixture": "stored_bowl_leafy_greens_bail_bridge",
+          "gap_mm": -10.5
+        },
+        {
+          "box": "linear_peeler_peeler_y_head",
+          "fixture": "stored_bowl_leafy_greens_bail_leg-1",
+          "gap_mm": -15.5
+        },
+        {
+          "box": "linear_peeler_peeler_edge",
+          "fixture": "stored_bowl_leafy_greens_bail_bridge",
+          "gap_mm": 0.5
+        },
+        {
+          "box": "linear_peeler_peeler_edge",
+          "fixture": "stored_bowl_leafy_greens_bail_leg-1",
+          "gap_mm": 0.5
+        },
+        {
+          "box": "linear_peeler_key_shoulder-1",
+          "fixture": "stored_bowl_leafy_greens_key",
+          "gap_mm": -17.2
+        },
+        {
+          "box": "linear_peeler_key_shoulder-1",
+          "fixture": "stored_bowl_leafy_greens_bail_bridge",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "linear_peeler_key_shoulder-1",
+          "fixture": "stored_bowl_leafy_greens_key_shoulder1",
+          "gap_mm": -8.0
+        },
+        {
+          "box": "linear_peeler_key_shoulder1",
+          "fixture": "stored_bowl_leafy_greens_bail_bridge",
+          "gap_mm": -13.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 3,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 3
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "name": "tool_TR",
+      "item": "tool",
+      "desc": "raw-tray front (raw tray moved to the back)",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -1.38,
+            0.13,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -1.38,
+            0.095,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -1.451,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -1.455,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -1.309,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -1.305,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -1.38,
+            0.165,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -1.38,
+            0.095,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -1.38,
+            0.095,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -1.38,
+            0.095,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "raw_tray",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "raw_carrot",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "raw_carrot",
+          "gap_mm": -23.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "lever_bin_back",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 14,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4,
+        "hub_edge": 6,
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2
+      },
+      "flagged_segments": [
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__9-10"
+      ]
+    },
+    {
+      "name": "slicer_TR40",
+      "item": "slicer",
+      "desc": "turned 90 deg at the raw-tray front (raw tray moved), chute at the front",
+      "boxes": [
+        {
+          "name": "slicer_base",
+          "center": [
+            -1.4,
+            0.225,
+            0.95
+          ],
+          "size": [
+            0.20999999999999994,
+            0.32999999999999996,
+            0.19999999999999996
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y-1",
+          "center": [
+            -1.362,
+            0.145,
+            1.09
+          ],
+          "size": [
+            0.005999999999999998,
+            0.11199999999999997,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x-1",
+          "center": [
+            -1.4,
+            0.092,
+            1.09
+          ],
+          "size": [
+            0.06999999999999999,
+            0.005999999999999998,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_y1",
+          "center": [
+            -1.438,
+            0.145,
+            1.09
+          ],
+          "size": [
+            0.005999999999999998,
+            0.11199999999999997,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_chute_wall_x1",
+          "center": [
+            -1.4,
+            0.198,
+            1.09
+          ],
+          "size": [
+            0.06999999999999999,
+            0.005999999999999998,
+            0.07999999999999999
+          ]
+        },
+        {
+          "name": "slicer_spout",
+          "center": [
+            -1.4,
+            0.42,
+            0.97
+          ],
+          "size": [
+            0.09999999999999998,
+            0.059999999999999984,
+            0.039999999999999994
+          ]
+        },
+        {
+          "name": "out_bowl",
+          "center": [
+            -1.4,
+            0.5,
+            0.896
+          ],
+          "size": [
+            0.17,
+            0.17,
+            0.09
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "slicer_base",
+          "fixture": "raw_tray",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_rib-1",
+          "gap_mm": -23.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_rib1",
+          "gap_mm": -63.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_carrot",
+          "gap_mm": -77.5
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_potato",
+          "gap_mm": 5.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "raw_greens",
+          "gap_mm": -88.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall2",
+          "gap_mm": -14.8
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall3",
+          "gap_mm": -30.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall4",
+          "gap_mm": -30.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall5",
+          "gap_mm": -30.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bowl_outer_wall6",
+          "gap_mm": -14.8
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_key",
+          "gap_mm": -12.7
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bail_bridge",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bail_leg-1",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_bail_leg1",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": -34.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall2",
+          "gap_mm": -18.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall3",
+          "gap_mm": -34.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall4",
+          "gap_mm": -34.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall5",
+          "gap_mm": -34.0
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_collar_wall6",
+          "gap_mm": -18.2
+        },
+        {
+          "box": "slicer_base",
+          "fixture": "stored_bowl_potato_key_shoulder-1",
+          "gap_mm": -28.9
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "slicer_spout",
+          "fixture": "stored_bowl_potato_key_shoulder1",
+          "gap_mm": -19.8
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall1",
+          "gap_mm": -1.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall7",
+          "gap_mm": -1.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall9",
+          "gap_mm": -1.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall10",
+          "gap_mm": -29.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall11",
+          "gap_mm": -41.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall12",
+          "gap_mm": -26.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall13",
+          "gap_mm": -41.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall14",
+          "gap_mm": -29.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bowl_outer_wall15",
+          "gap_mm": -1.1
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_tab-1",
+          "gap_mm": 5.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_tab1",
+          "gap_mm": 5.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall1",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall7",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall9",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall10",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall11",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall12",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall13",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall14",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_collar_wall15",
+          "gap_mm": 3.0
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bail_lock_pin-1",
+          "gap_mm": 3.8
+        },
+        {
+          "box": "out_bowl",
+          "fixture": "stored_bowl_potato_bail_lock_pin1",
+          "gap_mm": 3.8
+        }
+      ],
+      "off_counter": [],
+      "flagged": 10,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 6,
+        "wok_plate2_rinse": 2,
+        "wok_plate_rinse": 2
+      },
+      "flagged_segments": [
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__9-10"
+      ]
+    },
+    {
+      "name": "tool_TR47",
+      "item": "tool",
+      "desc": "raw-tray front, left half (raw tray moved to the back)",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -1.47,
+            0.13,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -1.47,
+            0.095,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -1.541,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -1.545,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -1.399,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -1.395,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -1.47,
+            0.165,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -1.47,
+            0.095,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -1.47,
+            0.095,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -1.47,
+            0.095,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "raw_tray",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "raw_carrot",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "raw_carrot",
+          "gap_mm": -23.0
+        },
+        {
+          "box": "lever_bin_back",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 14,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4,
+        "hub_edge": 6,
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2
+      },
+      "flagged_segments": [
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__9-10"
+      ]
+    },
+    {
+      "name": "tool_TR50",
+      "item": "tool",
+      "desc": "raw-tray front, 3 cm further left",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -1.5,
+            0.13,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -1.5,
+            0.095,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -1.571,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -1.575,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -1.429,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -1.425,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -1.5,
+            0.165,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -1.5,
+            0.095,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -1.5,
+            0.095,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -1.5,
+            0.095,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "raw_tray",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_blade_plate",
+          "fixture": "raw_carrot",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "raw_carrot",
+          "gap_mm": -23.0
+        },
+        {
+          "box": "lever_bin_back",
+          "fixture": "raw_tray",
+          "gap_mm": -6.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 14,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4,
+        "hub_edge": 6,
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2
+      },
+      "flagged_segments": [
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__9-10"
+      ]
+    },
+    {
+      "name": "tool_BKL",
+      "item": "tool",
+      "desc": "far-left back, under the cabinet",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -1.665,
+            0.465,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -1.665,
+            0.43,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -1.736,
+            0.43,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -1.74,
+            0.475,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -1.594,
+            0.43,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -1.59,
+            0.475,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -1.665,
+            0.5,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -1.665,
+            0.43,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -1.665,
+            0.43,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -1.665,
+            0.43,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "tool_C90",
+      "item": "tool",
+      "desc": "left counter front by the sink (cooking corridor)",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.9,
+            0.13,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.9,
+            0.095,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.971,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.975,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.829,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.825,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.9,
+            0.165,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.9,
+            0.095,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.9,
+            0.095,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.9,
+            0.095,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 34,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "faucet_open": 3,
+        "hub_edge": 10,
+        "wok_plate2_rinse": 11,
+        "spatula_fetch": 1
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_PL",
+      "item": "tool",
+      "desc": "plating area (empty before cooking; prep-time only)",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            0.3,
+            0.13,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            0.3,
+            0.095,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            0.229,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            0.225,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            0.371,
+            0.095,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            0.375,
+            0.14,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            0.3,
+            0.165,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            0.3,
+            0.095,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            0.3,
+            0.095,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            0.3,
+            0.095,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "r15_plate",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "r17_plate2",
+          "gap_mm": -12.0
+        },
+        {
+          "box": "lever_plate_leg-1",
+          "fixture": "r17_plate2",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "lever_plate_leg1",
+          "fixture": "r15_plate",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "lever_bin_back",
+          "fixture": "r15_plate",
+          "gap_mm": -13.0
+        },
+        {
+          "box": "lever_bin_back",
+          "fixture": "r17_plate2",
+          "gap_mm": -13.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 47,
+      "of": 106,
+      "by_action": {
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
+        "wok_plate2_rinse": 14,
+        "hub_edge": 12,
+        "spatula_fetch": 1
+      },
+      "flagged_segments": [
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_WOK__H_POT",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__LID_POT__H_WOK",
+        "hub_edge__LID_RACK__H_WOK",
+        "hub_edge__SPIDER__H_WOK",
+        "hub_edge__WOK__H_POT",
+        "hub_edge__WOK__H_SINK",
+        "hub_edge__WOK__H_WOK",
+        "spatula_fetch__3-4",
+        "spider_pot_to_plate__10-11",
+        "spider_pot_to_plate__11-12",
+        "spider_pot_to_plate__12-13",
+        "spider_pot_to_plate__13-14",
+        "spider_pot_to_plate__8-9",
+        "spider_pot_to_plate__9-10",
+        "wok_plate2_rinse__0-1",
+        "wok_plate2_rinse__1-2",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "wok_plate2_rinse__14-15",
+        "wok_plate2_rinse__15-16",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__approach_0",
+        "wok_plate2_rinse__approach_16",
+        "wok_plate2_rinse__join_3",
+        "wok_plate_rinse__0-1",
+        "wok_plate_rinse__1-2",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate_rinse__14-15",
+        "wok_plate_rinse__15-16",
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__approach_0",
+        "wok_plate_rinse__approach_16",
+        "wok_plate_rinse__join_3"
+      ]
+    },
+    {
+      "name": "tray_now",
+      "item": "tray",
+      "desc": "today (R18b): x -1.515..-1.195, y .04-.34",
+      "boxes": [
+        {
+          "name": "tray",
+          "center": [
+            -1.355,
+            0.19,
+            0.859
+          ],
+          "size": [
+            0.32,
+            0.3,
+            0.018
+          ]
+        },
+        {
+          "name": "ribs+carrot",
+          "center": [
+            -1.42,
+            0.12,
+            0.93
+          ],
+          "size": [
+            0.16,
+            0.055,
+            0.082
+          ]
+        },
+        {
+          "name": "greens",
+          "center": [
+            -1.41,
+            0.265,
+            0.903
+          ],
+          "size": [
+            0.17,
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "name": "pad+tomato",
+          "center": [
+            -1.245,
+            0.12,
+            0.906
+          ],
+          "size": [
+            0.07,
+            0.07,
+            0.075
+          ]
+        },
+        {
+          "name": "potato",
+          "center": [
+            -1.245,
+            0.27,
+            0.903
+          ],
+          "size": [
+            0.09,
+            0.065,
+            0.07
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "tray",
+          "fixture": "raw_tray",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "tray",
+          "fixture": "raw_rib-1",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "tray",
+          "fixture": "raw_rib1",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "tray",
+          "fixture": "raw_potato",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "tray",
+          "fixture": "raw_greens",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "tray",
+          "fixture": "raw_tomato",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "raw_rib-1",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "raw_rib1",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "raw_carrot",
+          "gap_mm": -45.0
+        },
+        {
+          "box": "greens",
+          "fixture": "raw_tray",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "greens",
+          "fixture": "raw_greens",
+          "gap_mm": -70.0
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "raw_tray",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "raw_potato",
+          "gap_mm": -67.5
+        },
+        {
+          "box": "potato",
+          "fixture": "raw_tray",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "potato",
+          "fixture": "raw_tomato",
+          "gap_mm": -60.0
+        },
+        {
+          "box": "potato",
+          "fixture": "r16_spatula_blade4",
+          "gap_mm": -0.2
+        }
+      ],
+      "off_counter": [],
+      "flagged": 7,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 3,
+        "wok_plate2_rinse": 2,
+        "wok_plate_rinse": 2
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__approach_0",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__9-10"
+      ]
+    },
+    {
+      "name": "tray_BKL",
+      "item": "tray",
+      "desc": "back-left corner under the cabinet: x -1.7975..-1.4775, y .28-.58",
+      "boxes": [
+        {
+          "name": "tray",
+          "center": [
+            -1.638,
+            0.43,
+            0.859
+          ],
+          "size": [
+            0.32,
+            0.3,
+            0.018
+          ]
+        },
+        {
+          "name": "ribs+carrot",
+          "center": [
+            -1.702,
+            0.36,
+            0.93
+          ],
+          "size": [
+            0.16,
+            0.055,
+            0.082
+          ]
+        },
+        {
+          "name": "greens",
+          "center": [
+            -1.692,
+            0.505,
+            0.903
+          ],
+          "size": [
+            0.17,
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "name": "pad+tomato",
+          "center": [
+            -1.528,
+            0.36,
+            0.906
+          ],
+          "size": [
+            0.07,
+            0.07,
+            0.075
+          ]
+        },
+        {
+          "name": "potato",
+          "center": [
+            -1.528,
+            0.51,
+            0.903
+          ],
+          "size": [
+            0.09,
+            0.065,
+            0.07
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "tray",
+          "fixture": "raw_tray",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "tray",
+          "fixture": "raw_greens",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall6",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall7",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall8",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall9",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall10",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "raw_tray",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "stored_bowl_potato_bail_leg1",
+          "gap_mm": 3.5
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": 1.0
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "stored_bowl_potato_collar_wall6",
+          "gap_mm": 4.3
+        },
+        {
+          "box": "potato",
+          "fixture": "stored_bowl_potato_bowl_outer_wall8",
+          "gap_mm": -2.4
+        },
+        {
+          "box": "potato",
+          "fixture": "stored_bowl_potato_bowl_outer_wall9",
+          "gap_mm": -17.5
+        },
+        {
+          "box": "potato",
+          "fixture": "stored_bowl_potato_bowl_outer_wall10",
+          "gap_mm": -2.3
+        }
+      ],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "tray_BKM",
+      "item": "tray",
+      "desc": "back-middle under the cabinet (instead of the potato staging bowl): x -1.515..-1.195, y .28-.58",
+      "boxes": [
+        {
+          "name": "tray",
+          "center": [
+            -1.355,
+            0.43,
+            0.859
+          ],
+          "size": [
+            0.32,
+            0.3,
+            0.018
+          ]
+        },
+        {
+          "name": "ribs+carrot",
+          "center": [
+            -1.42,
+            0.36,
+            0.93
+          ],
+          "size": [
+            0.16,
+            0.055,
+            0.082
+          ]
+        },
+        {
+          "name": "greens",
+          "center": [
+            -1.41,
+            0.505,
+            0.903
+          ],
+          "size": [
+            0.17,
+            0.1,
+            0.07
+          ]
+        },
+        {
+          "name": "pad+tomato",
+          "center": [
+            -1.245,
+            0.36,
+            0.906
+          ],
+          "size": [
+            0.07,
+            0.07,
+            0.075
+          ]
+        },
+        {
+          "name": "potato",
+          "center": [
+            -1.245,
+            0.51,
+            0.903
+          ],
+          "size": [
+            0.09,
+            0.065,
+            0.07
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "tray",
+          "fixture": "raw_tray",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "tray",
+          "fixture": "raw_greens",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "tray",
+          "fixture": "raw_tomato",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_bottom",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall0",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall1",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall2",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall3",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall4",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall5",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall6",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall7",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall8",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall9",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall10",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall11",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall12",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall13",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall14",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_potato_bowl_outer_wall15",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_bottom",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall6",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall7",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall8",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall9",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "tray",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall10",
+          "gap_mm": -6.0
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_bowl_outer_wall2",
+          "gap_mm": -4.1
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_bowl_outer_wall3",
+          "gap_mm": -27.5
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_bowl_outer_wall4",
+          "gap_mm": -27.5
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_bowl_outer_wall5",
+          "gap_mm": -27.5
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_bowl_outer_wall6",
+          "gap_mm": -12.3
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_bail_leg1",
+          "gap_mm": 2.5
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_collar_bottom",
+          "gap_mm": -27.5
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_collar_wall2",
+          "gap_mm": -3.2
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_collar_wall3",
+          "gap_mm": -27.5
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_collar_wall4",
+          "gap_mm": -26.5
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_collar_wall5",
+          "gap_mm": -27.5
+        },
+        {
+          "box": "ribs+carrot",
+          "fixture": "stored_bowl_potato_collar_wall6",
+          "gap_mm": -15.7
+        },
+        {
+          "box": "greens",
+          "fixture": "stored_bowl_potato_bowl_outer_wall8",
+          "gap_mm": 4.0
+        },
+        {
+          "box": "greens",
+          "fixture": "stored_bowl_potato_bowl_outer_wall9",
+          "gap_mm": -11.1
+        },
+        {
+          "box": "greens",
+          "fixture": "stored_bowl_potato_bowl_outer_wall10",
+          "gap_mm": -39.1
+        },
+        {
+          "box": "greens",
+          "fixture": "stored_bowl_potato_bowl_outer_wall11",
+          "gap_mm": -11.1
+        },
+        {
+          "box": "greens",
+          "fixture": "stored_bowl_potato_bowl_outer_wall12",
+          "gap_mm": 4.0
+        },
+        {
+          "box": "greens",
+          "fixture": "stored_bowl_potato_bowl_outer_wall13",
+          "gap_mm": -11.1
+        },
+        {
+          "box": "greens",
+          "fixture": "stored_bowl_potato_bowl_outer_wall14",
+          "gap_mm": -19.1
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "raw_tray",
+          "gap_mm": 0.0
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall6",
+          "gap_mm": -4.8
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "stored_bowl_leafy_greens_bail_leg1",
+          "gap_mm": 3.2
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "stored_bowl_leafy_greens_collar_bottom",
+          "gap_mm": 1.0
+        },
+        {
+          "box": "pad+tomato",
+          "fixture": "stored_bowl_leafy_greens_collar_wall6",
+          "gap_mm": 1.0
+        },
+        {
+          "box": "potato",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall8",
+          "gap_mm": -2.4
+        },
+        {
+          "box": "potato",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall9",
+          "gap_mm": -30.0
+        },
+        {
+          "box": "potato",
+          "fixture": "stored_bowl_leafy_greens_bowl_outer_wall10",
+          "gap_mm": -14.8
+        }
+      ],
+      "off_counter": [],
+      "flagged": 3,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 3
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "name": "cbox_T1",
+      "item": "cold_box",
+      "desc": "inside the far-left tool-spot footprint (shared with the tool spot)",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -1.69,
+            0.15,
+            0.9
+          ],
+          "size": [
+            0.08,
+            0.3,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -1.728,
+            0.15,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -1.652,
+            0.15,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -1.69,
+            0.15,
+            1.06
+          ],
+          "size": [
+            0.088,
+            0.012,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "cbox_T2",
+      "item": "cold_box",
+      "desc": "tool-spot footprint, centred",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -1.665,
+            0.15,
+            0.9
+          ],
+          "size": [
+            0.08,
+            0.3,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -1.703,
+            0.15,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -1.627,
+            0.15,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -1.665,
+            0.15,
+            1.06
+          ],
+          "size": [
+            0.088,
+            0.012,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "cbox_T3",
+      "item": "cold_box",
+      "desc": "tool-spot footprint, right",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -1.64,
+            0.15,
+            0.9
+          ],
+          "size": [
+            0.08,
+            0.3,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -1.678,
+            0.15,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -1.602,
+            0.15,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -1.64,
+            0.15,
+            1.06
+          ],
+          "size": [
+            0.088,
+            0.012,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "cbox_T4",
+      "item": "cold_box",
+      "desc": "tool-spot footprint, centred, 2 cm back",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -1.665,
+            0.17,
+            0.9
+          ],
+          "size": [
+            0.08,
+            0.3,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -1.703,
+            0.17,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -1.627,
+            0.17,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -1.665,
+            0.17,
+            1.06
+          ],
+          "size": [
+            0.088,
+            0.012,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "cbox_R14",
+      "item": "cold_box",
+      "desc": "R14 set-down (the only counter spot that passed in R14)",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -1.7,
+            0.18,
+            0.9
+          ],
+          "size": [
+            0.08,
+            0.3,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -1.738,
+            0.18,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -1.662,
+            0.18,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -1.7,
+            0.18,
+            1.06
+          ],
+          "size": [
+            0.088,
+            0.012,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "cbox_FL",
+      "item": "cold_box",
+      "desc": "against the counter end, 5.5 cm further left",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -1.755,
+            0.18,
+            0.9
+          ],
+          "size": [
+            0.08,
+            0.3,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -1.793,
+            0.18,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -1.717,
+            0.18,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -1.755,
+            0.18,
+            1.06
+          ],
+          "size": [
+            0.088,
+            0.012,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [],
+      "off_counter": [],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "name": "cbox_FLX",
+      "item": "cold_box",
+      "desc": "along x at the counter front edge, far left",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -1.64,
+            0.05,
+            0.9
+          ],
+          "size": [
+            0.3,
+            0.08000000000000002,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -1.64,
+            0.012,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -1.64,
+            0.088,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -1.64,
+            0.05,
+            1.06
+          ],
+          "size": [
+            0.012000000000000005,
+            0.088,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "tub",
+          "fixture": "raw_tray",
+          "gap_mm": -18.0
+        },
+        {
+          "box": "tub",
+          "fixture": "raw_rib-1",
+          "gap_mm": 2.5
+        }
+      ],
+      "off_counter": [],
+      "flagged": 10,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0"
+      ]
+    }
+  ]
+}

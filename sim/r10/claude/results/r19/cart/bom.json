@@ -1,0 +1,874 @@
+{
+ "sources": {
+  "UR_DATASHEET": "https://www.universal-robots.com/manuals/latest/en/datasheets/ur5e/ (weight 20.6 kg, payload 5 kg, reach 850 mm)",
+  "UR_DH": "https://www.universal-robots.com/articles/ur/application-installation/dh-parameters-for-calculations-of-kinematics-and-dynamics/ (UR5e link masses and CoMs)",
+  "UR_MANUAL": "https://www.universal-robots.com/manuals/EN/PDF/SW5_19/user-manual-UR5e-PDF_online/710-965-00_UR5e_User_Manual_en_Global.pdf (2.3 stopping data p.19-24; 6.2 stand loads p.41-42; 10.2.2 stop categories)",
+  "WHEEL": "https://www.zlingkj.com/Data/zlingkj/upload/file/20240102/ZLLG65ASM500%20V2.0%E5%8D%95%E5%87%BA%E8%BD%B4.pdf (ZLLG65ASM500 V2.0: 165 mm, 48 V, 10 N.m rated / 30 N.m peak, 4.85 kg, 200 kg per 2 sets, PU 70 Shore A)",
+  "GRIP": "https://www.dh-robotics.com/wp-content/uploads/2022/03/DH-Robotics-Servo-Electric-Grippers-Product-Gallery-202203D.pdf (PGC-140-50 ~1 kg, as recorded in hardware.py)"
+ },
+ "labels": "S sourced, D derived, E estimate, M sim",
+ "bom": {
+  "steel": {
+   "rows": [
+    {
+     "item": "chassis frame RHS 40x40x2 steel, 3.2 m",
+     "qty": 1,
+     "unit_kg": 7.636,
+     "total_kg": 7.636,
+     "com_m": [
+      0,
+      -0.05,
+      0.11
+     ],
+     "label": "D",
+     "note": "perimeter 0.60x0.50 + 2 cross members; 2.39 kg/m"
+    },
+    {
+     "item": "deck plate Al 5 mm 0.60x0.50",
+     "qty": 1,
+     "unit_kg": 4.05,
+     "total_kg": 4.05,
+     "com_m": [
+      0,
+      -0.05,
+      0.1325
+     ],
+     "label": "D",
+     "note": ""
+    },
+    {
+     "item": "wheel / caster brackets, mast foot gussets",
+     "qty": 1,
+     "unit_kg": 2.0,
+     "total_kg": 2.0,
+     "com_m": [
+      0,
+      -0.12,
+      0.13
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "mast RHS 100x100x4 steel, 0.865 m (z .19-1.055)",
+     "qty": 1,
+     "unit_kg": 10.43,
+     "total_kg": 10.43,
+     "com_m": [
+      0,
+      -0.17,
+      0.6225
+     ],
+     "label": "D",
+     "note": "12.06 kg/m"
+    },
+    {
+     "item": "beam RHS 100x50x4 steel, 0.30 m (mast -> mount)",
+     "qty": 1,
+     "unit_kg": 2.675,
+     "total_kg": 2.675,
+     "com_m": [
+      0,
+      -0.045,
+      1.08
+     ],
+     "label": "D",
+     "note": "8.92 kg/m"
+    },
+    {
+     "item": "mast-beam joint plates + bolts",
+     "qty": 1,
+     "unit_kg": 0.8,
+     "total_kg": 0.8,
+     "com_m": [
+      0,
+      -0.17,
+      1.08
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "UR adapter, 20 deg wedge, Al, pocketed",
+     "qty": 1,
+     "unit_kg": 2.0,
+     "total_kg": 2.0,
+     "com_m": [
+      0,
+      0.08,
+      1.1
+     ],
+     "label": "E",
+     "note": "solid wedge 170x170x(10..72) mm would be 3.2 kg"
+    },
+    {
+     "item": "drive hub motor ZLTECH ZLLG65ASM500 V2.0",
+     "qty": 2,
+     "unit_kg": 4.85,
+     "total_kg": 9.7,
+     "com_m": [
+      [
+       -0.22,
+       -0.22,
+       0.0825
+      ],
+      [
+       0.22,
+       -0.22,
+       0.0825
+      ]
+     ],
+     "label": "S",
+     "note": "WHEEL"
+    },
+    {
+     "item": "swivel caster 100 mm PU with total lock",
+     "qty": 2,
+     "unit_kg": 0.9,
+     "total_kg": 1.8,
+     "com_m": [
+      [
+       -0.22,
+       0.11,
+       0.06
+      ],
+      [
+       0.22,
+       0.11,
+       0.06
+      ]
+     ],
+     "label": "E",
+     "note": "catalogue class 0.7-1.2 kg"
+    },
+    {
+     "item": "drive driver ZLAC8015D",
+     "qty": 1,
+     "unit_kg": 0.8,
+     "total_kg": 0.8,
+     "com_m": [
+      0,
+      -0.1,
+      0.21
+     ],
+     "label": "E",
+     "note": "datasheet mass not captured"
+    },
+    {
+     "item": "48 V DC supply 600 W (230 V tether in)",
+     "qty": 1,
+     "unit_kg": 1.5,
+     "total_kg": 1.5,
+     "com_m": [
+      0.1,
+      -0.1,
+      0.22
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "safety relay, contactor, terminals, enclosure, wiring",
+     "qty": 1,
+     "unit_kg": 1.9,
+     "total_kg": 1.9,
+     "com_m": [
+      -0.05,
+      -0.1,
+      0.22
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "dock bumper, rubber D-profile + Al backing 0.56 m",
+     "qty": 1,
+     "unit_kg": 1.0,
+     "total_kg": 1.0,
+     "com_m": [
+      0,
+      0.205,
+      0.3
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "covers: chassis skirt",
+     "qty": 1,
+     "unit_kg": 1.5,
+     "total_kg": 1.5,
+     "com_m": [
+      0,
+      -0.05,
+      0.2
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "covers: mast",
+     "qty": 1,
+     "unit_kg": 1.0,
+     "total_kg": 1.0,
+     "com_m": [
+      0,
+      -0.17,
+      0.62
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "E-stop button + box on mast",
+     "qty": 1,
+     "unit_kg": 0.3,
+     "total_kg": 0.3,
+     "com_m": [
+      0,
+      -0.23,
+      1.0
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "UR arm cable on the cart (1.5 m x 0.35 kg/m)",
+     "qty": 1,
+     "unit_kg": 0.5,
+     "total_kg": 0.5,
+     "com_m": [
+      0,
+      -0.2,
+      0.6
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "tether inlet, strain relief, connector",
+     "qty": 1,
+     "unit_kg": 0.4,
+     "total_kg": 0.4,
+     "com_m": [
+      0,
+      0.15,
+      0.1
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "fasteners, misc",
+     "qty": 1,
+     "unit_kg": 1.0,
+     "total_kg": 1.0,
+     "com_m": [
+      0,
+      -0.1,
+      0.3
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "dock pads / fiducials",
+     "qty": 1,
+     "unit_kg": 0.3,
+     "total_kg": 0.3,
+     "com_m": [
+      0,
+      0.2,
+      0.2
+     ],
+     "label": "E",
+     "note": ""
+    }
+   ],
+   "cart_kg": 51.29,
+   "cart_com_m": [
+    0.0011,
+    -0.1021,
+    0.3534
+   ],
+   "cart_I_about_com_kgm2": [
+    [
+     7.319,
+     -0.0,
+     0.007
+    ],
+    [
+     -0.0,
+     7.539,
+     -0.091
+    ],
+    [
+     0.007,
+     -0.091,
+     1.972
+    ]
+   ]
+  },
+  "al": {
+   "rows": [
+    {
+     "item": "chassis frame RHS 40x40x2 steel, 3.2 m",
+     "qty": 1,
+     "unit_kg": 7.636,
+     "total_kg": 7.636,
+     "com_m": [
+      0,
+      -0.05,
+      0.11
+     ],
+     "label": "D",
+     "note": "perimeter 0.60x0.50 + 2 cross members; 2.39 kg/m"
+    },
+    {
+     "item": "deck plate Al 5 mm 0.60x0.50",
+     "qty": 1,
+     "unit_kg": 4.05,
+     "total_kg": 4.05,
+     "com_m": [
+      0,
+      -0.05,
+      0.1325
+     ],
+     "label": "D",
+     "note": ""
+    },
+    {
+     "item": "wheel / caster brackets, mast foot gussets",
+     "qty": 1,
+     "unit_kg": 2.0,
+     "total_kg": 2.0,
+     "com_m": [
+      0,
+      -0.12,
+      0.13
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "mast RHS 100x100x4 al, 0.865 m (z .19-1.055)",
+     "qty": 1,
+     "unit_kg": 3.587,
+     "total_kg": 3.587,
+     "com_m": [
+      0,
+      -0.17,
+      0.6225
+     ],
+     "label": "D",
+     "note": "4.15 kg/m"
+    },
+    {
+     "item": "beam RHS 100x50x4 steel, 0.30 m (mast -> mount)",
+     "qty": 1,
+     "unit_kg": 2.675,
+     "total_kg": 2.675,
+     "com_m": [
+      0,
+      -0.045,
+      1.08
+     ],
+     "label": "D",
+     "note": "8.92 kg/m"
+    },
+    {
+     "item": "mast-beam joint plates + bolts",
+     "qty": 1,
+     "unit_kg": 0.8,
+     "total_kg": 0.8,
+     "com_m": [
+      0,
+      -0.17,
+      1.08
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "UR adapter, 20 deg wedge, Al, pocketed",
+     "qty": 1,
+     "unit_kg": 2.0,
+     "total_kg": 2.0,
+     "com_m": [
+      0,
+      0.08,
+      1.1
+     ],
+     "label": "E",
+     "note": "solid wedge 170x170x(10..72) mm would be 3.2 kg"
+    },
+    {
+     "item": "drive hub motor ZLTECH ZLLG65ASM500 V2.0",
+     "qty": 2,
+     "unit_kg": 4.85,
+     "total_kg": 9.7,
+     "com_m": [
+      [
+       -0.22,
+       -0.22,
+       0.0825
+      ],
+      [
+       0.22,
+       -0.22,
+       0.0825
+      ]
+     ],
+     "label": "S",
+     "note": "WHEEL"
+    },
+    {
+     "item": "swivel caster 100 mm PU with total lock",
+     "qty": 2,
+     "unit_kg": 0.9,
+     "total_kg": 1.8,
+     "com_m": [
+      [
+       -0.22,
+       0.11,
+       0.06
+      ],
+      [
+       0.22,
+       0.11,
+       0.06
+      ]
+     ],
+     "label": "E",
+     "note": "catalogue class 0.7-1.2 kg"
+    },
+    {
+     "item": "drive driver ZLAC8015D",
+     "qty": 1,
+     "unit_kg": 0.8,
+     "total_kg": 0.8,
+     "com_m": [
+      0,
+      -0.1,
+      0.21
+     ],
+     "label": "E",
+     "note": "datasheet mass not captured"
+    },
+    {
+     "item": "48 V DC supply 600 W (230 V tether in)",
+     "qty": 1,
+     "unit_kg": 1.5,
+     "total_kg": 1.5,
+     "com_m": [
+      0.1,
+      -0.1,
+      0.22
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "safety relay, contactor, terminals, enclosure, wiring",
+     "qty": 1,
+     "unit_kg": 1.9,
+     "total_kg": 1.9,
+     "com_m": [
+      -0.05,
+      -0.1,
+      0.22
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "dock bumper, rubber D-profile + Al backing 0.56 m",
+     "qty": 1,
+     "unit_kg": 1.0,
+     "total_kg": 1.0,
+     "com_m": [
+      0,
+      0.205,
+      0.3
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "covers: chassis skirt",
+     "qty": 1,
+     "unit_kg": 1.5,
+     "total_kg": 1.5,
+     "com_m": [
+      0,
+      -0.05,
+      0.2
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "covers: mast",
+     "qty": 1,
+     "unit_kg": 1.0,
+     "total_kg": 1.0,
+     "com_m": [
+      0,
+      -0.17,
+      0.62
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "E-stop button + box on mast",
+     "qty": 1,
+     "unit_kg": 0.3,
+     "total_kg": 0.3,
+     "com_m": [
+      0,
+      -0.23,
+      1.0
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "UR arm cable on the cart (1.5 m x 0.35 kg/m)",
+     "qty": 1,
+     "unit_kg": 0.5,
+     "total_kg": 0.5,
+     "com_m": [
+      0,
+      -0.2,
+      0.6
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "tether inlet, strain relief, connector",
+     "qty": 1,
+     "unit_kg": 0.4,
+     "total_kg": 0.4,
+     "com_m": [
+      0,
+      0.15,
+      0.1
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "fasteners, misc",
+     "qty": 1,
+     "unit_kg": 1.0,
+     "total_kg": 1.0,
+     "com_m": [
+      0,
+      -0.1,
+      0.3
+     ],
+     "label": "E",
+     "note": ""
+    },
+    {
+     "item": "dock pads / fiducials",
+     "qty": 1,
+     "unit_kg": 0.3,
+     "total_kg": 0.3,
+     "com_m": [
+      0,
+      0.2,
+      0.2
+     ],
+     "label": "E",
+     "note": ""
+    }
+   ],
+   "cart_kg": 44.45,
+   "cart_com_m": [
+    0.0012,
+    -0.0917,
+    0.312
+   ],
+   "cart_I_about_com_kgm2": [
+    [
+     6.278,
+     0.0,
+     0.005
+    ],
+    [
+     0.0,
+     6.534,
+     -0.235
+    ],
+    [
+     0.005,
+     -0.235,
+     1.925
+    ]
+   ]
+  }
+ },
+ "machine": {
+  "sim": {
+   "total_kg": 66.72,
+   "com_m": [
+    0.0651,
+    0.0225,
+    0.5359
+   ],
+   "cart_kg": 44.53,
+   "cart_com_m": [
+    0.0,
+    -0.06,
+    0.2361
+   ],
+   "arm_kg": 20.995,
+   "arm_com_m": [
+    0.1817,
+    0.1788,
+    1.1398
+   ],
+   "tool_kg": 1.2,
+   "info": {
+    "variant": "sim"
+   }
+  },
+  "bom_steel": {
+   "total_kg": 73.24,
+   "com_m": [
+    0.0682,
+    -0.0146,
+    0.5901
+   ],
+   "cart_kg": 51.29,
+   "cart_com_m": [
+    0.0011,
+    -0.1021,
+    0.3534
+   ],
+   "arm_kg": 20.6,
+   "arm_com_m": [
+    0.2109,
+    0.1793,
+    1.1465
+   ],
+   "tool_kg": 1.35,
+   "info": {
+    "variant": "bom",
+    "mast": "steel",
+    "chassis_scale": 1.0,
+    "cart_kg": 51.291584,
+    "cart_com": [
+     0.0010723006721726515,
+     -0.10213725666963226,
+     0.3534060410378438
+    ],
+    "ur_map_err_m": 0.0012424072068435371
+   }
+  },
+  "bom_al": {
+   "total_kg": 66.4,
+   "com_m": [
+    0.0753,
+    0.0014,
+    0.5868
+   ],
+   "cart_kg": 44.45,
+   "cart_com_m": [
+    0.0012,
+    -0.0917,
+    0.312
+   ],
+   "arm_kg": 20.6,
+   "arm_com_m": [
+    0.2109,
+    0.1793,
+    1.1465
+   ],
+   "tool_kg": 1.35,
+   "info": {
+    "variant": "bom",
+    "mast": "al",
+    "chassis_scale": 1.0,
+    "cart_kg": 44.44908799999999,
+    "cart_com": [
+     0.0012373707195072266,
+     -0.09169046078065766,
+     0.31198169645235485
+    ],
+    "ur_map_err_m": 0.0012424072068435371
+   }
+  }
+ },
+ "ur5e": {
+  "links": [
+   {
+    "body": "R_arm_shoulder_link",
+    "mass_kg": 3.761,
+    "com_dh_m": [
+     0,
+     -0.02561,
+     0.00193
+    ],
+    "sim_mass_kg": 3.7
+   },
+   {
+    "body": "R_arm_upper_arm_link",
+    "mass_kg": 8.058,
+    "com_dh_m": [
+     0.2125,
+     0,
+     0.11336
+    ],
+    "sim_mass_kg": 8.393
+   },
+   {
+    "body": "R_arm_forearm_link",
+    "mass_kg": 2.846,
+    "com_dh_m": [
+     0.15,
+     0,
+     0.0265
+    ],
+    "sim_mass_kg": 2.275
+   },
+   {
+    "body": "R_arm_wrist_1_link",
+    "mass_kg": 1.37,
+    "com_dh_m": [
+     0,
+     -0.0018,
+     0.01634
+    ],
+    "sim_mass_kg": 1.219
+   },
+   {
+    "body": "R_arm_wrist_2_link",
+    "mass_kg": 1.3,
+    "com_dh_m": [
+     0,
+     0.0018,
+     0.01634
+    ],
+    "sim_mass_kg": 1.219
+   },
+   {
+    "body": "R_arm_wrist_3_link",
+    "mass_kg": 0.365,
+    "com_dh_m": [
+     0,
+     0,
+     -0.001159
+    ],
+    "sim_mass_kg": 0.1889
+   }
+  ],
+  "base_kg_derived": 2.9,
+  "sim_base_kg": 4.0,
+  "total_datasheet_kg": 20.6,
+  "sim_total_kg": 20.9949
+ },
+ "tool": {
+  "gripper": [
+   1.0,
+   "S",
+   "GRIP"
+  ],
+  "fingers": [
+   0.2,
+   "E",
+   ""
+  ],
+  "flange_adapter": [
+   0.15,
+   "E",
+   ""
+  ]
+ },
+ "sim_cart_parts": [
+  {
+   "part": "R_cart_chassis",
+   "kg": 14.0,
+   "com_m": [
+    0,
+    -0.05,
+    0.14
+   ]
+  },
+  {
+   "part": "R_cart_electrics",
+   "kg": 3.0,
+   "com_m": [
+    0,
+    -0.1,
+    0.225
+   ]
+  },
+  {
+   "part": "R_cart_mast",
+   "kg": 4.0,
+   "com_m": [
+    0,
+    -0.17,
+    0.6225
+   ]
+  },
+  {
+   "part": "R_cart_beam",
+   "kg": 2.5,
+   "com_m": [
+    0,
+    -0.045,
+    1.08
+   ]
+  },
+  {
+   "part": "R_dock_bumper",
+   "kg": 0.5,
+   "com_m": [
+    0,
+    0.205,
+    0.3
+   ]
+  },
+  {
+   "part": "R_cart_wheel_drive x2 (4.85 each)",
+   "kg": 9.7,
+   "com_m": [
+    0,
+    -0.22,
+    0.0825
+   ]
+  },
+  {
+   "part": "R_cart_wheel_caster x2 (verified_wheels sets 4.85 each, dock code says 1.5)",
+   "kg": 9.7,
+   "com_m": [
+    0,
+    0.11,
+    0.05
+   ]
+  },
+  {
+   "part": "R_mount (base plate + cover)",
+   "kg": 1.13,
+   "com_m": [
+    0,
+    0.08,
+    1.108
+   ]
+  }
+ ],
+ "sim_cart_kg": 44.53,
+ "mismatches": [
+  "casters: verified_wheels (scene.py) re-sizes every R_cart_wheel_* geom to the 4.85 kg hub motor, so the two casters weigh 4.85 kg each (dock code: 1.5; real 100 mm caster ~0.9 kg): +7.9 kg low and forward",
+  "mast 4 kg = aluminium 100x100x4; a steel mast (stiffness, OEM \"rigid base\" rule) is 10.4 kg",
+  "R_mount 1.13 kg (flat plate) vs a 20 deg adapter wedge ~2 kg; beam 2.5 vs 2.7 kg",
+  "electrics 3 kg vs 4.2 kg (on-board 48 V supply + driver + safety relay); no covers, E-stop, cable, fasteners in the sim (+5.0 kg)",
+  "UR5e: menagerie link masses (UR5 values, 21.0 kg incl. a 4.0 kg base) vs UR DH table 17.7 kg links + 2.9 kg base = 20.6 kg datasheet",
+  "mobile.dock_stability uses its own contact lines (+-0.22, -0.22/+0.11) independent of the geoms; the verified_wheels spindles sit at y=+-0.135 (massless)"
+ ]
+}

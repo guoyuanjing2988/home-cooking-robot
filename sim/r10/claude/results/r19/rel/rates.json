@@ -1,0 +1,317 @@
+{
+ "g_rigid": {
+  "cat": "grasp/release",
+  "regime": "structured",
+  "p": {
+   "lo": 0.0001,
+   "mid": 0.0005,
+   "hi": 0.002
+  },
+  "d": 0.95,
+  "r": 0.9,
+  "m": 3,
+  "q_floor": 0.05,
+  "t": 10,
+  "basis": "ASSUMED. Keyed handle in a keyed dock, taught pose. Between known-part bin picking 96-99 % (S2: pose error dominates) and wafer handlers ~1e-6-1e-7 per handoff (S1: hardware only, ideal objects)."
+ },
+ "r_rigid": {
+  "cat": "grasp/release",
+  "regime": "structured",
+  "p": {
+   "lo": 2e-05,
+   "mid": 0.0001,
+   "hi": 0.0005
+  },
+  "d": 0.8,
+  "r": 0.5,
+  "m": 3,
+  "q_floor": 0.05,
+  "t": 8,
+  "basis": "ASSUMED. Opening the jaws over a seated keyed object."
+ },
+ "g_food_rigid": {
+  "cat": "grasp/release",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.001,
+   "mid": 0.005,
+   "hi": 0.03
+  },
+  "d": 0.9,
+  "r": 0.9,
+  "m": 2,
+  "q_floor": 0.2,
+  "t": 15,
+  "basis": "SOURCED range: novel-object grasping 95-96 % (S3 Dex-Net 4.0, S4 QT-Opt), known parts 96-99 % (S2). Mid assumes a known firm item (potato, carrot, ginger) on a tray: 99.5 %."
+ },
+ "g_food_soft": {
+  "cat": "grasp/release",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.003,
+   "mid": 0.015,
+   "hi": 0.08
+  },
+  "d": 0.9,
+  "r": 0.9,
+  "m": 2,
+  "q_floor": 0.2,
+  "t": 15,
+  "basis": "SOURCED range: food acquisition 83-91 % on plates (S8 SPANet), human teleop demos of lettuce 94.7 % (S7). Mid 98.5 %."
+ },
+ "g_food_wet": {
+  "cat": "grasp/release",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.005,
+   "mid": 0.02,
+   "hi": 0.1
+  },
+  "d": 0.9,
+  "r": 0.9,
+  "m": 2,
+  "q_floor": 0.2,
+  "t": 15,
+  "basis": "SOURCED range: autonomous lettuce grasp 75 % (S7), slippery items the worst class in S8; wet pad friction unmeasured (#10). Mid 98 %."
+ },
+ "g_food_small": {
+  "cat": "grasp/release",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.005,
+   "mid": 0.02,
+   "hi": 0.1
+  },
+  "d": 0.9,
+  "r": 0.9,
+  "m": 2,
+  "q_floor": 0.2,
+  "t": 15,
+  "basis": "ASSUMED (+S8). Rib pieces, clams, cloves, okra, whole spices, one at a time."
+ },
+ "r_food": {
+  "cat": "grasp/release",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.0005,
+   "mid": 0.003,
+   "hi": 0.01
+  },
+  "d": 0.7,
+  "r": 0.6,
+  "m": 2,
+  "q_floor": 0.2,
+  "t": 10,
+  "basis": "ASSUMED. Food let go into a chute, cradle, cup or plate: sticks to wet fingers, bounces out."
+ },
+ "seat": {
+  "cat": "insertion/seating",
+  "regime": "structured",
+  "p": {
+   "lo": 0.0002,
+   "mid": 0.001,
+   "hi": 0.005
+  },
+  "d": 0.9,
+  "r": 0.8,
+  "m": 3,
+  "q_floor": 0.05,
+  "t": 12,
+  "basis": "ASSUMED. Keyed seat with lead-in. Learned precise insertion reaches 100/100 (S5 HIL-SERL; one-sided 95 % bound >= 97 %). Tight reserves here: lid rack 0.3 mm, wok grasp 2.4 mm (R19_MOTION_LIBRARY 5)."
+ },
+ "contact_mech": {
+  "cat": "contact",
+  "regime": "structured",
+  "p": {
+   "lo": 0.0002,
+   "mid": 0.001,
+   "hi": 0.005
+  },
+  "d": 0.9,
+  "r": 0.7,
+  "m": 3,
+  "q_floor": 0.05,
+  "t": 10,
+  "basis": "ASSUMED. Faucet lever, fridge door, drawer, lever-cutter stroke, cracker press. Learned-policy floor: cabinet 85 %, faucet rinse 80 % (S9)."
+ },
+ "stir_dice": {
+  "cat": "contact",
+  "regime": "semi",
+  "p": {
+   "lo": 0.0002,
+   "mid": 0.001,
+   "hi": 0.005
+  },
+  "d": 0.7,
+  "r": 0.6,
+  "m": 3,
+  "q_floor": 0.1,
+  "t": 15,
+  "basis": "ASSUMED per 13.15 s cycle (5 strokes): jam, spatula turned in the grip, food thrown out. R15 rigid dice only."
+ },
+ "stir_shred": {
+  "cat": "contact",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.001,
+   "mid": 0.005,
+   "hi": 0.02
+  },
+  "d": 0.6,
+  "r": 0.5,
+  "m": 3,
+  "q_floor": 0.2,
+  "t": 15,
+  "basis": "ASSUMED per cycle. README_R10:544: shreds and leaves \"not credible\" with rigid pieces."
+ },
+ "food_contact": {
+  "cat": "contact",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.002,
+   "mid": 0.01,
+   "hi": 0.05
+  },
+  "d": 0.8,
+  "r": 0.8,
+  "m": 2,
+  "q_floor": 0.2,
+  "t": 15,
+  "basis": "ASSUMED. Spider scoop, re-push of an item under the lever blade, eggs out of the wok. Learned-policy floor: \"cook shrimp\" 60 % whole task (S9)."
+ },
+ "pour_liquid": {
+  "cat": "pour/tip",
+  "regime": "structured",
+  "p": {
+   "lo": 0.0001,
+   "mid": 0.0005,
+   "hi": 0.003
+  },
+  "d": 0.6,
+  "r": 0.7,
+  "m": 2,
+  "q_floor": 0.1,
+  "t": 8,
+  "basis": "ASSUMED. Keyed cup tipped into a large target (wok, pot). Level accuracy 13-31 ml (S18) is dose error, not failure."
+ },
+ "pour_food": {
+  "cat": "pour/tip",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.001,
+   "mid": 0.005,
+   "hi": 0.02
+  },
+  "d": 0.8,
+  "r": 0.7,
+  "m": 2,
+  "q_floor": 0.2,
+  "t": 15,
+  "basis": "ASSUMED. Tip of food or paste: wok to plate, basket, spider dump, chopper bowl. Sim: 81-91 % of rigid dice on the plate, 98 % at half load (README_R10:561)."
+ },
+ "tool_change": {
+  "cat": "tool change",
+  "regime": "structured",
+  "p": {
+   "lo": 0.0001,
+   "mid": 0.001,
+   "hi": 0.005
+  },
+  "d": 0.95,
+  "r": 0.8,
+  "m": 3,
+  "q_floor": 0.05,
+  "t": 15,
+  "basis": "ASSUMED. Finger-set swap on a dovetail + spring pin, never simulated (R19_PREP_AUDIT 6.2)."
+ },
+ "appl_cmd": {
+  "cat": "appliance",
+  "regime": "structured",
+  "p": {
+   "lo": 1e-05,
+   "mid": 0.0001,
+   "hi": 0.01
+  },
+  "d": 0.95,
+  "r": 0.95,
+  "m": 1,
+  "q_floor": 0.05,
+  "t": 5,
+  "basis": "ASSUMED. lo/mid: wired control with state read-back. hi: consumer smart plug, no read-back; forum reports of \"a few percent\" lost Zigbee commands (S17, anecdotal)."
+ },
+ "appl_proc": {
+  "cat": "appliance",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.002,
+   "mid": 0.01,
+   "hi": 0.05
+  },
+  "d": 0.7,
+  "r": 0.5,
+  "m": 2,
+  "q_floor": 0.3,
+  "t": 60,
+  "basis": "ASSUMED. Outcome of a food-processing run: peel incomplete, slicer jam, piece stuck in the lever cutter, dry doser caked."
+ },
+ "perc_struct": {
+  "cat": "perception",
+  "regime": "structured",
+  "p": {
+   "lo": 0.0001,
+   "mid": 0.0005,
+   "hi": 0.003
+  },
+  "d": 0.5,
+  "r": 0.8,
+  "m": 2,
+  "q_floor": 0.05,
+  "t": 5,
+  "basis": "ASSUMED. Presence / seated / flow / cup-ID check in a fixed scene; ~99.5 % detection on food lines (S14, vendor)."
+ },
+ "perc_food": {
+  "cat": "perception",
+  "regime": "unstructured",
+  "p": {
+   "lo": 0.001,
+   "mid": 0.005,
+   "hi": 0.03
+  },
+  "d": 0.4,
+  "r": 0.7,
+  "m": 2,
+  "q_floor": 0.2,
+  "t": 10,
+  "basis": "ASSUMED. Food localisation and food-state judgement (all out, peel done, shell-free)."
+ },
+ "transit": {
+  "cat": "free move",
+  "regime": "structured",
+  "p": {
+   "lo": 1e-05,
+   "mid": 0.0001,
+   "hi": 0.001
+  },
+  "d": 1.0,
+  "r": 0.5,
+  "m": 1,
+  "q_floor": 0.5,
+  "t": 20,
+  "basis": "ASSUMED. Protective stop on a hub transit (object left in the corridor, contact)."
+ },
+ "hw": {
+  "cat": "hardware",
+  "regime": "structured",
+  "p": {
+   "lo": 0.0001,
+   "mid": 0.001,
+   "hi": 0.01
+  },
+  "d": 1.0,
+  "r": 0.0,
+  "m": 1,
+  "q_floor": 1.0,
+  "t": 0,
+  "basis": "ASSUMED per meal: a fault of the arm, gripper, PC or station that needs the user (MTBF ~1,000 h of a home system)."
+ }
+}

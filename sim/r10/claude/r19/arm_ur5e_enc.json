@@ -1,0 +1,830 @@
+{
+ "id": "ur5e_enc",
+ "name": "UR5e with collision geoms enclosing the MuJoCo Menagerie visual meshes",
+ "menagerie_dir": "C:/Users/admin/Documents/YJGames/robot_rail/sim/r01/concept/sources/menagerie/universal_robots_ur5e",
+ "step_m": 0.002,
+ "depth": 10,
+ "rounds": [
+  {
+   "fit_iterations": 1,
+   "shrink_passes": 1,
+   "rebalance_moves": 20,
+   "uncertified": 41110,
+   "total_volume_l": 16.7
+  },
+  {
+   "fit_iterations": 1,
+   "shrink_passes": 0,
+   "rebalance_moves": 0,
+   "uncertified": 148427,
+   "total_volume_l": 16.78
+  },
+  {
+   "fit_iterations": 1,
+   "shrink_passes": 0,
+   "rebalance_moves": 0,
+   "uncertified": 567,
+   "total_volume_l": 16.809
+  },
+  {
+   "fit_iterations": 1,
+   "shrink_passes": 0,
+   "rebalance_moves": 0,
+   "uncertified": 79,
+   "total_volume_l": 16.814
+  },
+  {
+   "fit_iterations": 1,
+   "shrink_passes": 0,
+   "rebalance_moves": 0,
+   "uncertified": 36,
+   "total_volume_l": 16.816
+  },
+  {
+   "fit_iterations": 1,
+   "shrink_passes": 0,
+   "rebalance_moves": 0,
+   "uncertified": 0,
+   "total_volume_l": 16.817
+  }
+ ],
+ "method": "R19 #12: UR5e collision geometry that ENCLOSES the MuJoCo Menagerie visual meshes (arm option ur5e_enc).\n\nThe sim's UR5e (models/base.xml, bodies R_arm_*) carries Menagerie's collision geoms R_geom_5 .. R_geom_28.\nr19ur5e_enclose.py measured that the Menagerie visual meshes stick out of them by up to 26.5 mm (upper\narm). This script fits, from those same geoms (same bodies, same axes), primitives that contain every\npoint of the visual meshes, and writes r19/arm_ur5e_enc.json; arms.py (ARM=ur5e_enc) puts them on the\nUR5e in place of the Menagerie geoms. Kinematics, masses, limits, speeds and the torque envelope are the\nUR5e's, untouched.\n\nPrimitives (as r19arm_fit.py): the joint housings (Menagerie capsules R_geom_5/10/16/21/25/26, cylinder\nR_geom_28) become CYLINDERS on the same axis (a capsule cap ending at a flat housing face either misses\nthe face's rim or, extended, sticks out up to its radius beyond it; R19_ARM_SWAP.md 7); the two tubes\n(R_geom_11 upper arm, R_geom_17 forearm) stay CAPSULES on the same segment. Menagerie covers part of a link\nwith the housing geom of the NEIGHBOUR link on the shared joint axis (e.g. the upper arm's elbow housing by\nthe forearm's R_geom_16); such a coaxial primitive covers the same region at every joint angle, so a link's\npoints may be charged to it too (axis collinear with the joint axis to 1e-9, checked).\n\nFit (greedy, from the Menagerie sizes): every point still outside is charged to the candidate primitive\nwhose growth to contain it adds the least volume (cylinder: radius and either end; capsule: radius); each\nprimitive then grows to contain its charged points; repeat until nothing is outside. Fit points: every\nmesh vertex plus a grid of <= STEP (2 mm) on every triangle.\nProof of enclosure (not sampling): every triangle is certified when one convex primitive contains its\nthree corners (then it contains the triangle), or when every corner is inside the union by at least the\ntriangle's longest edge / sqrt(3) (every triangle point lies that close to a corner; the distance to the\nunion is 1-Lipschitz). Otherwise it is split in 4 and the parts are tested again, down to 1/2^DEPTH of the\nedge; corners of parts still uncertified go back into the fit with that margin, until all are certified.\nRadii and cylinder ends are finally moved out by 0.05 mm (rounding), as in r19arm_fit.py.\n\npython r19ur5e_encfit.py [MEN=<menagerie universal_robots_ur5e dir>] [STEP=.002] [DEPTH=10]  -> r19/arm_ur5e_enc.json\nLabels: M = Menagerie model files (ur5e.xml, assets/*.obj), E = derived here.",
+ "labels": {
+  "M": "Menagerie ur5e.xml, assets/*.obj",
+  "E": "fitted here"
+ },
+ "geoms": [
+  {
+   "name": "R_geom_5",
+   "body": "R_arm_shoulder_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0,
+    0.0038115
+   ],
+   "quat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0603044,
+    0.0677625
+   ],
+   "extent_m": [
+    -0.023951,
+    0.111574
+   ],
+   "menagerie": {
+    "type": "capsule",
+    "pos": [
+     0.0,
+     0.0,
+     -0.04
+    ],
+    "size": [
+     0.06,
+     0.06
+    ],
+    "quat": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.024,
+     0.1116
+    ],
+    "radius_m": 0.0601
+   },
+   "radius_growth_mm": 0.3,
+   "menagerie_extent_m": [
+    -0.06,
+    0.06
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_10",
+   "body": "R_arm_upper_arm_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0042522,
+    0.0
+   ],
+   "quat": [
+    0.7071067811865475,
+    0.7071067811865475,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0612237,
+    0.0676278
+   ],
+   "extent_m": [
+    -0.11188,
+    0.023376
+   ],
+   "menagerie": {
+    "type": "capsule",
+    "pos": [
+     0.0,
+     -0.04,
+     0.0
+    ],
+    "size": [
+     0.06,
+     0.06
+    ],
+    "quat": [
+     0.7071067811865475,
+     0.7071067811865475,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.1101,
+     0.0236
+    ],
+    "radius_m": 0.0606
+   },
+   "radius_growth_mm": 1.22,
+   "menagerie_extent_m": [
+    -0.06,
+    0.06
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_11",
+   "body": "R_arm_upper_arm_link",
+   "type": "capsule",
+   "pos": [
+    0.0,
+    0.0,
+    0.2
+   ],
+   "quat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0494997,
+    0.2
+   ],
+   "extent_m": [
+    -0.2,
+    0.2
+   ],
+   "menagerie": {
+    "type": "capsule",
+    "pos": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "size": [
+     0.05,
+     0.2
+    ],
+    "quat": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.2,
+     0.2
+    ],
+    "radius_m": 0.05
+   },
+   "radius_growth_mm": -0.5,
+   "menagerie_extent_m": [
+    -0.2,
+    0.2
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_16",
+   "body": "R_arm_forearm_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0780451,
+    0.0
+   ],
+   "quat": [
+    0.7071067811865475,
+    0.7071067811865475,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0658409,
+    0.1248339
+   ],
+   "extent_m": [
+    -0.122879,
+    0.126789
+   ],
+   "menagerie": {
+    "type": "capsule",
+    "pos": [
+     0.0,
+     0.08,
+     0.0
+    ],
+    "size": [
+     0.055,
+     0.06
+    ],
+    "quat": [
+     0.7071067811865475,
+     0.7071067811865475,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.1204,
+     0.1258
+    ],
+    "radius_m": 0.0612
+   },
+   "radius_growth_mm": 10.84,
+   "menagerie_extent_m": [
+    -0.06,
+    0.06
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_17",
+   "body": "R_arm_forearm_link",
+   "type": "capsule",
+   "pos": [
+    0.0,
+    0.0,
+    0.2
+   ],
+   "quat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0384525,
+    0.19
+   ],
+   "extent_m": [
+    -0.19,
+    0.19
+   ],
+   "menagerie": {
+    "type": "capsule",
+    "pos": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "size": [
+     0.038,
+     0.19
+    ],
+    "quat": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.19,
+     0.19
+    ],
+    "radius_m": 0.038
+   },
+   "radius_growth_mm": 0.45,
+   "menagerie_extent_m": [
+    -0.19,
+    0.19
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_21",
+   "body": "R_arm_wrist_1_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0279135,
+    0.0
+   ],
+   "quat": [
+    0.7071067811865475,
+    0.7071067811865475,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0396548,
+    0.0844145
+   ],
+   "extent_m": [
+    -0.062328,
+    0.106501
+   ],
+   "menagerie": {
+    "type": "capsule",
+    "pos": [
+     0.0,
+     0.05,
+     0.0
+    ],
+    "size": [
+     0.04,
+     0.07
+    ],
+    "quat": [
+     0.7071067811865475,
+     0.7071067811865475,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.04,
+     0.106
+    ],
+    "radius_m": 0.04
+   },
+   "radius_growth_mm": -0.35,
+   "menagerie_extent_m": [
+    -0.07,
+    0.07
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_25",
+   "body": "R_arm_wrist_2_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0,
+    0.0143724
+   ],
+   "quat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0403713,
+    0.0707154
+   ],
+   "extent_m": [
+    -0.096343,
+    0.045088
+   ],
+   "menagerie": {
+    "type": "capsule",
+    "pos": [
+     0.0,
+     0.0,
+     0.04
+    ],
+    "size": [
+     0.04,
+     0.06
+    ],
+    "quat": [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.096,
+     0.025
+    ],
+    "radius_m": 0.04
+   },
+   "radius_growth_mm": 0.37,
+   "menagerie_extent_m": [
+    -0.06,
+    0.06
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_26",
+   "body": "R_arm_wrist_2_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0021514,
+    0.1
+   ],
+   "quat": [
+    0.7071067811865475,
+    0.7071067811865475,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0404454,
+    0.0589334
+   ],
+   "extent_m": [
+    -0.041085,
+    0.076782
+   ],
+   "menagerie": {
+    "type": "capsule",
+    "pos": [
+     0.0,
+     0.02,
+     0.1
+    ],
+    "size": [
+     0.04,
+     0.04
+    ],
+    "quat": [
+     0.7071067811865475,
+     0.7071067811865475,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.033,
+     0.077
+    ],
+    "radius_m": 0.04
+   },
+   "radius_growth_mm": 0.45,
+   "menagerie_extent_m": [
+    -0.04,
+    0.04
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_28",
+   "body": "R_arm_wrist_3_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0799663,
+    0.0
+   ],
+   "quat": [
+    0.7071067811865475,
+    0.7071067811865475,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0436089,
+    0.0190187
+   ],
+   "extent_m": [
+    -0.018985,
+    0.019052
+   ],
+   "menagerie": {
+    "type": "cylinder",
+    "pos": [
+     0.0,
+     0.08,
+     0.0
+    ],
+    "size": [
+     0.04,
+     0.02
+    ],
+    "quat": [
+     0.7071067811865475,
+     0.7071067811865475,
+     0.0,
+     0.0
+    ]
+   },
+   "start": {
+    "extent_m": [
+     -0.019,
+     0.027
+    ],
+    "radius_m": 0.04
+   },
+   "radius_growth_mm": 3.61,
+   "menagerie_extent_m": [
+    -0.02,
+    0.02
+   ],
+   "label": "E (axis and body = the Menagerie geom, M)"
+  },
+  {
+   "name": "R_geom_enc_ua_neck_s",
+   "body": "R_arm_upper_arm_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0,
+    0.0522275
+   ],
+   "quat": [
+    1.0,
+    0,
+    0,
+    0
+   ],
+   "size": [
+    0.0585374,
+    0.0328829
+   ],
+   "extent_m": [
+    0.019345,
+    0.08511
+   ],
+   "added": true,
+   "start": {
+    "extent_m": [
+     0.03,
+     0.085
+    ],
+    "radius_m": 0.0584,
+    "axis": "z"
+   },
+   "label": "E: added cylinder (neck on the link axis, or the shoulder part of the J2 housing)"
+  },
+  {
+   "name": "R_geom_enc_ua_neck_e",
+   "body": "R_arm_upper_arm_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0,
+    0.3666453
+   ],
+   "quat": [
+    1.0,
+    0,
+    0,
+    0
+   ],
+   "size": [
+    0.058247,
+    0.0277795
+   ],
+   "extent_m": [
+    0.338866,
+    0.394425
+   ],
+   "added": true,
+   "start": {
+    "extent_m": [
+     0.325,
+     0.39
+    ],
+    "radius_m": 0.0585,
+    "axis": "z"
+   },
+   "label": "E: added cylinder (neck on the link axis, or the shoulder part of the J2 housing)"
+  },
+  {
+   "name": "R_geom_enc_fa_neck_e",
+   "body": "R_arm_forearm_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0,
+    0.0672272
+   ],
+   "quat": [
+    1.0,
+    0,
+    0,
+    0
+   ],
+   "size": [
+    0.0508683,
+    0.0240206
+   ],
+   "extent_m": [
+    0.043207,
+    0.091248
+   ],
+   "added": true,
+   "start": {
+    "extent_m": [
+     0.03,
+     0.095
+    ],
+    "radius_m": 0.0536,
+    "axis": "z"
+   },
+   "label": "E: added cylinder (neck on the link axis, or the shoulder part of the J2 housing)"
+  },
+  {
+   "name": "R_geom_enc_sh_j2",
+   "body": "R_arm_shoulder_link",
+   "type": "cylinder",
+   "pos": [
+    0.0,
+    0.0455291,
+    0.0
+   ],
+   "quat": [
+    0.7071067811865476,
+    -0.7071067811865476,
+    0.0,
+    0.0
+   ],
+   "size": [
+    0.0592814,
+    0.0292887
+   ],
+   "extent_m": [
+    0.01624,
+    0.074818
+   ],
+   "added": true,
+   "start": {
+    "extent_m": [
+     0.0,
+     0.0745
+    ],
+    "radius_m": 0.0606,
+    "axis": "y"
+   },
+   "label": "E: added cylinder (neck on the link axis, or the shoulder part of the J2 housing)"
+  }
+ ],
+ "candidates": {
+  "R_arm_shoulder_link": [
+   "R_geom_5",
+   "R_geom_enc_sh_j2"
+  ],
+  "R_arm_upper_arm_link": [
+   "R_geom_10",
+   "R_geom_11",
+   "R_geom_enc_ua_neck_s",
+   "R_geom_enc_ua_neck_e",
+   "R_geom_16",
+   "R_geom_enc_sh_j2"
+  ],
+  "R_arm_forearm_link": [
+   "R_geom_16",
+   "R_geom_17",
+   "R_geom_enc_fa_neck_e",
+   "R_geom_21"
+  ],
+  "R_arm_wrist_1_link": [
+   "R_geom_21",
+   "R_geom_25"
+  ],
+  "R_arm_wrist_2_link": [
+   "R_geom_25",
+   "R_geom_26",
+   "R_geom_28"
+  ],
+  "R_arm_wrist_3_link": [
+   "R_geom_28",
+   "R_geom_26"
+  ]
+ },
+ "enclosure_menagerie_geoms": {
+  "shoulder_link": {
+   "vertices": 12060,
+   "max_protrusion_mm": 34.331,
+   "vertices_outside": 7774
+  },
+  "upper_arm_link": {
+   "vertices": 21101,
+   "max_protrusion_mm": 26.492,
+   "vertices_outside": 17558
+  },
+  "forearm_link": {
+   "vertices": 7951,
+   "max_protrusion_mm": 11.502,
+   "vertices_outside": 3710
+  },
+  "wrist_1_link": {
+   "vertices": 9199,
+   "max_protrusion_mm": 9.137,
+   "vertices_outside": 3626
+  },
+  "wrist_2_link": {
+   "vertices": 10570,
+   "max_protrusion_mm": 9.331,
+   "vertices_outside": 3442
+  },
+  "wrist_3_link": {
+   "vertices": 485,
+   "max_protrusion_mm": 3.559,
+   "vertices_outside": 37
+  }
+ },
+ "enclosure_fitted_vertices": {
+  "shoulder_link": {
+   "vertices": 12060,
+   "max_protrusion_mm": -0.05,
+   "vertices_outside": 0
+  },
+  "upper_arm_link": {
+   "vertices": 21101,
+   "max_protrusion_mm": -0.05,
+   "vertices_outside": 0
+  },
+  "forearm_link": {
+   "vertices": 7951,
+   "max_protrusion_mm": -0.05,
+   "vertices_outside": 0
+  },
+  "wrist_1_link": {
+   "vertices": 9199,
+   "max_protrusion_mm": -0.05,
+   "vertices_outside": 0
+  },
+  "wrist_2_link": {
+   "vertices": 10570,
+   "max_protrusion_mm": -0.05,
+   "vertices_outside": 0
+  },
+  "wrist_3_link": {
+   "vertices": 485,
+   "max_protrusion_mm": -0.05,
+   "vertices_outside": 0
+  }
+ },
+ "enclosure_certificate": {
+  "shoulder_link": {
+   "triangles": 23290,
+   "split_parts": 1876,
+   "levels": 8,
+   "corner_outside": 0,
+   "uncertified": 0
+  },
+  "upper_arm_link": {
+   "triangles": 40120,
+   "split_parts": 46652,
+   "levels": 9,
+   "corner_outside": 0,
+   "uncertified": 0
+  },
+  "forearm_link": {
+   "triangles": 15056,
+   "split_parts": 2444,
+   "levels": 7,
+   "corner_outside": 0,
+   "uncertified": 0
+  },
+  "wrist_1_link": {
+   "triangles": 17288,
+   "split_parts": 3304,
+   "levels": 8,
+   "corner_outside": 0,
+   "uncertified": 0
+  },
+  "wrist_2_link": {
+   "triangles": 20280,
+   "split_parts": 3360,
+   "levels": 8,
+   "corner_outside": 0,
+   "uncertified": 0
+  },
+  "wrist_3_link": {
+   "triangles": 911,
+   "split_parts": 23664,
+   "levels": 9,
+   "corner_outside": 0,
+   "uncertified": 0
+  }
+ }
+}

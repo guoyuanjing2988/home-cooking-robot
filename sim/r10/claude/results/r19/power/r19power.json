@@ -1,0 +1,2808 @@
+{
+ "note": "R19 power budget per meal (GitHub #17): can the R18 meals (meal16.py SET=stew ARM=r18 USERRICE=1) be powered from a",
+ "bg_W": 1500.0,
+ "volt": 230.0,
+ "loads": {
+  "wok": {
+   "W": 3500,
+   "pf": 0.97,
+   "src": "[M] 美的 MC-E35D2 concave induction 3500 W (research/r15_cooking_market.md); pf [E]"
+  },
+  "zone2": {
+   "W": 2100,
+   "pf": 0.97,
+   "src": "[M] 米家电磁炉2 2100 W, MIoT (r15); BOM pick 米家电磁炉 N1 also 2100 W [O] ithome 0/788/518; pf [E]"
+  },
+  "stew": {
+   "W": 656,
+   "pf": 1.0,
+   "src": "[E] 4-cup water-bath stew pot, 600 W at 220 V (a 1.2 L Tonze unit is 300 W [O]); x(230/220)^2"
+  },
+  "rice": {
+   "W": 710,
+   "pf": 1.0,
+   "src": "[O] 米家电饭煲 C1 3 L (MDFBZ02ACM) 650 W at 220 V (listing snippet); x(230/220)^2"
+  },
+  "fryer": {
+   "W": 2300,
+   "pf": 1.0,
+   "src": "[O] Tefal Oleoclean Pro FR8040 2300 W, 3.5 L (galaxus / mediamarkt / mydealz listings)"
+  },
+  "kettle": {
+   "W": 2200,
+   "pf": 1.0,
+   "src": "[O] 1.7 L kettle, Philips HD9350 class 2200 W at 220-240 V (retail listings)"
+  },
+  "robot": {
+   "W": 984,
+   "pf": 0.95,
+   "src": "UR5e 200 W typical / 570 W max [M datasheet]; IPC+sensors 60 W, gripper 24 W, drive supply 270 W [hardware.py allowances]; brake coils 40 W + safety sensors 20 W [E]; controller off-board on the same feed; pf [E]"
+  },
+  "station": {
+   "W": 150,
+   "pf": 0.9,
+   "src": "[E] seasoning station 24 V PSU: dosing peak 150 W (doses during prep), 15 W idle"
+  },
+  "fridge": {
+   "W": 150,
+   "pf": 0.7,
+   "src": "[E] single-door fridge, 150 W running, ~40 % duty; compressor start 5-8x for <1 s"
+  },
+  "hood": {
+   "W": 160,
+   "pf": 0.9,
+   "src": "[O] slim hood class Fujioh FR-SC2090 85/125/160 W (hkele listing); run on high all meal [E]"
+  },
+  "misc": {
+   "W": 30,
+   "pf": 0.9,
+   "src": "[E] knob servo, stove guard, smart plugs, kitchen light"
+  }
+ },
+ "duty": {
+  "WOK_FULL": [
+   3500,
+   3500
+  ],
+  "WOK_STIR": [
+   2900,
+   3500
+  ],
+  "WOK_BOIL": [
+   2000,
+   3500
+  ],
+  "WOK_BLANCH": [
+   2500,
+   3500
+  ],
+  "WOK_SIMMER": [
+   800,
+   2000
+  ],
+  "Z2_FULL": [
+   2100,
+   2100
+  ],
+  "Z2_STEAM": [
+   1200,
+   2100
+  ],
+  "Z2_SWAP": [
+   1500,
+   2100
+  ],
+  "STEW_FULL": [
+   656,
+   656
+  ],
+  "STEW_HOLD": [
+   328.0,
+   656
+  ],
+  "FRY": [
+   2300,
+   2300
+  ],
+  "KETTLE": [
+   2200,
+   2200
+  ],
+  "ROBOT_IDLE": [
+   180,
+   300
+  ],
+  "ROBOT_INC": [
+   190,
+   684
+  ],
+  "CONT": {
+   "robot": [
+    180,
+    300
+   ],
+   "station": [
+    15,
+    150
+   ],
+   "fridge": [
+    50,
+    150
+   ],
+   "hood": [
+    160,
+    160
+   ],
+   "misc": [
+    30,
+    30
+   ]
+  },
+  "preheat_s": {
+   "zone2": 360,
+   "fryer": 600,
+   "stew_bath": 960,
+   "stew_soup": 900,
+   "kettle": 270
+  }
+ },
+ "plans": {
+  "P0": "repo today: new 20 A wok point; every other load on the existing kitchen socket circuit (2 outlets)",
+  "P1": "+1 new 20 A radial for the two big plug-in heaters (zone 2, fryer)",
+  "P2": "+2 new 20 A radials: heaters split three ways"
+ },
+ "meals": {
+  "A 干锅土豆/桂花芋头/西兰花/蒜蓉丝瓜/蛤蜊排骨盅": {
+   "total_min": 38.2,
+   "window_s": [
+    -519,
+    2293
+   ],
+   "energy_kWh": {
+    "wok": 0.3,
+    "zone2": 0.96,
+    "stew": 0.43,
+    "rice": 0.21,
+    "fryer": 0.54,
+    "kettle": 0.0,
+    "robot": 0.18,
+    "station": 0.01,
+    "fridge": 0.04,
+    "hood": 0.12,
+    "misc": 0.02
+   },
+   "kitchen_peak_kW": 10.74,
+   "kitchen_avg1min_max_kW": 8.06,
+   "baseline": {
+    "P0": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 5.3,
+      "max15_kW": 1.19,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 32.4,
+      "peak_kW": 7.24,
+      "avg1min_max_A": 24.3,
+      "max15_A": 22.2,
+      "max15_kW": 5.02,
+      "s_over_avg": 840,
+      "s_over_pk": 1304,
+      "verdict": "over: 15-min mean above rating"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 55.0,
+      "peak_kW": 12.24,
+      "avg1min_max_A": 42.7,
+      "max15_A": 30.8,
+      "max15_kW": 6.88,
+      "s_over_avg": 110,
+      "s_over_pk": 251,
+      "verdict": "over for minutes, 15-min mean ok"
+     }
+    },
+    "P1": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 5.3,
+      "max15_kW": 1.19,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW1": {
+      "limit_A": 20,
+      "peak_A": 19.4,
+      "peak_kW": 4.4,
+      "avg1min_max_A": 15.4,
+      "max15_A": 14.7,
+      "max15_kW": 3.35,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 13.0,
+      "peak_kW": 2.84,
+      "avg1min_max_A": 8.9,
+      "max15_A": 7.6,
+      "max15_kW": 1.68,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 55.0,
+      "peak_kW": 12.24,
+      "avg1min_max_A": 42.7,
+      "max15_A": 30.8,
+      "max15_kW": 6.88,
+      "s_over_avg": 110,
+      "s_over_pk": 251,
+      "verdict": "over for minutes, 15-min mean ok"
+     }
+    },
+    "P2": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 5.3,
+      "max15_kW": 1.19,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW1": {
+      "limit_A": 20,
+      "peak_A": 12.3,
+      "peak_kW": 2.76,
+      "avg1min_max_A": 12.3,
+      "max15_A": 10.4,
+      "max15_kW": 2.34,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW2": {
+      "limit_A": 20,
+      "peak_A": 10.0,
+      "peak_kW": 2.3,
+      "avg1min_max_A": 10.0,
+      "max15_A": 9.3,
+      "max15_kW": 2.15,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 10.2,
+      "peak_kW": 2.18,
+      "avg1min_max_A": 6.1,
+      "max15_A": 5.1,
+      "max15_kW": 1.12,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 55.0,
+      "peak_kW": 12.24,
+      "avg1min_max_A": 42.7,
+      "max15_A": 30.8,
+      "max15_kW": 6.88,
+      "s_over_avg": 110,
+      "s_over_pk": 251,
+      "verdict": "over for minutes, 15-min mean ok"
+     }
+    }
+   },
+   "capped": {
+    "P0_40A_avg": {
+     "total_min": 51.3,
+     "growth_min": 13.1,
+     "max_wait_min": 11.2,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 5.3,
+      "米饭": 11.2,
+      "干锅土豆": 0.0,
+      "蚝油西兰花": 11.2,
+      "蒜蓉蒸丝瓜": 4.6
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "蛤蜊排骨盅",
+       "label": "4 cups into the electric stew pot (water bath), ",
+       "start_min": 7.4,
+       "capped_start_min": 5.1
+      },
+      {
+       "step": 1,
+       "dish": "桂花糖芋头",
+       "label": "taro plate into the pot steamer, lid, 30 min",
+       "start_min": 1.0,
+       "capped_start_min": 9.5
+      },
+      {
+       "step": 2,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 3.2,
+       "capped_start_min": 5.1
+      },
+      {
+       "step": 3,
+       "dish": "干锅土豆",
+       "label": "fry potato 3 min (fryer), lift out",
+       "start_min": 21.9,
+       "capped_start_min": 42.7
+      },
+      {
+       "step": 4,
+       "dish": "干锅土豆",
+       "label": "wok: pork, 豆瓣, chili, potato, sauce; stir 90 s; ",
+       "start_min": 27.0,
+       "capped_start_min": 46.7
+      },
+      {
+       "step": 5,
+       "dish": "蚝油西兰花",
+       "label": "rinse wok; oil, broccoli, sauce; lid 30 s; stir;",
+       "start_min": 22.9,
+       "capped_start_min": 36.0
+      },
+      {
+       "step": 6,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "steamer: taro out (lid), luffa in, lid, 3 min",
+       "start_min": 31.6,
+       "capped_start_min": 40.1
+      },
+      {
+       "step": 7,
+       "dish": "桂花糖芋头",
+       "label": "drizzle osmanthus syrup",
+       "start_min": 37.3,
+       "capped_start_min": 45.8
+      },
+      {
+       "step": 8,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "rinse wok; heat 40 g oil 60 s; pour over garlic ",
+       "start_min": 35.8,
+       "capped_start_min": 44.3
+      },
+      {
+       "step": 9,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "luffa out (lid), pour sauce over",
+       "start_min": 37.5,
+       "capped_start_min": 45.9
+      },
+      {
+       "step": 10,
+       "dish": "蛤蜊排骨盅",
+       "label": "(the cups stay in the stew pot; the user serves ",
+       "start_min": 38.2,
+       "capped_start_min": 51.3
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "KIT": {
+       "peak_A": 29.6,
+       "max15_A": 17.4
+      },
+      "MAIN": {
+       "peak_A": 52.1,
+       "max15_A": 28.0
+      }
+     }
+    },
+    "P0_40A_pk": {
+     "total_min": 58.3,
+     "growth_min": 20.1,
+     "max_wait_min": 12.7,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 5.3,
+      "米饭": 12.7,
+      "干锅土豆": 0.0,
+      "蚝油西兰花": 8.6,
+      "蒜蓉蒸丝瓜": 4.6
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "蛤蜊排骨盅",
+       "label": "4 cups into the electric stew pot (water bath), ",
+       "start_min": 7.4,
+       "capped_start_min": 4.0
+      },
+      {
+       "step": 1,
+       "dish": "桂花糖芋头",
+       "label": "taro plate into the pot steamer, lid, 30 min",
+       "start_min": 1.0,
+       "capped_start_min": 4.9
+      },
+      {
+       "step": 2,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 3.2,
+       "capped_start_min": 10.7
+      },
+      {
+       "step": 3,
+       "dish": "干锅土豆",
+       "label": "fry potato 3 min (fryer), lift out",
+       "start_min": 21.9,
+       "capped_start_min": 49.7
+      },
+      {
+       "step": 4,
+       "dish": "干锅土豆",
+       "label": "wok: pork, 豆瓣, chili, potato, sauce; stir 90 s; ",
+       "start_min": 27.0,
+       "capped_start_min": 53.7
+      },
+      {
+       "step": 5,
+       "dish": "蚝油西兰花",
+       "label": "rinse wok; oil, broccoli, sauce; lid 30 s; stir;",
+       "start_min": 22.9,
+       "capped_start_min": 45.7
+      },
+      {
+       "step": 6,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "steamer: taro out (lid), luffa in, lid, 3 min",
+       "start_min": 31.6,
+       "capped_start_min": 35.5
+      },
+      {
+       "step": 7,
+       "dish": "桂花糖芋头",
+       "label": "drizzle osmanthus syrup",
+       "start_min": 37.3,
+       "capped_start_min": 52.9
+      },
+      {
+       "step": 8,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "rinse wok; heat 40 g oil 60 s; pour over garlic ",
+       "start_min": 35.8,
+       "capped_start_min": 51.4
+      },
+      {
+       "step": 9,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "luffa out (lid), pour sauce over",
+       "start_min": 37.5,
+       "capped_start_min": 53.0
+      },
+      {
+       "step": 10,
+       "dish": "蛤蜊排骨盅",
+       "label": "(the cups stay in the stew pot; the user serves ",
+       "start_min": 38.2,
+       "capped_start_min": 58.3
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "KIT": {
+       "peak_A": 19.6,
+       "max15_A": 12.8
+      },
+      "MAIN": {
+       "peak_A": 39.6,
+       "max15_A": 23.4
+      }
+     }
+    },
+    "P0_63A_avg": {
+     "total_min": 51.3,
+     "growth_min": 13.1,
+     "max_wait_min": 11.2,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 5.3,
+      "米饭": 11.2,
+      "干锅土豆": 0.0,
+      "蚝油西兰花": 11.2,
+      "蒜蓉蒸丝瓜": 4.6
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "蛤蜊排骨盅",
+       "label": "4 cups into the electric stew pot (water bath), ",
+       "start_min": 7.4,
+       "capped_start_min": 5.1
+      },
+      {
+       "step": 1,
+       "dish": "桂花糖芋头",
+       "label": "taro plate into the pot steamer, lid, 30 min",
+       "start_min": 1.0,
+       "capped_start_min": 9.5
+      },
+      {
+       "step": 2,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 3.2,
+       "capped_start_min": 5.1
+      },
+      {
+       "step": 3,
+       "dish": "干锅土豆",
+       "label": "fry potato 3 min (fryer), lift out",
+       "start_min": 21.9,
+       "capped_start_min": 42.7
+      },
+      {
+       "step": 4,
+       "dish": "干锅土豆",
+       "label": "wok: pork, 豆瓣, chili, potato, sauce; stir 90 s; ",
+       "start_min": 27.0,
+       "capped_start_min": 46.7
+      },
+      {
+       "step": 5,
+       "dish": "蚝油西兰花",
+       "label": "rinse wok; oil, broccoli, sauce; lid 30 s; stir;",
+       "start_min": 22.9,
+       "capped_start_min": 36.0
+      },
+      {
+       "step": 6,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "steamer: taro out (lid), luffa in, lid, 3 min",
+       "start_min": 31.6,
+       "capped_start_min": 40.1
+      },
+      {
+       "step": 7,
+       "dish": "桂花糖芋头",
+       "label": "drizzle osmanthus syrup",
+       "start_min": 37.3,
+       "capped_start_min": 45.8
+      },
+      {
+       "step": 8,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "rinse wok; heat 40 g oil 60 s; pour over garlic ",
+       "start_min": 35.8,
+       "capped_start_min": 44.3
+      },
+      {
+       "step": 9,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "luffa out (lid), pour sauce over",
+       "start_min": 37.5,
+       "capped_start_min": 45.9
+      },
+      {
+       "step": 10,
+       "dish": "蛤蜊排骨盅",
+       "label": "(the cups stay in the stew pot; the user serves ",
+       "start_min": 38.2,
+       "capped_start_min": 51.3
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "KIT": {
+       "peak_A": 29.6,
+       "max15_A": 17.4
+      },
+      "MAIN": {
+       "peak_A": 52.1,
+       "max15_A": 28.0
+      }
+     }
+    },
+    "P0_63A_pk": {
+     "total_min": 57.7,
+     "growth_min": 19.5,
+     "max_wait_min": 12.7,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 5.3,
+      "米饭": 12.7,
+      "干锅土豆": 0.0,
+      "蚝油西兰花": 8.6,
+      "蒜蓉蒸丝瓜": 4.6
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "蛤蜊排骨盅",
+       "label": "4 cups into the electric stew pot (water bath), ",
+       "start_min": 7.4,
+       "capped_start_min": 3.5
+      },
+      {
+       "step": 1,
+       "dish": "桂花糖芋头",
+       "label": "taro plate into the pot steamer, lid, 30 min",
+       "start_min": 1.0,
+       "capped_start_min": 4.3
+      },
+      {
+       "step": 2,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 3.2,
+       "capped_start_min": 10.1
+      },
+      {
+       "step": 3,
+       "dish": "干锅土豆",
+       "label": "fry potato 3 min (fryer), lift out",
+       "start_min": 21.9,
+       "capped_start_min": 49.1
+      },
+      {
+       "step": 4,
+       "dish": "干锅土豆",
+       "label": "wok: pork, 豆瓣, chili, potato, sauce; stir 90 s; ",
+       "start_min": 27.0,
+       "capped_start_min": 53.1
+      },
+      {
+       "step": 5,
+       "dish": "蚝油西兰花",
+       "label": "rinse wok; oil, broccoli, sauce; lid 30 s; stir;",
+       "start_min": 22.9,
+       "capped_start_min": 45.1
+      },
+      {
+       "step": 6,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "steamer: taro out (lid), luffa in, lid, 3 min",
+       "start_min": 31.6,
+       "capped_start_min": 34.9
+      },
+      {
+       "step": 7,
+       "dish": "桂花糖芋头",
+       "label": "drizzle osmanthus syrup",
+       "start_min": 37.3,
+       "capped_start_min": 52.3
+      },
+      {
+       "step": 8,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "rinse wok; heat 40 g oil 60 s; pour over garlic ",
+       "start_min": 35.8,
+       "capped_start_min": 50.8
+      },
+      {
+       "step": 9,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "luffa out (lid), pour sauce over",
+       "start_min": 37.5,
+       "capped_start_min": 52.4
+      },
+      {
+       "step": 10,
+       "dish": "蛤蜊排骨盅",
+       "label": "(the cups stay in the stew pot; the user serves ",
+       "start_min": 38.2,
+       "capped_start_min": 57.7
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "KIT": {
+       "peak_A": 19.6,
+       "max15_A": 12.8
+      },
+      "MAIN": {
+       "peak_A": 39.6,
+       "max15_A": 23.4
+      }
+     }
+    },
+    "P1_40A_avg": {
+     "total_min": 38.2,
+     "growth_min": 0.0,
+     "max_wait_min": 11.2,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 0.7,
+      "米饭": 0.0,
+      "干锅土豆": 6.6,
+      "蚝油西兰花": 11.2,
+      "蒜蓉蒸丝瓜": 0.0
+     },
+     "moved": [
+      {
+       "step": 3,
+       "dish": "干锅土豆",
+       "label": "fry potato 3 min (fryer), lift out",
+       "start_min": 21.9,
+       "capped_start_min": 18.9
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "NEW1": {
+       "peak_A": 19.4,
+       "max15_A": 14.7
+      },
+      "KIT": {
+       "peak_A": 13.0,
+       "max15_A": 7.6
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 30.1
+      }
+     }
+    },
+    "P1_40A_pk": {
+     "total_min": 46.9,
+     "growth_min": 8.7,
+     "max_wait_min": 10.7,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 0.7,
+      "米饭": 0.0,
+      "干锅土豆": 10.7,
+      "蚝油西兰花": 6.6,
+      "蒜蓉蒸丝瓜": 0.0
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "蛤蜊排骨盅",
+       "label": "4 cups into the electric stew pot (water bath), ",
+       "start_min": 7.4,
+       "capped_start_min": 16.0
+      },
+      {
+       "step": 2,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 3.2,
+       "capped_start_min": 11.9
+      },
+      {
+       "step": 3,
+       "dish": "干锅土豆",
+       "label": "fry potato 3 min (fryer), lift out",
+       "start_min": 21.9,
+       "capped_start_min": 27.6
+      },
+      {
+       "step": 4,
+       "dish": "干锅土豆",
+       "label": "wok: pork, 豆瓣, chili, potato, sauce; stir 90 s; ",
+       "start_min": 27.0,
+       "capped_start_min": 31.6
+      },
+      {
+       "step": 5,
+       "dish": "蚝油西兰花",
+       "label": "rinse wok; oil, broccoli, sauce; lid 30 s; stir;",
+       "start_min": 22.9,
+       "capped_start_min": 36.2
+      },
+      {
+       "step": 6,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "steamer: taro out (lid), luffa in, lid, 3 min",
+       "start_min": 31.6,
+       "capped_start_min": 40.2
+      },
+      {
+       "step": 7,
+       "dish": "桂花糖芋头",
+       "label": "drizzle osmanthus syrup",
+       "start_min": 37.3,
+       "capped_start_min": 46.0
+      },
+      {
+       "step": 8,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "rinse wok; heat 40 g oil 60 s; pour over garlic ",
+       "start_min": 35.8,
+       "capped_start_min": 44.5
+      },
+      {
+       "step": 9,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "luffa out (lid), pour sauce over",
+       "start_min": 37.5,
+       "capped_start_min": 46.1
+      },
+      {
+       "step": 10,
+       "dish": "蛤蜊排骨盅",
+       "label": "(the cups stay in the stew pot; the user serves ",
+       "start_min": 38.2,
+       "capped_start_min": 46.9
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "NEW1": {
+       "peak_A": 19.4,
+       "max15_A": 14.7
+      },
+      "KIT": {
+       "peak_A": 13.0,
+       "max15_A": 7.6
+      },
+      "MAIN": {
+       "peak_A": 39.3,
+       "max15_A": 29.5
+      }
+     }
+    },
+    "P1_63A_avg": {
+     "total_min": 38.2,
+     "growth_min": 0.0,
+     "max_wait_min": 11.2,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 0.7,
+      "米饭": 0.0,
+      "干锅土豆": 6.6,
+      "蚝油西兰花": 11.2,
+      "蒜蓉蒸丝瓜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "NEW1": {
+       "peak_A": 19.4,
+       "max15_A": 14.7
+      },
+      "KIT": {
+       "peak_A": 13.0,
+       "max15_A": 7.6
+      },
+      "MAIN": {
+       "peak_A": 55.0,
+       "max15_A": 30.8
+      }
+     }
+    },
+    "P1_63A_pk": {
+     "total_min": 38.2,
+     "growth_min": 0.0,
+     "max_wait_min": 11.2,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 0.7,
+      "米饭": 0.0,
+      "干锅土豆": 6.6,
+      "蚝油西兰花": 11.2,
+      "蒜蓉蒸丝瓜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "NEW1": {
+       "peak_A": 19.4,
+       "max15_A": 14.7
+      },
+      "KIT": {
+       "peak_A": 13.0,
+       "max15_A": 7.6
+      },
+      "MAIN": {
+       "peak_A": 55.0,
+       "max15_A": 30.8
+      }
+     }
+    },
+    "P2_40A_avg": {
+     "total_min": 38.2,
+     "growth_min": 0.0,
+     "max_wait_min": 11.2,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 0.7,
+      "米饭": 0.0,
+      "干锅土豆": 6.6,
+      "蚝油西兰花": 11.2,
+      "蒜蓉蒸丝瓜": 0.0
+     },
+     "moved": [
+      {
+       "step": 3,
+       "dish": "干锅土豆",
+       "label": "fry potato 3 min (fryer), lift out",
+       "start_min": 21.9,
+       "capped_start_min": 18.9
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 10.4
+      },
+      "NEW2": {
+       "peak_A": 10.0,
+       "max15_A": 9.3
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.1
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 30.1
+      }
+     }
+    },
+    "P2_40A_pk": {
+     "total_min": 46.9,
+     "growth_min": 8.7,
+     "max_wait_min": 10.7,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 0.7,
+      "米饭": 0.0,
+      "干锅土豆": 10.7,
+      "蚝油西兰花": 6.6,
+      "蒜蓉蒸丝瓜": 0.0
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "蛤蜊排骨盅",
+       "label": "4 cups into the electric stew pot (water bath), ",
+       "start_min": 7.4,
+       "capped_start_min": 16.0
+      },
+      {
+       "step": 2,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 3.2,
+       "capped_start_min": 11.9
+      },
+      {
+       "step": 3,
+       "dish": "干锅土豆",
+       "label": "fry potato 3 min (fryer), lift out",
+       "start_min": 21.9,
+       "capped_start_min": 27.6
+      },
+      {
+       "step": 4,
+       "dish": "干锅土豆",
+       "label": "wok: pork, 豆瓣, chili, potato, sauce; stir 90 s; ",
+       "start_min": 27.0,
+       "capped_start_min": 31.6
+      },
+      {
+       "step": 5,
+       "dish": "蚝油西兰花",
+       "label": "rinse wok; oil, broccoli, sauce; lid 30 s; stir;",
+       "start_min": 22.9,
+       "capped_start_min": 36.2
+      },
+      {
+       "step": 6,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "steamer: taro out (lid), luffa in, lid, 3 min",
+       "start_min": 31.6,
+       "capped_start_min": 40.2
+      },
+      {
+       "step": 7,
+       "dish": "桂花糖芋头",
+       "label": "drizzle osmanthus syrup",
+       "start_min": 37.3,
+       "capped_start_min": 46.0
+      },
+      {
+       "step": 8,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "rinse wok; heat 40 g oil 60 s; pour over garlic ",
+       "start_min": 35.8,
+       "capped_start_min": 44.5
+      },
+      {
+       "step": 9,
+       "dish": "蒜蓉蒸丝瓜",
+       "label": "luffa out (lid), pour sauce over",
+       "start_min": 37.5,
+       "capped_start_min": 46.1
+      },
+      {
+       "step": 10,
+       "dish": "蛤蜊排骨盅",
+       "label": "(the cups stay in the stew pot; the user serves ",
+       "start_min": 38.2,
+       "capped_start_min": 46.9
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 9.4
+      },
+      "NEW2": {
+       "peak_A": 10.0,
+       "max15_A": 9.3
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.1
+      },
+      "MAIN": {
+       "peak_A": 39.3,
+       "max15_A": 29.5
+      }
+     }
+    },
+    "P2_63A_avg": {
+     "total_min": 38.2,
+     "growth_min": 0.0,
+     "max_wait_min": 11.2,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 0.7,
+      "米饭": 0.0,
+      "干锅土豆": 6.6,
+      "蚝油西兰花": 11.2,
+      "蒜蓉蒸丝瓜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 10.4
+      },
+      "NEW2": {
+       "peak_A": 10.0,
+       "max15_A": 9.3
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.1
+      },
+      "MAIN": {
+       "peak_A": 55.0,
+       "max15_A": 30.8
+      }
+     }
+    },
+    "P2_63A_pk": {
+     "total_min": 38.2,
+     "growth_min": 0.0,
+     "max_wait_min": 11.2,
+     "base_max_wait_min": 11.2,
+     "wait_before_serving_min": {
+      "蛤蜊排骨盅": 0.0,
+      "桂花糖芋头": 0.7,
+      "米饭": 0.0,
+      "干锅土豆": 6.6,
+      "蚝油西兰花": 11.2,
+      "蒜蓉蒸丝瓜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.3
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 10.4
+      },
+      "NEW2": {
+       "peak_A": 10.0,
+       "max15_A": 9.3
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.1
+      },
+      "MAIN": {
+       "peak_A": 55.0,
+       "max15_A": 30.8
+      }
+     }
+    }
+   },
+   "kitchen_energy_kWh": 2.81,
+   "baseline_main_bg": {
+    "0W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 48.1,
+      "peak_kW": 10.74,
+      "avg1min_max_A": 35.9,
+      "max15_A": 23.9,
+      "max15_kW": 5.38,
+      "s_over_avg": 0,
+      "s_over_pk": 110,
+      "verdict": "peak over (pulses aligned), 1-min mean ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 48.1,
+      "peak_kW": 10.74,
+      "avg1min_max_A": 35.9,
+      "max15_A": 23.9,
+      "max15_kW": 5.38,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    },
+    "1500W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 55.0,
+      "peak_kW": 12.24,
+      "avg1min_max_A": 42.7,
+      "max15_A": 30.8,
+      "max15_kW": 6.88,
+      "s_over_avg": 110,
+      "s_over_pk": 251,
+      "verdict": "over for minutes, 15-min mean ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 55.0,
+      "peak_kW": 12.24,
+      "avg1min_max_A": 42.7,
+      "max15_A": 30.8,
+      "max15_kW": 6.88,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    },
+    "3000W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 61.8,
+      "peak_kW": 13.74,
+      "avg1min_max_A": 49.6,
+      "max15_A": 37.6,
+      "max15_kW": 8.38,
+      "s_over_avg": 110,
+      "s_over_pk": 1027,
+      "verdict": "over for minutes, 15-min mean ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 61.8,
+      "peak_kW": 13.74,
+      "avg1min_max_A": 49.6,
+      "max15_A": 37.6,
+      "max15_kW": 8.38,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    }
+   }
+  },
+  "B 红烧肉/番茄炒蛋/白灼秋葵娃娃菜/清蒸鲈鱼/鲜笋排骨汤": {
+   "total_min": 75.6,
+   "window_s": [
+    0,
+    4538
+   ],
+   "energy_kWh": {
+    "wok": 1.8,
+    "zone2": 0.37,
+    "stew": 0.39,
+    "rice": 0.21,
+    "fryer": 0.0,
+    "kettle": 0.17,
+    "robot": 0.32,
+    "station": 0.02,
+    "fridge": 0.06,
+    "hood": 0.2,
+    "misc": 0.04
+   },
+   "kitchen_peak_kW": 7.17,
+   "kitchen_avg1min_max_kW": 6.33,
+   "baseline": {
+    "P0": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 10.6,
+      "max15_kW": 2.36,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 22.4,
+      "peak_kW": 4.94,
+      "avg1min_max_A": 14.9,
+      "max15_A": 12.0,
+      "max15_kW": 2.65,
+      "s_over_avg": 0,
+      "s_over_pk": 36,
+      "verdict": "peak over (pulses aligned), 1-min mean ok"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 39.2,
+      "peak_kW": 8.67,
+      "avg1min_max_A": 35.1,
+      "max15_A": 24.7,
+      "max15_kW": 5.47,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    },
+    "P1": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 10.6,
+      "max15_kW": 2.36,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW1": {
+      "limit_A": 20,
+      "peak_A": 9.4,
+      "peak_kW": 2.1,
+      "avg1min_max_A": 9.4,
+      "max15_A": 6.7,
+      "max15_kW": 1.49,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 16.6,
+      "peak_kW": 3.67,
+      "avg1min_max_A": 12.6,
+      "max15_A": 7.3,
+      "max15_kW": 1.63,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 39.2,
+      "peak_kW": 8.67,
+      "avg1min_max_A": 35.1,
+      "max15_A": 24.7,
+      "max15_kW": 5.47,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    },
+    "P2": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 10.6,
+      "max15_kW": 2.36,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW1": {
+      "limit_A": 20,
+      "peak_A": 12.3,
+      "peak_kW": 2.76,
+      "avg1min_max_A": 10.8,
+      "max15_A": 8.1,
+      "max15_kW": 1.82,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW2": {
+      "limit_A": 20,
+      "peak_A": 9.6,
+      "peak_kW": 2.2,
+      "avg1min_max_A": 9.6,
+      "max15_A": 2.9,
+      "max15_kW": 0.66,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 10.2,
+      "peak_kW": 2.18,
+      "avg1min_max_A": 6.1,
+      "max15_A": 5.4,
+      "max15_kW": 1.19,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 39.2,
+      "peak_kW": 8.67,
+      "avg1min_max_A": 35.1,
+      "max15_A": 24.7,
+      "max15_kW": 5.47,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    }
+   },
+   "capped": {
+    "P0_40A_avg": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "KIT": {
+       "peak_A": 22.4,
+       "max15_A": 12.0
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P0_40A_pk": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 32.5,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 32.5,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [
+      {
+       "step": 4,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 40.6,
+       "capped_start_min": 8.1
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "KIT": {
+       "peak_A": 19.3,
+       "max15_A": 10.5
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 25.4
+      }
+     }
+    },
+    "P0_63A_avg": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "KIT": {
+       "peak_A": 22.4,
+       "max15_A": 12.0
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P0_63A_pk": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 32.5,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 32.5,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [
+      {
+       "step": 4,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 40.6,
+       "capped_start_min": 8.1
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "KIT": {
+       "peak_A": 19.3,
+       "max15_A": 10.5
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 25.4
+      }
+     }
+    },
+    "P1_40A_avg": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "NEW1": {
+       "peak_A": 9.4,
+       "max15_A": 6.7
+      },
+      "KIT": {
+       "peak_A": 16.6,
+       "max15_A": 7.3
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P1_40A_pk": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "NEW1": {
+       "peak_A": 9.4,
+       "max15_A": 6.7
+      },
+      "KIT": {
+       "peak_A": 16.6,
+       "max15_A": 7.3
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P1_63A_avg": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "NEW1": {
+       "peak_A": 9.4,
+       "max15_A": 6.7
+      },
+      "KIT": {
+       "peak_A": 16.6,
+       "max15_A": 7.3
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P1_63A_pk": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "NEW1": {
+       "peak_A": 9.4,
+       "max15_A": 6.7
+      },
+      "KIT": {
+       "peak_A": 16.6,
+       "max15_A": 7.3
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P2_40A_avg": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 8.1
+      },
+      "NEW2": {
+       "peak_A": 9.6,
+       "max15_A": 2.9
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.4
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P2_40A_pk": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 8.1
+      },
+      "NEW2": {
+       "peak_A": 9.6,
+       "max15_A": 2.9
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.4
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P2_63A_avg": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 8.1
+      },
+      "NEW2": {
+       "peak_A": 9.6,
+       "max15_A": 2.9
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.4
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    },
+    "P2_63A_pk": {
+     "total_min": 75.6,
+     "growth_min": 0.0,
+     "max_wait_min": 22.1,
+     "base_max_wait_min": 22.1,
+     "wait_before_serving_min": {
+      "鲜笋排骨汤": 4.2,
+      "红烧肉": 16.5,
+      "米饭": 0.0,
+      "清蒸鲈鱼": 22.1,
+      "白灼汁": 14.0,
+      "番茄炒蛋": 8.6,
+      "白灼秋葵娃娃菜": 0.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 10.6
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 8.1
+      },
+      "NEW2": {
+       "peak_A": 9.6,
+       "max15_A": 2.9
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.4
+      },
+      "MAIN": {
+       "peak_A": 39.2,
+       "max15_A": 24.7
+      }
+     }
+    }
+   },
+   "kitchen_energy_kWh": 3.58,
+   "baseline_main_bg": {
+    "0W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 32.3,
+      "peak_kW": 7.17,
+      "avg1min_max_A": 28.2,
+      "max15_A": 17.9,
+      "max15_kW": 3.97,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 32.3,
+      "peak_kW": 7.17,
+      "avg1min_max_A": 28.2,
+      "max15_A": 17.9,
+      "max15_kW": 3.97,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    },
+    "1500W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 39.2,
+      "peak_kW": 8.67,
+      "avg1min_max_A": 35.1,
+      "max15_A": 24.7,
+      "max15_kW": 5.47,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 39.2,
+      "peak_kW": 8.67,
+      "avg1min_max_A": 35.1,
+      "max15_A": 24.7,
+      "max15_kW": 5.47,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    },
+    "3000W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 46.1,
+      "peak_kW": 10.17,
+      "avg1min_max_A": 42.0,
+      "max15_A": 31.6,
+      "max15_kW": 6.97,
+      "s_over_avg": 80,
+      "s_over_pk": 1460,
+      "verdict": "over for minutes, 15-min mean ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 46.1,
+      "peak_kW": 10.17,
+      "avg1min_max_A": 42.0,
+      "max15_A": 31.6,
+      "max15_kW": 6.97,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    }
+   }
+  },
+  "C 芋头蒸排骨/酸辣土豆丝/青椒炒鱿鱼/清炒荷兰豆/青瓜肉片汤": {
+   "total_min": 35.6,
+   "window_s": [
+    -143,
+    2137
+   ],
+   "energy_kWh": {
+    "wok": 0.45,
+    "zone2": 0.85,
+    "stew": 0.26,
+    "rice": 0.21,
+    "fryer": 0.0,
+    "kettle": 0.0,
+    "robot": 0.17,
+    "station": 0.01,
+    "fridge": 0.03,
+    "hood": 0.1,
+    "misc": 0.02
+   },
+   "kitchen_peak_kW": 8.44,
+   "kitchen_avg1min_max_kW": 6.09,
+   "baseline": {
+    "P0": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 6.3,
+      "max15_kW": 1.4,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 22.4,
+      "peak_kW": 4.94,
+      "avg1min_max_A": 16.3,
+      "max15_A": 13.5,
+      "max15_kW": 3.0,
+      "s_over_avg": 0,
+      "s_over_pk": 548,
+      "verdict": "peak over (pulses aligned), 1-min mean ok"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 45.0,
+      "peak_kW": 9.94,
+      "avg1min_max_A": 34.2,
+      "max15_A": 24.6,
+      "max15_kW": 5.44,
+      "s_over_avg": 0,
+      "s_over_pk": 333,
+      "verdict": "peak over (pulses aligned), 1-min mean ok"
+     }
+    },
+    "P1": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 6.3,
+      "max15_kW": 1.4,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW1": {
+      "limit_A": 20,
+      "peak_A": 9.4,
+      "peak_kW": 2.1,
+      "avg1min_max_A": 9.4,
+      "max15_A": 7.5,
+      "max15_kW": 1.68,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 13.0,
+      "peak_kW": 2.84,
+      "avg1min_max_A": 8.9,
+      "max15_A": 7.7,
+      "max15_kW": 1.72,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 45.0,
+      "peak_kW": 9.94,
+      "avg1min_max_A": 34.2,
+      "max15_A": 24.6,
+      "max15_kW": 5.44,
+      "s_over_avg": 0,
+      "s_over_pk": 333,
+      "verdict": "peak over (pulses aligned), 1-min mean ok"
+     }
+    },
+    "P2": {
+     "WOK": {
+      "limit_A": 20,
+      "peak_A": 15.7,
+      "peak_kW": 3.5,
+      "avg1min_max_A": 15.7,
+      "max15_A": 6.3,
+      "max15_kW": 1.4,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW1": {
+      "limit_A": 20,
+      "peak_A": 12.3,
+      "peak_kW": 2.76,
+      "avg1min_max_A": 12.3,
+      "max15_A": 9.8,
+      "max15_kW": 2.21,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "NEW2": {
+      "limit_A": 20,
+      "peak_A": 0.0,
+      "peak_kW": 0.0,
+      "avg1min_max_A": 0.0,
+      "max15_A": 0.0,
+      "max15_kW": 0.0,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "KIT": {
+      "limit_A": 20,
+      "peak_A": 10.2,
+      "peak_kW": 2.18,
+      "avg1min_max_A": 6.1,
+      "max15_A": 5.3,
+      "max15_kW": 1.16,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "MAIN": {
+      "limit_A": 40,
+      "peak_A": 45.0,
+      "peak_kW": 9.94,
+      "avg1min_max_A": 34.2,
+      "max15_A": 24.6,
+      "max15_kW": 5.44,
+      "s_over_avg": 0,
+      "s_over_pk": 333,
+      "verdict": "peak over (pulses aligned), 1-min mean ok"
+     }
+    }
+   },
+   "capped": {
+    "P0_40A_avg": {
+     "total_min": 35.6,
+     "growth_min": 0.0,
+     "max_wait_min": 15.6,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 1.4,
+      "青瓜肉片汤": 4.6,
+      "青椒炒鱿鱼": 15.6,
+      "清炒荷兰豆": 12.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 6.3
+      },
+      "KIT": {
+       "peak_A": 22.4,
+       "max15_A": 13.5
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 24.6
+      }
+     }
+    },
+    "P0_40A_pk": {
+     "total_min": 57.7,
+     "growth_min": 22.1,
+     "max_wait_min": 12.7,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 12.7,
+      "青瓜肉片汤": 0.0,
+      "青椒炒鱿鱼": 8.5,
+      "清炒荷兰豆": 3.3
+     },
+     "moved": [
+      {
+       "step": 1,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 0.6,
+       "capped_start_min": 22.7
+      },
+      {
+       "step": 2,
+       "dish": "酸辣土豆丝",
+       "label": "wok to the tap: 1 L water; to boil 3 min; shreds",
+       "start_min": 23.7,
+       "capped_start_min": 34.4
+      },
+      {
+       "step": 3,
+       "dish": "酸辣土豆丝",
+       "label": "blanch 30 s, lift out; wok emptied at the sink; ",
+       "start_min": 28.0,
+       "capped_start_min": 38.7
+      },
+      {
+       "step": 4,
+       "dish": "青瓜肉片汤",
+       "label": "stew pot (water in at setup, heating): ginger, c",
+       "start_min": 15.6,
+       "capped_start_min": 49.1
+      },
+      {
+       "step": 5,
+       "dish": "青瓜肉片汤",
+       "label": "pork slices 3 min; salt (the user serves it from",
+       "start_min": 27.8,
+       "capped_start_min": 54.4
+      },
+      {
+       "step": 6,
+       "dish": "青椒炒鱿鱼",
+       "label": "aromatics, pepper, wine, squid, sauce; stir 60 s",
+       "start_min": 15.8,
+       "capped_start_min": 44.9
+      },
+      {
+       "step": 7,
+       "dish": "清炒荷兰豆",
+       "label": "oil, garlic, peas, salt, water; stir 45 s; plate",
+       "start_min": 20.0,
+       "capped_start_min": 50.8
+      },
+      {
+       "step": 8,
+       "dish": "芋头蒸排骨",
+       "label": "out (lid), chili, scallion, hot oil from the wok",
+       "start_min": 34.2,
+       "capped_start_min": 56.3
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.9
+      },
+      "KIT": {
+       "peak_A": 19.3,
+       "max15_A": 9.7
+      },
+      "MAIN": {
+       "peak_A": 35.6,
+       "max15_A": 21.4
+      }
+     }
+    },
+    "P0_63A_avg": {
+     "total_min": 35.6,
+     "growth_min": 0.0,
+     "max_wait_min": 15.6,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 1.4,
+      "青瓜肉片汤": 4.6,
+      "青椒炒鱿鱼": 15.6,
+      "清炒荷兰豆": 12.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 6.3
+      },
+      "KIT": {
+       "peak_A": 22.4,
+       "max15_A": 13.5
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 24.6
+      }
+     }
+    },
+    "P0_63A_pk": {
+     "total_min": 49.7,
+     "growth_min": 14.1,
+     "max_wait_min": 28.5,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 8.5,
+      "青瓜肉片汤": 0.0,
+      "青椒炒鱿鱼": 28.5,
+      "清炒荷兰豆": 24.9
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "芋头蒸排骨",
+       "label": "taro+rib plate into steamer, lid, 30 min",
+       "start_min": 3.6,
+       "capped_start_min": 4.3
+      },
+      {
+       "step": 1,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 0.6,
+       "capped_start_min": 14.7
+      },
+      {
+       "step": 2,
+       "dish": "酸辣土豆丝",
+       "label": "wok to the tap: 1 L water; to boil 3 min; shreds",
+       "start_min": 23.7,
+       "capped_start_min": 24.8
+      },
+      {
+       "step": 3,
+       "dish": "酸辣土豆丝",
+       "label": "blanch 30 s, lift out; wok emptied at the sink; ",
+       "start_min": 28.0,
+       "capped_start_min": 35.0
+      },
+      {
+       "step": 4,
+       "dish": "青瓜肉片汤",
+       "label": "stew pot (water in at setup, heating): ginger, c",
+       "start_min": 15.6,
+       "capped_start_min": 41.2
+      },
+      {
+       "step": 5,
+       "dish": "青瓜肉片汤",
+       "label": "pork slices 3 min; salt (the user serves it from",
+       "start_min": 27.8,
+       "capped_start_min": 46.4
+      },
+      {
+       "step": 6,
+       "dish": "青椒炒鱿鱼",
+       "label": "aromatics, pepper, wine, squid, sauce; stir 60 s",
+       "start_min": 15.8,
+       "capped_start_min": 17.0
+      },
+      {
+       "step": 7,
+       "dish": "清炒荷兰豆",
+       "label": "oil, garlic, peas, salt, water; stir 45 s; plate",
+       "start_min": 20.0,
+       "capped_start_min": 21.2
+      },
+      {
+       "step": 8,
+       "dish": "芋头蒸排骨",
+       "label": "out (lid), chili, scallion, hot oil from the wok",
+       "start_min": 34.2,
+       "capped_start_min": 48.3
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 5.6
+      },
+      "KIT": {
+       "peak_A": 19.6,
+       "max15_A": 12.0
+      },
+      "MAIN": {
+       "peak_A": 42.1,
+       "max15_A": 23.7
+      }
+     }
+    },
+    "P1_40A_avg": {
+     "total_min": 35.6,
+     "growth_min": 0.0,
+     "max_wait_min": 15.6,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 1.4,
+      "青瓜肉片汤": 4.6,
+      "青椒炒鱿鱼": 15.6,
+      "清炒荷兰豆": 12.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 6.3
+      },
+      "NEW1": {
+       "peak_A": 9.4,
+       "max15_A": 7.5
+      },
+      "KIT": {
+       "peak_A": 13.0,
+       "max15_A": 7.7
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 24.6
+      }
+     }
+    },
+    "P1_40A_pk": {
+     "total_min": 49.1,
+     "growth_min": 13.5,
+     "max_wait_min": 14.0,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 14.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 7.8,
+      "青瓜肉片汤": 12.4,
+      "青椒炒鱿鱼": 3.6,
+      "清炒荷兰豆": 0.0
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "芋头蒸排骨",
+       "label": "taro+rib plate into steamer, lid, 30 min",
+       "start_min": 3.6,
+       "capped_start_min": 0.0
+      },
+      {
+       "step": 1,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 0.6,
+       "capped_start_min": 14.1
+      },
+      {
+       "step": 2,
+       "dish": "酸辣土豆丝",
+       "label": "wok to the tap: 1 L water; to boil 3 min; shreds",
+       "start_min": 23.7,
+       "capped_start_min": 29.4
+      },
+      {
+       "step": 3,
+       "dish": "酸辣土豆丝",
+       "label": "blanch 30 s, lift out; wok emptied at the sink; ",
+       "start_min": 28.0,
+       "capped_start_min": 35.1
+      },
+      {
+       "step": 4,
+       "dish": "青瓜肉片汤",
+       "label": "stew pot (water in at setup, heating): ginger, c",
+       "start_min": 15.6,
+       "capped_start_min": 28.2
+      },
+      {
+       "step": 5,
+       "dish": "青瓜肉片汤",
+       "label": "pork slices 3 min; salt (the user serves it from",
+       "start_min": 27.8,
+       "capped_start_min": 33.5
+      },
+      {
+       "step": 6,
+       "dish": "青椒炒鱿鱼",
+       "label": "aromatics, pepper, wine, squid, sauce; stir 60 s",
+       "start_min": 15.8,
+       "capped_start_min": 41.3
+      },
+      {
+       "step": 7,
+       "dish": "清炒荷兰豆",
+       "label": "oil, garlic, peas, salt, water; stir 45 s; plate",
+       "start_min": 20.0,
+       "capped_start_min": 45.5
+      },
+      {
+       "step": 8,
+       "dish": "芋头蒸排骨",
+       "label": "out (lid), chili, scallion, hot oil from the wok",
+       "start_min": 34.2,
+       "capped_start_min": 33.7
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 7.0
+      },
+      "NEW1": {
+       "peak_A": 9.4,
+       "max15_A": 7.5
+      },
+      "KIT": {
+       "peak_A": 13.0,
+       "max15_A": 7.9
+      },
+      "MAIN": {
+       "peak_A": 35.6,
+       "max15_A": 22.3
+      }
+     }
+    },
+    "P1_63A_avg": {
+     "total_min": 35.6,
+     "growth_min": 0.0,
+     "max_wait_min": 15.6,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 1.4,
+      "青瓜肉片汤": 4.6,
+      "青椒炒鱿鱼": 15.6,
+      "清炒荷兰豆": 12.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 6.3
+      },
+      "NEW1": {
+       "peak_A": 9.4,
+       "max15_A": 7.5
+      },
+      "KIT": {
+       "peak_A": 13.0,
+       "max15_A": 7.7
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 24.6
+      }
+     }
+    },
+    "P1_63A_pk": {
+     "total_min": 35.6,
+     "growth_min": 0.0,
+     "max_wait_min": 15.6,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 1.4,
+      "青瓜肉片汤": 4.6,
+      "青椒炒鱿鱼": 15.6,
+      "清炒荷兰豆": 12.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 6.3
+      },
+      "NEW1": {
+       "peak_A": 9.4,
+       "max15_A": 7.5
+      },
+      "KIT": {
+       "peak_A": 13.0,
+       "max15_A": 7.7
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 24.6
+      }
+     }
+    },
+    "P2_40A_avg": {
+     "total_min": 35.6,
+     "growth_min": 0.0,
+     "max_wait_min": 15.6,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 1.4,
+      "青瓜肉片汤": 4.6,
+      "青椒炒鱿鱼": 15.6,
+      "清炒荷兰豆": 12.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 6.3
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 9.8
+      },
+      "NEW2": {
+       "peak_A": 0.0,
+       "max15_A": 0.0
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.3
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 24.6
+      }
+     }
+    },
+    "P2_40A_pk": {
+     "total_min": 49.1,
+     "growth_min": 13.5,
+     "max_wait_min": 14.0,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 14.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 7.8,
+      "青瓜肉片汤": 12.4,
+      "青椒炒鱿鱼": 3.6,
+      "清炒荷兰豆": 0.0
+     },
+     "moved": [
+      {
+       "step": 0,
+       "dish": "芋头蒸排骨",
+       "label": "taro+rib plate into steamer, lid, 30 min",
+       "start_min": 3.6,
+       "capped_start_min": 0.0
+      },
+      {
+       "step": 1,
+       "dish": "米饭",
+       "label": "rice: dose, wash, cooker",
+       "start_min": 0.6,
+       "capped_start_min": 14.1
+      },
+      {
+       "step": 2,
+       "dish": "酸辣土豆丝",
+       "label": "wok to the tap: 1 L water; to boil 3 min; shreds",
+       "start_min": 23.7,
+       "capped_start_min": 29.4
+      },
+      {
+       "step": 3,
+       "dish": "酸辣土豆丝",
+       "label": "blanch 30 s, lift out; wok emptied at the sink; ",
+       "start_min": 28.0,
+       "capped_start_min": 35.1
+      },
+      {
+       "step": 4,
+       "dish": "青瓜肉片汤",
+       "label": "stew pot (water in at setup, heating): ginger, c",
+       "start_min": 15.6,
+       "capped_start_min": 28.2
+      },
+      {
+       "step": 5,
+       "dish": "青瓜肉片汤",
+       "label": "pork slices 3 min; salt (the user serves it from",
+       "start_min": 27.8,
+       "capped_start_min": 33.5
+      },
+      {
+       "step": 6,
+       "dish": "青椒炒鱿鱼",
+       "label": "aromatics, pepper, wine, squid, sauce; stir 60 s",
+       "start_min": 15.8,
+       "capped_start_min": 41.3
+      },
+      {
+       "step": 7,
+       "dish": "清炒荷兰豆",
+       "label": "oil, garlic, peas, salt, water; stir 45 s; plate",
+       "start_min": 20.0,
+       "capped_start_min": 45.5
+      },
+      {
+       "step": 8,
+       "dish": "芋头蒸排骨",
+       "label": "out (lid), chili, scallion, hot oil from the wok",
+       "start_min": 34.2,
+       "capped_start_min": 33.7
+      }
+     ],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 7.0
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 8.2
+      },
+      "NEW2": {
+       "peak_A": 0.0,
+       "max15_A": 0.0
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.2
+      },
+      "MAIN": {
+       "peak_A": 35.6,
+       "max15_A": 22.3
+      }
+     }
+    },
+    "P2_63A_avg": {
+     "total_min": 35.6,
+     "growth_min": 0.0,
+     "max_wait_min": 15.6,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 1.4,
+      "青瓜肉片汤": 4.6,
+      "青椒炒鱿鱼": 15.6,
+      "清炒荷兰豆": 12.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 6.3
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 9.8
+      },
+      "NEW2": {
+       "peak_A": 0.0,
+       "max15_A": 0.0
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.3
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 24.6
+      }
+     }
+    },
+    "P2_63A_pk": {
+     "total_min": 35.6,
+     "growth_min": 0.0,
+     "max_wait_min": 15.6,
+     "base_max_wait_min": 15.6,
+     "wait_before_serving_min": {
+      "芋头蒸排骨": 0.0,
+      "米饭": 0.0,
+      "酸辣土豆丝": 1.4,
+      "青瓜肉片汤": 4.6,
+      "青椒炒鱿鱼": 15.6,
+      "清炒荷兰豆": 12.0
+     },
+     "moved": [],
+     "circuits": {
+      "WOK": {
+       "peak_A": 15.7,
+       "max15_A": 6.3
+      },
+      "NEW1": {
+       "peak_A": 12.3,
+       "max15_A": 9.8
+      },
+      "NEW2": {
+       "peak_A": 0.0,
+       "max15_A": 0.0
+      },
+      "KIT": {
+       "peak_A": 10.2,
+       "max15_A": 5.3
+      },
+      "MAIN": {
+       "peak_A": 45.0,
+       "max15_A": 24.6
+      }
+     }
+    }
+   },
+   "kitchen_energy_kWh": 2.1,
+   "baseline_main_bg": {
+    "0W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 38.1,
+      "peak_kW": 8.44,
+      "avg1min_max_A": 27.3,
+      "max15_A": 17.7,
+      "max15_kW": 3.94,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 38.1,
+      "peak_kW": 8.44,
+      "avg1min_max_A": 27.3,
+      "max15_A": 17.7,
+      "max15_kW": 3.94,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    },
+    "1500W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 45.0,
+      "peak_kW": 9.94,
+      "avg1min_max_A": 34.2,
+      "max15_A": 24.6,
+      "max15_kW": 5.44,
+      "s_over_avg": 0,
+      "s_over_pk": 333,
+      "verdict": "peak over (pulses aligned), 1-min mean ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 45.0,
+      "peak_kW": 9.94,
+      "avg1min_max_A": 34.2,
+      "max15_A": 24.6,
+      "max15_kW": 5.44,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    },
+    "3000W": {
+     "40A": {
+      "limit_A": 40,
+      "peak_A": 51.8,
+      "peak_kW": 11.44,
+      "avg1min_max_A": 41.0,
+      "max15_A": 31.5,
+      "max15_kW": 6.94,
+      "s_over_avg": 166,
+      "s_over_pk": 497,
+      "verdict": "over for minutes, 15-min mean ok"
+     },
+     "63A": {
+      "limit_A": 63,
+      "peak_A": 51.8,
+      "peak_kW": 11.44,
+      "avg1min_max_A": 41.0,
+      "max15_A": 31.5,
+      "max15_kW": 6.94,
+      "s_over_avg": 0,
+      "s_over_pk": 0,
+      "verdict": "ok"
+     }
+    }
+   }
+  }
+ }
+}

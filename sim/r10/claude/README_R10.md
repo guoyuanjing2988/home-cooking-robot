@@ -949,9 +949,10 @@ The user asked for several subagents to explore cheaper robot designs and a bett
 - **With the same caps** plus sourced URScript accelerations and a jerk limit, they are slower: wok 48.9 → 67.1 s.
 - **With UR5e joint speeds, 0.25 m/s TCP and cart 0.5 m/s²** they match or beat R17: wok 47.3 s, spatula 19.9 s, lid 19.9 s, spider 45.4 s.
 - **Stops:** 470 → 7 for the wok.
-- **The cart is the binding limit** at its 0.15 m/s². At 0.5 m/s² the sim's tip model keeps a 42.7 mm margin with the held wok.
+- **The cart is the binding limit** at its 0.15 m/s². At 0.5 m/s² the sim's tip model keeps a 42.7 mm margin with the held wok. That tip model is the quasi-static `mobile.py` check, so the 0.5 m/s² timings are unverified until GitHub issue #14 is closed.
 
 **Corrections to earlier claims (found in R19):**
+- **The sim UR5e collision capsules (MuJoCo Menagerie) do not enclose the real arm.** Mesh vertices stick out by up to 26.5 mm on the upper arm, 14.1 mm on the shoulder and 11.5 mm on the forearm (`r19ur5e_enclose.py`). Every UR5e path is open until it is re-checked with enclosing geometry (GitHub issue #12, running).
 - **Stored paths contain exact ±2π joint jumps** (wok 2 rows, spider 3, lid 1, spatula 1).
   - Unwrapped, they stay within ±2π. The poses are the same, so the checks hold.
   - A real controller would spin the joint 360°, so any exporter must unwrap.

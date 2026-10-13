@@ -535,3 +535,15 @@ Nothing bought.
   - No nozzles over the wok. Nobody doses by hand.
 - **Real ingredients:** real white sugar; real 八角 / 桂皮 picked into a cup; 十三香 shaken into a cup.
 - **Next:** re-size the station and count the cup moves per meal against the video's seasoning moments.
+
+## 2026-10-13 — Seasoning cups: user answers and orchestrator decisions (user: "洗碗机有的，到时候也可以建模然后自动化。清水有小米饮水机。其他你定")
+- **Dishwasher.** The user has one. Cups, caddies and robot tools are dishwasher-safe, and the caddies double as dishwasher baskets. The robot loading and unloading the dishwasher is to be modelled and automated later (its own GitHub issue).
+- **Clean water.** It comes from the user's Xiaomi water dispenser (小米饮水机), feeding the station's water channel or a jug the arm fills there. The model and interface are not known yet.
+- **Restocking (orchestrator decision).** The person only restocks bulk containers: bottles, salt and sugar hoppers, the spice tray, squeeze bottles. Nobody doses per meal.
+- **Merges (orchestrator decision).** Items the cook adds at the same moment share one cup. All four merges are additions at the same moment in the videos, so the taste does not change:
+  - salt into the 蚝油 sauce;
+  - 葱姜 with 八角 / 桂皮 / chili;
+  - salt and sugar into the tomato water;
+  - salt with the celery.
+- **糖色 (orchestrator decision).** As in the video, he pours a ready-made 糖色. The robot makes 糖色 in batches in the wok with real sugar, stores it in a jar, and doses it into a cup. The batch-making is a new movement set.
+- **Station** per `research/r19_seasoning_cups.md`: about ¥4.9–16.2k (est.), at the freed rice/flour port. The cup staging spot and the pick → pour → return set still need a sim check (GitHub #5).

@@ -2,7 +2,9 @@
 
 Choose it with cfg['arm'], or ARM=<id> on the command line (the KEY=VALUE style of every script
 here), or the environment variable ARM. Ids: ur5e (default), fr5 (Fairino FR5, stock J6 +-175 deg),
-fr5_j6 (FR5 with the optional J6 +-360 deg). For ur5e nothing in the model is touched.
+fr5_j6 (FR5 with the optional J6 +-360 deg), ur5e_enc (R19 #12: the UR5e, with collision geoms that enclose the Menagerie
+visual meshes, r19/arm_ur5e_enc.json from r19ur5e_encfit.py; everything else is the UR5e's). For ur5e nothing in the model
+is touched.
 
 For another arm, scene.build calls swap(): the UR5e bodies under R_mount are replaced by the arm
 built from r19/arm_<model>.json (r19arm_fit.py: vendor URDF frames, DH masses/CoMs, capsules
@@ -34,7 +36,9 @@ ARMS={
  'cs66':dict(name='Elite Robots CS66',model='cs66',j6_deg=360.,speeds_degps=[150.,150.,180.,180.,180.,180.],payload_kg=6.,com_radius_m=.15,
   speeds_source='M, conflicting: datasheet J1-J2 150, J3 180, J4-J6 230 deg/s; URDF joint_limits.yaml 180 all; the lower of the two per joint is used',
   payload_source='E: 6 kg rated (M, CS66 datasheet); the allowed CoG offset is ND (no CS66 payload diagram found); 0.15 m assumed, below the FR5 published 0.30 m and the UR5e file 0.35 m, so the wrist envelopes are on the strict side',
-  mount_yaw_deg=0.,clock_deg=0.)}
+  mount_yaw_deg=0.,clock_deg=0.),
+ 'ur5e_enc':dict(name='Universal Robots UR5e, collision geoms enclosing the Menagerie visual meshes (R19 #12)',speeds_degps=[180.]*6,payload_kg=5.,com_radius_m=.35,
+  speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc.json')}
 def _cli():
  for a in sys.argv[1:]:
   if a.startswith('ARM='):return a[4:]
@@ -49,7 +53,7 @@ def tag(arm=None):
  arm=arm or current();return '' if arm=='ur5e' else '_'+arm
 def speeds(arm=None):return list(ARMS[arm or current()]['speeds_degps'])
 def envelope_file(tilt,arm=None):
- arm=arm or current();return f'assets/envelope_{int(tilt)}.json' if arm=='ur5e' else f'assets/envelope_{arm}_{int(tilt)}.json'
+ arm=arm or current();return f'assets/envelope_{int(tilt)}.json' if arm=='ur5e' or ARMS[arm].get('enclose') else f'assets/envelope_{arm}_{int(tilt)}.json'   # ur5e_enc: the UR5e envelope (same arm)
 def fmt(v):return ' '.join(f'{float(x):.12g}' for x in v)
 def quat(R):return Rotation.from_matrix(R).as_quat()[[3,0,1,2]]
 def T(p,R):X=np.eye(4);X[:3,:3]=R;X[:3,3]=p;return X
@@ -58,8 +62,18 @@ def _pose(el):
  return T(p,Rotation.from_quat(q[[1,2,3,0]]/np.linalg.norm(q)).as_matrix())
 JOINTS=['R_shoulder_pan_joint','R_shoulder_lift_joint','R_elbow_joint','R_wrist_1_joint','R_wrist_2_joint','R_wrist_3_joint']
 BODIES=['R_arm_shoulder_link','R_arm_upper_arm_link','R_arm_forearm_link','R_arm_wrist_1_link','R_arm_wrist_2_link','R_arm_wrist_3_link']
+def enclose(tree,arm):
+ """ur5e_enc: the UR5e bodies, joints, inertials and site stay; its collision geoms R_geom_5..28 get the fitted
+ type / pos / quat / size, and the added ones (R_geom_enc_*) are put on their bodies with the same contact settings."""
+ G=json.loads((H/ARMS[arm]['enclose']).read_text(encoding='utf-8'))['geoms']
+ for g in G:
+  el=tree.find(f".//geom[@name='{g['name']}']")
+  if el is None:el=E.SubElement(tree.find(f".//body[@name='{g['body']}']"),'geom',name=g['name'],contype='2',conaffinity='3',margin='.01',group='3')
+  el.set('type',g['type']);el.set('pos',fmt(g['pos']));el.set('quat',fmt(g['quat']));el.set('size',fmt(g['size']))
+ return tree
 def swap(tree,arm):
  """Replace the UR5e under R_mount by `arm` (in place). R_tool keeps its pose relative to the flange."""
+ if ARMS[arm].get('enclose'):return enclose(tree,arm)
  spec=ARMS[arm];M=json.loads((H/'r19'/f"arm_{spec['model']}.json").read_text(encoding='utf-8'))
  mount=tree.find(".//body[@name='R_mount']");old=mount.find("body[@name='R_arm_base']")
  w3=old.find(".//body[@name='R_arm_wrist_3_link']");site=w3.find("site[@name='R_attachment_site']");tool=w3.find("body[@name='R_tool']")
