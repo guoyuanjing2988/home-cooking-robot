@@ -1,0 +1,1108 @@
+{
+ "summary": {
+  "mode": "spot_1.58_0.26",
+  "paths": 45,
+  "errors": 0,
+  "states": 65756,
+  "hit_paths": [],
+  "worst": {
+   "kind": "play",
+   "name": "lid",
+   "min_gate_mm": 1.5,
+   "min_dist_mm": 11.5,
+   "pair": [
+    "R_geom_enc2_ua_0",
+    "r16_spider_block"
+   ]
+  },
+  "by_kind": {
+   "play": 1.5,
+   "app": 50.45,
+   "edge": 29.71,
+   "other": 523.52
+  }
+ },
+ "method": "R19 pot zone (GitHub #37, #8): re-screen a MOVED pot-zone fixture against every stored path. New file.\n\nA fixture move only changes the pairs that involve that fixture; every other pair of every stored state keeps the\ndistance it was checked with. So for each candidate the stored states are replayed with the fixture at its new\nplace and ONLY its pairs are measured, exactly: per state the enclosing-AABB separation of every robot geom vs\nevery moved-fixture geom, refined by the checker's own GJK lower bound (distance.Bounds.pair) wherever the AABB\nbound is within 30 mm of the gap; gate = distance - the checker's gap (10 mm robot-environment, 5 mm gripper /\nheld-environment). The old place of the fixture is gone from the scene (it can only have helped).\nMoved fixtures:\n SPOTS=x,y;x,y;...   spider rest (kitchen16 cradle pad + the spider lying on it): r16_rest_spider, r16_spider_*\n RACK=keyed          the keyed lid rack of kitchen19pot.py: r19pot_rack_* (with the declared lid window: in window\n                     states the held lid vs the rack is the intended contact, not a hit; reported separately)\nPaths (ARM=ur5e_enc2_pgc, PY=.15, the checking standard; stored states 2pi-unwrapped, joint-linear between\nstored states, cut to <= 4 mm point bound as r19smooth.sample_poly):\n - the adopted chains results/r17/chain_*_ur5e_enc2_pgc.json (wok and plate 2 at py.15, lever, lid, spatula; the\n   spider chain only in RACK mode or with EXTRA=) + their grasp approaches / release retreats (empty gripper);\n - the 22 hub edges results/r19/hub_py.15_ur5e_enc2_pgc/edge_*.json (stored <= 4 mm states, r19hub union scene);\n - the prep sets results/r19/prep/chain_*_full_ur5e_enc2_pgc.json and the checked cup chains (R19_CUPS.md table:\n   s10a/b/d/f, s11S, s11enc), replayed in the union scene WITHOUT their own held object: the held object is\n   bounded by a sphere of HELD_R = 0.20 m around the TCP (point-to-AABB lower bound), so their numbers are\n   conservative lower bounds; they need an exact replay only if that bound comes near the gap.\nEXTRA=<chain json>,...  more r17chain-format chains (e.g. a re-planned spider) with their r17chain approach worlds.\npython r19pot_screen.py SPOTS=1.60,.26 [RACK=keyed] [EXTRA=..] ARM=ur5e_enc2_pgc PY=.15 [WORKERS=12] [TAG=..]\n -> results/r19/pot/screen_<spot|rack>[_<TAG>].json",
+ "rows": [
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "play",
+   "name": "wok",
+   "states": 4588,
+   "max_step_bound_mm": 3.998,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 7.9
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "wok@app0",
+   "states": 54,
+   "max_step_bound_mm": 3.996,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "wok@app1",
+   "states": 54,
+   "max_step_bound_mm": 3.996,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "play",
+   "name": "wok_plate2b",
+   "states": 4561,
+   "max_step_bound_mm": 3.998,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 6.6
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "wok_plate2b@app0",
+   "states": 54,
+   "max_step_bound_mm": 3.996,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "wok_plate2b@app1",
+   "states": 54,
+   "max_step_bound_mm": 3.996,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "play",
+   "name": "lever",
+   "states": 128,
+   "max_step_bound_mm": 3.835,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "lever@app0",
+   "states": 19,
+   "max_step_bound_mm": 3.333,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.7
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "lever@app1",
+   "states": 19,
+   "max_step_bound_mm": 3.333,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.7
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "play",
+   "name": "lid",
+   "states": 2410,
+   "max_step_bound_mm": 3.999,
+   "moved_geoms": 4,
+   "min_gate_mm": 1.5,
+   "min_dist_mm": 11.5,
+   "pair": [
+    "R_geom_enc2_ua_0",
+    "r16_spider_block"
+   ],
+   "state": 1511,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 31.0
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "lid@app0",
+   "states": 55,
+   "max_step_bound_mm": 3.849,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "lid@app1",
+   "states": 166,
+   "max_step_bound_mm": 3.961,
+   "moved_geoms": 4,
+   "min_gate_mm": 50.45,
+   "min_dist_mm": 60.45,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "r16_spider_block"
+   ],
+   "state": 0,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.7
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "play",
+   "name": "spatula",
+   "states": 2642,
+   "max_step_bound_mm": 3.993,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.9
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "spatula@app0",
+   "states": 168,
+   "max_step_bound_mm": 3.982,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.9
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "H_SINK__H_WOK",
+   "states": 217,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.0
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "H_SPAT__H_SINK",
+   "states": 209,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.9
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "H_WOK__H_POT",
+   "states": 248,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 1.9
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LEV_C__H_SINK",
+   "states": 1563,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.3
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LEV_C__H_SPAT",
+   "states": 1763,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.3
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LEV_C__H_WOK",
+   "states": 1767,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.2
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LEV_O__H_SINK",
+   "states": 1518,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.2
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LEV_O__H_SPAT",
+   "states": 1720,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.3
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LEV_O__H_WOK",
+   "states": 1738,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.3
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LEV_O__WOK",
+   "states": 2580,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.6
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LID_POT__H_POT",
+   "states": 1774,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LID_POT__H_WOK",
+   "states": 1877,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.3
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LID_RACK__H_POT",
+   "states": 2021,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": 65.68,
+   "min_dist_mm": 75.68,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "r16_spider_block"
+   ],
+   "state": 0,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 9.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "LID_RACK__H_WOK",
+   "states": 2245,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": 65.68,
+   "min_dist_mm": 75.68,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "r16_spider_block"
+   ],
+   "state": 0,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.1
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "SPAT__H_SINK",
+   "states": 1390,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.1
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "SPAT__H_SPAT",
+   "states": 1171,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.1
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "SPAT__LEV_C",
+   "states": 2864,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.7
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "SPIDER__H_POT",
+   "states": 2150,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": 29.71,
+   "min_dist_mm": 34.71,
+   "pair": [
+    "R_finger_minus",
+    "r16_spider_block"
+   ],
+   "state": 0,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "SPIDER__H_WOK",
+   "states": 2364,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": 29.71,
+   "min_dist_mm": 34.71,
+   "pair": [
+    "R_finger_minus",
+    "r16_spider_block"
+   ],
+   "state": 0,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.0
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "WOK__H_POT",
+   "states": 1191,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.1
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "WOK__H_SINK",
+   "states": 1177,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.2
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "edge",
+   "name": "WOK__H_WOK",
+   "states": 913,
+   "max_step_bound_mm": null,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.2
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "carrot_full_ur5e_enc2_pgc",
+   "states": 3063,
+   "max_step_bound_mm": 4.0,
+   "moved_geoms": 4,
+   "min_gate_mm": 1655.52,
+   "min_dist_mm": 1660.52,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_bowl"
+   ],
+   "state": 994,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 2.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "press_full_ur5e_enc2_pgc",
+   "states": 162,
+   "max_step_bound_mm": 3.993,
+   "moved_geoms": 4,
+   "min_gate_mm": 2137.41,
+   "min_dist_mm": 2142.41,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_bowl"
+   ],
+   "state": 155,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 1.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "tomato_full_ur5e_enc2_pgc",
+   "states": 2696,
+   "max_step_bound_mm": 3.994,
+   "moved_geoms": 4,
+   "min_gate_mm": 1705.48,
+   "min_dist_mm": 1710.48,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_bowl"
+   ],
+   "state": 1649,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 2.8
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "cup_T2R_b1_L_s+1_s10a",
+   "states": 1895,
+   "max_step_bound_mm": 3.995,
+   "moved_geoms": 4,
+   "min_gate_mm": 523.52,
+   "min_dist_mm": 528.52,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_block"
+   ],
+   "state": 1057,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 2.4
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "cup_T2R_b1_L_s+1_s10b",
+   "states": 1747,
+   "max_step_bound_mm": 3.995,
+   "moved_geoms": 4,
+   "min_gate_mm": 523.52,
+   "min_dist_mm": 528.52,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_block"
+   ],
+   "state": 983,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 2.5
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "cup_T2R_b1_L_s+1_s10d",
+   "states": 1673,
+   "max_step_bound_mm": 3.999,
+   "moved_geoms": 4,
+   "min_gate_mm": 523.52,
+   "min_dist_mm": 528.52,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_block"
+   ],
+   "state": 946,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 2.4
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "cup_T2R_b1_L_s+1_s10f",
+   "states": 1599,
+   "max_step_bound_mm": 3.996,
+   "moved_geoms": 4,
+   "min_gate_mm": 523.52,
+   "min_dist_mm": 528.52,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_block"
+   ],
+   "state": 909,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 2.3
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "cup_T2R_b1_S_s+1_s11S",
+   "states": 1742,
+   "max_step_bound_mm": 3.997,
+   "moved_geoms": 4,
+   "min_gate_mm": 536.22,
+   "min_dist_mm": 541.22,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_block"
+   ],
+   "state": 749,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 2.5
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.58,
+     0.26
+    ]
+   ],
+   "kind": "other",
+   "name": "cup_T2R_b1_L_s+1_s11enc_ur5e_enc",
+   "states": 1747,
+   "max_step_bound_mm": 3.995,
+   "moved_geoms": 4,
+   "min_gate_mm": 523.52,
+   "min_dist_mm": 528.52,
+   "pair": [
+    "held object within 0.20 m of the TCP",
+    "r16_spider_block"
+   ],
+   "state": 983,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": true,
+   "elapsed_s": 2.4
+  }
+ ]
+}

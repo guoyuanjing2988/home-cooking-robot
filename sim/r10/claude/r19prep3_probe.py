@@ -84,6 +84,15 @@ def probes():
   for yaw in (0,-20,20):
    add(f'bk_tub_{tx:.2f}_{ty:.2f}_y{yaw}','tub',K.Rz(yaw),[tx,ty,.858],[car,tom],desc=f'tub held 8 mm over a back spot ({tx},{ty}), yaw {yaw}')
    add(f'bk_bin_{tx:.2f}_{ty:.2f}_y{yaw}','basket',K.Rz(yaw),[tx,ty,.85+P3.TUB['t']+.008],[car,tom,('tub',K.Rz(yaw).tolist(),[tx,ty,.85])],desc=f'basket held 8 mm over the tub floor, tub at the back spot ({tx},{ty}), yaw {yaw}')
+ # round 6: basket handle toward the robot (yaw -90) nested in a tub with its handle toward the sink (yaw 0 / -20), front spot
+ for tx,ty,ty_ in ((-0.86,.40,0),(-0.86,.40,-20),(-0.86,.42,0),(-0.84,.41,-20)):
+  Rt_=K.Rz(ty_)
+  add(f'r6_tub_{tx:.2f}_{ty:.2f}_t{ty_}','tub',Rt_,[tx,ty,.858],[car,tom],desc=f'tub held 8 mm over ({tx},{ty}), yaw {ty_}')
+  for by in (-90,-100,-80):
+   add(f'r6_nest_{tx:.2f}_{ty:.2f}_t{ty_}_b{by}','basket',K.Rz(by),[tx,ty,.85+P3.TUB['t']+.008],[car,tom,('tub',Rt_.tolist(),[tx,ty,.85])],desc=f'basket yaw {by} held 8 mm over the floor of a tub yaw {ty_} at ({tx},{ty})')
+ for fx,fy in ((-0.86,.15),(-0.84,.15),(-0.86,.16),(-0.82,.15)):
+  for by in (-90,-100,-80):
+   add(f'r6_front_{fx:.2f}_{fy:.2f}_b{by}','basket',K.Rz(by),[fx,fy,.858],[car,tom],desc=f'basket yaw {by} held 8 mm over the front spot ({fx},{fy})')
  # slicer out bowl with a strut + knob toward +x (under the cabinet)
  sx,sy,_=L['slicer'];ob=K19.chute_top(*L['slicer']);bcen=np.array(K19.place('slicer',*L['slicer'])[1])+K19.Rz(L['slicer'][2])@K19.SLICER_BOWL
  add('sbowl_seat','sbowl',I,[bcen[0],bcen[1],.851+.008],[car,tom],desc='slicer out bowl (with a knob toward +x) held 8 mm over its seat under the spout')

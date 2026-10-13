@@ -1,0 +1,18 @@
+pick start candidates 33 {'pose': 186, 'collision': 73, 'ok': 29, 'ur_seeds_ok': 9}
+ cand 0 cart -1.43 ok
+ cand 1 cart -1.44 ok
+ cand 2 cart -1.46 ok
+ cand 3 cart -1.4 ok
+ cand 4 cart -1.48 ok
+ cand 5 cart -1.05 {'at': 'pick->lifted', 'kf': None, 'cart': np.float64(-1.048), 'step_deg': 2.94, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.08666666666666656), 'hits': [['R_geom_fr5_j6_pgc_sp20_wrist3_flange', 'R_base_plate']]}
+ cand 6 cart -1.38 ok
+stroke start start candidates 36 {'ok': 62, 'pose': 167, 'collision': 59, 'ur_seeds_ok': 12}
+ cand 0 cart 0.43 ok
+ cand 1 cart 0.29 ok
+ cand 2 cart 0.31 ok
+ cand 3 cart 0.27 ok
+ cand 4 cart 0.33 ok
+ cand 5 cart 0.41 ok
+joins at lane [(0, True), (1, True), (1, True), (1, True), (1, True), (1, True)]
+results/r17/chain_spatula_s-1_r18roll-1.15_.30_fr5_j6_pgc_sp20.json
+{"act": "spatula", "obj": "spatula_b", "arm": "fr5_j6_pgc_sp20", "seed_ur": "results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json", "grasp_sense": -1, "design": {"pot_h": 0.12, "rack": 0.04, "lid_a": 0.0, "car_a": 45.0, "rack_ry": 90.0}, "scene": {}, "wok_tilt": 0.0, "wok_grasp": "top", "tool_xy": {"spatula": [-1.15, 0.3], "ladle": [1.62, 0.24], "spider": [1.52, 0.36]}, "ok": true, "time_s": 26.6, "elapsed_s": 181, "anchors": {"pick#0": {"ok": true, "cand": 5, "cart": -1.38, "start_reserve_mm": 4.8}, "stroke start#5": {"ok": true, "cand": 5, "cart": 0.407, "start_reserve_mm": 5.7}}, "pieces": [{"frm": "pick#0", "to": "lane#3", "steps": 125, "time_s": 12.3, "min_reserve_mm": 6.0, "max_step_deg": 5.95, "cart": [-1.38, -0.417]}, {"frm": "stroke start#5", "to": "lane#3", "steps": 116, "time_s": 11.5, "min_reserve_mm": 15.4, "max_step_deg": 1.62, "cart": [0.409, -0.412]}], "joins": [{"ok": true, "arm_deg": 0.4, "s": 0.64, "cart_m": 0.006, "shuffle_s": 0.0, "at": "lane", "best_pair_deg": 0.4}], "approaches": [{"ok": true, "kf": 0, "min_reserve_mm": 27.0, "time_s": 0.6}], "min_reserve_mm": 6.0, "max_pgc_moment_Nm": 1.3, "max_joint_ratio": 0.443}

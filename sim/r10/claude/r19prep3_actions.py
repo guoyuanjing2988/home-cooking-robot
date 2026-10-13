@@ -10,14 +10,15 @@ is filled, emptied or soaking). The staging bowl for cooking stands on the T1 st
 Extra keyframe keys read by r19prepchain.load(): load = kg held at that keyframe, com = its CoM (object frame)."""
 import numpy as np
 import kitchen16 as K,kitchen19 as K19,kitchen19p3 as P3
-TUBP=dict(x=-0.86,y=.38,yaw=-20.);FRONTP=dict(x=-0.84,y=.13,yaw=-20.);T1B=dict(x=.30,y=.38,yaw=180.)
+TUBP=dict(x=-0.86,y=.40,yaw=-20.);FRONTP=dict(x=-0.86,y=.15,yaw=-90.);T1B=dict(x=.30,y=.38,yaw=180.)
+BYAW=-90.            # the basket's handle points at the robot (grasp approach toward the wall) wherever it is: one arm posture, the cart follows
 FOOD_KG=.50          # [est] the largest basket load in meals A/B/C (500 g soup ribs, B; broccoli 400 g, A; R19_PREP_AUDIT 2.1-2.3)
 RINSE_WATER=.30      # [est] water standing in the basket under the running tap (drain holes; R19_PREP_STEP3.md 4)
 WET=.05              # [est] water film on drained produce
 COM_B=np.array([0,0,.04]);COM_T=np.array([0,0,.03])   # [est] CoM of basket + food, of tub + water (object frame)
 ACTS=('basket','baspour','tubfill','soak','tubempty','ctray','bascarrot')
 def tub_pose():return K.Rz(TUBP['yaw']),np.array([TUBP['x'],TUBP['y'],K19.COUNTER_TOP])
-def nest_pose():return K.Rz(TUBP['yaw']),np.array([TUBP['x'],TUBP['y'],K19.COUNTER_TOP+P3.TUB['t']])
+def nest_pose():return K.Rz(BYAW),np.array([TUBP['x'],TUBP['y'],K19.COUNTER_TOP+P3.TUB['t']])
 def front_pose():return K.Rz(FRONTP['yaw']),np.array([FRONTP['x'],FRONTP['y'],K19.COUNTER_TOP])
 def t1_pose():return K.Rz(T1B['yaw']),np.array([T1B['x'],T1B['y'],K19.COUNTER_TOP])
 def tub_water_kg():return P3.water_kg(P3.TUB['R']-P3.TUB['t'],P3.TUB['water_h'])
@@ -30,7 +31,7 @@ def action(ACT,KV,L,kf,scene_with,tray_objs):
  Rt,pt=tub_pose();Rn,pn=nest_pose();Rf,pf=front_pose();Rb1,pb1=t1_pose()
  tub=('tub',Rt,pt);bowl=('bowl',Rb1,pb1);bas_front=('basket',Rf,pf)
  dry=P3.MASS_EST['basket']+FOOD_KG;wet=dry+WET;rin=dry+RINSE_WATER
- lane=V(KV,'BLANE','-0.62,.26,.98')                                       # basket / tub floor centre in the lane by the sink
+ lane=V(KV,'BLANE','-0.62,.30,.98')                                       # basket / tub floor centre in the lane by the sink
  TAP=np.array([FO[0],float(KV.get('TAPY',.30)),float(KV.get('TAPZ',.94))])   # basket floor centre under the outlet (rim 6 cm under the spout)
  if ACT=='basket':   # BASKET_WASH: out of the tub -> under the running tap (3 rinse dwells) -> drain + shake -> back into the tub
   D=TAP+[0,-.06,.04];up=pn+[0,0,.11]
@@ -46,7 +47,7 @@ def action(ACT,KV,L,kf,scene_with,tray_objs):
  if ACT=='baspour':  # BASKET_POUR: out of the tub -> over the staging bowl on T1 -> rolled POURDEG about the handle (dwell, shake) -> back
   yb=float(KV.get('PYAW',-90.));Rp=K.Rz(yb);deg=float(KV.get('POURDEG',130.));kz=float(KV.get('PKZ',.14))
   kn=pb1+[0,0,P3.BOWL['H']+kz]+Rp@np.array([K.OBJ['basket']['grip'][0],0,0]);Rl,pl=P3.at_knob('basket',Rp,kn);Rr,pr=P3.rolled_about_knob('basket',Rl,pl,deg)
-  Rm=K.Rz(float(KV.get('MYAW',(TUBP['yaw']+yb)/2)));l1=lane;l2=V(KV,'PLANE','0.0,.15,1.06')
+  Rm=K.Rz(float(KV.get('MYAW',(BYAW+yb)/2)));l1=lane;l2=V(KV,'PLANE','0.0,.15,1.06')
   up=pn+[0,0,.11];empty=P3.MASS_EST['basket']+.02
   KF=[K_(Rn,pn+[0,0,.008],'A',0,'pick (nested in the tub)',wet,COM_B,anchor=True,seat=.008),K_(Rn,pn+[0,0,.05],'A',0,'lifted',wet,COM_B),
    K_(Rn,up,'A',0,'out of the tub',wet,COM_B),K_(Rn,l1,'F',0,'lane by the sink',wet,COM_B),K_(Rm,l2,'F',0,'lane right of the sink',wet,COM_B,meet=True),
