@@ -586,3 +586,12 @@ Nothing bought.
 - **2026-10-14, user: "都你定". The open items are decided as follows (orchestrator decisions):**
   - **Route back to the arm:** the gripper cable plugs into the arm's tool connector at the wrist, using DH's robot-specific cable, or a short adapter cable if DH does not list one for the arm. No 5 m extension along the arm. This keeps the run short and leaves no slack loop to snag. Compatibility with the FR5 and UR5e tool connectors is to be confirmed by reading the published documentation.
   - **DH CAD:** downloaded from DH's site to `inputs/dh_cad/`: the 2D drawing PDF, the simplified STEP model v4.0 and the standard flange STEP. They are used as read-only reference data, to measure the cable exit and replace the [E] exit height.
+
+## 2026-10-14 — Stir library default: no-spill cycle at jerk 8,000 (orchestrator decision, GitHub #40 / #41)
+- **Default stir cycle:** `lib_stir_cycle_<arm>_short01_u06_j8000.json`, for both `ur5e_enc2_pgc` and `fr5_j6_pgc_sp20`.
+  - The two centre strokes push to u = 0.06 m instead of 0.10 m. Strokes 2–4 are as on the bench.
+  - The time law has a jerk limit of 8,000 °/s³, a labelled assumption until the arm's real limits are measured (#10).
+  - Period: 2.81 s (UR5e) / 2.65 s (FR5) per stroke.
+- **Why:** 0 pieces spilled on 8 seeds for both arms. The bench spills 5 and the old cycles 11–12. Hot share is unchanged, and grip-moment spikes stay low.
+- **Cost:** the food is flipped about 40 % less often (2.0–2.2 vs 3.5 per 10 s). Watch this when the real stir is tested.
+- **Open:** a jam on seed 8 drives the sustained grip moment above the PGC's 7 N·m with every driver (#16).
