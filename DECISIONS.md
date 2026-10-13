@@ -547,3 +547,16 @@ Nothing bought.
   - salt with the celery.
 - **糖色 (orchestrator decision).** As in the video, he pours a ready-made 糖色. The robot makes 糖色 in batches in the wok with real sugar, stores it in a jar, and doses it into a cup. The batch-making is a new movement set.
 - **Station** per `research/r19_seasoning_cups.md`: about ¥4.9–16.2k (est.), at the freed rice/flour port. The cup staging spot and the pick → pour → return set still need a sim check (GitHub #5).
+
+## 2026-10-13 — True arm geometry is the checking standard (orchestrator decision, GitHub #12)
+- **What was found.** The sim's UR5e collision capsules (MuJoCo Menagerie) did not enclose the real arm, by up to 26.5 mm. Checked with geometry that does enclose it, the R17/R18 wok, lid, spider and lever paths failed.
+- **The standard from now on.** Every check uses certified-enclosing arm geometry:
+  - `ARM=ur5e_enc2_pgc`: k-DOP hulls around the Menagerie meshes, plus the PGC-140 gripper from DH's manual drawing (a Ø75 body);
+  - for other arms, their vendor-mesh fits (`fr5`, `cs66`);
+  - the old `ur5e` default stays only for reproducing old results.
+- **Layout change.** The plating spot moves 20 mm toward the wall: y 0.13 → 0.15 (`PY=.15`). The elbow passed 7.5 mm above the plate rim.
+- **Result.** With `ur5e_enc2_pgc` and `PY=.15`, all six stored chains re-check clean at ≤ 4 mm and are adopted (certificates attached): wok, plate 2, lid, spider, lever, spatula. The hub roadmap is rebuilt: 22 / 22 edges and 42 / 42 routes are checked.
+- **Open.**
+  - The PGC base cable connector is not modelled (not dimensioned on the drawing).
+  - The prep sets still need re-planning for the true geometry (#4).
+  - #13 is to be re-run with this arm.

@@ -982,3 +982,24 @@ The user asked for several subagents to explore cheaper robot designs and a bett
   - cubic B-spline pieces between mandatory stops, with the contact windows flagged;
   - a check certificate.
 - **Playback:** a dense joint stream (UR RTDE `servoj` at 500 Hz) or an on-controller trajectory file (Fairino, Dobot).
+
+## R19, continued: the checking standard is true arm geometry (2026-10-13; GitHub #12, #13, #14, #17, #27, #33)
+- **The old model was too thin.** The Menagerie UR5e capsules did not enclose the real arm (upper arm +26.5 mm). Re-checked with enclosing geometry, the R17/R18 wok, lid, spider and lever failed. Full story: `R19_UR5E_ENC.md`.
+- **New standard: `ARM=ur5e_enc2_pgc`.**
+  - The arm: certified-enclosing k-DOP hulls.
+  - The gripper: the PGC-140 from DH's drawing.
+  - The plating spot moves to y 0.15 (`PY=.15`).
+  - Status:
+    - all six stored chains re-check clean at ≤ 4 mm and are adopted (`r19enc_adopt.py`);
+    - the hub roadmap is rebuilt and fully checked (22 / 22 edges, 42 / 42 routes; `results/r19/hub_py.15_ur5e_enc2_pgc/`);
+    - the stir passes with `ur5e_enc2` (22.1 mm).
+- **Reserves.** Most of the "≈2 mm" reserves in R17/R18 were the checker's box bound, not exact. The exact values are 4–5 mm (`R19_TOLERANCE.md`). The lid into the rack (1.0 mm) and the LEV_O edges are really tight.
+- **Cheap arm (#2).** FR5 on the old layout: lever and spatula pass, spider passes with J6 ±360°, wok and lid fail. It still needs a like-for-like run with the PGC drawing gripper and `PY=.15`.
+- **Prep (#4).** New layout: slicer at the far left, tool spot at (−0.86, 0.21). With `ur5e_enc2_pgc` the tomato set passes; the press and carrot are being re-planned.
+- **Other studies** (each in its own file):
+  - power: `research/r19_power_budget.md`;
+  - reliability: `R19_RELIABILITY.md`;
+  - cart: `R19_CART.md`, which proposes fixed x-aligned castors and a holding brake;
+  - tolerance: `R19_TOLERANCE.md`, which says docking stops are needed;
+  - prep methods: `research/r19_prep_methods.md`;
+  - seasoning cups: `research/r19_seasoning_cups.md`, `R19_CUPS.md`.

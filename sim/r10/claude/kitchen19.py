@@ -137,6 +137,15 @@ K.OBJ['pusher']=dict(parts=OBJ_PARTS['pusher'],grip=np.zeros(3),a=np.array([0,1.
 JAW=dict(carrot=.0015,tomato=.016,pusher=0.)   # fingers.jaw_q(D): carrot force mode, tomato position mode 4 mm squeeze, keyed knob
 MASS=dict(carrot=.12,tomato=.15,pusher=.25)    # chain.MASS (R10/R11)
 def pusher_pose(x,y,yaw,pressed=0.):return Rz(yaw),knob(x,y,yaw)-[0,0,pressed]
+def pusher_turned(deg):
+ """R19 #4 round 2: the pusher with its 3D-printed keyed knob adapter turned deg about the stem (the stem and
+ disc of the bought pusher are not turned). Object frame turned by deg: the knob part stays axis-aligned in it,
+ the stem is counter-turned. Registered as kitchen16.OBJ['pusher_y<deg>']."""
+ name=f'pusher_y{deg:g}'
+ if name not in K.OBJ:
+  P=OBJ_PARTS['pusher'];parts=[P[0],(P[1][0],P[1][1],P[1][2],P[1][3],Rz(-deg)),P[2]]
+  OBJ_PARTS[name]=parts;K.OBJ[name]=dict(K.OBJ['pusher'],parts=parts);JAW[name]=JAW['pusher'];MASS[name]=MASS['pusher']
+ return name
 # ---------------- layout candidates (step 1) ----------------
 # item: tool (fetched lever base = the fetched-tool work spot), slicer (resident), peeler (fetched), cold_box (set-down)
 CANDIDATES={
@@ -166,6 +175,7 @@ CANDIDATES={
  'tool_CB':dict(item='tool',st=('lever',-0.90,.20,0.),desc='left counter by the sink, set back (blade plate y 0.20); the chosen spot is tool_CB_-0.86_0.21'),
  **{f'tool_CB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='set-back work spot variants') for x,y in ((-0.87,.20),(-0.85,.20),(-0.90,.22),(-0.88,.22),(-0.86,.22),(-0.88,.21),(-0.86,.21),(-0.87,.215),(-0.90,.21))},
  **{f'cbox_CBX_{x:.2f}_{y:.2f}':dict(item='cold_box',st=('cold_box',x,y,90.),desc='cold box along x at the set-back work spot') for x,y in ((-0.86,.17),(-0.86,.19),(-0.86,.21),(-0.86,.15))},
+ 'tool_CBK45':dict(item='tool',st=('lever',-0.86,.21,0.),pusher_yaw=45.,desc='CHOSEN (round 2): the work spot (-0.86, 0.21) with the knob adapter turned 45 deg (press set with ur5e_enc2_pgc)'),
  'cbox_CB':dict(item='cold_box',st=('cold_box',-0.90,.12,90.),desc='CHOSEN: cold box along x at the work spot (instead of the lever base)'),
  **{f'tool_CB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='left counter by the sink, set back (carry lane and shoulder pass in front of it)') for x in (-.90,-.95) for y in (.20,.24)},
  **{f'tool_PLB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='plating area, set back (knob further from the passing shoulder)') for x in (.10,.20,.30) for y in (.16,.20,.24)},
@@ -206,7 +216,13 @@ def boxes(C):
  m=mujoco.MjModel.from_xml_string(xml);d=mujoco.MjData(m);mujoco.mj_forward(m,d);out=[]
  for g in range(m.ngeom):
   ab=m.geom_aabb[g];Rg=d.geom_xmat[g].reshape(3,3);cen=d.geom_xpos[g]+Rg@ab[:3];ext=np.abs(Rg)@ab[3:]
+  if C.get('pusher_yaw') is not None and m.geom(g).name.startswith('lever_pusher'):continue   # replaced by the turned pusher below
   out.append((m.geom(g).name,cen,2*ext))
+ if name=='lever' and C.get('pusher_yaw') is not None:   # R19 #4 round 2: the keyed knob adapter (and stem) turned about the stem axis
+  Rp,kp=pusher_pose(x,y,yaw);Rp=Rz(C['pusher_yaw'])@Rp
+  for n,t,q,sz,Rq in OBJ_PARTS[pusher_turned(C['pusher_yaw'])]:
+   ext=np.array([sz[0],sz[0],sz[1]]) if t=='cylinder' else np.abs(Rp@Rq)@np.asarray(sz,float)   # a z-axis cylinder turned about z keeps its AABB; a turned box: the AABB of the turned box (conservative)
+   out.append(('turned_'+n,kp+Rp@np.asarray(q),2*ext))
  if name=='slicer':
   R,p=place('slicer',x,y,yaw);c=p+R@SLICER_BOWL;out.append(('out_bowl',c+[0,0,.045],[2*SLICER_BOWL_R,2*SLICER_BOWL_R,.09]))
  return out

@@ -56,11 +56,12 @@ RINSE=float(KV.get('RINSE',3.))   # s per rinse keyframe dwell [est]
 RL=float(KV.get('ROLL',30.))   # tomato rinse: rolled +-RL deg about the grasp approach axis
 I=np.eye(3);L=dict(K19.LAYOUT)
 if 'LEVER' in KV:L['lever']=tuple(([float(v) for v in KV['LEVER'].split(',')]+[0.])[:3])   # tool spot override (x, y[, yaw deg])
+if 'SLICER' in KV:L['slicer']=tuple(([float(v) for v in KV['SLICER'].split(',')]+[90.])[:3])   # slicer override (x, y[, yaw deg])
 def kf(R,p,c=None,dw=0.,label='',anchor=False,meet=False,seat=0.):
  return dict(R=np.asarray(R,float),p=np.asarray(p,float),c=c,dw=dw,label=label,anchor=anchor,meet=meet,seat=seat)
 def J(o):return json.loads(json.dumps(o,default=lambda x:x.tolist() if isinstance(x,np.ndarray) else float(x)))
 def scene_with(*stations,**kw):
- sc=K19.layout_scene(*stations,**kw)
+ sc=K19.layout_scene(*stations,**kw);sc['stations']['slicer']=L['slicer']
  if 'lever' in sc['stations']:sc['stations']['lever']=L['lever']
  return sc
 def action():
@@ -70,13 +71,16 @@ def action():
  def roll(R,deg):   # rotate the held item about the grasp approach axis (a wrist roll)
   a=R@K.OBJ['tomato' if ACT!='carrot' else 'carrot']['a'];return Rotation.from_rotvec(a*np.radians(deg)).as_matrix()@R
  if ACT=='carrot':
-  c0=K19.tray('carrot',dxy);ch=K19.chute_top(*L['slicer']);Rv=K.Ry(90)   # upright: carrot axis (object x) vertical, jaws (object z) along x, approach still +y
+  c0=K19.tray('carrot',dxy);ch=K19.chute_top(*L['slicer'])
+  cap=KV.get('CHAPP','30');cy={'front':0.,'left':90.}.get(cap,None);cy=float(cap) if cy is None else cy
+  Rv=K.Rz(cy)@K.Ry(90)   # upright: carrot axis (object x) vertical; the grasp approach (object +y) turned CHAPP about z: front = +y, left = -x (gripper on the right of the chute)
+  cov=float(KV.get('CHOV',.14));cup=np.array([float(v) for v in KV.get('CHUP','.05,-.087,.18').split(',')])   # over-chute height; the upright waypoint relative to the chute top
   Rp=K.Rx(float(KV.get('PITCH',-30.)));ln=np.array([float(v) for v in KV.get('LANE','-0.65,.10,1.15').split(',')])
   KF=[kf(I,c0+[0,0,.008],'A',0,'pick',anchor=True,seat=.008),kf(I,c0+[0,0,.05],'A',0,'lifted'),kf(I,c0+[0,-.04,.15],'F',0,'out and up'),
    kf(Rp,ln,'F',0,'lane',meet=True),
    kf(Rp,S,'F',RINSE,'under the tap',anchor=True),kf(Rp,S+[.05,0,0],'F',RINSE,'rinse right half'),kf(Rp,S+[-.05,0,0],'F',RINSE,'rinse left half'),kf(Rp,S,'F',0,'centre'),
-   kf(Rp,ln,'F',0,'lane',meet=True),kf(Rv,ch+[0,-.10,.20],'F',0,'upright, in front of the chute'),
-   kf(Rv,ch+[0,0,.14],'F',0,'over the chute',anchor=True),kf(Rv,ch+[0,0,.06],'A',0,'in the chute (bottom 20 mm inside)')]
+   kf(Rp,ln,'F',0,'lane',meet=True),kf(Rv,ch+cup,'F',0,'upright, in front of the chute'),
+   kf(Rv,ch+[0,0,cov],float(KV['CHC']) if 'CHC' in KV else 'F',0,'over the chute',anchor=True),kf(Rv,ch+[0,0,.06],'A',0,'in the chute (bottom 20 mm inside)')]
   st=('lever',) if KV.get('TOOL','lever')=='lever' else ();w0=scene_with(*st,objs=[tom]);w1=scene_with(*st,objs=[tom])
   return 'carrot',dict(r19=w0),KF,[(0,w0,True),(len(KF)-1,w1,False)]
  if ACT=='tomato':
@@ -98,7 +102,7 @@ def action():
   c2='A' if KV.get('CA2') else 'F'
   Ry=K.Rz(L['lever'][2]+float(KV.get('PYAW',-20.)))   # the lever base's front (slide-in side) direction: the tomato and its grasp turned with the station (+PYAW: a diagonal slide-in)
   KF=head+[kf(Rp,S,float(KV['TAPC']) if 'TAPC' in KV else 'F',RINSE,'under the tap',anchor=True),kf(roll(Rp,RL),S,c2,RINSE,f'rolled +{RL:g}'),kf(roll(Rp,-RL),S,c2,RINSE,f'rolled -{RL:g}'),kf(Rp,S,c2,0,'level')]+tail+[
-   kf(Ry,seat+Ry@[0,-.135,.03],c2,0,'backed out, in front of the lever base'),kf(Ry,seat+Ry@[0,-.06,.008],float(KV['LVC']) if 'LVC' in KV else 'F',0,'in front of the blade plate',anchor=True),kf(Ry,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
+   kf(Ry,seat+Ry@[0,-.135,.03],c2,0,'backed out, in front of the lever base'),kf(Ry,seat+Ry@[0,-.06,.008],float(KV['LVC']) if 'LVC' in KV else -0.35,0,'in front of the blade plate',anchor=True),kf(Ry,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
   w0=scene_with('lever',objs=[car]);w1=scene_with('lever',objs=[car])
   return 'tomato',dict(r19=w0),KF,[(0,w0,True),(len(KF)-1,w1,True)]
  if ACT=='tap':   # exploration: the held item from a front lane point into the outlet and back out (one anchor at the tap)
@@ -109,11 +113,15 @@ def action():
   st=('lever',) if KV.get('TOOL','none')=='lever' else ();w0=scene_with(*st,objs=[tom if ob=='carrot' else car])
   return ob,dict(r19=w0),KF,[]
  if ACT=='press':
-  Rp,kn=K19.pusher_pose(*L['lever'])
-  KF=[kf(Rp,kn,'A',0,'knob at rest',anchor=True),kf(Rp,kn-[0,0,K19.LEVER_PRESS],'A',0,'pressed 102 mm'),kf(Rp,kn,'A',0,'returned')]
+  Rp,kn=K19.pusher_pose(*L['lever']);pry=float(KV.get('PRYAW',45.));Rp=K.Rz(pry)@Rp   # PRYAW: the keyed knob adapter turned about the stem, so the gripper approaches diagonally
+  pob=K19.pusher_turned(pry) if pry else 'pusher'   # the printed knob adapter turned; the bought stem and disc are not
+  prc=float(KV['PRC']) if 'PRC' in KV else 'A'
+  KF=[kf(Rp,kn,prc,0,'knob at rest',anchor=True),kf(Rp,kn-[0,0,K19.LEVER_PRESS],'A',0,'pressed 102 mm'),kf(Rp,kn,'A',0,'returned')]
   sc=scene_with('lever',pusher=None,objs=[car])   # pusher in the hand; the tomato is cut (appliance-contained)
-  w0=scene_with('lever',objs=[car,('tomato',I,K19.lever_seat(*L['lever']))]);w1=scene_with('lever',objs=[car])
-  return 'pusher',dict(r19=sc),KF,[(0,w0,False),(2,w1,False)]   # the pusher is in the station at rest in both worlds
+  if pry:   # the station's own (unturned) pusher is replaced by the turned one at rest
+   pu=(pob,Rp,kn);w0=scene_with('lever',pusher=None,objs=[car,('tomato',I,K19.lever_seat(*L['lever'])),pu]);w1=scene_with('lever',pusher=None,objs=[car,pu])
+  else:w0=scene_with('lever',objs=[car,('tomato',I,K19.lever_seat(*L['lever']))]);w1=scene_with('lever',objs=[car])
+  return pob,dict(r19=sc),KF,[(0,w0,False),(2,w1,False)]   # the pusher is in the station at rest in both worlds
 OBJ,SCENE,KF,GR=action();SCENE=J(SCENE);GR=[(k,J(w),inw) for k,w,inw in GR]
 if 'ANCH' in KV:   # keep only these anchors (label substrings, ','-separated); meets that no longer lie between two anchors are dropped
  keep=KV['ANCH'].split(',')

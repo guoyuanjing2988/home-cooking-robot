@@ -130,7 +130,7 @@ def replay_one(name):
   for bn,c,s in boxes:box(tree.find('worldbody'),'cand_'+bn,c,s,(.9,.6,.1,1))
   return tree
  t0=time.monotonic();res={};n_states=0;mins={}
- for n,f in CHAINS.items():
+ for n,f in (CHAINS.items() if not KV.get('ONLYEDGE') else []):
   r=json.load(open(f'results/r17/chain_{f}.json'));r18b()
   for k,v in r.get('tool_xy',{}).items():
    if k!='spatula':K.TOOL_XY[k]=tuple(v)
@@ -147,6 +147,7 @@ def replay_one(name):
     if first is None:first=dict(segment=lab,pair=hs[0]['pair'],gap_mm=hs[0].get('real_gap_mm'))
   res[n]=dict(states=len(qs),hit_segments=dict(hit),first=first);print(name,n,len(qs),'states; hit',dict(hit),first,flush=True)
  hub=[k for k in row['flagged_segments'] if k.startswith('hub_edge__')] if not KV.get('CHAINSONLY') else []
+ if KV.get('ONLYEDGE'):hub=[KV['ONLYEDGE']];res={}   # one hub edge only (mode replayedges runs one process per edge)
  r18b();cfg=chain.chain_cfg('SD',**{**BASE,'r16_tools':{'ladle':None},'r17_lever':0.,'r16_lid':'on','r17_plate2':[.17,K15.PLATE['c'][1],K15.PLATE['c'][2]]})
  tree,meta=build(cfg,None);ch=Checker(with_boxes(tree),meta)
  for k in hub:
@@ -160,7 +161,17 @@ def replay_one(name):
  out=dict(name=name,candidate=C,boxes=[dict(name=b,center=np.round(c,3).tolist(),size=list(s)) for b,c,s in boxes],screen_flagged=row['flagged'],states=n_states,elapsed_s=round(time.monotonic()-t0,1),
   method='fast checker (full=False) on every stored state of the 6 checked chains + approaches and every state of each flagged hub edge; candidate envelope boxes in the scene: a SCREEN-LEVEL replay, not a full check',
   results=res,any_hit=any((v.get('hit_segments') or v.get('hit_states')) for v in res.values()))
- save(f'{OUT}/layout_replay_{name}.json',out);print(name,'any hit',out['any_hit'],'states',n_states,'elapsed',out['elapsed_s'],flush=True)
+ save(f"{OUT}/layout_replay_{name}{'__'+KV['ONLYEDGE'] if KV.get('ONLYEDGE') else ''}{'_chains' if KV.get('CHAINSONLY') else ''}{arms.tag()}.json",out);print(name,'any hit',out['any_hit'],'states',n_states,'elapsed',out['elapsed_s'],flush=True)
+if MODE=='replayedges':   # every flagged hub edge of NAMES (one candidate) in its own process, every state
+ nm=KV['NAMES'];scr=json.load(open(f'{OUT}/layout_screen.json'))
+ row=next((r for r in scr['rows'] if r['name']==nm),None) or next(r for r in scr['rows'] if r['name']==KV.get('HUBFROM',''))
+ edges=[k for k in row['flagged_segments'] if k.startswith('hub_edge__')];print(nm,'flagged hub edges',edges,flush=True)
+ from concurrent.futures import ThreadPoolExecutor
+ def one(e):
+  r=subprocess.run([sys.executable,__file__,'replay',f'NAMES={nm}',f'ONLYEDGE={e}']+[a for a in sys.argv[2:] if a.startswith(('ARM=','HUBFROM='))],capture_output=True,text=True)
+  return e,(r.stdout.strip().splitlines() or [r.stderr[-300:]])
+ with ThreadPoolExecutor(int(KV.get('NPAR',12))) as ex:
+  for e,o in ex.map(one,edges):print(o[-2] if len(o)>1 else o[-1],flush=True)
 if MODE=='replay':
  names=KV['NAMES'].split(',');npar=int(KV.get('NPAR',1))
  if len(names)==1 or npar==1:

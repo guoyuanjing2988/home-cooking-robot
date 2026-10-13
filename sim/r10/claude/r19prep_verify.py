@@ -35,6 +35,7 @@ def setup(R):
   tree,meta=build(cfg,None);K19.add(tree,cfg)
   Rl,p=K17.lever_pose(K17.LEVER_OPEN);K._add(tree.find('worldbody'),'u_open_',K.OBJ['lever']['parts'],Rl,p,rgba='.75 .77 .8 1')
   return Checker(tree,meta)
+ if R['obj'].startswith('pusher_y'):K19.pusher_turned(float(R['obj'][8:]))   # the turned knob adapter object (round 2)
  return model,K17,K19
 def scene_for(R,key):
  """Checker for 'play' or ('app', i)."""
@@ -78,6 +79,9 @@ def work(args):
 if __name__=='__main__':
  import multiprocessing as mp
  R=json.load(open(FN));t0=time.monotonic();NP=int(KV.get('NPROC',16))
+ if not R.get('ok') or not R.get('play'):   # a failed or empty chain has nothing to re-check: record that and stop
+  out=dict(file=FN,skipped=f"chain ok={R.get('ok')}, {len(R.get('play') or [])} play states: nothing to re-check",ok=False)
+  json.dump(out,open(FN.replace('.json','_verify4mm.json'),'w'),indent=1);print(json.dumps(out));sys.exit(0)
  # seat heights of the grasp keyframes (r19prepchain: seat .008 at the pick / set-down keyframes of food; 0 for the pusher)
  jobs=[];meta=[]
  c,_=scene_for(R,'play');P,nwrap=unwrap(c,R['play']);QP,spP=densify(c,P);meta.append(('play',len(P),len(QP),spP))
