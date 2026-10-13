@@ -497,3 +497,41 @@ Nothing bought.
 - **Starting state:** every ingredient arrives in the state the reference cook brings home in the three videos. For example, ribs come chopped by the butcher, and fish and squid come cleaned by the fishmonger.
 - **The robot's job:** everything he does himself in the videos (washing, peeling, cutting, scoring, mincing, marinating, soaking) stays the robot's job, per the 10-13 prep decision.
 - **Source for each ingredient:** the as-bought state comes from the video frames and transcripts (`research/homestyle_meals.md`; frames in the session scratchpad `home3/`), recorded in `research/r19_asbought.md`.
+
+## 2026-10-13 — Seasoning: dose directly at the wok (orchestrator decision under "调料站你定，但肯定不是由人来做")
+- **Chosen:** option (d) of `research/r19_seasoning_sizing.md`.
+  - About 11 pumped liquid channels: oil, saturated brine, sugar syrup, 生抽, 老抽, 蒸鱼豉油, 料酒, 陈醋, 白醋, 蚝油, and a starch slurry made fresh each cooking day. Three channels are spare.
+  - Each bottle stands on a load cell, so a dose is weighed by the bottle's loss of weight.
+  - A nozzle cluster over the wok. Chili and 花椒 portioners, plus a spice-sachet dropper, sit at the wok.
+  - Rare pastes come from squeeze bottles that the arm squeezes.
+- **Dropped:** the augers, the syringes, the 花椒 feeder, the weighing cup, and most robot cups.
+- **Why:**
+  - Seasoning arm moves fall from 18–27 to 3–12 per meal (model).
+  - It covers 14 of 15 reference dishes with no person dosing, against 10 of 15 today.
+  - Parts cost about ¥4.5–12.5k, against ¥7.3–17.6k (unconfirmed).
+  - No bought dispenser has a robot interface.
+- **Before building:**
+  - a sim check of the nozzle placement against the spatula strokes and the hood gap;
+  - bench tests with real liquids;
+  - the user's OK on the taste-relevant substitutions: sugar as syrup, whole spices in sachets, 十三香 omitted.
+- **Revised the same day after the user asked "不能用糖吗，另外那几个为什么呢". No substitutions: the real ingredients are used.**
+  - **Sugar:** real white sugar.
+    - First choice: a sealed dry portioner at the wok, like the chili and 花椒 portioners, with desiccant. Caking in steam needs a bench test.
+    - Fallback: the station dissolves real white sugar into syrup (the R14 66 % syrup).
+    - No fructose syrup.
+  - **八角 / 桂皮:**
+    - The arm picks the real pieces from a small open spice tray, located by the camera. Only 1 reference dish (红烧肉) and a few Wang Gang braises use them.
+    - A bought 卤料包 is only a fallback, because its blend differs.
+  - **十三香:** not omitted. The arm shakes a shaker jar over the wok, as a person does. It is one move, for "a little" in 干锅土豆.
+
+## 2026-10-13 — Seasoning goes into containers that the arm picks up, premixed per dish as the reference cook does (user decision; supersedes "dose directly at the wok")
+- **The user said:** "我还是觉得直接放锅上不靠谱啊，不能用容器装好然后拿起来这种吗。或者是每道菜提前准备好料汁之类的。我给你的视频里是怎么做的".
+- **What he does in the videos:**
+  - **Premixed in a bowl:** he mixes a dish's liquids beforehand: 蚝油西兰花 sauce, 青椒炒鱿鱼 sauce (with starch), 酸辣土豆丝 调味水, 白灼汁, the luffa sauce, the rib marinade.
+  - **Added straight in:** the single items go in from the bottle or spoon at their moment: salt, sugar, 料酒, 生抽, 豆瓣, dried chili / 花椒, 八角 / 桂皮, 十三香.
+- **New rule:**
+  - During prep, the automatic station doses each dish's seasonings into containers in a dry place away from the wok: a 料汁 cup per premix, and a cup or compartment per single addition moment. Each dose is weighed. Dry items and the cut aromatics go into their own cups.
+  - The arm stages the cups near the heat zone. At each moment it picks one up and pours it, or uses the pour drum for bursts.
+  - No nozzles over the wok. Nobody doses by hand.
+- **Real ingredients:** real white sugar; real 八角 / 桂皮 picked into a cup; 十三香 shaken into a cup.
+- **Next:** re-size the station and count the cup moves per meal against the video's seasoning moments.
