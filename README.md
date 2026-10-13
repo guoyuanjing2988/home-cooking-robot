@@ -84,6 +84,8 @@ All sizes are estimates unless stated. Nothing has been bought.
 
 With the user loading the rice cooker (`USERRICE=1`): A 38.2 / B 75.6 / C 35.6 min, arm busy 13.9 / 28.4 / 17.9 min. **Prep is not in these numbers.** The R19 audit estimates 21–40 more arm minutes per meal for prep, before the as-bought recount.
 
+**Build Day demo video (2:30):** [docs/claude_cooks_build_day.mp4](docs/claude_cooks_build_day.mp4). It shows Claude Opus 5.5 cooking 西红柿炒蛋 in real time with predefined routines, and every robot motion is a checked path.
+
 ## Motion clips
 
 Clips are cropped from `sim/r10/claude/renders` (plus two Mac renders of stored R14/R18b paths) and re-captioned in English; speed factors are noted. Made by `make_gifs.py` in the Build Day demo layer (not in this repo yet).
