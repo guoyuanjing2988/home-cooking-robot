@@ -25,7 +25,9 @@ ACT=cup: a cup (cupS / cupL of kitchen19seas.py) picked from its staging slot (p
  fingers were 6-37 mm inside the band at every pose, at 1.38 m 15-44 mm clear; the lip, ~35 mm below
  the grip when tipped 135 deg, is then ~0.35-0.4 m above the food). Pouring itself (liquid / granules leaving the cup) is NOT simulated.
  Options: SITE=T1|T3|T2R|T2L|T2RC|T2LC  SLOT=b1  SIZE=L|S  Z=<riser m>  APITCH=<deg>  TIP=135  TIPDIR=1|-1
- DWELL=2  CUP_X CUP_Y POUR_Z POUR_YAW MEET_X OUT_DY OUT_DZ  CARTX (T2: the cart x for the whole action, default 0.55)  CUPS=L|S
+ DWELL=2  CUP_X CUP_Y POUR_Z POUR_YAW MEET_X OUT_DY OUT_DZ  CARTX (T2: the cart x at the pick and the return, default 0.55;
+ the cart is free while the cup is out unless T2CARRY=fixed)  CUPS=L|S  PLAN=1 (RRT-Connect for a blocked meet join; the cup must
+ stay within 15 deg of level on the planned path, and the path must keep the plume rule)
 Held load: cup steel + lug/block (S 0.10 kg, L 0.17 kg, est.) + contents (S 0.05, L 0.16 kg) until the tip.
 python r19cupchain.py ACT=cup SITE=T1 SLOT=b1 SIZE=L SIGN=-1 [SEEDS=2] [TRIES=6] [KEEP=6] [TAG=..] [ARM=..]
 -> results/r19/cups/chain_cup_<SITE>_<SLOT>_<SIZE>_s<SIGN>[_TAG][_<arm>].json (+ _recheck.json)
@@ -88,7 +90,7 @@ SEEDS=(14,15,16)[:int(KV.get('SEEDS',2))];TRIES=int(KV.get('TRIES',6))
 DESIGN=dict(pot_h=.12,rack=.04,lid_a=0.,car_a=45.,rack_ry=90.);K.set_design(**DESIGN)
 VW,WW,QW,CW,CART_OFF=.10,45.,60.,.25,.30
 import arms;ARM=arms.current();QW=min(QW,min(arms.speeds(ARM)))   # R19: ARM=<id> (default ur5e); the joint cap never exceeds the arm's slowest joint (60 for ur5e/fr5)
-APPROACH_M,JAW_HELD=float(KV.get('APPROACH_M',.05)),.015   # R19: <= 50 mm (contact windows only on straight grasp / release approaches <= 50 mm);JAW_OPEN=float(KV.get('JAW_OPEN',.025))   # 10 mm each side of a 30 mm block; at .040 a finger at the spider's front rest met the arm's own base cover
+APPROACH_M,JAW_HELD=float(KV.get('APPROACH_M',.05)),.015;JAW_OPEN=float(KV.get('JAW_OPEN',.025))   # 10 mm each side of a 30 mm block; at .040 a finger at the spider's front rest met the arm's own base cover; R19: APPROACH_M <= 50 mm (contact windows only on straight grasp / release approaches <= 50 mm)
 I=np.eye(3)
 def kf(R,p,c=None,dw=0.,label='',anchor=False,meet=False,load=0.,seat=0.,walk=None):
  """seat: height of this pose above the object's support (grasp approach / release from the seated object);
@@ -176,6 +178,7 @@ def action():
   if cart:   # T2: the caddy rides on the cart; the whole action runs at one cart x, so the slot has one world pose
    cx=float(KV.get('CARTX',.55));R0,p0=S19.cart_to_world([cx,-.21,0.],R0,p0);cc=cx
   else:cc='F'
+  cm='F' if not cart or KV.get('T2CARRY','F')=='F' else cc   # T2: the cart may move while the cup is out of the caddy (T2CARRY=fixed keeps it at CARTX)
   g=K.OBJ[obj]['grip'];out_=p0+R0@np.array([0,float(KV.get('OUT_DY',-.04)),0])+[0,0,float(KV.get('OUT_DZ',.15))]   # out of the slot: mostly UP (pulled toward the robot the arm folds onto its base, smoke run 1)
   cupc=np.array([float(KV.get('CUP_X',K15.WOK0[0])),float(KV.get('CUP_Y',.09)),0.]);PZ=float(KV.get('POUR_Z',1.38))
   RL=K.Rz(float(KV.get('POUR_YAW',0.)))   # level pour orientation: POUR_YAW 0 = lug toward the robot (-y), -90 = lug toward -x (the gripper on the left of the cup)
@@ -185,8 +188,8 @@ def action():
   C=S19.CUP[size]['content_kg'];DW=float(KV.get('DWELL',2.))
   SE=.012 if cart else .008   # T2: the caddy is a cart (robot) part, the checker wants 10 mm between it and the held cup
   KF=[kf(R0,p0+[0,0,SE],'A' if not cart else cc,0,'pick',load=C,seat=SE),kf(R0,p0+[0,0,.03],cc,0,'lifted',anchor=True,load=C),
-   kf(R0,out_,cc,0,'out',load=C),kf(RL,pm,cc,0,'lane',meet=True,load=C),kf(RL,pw,cc,0,'over the wok',anchor=True,load=C),
-   kf(Rt_,pt_,cc,DW,f'tipped {A_:g} (poured)',load=C),kf(RL,pw,cc,0,'level'),kf(RL,pm,cc,0,'lane',meet=True),kf(R0,out_,cc,0,'out'),
+   kf(R0,out_,cm,0,'out',load=C),kf(RL,pm,cm,0,'lane',meet=True,load=C),kf(RL,pw,cm,0,'over the wok',anchor=True,load=C),
+   kf(Rt_,pt_,cm,DW,f'tipped {A_:g} (poured)',load=C),kf(RL,pw,cm,0,'level'),kf(RL,pm,cm,0,'lane',meet=True),kf(R0,out_,cm,0,'out'),
    kf(R0,p0+[0,0,.03],cc,0,'lowered',anchor=True),kf(R0,p0+[0,0,SE],'A' if not cart else cc,0,'set down',seat=SE)]
   sc=dict(r19seas=dict(site=site,cups=KV.get('CUPS',size),taken=slot,z=Zr));sw=dict(r19seas=dict(site=site,cups=KV.get('CUPS',size),taken=None,z=Zr))
   return obj,sc,KF,[(0,sw),(len(KF)-1,sw)]
@@ -253,6 +256,13 @@ def dev(q,x):
  """TCP deviation (m, deg) of state q from the TCP pose of the object at keyframe x."""
  pt_,Rt_=K.tcp_pose(OBJ,KF[x]['R'],KF[x]['p'],SIGN);d.qpos[:]=q;mujoco.mj_kinematics(m,d)
  return float(np.linalg.norm(d.site_xpos[sid]-pt_)),float(np.degrees(np.linalg.norm(Rotation.from_matrix(Rt_@d.site_xmat[sid].reshape(3,3).T).as_rotvec())))
+_TOBJ=None
+def obj_tilt(q):
+ """tilt (deg) of the held object's z axis from world z in state q"""
+ global _TOBJ
+ if _TOBJ is None:_TOBJ=np.linalg.inv(K.T_tool_obj(OBJ,SIGN))   # tool frame -> object frame
+ d.qpos[:]=q;mujoco.mj_kinematics(m,d);Ro=d.site_xmat[sid].reshape(3,3)@np.linalg.inv(_TOBJ)[:3,:3]
+ return float(np.degrees(np.arccos(np.clip(Ro[2,2],-1,1))))
 def shuffle(q,x,c):
  """At meet x: the cart moves to c (1 cm steps) while the arm holds the object at the meet pose."""
  q=np.array(q,float);c0=q[0];n=max(1,int(np.ceil(abs(c-c0)/.01)));out=[];pt_,Rt_=K.tcp_pose(OBJ,KF[x]['R'],KF[x]['p'],SIGN)
@@ -293,6 +303,9 @@ def join(qa,qb,plan=None,x=None):
    if (KV.get('PLAN') if plan is None else plan):
     import planner;ch.active=ch.arm_ids;r=planner.plan(ch,qa,qb,budget_s=float(KV.get('PLAN_S',120)),seed=8)
     if r['ok'] and any(plume_bad(np.array(qq)) for qq in r['path']):r=dict(ok=False,reason='planned path enters the plume')   # R19
+    if r['ok'] and OBJ in FOOD_OBJ:   # R19: the planner does not know the food; a filled object must stay within 15 deg of level on the planned path (its <= 4 mm states)
+     tl=max(obj_tilt(np.array(qq)) for qq in r['path'])
+     if tl>JOIN_DEV[1]:r=dict(ok=False,reason=f'planned path tilts the held object {tl:.0f} deg')
     if r['ok']:
      P=np.array(r['path']);sweep=float(np.degrees(np.sum(np.max(abs(np.diff(P[:,3:9],axis=0)),axis=1))))
      return dict(ok=True,method='planned',arm_deg=round(float(dq),1),path_joint_deg=round(sweep,1),s=round(sweep/QW+.6,2),qs=P.tolist())

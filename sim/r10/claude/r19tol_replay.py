@@ -133,7 +133,7 @@ def run(task):
   dirs=[('cart',ax,sg,None,TR if ax in ('x','y','z') else AN) for ax in axes for sg in (1,-1)]
   out['directions']=directions(ev,Q,noms,info,src,dirs,key,t0)
   out['validation']=validate(ch,ev,Q,out['directions'])
- elif part=='grid':
+ elif part=='grid' or part.startswith('grid-'):
   g0,ga,_=minimum(ev,Q,noms,NONE,'gate');c0,ca,_=minimum(ev,Q,noms,NONE,'contact')
   out['nominal']=dict(min_gate_mm=round(g0,3),gate_state=ga['state'],gate_label=label(info,src,ga['state']),gate_pair=ga['pair'],
    min_contact_mm=round(c0,3),contact_state=ca['state'],contact_label=label(info,src,ca['state']),contact_pair=ca['pair'],
@@ -153,7 +153,7 @@ def run(task):
   elif info['kind']=='edge':out['checker_reported']=dict(min_reserve_mm=info.get('reported_min_reserve_mm'),note='r19hub edge file')
   else:out['checker_reported']=dict(min_reserve_mm=info.get('r17_min_reserve_mm'),note='r17chain approach (every 3rd step full check)')
   grid=[]
-  for ax in C.CART_AXES:
+  for ax in (C.CART_AXES if part=='grid' else tuple(part[5:].split('+'))):
    vals=GRID_TR if ax in ('x','y','z') else GRID_YAW if ax=='yaw' else GRID_TILT;unit=C.MM if ax in ('x','y','z') else C.DEG
    for sg in (1,-1):
     for v in vals:
@@ -164,11 +164,11 @@ def run(task):
      grid.append(row)
   out['grid']=grid
  elif part=='scen':out['scenarios']=scenarios(ev,Q,noms,info,src,key)
- elif part=='fix':
+ elif part=='fix' or part.startswith('fix-'):
   dirs=[];out['groups']={}
   for gn in ev.groups:
-   lb=min(n['group_gate_lb'].get(gn,1e9) for n in noms);out['groups'][gn]=dict(min_gate_lb_mm=round(lb*1e3,2),searched=lb<.030)
-   if lb<.030:dirs+=[('fix',ax,sg,gn,TR) for ax in 'xyz' for sg in (1,-1)]
+   lb=min(n['group_gate_lb'].get(gn,1e9) for n in noms);out['groups'][gn]=dict(min_gate_lb_mm=round(lb*1e3,2),searched=bool(lb<.030 and (part=='fix' or gn in part[4:].split('+'))))
+   if lb<.030 and (part=='fix' or gn in part[4:].split('+')):dirs+=[('fix',ax,sg,gn,TR) for ax in 'xyz' for sg in (1,-1)]
   out['directions']=directions(ev,Q,noms,info,src,dirs,key,t0)
  elif part=='grasp':
   out['jaw_axis_tool']=ev.jaw_axis.round(4).tolist()

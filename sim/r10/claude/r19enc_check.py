@@ -281,7 +281,7 @@ def meshgap():
 def summary():
  rows=[]
  for f in sorted(glob.glob(f'{OUT}/*.json')):
-  if os.path.basename(f) in ('summary.json','enclose.json','self_random.json'):continue
+  if os.path.basename(f) in ('summary.json','enclose.json','self_random.json','meshgap.json'):continue
   r=json.load(open(f))
   for name,v in r['paths'].items():
    rows.append(dict(set=r['set'],path=name,states=v['states'],stored_states=v['stored_states'],max_step_bound_mm=v['max_step_bound_mm'],

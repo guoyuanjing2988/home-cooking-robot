@@ -1,0 +1,230 @@
+{
+ "scene": "play:lid",
+ "part": "fix-lid_rack",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final.json",
+  "kind": "play",
+  "act": "lid",
+  "obj": "lid",
+  "src_n": 205
+ },
+ "states": 2410,
+ "stored_states": 205,
+ "nominal_s": 1.3,
+ "nominal_cached": true,
+ "held": true,
+ "groups": {
+  "cooker": {
+   "min_gate_lb_mm": 12.82,
+   "searched": false
+  },
+  "drum": {
+   "min_gate_lb_mm": 50.9,
+   "searched": false
+  },
+  "faucet_body": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "lever_clip": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "plate1": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "spatula_pad": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "lid_rack": {
+   "min_gate_lb_mm": 1.0,
+   "searched": true
+  },
+  "pot": {
+   "min_gate_lb_mm": 3.0,
+   "searched": false
+  },
+  "spider_rest": {
+   "min_gate_lb_mm": -10.0,
+   "searched": false
+  },
+  "sink": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "raw": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "bowls": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "cups": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "upper": {
+   "min_gate_lb_mm": -5.0,
+   "searched": false
+  },
+  "counter": {
+   "min_gate_lb_mm": 11.0,
+   "searched": false
+  },
+  "wall": {
+   "min_gate_lb_mm": 12.82,
+   "searched": false
+  }
+ },
+ "directions": [
+  {
+   "kind": "fix",
+   "axis": "x",
+   "sign": 1,
+   "group": "lid_rack",
+   "unit": "mm",
+   "gate": {
+    "tol": 13.988,
+    "bounded": true,
+    "violation_at": 14.016,
+    "binding": {
+     "state": 2409,
+     "value_mm": -0.016,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_fin0"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 204.0
+    },
+    "evals": 237
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 47
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "x",
+   "sign": -1,
+   "group": "lid_rack",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 233
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 47
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "y",
+   "sign": 1,
+   "group": "lid_rack",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 233
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 47
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "y",
+   "sign": -1,
+   "group": "lid_rack",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 233
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 47
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "z",
+   "sign": 1,
+   "group": "lid_rack",
+   "unit": "mm",
+   "gate": {
+    "tol": 1.0,
+    "bounded": true,
+    "violation_at": 1.031,
+    "binding": {
+     "state": 2409,
+     "value_mm": -0.031,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_base"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 204.0
+    },
+    "evals": 8
+   },
+   "contact": {
+    "tol": 5.969,
+    "bounded": true,
+    "violation_at": 6.0,
+    "binding": {
+     "state": 2409,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_base"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 204.0
+    },
+    "evals": 2
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "z",
+   "sign": -1,
+   "group": "lid_rack",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 233
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 47
+   }
+  }
+ ],
+ "elapsed_s": 3.5
+}

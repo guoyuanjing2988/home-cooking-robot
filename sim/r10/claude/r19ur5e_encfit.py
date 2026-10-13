@@ -15,10 +15,15 @@ with the housing geom of the NEIGHBOUR link on the shared joint axis (e.g. the u
 the forearm's R_geom_16); such a coaxial primitive covers the same region at every joint angle, so a link's
 points may be charged to it too (axis collinear with the joint axis to 1e-9, checked).
 
-Fit (greedy, from the Menagerie sizes): every point still outside is charged to the candidate primitive
-whose growth to contain it adds the least volume (cylinder: radius and either end; capsule: radius); each
-primitive then grows to contain its charged points; repeat until nothing is outside. Fit points: every
-mesh vertex plus a grid of <= STEP (2 mm) on every triangle.
+Start sizes (START) are read off the mesh profiles, as r19arm_fit.py does; four cylinders are added (EXTRA:
+the three necks where a tube flares into its housing, and the shoulder's own part of the J2 housing, see NOCOVER).
+Fit: (1) every point outside is charged to the candidate it is nearest to (RULE=distance, r19arm_fit.py's rule),
+which grows to contain its points (cylinder: radius and either end; capsule: radius); repeat until none is
+outside; (2) shrink: each primitive in turn shrinks to the points no other candidate holds; (3) rebalance: a
+local search on the total volume (move one size inward by 8 .. 0.5 mm, give the freed points to the one other
+primitive that grows least; keep the move if the volume drops), on a 20 % subset of the points; (4) certify
+(below) and give the uncertified points back to step (1) until all is certified. Fit points: every mesh vertex
+plus a grid of <= STEP (2 mm) on every triangle.
 Proof of enclosure (not sampling): every triangle is certified when one convex primitive contains its
 three corners (then it contains the triangle), or when every corner is inside the union by at least the
 triangle's longest edge / sqrt(3) (every triangle point lies that close to a corner; the distance to the
