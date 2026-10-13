@@ -12,7 +12,7 @@ from PIL import ImageFont
 ROOT = Path(__file__).resolve().parent
 REN = ROOT.parent / 'robot_rail/sim/r10/claude/renders'
 G = ROOT / 'gifs'
-M = Path('/private/tmp/claude-501/-Users-yg736648-SingleAgent/c4e71ca0-97c9-4211-a65b-bfe953e755b5/scratchpad/deck/m')
+M = ROOT / 'deck_media'   # deck images: robot.jpg, kitchen.jpg, station.jpg, drum.jpg, wok_station.jpg
 BG, PANEL, INK, DIM, LINE = (243, 245, 247), (255, 255, 255), (22, 26, 32), (88, 98, 112), (220, 225, 231)
 COP, STEEL, OK = (181, 90, 34), (42, 106, 156), (43, 133, 81)
 D = {k: ImageFont.truetype(FONT, s, index=1) for k, s in dict(hero=96, h=58, m=34, tile=27).items()}
