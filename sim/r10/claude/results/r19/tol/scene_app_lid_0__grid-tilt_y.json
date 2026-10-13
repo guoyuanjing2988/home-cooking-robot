@@ -1,0 +1,90 @@
+{
+ "scene": "app:lid:0",
+ "part": "grid-tilt_y",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final.json",
+  "kind": "approach",
+  "act": "lid",
+  "kf": 0,
+  "kf_label": "lift off",
+  "r17_min_reserve_mm": 10.0,
+  "src_n": 7
+ },
+ "states": 55,
+ "stored_states": 7,
+ "nominal_s": 0.9,
+ "nominal_cached": true,
+ "held": false,
+ "nominal": {
+  "min_gate_mm": 14.642,
+  "gate_state": 0,
+  "gate_label": "approach@lift off#0 step 0 (0 cm back)",
+  "gate_pair": [
+   "R_finger_minus",
+   "r16_lid_rim"
+  ],
+  "min_contact_mm": 19.642,
+  "contact_state": 0,
+  "contact_label": "approach@lift off#0 step 0 (0 cm back)",
+  "contact_pair": [
+   "R_finger_minus",
+   "r16_lid_rim"
+  ],
+  "rho_m": {
+   "yaw": 0.688,
+   "tilt_x": 1.538,
+   "tilt_y": 1.548
+  },
+  "note": "exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower"
+ },
+ "checker_reported": {
+  "min_reserve_mm": 10.0,
+  "note": "r17chain approach (every 3rd step full check)"
+ },
+ "grid": [
+  {
+   "axis": "tilt_y",
+   "value": 0.1,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": 0.2,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": 0.5,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.1,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.2,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.5,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  }
+ ],
+ "elapsed_s": 2.0
+}

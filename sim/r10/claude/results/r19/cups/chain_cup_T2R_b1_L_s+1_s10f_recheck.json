@@ -1,0 +1,56 @@
+{
+  "chain": "results/r19/cups/chain_cup_T2R_b1_L_s+1_s10f.json",
+  "method": "R19 #5: the binding re-check of a cup chain (results/r19/cups/chain_*.json from r19cupchain.py). New file.\n\nAs r19smooth.py's baseline re-check: the stored states (`play`; the grasp approach / release retreats\n`approach_qs` each on their own) are joined joint-linearly, the arm joints unwrapped first (a 2*pi label\njump is the same pose; the unwrapped values must stay inside the joint ranges, else the jump is kept and\nreported), and subdivided so that no robot or held point moves more than 4 mm between consecutive checked\nstates (point_bound.PointBound.segment_bound). Every state gets Checker.check(full=True): MuJoCo contacts +\nthe GJK lower-bound certificate, 10 mm robot-environment / 5 mm gripper-held-environment, joint ranges; and\nthe R15 plume rule (kitchen19seas.plume_model, unless the chain ran with PLUME=0).\nThe chain's own scene is rebuilt from its stored cfg (r19.cfg_held / r19.cfg_approach and r19.k_state).\npython r19cupw_recheck.py <chain json> [WORKERS=12] -> <chain>_recheck.json",
+  "total": {
+    "ok": true,
+    "checked_states": 1795,
+    "min_reserve_mm": 2.0,
+    "min_plume_mm": 14.7,
+    "max_spacing_mm": 3.997,
+    "elapsed_s": 117.1
+  },
+  "parts": {
+    "play": {
+      "label": "play (held cup)",
+      "stored_states": 275,
+      "checked_states": 1703,
+      "max_spacing_mm": 3.997,
+      "unwrapped": true,
+      "label_jumps_2pi": 336,
+      "hit_states": 0,
+      "first_hits": [],
+      "min_reserve_mm": 2.0,
+      "min_self_mm": 2.01,
+      "min_plume_mm": 14.7,
+      "plume_bad_states": 0
+    },
+    "approach_0": {
+      "label": "approach 0 (empty gripper, cup in its slot)",
+      "stored_states": 6,
+      "checked_states": 46,
+      "max_spacing_mm": 3.86,
+      "unwrapped": true,
+      "label_jumps_2pi": 0,
+      "hit_states": 0,
+      "first_hits": [],
+      "min_reserve_mm": 2.33,
+      "min_self_mm": 3.9,
+      "min_plume_mm": 65.8,
+      "plume_bad_states": 0
+    },
+    "approach_1": {
+      "label": "approach 1 (empty gripper, cup in its slot)",
+      "stored_states": 6,
+      "checked_states": 46,
+      "max_spacing_mm": 3.86,
+      "unwrapped": true,
+      "label_jumps_2pi": 0,
+      "hit_states": 0,
+      "first_hits": [],
+      "min_reserve_mm": 2.33,
+      "min_self_mm": 3.9,
+      "min_plume_mm": 65.8,
+      "plume_bad_states": 0
+    }
+  }
+}

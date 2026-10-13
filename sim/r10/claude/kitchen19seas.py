@@ -21,7 +21,7 @@ the back row's lug would face the front row's cups. Here the back row stands on 
 so the gripper's lowest point (open finger bottom, 24 mm under the TCP) passes over the front row's tallest
 part (an L cup's block top, 80 mm) with >= 5 mm when picking a back cup (calc: back S block centre at
 75+4+45+6-12 = 118 mm; 118-24 = 94 >= 80+5). Column pitch PX = 100 mm: the open fingers (53 mm off the
-target axis) stay 5 mm from an L neighbour (100-53-42.5 = 4.5 mm; the fingers are 54 mm tall, so the
+target axis) clear an L neighbour by about 4.5 mm on paper (100-53-42.5; the fingers are 54 mm tall, so the
 neighbour's lower body is beside them; the screen checks it). Row pitch PY = 95 mm. Footprint ~0.30 x
 0.19 m, lugs 25 mm forward of it. Carry handle: a post at the caddy's left end (-x) with the keyed block on
 top (the plan's centre bail would arch over the middle column's grasp path; not modelled, and the caddy

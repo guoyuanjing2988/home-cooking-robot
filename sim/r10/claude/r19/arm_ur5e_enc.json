@@ -827,5 +827,141 @@
    "uncertified": 0
   }
  },
- "enclosure_menagerie_geoms_note": "recomputed after the fit run with the Menagerie candidate set (R_geom_10 may cover the shoulder, as in Menagerie); the fit run had reported it without R_geom_10 for the shoulder (34.3 mm). The fitted geoms are unaffected."
+ "enclosure_menagerie_geoms_note": "recomputed after the fit run with the Menagerie candidate set (R_geom_10 may cover the shoulder, as in Menagerie); the fit run had reported it without R_geom_10 for the shoulder (34.3 mm). The fitted geoms are unaffected.",
+ "bloat": {
+  "method": "Per primitive and per link: the largest distance from an exposed point of the model surface (a surface point\n of one primitive that no other primitive of the arm contains) to the nearest point of the real arm surface (the\n Menagerie visual meshes, vertices + 2 mm grid; the nearest-sample distance can exceed the true one by <= 1.7 mm).\n Arm at q = 0 (stretched) and at the Menagerie home pose; the larger value counts.",
+  "file": "r19/arm_ur5e_enc.json",
+  "per_link": {
+   "R_arm_shoulder_link": {
+    "max_mm": 19.7,
+    "worst": "R_geom_5"
+   },
+   "R_arm_upper_arm_link": {
+    "max_mm": 20.0,
+    "worst": "R_geom_10"
+   },
+   "R_arm_forearm_link": {
+    "max_mm": 50.7,
+    "worst": "R_geom_16"
+   },
+   "R_arm_wrist_1_link": {
+    "max_mm": 8.9,
+    "worst": "R_geom_21"
+   },
+   "R_arm_wrist_2_link": {
+    "max_mm": 9.8,
+    "worst": "R_geom_25"
+   },
+   "R_arm_wrist_3_link": {
+    "max_mm": 11.3,
+    "worst": "R_geom_28"
+   }
+  },
+  "per_primitive": {
+   "R_geom_5": {
+    "body": "R_arm_shoulder_link",
+    "max_mm": 19.7,
+    "p99_mm": 17.5,
+    "exposed_points": 15587,
+    "at_s_mm": 67.8,
+    "at_rho_mm": 60.3
+   },
+   "R_geom_10": {
+    "body": "R_arm_upper_arm_link",
+    "max_mm": 20.0,
+    "p99_mm": 17.9,
+    "exposed_points": 13178,
+    "at_s_mm": -67.6,
+    "at_rho_mm": 61.2
+   },
+   "R_geom_11": {
+    "body": "R_arm_upper_arm_link",
+    "max_mm": 7.3,
+    "p99_mm": 7.2,
+    "exposed_points": 19812,
+    "at_s_mm": -98.0,
+    "at_rho_mm": 49.5
+   },
+   "R_geom_16": {
+    "body": "R_arm_forearm_link",
+    "max_mm": 50.7,
+    "p99_mm": 46.8,
+    "exposed_points": 27254,
+    "at_s_mm": 124.8,
+    "at_rho_mm": 65.8
+   },
+   "R_geom_17": {
+    "body": "R_arm_forearm_link",
+    "max_mm": 2.4,
+    "p99_mm": 2.0,
+    "exposed_points": 16577,
+    "at_s_mm": 138.0,
+    "at_rho_mm": 38.5
+   },
+   "R_geom_21": {
+    "body": "R_arm_wrist_1_link",
+    "max_mm": 8.9,
+    "p99_mm": 7.3,
+    "exposed_points": 9670,
+    "at_s_mm": 84.4,
+    "at_rho_mm": 39.7
+   },
+   "R_geom_25": {
+    "body": "R_arm_wrist_2_link",
+    "max_mm": 9.8,
+    "p99_mm": 8.5,
+    "exposed_points": 8187,
+    "at_s_mm": -70.7,
+    "at_rho_mm": 40.4
+   },
+   "R_geom_26": {
+    "body": "R_arm_wrist_2_link",
+    "max_mm": 9.6,
+    "p99_mm": 8.6,
+    "exposed_points": 7348,
+    "at_s_mm": 58.9,
+    "at_rho_mm": 40.4
+   },
+   "R_geom_28": {
+    "body": "R_arm_wrist_3_link",
+    "max_mm": 11.3,
+    "p99_mm": 11.0,
+    "exposed_points": 4492,
+    "at_s_mm": -19.0,
+    "at_rho_mm": 43.6
+   },
+   "R_geom_enc_ua_neck_s": {
+    "body": "R_arm_upper_arm_link",
+    "max_mm": 7.2,
+    "p99_mm": 7.0,
+    "exposed_points": 4875,
+    "at_s_mm": 32.9,
+    "at_rho_mm": 58.5
+   },
+   "R_geom_enc_ua_neck_e": {
+    "body": "R_arm_upper_arm_link",
+    "max_mm": 7.1,
+    "p99_mm": 6.9,
+    "exposed_points": 4282,
+    "at_s_mm": -27.8,
+    "at_rho_mm": 58.2
+   },
+   "R_geom_enc_fa_neck_e": {
+    "body": "R_arm_forearm_link",
+    "max_mm": 10.8,
+    "p99_mm": 10.7,
+    "exposed_points": 4278,
+    "at_s_mm": 24.0,
+    "at_rho_mm": 50.9
+   },
+   "R_geom_enc_sh_j2": {
+    "body": "R_arm_shoulder_link",
+    "max_mm": 2.1,
+    "p99_mm": 2.0,
+    "exposed_points": 3203,
+    "at_s_mm": 17.6,
+    "at_rho_mm": 59.3
+   }
+  }
+ }
 }

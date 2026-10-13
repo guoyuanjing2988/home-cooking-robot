@@ -40,13 +40,13 @@ def scene_list():
  return out
 TR=dict(s0=.5*C.MM,smax=15*C.MM,res=.05*C.MM,unit=C.MM,u='mm')
 AN=dict(s0=.05*C.DEG,smax=1.5*C.DEG,res=.005*C.DEG,unit=C.DEG,u='deg')
-GRID_TR=[1,2,5,10];GRID_YAW=[.1,.2,.5,1.];GRID_TILT=[.1,.2,.5];GRID_CAP=20.   # mm: grid minima above this are reported as '>= 20'
+GRID_TR=[1,2,5,10];GRID_YAW=[.1,.2,.5,1.];GRID_TILT=[.1,.2,.5];GRID_CAP=10.   # mm: grid minima above this are reported as '>= 10' (the tolerance search covers larger values)
 # cart budget scenarios for SCEN=1 (half-ranges: m, m, m, rad, rad, rad); R19_TOLERANCE.md section 1 gives the sources
-SCENARIOS={
- 'R09_requirement':[2*C.MM,2*C.MM,1*C.MM,.2*C.DEG,0.,0.],                  # posts/r09/integrator.md: +-2 mm XY, +-0.2 deg yaw, +-1 mm height
- 'bumper_encoder_only':[6*C.MM,1.5*C.MM,1*C.MM,.3*C.DEG,.15*C.DEG,.1*C.DEG], # estimated: no x / yaw datum, see section 1
- 'docking_pins':[.5*C.MM,.5*C.MM,.5*C.MM,.05*C.DEG,.1*C.DEG,.05*C.DEG],      # estimated: indexed stops / V-block at each station
- 'touch_off':[.3*C.MM,.3*C.MM,.3*C.MM,.03*C.DEG,.03*C.DEG,.03*C.DEG]}        # estimated: per-set re-localization against datums
+SCENARIOS={   # cart pose half-ranges [x m, y m, z m, yaw rad, tilt_x rad, tilt_y rad]; derivation in R19_TOLERANCE.md section 1
+ 'R09_requirement':[2*C.MM,2*C.MM,1*C.MM,.2*C.DEG,0.,0.],                     # posts/r09/integrator.md: +-2 mm XY, +-0.2 deg yaw, +-1 mm height (a requirement, no tilt given)
+ 'as_designed':[6*C.MM,1.5*C.MM,1*C.MM,.3*C.DEG,.3*C.DEG,.15*C.DEG],           # estimated: bumper fixes y only, x from encoders, floor + load tilt, no calibration
+ 'dock_stops':[.5*C.MM,.5*C.MM,.5*C.MM,.05*C.DEG,.1*C.DEG,.05*C.DEG],          # estimated: indexed stops / V-block + stiff bumper at each station, calibrated
+ 'touch_off':[.3*C.MM,.3*C.MM,.3*C.MM,.03*C.DEG,.1*C.DEG,.03*C.DEG]}           # estimated: per-set re-localization; load tilt (posture-dependent) remains
 NONE=dict(kind='none')
 def states_order(noms,pert,measure,sub=None):
  idx=np.arange(len(noms)) if sub is None else np.asarray(sub)
@@ -121,6 +121,10 @@ def load_nominal(key,ch,Q,ev):
  noms=[ev.nominal(q) for q in Q];tmp=f+f'.{os.getpid()}';pickle.dump(noms,open(tmp,'wb'),protocol=4);os.replace(tmp,f);return noms,False
 CART_PARTS={'cartT':('x','y','z'),'cartR':('yaw','tilt_x','tilt_y')}
 def run(task):
+ try:return _run(task)
+ except Exception as e:
+  import traceback;print('FAILED',task,traceback.format_exc(),flush=True);return f'FAILED {task}: {e!r}'
+def _run(task):
  key,part=task;t0=time.monotonic()
  ch,Q0,info=C.build_scene(key)
  if info['kind']=='edge':Q,src=Q0,np.arange(len(Q0),dtype=float)
@@ -135,8 +139,10 @@ def run(task):
   out['validation']=validate(ch,ev,Q,out['directions'])
  elif part=='grid' or part.startswith('grid-'):
   g0,ga,_=minimum(ev,Q,noms,NONE,'gate');c0,ca,_=minimum(ev,Q,noms,NONE,'contact')
+  if ga is None:g0,ga=C.LIM*1e3,dict(state=0,pair=None)   # no pair within LIM (80 mm) of its gate anywhere: reported as >= LIM
+  if ca is None:c0,ca=C.LIM*1e3,dict(state=0,pair=None)
   out['nominal']=dict(min_gate_mm=round(g0,3),gate_state=ga['state'],gate_label=label(info,src,ga['state']),gate_pair=ga['pair'],
-   min_contact_mm=round(c0,3),contact_state=ca['state'],contact_label=label(info,src,ca['state']),contact_pair=ca['pair'],
+   min_contact_mm=round(c0,3),contact_state=ca['state'],contact_label=label(info,src,ca['state']),contact_pair=ca['pair'],at_least=ga['pair'] is None,
    rho_m={k:round(max(n[k] for n in noms),3) for k in ('yaw','tilt_x','tilt_y','held') if k in noms[0]},
    note='exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower')
   if len(ev.hg):
@@ -163,26 +169,28 @@ def run(task):
       if a_:row[meas+'_pair']=a_['pair'];row[meas+'_label']=label(info,src,a_['state'])
      grid.append(row)
   out['grid']=grid
- elif part=='scen':out['scenarios']=scenarios(ev,Q,noms,info,src,key)
+ elif part=='scen' or part.startswith('scen-'):out['scenarios']=scenarios(ev,Q,noms,info,src,key,None if part=='scen' else part[5:].split('+'))
  elif part=='fix' or part.startswith('fix-'):
   dirs=[];out['groups']={}
   for gn in ev.groups:
    lb=min(n['group_gate_lb'].get(gn,1e9) for n in noms);out['groups'][gn]=dict(min_gate_lb_mm=round(lb*1e3,2),searched=bool(lb<.030 and (part=='fix' or gn in part[4:].split('+'))))
    if lb<.030 and (part=='fix' or gn in part[4:].split('+')):dirs+=[('fix',ax,sg,gn,TR) for ax in 'xyz' for sg in (1,-1)]
   out['directions']=directions(ev,Q,noms,info,src,dirs,key,t0)
- elif part=='grasp':
+ elif part=='grasp' or part.startswith('grasp-'):
   out['jaw_axis_tool']=ev.jaw_axis.round(4).tolist()
-  dirs=[('grasp',ax,sg,None,AN if ax=='rot' else TR) for ax in ('x','y','z','rot') for sg in (1,-1)] if len(ev.hg) else []
+  ANG=dict(AN,smax=float(KV.get('ROTMAX',1.5))*C.DEG)   # ROTMAX=<deg>: larger cap for the grasp turn
+  dirs=[('grasp',ax,sg,None,ANG if ax=='rot' else TR) for ax in (('x','y','z','rot') if part=='grasp' else tuple(part[6:].split('+'))) for sg in (1,-1)] if len(ev.hg) else []
   out['directions']=directions(ev,Q,noms,info,src,dirs,key,t0)
  out['elapsed_s']=round(time.monotonic()-t0,1)
  os.makedirs(C.OUT,exist_ok=True);fn=f"{C.OUT}/scene_{key.replace(':','_')}__{part}.json"
  json.dump(out,open(fn,'w'),indent=1,default=float);print('saved',fn,out['elapsed_s'],'s',flush=True)
  return fn
-def scenarios(ev,Q,noms,info,src,key):
+def scenarios(ev,Q,noms,info,src,key,names=None):
  """Worst sign corner of each cart budget box (all 2^6 corners), min over states (branch and bound)."""
  import itertools
  sc={}
  for name,half in SCENARIOS.items():
+  if names and name not in names:continue
   res={};corners=[]
   for sg in itertools.product((1,-1),repeat=6):
    c=np.array(sg)*np.array(half)
@@ -226,7 +234,7 @@ def validate(ch,ev,Q,dirs):
 def main():
  import multiprocessing as mp
  parts=KV.get('PARTS','cartT,cartR,grid,fix,grasp').split(',')
- tasks=[(k,p) for k in scene_list() for p in parts if not (p=='grasp' and not k.startswith('play:'))]
+ tasks=[(k,p) for k in scene_list() for p in parts if not (p.startswith('grasp') and not k.startswith('play:'))]
  W=int(KV.get('WORKERS',16));DL=float(KV.get('DEADLINE',270));t0=time.monotonic()
  print('tasks',len(tasks),'deadline',DL,'s',flush=True)
  if W<=1:

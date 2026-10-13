@@ -7,7 +7,7 @@ action added. Changes against r17chain.py:
  - plume rule of R15 (r15reach.py / r15stirwalk2.py) as a HARD check at every IK step, meet join and cart
    shuffle: every robot geom except the held cup and the cart stays >= PLUME (0.20 m) from the wok axis
    between the rim and the hood bottom (1.25 m); PLUME=0 switches it off (= heat off for the whole action);
- - after the chain: r19cup_recheck.py re-checks every stored state, joint-linear in between, at <= 4 mm
+ - after the chain: r19cupw_recheck.py re-checks every stored state, joint-linear in between, at <= 4 mm
    point-bound spacing with the full checker (MuJoCo contacts + GJK certificate, 10 / 5 mm) and the plume
    rule (RECHECK=0 skips it); the re-check numbers are the binding ones;
  - results go to results/r19/cups (the R17 actions can still be run, but were not re-run here).
@@ -28,6 +28,7 @@ ACT=cup: a cup (cupS / cupL of kitchen19seas.py) picked from its staging slot (p
  DWELL=2  CUP_X CUP_Y POUR_Z POUR_YAW MEET_X OUT_DY OUT_DZ  CARTX (T2: the cart x at the pick and the return, default 0.55;
  the cart is free while the cup is out unless T2CARRY=fixed)  CUPS=L|S  PLAN=1 (RRT-Connect for a blocked meet join; the cup must
  stay within 15 deg of level on the planned path, and the path must keep the plume rule)
+ POURC=<x> (the cart x on the pour / tip / level frames; default free; the lanes stay free) ONE=1 (the pour pose is not an anchor: the pick anchor is followed through the pour to the return lane, the only meet)
 Held load: cup steel + lug/block (S 0.10 kg, L 0.17 kg, est.) + contents (S 0.05, L 0.16 kg) until the tip.
 python r19cupchain.py ACT=cup SITE=T1 SLOT=b1 SIZE=L SIGN=-1 [SEEDS=2] [TRIES=6] [KEEP=6] [TAG=..] [ARM=..]
 -> results/r19/cups/chain_cup_<SITE>_<SLOT>_<SIZE>_s<SIGN>[_TAG][_<arm>].json (+ _recheck.json)
@@ -179,6 +180,7 @@ def action():
    cx=float(KV.get('CARTX',.55));R0,p0=S19.cart_to_world([cx,-.21,0.],R0,p0);cc=cx
   else:cc='F'
   cm='F' if not cart or KV.get('T2CARRY','F')=='F' else cc   # T2: the cart may move while the cup is out of the caddy (T2CARRY=fixed keeps it at CARTX)
+  cp=float(KV['POURC']) if 'POURC' in KV else cm   # POURC: the cart x on the pour / tip / level frames (a free cart drifts toward the wok and the shoulder enters the plume, smoke run 8); the lanes stay free (fixed, the pick side hit the arm, smoke run 9)
   g=K.OBJ[obj]['grip'];out_=p0+R0@np.array([0,float(KV.get('OUT_DY',-.04)),0])+[0,0,float(KV.get('OUT_DZ',.15))]   # out of the slot: mostly UP (pulled toward the robot the arm folds onto its base, smoke run 1)
   cupc=np.array([float(KV.get('CUP_X',K15.WOK0[0])),float(KV.get('CUP_Y',.09)),0.]);PZ=float(KV.get('POUR_Z',1.38))
   RL=K.Rz(float(KV.get('POUR_YAW',0.)))   # level pour orientation: POUR_YAW 0 = lug toward the robot (-y), -90 = lug toward -x (the gripper on the left of the cup)
@@ -186,10 +188,11 @@ def action():
   pm=pw+[float(KV.get('MEET_X',.56))-cupc[0],0,0];ax=RL@np.array([0,1.,0]);gw=pw+RL@g
   A_=float(KV.get('TIP',135.))*float(KV.get('TIPDIR',1.));Rr=Rotation.from_rotvec(ax*np.radians(A_)).as_matrix();Rt_,pt_=Rr@RL,gw+Rr@(pw-gw)   # roll about the LUG axis (object y) through the grip
   C=S19.CUP[size]['content_kg'];DW=float(KV.get('DWELL',2.))
+  ONE=KV.get('ONE')=='1'   # ONE=1: the pour pose is NOT an anchor; the pick anchor is followed by IK continuation through the pour to the return lane (the only meet). Same idea as the Mac session's r19cup_chain.py ONE=1 (implemented here independently)
   SE=.012 if cart else .008   # T2: the caddy is a cart (robot) part, the checker wants 10 mm between it and the held cup
   KF=[kf(R0,p0+[0,0,SE],'A' if not cart else cc,0,'pick',load=C,seat=SE),kf(R0,p0+[0,0,.03],cc,0,'lifted',anchor=True,load=C),
-   kf(R0,out_,cm,0,'out',load=C),kf(RL,pm,cm,0,'lane',meet=True,load=C),kf(RL,pw,cm,0,'over the wok',anchor=True,load=C),
-   kf(Rt_,pt_,cm,DW,f'tipped {A_:g} (poured)',load=C),kf(RL,pw,cm,0,'level'),kf(RL,pm,cm,0,'lane',meet=True),kf(R0,out_,cm,0,'out'),
+   kf(R0,out_,cm,0,'out',load=C),kf(RL,pm,cm,0,'lane',meet=not ONE,load=C),kf(RL,pw,cp,0,'over the wok',anchor=not ONE,load=C),
+   kf(Rt_,pt_,cp,DW,f'tipped {A_:g} (poured)',load=C),kf(RL,pw,cp,0,'level'),kf(RL,pm,cm,0,'lane',meet=True),kf(R0,out_,cm,0,'out'),
    kf(R0,p0+[0,0,.03],cc,0,'lowered',anchor=True),kf(R0,p0+[0,0,SE],'A' if not cart else cc,0,'set down',seat=SE)]
   sc=dict(r19seas=dict(site=site,cups=KV.get('CUPS',size),taken=slot,z=Zr));sw=dict(r19seas=dict(site=site,cups=KV.get('CUPS',size),taken=None,z=Zr))
   return obj,sc,KF,[(0,sw),(len(KF)-1,sw)]
@@ -458,7 +461,7 @@ res=dict(act=ACT,obj=OBJ,**({} if ARM=='ur5e' else dict(arm=ARM)),grasp_sense=SI
  max_pgc_moment_Nm=max([l_['pgc_moment_Nm'] for l_ in loads],default=None),max_joint_ratio=max([l_['max_joint_ratio'] for l_ in loads],default=None),
  loads=loads,tries=log,play=play,approach_qs=[p_.get('qs') for p_ in apps])
 res.update(r19=dict(site=KV.get('SITE','T1'),slot=KV.get('SLOT','b1'),size=KV.get('SIZE','L'),z=float(KV.get('Z',0.)),approach_pitch_deg=S.APITCH,approach_m=APPROACH_M,plume_m=PLUME,
- tip_deg=float(KV.get('TIP',135.))*float(KV.get('TIPDIR',1.)),out=dict(dy=float(KV.get('OUT_DY',-.04)),dz=float(KV.get('OUT_DZ',.15))),pour=dict(cup_x=float(KV.get('CUP_X',K15.WOK0[0])),cup_y=float(KV.get('CUP_Y',.09)),yaw=float(KV.get('POUR_YAW',0.)),grip_z=float(KV.get('POUR_Z',1.38)),meet_x=float(KV.get('MEET_X',.56))),
+ tip_deg=float(KV.get('TIP',135.))*float(KV.get('TIPDIR',1.)),one=KV.get('ONE')=='1',pour_cart=KV.get('POURC','free'),cart_x=KV.get('CARTX'),out=dict(dy=float(KV.get('OUT_DY',-.04)),dz=float(KV.get('OUT_DZ',.15))),pour=dict(cup_x=float(KV.get('CUP_X',K15.WOK0[0])),cup_y=float(KV.get('CUP_Y',.09)),yaw=float(KV.get('POUR_YAW',0.)),grip_z=float(KV.get('POUR_Z',1.38)),meet_x=float(KV.get('MEET_X',.56))),
  min_plume_mm=min([summ(o)['min_plume_mm'] for o in pieces.values() if summ(o)['min_plume_mm'] is not None],default=None),
  k_state=dict(tool_xy={k_:list(v) for k_,v in K.TOOL_XY.items()},spat_elev=K.SPAT_ELEV,spat_yaw=K.SPAT_YAW,spat_roll=K.SPAT_ROLL,design=DESIGN),
  cfg_held={**BASE,**SCENE,**HELD_EXTRA},cfg_approach=[{**BASE,**SCENE,**w} for _,w in GR],argv=sys.argv[1:]))
@@ -467,4 +470,4 @@ fn=f"{OUTD}/chain_{ACT}"+(f"_{KV.get('SITE','T1')}"+(f"z{float(KV['Z']):g}" if '
 print(fn);print(json.dumps({k_:v for k_,v in res.items() if k_ not in ('play','approach_qs','loads','keyframes','tries','r19')},default=str,ensure_ascii=False))
 print('r19',json.dumps({k_:v for k_,v in res['r19'].items() if k_ not in ('cfg_held','cfg_approach','k_state')}))
 if ok and KV.get('RECHECK','1')=='1':   # R19: the binding <= 4 mm full re-check (+ plume) of every stored state
- import subprocess;subprocess.run([sys.executable,'r19cup_recheck.py',fn]+[a for a in sys.argv[1:] if a.startswith(('ARM=','WORKERS='))],check=False)
+ import subprocess;subprocess.run([sys.executable,'r19cupw_recheck.py',fn]+[a for a in sys.argv[1:] if a.startswith(('ARM=','WORKERS='))],check=False)

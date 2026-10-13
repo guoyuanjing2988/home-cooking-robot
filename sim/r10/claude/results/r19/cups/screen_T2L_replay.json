@@ -1,0 +1,454 @@
+{
+  "site": "T2L",
+  "mode": "replay",
+  "size": "L",
+  "z": 0.0,
+  "approach_pitch_deg": 0.0,
+  "doc": "R19 seasoning cups (#5): screen the staging candidates (kitchen19seas.py sites T1, T2R/T2L/T2RC/T2LC, T3).\nNew file; nothing else is changed.\n\nMODE=replay  every stored state of every saved checked path is replayed in today's (R18b) kitchen with the\n             staged cups (all slots filled; L cups unless the site takes S only) and their caddy / rack /\n             bracket added, as r18spatreplay.py / r19prep_spotreplay.py do (fast checker, full=False: MuJoCo\n             contacts with the 10 / 5 mm gaps). Reported per path: states, states with a hit on a staging\n             geom (first one named), and the least distance (mujoco.mj_geomDistance) from any robot / held\n             geom to any staging geom over all its states. Paths:\n               - the 6 checked whole actions (results/r17/chain_*: wok plate + sink rinse at plating spot 1\n                 and 2, faucet lever, lid, spider, spatula fetch) with their grasp approaches,\n               - the 22 checked hub-roadmap edges (results/r19/hub/edge_*.json, every state),\n               - the checked R15 stir cycle in the R17 kitchen (results/r19/stir/stirwalk2_h_scrape_dice_r17.json).\n             A SCREEN of stored states (not a <= 4 mm re-check of the paths between them).\nMODE=ik      pickability of every slot: 96-start collision-aware IK (solver.solve, SEED) for the cup held at\n             its slot, lifted 8 mm (r18spatscan.py convention; T2: 12 mm, since the cart-mounted caddy is a\n             robot part and needs 10 mm), every other slot filled; both grasp senses (-1: gripper body above\n             the lug, +1: below). Counts of collision-free starts and the best reserve.\n             T2 (cart-mounted): the cart is fixed at CARTS (default 0.172 = hub station H_WOK).\nDesign options: Z=<m> riser under the T1 caddy / T3 rack (0 = on the counter, the plan); APITCH=<deg> grasp\napproach pitched down from horizontal (kitchen19seas.set_approach).\n[WORKERS=12] replay paths in parallel processes.\npython r19cup_screen.py SITE=T1|T2R|T2L|T2RC|T2LC|T3 MODE=replay|ik [Z=0] [APITCH=0] [SIZE=L|S] [SEED=14] [SLOTS=f0,b1] [SENSES=-1,1] [CARTS=.172]\n -> results/r19/cups/screen_<SITE>_<MODE>[_<SIZE>].json",
+  "results": {
+    "faucet_open": {
+      "states": 16,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "faucet_open__approaches": {
+      "states": 14,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "hub_H_SINK__H_WOK": {
+      "states": 215,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_caddy_floor_f"
+      ],
+      "min_state": 0
+    },
+    "hub_H_SPAT__H_SINK": {
+      "states": 209,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_caddy_floor_f"
+      ],
+      "min_state": 0
+    },
+    "hub_H_WOK__H_POT": {
+      "states": 248,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_caddy_floor_f"
+      ],
+      "min_state": 0
+    },
+    "hub_LEV_C__H_SINK": {
+      "states": 1635,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1250
+    },
+    "hub_LEV_C__H_SPAT": {
+      "states": 1835,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1398
+    },
+    "hub_LEV_C__H_WOK": {
+      "states": 1849,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1409
+    },
+    "hub_LEV_O__H_SINK": {
+      "states": 1489,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1091
+    },
+    "hub_LEV_O__H_SPAT": {
+      "states": 1726,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1264
+    },
+    "hub_LEV_O__H_WOK": {
+      "states": 1735,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1269
+    },
+    "hub_LEV_O__WOK": {
+      "states": 2555,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1211
+    },
+    "hub_LID_POT__H_POT": {
+      "states": 1804,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1293
+    },
+    "hub_LID_POT__H_WOK": {
+      "states": 1944,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1393
+    },
+    "hub_LID_RACK__H_POT": {
+      "states": 2002,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1500
+    },
+    "hub_LID_RACK__H_WOK": {
+      "states": 2223,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1664
+    },
+    "hub_SPAT__H_SINK": {
+      "states": 1244,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_cup_b2_block"
+      ],
+      "min_state": 1071
+    },
+    "hub_SPAT__H_SPAT": {
+      "states": 1018,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_cup_b2_block"
+      ],
+      "min_state": 880
+    },
+    "hub_SPAT__LEV_C": {
+      "states": 2842,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_cup_b2_block"
+      ],
+      "min_state": 944
+    },
+    "hub_SPIDER__H_POT": {
+      "states": 1987,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1647
+    },
+    "hub_SPIDER__H_WOK": {
+      "states": 2203,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1824
+    },
+    "hub_WOK__H_POT": {
+      "states": 1099,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 648
+    },
+    "hub_WOK__H_SINK": {
+      "states": 1040,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 631
+    },
+    "hub_WOK__H_WOK": {
+      "states": 859,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 493
+    },
+    "lid_off_to_rack": {
+      "states": 205,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "lid_off_to_rack__approaches": {
+      "states": 14,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "spatula_fetch": {
+      "states": 249,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "spatula_fetch__approaches": {
+      "states": 7,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "spider_pot_to_plate": {
+      "states": 516,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "spider_pot_to_plate__approaches": {
+      "states": 14,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "stir_cycle": {
+      "states": 1120,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "wok_plate2_rinse": {
+      "states": 470,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_cup_b2_body"
+      ],
+      "min_state": 119
+    },
+    "wok_plate2_rinse__approaches": {
+      "states": 14,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    },
+    "wok_plate_rinse": {
+      "states": 470,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": 100.0,
+      "min_pair": [
+        "R_geom_11",
+        "R_cart_r19s_cup_b2_body"
+      ],
+      "min_state": 93
+    },
+    "wok_plate_rinse__approaches": {
+      "states": 14,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": ">100",
+      "min_pair": null,
+      "min_state": null
+    }
+  },
+  "total": {
+    "paths": 35,
+    "states": 36884,
+    "paths_hit": [],
+    "min_dist_mm": 100.0,
+    "closest": [
+      [
+        100.0,
+        "hub_H_SINK__H_WOK",
+        [
+          "R_geom_11",
+          "R_cart_r19s_caddy_floor_f"
+        ]
+      ],
+      [
+        100.0,
+        "hub_H_SPAT__H_SINK",
+        [
+          "R_geom_11",
+          "R_cart_r19s_caddy_floor_f"
+        ]
+      ],
+      [
+        100.0,
+        "hub_H_WOK__H_POT",
+        [
+          "R_geom_11",
+          "R_cart_r19s_caddy_floor_f"
+        ]
+      ],
+      [
+        100.0,
+        "hub_LEV_C__H_SINK",
+        [
+          "R_geom_11",
+          "R_cart_r19s_bracket_x"
+        ]
+      ],
+      [
+        100.0,
+        "hub_LEV_C__H_SPAT",
+        [
+          "R_geom_11",
+          "R_cart_r19s_bracket_x"
+        ]
+      ],
+      [
+        100.0,
+        "hub_LEV_C__H_WOK",
+        [
+          "R_geom_11",
+          "R_cart_r19s_bracket_x"
+        ]
+      ]
+    ]
+  },
+  "elapsed_s": 168.8
+}

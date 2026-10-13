@@ -1,0 +1,83 @@
+{
+ "scene": "play:spatula",
+ "part": "grasp-z",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+  "kind": "play",
+  "act": "spatula",
+  "obj": "spatula_b",
+  "src_n": 249
+ },
+ "states": 2642,
+ "stored_states": 249,
+ "nominal_s": 1.4,
+ "nominal_cached": true,
+ "held": true,
+ "jaw_axis_tool": [
+  -0.0,
+  1.0,
+  0.0
+ ],
+ "directions": [
+  {
+   "kind": "grasp",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 289
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 180
+   }
+  },
+  {
+   "kind": "grasp",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 5.934,
+    "bounded": true,
+    "violation_at": 5.981,
+    "binding": {
+     "state": 2641,
+     "value_mm": -0.037,
+     "pair": [
+      "R_gripper_r18_spat_blade0",
+      "r15_wok_t4_9"
+     ],
+     "label": "kf 4->5 (over the wok -> stroke start)",
+     "src_index": 248.0
+    },
+    "evals": 885
+   },
+   "contact": {
+    "tol": 11.115,
+    "bounded": true,
+    "violation_at": 11.159,
+    "binding": {
+     "state": 2641,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r18_spat_blade0",
+      "r15_wok_t4_9"
+     ],
+     "label": "kf 4->5 (over the wok -> stroke start)",
+     "src_index": 248.0
+    },
+    "evals": 942
+   }
+  }
+ ],
+ "elapsed_s": 6.9
+}

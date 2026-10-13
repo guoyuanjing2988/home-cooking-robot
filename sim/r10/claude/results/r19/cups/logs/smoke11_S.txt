@@ -1,0 +1,28 @@
+lifted start candidates 8 {'ok': 29, 'pose': 41, 'collision': 26, 'plume': 0}
+ cand 0 cart 0.4 ok
+ cand 1 cart 0.4 ok
+ cand 2 cart 0.4 {'at': 'out->lane', 'kf': None, 'cart': np.float64(0.283), 'step_deg': 1.38, 'pose_mm': 0.0, 'reserve_mm': None, 'plume_mm': 70.4, 'dt': np.float64(0.09937625785367446), 'hits': [['R_geom_16', 'r07_closed_door_1_1']]}
+ cand 3 cart 0.4 ok
+ cand 4 cart 0.4 ok
+over the wok start candidates 8 {'ok': 51, 'pose': 45, 'plume': 0}
+ cand 0 cart 0.45 ok
+ cand 1 cart 0.45 {'at': 'over the wok->tipped 135 (poured)', 'kf': None, 'cart': np.float64(0.45), 'step_deg': 1.31, 'pose_mm': 0.0, 'reserve_mm': None, 'plume_mm': 12.5, 'dt': np.float64(0.04411764705882353), 'hits': [['R_geom_16', 'R_cart_r19s_cup_b2_block']]}
+ cand 2 cart 0.45 {'at': 'over the wok->tipped 135 (poured)', 'kf': None, 'cart': np.float64(0.45), 'step_deg': 1.31, 'pose_mm': 0.0, 'reserve_mm': None, 'plume_mm': 12.5, 'dt': np.float64(0.04411764705882353), 'hits': [['R_geom_16', 'R_cart_r19s_cup_b2_block']]}
+ cand 3 cart 0.45 ok
+ cand 4 cart 0.45 ok
+ cand 5 cart 0.45 ok
+lowered start candidates 8 {'ok': 29, 'pose': 41, 'collision': 26, 'plume': 0}
+ cand 0 cart 0.4 ok
+ cand 1 cart 0.4 ok
+ cand 2 cart 0.4 {'at': 'out->lane', 'kf': None, 'cart': np.float64(0.283), 'step_deg': 1.38, 'pose_mm': 0.0, 'reserve_mm': None, 'plume_mm': 70.4, 'dt': np.float64(0.09937625785367446), 'hits': [['R_geom_16', 'r07_closed_door_1_1']]}
+ cand 3 cart 0.4 ok
+ cand 4 cart 0.4 ok
+joins at lane [(6, True), (6, True), (6, True), (6, True), (6, True), (6, True)]
+joins at lane [(6, True), (6, True), (6, True), (6, True), (6, True), (6, True)]
+{"label": "play (held cup)", "stored_states": 313, "checked_states": 1799, "max_spacing_mm": 3.997, "unwrapped": true, "label_jumps_2pi": 784, "hit_states": 0, "first_hits": [], "min_reserve_mm": 2.0, "min_self_mm": 2.01, "min_plume_mm": 12.4, "plume_bad_states": 0}
+{"label": "approach 0 (empty gripper, cup in its slot)", "stored_states": 6, "checked_states": 45, "max_spacing_mm": 3.898, "unwrapped": true, "label_jumps_2pi": 0, "hit_states": 0, "first_hits": [], "min_reserve_mm": 2.08, "min_self_mm": 2.19, "min_plume_mm": 65.1, "plume_bad_states": 0}
+{"label": "approach 1 (empty gripper, cup in its slot)", "stored_states": 6, "checked_states": 45, "max_spacing_mm": 3.898, "unwrapped": true, "label_jumps_2pi": 0, "hit_states": 0, "first_hits": [], "min_reserve_mm": 2.08, "min_self_mm": 2.19, "min_plume_mm": 65.1, "plume_bad_states": 0}
+RECHECK {"ok": true, "checked_states": 1889, "min_reserve_mm": 2.0, "min_plume_mm": 12.4, "max_spacing_mm": 3.997, "elapsed_s": 109.4}
+results/r19/cups/chain_cup_T2R_b1_S_s+1_s11S.json
+{"act": "cup", "obj": "cupS", "grasp_sense": 1, "design": {"pot_h": 0.12, "rack": 0.04, "lid_a": 0.0, "car_a": 45.0, "rack_ry": 90.0}, "scene": {"r19seas": {"site": "T2R", "cups": "S", "taken": "b1", "z": 0.0}}, "wok_tilt": 0.0, "wok_grasp": "top", "tool_xy": {"spatula": [-1.15, 0.3], "ladle": [1.62, 0.24], "spider": [1.52, 0.36]}, "ok": true, "time_s": 28.4, "elapsed_s": 182, "anchors": {"lifted#1": {"ok": true, "cand": 0, "cart": 0.4, "start_reserve_mm": 14.5}, "over the wok#4": {"ok": true, "cand": 0, "cart": 0.45, "start_reserve_mm": 22.5}, "lowered#9": {"ok": true, "cand": 0, "cart": 0.4, "start_reserve_mm": 14.5}}, "pieces": [{"frm": "lifted#1", "to": "pick#0", "steps": 2, "time_s": 0.2, "min_reserve_mm": 2.0, "min_plume_mm": 65.2, "max_step_deg": 1.17, "cart": [0.4, 0.4]}, {"frm": "lifted#1", "to": "lane#3", "steps": 53, "time_s": 5.2, "min_reserve_mm": 33.8, "min_plume_mm": 62.9, "max_step_deg": 1.37, "cart": [0.399, 0.221]}, {"frm": "over the wok#4", "to": "lane#3", "steps": 27, "time_s": 2.7, "min_reserve_mm": 22.5, "min_plume_mm": 36.6, "max_step_deg": 0.01, "cart": [0.44, 0.182]}, {"frm": "over the wok#4", "to": "lane#7", "steps": 163, "time_s": 10.7, "min_reserve_mm": 22.5, "min_plume_mm": 12.5, "max_step_deg": 1.75, "cart": [0.45, 0.182]}, {"frm": "lowered#9", "to": "lane#7", "steps": 53, "time_s": 5.2, "min_reserve_mm": 33.8, "min_plume_mm": 62.9, "max_step_deg": 1.37, "cart": [0.399, 0.221]}, {"frm": "lowered#9", "to": "set down#10", "steps": 2, "time_s": 0.2, "min_reserve_mm": 2.0, "min_plume_mm": 65.2, "max_step_deg": 1.17, "cart": [0.4, 0.4]}], "joins": [{"ok": true, "arm_deg": 6.1, "s": 0.76, "cart_m": 0.038, "shuffle_s": 0.2, "at": "lane", "best_pair_deg": 6.1}, {"ok": true, "arm_deg": 6.1, "s": 0.76, "cart_m": 0.038, "shuffle_s": 0.2, "at": "lane", "best_pair_deg": 6.1}], "approaches": [{"ok": true, "kf": 0, "min_reserve_mm": 4.5, "time_s": 0.5}, {"ok": true, "kf": 10, "min_reserve_mm": 4.5, "time_s": 0.5}], "min_reserve_mm": 2.0, "max_pgc_moment_Nm": 0.08, "max_joint_ratio": 0.35}
+r19 {"site": "T2R", "slot": "b1", "size": "S", "z": 0.0, "approach_pitch_deg": 0.0, "approach_m": 0.05, "plume_m": 0.2, "tip_deg": 135.0, "one": false, "pour_cart": ".45", "cart_x": ".40", "out": {"dy": -0.04, "dz": 0.15}, "pour": {"cup_x": 0.83, "cup_y": 0.09, "yaw": 0.0, "grip_z": 1.38, "meet_x": 0.56}, "min_plume_mm": 12.5, "argv": ["ACT=cup", "SEEDS=1", "KEEP=4", "TRIES=8", "WORKERS=5", "SIGN=1", "SITE=T2R", "SLOT=b1", "CARTX=.40", "POURC=.45", "SIZE=S", "TAG=s11S"]}

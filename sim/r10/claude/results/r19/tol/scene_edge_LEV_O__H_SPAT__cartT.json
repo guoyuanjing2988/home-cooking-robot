@@ -1,0 +1,220 @@
+{
+ "scene": "edge:LEV_O__H_SPAT",
+ "part": "cartT",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r19/hub/edge_LEV_O__H_SPAT.json",
+  "kind": "edge",
+  "edge": "LEV_O__H_SPAT",
+  "method": "via: retreat (0, -0.15, 0)",
+  "reported_min_reserve_mm": 2.1,
+  "src_n": 1726,
+  "densified": false
+ },
+ "states": 1726,
+ "stored_states": 1726,
+ "nominal_s": 1.4,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "x",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 268
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 136
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "x",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 268
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 136
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 5.0,
+    "bounded": true,
+    "violation_at": 5.031,
+    "binding": {
+     "state": 262,
+     "value_mm": -0.011,
+     "pair": [
+      "R_geom_25",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->H_SPAT 15.2%",
+     "src_index": 262.0
+    },
+    "evals": 268
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 136
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 268
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 136
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 2.719,
+    "bounded": true,
+    "violation_at": 2.75,
+    "binding": {
+     "state": 258,
+     "value_mm": -0.0,
+     "pair": [
+      "R_geom_25",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->H_SPAT 15.0%",
+     "src_index": 258.0
+    },
+    "evals": 306
+   },
+   "contact": {
+    "tol": 14.262,
+    "bounded": true,
+    "violation_at": 14.289,
+    "binding": {
+     "state": 255,
+     "value_mm": 0.007,
+     "pair": [
+      "R_geom_25",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->H_SPAT 14.8%",
+     "src_index": 255.0
+    },
+    "evals": 364
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 268
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 136
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 262,
+   "value": 4.85,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.074,
+   "checker_pair": [
+    "r07_closed_door_1_0",
+    "R_geom_25"
+   ],
+   "evaluator_gate_mm": 0.074,
+   "evaluator_pair": [
+    "R_geom_25",
+    "r07_closed_door_1_0"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 262,
+   "value": 5.1819,
+   "checker_hits": [
+    [
+     "R_geom_25",
+     "r07_closed_door_1_0"
+    ],
+    [
+     "R_geom_25",
+     "r07_closed_door_1_0"
+    ],
+    [
+     "r07_closed_door_1_0",
+     "R_geom_25"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.081,
+   "checker_pair": [
+    "r07_closed_door_1_0",
+    "R_geom_25"
+   ],
+   "evaluator_gate_mm": -0.081,
+   "evaluator_pair": [
+    "R_geom_25",
+    "r07_closed_door_1_0"
+   ]
+  }
+ ],
+ "elapsed_s": 49.4
+}

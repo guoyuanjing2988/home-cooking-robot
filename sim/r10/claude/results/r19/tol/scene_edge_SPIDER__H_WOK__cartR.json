@@ -1,0 +1,167 @@
+{
+ "scene": "edge:SPIDER__H_WOK",
+ "part": "cartR",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r19/hub/edge_SPIDER__H_WOK.json",
+  "kind": "edge",
+  "edge": "SPIDER__H_WOK",
+  "method": "straight",
+  "reported_min_reserve_mm": 2.3,
+  "src_n": 2203,
+  "densified": false
+ },
+ "states": 2203,
+ "stored_states": 2203,
+ "nominal_s": 1.2,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "yaw",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 235
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 80
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "yaw",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 235
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 80
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 761
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 524
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.725,
+    "bounded": true,
+    "violation_at": 0.728,
+    "binding": {
+     "state": 0,
+     "value_mm": -0.071,
+     "pair": [
+      "R_geom_11",
+      "r14_hood"
+     ],
+     "label": "SPIDER->H_WOK 0.0%",
+     "src_index": 0.0
+    },
+    "evals": 442
+   },
+   "contact": {
+    "tol": 1.134,
+    "bounded": true,
+    "violation_at": 1.136,
+    "binding": {
+     "state": 0,
+     "value_mm": 0.0,
+     "pair": [
+      "R_geom_11",
+      "r14_hood"
+     ],
+     "label": "SPIDER->H_WOK 0.0%",
+     "src_index": 0.0
+    },
+    "evals": 641
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_y",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.101,
+    "bounded": true,
+    "violation_at": 1.104,
+    "binding": {
+     "state": 0,
+     "value_mm": -0.007,
+     "pair": [
+      "R_finger_plus",
+      "r16_spider_block"
+     ],
+     "label": "SPIDER->H_WOK 0.0%",
+     "src_index": 0.0
+    },
+    "evals": 1039
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 540
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_y",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 776
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 540
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 24.7
+}

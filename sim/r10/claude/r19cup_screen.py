@@ -34,7 +34,8 @@ S.setup_kitchen();Z=float(KV.get('Z',0.));S.set_approach(float(KV.get('APITCH',0
 LAYER=dict(r19seas=dict(site=SITE,cups=SIZE,taken=None,z=Z))
 CHAINS=dict(wok_plate_rinse='wok_s-1_final',wok_plate2_rinse='wok_s-1_r18plate2b',faucet_open='lever_s+1_final',lid_off_to_rack='lid_s-1_final',spider_pot_to_plate='spider_s+1_final',spatula_fetch='spatula_s-1_r18roll-1.15_.30')
 def stage_ids(ch):return [g for g,n in enumerate(ch.gnames) if n.startswith(('r19s_','R_cart_r19s_'))]
-def mover_ids(ch,stage):return [g for g,n in enumerate(ch.gnames) if (ch.robot[g] or ch.held[g]) and g not in stage and ch.m.geom_type[g]!=mujoco.mjtGeom.mjGEOM_PLANE]
+def mover_ids(ch,stage):   # robot / held geoms that can move relative to the staging geoms (not the cart's own body, to which a T2 caddy is fixed)
+ w={int(ch.weld[g]) for g in stage};return [g for g,n in enumerate(ch.gnames) if (ch.robot[g] or ch.held[g]) and g not in stage and int(ch.weld[g]) not in w and ch.m.geom_type[g]!=mujoco.mjtGeom.mjGEOM_PLANE]
 def replay_states(ch,qs,labels=None):
  """fast check + least distance robot -> staging geoms (distance computed only for pairs whose bounding
  spheres come within 0.10 m)."""

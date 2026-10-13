@@ -8,7 +8,9 @@ let the meshes stick out by up to 26.5 mm (r19ur5e_enclose.py).
 Commands (each < 5 min with 24 workers, except as noted in R19_UR5E_ENC.md):
  python r19enc_check.py enclose              r19ur5e_enclose.py-style protrusion, measured in the SIM model (both arms)
  python r19enc_check.py self [N=2000]        random-pose self-collision rate (both arms)
- python r19enc_check.py recheck SET=<set> [WORKERS=24] [EDGES=A__B,C__D]
+ python r19enc_check.py recheck SET=<set> [WORKERS=24] [EDGES=A__B,C__D] [NEW=ur5e_enc|ur5e_enc2] [SUFFIX=_<arm>]
+   (NEW = the enclosing arm checked next to ur5e, default ur5e_enc -> results/r19/enc; ur5e_enc2 -> results/r19/enc2;
+    every command below takes NEW=; a chain with "ok": false or no play is skipped, not checked)
    SET = wok | wok_plate2b | lever | lid | spider | spatula   (results/r17/chain_*.json; SUFFIX=_ur5e_enc re-checks the
          re-planned chain_*_ur5e_enc.json instead, -> <set>_ur5e_enc.json)
          stir                                                (results/r19/stir/stirwalk2_h_scrape_dice_r17.json)
@@ -34,13 +36,14 @@ Loads, cart stability and joint limits do not depend on the collision geoms (sam
 import sys,os,json,time,math,glob
 sys.path.insert(0,'.')
 import numpy as np
-OUT='results/r19/enc'
 KV=dict(a.split('=',1) for a in sys.argv[2:] if '=' in a)
+NEW=KV.get('NEW','ur5e_enc')   # the enclosing arm option compared with ur5e (ur5e_enc, or ur5e_enc2 -> results/r19/enc2)
+OUT='results/r19/'+NEW[len('ur5e_'):]
 CHAINS={'wok':('results/r17/chain_wok_s-1_final.json',False),'wok_plate2b':('results/r17/chain_wok_s-1_r18plate2b.json',True),
  'lever':('results/r17/chain_lever_s+1_final.json',False),'lid':('results/r17/chain_lid_s-1_final.json',False),
  'spider':('results/r17/chain_spider_s+1_final.json',False),'spatula':('results/r17/chain_spatula_s-1_r18roll-1.15_.30.json',False)}
 STIR='results/r19/stir/stirwalk2_h_scrape_dice_r17.json'
-ARMS_=('ur5e','ur5e_enc')
+ARMS_=('ur5e',NEW)
 def meshheld(tree):
  """r19smooth.py MESHHELD: tool-side boxes -> identical 8-vertex box meshes (geometry unchanged)."""
  import xml.etree.ElementTree as E
@@ -97,7 +100,10 @@ def ctx(key,arm):
 def states(key):
  """{path name: stored states (unwrapped)} of a set."""
  from r19smooth import unwrap
- if key in CHAINS:return {key:unwrap(json.load(open(CHAINS[key][0][:-5]+KV.get('SUFFIX','')+'.json'))['play'])}
+ if key in CHAINS:
+  r=json.load(open(CHAINS[key][0][:-5]+KV.get('SUFFIX','')+'.json'))
+  if not r.get('ok') or not r.get('play'):return {}   # a failed (re-)plan has no path to check
+  return {key:unwrap(r['play'])}
  if key=='stir':return {'stir':np.array(json.load(open(STIR))['states']['q'],float)}
  E_=[e for e in KV.get('EDGES','').split(',') if e] or sorted(f[len('results/r19/hub/edge_'):-5] for f in glob.glob('results/r19/hub/edge_*.json'))
  return {e:unwrap(json.load(open(f'results/r19/hub/edge_{e}.json'))['qs']) for e in E_}
@@ -130,7 +136,10 @@ def recheck():
  import multiprocessing as mp
  key=KV['SET'];WK=int(KV.get('WORKERS',24));t0=time.monotonic();os.makedirs(OUT,exist_ok=True)
  lane=KV.get('LANE');fn=f"{OUT}/{key}{KV.get('SUFFIX','')}{'_'+lane if lane else ''}.json"
- enc=ctx(key,'ur5e_enc');P=states(key);jobs=[];meta={}
+ P=states(key)
+ if not P:
+  json.dump(dict(set=key+KV.get('SUFFIX',''),skipped='chain not ok or no play states: nothing to re-check',paths={}),open(fn,'w'));print(key,'skipped: chain not ok / empty play ->',fn);return
+ enc=ctx(key,NEW);jobs=[];meta={}
  for name,Q in P.items():
   QS,src,sp=sample(enc['ch'],Q);meta[name]=dict(stored_states=len(Q),states=len(QS),max_step_bound_mm=round(sp*1e3,3),src=src.tolist())
   for arm in ARMS_:
@@ -243,7 +252,7 @@ def meshgap():
  import mujoco,r19ur5e_encfit as F
  from scipy.spatial.transform import Rotation
  _,_,tris,_,_,_=F.load();P={'R_arm_'+L:F.grid(T,.002) for L,T in tris.items() if L in F.NAMES}
- J=json.load(open('r19/arm_ur5e_enc.json'));cover={}
+ import arms;J=json.load(open(arms.ARMS[NEW]['enclose']));cover={}
  for link,ps in J['candidates'].items():
   for p_ in ps:cover.setdefault(p_,[]).append(link)
  def dist(m,d,g,X):
@@ -258,12 +267,16 @@ def meshgap():
  out=[]
  for f in sorted(glob.glob(f'{OUT}/*.json')):
   if os.path.basename(f) in ('summary.json','enclose.json','self_random.json','meshgap.json'):continue
-  r=json.load(open(f));key=r['set'].replace('_ur5e_enc','') if r['set'] in CHAINS or r['set'].replace('_ur5e_enc','') in CHAINS else r['set']
+  r=json.load(open(f));key=r['set'];sfx=''
+  if r.get('skipped'):continue
+  for a_ in ('_ur5e_enc2','_ur5e_enc'):
+   if key.endswith(a_) and key[:-len(a_)] in CHAINS:key,sfx=key[:-len(a_)],a_;break
+  KV['SUFFIX']=sfx
   for name,v in r['paths'].items():
-   if not v['ur5e_enc']['hit_pairs']:continue
-   KV['EDGES']=name;c=ctx('hub' if key.startswith('hub') else key,'ur5e_enc');ch=c['ch'];m,d=ch.m,ch.d
-   Q=list(states('hub' if key.startswith('hub') else key).values())[0];QS,src,sp=sample(ch,Q);ps=v['per_state']['ur5e_enc']
-   for pair in v['ur5e_enc']['hit_pairs']:
+   if not v[NEW]['hit_pairs']:continue
+   KV['EDGES']=name;c=ctx('hub' if key.startswith('hub') else key,NEW);ch=c['ch'];m,d=ch.m,ch.d
+   Q=list(states('hub' if key.startswith('hub') else key).values())[0];QS,src,sp=sample(ch,Q);ps=v['per_state'][NEW]
+   for pair in v[NEW]['hit_pairs']:
     js=[j for j,s_ in enumerate(ps) if pair in s_['hits']];i=min(js,key=lambda j:ps[j]['hits'][pair][1]);a_,b_=pair.split(' | ')
     arm_g,other=(a_,b_) if a_.startswith('R_geom') else (b_,a_);g=m.geom(other).id
     best=(1e9,None,None)
@@ -273,7 +286,7 @@ def meshgap():
       b=m.body(link).id;X=d.xpos[b]+P[link]@d.xmat[b].reshape(3,3).T;dd=float(dist(m,d,g,X).min())
       if dd<best[0]:best=(dd,link,j)
     hp=ps[i]['hits'][pair];need=hp[3];rg=best[0]*1e3
-    out.append(dict(set=r['set'],path=name,pair=pair,hit_states=len(js),stored_range=[round(float(src[min(js)]),2),round(float(src[max(js)]),2)],
+    out.append(dict(set=r['set'],path=name,pair=pair,hit_states=len(js),arm=NEW,stored_range=[round(float(src[min(js)]),2),round(float(src[max(js)]),2)],
      enc_min_gap_lower_mm=hp[1],enc_worst_state=i,required_mm=need,real_mesh_min_gap_mm=round(rg,1),real_mesh_state=best[2],real_mesh_stored_index=round(float(src[best[2]]),2),real_mesh_link=best[1],covered_links=cover.get(arm_g,[]),
      real_arm='violates' if rg<need else 'clear' if rg-COVER_MM>=need else 'undecided'))
     print(json.dumps(out[-1]),flush=True)
@@ -283,11 +296,14 @@ def summary():
  for f in sorted(glob.glob(f'{OUT}/*.json')):
   if os.path.basename(f) in ('summary.json','enclose.json','self_random.json','meshgap.json'):continue
   r=json.load(open(f))
+  if r.get('skipped'):rows.append(dict(set=r['set'],skipped=r['skipped']));continue
   for name,v in r['paths'].items():
    rows.append(dict(set=r['set'],path=name,states=v['states'],stored_states=v['stored_states'],max_step_bound_mm=v['max_step_bound_mm'],
     **{f'{a}_{k}':v[a].get(k) for a in ARMS_ for k in ('ok','hit_states','real_hit_states','artefact_only_hit_states','min_env_reserve_mm','min_env_pair','min_self_reserve_mm','min_self_pair','min_reserve_by_category','min_plume_mm','plume_violations')},
-    enc_hit_pairs=v['ur5e_enc']['hit_pairs'],enc_hit_runs=v['ur5e_enc']['hit_runs']))
+    enc_hit_pairs=v[NEW]['hit_pairs'],enc_hit_runs=v[NEW]['hit_runs']))
  json.dump(rows,open(f'{OUT}/summary.json','w'),indent=1)
- for r in rows:print(f"{r['set']:12s} {r['path']:16s} {r['states']:5d}  ur5e ok={r['ur5e_ok']!s:5s} hits={r['ur5e_hit_states']:4d} env {r['ur5e_min_env_reserve_mm']} self {r['ur5e_min_self_reserve_mm']} | enc ok={r['ur5e_enc_ok']!s:5s} hits={r['ur5e_enc_hit_states']:4d} (real {r['ur5e_enc_real_hit_states']}, artefact-only {r['ur5e_enc_artefact_only_hit_states']}) env {r['ur5e_enc_min_env_reserve_mm']} self {r['ur5e_enc_min_self_reserve_mm']} pairs {list(r['enc_hit_pairs'])[:3]}")
+ for r in rows:
+  if r.get('skipped'):print(f"{r['set']:12s} skipped: {r['skipped']}");continue
+  n=NEW;print(f"{r['set']:12s} {r['path']:16s} {r['states']:5d}  ur5e ok={r['ur5e_ok']!s:5s} hits={r['ur5e_hit_states']:4d} env {r['ur5e_min_env_reserve_mm']} self {r['ur5e_min_self_reserve_mm']} | {n} ok={r[n+'_ok']!s:5s} hits={r[n+'_hit_states']:4d} (real {r[n+'_real_hit_states']}, artefact-only {r[n+'_artefact_only_hit_states']}) env {r[n+'_min_env_reserve_mm']} self {r[n+'_min_self_reserve_mm']} pairs {list(r['enc_hit_pairs'])[:3]}")
 if __name__=='__main__':
  {'recheck':recheck,'enclose':enclose,'self':selfrate,'summary':summary,'meshgap':meshgap}[sys.argv[1]]()

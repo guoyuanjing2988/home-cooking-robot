@@ -1,0 +1,1091 @@
+{
+  "act": "tomato",
+  "obj": "tomato",
+  "arm": "ur5e",
+  "grasp_sense": 1,
+  "layout": {
+    "slicer": [
+      -1.69,
+      0.225,
+      90.0
+    ],
+    "lever": [
+      0.3,
+      0.095,
+      0.0
+    ],
+    "cold_box": [
+      -0.9,
+      0.15,
+      0.0
+    ],
+    "tray_dxy": [
+      0.0,
+      0.0
+    ],
+    "drop_bowls": []
+  },
+  "argv": [
+    "SEEDS=1",
+    "KEEP=2",
+    "TAG=smoke_tomPL_a2",
+    "ACT=tomato",
+    "LEVER=0.30,.095",
+    "TRIES=8",
+    "ANCH=tap,blade"
+  ],
+  "scene": {
+    "r19": {
+      "stations": {
+        "slicer": [
+          -1.69,
+          0.225,
+          90.0
+        ],
+        "lever": [
+          0.3,
+          0.095,
+          0.0
+        ]
+      },
+      "tray_dxy": [
+        0.0,
+        0.0
+      ],
+      "drop_bowls": [],
+      "objs": [
+        [
+          "carrot",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.42,
+            0.12,
+            0.9305
+          ]
+        ]
+      ]
+    }
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 92,
+  "rinse_dwell_s_est": 3.0,
+  "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker",
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        -1.245,
+        0.12,
+        0.951
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        -1.245,
+        0.12,
+        0.993
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 2,
+      "label": "out and up",
+      "p": [
+        -1.245,
+        0.08,
+        1.093
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        -0.8,
+        0.1,
+        1.15
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.866,
+          0.5
+        ],
+        [
+          0.0,
+          -0.5,
+          0.866
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 4,
+      "label": "under the tap",
+      "p": [
+        -0.4,
+        0.37,
+        0.98
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.866,
+          0.5
+        ],
+        [
+          0.0,
+          -0.5,
+          0.866
+        ]
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 3.0
+    },
+    {
+      "i": 5,
+      "label": "rolled +30",
+      "p": [
+        -0.4,
+        0.37,
+        0.98
+      ],
+      "R": [
+        [
+          0.866,
+          -0.0,
+          0.5
+        ],
+        [
+          -0.25,
+          0.866,
+          0.433
+        ],
+        [
+          -0.433,
+          -0.5,
+          0.75
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 3.0
+    },
+    {
+      "i": 6,
+      "label": "rolled -30",
+      "p": [
+        -0.4,
+        0.37,
+        0.98
+      ],
+      "R": [
+        [
+          0.866,
+          0.0,
+          -0.5
+        ],
+        [
+          0.25,
+          0.866,
+          0.433
+        ],
+        [
+          0.433,
+          -0.5,
+          0.75
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 3.0
+    },
+    {
+      "i": 7,
+      "label": "level",
+      "p": [
+        -0.4,
+        0.37,
+        0.98
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.866,
+          0.5
+        ],
+        [
+          0.0,
+          -0.5,
+          0.866
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 8,
+      "label": "lane",
+      "p": [
+        -0.05,
+        0.1,
+        1.15
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.866,
+          0.5
+        ],
+        [
+          0.0,
+          -0.5,
+          0.866
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true,
+      "dwell_s": 0
+    },
+    {
+      "i": 9,
+      "label": "backed out, in front of the lever base",
+      "p": [
+        0.3,
+        -0.04,
+        1.004
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 10,
+      "label": "in front of the blade plate",
+      "p": [
+        0.3,
+        0.035,
+        0.982
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 11,
+      "label": "over its seat (8 mm)",
+      "p": [
+        0.3,
+        0.095,
+        0.982
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    }
+  ],
+  "anchors": {
+    "under the tap#4": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "ok": 53,
+        "pose": 31,
+        "collision": 12
+      }
+    },
+    "in front of the blade plate#10": {
+      "ok": true,
+      "cand": 0,
+      "cart": -0.016,
+      "start_reserve_mm": 3.0
+    }
+  },
+  "pieces": [
+    {
+      "frm": "in front of the blade plate#10",
+      "to": "lane#8",
+      "steps": 49,
+      "time_s": 4.8,
+      "min_reserve_mm": 2.3,
+      "max_step_deg": 1.57,
+      "cart": [
+        -0.02,
+        -0.331
+      ]
+    },
+    {
+      "frm": "in front of the blade plate#10",
+      "to": "over its seat (8 mm)#11",
+      "steps": 6,
+      "time_s": 0.6,
+      "min_reserve_mm": 3.0,
+      "max_step_deg": 1.76,
+      "cart": [
+        -0.016,
+        -0.016
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    },
+    {
+      "ok": true,
+      "kf": 11,
+      "object_in_world": true,
+      "window": true,
+      "min_food_gap_mm": 5.0,
+      "min_reserve_mm": 1.0,
+      "time_s": 0.5
+    }
+  ],
+  "min_reserve_mm": 2.3,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "push": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "under the tap",
+      "cand": 0,
+      "start_reserve_mm": 5.2,
+      "cart": -0.242,
+      "ok": false,
+      "fail": {
+        "at": "lane->out and up",
+        "kf": null,
+        "cart": -0.614,
+        "step_deg": 2.22,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.09979584097818513,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 1,
+      "start_reserve_mm": 5.2,
+      "cart": -0.754,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane",
+        "kf": null,
+        "cart": -0.953,
+        "step_deg": 0.72,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 2,
+      "start_reserve_mm": 5.2,
+      "cart": -0.154,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane",
+        "kf": null,
+        "cart": -0.576,
+        "step_deg": 3.14,
+        "pose_mm": 0.04,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 3,
+      "start_reserve_mm": 5.2,
+      "cart": -0.143,
+      "ok": false,
+      "fail": {
+        "at": "lane->out and up",
+        "kf": null,
+        "cart": -0.544,
+        "step_deg": 0.85,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09979584097818513,
+        "hits": [
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 4,
+      "start_reserve_mm": 5.2,
+      "cart": -0.176,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane",
+        "kf": null,
+        "cart": -0.598,
+        "step_deg": 2.67,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_geom_26"
+          ],
+          [
+            "R_geom_10",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "R_geom_11",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 5,
+      "start_reserve_mm": 5.2,
+      "cart": -0.377,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane",
+        "kf": null,
+        "cart": -0.446,
+        "step_deg": 2.14,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 6,
+      "start_reserve_mm": 5.2,
+      "cart": -0.204,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane",
+        "kf": null,
+        "cart": -0.609,
+        "step_deg": 2.46,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 7,
+      "start_reserve_mm": 5.2,
+      "cart": -0.671,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane",
+        "kf": null,
+        "cart": -0.767,
+        "step_deg": 0.74,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "in front of the blade plate",
+      "cand": 0,
+      "start_reserve_mm": 3.0,
+      "cart": 0.671,
+      "ok": false,
+      "fail": {
+        "at": "backed out, in front of the lever base->lane",
+        "kf": null,
+        "cart": 0.443,
+        "step_deg": 1.31,
+        "pose_mm": 0.0,
+        "reserve_mm": -0.1,
+        "dt": 0.098596938773547,
+        "hits": [
+          [
+            "R_geom_10",
+            "lever_rail1"
+          ],
+          [
+            "R_geom_10",
+            "lever_rail1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "in front of the blade plate",
+      "cand": 1,
+      "start_reserve_mm": 3.0,
+      "cart": 0.552,
+      "ok": false,
+      "fail": {
+        "at": "backed out, in front of the lever base->lane",
+        "kf": null,
+        "cart": 0.288,
+        "step_deg": 3.39,
+        "pose_mm": 0.02,
+        "reserve_mm": 47.6,
+        "dt": 0.098596938773547,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_geom_26"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "in front of the blade plate",
+      "cand": 2,
+      "start_reserve_mm": 3.0,
+      "cart": -0.016,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "in front of the blade plate",
+      "cand": 3,
+      "start_reserve_mm": 3.0,
+      "cart": 0.641,
+      "ok": false,
+      "fail": {
+        "at": "backed out, in front of the lever base->lane",
+        "kf": null,
+        "cart": 0.451,
+        "step_deg": 1.38,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.098596938773547,
+        "hits": [
+          [
+            "R_geom_16",
+            "r07_closed_door_1_0"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_1_1"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_1_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "in front of the blade plate",
+      "cand": 4,
+      "start_reserve_mm": 3.0,
+      "cart": 0.509,
+      "ok": false,
+      "fail": {
+        "at": "backed out, in front of the lever base->lane",
+        "kf": null,
+        "cart": 0.335,
+        "step_deg": 2.34,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.098596938773547,
+        "hits": [
+          [
+            "R_geom_16",
+            "r07_closed_door_1_0"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "in front of the blade plate",
+      "cand": 5,
+      "start_reserve_mm": 3.0,
+      "cart": 0.573,
+      "ok": false,
+      "fail": {
+        "at": "backed out, in front of the lever base->lane",
+        "kf": null,
+        "cart": 0.422,
+        "step_deg": 1.75,
+        "pose_mm": 0.0,
+        "reserve_mm": -1.9,
+        "dt": 0.098596938773547,
+        "hits": [
+          [
+            "R_geom_10",
+            "lever_pusher_knob"
+          ],
+          [
+            "R_geom_10",
+            "lever_pusher_knob"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "in front of the blade plate",
+      "cand": 6,
+      "start_reserve_mm": 3.0,
+      "cart": 0.683,
+      "ok": false,
+      "fail": {
+        "at": "backed out, in front of the lever base->lane",
+        "kf": null,
+        "cart": 0.487,
+        "step_deg": 1.36,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.098596938773547,
+        "hits": [
+          [
+            "R_geom_16",
+            "r07_closed_door_1_0"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_1_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "in front of the blade plate",
+      "cand": 7,
+      "start_reserve_mm": 3.0,
+      "cart": 0.006,
+      "ok": false,
+      "fail": {
+        "at": "backed out, in front of the lever base->lane",
+        "kf": null,
+        "cart": -0.229,
+        "step_deg": 1.54,
+        "pose_mm": 0.0,
+        "reserve_mm": -5.7,
+        "dt": 0.098596938773547,
+        "hits": [
+          [
+            "R_geom_16",
+            "r07_closed_door_1_0"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_geom_16"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null,
+    [
+      [
+        -0.016265190240300875,
+        -0.21,
+        0.0,
+        -3.4610359046412666,
+        -0.2482366014543421,
+        2.046794738844019,
+        0.9890288646842815,
+        -5.944162190161738,
+        -4.377016875981359,
+        0.025,
+        0.025
+      ],
+      [
+        -0.016265190240300875,
+        -0.21,
+        0.0,
+        -3.4918238624276867,
+        -0.2347898042762227,
+        2.046535306568336,
+        1.0036733878160289,
+        -5.915134555182336,
+        -4.406680141823141,
+        0.025,
+        0.025
+      ],
+      [
+        -0.016265190240300875,
+        -0.21,
+        0.0,
+        -3.5223627142687253,
+        -0.22223690381932446,
+        2.04496299669034,
+        1.0161670946166932,
+        -5.886090783474633,
+        -4.431980845487606,
+        0.025,
+        0.025
+      ],
+      [
+        -0.016265190240300875,
+        -0.21,
+        0.0,
+        -3.5525934349719495,
+        -0.21045016887956638,
+        2.042185062101951,
+        1.0271440815623747,
+        -5.857144255077411,
+        -4.453785189987703,
+        0.025,
+        0.025
+      ],
+      [
+        -0.016265190240300875,
+        -0.21,
+        0.0,
+        -3.5824593317994777,
+        -0.1993358563339337,
+        2.038291401352274,
+        1.037080240998066,
+        -5.828392346865735,
+        -4.472749858087629,
+        0.025,
+        0.025
+      ],
+      [
+        -0.016265190240300875,
+        -0.21,
+        0.0,
+        -3.6119066965097573,
+        -0.18882239096017434,
+        2.033357443772465,
+        1.0463365557545337,
+        -5.799919751950065,
+        -4.489380042596215,
+        0.025,
+        0.025
+      ]
+    ]
+  ],
+  "grasps": [
+    {
+      "kf": 0,
+      "world": {
+        "stations": {
+          "slicer": [
+            -1.69,
+            0.225,
+            90.0
+          ],
+          "lever": [
+            0.3,
+            0.095,
+            0.0
+          ]
+        },
+        "tray_dxy": [
+          0.0,
+          0.0
+        ],
+        "drop_bowls": [],
+        "objs": [
+          [
+            "carrot",
+            [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            [
+              -1.42,
+              0.12,
+              0.9305
+            ]
+          ]
+        ]
+      },
+      "object_in_world": true
+    },
+    {
+      "kf": 11,
+      "world": {
+        "stations": {
+          "slicer": [
+            -1.69,
+            0.225,
+            90.0
+          ],
+          "lever": [
+            0.3,
+            0.095,
+            0.0
+          ]
+        },
+        "tray_dxy": [
+          0.0,
+          0.0
+        ],
+        "drop_bowls": [],
+        "objs": [
+          [
+            "carrot",
+            [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            [
+              -1.42,
+              0.12,
+              0.9305
+            ]
+          ]
+        ]
+      },
+      "object_in_world": true
+    }
+  ]
+}

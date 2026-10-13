@@ -1,0 +1,740 @@
+{
+  "site": "T2R",
+  "mode": "replay",
+  "size": "L",
+  "z": 0.0,
+  "approach_pitch_deg": 0.0,
+  "doc": "R19 seasoning cups (#5): screen the staging candidates (kitchen19seas.py sites T1, T2R/T2L/T2RC/T2LC, T3).\nNew file; nothing else is changed.\n\nMODE=replay  every stored state of every saved checked path is replayed in today's (R18b) kitchen with the\n             staged cups (all slots filled; L cups unless the site takes S only) and their caddy / rack /\n             bracket added, as r18spatreplay.py / r19prep_spotreplay.py do (fast checker, full=False: MuJoCo\n             contacts with the 10 / 5 mm gaps). Reported per path: states, states with a hit on a staging\n             geom (first one named), and the least distance (mujoco.mj_geomDistance) from any robot / held\n             geom to any staging geom over all its states. Paths:\n               - the 6 checked whole actions (results/r17/chain_*: wok plate + sink rinse at plating spot 1\n                 and 2, faucet lever, lid, spider, spatula fetch) with their grasp approaches,\n               - the 22 checked hub-roadmap edges (results/r19/hub/edge_*.json, every state),\n               - the checked R15 stir cycle in the R17 kitchen (results/r19/stir/stirwalk2_h_scrape_dice_r17.json).\n             A SCREEN of stored states (not a <= 4 mm re-check of the paths between them).\nMODE=ik      pickability of every slot: 96-start collision-aware IK (solver.solve, SEED) for the cup held at\n             its slot, lifted 8 mm (r18spatscan.py convention; T2: 12 mm, since the cart-mounted caddy is a\n             robot part and needs 10 mm), every other slot filled; both grasp senses (-1: gripper body above\n             the lug, +1: below). Counts of collision-free starts and the best reserve.\n             T2 (cart-mounted): the cart is fixed at CARTS (default 0.172 = hub station H_WOK).\nDesign options: Z=<m> riser under the T1 caddy / T3 rack (0 = on the counter, the plan); APITCH=<deg> grasp\napproach pitched down from horizontal (kitchen19seas.set_approach).\n[WORKERS=12] replay paths in parallel processes.\npython r19cup_screen.py SITE=T1|T2R|T2L|T2RC|T2LC|T3 MODE=replay|ik [Z=0] [APITCH=0] [SIZE=L|S] [SEED=14] [SLOTS=f0,b1] [SENSES=-1,1] [CARTS=.172]\n -> results/r19/cups/screen_<SITE>_<MODE>[_<SIZE>].json",
+  "results": {
+    "faucet_open": {
+      "states": 16,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "faucet_open__approaches": {
+      "states": 14,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_H_SINK__H_WOK": {
+      "states": 215,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 60
+    },
+    "hub_H_SPAT__H_SINK": {
+      "states": 209,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_H_WOK__H_POT": {
+      "states": 248,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 180
+    },
+    "hub_LEV_C__H_SINK": {
+      "states": 1635,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_LEV_C__H_SPAT": {
+      "states": 1835,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1145
+    },
+    "hub_LEV_C__H_WOK": {
+      "states": 1849,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 403
+    },
+    "hub_LEV_O__H_SINK": {
+      "states": 1489,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_LEV_O__H_SPAT": {
+      "states": 1726,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 1128
+    },
+    "hub_LEV_O__H_WOK": {
+      "states": 1735,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 529
+    },
+    "hub_LEV_O__WOK": {
+      "states": 2555,
+      "hit_states": 236,
+      "hit_by_label": {
+        "all": 236
+      },
+      "first_hit": {
+        "state": 2319,
+        "label": null,
+        "pair": [
+          "R_geom_16",
+          "R_cart_r19s_cup_b1_block"
+        ],
+        "gap_mm": 9.3405
+      },
+      "min_dist_mm": -116.4,
+      "min_pair": [
+        "R_geom_16",
+        "R_cart_r19s_cup_b1_body"
+      ],
+      "min_state": 2542
+    },
+    "hub_LID_POT__H_POT": {
+      "states": 1804,
+      "hit_states": 144,
+      "hit_by_label": {
+        "all": 144
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_25",
+          "R_cart_r19s_cup_f1_body"
+        ],
+        "gap_mm": 8.4937
+      },
+      "min_dist_mm": -90.5,
+      "min_pair": [
+        "R_finger_minus",
+        "R_cart_r19s_cup_b2_body"
+      ],
+      "min_state": 77
+    },
+    "hub_LID_POT__H_WOK": {
+      "states": 1944,
+      "hit_states": 161,
+      "hit_by_label": {
+        "all": 161
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_25",
+          "R_cart_r19s_cup_f1_body"
+        ],
+        "gap_mm": 8.4937
+      },
+      "min_dist_mm": -90.5,
+      "min_pair": [
+        "R_finger_minus",
+        "R_cart_r19s_cup_b2_body"
+      ],
+      "min_state": 88
+    },
+    "hub_LID_RACK__H_POT": {
+      "states": 2002,
+      "hit_states": 150,
+      "hit_by_label": {
+        "all": 150
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_25",
+          "R_cart_r19s_cup_b1_body"
+        ],
+        "gap_mm": -3.9236
+      },
+      "min_dist_mm": -78.9,
+      "min_pair": [
+        "R_gripper_oem_envelope",
+        "R_cart_r19s_cup_b2_block"
+      ],
+      "min_state": 54
+    },
+    "hub_LID_RACK__H_WOK": {
+      "states": 2223,
+      "hit_states": 167,
+      "hit_by_label": {
+        "all": 167
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_25",
+          "R_cart_r19s_cup_b1_body"
+        ],
+        "gap_mm": -3.9236
+      },
+      "min_dist_mm": -78.9,
+      "min_pair": [
+        "R_gripper_oem_envelope",
+        "R_cart_r19s_cup_b2_block"
+      ],
+      "min_state": 60
+    },
+    "hub_SPAT__H_SINK": {
+      "states": 1244,
+      "hit_states": 253,
+      "hit_by_label": {
+        "all": 253
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_cart_r19s_cup_b1_lug",
+          "R_gripper_palm"
+        ],
+        "gap_mm": 8.8057
+      },
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_SPAT__H_SPAT": {
+      "states": 1018,
+      "hit_states": 207,
+      "hit_by_label": {
+        "all": 207
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_cart_r19s_cup_b1_lug",
+          "R_gripper_palm"
+        ],
+        "gap_mm": 8.8057
+      },
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_SPAT__LEV_C": {
+      "states": 2842,
+      "hit_states": 216,
+      "hit_by_label": {
+        "all": 216
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_cart_r19s_cup_b1_lug",
+          "R_gripper_palm"
+        ],
+        "gap_mm": 8.8057
+      },
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_SPIDER__H_POT": {
+      "states": 1987,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_SPIDER__H_WOK": {
+      "states": 2203,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "hub_WOK__H_POT": {
+      "states": 1099,
+      "hit_states": 292,
+      "hit_by_label": {
+        "all": 292
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_11",
+          "R_cart_r19s_cup_b1_body"
+        ],
+        "gap_mm": 5.0343
+      },
+      "min_dist_mm": -116.3,
+      "min_pair": [
+        "R_geom_16",
+        "R_cart_r19s_cup_b1_body"
+      ],
+      "min_state": 16
+    },
+    "hub_WOK__H_SINK": {
+      "states": 1040,
+      "hit_states": 290,
+      "hit_by_label": {
+        "all": 290
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_11",
+          "R_cart_r19s_cup_b1_body"
+        ],
+        "gap_mm": 5.0343
+      },
+      "min_dist_mm": -116.3,
+      "min_pair": [
+        "R_geom_16",
+        "R_cart_r19s_cup_b1_body"
+      ],
+      "min_state": 14
+    },
+    "hub_WOK__H_WOK": {
+      "states": 859,
+      "hit_states": 222,
+      "hit_by_label": {
+        "all": 222
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_11",
+          "R_cart_r19s_cup_b1_body"
+        ],
+        "gap_mm": 5.0343
+      },
+      "min_dist_mm": -116.3,
+      "min_pair": [
+        "R_geom_16",
+        "R_cart_r19s_cup_b1_body"
+      ],
+      "min_state": 12
+    },
+    "lid_off_to_rack": {
+      "states": 205,
+      "hit_states": 29,
+      "hit_by_label": {
+        "play": 1,
+        "0->1": 2,
+        "1->2": 22,
+        "7->8": 4
+      },
+      "first_hit": {
+        "state": 0,
+        "label": "play",
+        "pair": [
+          "R_geom_25",
+          "R_cart_r19s_caddy_tier"
+        ],
+        "gap_mm": -79.5154
+      },
+      "min_dist_mm": -89.6,
+      "min_pair": [
+        "R_geom_26",
+        "R_cart_r19s_caddy_tier"
+      ],
+      "min_state": 0
+    },
+    "lid_off_to_rack__approaches": {
+      "states": 14,
+      "hit_states": 14,
+      "hit_by_label": {
+        "all": 14
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_21",
+          "R_cart_r19s_caddy_tier"
+        ],
+        "gap_mm": 9.0772
+      },
+      "min_dist_mm": -97.5,
+      "min_pair": [
+        "R_geom_26",
+        "R_cart_r19s_caddy_tier"
+      ],
+      "min_state": 1
+    },
+    "spatula_fetch": {
+      "states": 249,
+      "hit_states": 10,
+      "hit_by_label": {
+        "play": 1,
+        "0->1": 6,
+        "1->2": 3
+      },
+      "first_hit": {
+        "state": 0,
+        "label": "play",
+        "pair": [
+          "R_geom_21",
+          "R_cart_r19s_cup_b0_body"
+        ],
+        "gap_mm": 4.5312
+      },
+      "min_dist_mm": -87.0,
+      "min_pair": [
+        "R_gripper_oem_envelope",
+        "R_cart_r19s_cup_b1_block"
+      ],
+      "min_state": 0
+    },
+    "spatula_fetch__approaches": {
+      "states": 7,
+      "hit_states": 7,
+      "hit_by_label": {
+        "all": 7
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_17",
+          "R_cart_r19s_cup_b0_body"
+        ],
+        "gap_mm": 5.1686
+      },
+      "min_dist_mm": -83.3,
+      "min_pair": [
+        "R_gripper_oem_envelope",
+        "R_cart_r19s_cup_b1_block"
+      ],
+      "min_state": 1
+    },
+    "spider_pot_to_plate": {
+      "states": 516,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "spider_pot_to_plate__approaches": {
+      "states": 14,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "stir_cycle": {
+      "states": 1120,
+      "hit_states": 0,
+      "hit_by_label": {},
+      "first_hit": null,
+      "min_dist_mm": -50.0,
+      "min_pair": [
+        "R_cart_mast",
+        "R_cart_r19s_bracket_x"
+      ],
+      "min_state": 0
+    },
+    "wok_plate2_rinse": {
+      "states": 470,
+      "hit_states": 470,
+      "hit_by_label": {
+        "play": 1,
+        "0->1": 3,
+        "1->2": 6,
+        "2->3": 18,
+        "join@3": 1,
+        "3->4": 46,
+        "4->5": 45,
+        "5->6": 45,
+        "6->7": 44,
+        "join@7": 7,
+        "7->8": 17,
+        "8->9": 10,
+        "9->10": 45,
+        "10->11": 45,
+        "11->12": 17,
+        "join@12": 7,
+        "12->13": 88,
+        "13->14": 16,
+        "14->15": 6,
+        "15->16": 3
+      },
+      "first_hit": {
+        "state": 0,
+        "label": "play",
+        "pair": [
+          "R_geom_16",
+          "R_cart_r19s_caddy_tier"
+        ],
+        "gap_mm": -21.5942
+      },
+      "min_dist_mm": -172.0,
+      "min_pair": [
+        "R_geom_17",
+        "R_cart_r19s_cup_b2_body"
+      ],
+      "min_state": 119
+    },
+    "wok_plate2_rinse__approaches": {
+      "states": 14,
+      "hit_states": 14,
+      "hit_by_label": {
+        "all": 14
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_16",
+          "R_cart_r19s_caddy_tier"
+        ],
+        "gap_mm": -24.0921
+      },
+      "min_dist_mm": -111.2,
+      "min_pair": [
+        "R_geom_16",
+        "R_cart_r19s_cup_b1_body"
+      ],
+      "min_state": 6
+    },
+    "wok_plate_rinse": {
+      "states": 470,
+      "hit_states": 470,
+      "hit_by_label": {
+        "play": 1,
+        "0->1": 3,
+        "1->2": 6,
+        "2->3": 18,
+        "join@3": 1,
+        "3->4": 20,
+        "4->5": 45,
+        "5->6": 45,
+        "6->7": 70,
+        "join@7": 7,
+        "7->8": 17,
+        "8->9": 10,
+        "9->10": 45,
+        "10->11": 45,
+        "11->12": 17,
+        "join@12": 7,
+        "12->13": 88,
+        "13->14": 16,
+        "14->15": 6,
+        "15->16": 3
+      },
+      "first_hit": {
+        "state": 0,
+        "label": "play",
+        "pair": [
+          "R_geom_16",
+          "R_cart_r19s_caddy_tier"
+        ],
+        "gap_mm": -21.5942
+      },
+      "min_dist_mm": -172.0,
+      "min_pair": [
+        "R_geom_17",
+        "R_cart_r19s_cup_b2_body"
+      ],
+      "min_state": 93
+    },
+    "wok_plate_rinse__approaches": {
+      "states": 14,
+      "hit_states": 14,
+      "hit_by_label": {
+        "all": 14
+      },
+      "first_hit": {
+        "state": 0,
+        "label": null,
+        "pair": [
+          "R_geom_16",
+          "R_cart_r19s_caddy_tier"
+        ],
+        "gap_mm": -24.0921
+      },
+      "min_dist_mm": -111.2,
+      "min_pair": [
+        "R_geom_16",
+        "R_cart_r19s_cup_b1_body"
+      ],
+      "min_state": 6
+    }
+  },
+  "total": {
+    "paths": 35,
+    "states": 36884,
+    "paths_hit": [
+      "hub_LEV_O__WOK",
+      "hub_LID_POT__H_POT",
+      "hub_LID_POT__H_WOK",
+      "hub_LID_RACK__H_POT",
+      "hub_LID_RACK__H_WOK",
+      "hub_SPAT__H_SINK",
+      "hub_SPAT__H_SPAT",
+      "hub_SPAT__LEV_C",
+      "hub_WOK__H_POT",
+      "hub_WOK__H_SINK",
+      "hub_WOK__H_WOK",
+      "lid_off_to_rack",
+      "lid_off_to_rack__approaches",
+      "spatula_fetch",
+      "spatula_fetch__approaches",
+      "wok_plate2_rinse",
+      "wok_plate2_rinse__approaches",
+      "wok_plate_rinse",
+      "wok_plate_rinse__approaches"
+    ],
+    "min_dist_mm": -172.0,
+    "closest": [
+      [
+        -172.0,
+        "wok_plate2_rinse",
+        [
+          "R_geom_17",
+          "R_cart_r19s_cup_b2_body"
+        ]
+      ],
+      [
+        -172.0,
+        "wok_plate_rinse",
+        [
+          "R_geom_17",
+          "R_cart_r19s_cup_b2_body"
+        ]
+      ],
+      [
+        -116.4,
+        "hub_LEV_O__WOK",
+        [
+          "R_geom_16",
+          "R_cart_r19s_cup_b1_body"
+        ]
+      ],
+      [
+        -116.3,
+        "hub_WOK__H_POT",
+        [
+          "R_geom_16",
+          "R_cart_r19s_cup_b1_body"
+        ]
+      ],
+      [
+        -116.3,
+        "hub_WOK__H_SINK",
+        [
+          "R_geom_16",
+          "R_cart_r19s_cup_b1_body"
+        ]
+      ],
+      [
+        -116.3,
+        "hub_WOK__H_WOK",
+        [
+          "R_geom_16",
+          "R_cart_r19s_cup_b1_body"
+        ]
+      ]
+    ]
+  },
+  "elapsed_s": 154.6
+}

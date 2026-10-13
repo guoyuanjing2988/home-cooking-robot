@@ -1,0 +1,931 @@
+{
+  "act": "cup",
+  "obj": "cupL",
+  "grasp_sense": 1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {
+    "r19seas": {
+      "site": "T2R",
+      "cups": "L",
+      "taken": "b1",
+      "z": 0.0
+    }
+  },
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      -1.15,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.52,
+      0.36
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 77,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        0.72,
+        -0.132,
+        0.951
+      ],
+      "c": 0.4,
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.72,
+        -0.132,
+        0.969
+      ],
+      "c": 0.4,
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out",
+      "p": [
+        0.72,
+        -0.173,
+        1.089
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        0.56,
+        0.09,
+        1.316
+      ],
+      "c": 0.45,
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.09,
+        1.316
+      ],
+      "c": 0.45,
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "tipped 135 (poured)",
+      "p": [
+        0.785,
+        0.09,
+        1.425
+      ],
+      "c": 0.45,
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 6,
+      "label": "level",
+      "p": [
+        0.83,
+        0.09,
+        1.316
+      ],
+      "c": 0.45,
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 7,
+      "label": "lane",
+      "p": [
+        0.56,
+        0.09,
+        1.316
+      ],
+      "c": 0.45,
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 8,
+      "label": "out",
+      "p": [
+        0.72,
+        -0.173,
+        1.089
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 9,
+      "label": "lowered",
+      "p": [
+        0.72,
+        -0.132,
+        0.969
+      ],
+      "c": 0.4,
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 10,
+      "label": "set down",
+      "p": [
+        0.72,
+        -0.132,
+        0.951
+      ],
+      "c": 0.4,
+      "anchor": false,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "lifted#1": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "ok": 29,
+        "pose": 37,
+        "collision": 30,
+        "plume": 0
+      }
+    },
+    "over the wok#4": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "ok": 46,
+        "pose": 50,
+        "plume": 0
+      }
+    },
+    "lowered#9": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "ok": 29,
+        "pose": 37,
+        "collision": 30,
+        "plume": 0
+      }
+    }
+  },
+  "pieces": [],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    },
+    {
+      "ok": false,
+      "kf": 10,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": null,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "lifted",
+      "cand": 0,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 1,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 2,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 3,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 4,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.406,
+        "step_deg": 2.0,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 150.4,
+        "dt": 0.09730085108210396,
+        "hits": [
+          [
+            "R_cart_r19s_cup_b0_body",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 5,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.406,
+        "step_deg": 2.0,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 150.4,
+        "dt": 0.09730085108210396,
+        "hits": [
+          [
+            "R_cart_r19s_cup_b0_body",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 6,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 7,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.406,
+        "step_deg": 2.0,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 150.4,
+        "dt": 0.09730085108210396,
+        "hits": [
+          [
+            "R_cart_r19s_cup_b0_body",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 0,
+      "start_reserve_mm": 12.5,
+      "cart": 0.45,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.45,
+        "step_deg": 1.27,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 19.5,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_16",
+            "R_cart_r19s_cup_b2_block"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 1,
+      "start_reserve_mm": 12.5,
+      "cart": 0.45,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.45,
+        "step_deg": 1.99,
+        "pose_mm": 0.0,
+        "reserve_mm": 12.5,
+        "plume_mm": 33.0,
+        "dt": 0.09999999999999996,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 2,
+      "start_reserve_mm": 12.5,
+      "cart": 0.45,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.45,
+        "step_deg": 1.99,
+        "pose_mm": 0.0,
+        "reserve_mm": 12.5,
+        "plume_mm": 33.0,
+        "dt": 0.09999999999999996,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 3,
+      "start_reserve_mm": 12.5,
+      "cart": 0.45,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.45,
+        "step_deg": 1.99,
+        "pose_mm": 0.0,
+        "reserve_mm": 12.5,
+        "plume_mm": 33.0,
+        "dt": 0.09999999999999996,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 4,
+      "start_reserve_mm": 12.5,
+      "cart": 0.45,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.45,
+        "step_deg": 1.99,
+        "pose_mm": 0.0,
+        "reserve_mm": 12.5,
+        "plume_mm": 33.0,
+        "dt": 0.09999999999999996,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 5,
+      "start_reserve_mm": 12.5,
+      "cart": 0.45,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.45,
+        "step_deg": 1.27,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 19.5,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_16",
+            "R_cart_r19s_cup_b2_block"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 6,
+      "start_reserve_mm": 12.5,
+      "cart": 0.45,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.45,
+        "step_deg": 1.99,
+        "pose_mm": 0.0,
+        "reserve_mm": 12.5,
+        "plume_mm": 33.0,
+        "dt": 0.09999999999999996,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 7,
+      "start_reserve_mm": 12.5,
+      "cart": 0.45,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.45,
+        "step_deg": 1.27,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 19.5,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_16",
+            "R_cart_r19s_cup_b2_block"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 0,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 1,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 2,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 3,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 4,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.406,
+        "step_deg": 2.0,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 150.4,
+        "dt": 0.09730085108210396,
+        "hits": [
+          [
+            "R_cart_r19s_cup_b0_body",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 5,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.406,
+        "step_deg": 2.0,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 150.4,
+        "dt": 0.09730085108210396,
+        "hits": [
+          [
+            "R_cart_r19s_cup_b0_body",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 6,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.419,
+        "step_deg": 1.49,
+        "pose_mm": 0.0,
+        "reserve_mm": 98.3,
+        "plume_mm": 61.9,
+        "dt": 0.0979860480615845,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 7,
+      "start_reserve_mm": 4.5,
+      "cart": 0.4,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.406,
+        "step_deg": 2.0,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 150.4,
+        "dt": 0.09730085108210396,
+        "hits": [
+          [
+            "R_cart_r19s_cup_b0_body",
+            "R_gripper_r19cL_body"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null,
+    null
+  ],
+  "r19": {
+    "site": "T2R",
+    "slot": "b1",
+    "size": "L",
+    "z": 0.0,
+    "approach_pitch_deg": 0.0,
+    "approach_m": 0.05,
+    "plume_m": 0.2,
+    "tip_deg": 135.0,
+    "one": false,
+    "pour_cart": ".45",
+    "cart_x": ".40",
+    "out": {
+      "dy": -0.04,
+      "dz": 0.15
+    },
+    "pour": {
+      "cup_x": 0.83,
+      "cup_y": 0.09,
+      "yaw": 0.0,
+      "grip_z": 1.38,
+      "meet_x": 0.56
+    },
+    "min_plume_mm": null,
+    "k_state": {
+      "tool_xy": {
+        "spatula": [
+          -1.15,
+          0.3
+        ],
+        "ladle": [
+          1.62,
+          0.24
+        ],
+        "spider": [
+          1.52,
+          0.36
+        ]
+      },
+      "spat_elev": 8.0,
+      "spat_yaw": 0.0,
+      "spat_roll": 180.0,
+      "design": {
+        "pot_h": 0.12,
+        "rack": 0.04,
+        "lid_a": 0.0,
+        "car_a": 45.0,
+        "rack_ry": 90.0
+      }
+    },
+    "cfg_held": {
+      "r14": true,
+      "present": [],
+      "r15": true,
+      "r16": true,
+      "r17": true,
+      "r16_lid": "rack",
+      "r15_drum_taken": true,
+      "r16_tools": {
+        "ladle": null
+      },
+      "r19seas": {
+        "site": "T2R",
+        "cups": "L",
+        "taken": "b1",
+        "z": 0.0
+      },
+      "r16_held": {
+        "obj": "cupL",
+        "T_tool_obj": [
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0675
+          ],
+          [
+            -1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -0.06400000000000002
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    "cfg_approach": [
+      {
+        "r14": true,
+        "present": [],
+        "r15": true,
+        "r16": true,
+        "r17": true,
+        "r16_lid": "rack",
+        "r15_drum_taken": true,
+        "r16_tools": {
+          "ladle": null
+        },
+        "r19seas": {
+          "site": "T2R",
+          "cups": "L",
+          "taken": null,
+          "z": 0.0
+        }
+      },
+      {
+        "r14": true,
+        "present": [],
+        "r15": true,
+        "r16": true,
+        "r17": true,
+        "r16_lid": "rack",
+        "r15_drum_taken": true,
+        "r16_tools": {
+          "ladle": null
+        },
+        "r19seas": {
+          "site": "T2R",
+          "cups": "L",
+          "taken": null,
+          "z": 0.0
+        }
+      }
+    ],
+    "argv": [
+      "ACT=cup",
+      "SIZE=L",
+      "SEEDS=1",
+      "KEEP=4",
+      "TRIES=8",
+      "WORKERS=5",
+      "SIGN=1",
+      "SITE=T2R",
+      "SLOT=b1",
+      "CARTX=.40",
+      "POURC=.45",
+      "TAG=s9a"
+    ]
+  }
+}

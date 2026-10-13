@@ -32,6 +32,8 @@ edge; corners of parts still uncertified go back into the fit with that margin, 
 Radii and cylinder ends are finally moved out by 0.05 mm (rounding), as in r19arm_fit.py.
 
 python r19ur5e_encfit.py [MEN=<menagerie universal_robots_ur5e dir>] [STEP=.002] [DEPTH=10]  -> r19/arm_ur5e_enc.json
+python r19ur5e_encfit.py bloat [ARMJSON=r19/arm_ur5e_enc.json]   how far the model is outside the real arm (bloat), stored in the JSON
+(ur5e_enc2, the tighter fit with convex polytopes, is r19ur5e_enc2fit.py)
 Labels: M = Menagerie model files (ur5e.xml, assets/*.obj), E = derived here."""
 import sys,json,math
 from pathlib import Path
@@ -110,7 +112,7 @@ def candidates(L,prims,bodyT,parent,jaxis,nocover=True):
   if parent.get(L)==B:X=bodyT[L];axB=X[:3,:3]@jaxis[L];ptB=X[:3,3]           # p on L's parent; L's joint axis in B's frame
   elif parent.get(B)==L:X=np.linalg.inv(bodyT[B]);axB=jaxis[B];ptB=np.zeros(3)  # p on L's child; the child's joint axis
   else:continue
-  if abs(abs(p['u']@axB)-1)<1e-9 and np.linalg.norm(np.cross(p['c']-ptB,axB))<1e-9 and not(nocover and (L,p['name']) in NOCOVER):out.append((i,X))
+  if abs(abs(p['u']@axB)-1)<1e-9 and np.linalg.norm(np.cross(p['c']-ptB,axB))<1e-9 and not(nocover and (L,p.get('parent',p['name'])) in NOCOVER):out.append((i,X))
  return out
 def local(P,p):
  s=(P-p['c'])@p['u'];rho=np.linalg.norm(P-p['c']-np.outer(s,p['u']),axis=1);return s,rho
@@ -274,4 +276,64 @@ def main():
   if g.get('menagerie'):print(f"{g['name']:22s} {g['body']:22s} {g['menagerie']['type']:8s}->{g['type']:8s} r Menagerie {g['menagerie']['size'][0]*1e3:5.1f} start {g['start']['radius_m']*1e3:5.1f} -> {g['size'][0]*1e3:6.2f} mm  extent {g['menagerie_extent_m']} start {g['start']['extent_m']} -> {g['extent_m']}")
   else:print(f"{g['name']:22s} {g['body']:22s} added   ->{g['type']:8s} r {g['start']['radius_m']*1e3:5.1f}->{g['size'][0]*1e3:6.2f} mm  extent {g['start']['extent_m']} -> {g['extent_m']}")
  for L in NAMES:print(f'{L:15s} Menagerie geoms: max protrusion {before[L]["max_protrusion_mm"]:6.2f} mm | fitted: {after[L]["max_protrusion_mm"]:6.2f} mm, certificate {cert[L]}')
-if __name__=='__main__':main()
+INV_BODY={v:k for k,v in BODY.items()}
+def from_json(fn):
+ """primitives of an arm_*.json (the fitted geoms) in the fit's form (centre c, axis u, extent [s0, s1], r)."""
+ out=[]
+ for g in json.loads((H/fn).read_text(encoding='utf-8'))['geoms']:
+  R=Rq(np.array(g['quat'],float));h=g['size'][1]
+  out.append(dict(name=g['name'],parent=g.get('parent',g['name']),body=INV_BODY[g['body']],type=g['type'],c=np.array(g['pos'],float),u=R[:,2].copy(),quat=list(g['quat']),
+   s0=-h,s1=h,r=float(g['size'][0]),menagerie=g.get('menagerie'),start=g.get('start')))
+ return out
+# ---------------------------------------------------------------- bloat: how far the model is outside the real arm
+def surface(p,step):
+ """points on the surface of a primitive (its own body frame), spacing <= step."""
+ u=p['u'];a=np.cross(u,[1,0,0]) if abs(u[0])<.9 else np.cross(u,[0,1,0]);a/=np.linalg.norm(a);b=np.cross(u,a);r=p['r']
+ na=max(8,int(math.ceil(2*math.pi*r/step)));th=np.linspace(0,2*math.pi,na,endpoint=False);ring=np.outer(np.cos(th),a)+np.outer(np.sin(th),b)
+ ns=max(2,int(math.ceil((p['s1']-p['s0'])/step))+1);S=np.linspace(p['s0'],p['s1'],ns)
+ out=[(p['c']+np.outer(S,u)[:,None,:]+r*ring[None]).reshape(-1,3)]
+ if p['type']=='cylinder':
+  for e in (p['s0'],p['s1']):
+   for rr in np.arange(step,r,step):
+    n=max(6,int(math.ceil(2*math.pi*rr/step)));t=np.linspace(0,2*math.pi,n,endpoint=False);out.append(p['c']+e*u+rr*(np.outer(np.cos(t),a)+np.outer(np.sin(t),b)))
+   out.append((p['c']+e*u)[None])
+ else:
+  n=max(20,int(4*math.pi*r*r/step**2));k=np.arange(n)+.5;phi=np.arccos(1-2*k/n);t=math.pi*(1+5**.5)*k
+  D=np.c_[np.cos(t)*np.sin(phi),np.sin(t)*np.sin(phi),np.cos(phi)]@np.c_[a,b,u].T;Dz=D@u
+  out+=[p['c']+p['s1']*u+r*D[Dz>0],p['c']+p['s0']*u+r*D[Dz<0]]
+ return np.concatenate(out)
+def bloat(fn,step=.002):
+ """Per primitive and per link: the largest distance from an exposed point of the model surface (a surface point
+ of one primitive that no other primitive of the arm contains) to the nearest point of the real arm surface (the
+ Menagerie visual meshes, vertices + 2 mm grid; the nearest-sample distance can exceed the true one by <= 1.7 mm).
+ Arm at q = 0 (stretched) and at the Menagerie home pose; the larger value counts."""
+ from scipy.spatial import cKDTree
+ m,_,tris,_,_,_=load();d=mujoco.MjData(m);prims=from_json(fn)
+ bn=lambda b:mujoco.mj_id2name(m,mujoco.mjtObj.mjOBJ_BODY,b);bid={bn(b):b for b in range(1,m.nbody)}
+ Pm={L:grid(T,.002) for L,T in tris.items() if L!='base'};Sf=[surface(p,step) for p in prims];res={}
+ for q in (np.zeros(6),np.array([-1.5708,-1.5708,1.5708,-1.5708,-1.5708,0])):
+  d.qpos[:]=q;mujoco.mj_kinematics(m,d)
+  W=lambda L,X:d.xpos[bid[L]]+X@d.xmat[bid[L]].reshape(3,3).T
+  tree=cKDTree(np.concatenate([W(L,X) for L,X in Pm.items()]))
+  wp=[]
+  for p in prims:   # primitive in world
+   R=d.xmat[bid[p['body']]].reshape(3,3);wp.append(dict(p,c=d.xpos[bid[p['body']]]+R@p['c'],u=R@p['u']))
+  for i,(p,S) in enumerate(zip(prims,Sf)):
+   X=W(p['body'],S);keep=np.ones(len(X),bool)
+   for j,o in enumerate(wp):
+    if j!=i:s_,r_=local(X,o);keep&=sdist(s_,r_,o)>-1e-6
+   if not keep.any():continue
+   dist,_=tree.query(X[keep]);k=int(np.argmax(dist));Lp=(X[keep][k]-wp[i]['c'])
+   v=res.setdefault(p['name'],dict(body=BODY[p['body']],max_mm=0.,p99_mm=0.,exposed_points=0))
+   if dist[k]*1e3>v['max_mm']:v.update(max_mm=round(float(dist[k])*1e3,1),at_s_mm=round(float(Lp@wp[i]['u'])*1e3,1),at_rho_mm=round(float(np.linalg.norm(Lp-(Lp@wp[i]['u'])*wp[i]['u']))*1e3,1))
+   v['p99_mm']=max(v['p99_mm'],round(float(np.percentile(dist,99))*1e3,1));v['exposed_points']=max(v['exposed_points'],int(keep.sum()))
+ links={}
+ for nm,v in res.items():
+  o=links.setdefault(v['body'],dict(max_mm=0.,worst=None))
+  if v['max_mm']>o['max_mm']:o.update(max_mm=v['max_mm'],worst=nm)
+ return dict(method=bloat.__doc__,file=fn,per_link=links,per_primitive=res)
+if __name__=='__main__':
+ if 'bloat' in sys.argv[1:]:
+  fn=KV.get('ARMJSON','r19/arm_ur5e_enc.json');b=bloat(fn);J=json.loads((H/fn).read_text(encoding='utf-8'));J['bloat']=b;(H/fn).write_text(json.dumps(J,indent=1),encoding='utf-8')
+  print(fn);[print(f'{k:22s} max {v["max_mm"]:5.1f} mm ({v["worst"]})') for k,v in b['per_link'].items()];[print(f'   {k:28s} {v}') for k,v in b['per_primitive'].items()]
+ else:main()

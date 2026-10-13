@@ -1,0 +1,703 @@
+{
+  "act": "cup",
+  "obj": "cupL",
+  "grasp_sense": 1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {
+    "r19seas": {
+      "site": "T2R",
+      "cups": "L",
+      "taken": "b1",
+      "z": 0.0
+    }
+  },
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      -1.15,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.52,
+      0.36
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 87,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        0.57,
+        -0.132,
+        0.951
+      ],
+      "c": 0.25,
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.57,
+        -0.132,
+        0.969
+      ],
+      "c": 0.25,
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out",
+      "p": [
+        0.57,
+        -0.173,
+        1.089
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        0.56,
+        0.09,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.09,
+        1.316
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "tipped 135 (poured)",
+      "p": [
+        0.785,
+        0.09,
+        1.425
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 6,
+      "label": "level",
+      "p": [
+        0.83,
+        0.09,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 7,
+      "label": "lane",
+      "p": [
+        0.56,
+        0.09,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 8,
+      "label": "out",
+      "p": [
+        0.57,
+        -0.173,
+        1.089
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 9,
+      "label": "lowered",
+      "p": [
+        0.57,
+        -0.132,
+        0.969
+      ],
+      "c": 0.25,
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 10,
+      "label": "set down",
+      "p": [
+        0.57,
+        -0.132,
+        0.951
+      ],
+      "c": 0.25,
+      "anchor": false,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "over the wok#4": {
+      "ok": false,
+      "n_candidates": 3,
+      "start_status": {
+        "ok": 43,
+        "pose": 48,
+        "collision": 5,
+        "plume": 5
+      }
+    },
+    "lifted#1": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.25,
+      "start_reserve_mm": 4.5
+    },
+    "lowered#9": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.25,
+      "start_reserve_mm": 4.5
+    }
+  },
+  "pieces": [
+    {
+      "frm": "lifted#1",
+      "to": "pick#0",
+      "steps": 2,
+      "time_s": 0.2,
+      "min_reserve_mm": 2.0,
+      "min_plume_mm": 192.9,
+      "max_step_deg": 1.17,
+      "cart": [
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "frm": "lifted#1",
+      "to": "lane#3",
+      "steps": 48,
+      "time_s": 4.7,
+      "min_reserve_mm": 3.9,
+      "min_plume_mm": 100.3,
+      "max_step_deg": 1.46,
+      "cart": [
+        0.249,
+        0.22
+      ]
+    },
+    {
+      "frm": "lowered#9",
+      "to": "lane#7",
+      "steps": 48,
+      "time_s": 4.7,
+      "min_reserve_mm": 3.9,
+      "min_plume_mm": 100.3,
+      "max_step_deg": 1.46,
+      "cart": [
+        0.249,
+        0.22
+      ]
+    },
+    {
+      "frm": "lowered#9",
+      "to": "set down#10",
+      "steps": 2,
+      "time_s": 0.2,
+      "min_reserve_mm": 2.0,
+      "min_plume_mm": 192.9,
+      "max_step_deg": 1.17,
+      "cart": [
+        0.25,
+        0.25
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": true,
+      "kf": 0,
+      "min_reserve_mm": 2.3,
+      "time_s": 0.5
+    },
+    {
+      "ok": true,
+      "kf": 10,
+      "min_reserve_mm": 2.3,
+      "time_s": 0.5
+    }
+  ],
+  "min_reserve_mm": 2.0,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "lifted",
+      "cand": 0,
+      "start_reserve_mm": 4.5,
+      "cart": 0.25,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 1,
+      "start_reserve_mm": 4.5,
+      "cart": 0.25,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 2,
+      "start_reserve_mm": 4.5,
+      "cart": 0.25,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 3,
+      "start_reserve_mm": 4.5,
+      "cart": 0.25,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 0,
+      "start_reserve_mm": 12.5,
+      "cart": 0.704,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.756,
+        "step_deg": 0.74,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": -0.3,
+        "dt": 0.04411764705882353,
+        "hits": [],
+        "plume_geom": "R_geom_5"
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 1,
+      "start_reserve_mm": 12.5,
+      "cart": 0.924,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->lane",
+        "kf": null,
+        "cart": 0.904,
+        "step_deg": 0.01,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": -0.2,
+        "dt": 0.09999999999999996,
+        "hits": [],
+        "plume_geom": "R_geom_5"
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 2,
+      "start_reserve_mm": 12.5,
+      "cart": 0.699,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.758,
+        "step_deg": 0.71,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": -0.7,
+        "dt": 0.04411764705882353,
+        "hits": [],
+        "plume_geom": "R_geom_5"
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 0,
+      "start_reserve_mm": 4.5,
+      "cart": 0.25,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 1,
+      "start_reserve_mm": 4.5,
+      "cart": 0.25,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 2,
+      "start_reserve_mm": 4.5,
+      "cart": 0.25,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 3,
+      "start_reserve_mm": 4.5,
+      "cart": 0.25,
+      "ok": true,
+      "fail": null
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    [
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.1412574632852293,
+        -0.08187923264289187,
+        1.7195416741225114,
+        1.3668984026103368,
+        1.0046074920658203,
+        1.6446319707675376,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.1282719747148615,
+        -0.0745924290583437,
+        1.6973046679895798,
+        1.3829556785835013,
+        1.0174722376267904,
+        1.6425470512586655,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.1157521240073156,
+        -0.06711867350417675,
+        1.6745077984641694,
+        1.3993083553131347,
+        1.029877487119139,
+        1.6405680407421253,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.103679796725812,
+        -0.05944140929281553,
+        1.6511449694867293,
+        1.4159526065214465,
+        1.0418409234056354,
+        1.63868751184813,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.0920372804207403,
+        -0.05154436158816003,
+        1.627208298397511,
+        1.432886016448052,
+        1.0533798653729851,
+        1.6368986895955997,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.080807317111183,
+        -0.04341141085245468,
+        1.6026879944117745,
+        1.4501076482625024,
+        1.0645112114395776,
+        1.6351953827986734,
+        0.025,
+        0.025
+      ]
+    ],
+    [
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.1412574632852293,
+        -0.08187923264289187,
+        1.7195416741225114,
+        1.3668984026103368,
+        1.0046074920658203,
+        1.6446319707675376,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.1282719747148615,
+        -0.0745924290583437,
+        1.6973046679895798,
+        1.3829556785835013,
+        1.0174722376267904,
+        1.6425470512586655,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.1157521240073156,
+        -0.06711867350417675,
+        1.6745077984641694,
+        1.3993083553131347,
+        1.029877487119139,
+        1.6405680407421253,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.103679796725812,
+        -0.05944140929281553,
+        1.6511449694867293,
+        1.4159526065214465,
+        1.0418409234056354,
+        1.63868751184813,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.0920372804207403,
+        -0.05154436158816003,
+        1.627208298397511,
+        1.432886016448052,
+        1.0533798653729851,
+        1.6368986895955997,
+        0.025,
+        0.025
+      ],
+      [
+        0.25,
+        -0.21,
+        0.0,
+        2.080807317111183,
+        -0.04341141085245468,
+        1.6026879944117745,
+        1.4501076482625024,
+        1.0645112114395776,
+        1.6351953827986734,
+        0.025,
+        0.025
+      ]
+    ]
+  ],
+  "r19": {
+    "site": "T2R",
+    "slot": "b1",
+    "size": "L",
+    "z": 0.0,
+    "approach_pitch_deg": 0.0,
+    "approach_m": 0.05,
+    "plume_m": 0.2,
+    "tip_deg": 135.0,
+    "one": false,
+    "out": {
+      "dy": -0.04,
+      "dz": 0.15
+    },
+    "pour": {
+      "cup_x": 0.83,
+      "cup_y": 0.09,
+      "yaw": 0.0,
+      "grip_z": 1.38,
+      "meet_x": 0.56
+    },
+    "min_plume_mm": 100.3,
+    "k_state": {
+      "tool_xy": {
+        "spatula": [
+          -1.15,
+          0.3
+        ],
+        "ladle": [
+          1.62,
+          0.24
+        ],
+        "spider": [
+          1.52,
+          0.36
+        ]
+      },
+      "spat_elev": 8.0,
+      "spat_yaw": 0.0,
+      "spat_roll": 180.0,
+      "design": {
+        "pot_h": 0.12,
+        "rack": 0.04,
+        "lid_a": 0.0,
+        "car_a": 45.0,
+        "rack_ry": 90.0
+      }
+    },
+    "cfg_held": {
+      "r14": true,
+      "present": [],
+      "r15": true,
+      "r16": true,
+      "r17": true,
+      "r16_lid": "rack",
+      "r15_drum_taken": true,
+      "r16_tools": {
+        "ladle": null
+      },
+      "r19seas": {
+        "site": "T2R",
+        "cups": "L",
+        "taken": "b1",
+        "z": 0.0
+      },
+      "r16_held": {
+        "obj": "cupL",
+        "T_tool_obj": [
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0675
+          ],
+          [
+            -1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            -0.06400000000000002
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    "cfg_approach": [
+      {
+        "r14": true,
+        "present": [],
+        "r15": true,
+        "r16": true,
+        "r17": true,
+        "r16_lid": "rack",
+        "r15_drum_taken": true,
+        "r16_tools": {
+          "ladle": null
+        },
+        "r19seas": {
+          "site": "T2R",
+          "cups": "L",
+          "taken": null,
+          "z": 0.0
+        }
+      },
+      {
+        "r14": true,
+        "present": [],
+        "r15": true,
+        "r16": true,
+        "r17": true,
+        "r16_lid": "rack",
+        "r15_drum_taken": true,
+        "r16_tools": {
+          "ladle": null
+        },
+        "r19seas": {
+          "site": "T2R",
+          "cups": "L",
+          "taken": null,
+          "z": 0.0
+        }
+      }
+    ],
+    "argv": [
+      "ACT=cup",
+      "SIZE=L",
+      "SEEDS=1",
+      "KEEP=4",
+      "TRIES=8",
+      "WORKERS=6",
+      "SIGN=1",
+      "SITE=T2R",
+      "SLOT=b1",
+      "CARTX=.25",
+      "TAG=s8b"
+    ]
+  }
+}

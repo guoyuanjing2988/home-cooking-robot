@@ -1,0 +1,226 @@
+{
+ "scene": "edge:LEV_O__WOK",
+ "part": "cartR",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r19/hub/edge_LEV_O__WOK.json",
+  "kind": "edge",
+  "edge": "LEV_O__WOK",
+  "method": "via: retreat (0, -0.15, 0) + tuck at the mid cart",
+  "reported_min_reserve_mm": 2.0,
+  "src_n": 2555,
+  "densified": false
+ },
+ "states": 2555,
+ "stored_states": 2555,
+ "nominal_s": 1.7,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "yaw",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.366,
+    "bounded": true,
+    "violation_at": 0.369,
+    "binding": {
+     "state": 262,
+     "value_mm": -0.013,
+     "pair": [
+      "R_geom_25",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->WOK 10.3%",
+     "src_index": 262.0
+    },
+    "evals": 314
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 193
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "yaw",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 492
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 193
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 718
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 499
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.341,
+    "bounded": true,
+    "violation_at": 0.344,
+    "binding": {
+     "state": 266,
+     "value_mm": -0.001,
+     "pair": [
+      "R_geom_25",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->WOK 10.4%",
+     "src_index": 266.0
+    },
+    "evals": 348
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 499
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_y",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 729
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 530
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_y",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.222,
+    "bounded": true,
+    "violation_at": 0.225,
+    "binding": {
+     "state": 259,
+     "value_mm": -0.018,
+     "pair": [
+      "R_geom_25",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->WOK 10.1%",
+     "src_index": 259.0
+    },
+    "evals": 314
+   },
+   "contact": {
+    "tol": 1.196,
+    "bounded": true,
+    "violation_at": 1.199,
+    "binding": {
+     "state": 0,
+     "value_mm": 0.0,
+     "pair": [
+      "R_finger_plus",
+      "r17_lever_tip"
+     ],
+     "label": "LEV_O->WOK 0.0%",
+     "src_index": 0.0
+    },
+    "evals": 895
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "yaw",
+   "sign": 1,
+   "state": 262,
+   "value": 0.355,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.064,
+   "checker_pair": [
+    "r07_closed_door_1_0",
+    "R_geom_25"
+   ],
+   "evaluator_gate_mm": 0.064,
+   "evaluator_pair": [
+    "R_geom_25",
+    "r07_closed_door_1_0"
+   ]
+  },
+  {
+   "axis": "yaw",
+   "sign": 1,
+   "state": 262,
+   "value": 0.3801,
+   "checker_hits": [
+    [
+     "R_geom_25",
+     "r07_closed_door_1_0"
+    ],
+    [
+     "r07_closed_door_1_0",
+     "R_geom_25"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.076,
+   "checker_pair": [
+    "r07_closed_door_1_0",
+    "R_geom_25"
+   ],
+   "evaluator_gate_mm": -0.076,
+   "evaluator_pair": [
+    "R_geom_25",
+    "r07_closed_door_1_0"
+   ]
+  }
+ ],
+ "elapsed_s": 46.2
+}

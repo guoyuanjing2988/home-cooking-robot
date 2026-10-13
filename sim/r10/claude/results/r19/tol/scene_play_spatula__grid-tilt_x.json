@@ -1,0 +1,162 @@
+{
+ "scene": "play:spatula",
+ "part": "grid-tilt_x",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+  "kind": "play",
+  "act": "spatula",
+  "obj": "spatula_b",
+  "src_n": 249
+ },
+ "states": 2642,
+ "stored_states": 249,
+ "nominal_s": 1.6,
+ "nominal_cached": true,
+ "held": true,
+ "nominal": {
+  "min_gate_mm": 4.8,
+  "gate_state": 21,
+  "gate_label": "kf 0->1 (pick -> lifted)",
+  "gate_pair": [
+   "R_gripper_r18_spat_blade4",
+   "raw_tomato"
+  ],
+  "min_contact_mm": 9.8,
+  "contact_state": 21,
+  "contact_label": "kf 0->1 (pick -> lifted)",
+  "contact_pair": [
+   "R_gripper_r18_spat_blade4",
+   "raw_tomato"
+  ],
+  "rho_m": {
+   "yaw": 0.688,
+   "tilt_x": 1.908,
+   "tilt_y": 1.895,
+   "held": 0.448
+  },
+  "note": "exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower",
+  "min_held_gate_mm": 4.8,
+  "held_pair": [
+   "R_gripper_r18_spat_blade4",
+   "raw_tomato"
+  ]
+ },
+ "checker_reported": {
+  "file": "results/r19/smooth/spatula_baseline.json",
+  "min_reserve_mm": 2.04,
+  "state": 2597,
+  "label": "kf 4->5 (over the wok -> stroke start)",
+  "exact_gate_there_mm": 17.127,
+  "exact_pair_there": [
+   "R_gripper_r18_spat_blade0",
+   "r15_wok_t4_9"
+  ],
+  "note": "r19smooth baseline: Checker.check(full=True), min over non-self categories"
+ },
+ "grid": [
+  {
+   "axis": "tilt_x",
+   "value": 0.1,
+   "unit": "deg",
+   "gate_min_mm": 4.613,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "gate_label": "kf 4->5 (over the wok -> stroke start)",
+   "contact_min_mm": 9.613,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "contact_label": "kf 4->5 (over the wok -> stroke start)"
+  },
+  {
+   "axis": "tilt_x",
+   "value": 0.2,
+   "unit": "deg",
+   "gate_min_mm": 3.51,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "gate_label": "kf 4->5 (over the wok -> stroke start)",
+   "contact_min_mm": 8.51,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "contact_label": "kf 4->5 (over the wok -> stroke start)"
+  },
+  {
+   "axis": "tilt_x",
+   "value": 0.5,
+   "unit": "deg",
+   "gate_min_mm": 0.187,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "gate_label": "kf 4->5 (over the wok -> stroke start)",
+   "contact_min_mm": 5.187,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "contact_label": "kf 4->5 (over the wok -> stroke start)"
+  },
+  {
+   "axis": "tilt_x",
+   "value": -0.1,
+   "unit": "deg",
+   "gate_min_mm": 4.144,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ],
+   "gate_label": "kf 0->1 (pick -> lifted)",
+   "contact_min_mm": 9.144,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ],
+   "contact_label": "kf 0->1 (pick -> lifted)"
+  },
+  {
+   "axis": "tilt_x",
+   "value": -0.2,
+   "unit": "deg",
+   "gate_min_mm": 2.482,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ],
+   "gate_label": "kf 0->1 (pick -> lifted)",
+   "contact_min_mm": 7.482,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ],
+   "contact_label": "kf 0->1 (pick -> lifted)"
+  },
+  {
+   "axis": "tilt_x",
+   "value": -0.5,
+   "unit": "deg",
+   "gate_min_mm": -2.519,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ],
+   "gate_label": "kf 0->1 (pick -> lifted)",
+   "contact_min_mm": 2.481,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ],
+   "contact_label": "kf 0->1 (pick -> lifted)"
+  }
+ ],
+ "elapsed_s": 4.6
+}

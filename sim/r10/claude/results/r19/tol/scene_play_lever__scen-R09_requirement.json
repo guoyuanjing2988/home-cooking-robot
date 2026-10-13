@@ -1,0 +1,52 @@
+{
+ "scene": "play:lever",
+ "part": "scen-R09_requirement",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_lever_s+1_final.json",
+  "kind": "play",
+  "act": "lever",
+  "obj": "lever",
+  "src_n": 16
+ },
+ "states": 128,
+ "stored_states": 16,
+ "nominal_s": 1.0,
+ "nominal_cached": true,
+ "held": true,
+ "scenarios": {
+  "R09_requirement": {
+   "half_range_mm_deg": [
+    2.0,
+    2.0,
+    1.0,
+    0.2,
+    0.0,
+    0.0
+   ],
+   "gate": {
+    "min_mm": 5.196,
+    "state": 127,
+    "label": "kf 0->1 (closed -> open)",
+    "pair": [
+     "R_gripper_r17_lever_bar",
+     "r17_lever_hub"
+    ],
+    "corner": [
+     2.0,
+     2.0,
+     -1.0,
+     0.2,
+     0.0,
+     0.0
+    ],
+    "evals": 1248
+   },
+   "contact": {
+    "min_mm": ">=10",
+    "evals": 1184
+   }
+  }
+ },
+ "elapsed_s": 5.5
+}

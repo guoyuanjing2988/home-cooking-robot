@@ -1,0 +1,19 @@
+lifted start candidates 8 {'ok': 29, 'pose': 37, 'collision': 30, 'plume': 0}
+ cand 0 cart 0.25 ok
+ cand 1 cart 0.25 ok
+ cand 2 cart 0.25 ok
+ cand 3 cart 0.25 ok
+over the wok start candidates 3 {'ok': 43, 'pose': 48, 'collision': 5, 'plume': 5}
+ cand 0 cart 0.7 {'at': 'over the wok->tipped 135 (poured)', 'kf': None, 'cart': np.float64(0.756), 'step_deg': 0.74, 'pose_mm': 0.0, 'reserve_mm': None, 'plume_mm': -0.3, 'dt': np.float64(0.04411764705882353), 'hits': [], 'plume_geom': 'R_geom_5'}
+ cand 1 cart 0.92 {'at': 'over the wok->lane', 'kf': None, 'cart': np.float64(0.904), 'step_deg': 0.01, 'pose_mm': 0.0, 'reserve_mm': None, 'plume_mm': -0.2, 'dt': np.float64(0.09999999999999996), 'hits': [], 'plume_geom': 'R_geom_5'}
+ cand 2 cart 0.7 {'at': 'over the wok->tipped 135 (poured)', 'kf': None, 'cart': np.float64(0.758), 'step_deg': 0.71, 'pose_mm': 0.0, 'reserve_mm': None, 'plume_mm': -0.7, 'dt': np.float64(0.04411764705882353), 'hits': [], 'plume_geom': 'R_geom_5'}
+lowered start candidates 8 {'ok': 29, 'pose': 37, 'collision': 30, 'plume': 0}
+ cand 0 cart 0.25 ok
+ cand 1 cart 0.25 ok
+ cand 2 cart 0.25 ok
+ cand 3 cart 0.25 ok
+joins at lane []
+joins at lane []
+results/r19/cups/chain_cup_T2R_b1_L_s+1_s8b.json
+{"act": "cup", "obj": "cupL", "grasp_sense": 1, "design": {"pot_h": 0.12, "rack": 0.04, "lid_a": 0.0, "car_a": 45.0, "rack_ry": 90.0}, "scene": {"r19seas": {"site": "T2R", "cups": "L", "taken": "b1", "z": 0.0}}, "wok_tilt": 0.0, "wok_grasp": "top", "tool_xy": {"spatula": [-1.15, 0.3], "ladle": [1.62, 0.24], "spider": [1.52, 0.36]}, "ok": false, "time_s": 0.0, "elapsed_s": 87, "anchors": {"over the wok#4": {"ok": false, "n_candidates": 3, "start_status": {"ok": 43, "pose": 48, "collision": 5, "plume": 5}}, "lifted#1": {"ok": true, "cand": 0, "cart": 0.25, "start_reserve_mm": 4.5}, "lowered#9": {"ok": true, "cand": 0, "cart": 0.25, "start_reserve_mm": 4.5}}, "pieces": [{"frm": "lifted#1", "to": "pick#0", "steps": 2, "time_s": 0.2, "min_reserve_mm": 2.0, "min_plume_mm": 192.9, "max_step_deg": 1.17, "cart": [0.25, 0.25]}, {"frm": "lifted#1", "to": "lane#3", "steps": 48, "time_s": 4.7, "min_reserve_mm": 3.9, "min_plume_mm": 100.3, "max_step_deg": 1.46, "cart": [0.249, 0.22]}, {"frm": "lowered#9", "to": "lane#7", "steps": 48, "time_s": 4.7, "min_reserve_mm": 3.9, "min_plume_mm": 100.3, "max_step_deg": 1.46, "cart": [0.249, 0.22]}, {"frm": "lowered#9", "to": "set down#10", "steps": 2, "time_s": 0.2, "min_reserve_mm": 2.0, "min_plume_mm": 192.9, "max_step_deg": 1.17, "cart": [0.25, 0.25]}], "joins": [], "approaches": [{"ok": true, "kf": 0, "min_reserve_mm": 2.3, "time_s": 0.5}, {"ok": true, "kf": 10, "min_reserve_mm": 2.3, "time_s": 0.5}], "min_reserve_mm": 2.0, "max_pgc_moment_Nm": null, "max_joint_ratio": null}
+r19 {"site": "T2R", "slot": "b1", "size": "L", "z": 0.0, "approach_pitch_deg": 0.0, "approach_m": 0.05, "plume_m": 0.2, "tip_deg": 135.0, "one": false, "out": {"dy": -0.04, "dz": 0.15}, "pour": {"cup_x": 0.83, "cup_y": 0.09, "yaw": 0.0, "grip_z": 1.38, "meet_x": 0.56}, "min_plume_mm": 100.3, "argv": ["ACT=cup", "SIZE=L", "SEEDS=1", "KEEP=4", "TRIES=8", "WORKERS=6", "SIGN=1", "SITE=T2R", "SLOT=b1", "CARTX=.25", "TAG=s8b"]}

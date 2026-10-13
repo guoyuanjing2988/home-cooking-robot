@@ -1,0 +1,176 @@
+{
+ "scene": "play:spider",
+ "part": "grid-x",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_spider_s+1_final.json",
+  "kind": "play",
+  "act": "spider",
+  "obj": "spider",
+  "src_n": 516
+ },
+ "states": 4335,
+ "stored_states": 516,
+ "nominal_s": 1.8,
+ "nominal_cached": true,
+ "held": true,
+ "nominal": {
+  "min_gate_mm": 5.369,
+  "gate_state": 162,
+  "gate_label": "kf 1->2 (- -> out and up)",
+  "gate_pair": [
+   "R_gripper_r16_spider_bowl",
+   "r16_pot_ear+1"
+  ],
+  "min_contact_mm": 10.369,
+  "contact_state": 162,
+  "contact_label": "kf 1->2 (- -> out and up)",
+  "contact_pair": [
+   "R_gripper_r16_spider_bowl",
+   "r16_pot_ear+1"
+  ],
+  "rho_m": {
+   "yaw": 0.723,
+   "tilt_x": 1.863,
+   "tilt_y": 1.867,
+   "held": 0.432
+  },
+  "note": "exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower",
+  "min_held_gate_mm": 5.369,
+  "held_pair": [
+   "R_gripper_r16_spider_bowl",
+   "r16_pot_ear+1"
+  ]
+ },
+ "checker_reported": {
+  "file": "results/r19/smooth/spider_baseline.json",
+  "min_reserve_mm": 2.03,
+  "state": 264,
+  "label": "kf 1->2 (- -> out and up)",
+  "exact_gate_there_mm": 29.917,
+  "exact_pair_there": [
+   "R_geom_10",
+   "r14_hood"
+  ],
+  "note": "r19smooth baseline: Checker.check(full=True), min over non-self categories"
+ },
+ "grid": [
+  {
+   "axis": "x",
+   "value": 1,
+   "unit": "mm",
+   "gate_min_mm": 5.68,
+   "gate_pair": [
+    "R_geom_11",
+    "r14_hood"
+   ],
+   "gate_label": "",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "x",
+   "value": 2,
+   "unit": "mm",
+   "gate_min_mm": 5.68,
+   "gate_pair": [
+    "R_geom_11",
+    "r14_hood"
+   ],
+   "gate_label": "kf 17->18 (- -> on the rest)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "x",
+   "value": 5,
+   "unit": "mm",
+   "gate_min_mm": 5.68,
+   "gate_pair": [
+    "R_geom_11",
+    "r14_hood"
+   ],
+   "gate_label": "kf 17->18 (- -> on the rest)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "x",
+   "value": 10,
+   "unit": "mm",
+   "gate_min_mm": 5.68,
+   "gate_pair": [
+    "R_geom_11",
+    "r14_hood"
+   ],
+   "gate_label": "",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "x",
+   "value": -1,
+   "unit": "mm",
+   "gate_min_mm": 4.964,
+   "gate_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "gate_label": "kf 1->2 (- -> out and up)",
+   "contact_min_mm": 9.964,
+   "contact_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "contact_label": "kf 1->2 (- -> out and up)"
+  },
+  {
+   "axis": "x",
+   "value": -2,
+   "unit": "mm",
+   "gate_min_mm": 4.56,
+   "gate_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "gate_label": "kf 1->2 (- -> out and up)",
+   "contact_min_mm": 9.56,
+   "contact_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "contact_label": "kf 1->2 (- -> out and up)"
+  },
+  {
+   "axis": "x",
+   "value": -5,
+   "unit": "mm",
+   "gate_min_mm": 3.418,
+   "gate_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "gate_label": "kf 1->2 (- -> out and up)",
+   "contact_min_mm": 8.418,
+   "contact_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "contact_label": "kf 1->2 (- -> out and up)"
+  },
+  {
+   "axis": "x",
+   "value": -10,
+   "unit": "mm",
+   "gate_min_mm": 1.712,
+   "gate_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "gate_label": "kf 16->17 (out and up -> -)",
+   "contact_min_mm": 6.712,
+   "contact_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "contact_label": "kf 16->17 (out and up -> -)"
+  }
+ ],
+ "elapsed_s": 152.7
+}

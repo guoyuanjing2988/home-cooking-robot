@@ -80,15 +80,21 @@ def action():
   return 'carrot',dict(r19=w0),KF,[(0,w0,True),(len(KF)-1,w1,False)]
  if ACT=='tomato':
   t0=K19.tray('tomato',dxy);seat=K19.lever_seat(*L['lever']);Rp=K.Rx(float(KV.get('PITCH',-30.)));lx=L['lever'][0]   # grasp pitched down 30 deg at the tap
+  Rp=roll(Rp,float(KV.get('TROLL',0.)))   # TROLL: the (round) tomato turned about the approach axis for the tap, e.g. 90 = jaws vertical as for the carrot
   head=[kf(I,t0+[0,0,.008],'A',0,'pick',anchor=True,seat=.008),kf(I,t0+[0,0,.05],'A',0,'lifted')]
   if lx>S[0]:   # lever base right of the tap (plating area): nothing between the tray and the tap
-   head+=[kf(I,t0+[0,-.04,.15],'F',0,'out and up'),kf(Rp,[-0.80,.10,1.15],'F',0,'lane',meet=True)]
-   tail=[kf(Rp,[S[0]+float(KV.get('L2DX',.35)),.10,1.15],'F',0,'lane',meet=True)]
+   l1=[float(v) for v in KV.get('L1','-0.80,.10,1.15').split(',')];l2=[float(v) for v in KV.get('L2','-0.05,.10,1.15').split(',')]
+   head+=[kf(I,t0+[0,-.04,.15],'F',0,'out and up'),kf(Rp,l1,'F',0,'lane',meet=True)]
+   tail=[kf(Rp,l2,float(KV['L2C']) if 'L2C' in KV else 'A' if KV.get('CA2') else 'F',0,'lane',meet=True)]   # L2C: both arrivals bring the cart to this x; CA2=1: each side keeps its anchor's cart
+   if 'MID' in KV:   # an extra anchor between the tap and the lever base, with its own meet (more IK branches for the DP)
+    mid=[float(v) for v in KV['MID'].split(',')];m3=[float(v) for v in KV.get('MID3','0.10,.05,1.10').split(',')]
+    tail+=[kf(I,mid,'F',0,'carry past the sink',anchor=True),kf(I,m3,'F',0,'lane to the lever base',meet=True)]
   else:         # lever base between the tray and the tap: carry behind it (y .30, under the cabinet), out in front right of it
    head+=[kf(I,t0+[0,.18,.10],'F',0,'back, behind the tray front'),kf(Rp,[-0.80,.30,1.05],'F',0,'back lane behind the lever base',meet=True),kf(Rp,[-0.50,.36,1.00],'F',0,'to the tap')]
    tail=[kf(Rp,[-0.60,.10,1.15],'F',0,'lane right of the lever base',meet=True)]
-  KF=head+[kf(Rp,S,'F',RINSE,'under the tap',anchor=True),kf(roll(Rp,RL),S,'F',RINSE,f'rolled +{RL:g}'),kf(roll(Rp,-RL),S,'F',RINSE,f'rolled -{RL:g}'),kf(Rp,S,'F',0,'level')]+tail+[
-   kf(I,seat+[0,-.135,.03],'F',0,'backed out, in front of the lever base'),kf(I,seat+[0,-.06,.008],'F',0,'in front of the blade plate',anchor=True),kf(I,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
+  c2='A' if KV.get('CA2') else 'F'
+  KF=head+[kf(Rp,S,float(KV['TAPC']) if 'TAPC' in KV else 'F',RINSE,'under the tap',anchor=True),kf(roll(Rp,RL),S,c2,RINSE,f'rolled +{RL:g}'),kf(roll(Rp,-RL),S,c2,RINSE,f'rolled -{RL:g}'),kf(Rp,S,c2,0,'level')]+tail+[
+   kf(I,seat+[0,-.135,.03],c2,0,'backed out, in front of the lever base'),kf(I,seat+[0,-.06,.008],float(KV['LVC']) if 'LVC' in KV else 'F',0,'in front of the blade plate',anchor=True),kf(I,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
   w0=scene_with('lever',objs=[car]);w1=scene_with('lever',objs=[car])
   return 'tomato',dict(r19=w0),KF,[(0,w0,True),(len(KF)-1,w1,True)]
  if ACT=='tap':   # exploration: the held item from a front lane point into the outlet and back out (one anchor at the tap)
@@ -105,6 +111,15 @@ def action():
   w0=scene_with('lever',objs=[car,('tomato',I,K19.lever_seat(*L['lever']))]);w1=scene_with('lever',objs=[car])
   return 'pusher',dict(r19=sc),KF,[(0,w0,False),(2,w1,False)]   # the pusher is in the station at rest in both worlds
 OBJ,SCENE,KF,GR=action();SCENE=J(SCENE);GR=[(k,J(w),inw) for k,w,inw in GR]
+if 'ANCH' in KV:   # keep only these anchors (label substrings, ','-separated); meets that no longer lie between two anchors are dropped
+ keep=KV['ANCH'].split(',')
+ for k_ in KF:k_['anchor']=k_['anchor'] and any(t in k_['label'] for t in keep)
+ A_=[i for i,k_ in enumerate(KF) if k_['anchor']]
+ for a_,b_ in zip(A_,A_[1:]):
+  ms=[i for i in range(a_+1,b_) if KF[i]['meet']]
+  for i in ms[1:]:KF[i]['meet']=False
+ for i,k_ in enumerate(KF):
+  if k_['meet'] and not any(a_<i<b_ for a_,b_ in zip(A_,A_[1:])):k_['meet']=False
 JAW_HELD=K19.JAW[OBJ];FOOD=OBJ in ('carrot','tomato')
 BASE=dict(r14=True,present=[],r15=True,r16=True,r17=True,r16_lid='rack',r15_drum_taken=True,r16_tools={'ladle':None},r14_fridge=True,r17_lever=0.,**K19.base_cfg())
 def model(extra,world_obj=None):
@@ -162,15 +177,16 @@ def shuffle(q,x,c):
 def meet_join(qa,qb,x,plan=False):
  qa,qb=np.array(qa,float),np.array(qb,float)
  if abs(qa[0]-qb[0])<1e-6:return join(qa,qb,plan,x)
+ why=[]
  for frm,to,rev in ((qa,qb,False),(qb,qa,True)):
   out,f=shuffle(frm,x,to[0])
-  if f:continue
+  if f:why.append(dict(side='b' if rev else 'a',carts=[round(qa[0],3),round(qb[0],3)],shuffle=f));continue
   j=join(np.array(out[-1]['q']),to,plan,x) if not rev else join(to,np.array(out[-1]['q']),plan,x)
-  if not j['ok']:continue
+  if not j['ok']:why.append(dict(side='b' if rev else 'a',join={k_:v for k_,v in j.items() if k_!='qs'}));continue
   ts=sum(max(.01/CW,o['dq']/QW) for o in out);sq=[o['q'] for o in out]
   j.update(cart_m=round(abs(qa[0]-qb[0]),3),shuffle_s=round(ts,1),s=round(j['s']+ts,2),arm_deg=round(j['arm_deg']+sum(o['dq'] for o in out),1),qs=(sq+j['qs']) if not rev else (j['qs']+sq[::-1]))
   return j
- return dict(ok=False,arm_deg=1e3,cart_m=round(abs(qa[0]-qb[0]),3),reason='shuffle or join blocked from both sides')
+ return dict(ok=False,arm_deg=1e3,cart_m=round(abs(qa[0]-qb[0]),3),reason='shuffle or join blocked from both sides',why=why)
 def join(qa,qb,plan=None,x=None):
  qa,qb=np.array(qa),np.array(qb)
  for j in range(6):
@@ -270,6 +286,8 @@ for a,b,x in segs:
  for i,(ca,ga) in enumerate(good[a]):
   for j,(cb,gb) in enumerate(good[b]):pairs[(a,b,i,j)]=meet_join(ga[x][-1]['q'],gb[x][-1]['q'],x,plan=False)
  print('joins at',KF[x]['label'],sorted([(round(v['arm_deg']),v['ok']) for v in [pairs[(a,b,i,j)] for i in range(len(good[a])) for j in range(len(good[b]))]])[:6],flush=True)
+ for k_,v in pairs.items():
+  if k_[:2]==(a,b) and not v['ok']:print('  join',k_[2:],'cart gap',v.get('cart_m'),str(v.get('why') or v.get('hits') or v.get('reason'))[:300],flush=True)
 def dp():
  cost={A[0]:{i:0. for i in range(len(good[A[0]]))}};back={}
  for a,b,x in segs:
