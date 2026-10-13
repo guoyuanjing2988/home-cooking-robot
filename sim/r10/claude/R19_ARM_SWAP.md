@@ -245,3 +245,153 @@ For the stir:
 - the grip-point speed against the FR5's 1 m/s TCP limit, which is not checked automatically.
 
 **Smaller UR5e regressions.** The lever regression run here (`TAG=regress_r19arm`) is the UR5e check. The UR5e envelope was not re-run, because that would overwrite `assets/envelope_-20.json`; the code path gives the same numbers by construction.
+
+## 9. Like-for-like round under the true-geometry standard (2026-10-13, #2 after #12)
+
+**What changed in the standard.** DECISIONS 2026-10-13, "True arm geometry is the checking standard":
+- The UR5e baseline is now `ur5e_enc2_pgc`: enclosing hulls, plus the PGC-140 housing from DH's drawing (Ø75 body) instead of the 75 × 75 × 138.5 mm box.
+- The plating spot is at y 0.15 (`PY=.15`).
+- All six UR5e chains pass, and the hub is 22 / 22.
+
+**The FR5 runs in §6/§8 were not like-for-like:** they used the box gripper and the old plate y. The FR5 model itself (vendor-mesh enclosing cylinders and capsules) already met the standard.
+
+### 9.1 New arm options (`arms.py`; backup `arms.py.bak_r19arm2`)
+
+| id | Arm | Gripper |
+|---|---|---|
+| `fr5_pgc`, `fr5_j6_pgc`, `cs66_pgc` | `fr5` / `fr5_j6` / `cs66` (same limits, speeds, torque envelope) | the DH-drawing PGC housing (`scene.oem_pgc_drawing`), as `ur5e_enc2_pgc` |
+| `fr5_pgc_sp20`, `fr5_j6_pgc_sp20` | as above | **design proposal [E]:** the same gripper on a flange adapter 20 mm longer along the flange axis. The adapter's own mass is not modelled; the tool CoM moves 20 mm out with it |
+
+- Defaults are unchanged. The UR5e lever regression is identical again (`chain_lever_s+1_regress_r19arm2.json`: every key, `play` diff 0.0).
+- `cs66_pgc` was not run.
+
+### 9.2 Smoke runs, each under 5 min (`ARM=fr5_j6_pgc PY=.15`)
+
+`PY` only moves the wok's plating spot in `r17chain.py`. For the lever, spider, lid and spatula it changes nothing, exactly as for the UR5e adoption.
+
+| Chain | Result |
+|---|---|
+| **Lever** (`TRIES=8`) | **pass**: 3.7 s, r17chain reserve 6.0 mm. ≤ 4 mm re-check (`r19enc_check.py`): 141 states, 0 hits, env 2.19 mm, self 2.02 mm. Approaches 0 hits. Certified (`r19enc_adopt.py`) → `chain_lever_s+1_final_fr5_j6_pgc.json` |
+| **Spider**, re-plan (`TRIES=12`) | **not finished in 296 s.** The new gripper changes the search path: at "over the plate" the first candidates fail on the wrist-1 housing vs the gripper housing at the 110° tip |
+| **Spider**, the stored `fr5_j6` box-gripper chain re-checked with `fr5_j6_pgc` | **pass**: 5,490 states at ≤ 4 mm, 0 hits, env 2.02 mm, self 2.0 mm. Approaches 68 + 68 states, 0 hits. 53.3 s, joint ratio 0.438. Certified → `chain_spider_s+1_final_fr5_j6_pgc.json` |
+
+The PGC housing lies inside the box, so the box's passing paths can only gain clearance.
+
+Further certificates from stored FR5 chains (≤ 4 mm play + approaches, 0 hits):
+
+| Chain | Arms | ≤ 4 mm play | Reserves |
+|---|---|---|---|
+| spatula (from `fr5`) | `fr5_pgc`, `fr5_j6_pgc` | 2,429 states | env 2.0 mm, self 2.0 mm |
+| lever (from `fr5`) | `fr5_pgc` | 136 states | env 3.99 mm |
+
+**Like-for-like standing:**
+
+| Chain | `fr5_pgc` | `fr5_j6_pgc` |
+|---|---|---|
+| lever | ✓ | ✓ |
+| spatula | ✓ | ✓ |
+| spider | re-plan needed (the stock-J6 `fr5` spider failed) | ✓ |
+| wok, plate 2, lid | lanes below | lanes below |
+
+### 9.3 What the earlier FR5 failures were blocked on
+
+Two new diagnostic tools (they diagnose; they neither plan nor check):
+- **`r19arm_diag.py`** re-runs r17chain's own 96-start anchor solve on model variants. It also maps the UR5e's checked anchor state through the 77° / 90° offsets and solves it exactly on the FR5.
+- **`r19arm_pathdiag.py`** makes the FR5 follow the UR5e's whole checked TCP path by IK continuation. It uses the fast check at every state and the full check at every 10th.
+
+Results: `results/r19/armswap/`.
+
+**Wok "lifted" (and "lowered" / set down), `fr5_pgc`, `PY=.15`:**
+- The random-start solver gives **0 starts in every variant**:
+  - stock;
+  - J4 window opened to ±360°;
+  - J2 and J4 opened;
+  - base rotation 0 instead of 77°;
+  - box gripper.
+
+  So the anchor is blocked by none of the joint windows, the base rotation or the gripper box.
+- **The UR5e's own posture, mapped to the FR5, lies inside every FR5 window.** Its only conflict is the **FR5 upper-arm elbow housing over the plate**: true gap 0.9 mm, 10 required. With the plate at y 0.17 the same state is clear (min 2.7 mm, camera vs wrist 2).
+- **Along the whole UR5e wok path** (470 states, `fr5_j6_pgc`), no joint window is left. The hits are:
+  - elbow vs plate: 40 states (pick and set-down);
+  - elbow vs sink front rim: 39;
+  - wrist-1 housing vs gripper housing: 22 (tip, empty).
+
+| Variant on the UR5e wok path | Hit states |
+|---|---|
+| none | 90 |
+| `PY=.17` | 50 (the plate pair is gone) |
+| 20 mm adapter | 11 |
+| 20 mm adapter + `PY=.17` | **3** (elbow vs sink front rim, states 92–94) |
+
+- **"Over the plate" and "under the tap":** the mapped UR5e states are valid on the FR5 (in every window, 0 hits). The random-start solver simply does not land in that branch (0 and 6 starts).
+- **One margin to watch:** in the UR5e branch, J6 under the tap is 173.9° against the stock 175° limit. Use the J6 option.
+
+**Lid:**
+- **Not J4.** The +85° stop only appears in random-start candidates parked at the end of the cart travel. Along the UR5e lid path, no FR5 window is left.
+- **Not the 77° base rotation.**
+- **What blocks it:**
+  - the wrist-1 housing vs the gripper housing during the slide-out and the 90° roll (43 of 205 states);
+  - the upper-arm shoulder housing vs the spider-rest block near the rack (6 states).
+- **Effect of the adapter:**
+  - a 20 mm adapter removes the self pair along the whole path (4 spider-block states left; 60 mm leaves none);
+  - a re-plan with UR5e seeds and the 20 mm adapter (`fr5_j6_pgc_sp20`): the lift-off side now follows to the carry meet. At the rack, 15 of 16 candidates meet the spider block.
+
+**Stir (box-gripper run by the controller, `stirwalk2_h_scrape_dice_r17_fr5.json`):**
+- Strokes 0–3 pass.
+- The straight joint-space return into stroke 4 puts the spatula blade into the wok wall at 12 % of the move. It is the same in all 8 starts.
+- This does not depend on the gripper. It needs more stroke-4 start candidates or a via on that return; open.
+
+**Smallest changes, in order (none tried as the adopted design):**
+1. **Search, not geometry:** seed each anchor with the UR5e's checked states mapped through the arm's offsets (`r17chain.py SEEDUR=<UR5e chain>`, below). This is what the random-start solver misses for the wok's "over the plate" and "under the tap" and the lid's lift-off.
+2. **Gripper adapter +20 mm** along the flange axis (`*_pgc_sp20`): removes the FR5 wrist-1 vs gripper-housing pair on the wok and lid paths. The payload CoM moves out by 20 mm, and the adapter's mass must be added before adoption.
+3. **Plating spot y 0.15 → 0.17:** removes the elbow vs plate pair at the wok pick.
+4. **Lid only:** the spider rest moves a few cm away from the lid rack (not tested), or a 60 mm adapter.
+5. **Not needed:** a different base rotation or a J4 offset. The windows never bind on the UR5e's branches. (The J6 ±360° option still removes the thin J6 margin.)
+
+### 9.4 Code this round
+- **Backups `*.bak_r19arm2`:**
+  - `arms.py`: the options in §9.1;
+  - `r17chain.py`: `SEEDUR=<chain json>`. Extra IK starts from that chain's states, mapped by `q1 − mount yaw`, `q6 − clocking`; each is re-solved exactly at the anchor (≤ 0.5 mm / 0.2°) and **fully checked like a solver candidate**. They go first, like the R16 walk. Default off; the result stores `seed_ur`;
+  - `r19enc_check.py`: a non-UR `NEW=` writes to `results/r19/<arm>/` and is checked on that arm only; `SET=stir` takes `SUFFIX`;
+  - `r19enc_adopt.py`: `SRCSFX=` adopts a stored chain of another arm option.
+- **New:** `r19arm_diag.py`, `r19arm_pathdiag.py`.
+- **Outputs:**
+  - `results/r19/armswap/`;
+  - `results/r19/fr5_pgc/`, `results/r19/fr5_j6_pgc/`;
+  - `results/r17/chain_*_fr5_pgc.json`, `chain_*_fr5_j6_pgc.json` (certified);
+  - `chain_lid_s-1_final_seedur_fr5_j6_pgc[_sp20].json` (exploratory, failed).
+
+### 9.5 Controller lanes (background; `A=fr5_pgc`, then the same with `A=fr5_j6_pgc`)
+
+Each lane is a chain of commands. The re-plans use more search than the UR5e finals (`SEEDS=3` and the UR5e seeds); the rules are unchanged. Every chain that ends `"ok": true` is then re-checked at ≤ 4 mm and certified, approaches included.
+
+```bash
+cd /c/Users/admin/Documents/YJGames/robot_rail/sim/r10/claude
+PY=C:/Users/admin/Documents/YJGames/robot_v5/board/work/t01/.venv/Scripts/python.exe
+A=fr5_pgc; U=results/r17   # UR5e seeds: the adopted ur5e_enc2_pgc chains
+# lane 1: wok, then plate 2 (layout PY=.15)
+$PY r17chain.py ACT=wok SIGN=-1 GTILT=25 L2X=-.25 SINKC=-1.06 SPX=1.52 SPY=.36 PY=.15 TRIES=16 SEEDS=3 SEEDUR=$U/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json TAG=final_py.15 ARM=$A > $U/log_wok_final_py.15_$A.txt 2>&1
+$PY r17chain.py ACT=wok SIGN=-1 GTILT=25 L2X=-.25 SINKC=-1.06 SPX=1.52 SPY=.36 PX=.17 PLATE2=.43 PY=.15 TRIES=16 SEEDS=3 SEEDUR=$U/chain_wok_s-1_r18plate2b_py.15_ur5e_enc2_pgc.json TAG=r18plate2b_py.15 ARM=$A > $U/log_wok_plate2b_py.15_$A.txt 2>&1
+# lane 2: lid; spider (fr5_pgc only: fr5_j6_pgc's spider is certified); lever/spatula are certified for both
+$PY r17chain.py ACT=lid SIGN=-1 SPX=1.52 SPY=.36 TRIES=16 SEEDS=3 SEEDUR=$U/chain_lid_s-1_final_ur5e_enc2_pgc.json TAG=final ARM=$A > $U/log_lid_final_$A.txt 2>&1
+[ $A = fr5_pgc ] && $PY r17chain.py ACT=spider SIGN=1 SPX=1.52 SPY=.36 TRIES=12 SEEDS=3 SEEDUR=$U/chain_spider_s+1_final_ur5e_enc2_pgc.json TAG=final ARM=$A > $U/log_spider_final_$A.txt 2>&1
+# lane 3: stir with the PGC housing: reach probes, then the cycle with stored states
+for i in 0 16 32 48 64; do $PY r15reach.py stir KEYS=results/r15/stir_h_scrape_dice_keys.json I=$i CARTX=.55 GRIP=.45 TAG=r19 ARM=$A; done > results/r19/log_stirreach_$A.txt 2>&1
+$PY r19stir_save.py KEYS=results/r15/stir_h_scrape_dice_keys.json "REACH=results/r15/reach_stir_h_scrape_dice_i{i:03d}_g0.45_cx.55_r19_$A.json" GRIP=.45 SCENE=r17 ARM=$A > results/r19/log_stir_$A.txt 2>&1
+# lane 4 (after lanes 1-3): <= 4 mm re-checks + certificates (a failed chain is skipped by the re-check and refused by the adopter)
+for S in wok wok_plate2b; do $PY r19enc_check.py recheck SET=$S SUFFIX=_py.15_$A NEW=$A PY=.15; $PY r19enc_adopt.py ARM=$A SETS=$S SRCSFX=_py.15_$A PY=.15; done
+for S in lid spider; do $PY r19enc_check.py recheck SET=$S SUFFIX=_$A NEW=$A; $PY r19enc_adopt.py ARM=$A SETS=$S SRCSFX=_$A; done
+$PY r19enc_check.py recheck SET=stir SUFFIX=_$A NEW=$A
+# lane 5 (only when all six chain_*_$A.json are ok): the hub, as R19_UR5E_ENC.md 8.6 lane A with L="ARM=$A PY=.15"
+L="ARM=$A PY=.15"; D=results/r19/hub_py.15_$A; mkdir -p $D
+$PY r19hub.py endpoints $L > $D/log_endpoints.txt 2>&1; $PY r19hub.py tuck ELBOW=neg $L > $D/log_tuck_neg.txt 2>&1; $PY r19hub.py tuck ELBOW=pos $L > $D/log_tuck_pos.txt 2>&1; $PY r19hub.py hubs TUCK=neg $L > $D/log_hubs.txt 2>&1
+#   then the 22 edges in 4 lanes exactly as R19_UR5E_ENC.md 8.6 (each command with $L), then: $PY r19hub.py graph $L
+# design-proposal lane (E): the 20 mm adapter with the plate at y .17, J6 option
+B=fr5_j6_pgc_sp20
+$PY r17chain.py ACT=wok SIGN=-1 GTILT=25 L2X=-.25 SINKC=-1.06 SPX=1.52 SPY=.36 PY=.17 TRIES=16 SEEDS=3 SEEDUR=$U/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json TAG=final_py.17 ARM=$B > $U/log_wok_final_py.17_$B.txt 2>&1
+$PY r17chain.py ACT=lid SIGN=-1 SPX=1.52 SPY=.36 TRIES=16 SEEDS=3 SEEDUR=$U/chain_lid_s-1_final_ur5e_enc2_pgc.json TAG=final ARM=$B > $U/log_lid_final_$B.txt 2>&1
+```
+
+**How to read it:**
+- The FR5 passes like-for-like when, for one arm id, all six `chain_*` are `"ok": true` with an `adopted` certificate (≤ 4 mm play and approaches, 0 hits), the stir certificate is clean, and the hub is 22 / 22.
+- If the `fr5_pgc` / `fr5_j6_pgc` wok or lid lanes still fail on the pairs in §9.3, the proposal lane shows whether the 20 mm adapter and the plate at y 0.17 are enough. The lid also needs the spider rest moved.
