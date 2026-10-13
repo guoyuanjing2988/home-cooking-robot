@@ -776,8 +776,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 2.91,
-      "rss": 1.22,
+      "lin": 2.57,
+      "rss": 1.19,
       "top": [
        [
         "grasp_turn",
@@ -801,8 +801,8 @@
       "fixture_term": "fixture:cooker"
      },
      "contact": {
-      "lin": 1.54,
-      "rss": 0.59,
+      "lin": 1.34,
+      "rss": 0.57,
       "top": [
        [
         "grasp_turn",
@@ -817,10 +817,10 @@
         0.16
        ],
        [
-        "mount_yaw",
-        0.2,
-        1.229,
-        0.16
+        "dock_x",
+        2.0,
+        15.0,
+        0.13
        ]
       ],
       "fixture_term": "fixture:plate1"
@@ -828,8 +828,8 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 2.74,
-      "rss": 1.19,
+      "lin": 2.44,
+      "rss": 1.15,
       "top": [
        [
         "grasp_turn",
@@ -838,23 +838,23 @@
         1.07
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        0.544,
-        0.28
-       ],
-       [
         "fixture:cooker",
         1,
         4.0,
         0.25
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        0.544,
+        0.18
        ]
       ],
       "fixture_term": "fixture:cooker"
      },
      "contact": {
-      "lin": 1.39,
-      "rss": 0.55,
+      "lin": 1.22,
+      "rss": 0.53,
       "top": [
        [
         "grasp_turn",
@@ -863,16 +863,16 @@
         0.47
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        0.916,
-        0.16
-       ],
-       [
         "fixture:plate1",
         2,
         15.0,
         0.13
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        0.916,
+        0.11
        ]
       ],
       "fixture_term": "fixture:plate1"
@@ -935,61 +935,61 @@
     "play:wok": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -0.931,
-       "state": 4587,
-       "label": "kf 15->16 (lowered -> set down)",
+       "min_mm": -1.066,
+       "state": 3989,
+       "label": "kf 10->11 (emptied -> level)",
        "pair": [
-        "R_gripper_r15_wok_t0",
-        "r15_cooker"
+        "R_gripper_r15_wok_t4_2",
+        "r17_faucet_spout"
        ],
        "corner": [
-        6.0,
+        -5.4,
         1.5,
-        -1.0,
-        0.3,
-        -0.3,
-        0.15
+        1.0,
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 32320
+       "evals": 28288
       },
       "contact": {
-       "min_mm": 4.069,
-       "state": 4587,
-       "label": "kf 15->16 (lowered -> set down)",
+       "min_mm": 3.934,
+       "state": 3989,
+       "label": "kf 10->11 (emptied -> level)",
        "pair": [
-        "R_gripper_r15_wok_t0",
-        "r15_cooker"
+        "R_gripper_r15_wok_t4_2",
+        "r17_faucet_spout"
        ],
        "corner": [
-        6.0,
+        -5.4,
         1.5,
-        -1.0,
-        0.3,
-        -0.3,
-        0.15
+        1.0,
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 31680
+       "evals": 27008
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 2.193,
+       "min_mm": 2.355,
        "state": 0,
        "label": "",
        "pair": [
@@ -997,17 +997,17 @@
         "r15_cooker"
        ],
        "corner": [
-        0.5,
+        1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        0.05
+        0.054,
+        -0.11,
+        0.03
        ],
-       "evals": 1792
+       "evals": 2048
       },
       "contact": {
-       "min_mm": 7.193,
+       "min_mm": 7.355,
        "state": 0,
        "label": "",
        "pair": [
@@ -1015,12 +1015,12 @@
         "r15_cooker"
        ],
        "corner": [
-        0.5,
+        1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        0.05
+        0.054,
+        -0.11,
+        0.03
        ],
        "evals": 512
       }
@@ -1073,15 +1073,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 2.628,
+       "min_mm": 2.599,
        "state": 0,
        "label": "",
        "pair": [
@@ -1089,17 +1089,17 @@
         "r15_cooker"
        ],
        "corner": [
-        0.3,
+        1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         0.03
        ],
-       "evals": 1024
+       "evals": 1792
       },
       "contact": {
-       "min_mm": 7.628,
+       "min_mm": 7.599,
        "state": 0,
        "label": "",
        "pair": [
@@ -1107,29 +1107,29 @@
         "r15_cooker"
        ],
        "corner": [
-        0.3,
+        1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         0.03
        ],
-       "evals": 384
+       "evals": 512
       }
      }
     },
     "app:wok:0": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 4.266,
+       "min_mm": 4.593,
        "state": 0,
        "label": "approach@pick#0 step 0 (0 cm back)",
        "pair": [
@@ -1137,12 +1137,12 @@
         "r15_plate"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 3456
       },
@@ -1153,15 +1153,15 @@
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 8.104,
+       "min_mm": 8.01,
        "state": 0,
        "label": "approach@pick#0 step 0 (0 cm back)",
        "pair": [
@@ -1169,18 +1169,18 @@
         "r15_plate"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        0.05
+        0.054,
+        -0.11,
+        0.03
        ],
        "evals": 2176
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 320
+       "evals": 384
       }
      },
      "R09_requirement": {
@@ -1217,15 +1217,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 8.486,
+       "min_mm": 8.36,
        "state": 0,
        "label": "approach@pick#0 step 0 (0 cm back)",
        "pair": [
@@ -1233,33 +1233,33 @@
         "r15_plate"
        ],
        "corner": [
-        -0.3,
+        -1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         0.03
        ],
-       "evals": 1984
+       "evals": 2112
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 64
+       "evals": 256
       }
      }
     },
     "app:wok:1": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 4.266,
+       "min_mm": 4.593,
        "state": 0,
        "label": "approach@set down#16 step 0 (0 cm back)",
        "pair": [
@@ -1267,12 +1267,12 @@
         "r15_plate"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 3456
       },
@@ -1283,15 +1283,15 @@
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 8.104,
+       "min_mm": 8.01,
        "state": 0,
        "label": "approach@set down#16 step 0 (0 cm back)",
        "pair": [
@@ -1299,18 +1299,18 @@
         "r15_plate"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        0.05
+        0.054,
+        -0.11,
+        0.03
        ],
        "evals": 2176
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 320
+       "evals": 384
       }
      },
      "R09_requirement": {
@@ -1347,15 +1347,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 8.486,
+       "min_mm": 8.36,
        "state": 0,
        "label": "approach@set down#16 step 0 (0 cm back)",
        "pair": [
@@ -1363,18 +1363,18 @@
         "r15_plate"
        ],
        "corner": [
-        -0.3,
+        -1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         0.03
        ],
-       "evals": 1984
+       "evals": 2112
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 64
+       "evals": 256
       }
      }
     }
@@ -2098,8 +2098,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 6.12,
-      "rss": 3.39,
+      "lin": 5.75,
+      "rss": 3.37,
       "top": [
        [
         "fixture:raw",
@@ -2123,7 +2123,7 @@
       "fixture_term": "fixture:raw"
      },
      "contact": {
-      "lin": 3.07,
+      "lin": 2.89,
       "rss": 1.67,
       "top": [
        [
@@ -2150,8 +2150,8 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 6.02,
-      "rss": 3.37,
+      "lin": 5.59,
+      "rss": 3.34,
       "top": [
        [
         "fixture:raw",
@@ -2166,17 +2166,17 @@
         1.05
        ],
        [
-        "floor_tilt_x",
-        0.15,
+        "load_tilt_x",
+        0.1,
         0.347,
-        0.43
+        0.29
        ]
       ],
       "fixture_term": "fixture:raw"
      },
      "contact": {
-      "lin": 3.03,
-      "rss": 1.67,
+      "lin": 2.81,
+      "rss": 1.65,
       "top": [
        [
         "fixture:raw",
@@ -2191,10 +2191,10 @@
         0.56
        ],
        [
-        "floor_tilt_x",
-        0.15,
+        "load_tilt_x",
+        0.1,
         0.647,
-        0.23
+        0.15
        ]
       ],
       "fixture_term": "fixture:raw"
@@ -2257,61 +2257,61 @@
     "play:spatula": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -5.0,
-       "state": 48,
+       "min_mm": -4.439,
+       "state": 21,
        "label": "kf 0->1 (pick -> lifted)",
        "pair": [
         "R_gripper_r18_spat_blade4",
         "raw_tomato"
        ],
        "corner": [
-        -6.0,
-        1.5,
-        1.0,
-        0.3,
-        -0.3,
-        -0.15
+        -5.4,
+        -1.5,
+        -1.0,
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 11008
+       "evals": 10176
       },
       "contact": {
-       "min_mm": 0.0,
-       "state": 48,
+       "min_mm": 0.561,
+       "state": 21,
        "label": "kf 0->1 (pick -> lifted)",
        "pair": [
         "R_gripper_r18_spat_blade4",
         "raw_tomato"
        ],
        "corner": [
-        -6.0,
-        1.5,
-        1.0,
-        0.3,
-        -0.3,
-        -0.15
+        -5.4,
+        -1.5,
+        -1.0,
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 11008
+       "evals": 10176
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 3.117,
+       "min_mm": 2.871,
        "state": 21,
        "label": "kf 0->1 (pick -> lifted)",
        "pair": [
@@ -2319,17 +2319,17 @@
         "raw_tomato"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
-       "evals": 6720
+       "evals": 6592
       },
       "contact": {
-       "min_mm": 8.117,
+       "min_mm": 7.871,
        "state": 21,
        "label": "kf 0->1 (pick -> lifted)",
        "pair": [
@@ -2337,14 +2337,14 @@
         "raw_tomato"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
-       "evals": 6720
+       "evals": 6592
       }
      },
      "R09_requirement": {
@@ -2395,78 +2395,78 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 3.665,
-       "state": 49,
+       "min_mm": 3.026,
+       "state": 21,
        "label": "kf 0->1 (pick -> lifted)",
        "pair": [
-        "R_gripper_r18_spat_blade2",
-        "stored_bowl_leafy_greens_collar_wall4"
+        "R_gripper_r18_spat_blade4",
+        "raw_tomato"
        ],
        "corner": [
-        0.3,
+        -1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 6336
+       "evals": 6464
       },
       "contact": {
-       "min_mm": 8.665,
-       "state": 49,
+       "min_mm": 8.026,
+       "state": 21,
        "label": "kf 0->1 (pick -> lifted)",
        "pair": [
-        "R_gripper_r18_spat_blade2",
-        "stored_bowl_leafy_greens_collar_wall4"
+        "R_gripper_r18_spat_blade4",
+        "raw_tomato"
        ],
        "corner": [
-        0.3,
+        -1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 6336
+       "evals": 6464
       }
      }
     },
     "app:spatula:0": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 5952
+       "evals": 4992
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 3456
+       "evals": 0
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -2497,11 +2497,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -3286,8 +3286,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 1.25,
-      "rss": 0.43,
+      "lin": 1.06,
+      "rss": 0.4,
       "top": [
        [
         "grasp_turn",
@@ -3311,8 +3311,8 @@
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 1.06,
-      "rss": 0.38,
+      "lin": 0.91,
+      "rss": 0.36,
       "top": [
        [
         "grasp_turn",
@@ -3338,15 +3338,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 1.46,
-      "rss": 0.56,
+      "lin": 1.15,
+      "rss": 0.42,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        0.381,
-        0.39
-       ],
        [
         "load_tilt_x",
         0.1,
@@ -3358,13 +3352,19 @@
         1.0,
         4.0,
         0.25
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.381,
+        0.13
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 1.1,
-      "rss": 0.41,
+      "lin": 0.9,
+      "rss": 0.34,
       "top": [
        [
         "grasp_turn",
@@ -3373,16 +3373,16 @@
         0.25
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        0.603,
-        0.25
-       ],
-       [
         "load_tilt_x",
         0.1,
         0.603,
         0.17
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.603,
+        0.08
        ]
       ],
       "fixture_term": "fixture:upper"
@@ -3445,15 +3445,15 @@
     "play:lever": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -2.21,
+       "min_mm": -2.061,
        "state": 127,
        "label": "kf 0->1 (closed -> open)",
        "pair": [
@@ -3461,17 +3461,17 @@
         "r17_lever_hub"
        ],
        "corner": [
-        -6.0,
+        5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 8192
       },
       "contact": {
-       "min_mm": 2.79,
+       "min_mm": 2.939,
        "state": 127,
        "label": "kf 0->1 (closed -> open)",
        "pair": [
@@ -3479,27 +3479,27 @@
         "r17_lever_hub"
        ],
        "corner": [
-        -6.0,
+        5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 8192
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 5.211,
+       "min_mm": 5.031,
        "state": 127,
        "label": "kf 0->1 (closed -> open)",
        "pair": [
@@ -3507,18 +3507,18 @@
         "r17_lever_hub"
        ],
        "corner": [
-        0.5,
+        1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        0.05
+        0.054,
+        -0.11,
+        0.03
        ],
        "evals": 4224
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 3968
+       "evals": 4224
       }
      },
      "R09_requirement": {
@@ -3555,15 +3555,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 5.671,
+       "min_mm": 5.545,
        "state": 127,
        "label": "kf 0->1 (closed -> open)",
        "pair": [
@@ -3571,33 +3571,33 @@
         "r17_lever_hub"
        ],
        "corner": [
-        0.3,
+        1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         0.03
        ],
-       "evals": 3392
+       "evals": 4160
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 2048
+       "evals": 3584
       }
      }
     },
     "app:lever:0": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 7.947,
+       "min_mm": 9.489,
        "state": 0,
        "label": "approach@closed#0 step 0 (0 cm back)",
        "pair": [
@@ -3605,28 +3605,28 @@
         "r17_faucet_spout"
        ],
        "corner": [
-        -6.0,
-        -1.5,
+        -5.4,
+        1.5,
         1.0,
-        0.3,
-        0.3,
-        -0.15
+        0.36,
+        0.29,
+        -0.07
        ],
        "evals": 1216
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1152
+       "evals": 1088
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -3657,11 +3657,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -3677,15 +3677,15 @@
     "app:lever:1": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 2.63,
+       "min_mm": 4.102,
        "state": 0,
        "label": "approach@open#1 step 0 (0 cm back)",
        "pair": [
@@ -3693,17 +3693,17 @@
         "r17_faucet_column"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
        "evals": 1216
       },
       "contact": {
-       "min_mm": 7.63,
+       "min_mm": 9.102,
        "state": 0,
        "label": "approach@open#1 step 0 (0 cm back)",
        "pair": [
@@ -3711,24 +3711,24 @@
         "r17_faucet_column"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
        "evals": 1216
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -3759,11 +3759,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -4735,8 +4735,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 6.33,
-      "rss": 2.55,
+      "lin": 5.75,
+      "rss": 2.49,
       "top": [
        [
         "grasp_turn",
@@ -4751,7 +4751,7 @@
         1.01
        ],
        [
-        "mount_xy",
+        "tracking_sync",
         0.5,
         0.988,
         0.51
@@ -4760,8 +4760,8 @@
       "fixture_term": "fixture:lid_rack"
      },
      "contact": {
-      "lin": 1.95,
-      "rss": 0.85,
+      "lin": 1.75,
+      "rss": 0.84,
       "top": [
        [
         "grasp_turn",
@@ -4787,8 +4787,8 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 7.5,
-      "rss": 2.79,
+      "lin": 6.38,
+      "rss": 2.5,
       "top": [
        [
         "grasp_turn",
@@ -4797,23 +4797,23 @@
         2.04
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        0.122,
-        1.23
-       ],
-       [
         "load_tilt_x",
         0.1,
         0.122,
         0.82
+       ],
+       [
+        "floor_z",
+        0.5,
+        0.988,
+        0.51
        ]
       ],
       "fixture_term": "fixture:lid_rack"
      },
      "contact": {
-      "lin": 1.89,
-      "rss": 0.85,
+      "lin": 1.69,
+      "rss": 0.82,
       "top": [
        [
         "grasp_turn",
@@ -4822,16 +4822,16 @@
         0.77
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        0.653,
-        0.23
-       ],
-       [
         "load_tilt_x",
         0.1,
         0.653,
         0.15
+       ],
+       [
+        "fixture:pot",
+        1,
+        7.969,
+        0.13
        ]
       ],
       "fixture_term": "fixture:pot"
@@ -4894,15 +4894,15 @@
     "app:lid:0": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 3.544,
+       "min_mm": 3.621,
        "state": 0,
        "label": "approach@lift off#0 step 0 (0 cm back)",
        "pair": [
@@ -4910,17 +4910,17 @@
         "r16_lid_rim"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
        "evals": 3520
       },
       "contact": {
-       "min_mm": 8.544,
+       "min_mm": 8.621,
        "state": 0,
        "label": "approach@lift off#0 step 0 (0 cm back)",
        "pair": [
@@ -4928,28 +4928,28 @@
         "r16_lid_rim"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 3520
+       "evals": 3200
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 1600
+       "evals": 1664
       },
       "contact": {
        "min_mm": ">=10",
@@ -4976,35 +4976,35 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 1024
+       "evals": 1408
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 0
+       "evals": 64
       }
      }
     },
     "app:lid:1": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 4.876,
+       "min_mm": 4.765,
        "state": 0,
        "label": "approach@in the rack#8 step 0 (0 cm back)",
        "pair": [
@@ -5012,17 +5012,17 @@
         "r16_lid_rim"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 10624
       },
       "contact": {
-       "min_mm": 9.876,
+       "min_mm": 9.765,
        "state": 0,
        "label": "approach@in the rack#8 step 0 (0 cm back)",
        "pair": [
@@ -5030,32 +5030,32 @@
         "r16_lid_rim"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
-       "evals": 10624
+       "evals": 10304
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 1024
+       "evals": 1088
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 128
+       "evals": 192
       }
      },
      "R09_requirement": {
@@ -5078,20 +5078,20 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 832
+       "evals": 960
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 0
+       "evals": 64
       }
      }
     }
@@ -5776,8 +5776,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 2.39,
-      "rss": 1.09,
+      "lin": 2.19,
+      "rss": 1.08,
       "top": [
        [
         "grasp_turn",
@@ -5801,8 +5801,8 @@
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 1.32,
-      "rss": 0.58,
+      "lin": 1.17,
+      "rss": 0.56,
       "top": [
        [
         "grasp_turn",
@@ -5828,8 +5828,8 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 2.92,
-      "rss": 1.29,
+      "lin": 2.43,
+      "rss": 1.12,
       "top": [
        [
         "grasp_turn",
@@ -5838,23 +5838,23 @@
         0.97
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        0.222,
-        0.68
-       ],
-       [
         "load_tilt_x",
         0.1,
         0.222,
         0.45
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.222,
+        0.23
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 1.34,
-      "rss": 0.59,
+      "lin": 1.15,
+      "rss": 0.55,
       "top": [
        [
         "grasp_turn",
@@ -5863,16 +5863,16 @@
         0.5
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        0.631,
-        0.24
-       ],
-       [
         "load_tilt_x",
         0.1,
         0.631,
         0.16
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.631,
+        0.08
        ]
       ],
       "fixture_term": "fixture:pot"
@@ -5983,15 +5983,15 @@
     "app:spider:0": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -4.184,
+       "min_mm": -4.008,
        "state": 0,
        "label": "approach@pick#0 step 0 (0 cm back)",
        "pair": [
@@ -5999,17 +5999,17 @@
         "r14_hood"
        ],
        "corner": [
-        6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 3328
       },
       "contact": {
-       "min_mm": 5.816,
+       "min_mm": 5.992,
        "state": 0,
        "label": "approach@pick#0 step 0 (0 cm back)",
        "pair": [
@@ -6017,27 +6017,27 @@
         "r14_hood"
        ],
        "corner": [
-        6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 3328
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 2.275,
+       "min_mm": 2.033,
        "state": 0,
        "label": "approach@pick#0 step 0 (0 cm back)",
        "pair": [
@@ -6045,12 +6045,12 @@
         "r14_hood"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        0.05
+        0.054,
+        -0.11,
+        0.03
        ],
        "evals": 3328
       },
@@ -6093,15 +6093,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 2.561,
+       "min_mm": 2.453,
        "state": 0,
        "label": "approach@pick#0 step 0 (0 cm back)",
        "pair": [
@@ -6109,11 +6109,11 @@
         "r14_hood"
        ],
        "corner": [
-        0.3,
+        1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         0.03
        ],
        "evals": 3328
@@ -6127,15 +6127,15 @@
     "app:spider:1": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -4.184,
+       "min_mm": -4.008,
        "state": 0,
        "label": "approach@on the rest#18 step 0 (0 cm back)",
        "pair": [
@@ -6143,17 +6143,17 @@
         "r14_hood"
        ],
        "corner": [
-        6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 3328
       },
       "contact": {
-       "min_mm": 5.816,
+       "min_mm": 5.992,
        "state": 0,
        "label": "approach@on the rest#18 step 0 (0 cm back)",
        "pair": [
@@ -6161,27 +6161,27 @@
         "r14_hood"
        ],
        "corner": [
-        6.0,
+        -5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
        "evals": 3328
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 2.275,
+       "min_mm": 2.033,
        "state": 0,
        "label": "approach@on the rest#18 step 0 (0 cm back)",
        "pair": [
@@ -6189,12 +6189,12 @@
         "r14_hood"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         -0.5,
-        0.05,
-        -0.1,
-        0.05
+        0.054,
+        -0.11,
+        0.03
        ],
        "evals": 3328
       },
@@ -6237,15 +6237,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 2.561,
+       "min_mm": 2.453,
        "state": 0,
        "label": "approach@on the rest#18 step 0 (0 cm back)",
        "pair": [
@@ -6253,11 +6253,11 @@
         "r14_hood"
        ],
        "corner": [
-        0.3,
+        1.02,
         0.3,
         -0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         0.03
        ],
        "evals": 3328
@@ -6753,8 +6753,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -6778,8 +6778,8 @@
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -6805,15 +6805,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -6825,20 +6819,20 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -6850,6 +6844,12 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
@@ -6912,12 +6912,12 @@
     "edge:H_SINK__H_WOK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
@@ -6930,12 +6930,12 @@
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -6966,11 +6966,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -7177,8 +7177,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -7202,8 +7202,8 @@
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -7229,15 +7229,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -7249,20 +7243,20 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -7274,6 +7268,12 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
@@ -7336,12 +7336,12 @@
     "edge:H_SPAT__H_SINK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
@@ -7354,12 +7354,12 @@
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -7390,11 +7390,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -7601,8 +7601,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -7626,8 +7626,8 @@
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -7653,15 +7653,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -7673,20 +7667,20 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -7698,6 +7692,12 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
@@ -7760,12 +7760,12 @@
     "edge:H_WOK__H_POT": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
@@ -7778,12 +7778,12 @@
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -7814,11 +7814,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -8166,17 +8166,11 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.94,
-      "rss": 0.33,
+      "lin": 0.75,
+      "rss": 0.29,
       "top": [
        [
         "dock_yaw",
-        0.2,
-        1.257,
-        0.16
-       ],
-       [
-        "mount_yaw",
         0.2,
         1.257,
         0.16
@@ -8186,13 +8180,19 @@
         2.0,
         15.0,
         0.13
+       ],
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -8218,15 +8218,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.72,
-      "rss": 0.23,
+      "lin": 0.59,
+      "rss": 0.18,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.259,
-        0.12
-       ],
        [
         "fixture:upper",
         1,
@@ -8234,24 +8228,24 @@
         0.1
        ],
        [
-        "floor_tilt_y",
-        0.07,
-        0.819,
-        0.09
+        "load_tilt_x",
+        0.1,
+        1.259,
+        0.08
+       ],
+       [
+        "odometry_x",
+        1.0,
+        15.0,
+        0.07
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.57,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -8262,6 +8256,12 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:upper",
+        1,
+        15.0,
         0.07
        ]
       ],
@@ -8325,15 +8325,15 @@
     "edge:LEV_C__H_SINK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 1.266,
+       "min_mm": 1.768,
        "state": 200,
        "label": "LEV_C->H_SINK 12.2%",
        "pair": [
@@ -8341,45 +8341,31 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        6.0,
+        5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 4736
+       "evals": 4416
       },
       "contact": {
-       "min_mm": 9.877,
-       "state": 0,
-       "label": "LEV_C->H_SINK 0.0%",
-       "pair": [
-        "R_finger_minus",
-        "u_open_r17_lever_tip"
-       ],
-       "corner": [
-        -6.0,
-        -1.5,
-        -1.0,
-        0.3,
-        0.3,
-        -0.15
-       ],
-       "evals": 4672
+       "min_mm": ">=10",
+       "evals": 4416
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 6.346,
+       "min_mm": 6.463,
        "state": 195,
        "label": "LEV_C->H_SINK 11.9%",
        "pair": [
@@ -8387,14 +8373,14 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.5,
+        1.04,
         0.5,
         0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
-       "evals": 2624
+       "evals": 2688
       },
       "contact": {
        "min_mm": ">=10",
@@ -8435,15 +8421,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 6.973,
+       "min_mm": 6.904,
        "state": 195,
        "label": "LEV_C->H_SINK 11.9%",
        "pair": [
@@ -8451,18 +8437,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.3,
+        -1.02,
         0.3,
         0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 2560
+       "evals": 2624
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1600
+       "evals": 1728
       }
      }
     }
@@ -8850,17 +8836,11 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.94,
-      "rss": 0.33,
+      "lin": 0.75,
+      "rss": 0.29,
       "top": [
        [
         "dock_yaw",
-        0.2,
-        1.257,
-        0.16
-       ],
-       [
-        "mount_yaw",
         0.2,
         1.257,
         0.16
@@ -8870,13 +8850,19 @@
         2.0,
         15.0,
         0.13
+       ],
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -8902,15 +8888,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.72,
-      "rss": 0.23,
+      "lin": 0.59,
+      "rss": 0.18,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.259,
-        0.12
-       ],
        [
         "fixture:upper",
         1,
@@ -8918,24 +8898,24 @@
         0.1
        ],
        [
-        "floor_tilt_y",
-        0.07,
-        0.819,
-        0.09
+        "load_tilt_x",
+        0.1,
+        1.259,
+        0.08
+       ],
+       [
+        "odometry_x",
+        1.0,
+        15.0,
+        0.07
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.57,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -8946,6 +8926,12 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:upper",
+        1,
+        15.0,
         0.07
        ]
       ],
@@ -9009,15 +8995,15 @@
     "edge:LEV_C__H_SPAT": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 1.265,
+       "min_mm": 1.768,
        "state": 225,
        "label": "LEV_C->H_SPAT 12.3%",
        "pair": [
@@ -9025,45 +9011,31 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 5696
+       "evals": 5376
       },
       "contact": {
-       "min_mm": 9.877,
-       "state": 0,
-       "label": "LEV_C->H_SPAT 0.0%",
-       "pair": [
-        "R_finger_minus",
-        "u_open_r17_lever_tip"
-       ],
-       "corner": [
-        -6.0,
-        -1.5,
-        -1.0,
-        0.3,
-        0.3,
-        -0.15
-       ],
-       "evals": 5952
+       "min_mm": ">=10",
+       "evals": 5440
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 6.345,
+       "min_mm": 6.465,
        "state": 219,
        "label": "LEV_C->H_SPAT 11.9%",
        "pair": [
@@ -9071,12 +9043,12 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
        "evals": 3008
       },
@@ -9119,15 +9091,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 6.971,
+       "min_mm": 6.903,
        "state": 219,
        "label": "LEV_C->H_SPAT 11.9%",
        "pair": [
@@ -9135,18 +9107,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.3,
+        -1.02,
         0.3,
         0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 2880
+       "evals": 3008
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1856
+       "evals": 1920
       }
      }
     }
@@ -9534,17 +9506,11 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.94,
-      "rss": 0.33,
+      "lin": 0.75,
+      "rss": 0.29,
       "top": [
        [
         "dock_yaw",
-        0.2,
-        1.257,
-        0.16
-       ],
-       [
-        "mount_yaw",
         0.2,
         1.257,
         0.16
@@ -9554,13 +9520,19 @@
         2.0,
         15.0,
         0.13
+       ],
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -9586,15 +9558,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.72,
-      "rss": 0.23,
+      "lin": 0.59,
+      "rss": 0.18,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.259,
-        0.12
-       ],
        [
         "fixture:upper",
         1,
@@ -9602,24 +9568,24 @@
         0.1
        ],
        [
-        "floor_tilt_y",
-        0.07,
-        0.819,
-        0.09
+        "load_tilt_x",
+        0.1,
+        1.259,
+        0.08
+       ],
+       [
+        "odometry_x",
+        1.0,
+        15.0,
+        0.07
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.57,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -9630,6 +9596,12 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:upper",
+        1,
+        15.0,
         0.07
        ]
       ],
@@ -9693,15 +9665,15 @@
     "edge:LEV_C__H_WOK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 1.266,
+       "min_mm": 1.768,
        "state": 225,
        "label": "LEV_C->H_WOK 12.2%",
        "pair": [
@@ -9709,45 +9681,31 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 5120
+       "evals": 4864
       },
       "contact": {
-       "min_mm": 9.877,
-       "state": 0,
-       "label": "LEV_C->H_WOK 0.0%",
-       "pair": [
-        "R_finger_minus",
-        "u_open_r17_lever_tip"
-       ],
-       "corner": [
-        -6.0,
-        -1.5,
-        -1.0,
-        0.3,
-        0.3,
-        -0.15
-       ],
-       "evals": 5120
+       "min_mm": ">=10",
+       "evals": 4736
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 6.345,
+       "min_mm": 6.465,
        "state": 219,
        "label": "LEV_C->H_WOK 11.9%",
        "pair": [
@@ -9755,12 +9713,12 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
        "evals": 3008
       },
@@ -9803,15 +9761,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 6.971,
+       "min_mm": 6.903,
        "state": 219,
        "label": "LEV_C->H_WOK 11.9%",
        "pair": [
@@ -9819,18 +9777,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.3,
+        -1.02,
         0.3,
         0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 2880
+       "evals": 3008
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1856
+       "evals": 1920
       }
      }
     }
@@ -10230,17 +10188,11 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 3.27,
-      "rss": 1.16,
+      "lin": 2.59,
+      "rss": 1.01,
       "top": [
        [
         "dock_yaw",
-        0.2,
-        0.366,
-        0.55
-       ],
-       [
-        "mount_yaw",
         0.2,
         0.366,
         0.55
@@ -10250,13 +10202,19 @@
         2.0,
         3.906,
         0.51
+       ],
+       [
+        "floor_z",
+        1.0,
+        2.375,
+        0.42
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.79,
-      "rss": 0.29,
+      "lin": 0.64,
+      "rss": 0.26,
       "top": [
        [
         "dock_x",
@@ -10282,15 +10240,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 2.58,
-      "rss": 0.85,
+      "lin": 2.11,
+      "rss": 0.68,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        0.341,
-        0.44
-       ],
        [
         "fixture:upper",
         1,
@@ -10298,24 +10250,24 @@
         0.42
        ],
        [
-        "floor_tilt_y",
-        0.07,
-        0.222,
-        0.32
+        "load_tilt_x",
+        0.1,
+        0.341,
+        0.29
+       ],
+       [
+        "floor_z",
+        0.5,
+        2.375,
+        0.21
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.58,
-      "rss": 0.18,
+      "lin": 0.48,
+      "rss": 0.15,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "fixture:upper",
         1,
@@ -10326,6 +10278,12 @@
         "odometry_x",
         1.0,
         15.0,
+        0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
         0.07
        ]
       ],
@@ -10389,61 +10347,61 @@
     "edge:LEV_O__H_SINK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -4.435,
-       "state": 263,
+       "min_mm": -3.976,
+       "state": 264,
        "label": "LEV_O->H_SINK 17.7%",
        "pair": [
         "R_geom_25",
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 5120
+       "evals": 3904
       },
       "contact": {
-       "min_mm": 5.565,
-       "state": 263,
+       "min_mm": 6.024,
+       "state": 264,
        "label": "LEV_O->H_SINK 17.7%",
        "pair": [
         "R_geom_25",
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 7296
+       "evals": 6144
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 0.016,
+       "min_mm": 0.121,
        "state": 258,
        "label": "LEV_O->H_SINK 17.3%",
        "pair": [
@@ -10451,12 +10409,12 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.5,
+        -1.04,
         0.5,
         0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
        "evals": 2496
       },
@@ -10513,15 +10471,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 0.584,
+       "min_mm": 0.528,
        "state": 258,
        "label": "LEV_O->H_SINK 17.3%",
        "pair": [
@@ -10529,18 +10487,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
+        1.02,
         0.3,
         0.3,
-        0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 2368
+       "evals": 2496
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 2368
+       "evals": 2432
       }
      }
     }
@@ -10988,8 +10946,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 2.56,
-      "rss": 0.88,
+      "lin": 2.08,
+      "rss": 0.79,
       "top": [
        [
         "dock_y",
@@ -11013,8 +10971,8 @@
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.79,
-      "rss": 0.29,
+      "lin": 0.64,
+      "rss": 0.26,
       "top": [
        [
         "dock_x",
@@ -11040,8 +10998,8 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 1.9,
-      "rss": 0.63,
+      "lin": 1.64,
+      "rss": 0.55,
       "top": [
        [
         "fixture:upper",
@@ -11050,30 +11008,24 @@
         0.37
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        0.509,
-        0.29
-       ],
-       [
         "load_tilt_x",
         0.1,
         0.509,
         0.2
+       ],
+       [
+        "floor_z",
+        0.5,
+        2.719,
+        0.18
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.58,
-      "rss": 0.18,
+      "lin": 0.48,
+      "rss": 0.15,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "fixture:upper",
         1,
@@ -11084,6 +11036,12 @@
         "odometry_x",
         1.0,
         15.0,
+        0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
         0.07
        ]
       ],
@@ -11147,61 +11105,61 @@
     "edge:LEV_O__H_SPAT": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -3.673,
-       "state": 266,
-       "label": "LEV_O->H_SPAT 15.4%",
+       "min_mm": -3.324,
+       "state": 267,
+       "label": "LEV_O->H_SPAT 15.5%",
        "pair": [
         "R_geom_25",
         "r07_closed_door_1_0"
        ],
        "corner": [
-        6.0,
+        5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 10816
+       "evals": 4480
       },
       "contact": {
-       "min_mm": 6.327,
-       "state": 266,
-       "label": "LEV_O->H_SPAT 15.4%",
+       "min_mm": 6.676,
+       "state": 267,
+       "label": "LEV_O->H_SPAT 15.5%",
        "pair": [
         "R_geom_25",
         "r07_closed_door_1_0"
        ],
        "corner": [
-        6.0,
+        5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 12480
+       "evals": 6720
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 0.627,
+       "min_mm": 0.611,
        "state": 261,
        "label": "LEV_O->H_SPAT 15.1%",
        "pair": [
@@ -11209,12 +11167,12 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
+        1.04,
         0.5,
         0.5,
-        0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
        "evals": 2688
       },
@@ -11271,15 +11229,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 1.131,
+       "min_mm": 0.989,
        "state": 261,
        "label": "LEV_O->H_SPAT 15.1%",
        "pair": [
@@ -11287,18 +11245,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
+        1.02,
         0.3,
         0.3,
-        0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 2624
+       "evals": 2688
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 2432
+       "evals": 2496
       }
      }
     }
@@ -11754,17 +11712,11 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 3.29,
-      "rss": 1.17,
+      "lin": 2.6,
+      "rss": 1.01,
       "top": [
        [
         "dock_yaw",
-        0.2,
-        0.366,
-        0.55
-       ],
-       [
-        "mount_yaw",
         0.2,
         0.366,
         0.55
@@ -11774,13 +11726,19 @@
         2.0,
         3.906,
         0.51
+       ],
+       [
+        "floor_z",
+        1.0,
+        2.344,
+        0.43
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.79,
-      "rss": 0.29,
+      "lin": 0.64,
+      "rss": 0.26,
       "top": [
        [
         "dock_x",
@@ -11806,15 +11764,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 2.6,
-      "rss": 0.85,
+      "lin": 2.12,
+      "rss": 0.69,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        0.341,
-        0.44
-       ],
        [
         "fixture:upper",
         1,
@@ -11822,24 +11774,24 @@
         0.43
        ],
        [
-        "floor_tilt_y",
-        0.07,
-        0.222,
-        0.32
+        "load_tilt_x",
+        0.1,
+        0.341,
+        0.29
+       ],
+       [
+        "floor_z",
+        0.5,
+        2.344,
+        0.21
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.58,
-      "rss": 0.18,
+      "lin": 0.48,
+      "rss": 0.15,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "fixture:upper",
         1,
@@ -11850,6 +11802,12 @@
         "odometry_x",
         1.0,
         15.0,
+        0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
         0.07
        ]
       ],
@@ -11913,61 +11871,61 @@
     "edge:LEV_O__H_WOK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -4.436,
-       "state": 268,
+       "min_mm": -3.974,
+       "state": 269,
        "label": "LEV_O->H_WOK 15.5%",
        "pair": [
         "R_geom_25",
         "r07_closed_door_1_0"
        ],
        "corner": [
-        6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 5312
+       "evals": 4224
       },
       "contact": {
-       "min_mm": 5.564,
-       "state": 268,
+       "min_mm": 6.026,
+       "state": 269,
        "label": "LEV_O->H_WOK 15.5%",
        "pair": [
         "R_geom_25",
         "r07_closed_door_1_0"
        ],
        "corner": [
-        6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 7488
+       "evals": 6464
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 0.016,
+       "min_mm": 0.117,
        "state": 263,
        "label": "LEV_O->H_WOK 15.2%",
        "pair": [
@@ -11975,18 +11933,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
+        -1.04,
         0.5,
         0.5,
-        0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
-       "evals": 2624
+       "evals": 2688
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 2624
+       "evals": 2688
       }
      },
      "R09_requirement": {
@@ -12037,15 +11995,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 0.587,
+       "min_mm": 0.529,
        "state": 263,
        "label": "LEV_O->H_WOK 15.2%",
        "pair": [
@@ -12053,18 +12011,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.3,
+        -1.02,
         0.3,
         0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 2560
+       "evals": 2688
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 2432
+       "evals": 2560
       }
      }
     }
@@ -12632,17 +12590,11 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 3.29,
-      "rss": 1.17,
+      "lin": 2.6,
+      "rss": 1.01,
       "top": [
        [
         "dock_yaw",
-        0.2,
-        0.366,
-        0.55
-       ],
-       [
-        "mount_yaw",
         0.2,
         0.366,
         0.55
@@ -12652,13 +12604,19 @@
         2.0,
         3.906,
         0.51
+       ],
+       [
+        "floor_z",
+        1.0,
+        2.344,
+        0.43
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.85,
-      "rss": 0.31,
+      "lin": 0.7,
+      "rss": 0.28,
       "top": [
        [
         "dock_x",
@@ -12684,15 +12642,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 2.6,
-      "rss": 0.85,
+      "lin": 2.12,
+      "rss": 0.69,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        0.341,
-        0.44
-       ],
        [
         "fixture:upper",
         1,
@@ -12700,17 +12652,23 @@
         0.43
        ],
        [
-        "floor_tilt_y",
-        0.07,
-        0.222,
-        0.32
+        "load_tilt_x",
+        0.1,
+        0.341,
+        0.29
+       ],
+       [
+        "floor_z",
+        0.5,
+        2.344,
+        0.21
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.64,
-      "rss": 0.22,
+      "lin": 0.54,
+      "rss": 0.19,
       "top": [
        [
         "fixture:plate1",
@@ -12719,15 +12677,15 @@
         0.13
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
-       [
         "odometry_x",
         1.0,
         15.0,
+        0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
         0.07
        ]
       ],
@@ -12791,61 +12749,61 @@
     "edge:LEV_O__WOK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": -4.432,
-       "state": 266,
-       "label": "LEV_O->WOK 10.4%",
+       "min_mm": -3.977,
+       "state": 267,
+       "label": "LEV_O->WOK 10.5%",
        "pair": [
         "R_geom_25",
         "r07_closed_door_1_0"
        ],
        "corner": [
-        6.0,
+        5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 5248
+       "evals": 4160
       },
       "contact": {
-       "min_mm": 5.568,
-       "state": 266,
-       "label": "LEV_O->WOK 10.4%",
+       "min_mm": 6.023,
+       "state": 267,
+       "label": "LEV_O->WOK 10.5%",
        "pair": [
         "R_geom_25",
         "r07_closed_door_1_0"
        ],
        "corner": [
-        6.0,
+        5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 7424
+       "evals": 6400
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 0.015,
+       "min_mm": 0.121,
        "state": 261,
        "label": "LEV_O->WOK 10.2%",
        "pair": [
@@ -12853,18 +12811,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
+        -1.04,
         0.5,
         0.5,
-        0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
-       "evals": 2560
+       "evals": 2624
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 2560
+       "evals": 2624
       }
      },
      "R09_requirement": {
@@ -12915,15 +12873,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 0.584,
+       "min_mm": 0.528,
        "state": 261,
        "label": "LEV_O->WOK 10.2%",
        "pair": [
@@ -12931,18 +12889,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.3,
+        1.02,
         0.3,
         0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 2496
+       "evals": 2624
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 2368
+       "evals": 2496
       }
      }
     }
@@ -13483,8 +13441,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -13508,8 +13466,8 @@
       "fixture_term": "fixture:cooker"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -13535,15 +13493,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.59,
-      "rss": 0.19,
+      "lin": 0.48,
+      "rss": 0.15,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.295,
-        0.12
-       ],
        [
         "load_tilt_x",
         0.1,
@@ -13555,20 +13507,20 @@
         1.0,
         15.0,
         0.07
+       ],
+       [
+        "fixture:cooker",
+        1,
+        15.0,
+        0.07
        ]
       ],
       "fixture_term": "fixture:cooker"
      },
      "contact": {
-      "lin": 0.56,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -13579,6 +13531,12 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:cooker",
+        1,
+        15.0,
         0.07
        ]
       ],
@@ -13642,30 +13600,30 @@
     "edge:LID_POT__H_POT": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 7168
+       "evals": 6016
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1472
+       "evals": 0
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -13696,11 +13654,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -14153,8 +14111,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -14178,8 +14136,8 @@
       "fixture_term": "fixture:cooker"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -14205,15 +14163,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.59,
-      "rss": 0.19,
+      "lin": 0.48,
+      "rss": 0.15,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.295,
-        0.12
-       ],
        [
         "load_tilt_x",
         0.1,
@@ -14225,20 +14177,20 @@
         1.0,
         15.0,
         0.07
+       ],
+       [
+        "fixture:cooker",
+        1,
+        15.0,
+        0.07
        ]
       ],
       "fixture_term": "fixture:cooker"
      },
      "contact": {
-      "lin": 0.56,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -14249,6 +14201,12 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:cooker",
+        1,
+        15.0,
         0.07
        ]
       ],
@@ -14312,30 +14270,30 @@
     "edge:LID_POT__H_WOK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 8192
+       "evals": 6848
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1664
+       "evals": 0
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -14366,11 +14324,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -14700,8 +14658,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -14725,8 +14683,8 @@
       "fixture_term": "fixture:spider_rest"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -14752,15 +14710,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.56,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -14771,21 +14723,21 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:spider_rest",
+        1,
+        15.0,
         0.07
        ]
       ],
       "fixture_term": "fixture:spider_rest"
      },
      "contact": {
-      "lin": 0.56,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -14796,6 +14748,12 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:spider_rest",
+        1,
+        15.0,
         0.07
        ]
       ],
@@ -14859,30 +14817,30 @@
     "edge:LID_RACK__H_POT": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 14592
+       "evals": 13376
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 9472
+       "evals": 6208
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -14913,11 +14871,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -15247,8 +15205,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -15272,8 +15230,8 @@
       "fixture_term": "fixture:spider_rest"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -15299,15 +15257,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.56,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -15318,21 +15270,21 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:spider_rest",
+        1,
+        15.0,
         0.07
        ]
       ],
       "fixture_term": "fixture:spider_rest"
      },
      "contact": {
-      "lin": 0.56,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -15343,6 +15295,12 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:spider_rest",
+        1,
+        15.0,
         0.07
        ]
       ],
@@ -15406,30 +15364,30 @@
     "edge:LID_RACK__H_WOK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 1728
+       "evals": 1408
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 576
+       "evals": 0
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -15460,11 +15418,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -15674,8 +15632,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -15699,8 +15657,8 @@
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -15726,15 +15684,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -15746,20 +15698,20 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -15771,6 +15723,12 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
@@ -15833,12 +15791,12 @@
     "edge:SPAT__H_SINK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
@@ -15851,12 +15809,12 @@
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -15887,11 +15845,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -16101,8 +16059,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -16126,8 +16084,8 @@
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.71,
-      "rss": 0.28,
+      "lin": 0.56,
+      "rss": 0.24,
       "top": [
        [
         "dock_x",
@@ -16153,15 +16111,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -16173,20 +16125,20 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
      },
      "contact": {
-      "lin": 0.49,
-      "rss": 0.16,
+      "lin": 0.4,
+      "rss": 0.13,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -16198,6 +16150,12 @@
         0.1,
         1.5,
         0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
        ]
       ],
       "fixture_term": null
@@ -16260,12 +16218,12 @@
     "edge:SPAT__H_SPAT": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
@@ -16278,12 +16236,12 @@
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -16314,11 +16272,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -16666,17 +16624,11 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.94,
-      "rss": 0.33,
+      "lin": 0.75,
+      "rss": 0.29,
       "top": [
        [
         "dock_yaw",
-        0.2,
-        1.257,
-        0.16
-       ],
-       [
-        "mount_yaw",
         0.2,
         1.257,
         0.16
@@ -16686,13 +16638,19 @@
         2.0,
         15.0,
         0.13
+       ],
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -16718,15 +16676,9 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.72,
-      "rss": 0.23,
+      "lin": 0.59,
+      "rss": 0.18,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.259,
-        0.12
-       ],
        [
         "fixture:upper",
         1,
@@ -16734,24 +16686,24 @@
         0.1
        ],
        [
-        "floor_tilt_y",
-        0.07,
-        0.819,
-        0.09
+        "load_tilt_x",
+        0.1,
+        1.259,
+        0.08
+       ],
+       [
+        "odometry_x",
+        1.0,
+        15.0,
+        0.07
        ]
       ],
       "fixture_term": "fixture:upper"
      },
      "contact": {
-      "lin": 0.57,
-      "rss": 0.18,
+      "lin": 0.47,
+      "rss": 0.14,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
        [
         "odometry_x",
         1.0,
@@ -16762,6 +16714,12 @@
         "load_tilt_x",
         0.1,
         1.5,
+        0.07
+       ],
+       [
+        "fixture:upper",
+        1,
+        15.0,
         0.07
        ]
       ],
@@ -16825,15 +16783,15 @@
     "edge:SPAT__LEV_C": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 1.265,
+       "min_mm": 1.768,
        "state": 2629,
        "label": "SPAT->LEV_C 92.5%",
        "pair": [
@@ -16841,45 +16799,31 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -6.0,
+        -5.4,
         1.5,
         1.0,
-        0.3,
-        -0.3,
-        -0.15
+        0.36,
+        -0.29,
+        -0.07
        ],
-       "evals": 5376
+       "evals": 5056
       },
       "contact": {
-       "min_mm": 9.877,
-       "state": 2841,
-       "label": "SPAT->LEV_C 100.0%",
-       "pair": [
-        "R_finger_minus",
-        "u_open_r17_lever_tip"
-       ],
-       "corner": [
-        -6.0,
-        -1.5,
-        -1.0,
-        0.3,
-        0.3,
-        -0.15
-       ],
-       "evals": 5504
+       "min_mm": ">=10",
+       "evals": 4992
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
-       "min_mm": 6.345,
+       "min_mm": 6.465,
        "state": 2635,
        "label": "SPAT->LEV_C 92.7%",
        "pair": [
@@ -16887,12 +16831,12 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
+        1.04,
         0.5,
         0.5,
-        0.5,
-        0.05,
-        -0.1,
-        -0.05
+        0.054,
+        -0.11,
+        -0.03
        ],
        "evals": 3008
       },
@@ -16935,15 +16879,15 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
-       "min_mm": 6.971,
+       "min_mm": 6.903,
        "state": 2635,
        "label": "SPAT->LEV_C 92.7%",
        "pair": [
@@ -16951,18 +16895,18 @@
         "r07_closed_door_1_0"
        ],
        "corner": [
-        -0.3,
+        -1.02,
         0.3,
         0.3,
-        0.03,
-        -0.1,
+        0.036,
+        -0.104,
         -0.03
        ],
-       "evals": 2880
+       "evals": 3008
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1856
+       "evals": 1920
       }
      }
     }
@@ -17341,8 +17285,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -17366,8 +17310,8 @@
       "fixture_term": "fixture:spider_rest"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -17393,20 +17337,20 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.75,
-      "rss": 0.28,
+      "lin": 0.58,
+      "rss": 0.2,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        0.725,
-        0.21
-       ],
        [
         "load_tilt_x",
         0.1,
         0.725,
         0.14
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.725,
+        0.07
        ],
        [
         "odometry_x",
@@ -17418,15 +17362,9 @@
       "fixture_term": "fixture:spider_rest"
      },
      "contact": {
-      "lin": 0.61,
-      "rss": 0.21,
+      "lin": 0.5,
+      "rss": 0.16,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.134,
-        0.13
-       ],
        [
         "load_tilt_x",
         0.1,
@@ -17436,6 +17374,12 @@
        [
         "odometry_x",
         1.0,
+        15.0,
+        0.07
+       ],
+       [
+        "fixture:spider_rest",
+        1,
         15.0,
         0.07
        ]
@@ -17500,48 +17444,48 @@
     "edge:SPIDER__H_POT": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 6.126,
-       "state": 10,
-       "label": "SPIDER->H_POT 0.5%",
+       "min_mm": 7.852,
+       "state": 12,
+       "label": "SPIDER->H_POT 0.6%",
        "pair": [
         "R_finger_plus",
         "r16_spider_block"
        ],
        "corner": [
-        6.0,
+        5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
-       "evals": 14272
+       "evals": 13504
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 9536
+       "evals": 7168
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 5376
+       "evals": 5440
       },
       "contact": {
        "min_mm": ">=10",
@@ -17568,20 +17512,20 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 4928
+       "evals": 5184
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 896
+       "evals": 1280
       }
      }
     }
@@ -17911,8 +17855,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -17936,8 +17880,8 @@
       "fixture_term": "fixture:spider_rest"
      },
      "contact": {
-      "lin": 0.78,
-      "rss": 0.29,
+      "lin": 0.63,
+      "rss": 0.25,
       "top": [
        [
         "dock_x",
@@ -17963,20 +17907,20 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.75,
-      "rss": 0.28,
+      "lin": 0.58,
+      "rss": 0.2,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        0.725,
-        0.21
-       ],
        [
         "load_tilt_x",
         0.1,
         0.725,
         0.14
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.725,
+        0.07
        ],
        [
         "odometry_x",
@@ -17988,15 +17932,9 @@
       "fixture_term": "fixture:spider_rest"
      },
      "contact": {
-      "lin": 0.61,
-      "rss": 0.21,
+      "lin": 0.5,
+      "rss": 0.16,
       "top": [
-       [
-        "floor_tilt_x",
-        0.15,
-        1.134,
-        0.13
-       ],
        [
         "load_tilt_x",
         0.1,
@@ -18006,6 +17944,12 @@
        [
         "odometry_x",
         1.0,
+        15.0,
+        0.07
+       ],
+       [
+        "fixture:spider_rest",
+        1,
         15.0,
         0.07
        ]
@@ -18070,15 +18014,15 @@
     "edge:SPIDER__H_WOK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
-       "min_mm": 8.056,
+       "min_mm": 8.217,
        "state": 0,
        "label": "SPIDER->H_WOK 0.0%",
        "pair": [
@@ -18086,36 +18030,36 @@
         "r14_hood"
        ],
        "corner": [
-        6.0,
+        5.4,
         1.5,
         -1.0,
-        0.3,
-        -0.3,
-        0.15
+        0.36,
+        -0.29,
+        0.07
        ],
-       "evals": 17728
+       "evals": 15616
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 11008
+       "evals": 8384
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 6400
+       "evals": 6464
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1664
+       "evals": 1728
       }
      },
      "R09_requirement": {
@@ -18138,20 +18082,20 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 5888
+       "evals": 6208
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 1024
+       "evals": 1408
       }
      }
     }
@@ -18532,8 +18476,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.84,
-      "rss": 0.31,
+      "lin": 0.69,
+      "rss": 0.28,
       "top": [
        [
         "dock_x",
@@ -18557,8 +18501,8 @@
       "fixture_term": "fixture:plate1"
      },
      "contact": {
-      "lin": 0.84,
-      "rss": 0.31,
+      "lin": 0.69,
+      "rss": 0.28,
       "top": [
        [
         "dock_x",
@@ -18584,33 +18528,33 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.63,
-      "rss": 0.21,
+      "lin": 0.53,
+      "rss": 0.18,
       "top": [
        [
         "fixture:plate1",
         2,
         15.0,
         0.13
-       ],
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
        ],
        [
         "odometry_x",
         1.0,
         15.0,
         0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
+        0.07
        ]
       ],
       "fixture_term": "fixture:plate1"
      },
      "contact": {
-      "lin": 0.63,
-      "rss": 0.21,
+      "lin": 0.53,
+      "rss": 0.18,
       "top": [
        [
         "fixture:plate1",
@@ -18619,15 +18563,15 @@
         0.13
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
-       [
         "odometry_x",
         1.0,
         15.0,
+        0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
         0.07
        ]
       ],
@@ -18691,30 +18635,30 @@
     "edge:WOK__H_POT": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 3584
+       "evals": 3072
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 256
+       "evals": 64
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -18745,11 +18689,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -19139,8 +19083,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.84,
-      "rss": 0.31,
+      "lin": 0.69,
+      "rss": 0.28,
       "top": [
        [
         "dock_x",
@@ -19164,8 +19108,8 @@
       "fixture_term": "fixture:plate1"
      },
      "contact": {
-      "lin": 0.84,
-      "rss": 0.31,
+      "lin": 0.69,
+      "rss": 0.28,
       "top": [
        [
         "dock_x",
@@ -19191,33 +19135,33 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.63,
-      "rss": 0.21,
+      "lin": 0.53,
+      "rss": 0.18,
       "top": [
        [
         "fixture:plate1",
         2,
         15.0,
         0.13
-       ],
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
        ],
        [
         "odometry_x",
         1.0,
         15.0,
         0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
+        0.07
        ]
       ],
       "fixture_term": "fixture:plate1"
      },
      "contact": {
-      "lin": 0.63,
-      "rss": 0.21,
+      "lin": 0.53,
+      "rss": 0.18,
       "top": [
        [
         "fixture:plate1",
@@ -19226,15 +19170,15 @@
         0.13
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
-       [
         "odometry_x",
         1.0,
         15.0,
+        0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
         0.07
        ]
       ],
@@ -19298,30 +19242,30 @@
     "edge:WOK__H_SINK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 1984
+       "evals": 1728
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 256
+       "evals": 64
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -19352,11 +19296,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -19746,8 +19690,8 @@
     },
     "R09_requirement": {
      "gate": {
-      "lin": 0.84,
-      "rss": 0.31,
+      "lin": 0.69,
+      "rss": 0.28,
       "top": [
        [
         "dock_x",
@@ -19771,8 +19715,8 @@
       "fixture_term": "fixture:plate1"
      },
      "contact": {
-      "lin": 0.84,
-      "rss": 0.31,
+      "lin": 0.69,
+      "rss": 0.28,
       "top": [
        [
         "dock_x",
@@ -19798,33 +19742,33 @@
     },
     "dock_stops": {
      "gate": {
-      "lin": 0.63,
-      "rss": 0.21,
+      "lin": 0.53,
+      "rss": 0.18,
       "top": [
        [
         "fixture:plate1",
         2,
         15.0,
         0.13
-       ],
-       [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
        ],
        [
         "odometry_x",
         1.0,
         15.0,
         0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
+        0.07
        ]
       ],
       "fixture_term": "fixture:plate1"
      },
      "contact": {
-      "lin": 0.63,
-      "rss": 0.21,
+      "lin": 0.53,
+      "rss": 0.18,
       "top": [
        [
         "fixture:plate1",
@@ -19833,15 +19777,15 @@
         0.13
        ],
        [
-        "floor_tilt_x",
-        0.15,
-        1.5,
-        0.1
-       ],
-       [
         "odometry_x",
         1.0,
         15.0,
+        0.07
+       ],
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
         0.07
        ]
       ],
@@ -19905,30 +19849,30 @@
     "edge:WOK__H_WOK": {
      "as_designed": {
       "half_range_mm_deg": [
-       6.0,
+       5.4,
        1.5,
        1.0,
-       0.3,
-       0.3,
-       0.15
+       0.36,
+       0.29,
+       0.07
       ],
       "gate": {
        "min_mm": ">=10",
-       "evals": 1536
+       "evals": 1280
       },
       "contact": {
        "min_mm": ">=10",
-       "evals": 192
+       "evals": 64
       }
      },
      "dock_stops": {
       "half_range_mm_deg": [
+       1.04,
        0.5,
        0.5,
-       0.5,
-       0.05,
-       0.1,
-       0.05
+       0.054,
+       0.11,
+       0.03
       ],
       "gate": {
        "min_mm": ">=10",
@@ -19959,11 +19903,11 @@
      },
      "touch_off": {
       "half_range_mm_deg": [
+       1.02,
        0.3,
        0.3,
-       0.3,
-       0.03,
-       0.1,
+       0.036,
+       0.104,
        0.03
       ],
       "gate": {
@@ -20043,10 +19987,10 @@
     "unit": "deg",
     "as_designed": 0.15,
     "R09_requirement": 0.0,
-    "dock_stops": 0.15,
+    "dock_stops": 0.05,
     "touch_off": 0.03,
     "label": "E",
-    "basis": "tile floor unevenness ~0.5 mm across the 0.21 m caster-to-drive-wheel base (flatness spec of tiled floors is commonly 2 mm / 2 m; not verified in the standard text). Toward the counter = tilt_x -. Touch-off / inclinometer measures and compensates it."
+    "basis": "tile floor unevenness ~0.5 mm across the 0.21 m caster-to-drive-wheel base (flatness spec of tiled floors is commonly 2 mm / 2 m; not verified in the standard text). Toward the counter = tilt_x -. Static per station: measured at commissioning (3-point touch-off / inclinometer) and compensated in dock_stops / touch_off."
    },
    {
     "name": "floor_tilt_y",
@@ -20054,7 +19998,7 @@
     "unit": "deg",
     "as_designed": 0.07,
     "R09_requirement": 0.0,
-    "dock_stops": 0.07,
+    "dock_stops": 0.03,
     "touch_off": 0.03,
     "label": "E",
     "basis": "as above across the 0.44 m track."
@@ -20075,7 +20019,7 @@
     "axis": "any",
     "unit": "mm",
     "as_designed": 0.5,
-    "R09_requirement": 0.5,
+    "R09_requirement": 0.05,
     "dock_stops": 0.05,
     "touch_off": 0.05,
     "label": "E",
@@ -20086,7 +20030,7 @@
     "axis": "yaw",
     "unit": "deg",
     "as_designed": 0.2,
-    "R09_requirement": 0.2,
+    "R09_requirement": 0.02,
     "dock_stops": 0.02,
     "touch_off": 0.02,
     "label": "E",

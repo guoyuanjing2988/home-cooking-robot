@@ -54,7 +54,7 @@ APPROACH_M=.05;JAW_OPEN=.025
 RINSE=float(KV.get('RINSE',3.))   # s per rinse keyframe dwell [est]
 RL=float(KV.get('ROLL',30.))   # tomato rinse: rolled +-RL deg about the grasp approach axis
 I=np.eye(3);L=dict(K19.LAYOUT)
-if 'LEVER' in KV:L['lever']=tuple([float(v) for v in KV['LEVER'].split(',')]+[0.])   # tool spot override (x, y)
+if 'LEVER' in KV:L['lever']=tuple(([float(v) for v in KV['LEVER'].split(',')]+[0.])[:3])   # tool spot override (x, y[, yaw deg])
 def kf(R,p,c=None,dw=0.,label='',anchor=False,meet=False,seat=0.):
  return dict(R=np.asarray(R,float),p=np.asarray(p,float),c=c,dw=dw,label=label,anchor=anchor,meet=meet,seat=seat)
 def J(o):return json.loads(json.dumps(o,default=lambda x:x.tolist() if isinstance(x,np.ndarray) else float(x)))
@@ -82,10 +82,11 @@ def action():
   t0=K19.tray('tomato',dxy);seat=K19.lever_seat(*L['lever']);Rp=K.Rx(float(KV.get('PITCH',-30.)));lx=L['lever'][0]   # grasp pitched down 30 deg at the tap
   Rp=roll(Rp,float(KV.get('TROLL',0.)))   # TROLL: the (round) tomato turned about the approach axis for the tap, e.g. 90 = jaws vertical as for the carrot
   head=[kf(I,t0+[0,0,.008],'A',0,'pick',anchor=True,seat=.008),kf(I,t0+[0,0,.05],'A',0,'lifted')]
-  if lx>S[0]:   # lever base right of the tap (plating area): nothing between the tray and the tap
+  if KV.get('TROUTE','front')=='front':   # carry lanes in front (the lever base right of the tap, or set back far enough that the lane passes in front of it)
    l1=[float(v) for v in KV.get('L1','-0.80,.10,1.15').split(',')];l2=[float(v) for v in KV.get('L2','-0.05,.10,1.15').split(',')]
    head+=[kf(I,t0+[0,-.04,.15],'F',0,'out and up'),kf(Rp,l1,'F',0,'lane',meet=True)]
-   tail=[kf(Rp,l2,float(KV['L2C']) if 'L2C' in KV else 'A' if KV.get('CA2') else 'F',0,'lane',meet=True)]   # L2C: both arrivals bring the cart to this x; CA2=1: each side keeps its anchor's cart
+   tail=[kf(Rp,[float(v) for v in w.split(',')],'F',0,f'carry {i+1}') for i,w in enumerate(KV.get('W2','').split(';')) if w]   # W2: waypoints between the tap and the second meet
+   tail+=[kf(Rp,l2,float(KV['L2C']) if 'L2C' in KV else 'A' if KV.get('CA2') else 'F',0,'lane',meet=True)]   # L2C: both arrivals bring the cart to this x; CA2=1: each side keeps its anchor's cart
    if 'MID' in KV:   # an extra anchor between the tap and the lever base, with its own meet (more IK branches for the DP)
     mid=[float(v) for v in KV['MID'].split(',')];m3=[float(v) for v in KV.get('MID3','0.10,.05,1.10').split(',')]
     tail+=[kf(I,mid,'F',0,'carry past the sink',anchor=True),kf(I,m3,'F',0,'lane to the lever base',meet=True)]
@@ -93,8 +94,9 @@ def action():
    head+=[kf(I,t0+[0,.18,.10],'F',0,'back, behind the tray front'),kf(Rp,[-0.80,.30,1.05],'F',0,'back lane behind the lever base',meet=True),kf(Rp,[-0.50,.36,1.00],'F',0,'to the tap')]
    tail=[kf(Rp,[-0.60,.10,1.15],'F',0,'lane right of the lever base',meet=True)]
   c2='A' if KV.get('CA2') else 'F'
+  Ry=K.Rz(L['lever'][2])   # the lever base's front (slide-in side) direction: the tomato and its grasp turned with the station
   KF=head+[kf(Rp,S,float(KV['TAPC']) if 'TAPC' in KV else 'F',RINSE,'under the tap',anchor=True),kf(roll(Rp,RL),S,c2,RINSE,f'rolled +{RL:g}'),kf(roll(Rp,-RL),S,c2,RINSE,f'rolled -{RL:g}'),kf(Rp,S,c2,0,'level')]+tail+[
-   kf(I,seat+[0,-.135,.03],c2,0,'backed out, in front of the lever base'),kf(I,seat+[0,-.06,.008],float(KV['LVC']) if 'LVC' in KV else 'F',0,'in front of the blade plate',anchor=True),kf(I,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
+   kf(Ry,seat+Ry@[0,-.135,.03],c2,0,'backed out, in front of the lever base'),kf(Ry,seat+Ry@[0,-.06,.008],float(KV['LVC']) if 'LVC' in KV else 'F',0,'in front of the blade plate',anchor=True),kf(Ry,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
   w0=scene_with('lever',objs=[car]);w1=scene_with('lever',objs=[car])
   return 'tomato',dict(r19=w0),KF,[(0,w0,True),(len(KF)-1,w1,True)]
  if ACT=='tap':   # exploration: the held item from a front lane point into the outlet and back out (one anchor at the tap)

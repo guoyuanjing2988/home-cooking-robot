@@ -161,6 +161,10 @@ CANDIDATES={
  'tool_BKL':dict(item='tool',st=('lever',-1.665,.43,0.),desc='far-left back, under the cabinet'),
  'tool_C90':dict(item='tool',st=('lever',-0.90,.095,0.),desc='left counter front by the sink (cooking corridor)'),
  'tool_PL':dict(item='tool',st=('lever',.30,.095,0.),desc='plating area (empty before cooking; prep-time only)'),
+ 'tool_PL90':dict(item='tool',st=('lever',.30,.13,90.),desc='plating area, turned 90 deg: front (slide-in side, knob grasp) toward +x'),
+ **{f'tool_CB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='left counter by the sink, set back (carry lane and shoulder pass in front of it)') for x in (-.90,-.95) for y in (.20,.24)},
+ **{f'tool_PLB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='plating area, set back (knob further from the passing shoulder)') for x in (.10,.20,.30) for y in (.16,.20,.24)},
+ **{f'tool_PL90_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,90.),desc='plating area, turned 90 deg (grid)') for x in (.10,.20,.30,.40) for y in (.10,.16,.20)},
  # raw tray (0.32 x 0.30, R10 rib tray + R11 tomato pad); dxy moves the whole tray
  'tray_now':dict(item='tray',st=('tray',0.,0.,0.),desc='today (R18b): x -1.515..-1.195, y .04-.34'),
  'tray_BKL':dict(item='tray',st=('tray',-.2825,.24,0.),desc='back-left corner under the cabinet: x -1.7975..-1.4775, y .28-.58'),
@@ -210,9 +214,10 @@ def _probes():
  for nm,C in CANDIDATES.items():
   st,x,y,yaw=C['st'];sc={'stations':{st:(x,y,yaw)}}
   if st=='lever':
-   P[f'{nm}:place']=dict(desc='tomato held 8 mm over its seat on the blade plate',p=lever_seat(x,y,yaw,.008),a=(0,1,0),j=(1,0,0),held='tomato',scene=sc,jaw_q=JAW['tomato'])
-   P[f'{nm}:knob']=dict(desc='pusher knob between the open jaws (grasp moment), tomato on the plate',p=knob(x,y,yaw),a=(0,1,0),j=(1,0,0),scene=dict(sc,objs=[('tomato',np.eye(3).tolist(),lever_seat(x,y,yaw).tolist())]),jaw_q=.025)
-   P[f'{nm}:pressed']=dict(desc='pusher held, pressed 102 mm (tomato cut, gone)',p=knob(x,y,yaw)-[0,0,LEVER_PRESS],a=(0,1,0),j=(1,0,0),held='pusher',scene=dict(sc,pusher=None),jaw_q=JAW['pusher'])
+   Ra=Rz(yaw);a_=tuple((Ra@[0,1.,0]).round(6));j_=tuple((Ra@[1.,0,0]).round(6))   # the station's front grasp direction (R11 AU/AW), turned with it
+   P[f'{nm}:place']=dict(desc='tomato held 8 mm over its seat on the blade plate',p=lever_seat(x,y,yaw,.008),a=a_,j=j_,held='tomato',scene=sc,jaw_q=JAW['tomato'])
+   P[f'{nm}:knob']=dict(desc='pusher knob between the open jaws (grasp moment), tomato on the plate',p=knob(x,y,yaw),a=a_,j=j_,scene=dict(sc,objs=[('tomato',Ra.tolist(),lever_seat(x,y,yaw).tolist())]),jaw_q=.025)
+   P[f'{nm}:pressed']=dict(desc='pusher held, pressed 102 mm (tomato cut, gone)',p=knob(x,y,yaw)-[0,0,LEVER_PRESS],a=a_,j=j_,held='pusher',scene=dict(sc,pusher=None),jaw_q=JAW['pusher'])
   if st=='slicer':
    c=chute_top(x,y,yaw)
    for tag,a,j in (('front',(0,1,0),(1,0,0)),('left',(-1,0,0),(0,1,0)),('right',(1,0,0),(0,1,0))):

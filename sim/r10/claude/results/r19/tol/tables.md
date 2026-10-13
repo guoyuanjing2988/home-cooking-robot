@@ -71,6 +71,26 @@
 | WOK__H_SINK | >15 / >15 | >15 / >15 | >15 / >15 | >1.5 / >1.5 | >1.5 / >1.5 | >1.5 / >1.5 | yaw: ,  (edge:WOK__H_SINK) |
 | WOK__H_WOK | >15 / >15 | >15 / >15 | >15 / >15 | >1.5 / >1.5 | >1.5 / >1.5 | >1.5 / >1.5 | yaw: ,  (edge:WOK__H_WOK) |
 
+### Grid (measured): min gate reserve over all states, worst sign, at each cart offset (mm; "≥10" = above 10 mm; negative = below the 10/5 mm gate, the gap is that + 10 or + 5)
+
+| Action / edge | x ±2 | x ±5 | x ±10 | y ±2 | y ±5 | y ±10 | z ±2 | z ±5 | yaw ±0.2 | yaw ±0.5 | yaw ±1 | tilt_x ±0.1 | tilt_x ±0.2 | tilt_x ±0.5 | tilt_y ±0.2 | tilt_y ±0.5 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| wok | 4.00 | 4.00 | 4.00 | 4.00 | 4.00 | 0.29 | 2.00 | -1.00 | 4.00 | 3.90 | -2.23 | 3.27 | 2.55 | 0.34 | 1.58 | -2.08 |
+| spatula | 2.80 | -0.20 | -5.00 | 3.81 | 0.81 | -4.19 | 4.49 | 2.64 | 3.32 | 1.10 | -2.62 | 4.14 | 2.48 | -2.52 | 1.56 | -3.29 |
+| lever | 8.61 | 8.61 | 6.01 | 6.88 | 4.28 | -0.07 | 7.61 | 6.44 | 7.43 | 5.67 | 2.78 | 6.36 | 4.11 | -2.63 | 7.92 | 6.74 |
+| lid | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | -0.01 | -1.00 | -4.00 | 1.00 | 1.00 | 1.00 | 0.20 | -0.61 | -3.05 | -0.43 | -2.60 |
+| spider | 4.56 | 3.42 | 1.71 | 3.48 | 0.57 | -4.29 | 4.21 | 2.46 | 4.97 | 4.44 | 3.69 | 2.99 | 0.55 | -6.76 | 4.77 | 4.15 |
+| LEV_C__H_SINK | 8.57 | 8.57 | 7.00 | 7.49 | 5.86 | 3.15 | 6.89 | 4.37 | 7.20 | 5.16 | 1.75 | 7.91 | 7.25 | 5.23 | 6.46 | 3.32 |
+| LEV_C__H_SPAT | 8.57 | 8.57 | 7.00 | 7.49 | 5.86 | 3.15 | 6.89 | 4.37 | 7.21 | 5.15 | 1.75 | 7.91 | 7.25 | 5.23 | 6.46 | 3.32 |
+| LEV_C__H_WOK | 8.57 | 8.57 | 7.00 | 7.49 | 5.86 | 3.15 | 6.89 | 4.37 | 7.21 | 5.15 | 1.75 | 7.91 | 7.25 | 5.23 | 6.46 | 3.32 |
+| LEV_O__H_SINK | 2.03 | 2.03 | 2.03 | 1.00 | -0.55 | -3.13 | 0.32 | -2.24 | 0.92 | -0.74 | -3.50 | 1.44 | 0.85 | -0.95 | 0.20 | -2.51 |
+| LEV_O__H_SPAT | 2.20 | 2.05 | 2.03 | 1.43 | 0.00 | -2.31 | 0.66 | -1.95 | 1.50 | 0.30 | -1.36 | 1.90 | 1.42 | 0.05 | 1.21 | 0.14 |
+| LEV_O__H_WOK | 2.03 | 2.03 | 2.03 | 0.99 | -0.56 | -3.14 | 0.32 | -2.25 | 0.92 | -0.74 | -3.49 | 1.44 | 0.85 | -0.95 | 0.20 | -2.51 |
+| LEV_O__WOK | 2.03 | 2.03 | 2.03 | 1.00 | -0.55 | -3.13 | 0.32 | -2.25 | 0.92 | -0.74 | -3.50 | 1.44 | 0.85 | -0.95 | 0.20 | -2.52 |
+| SPAT__LEV_C | 8.57 | 8.57 | 7.00 | 7.49 | 5.86 | 3.15 | 6.89 | 4.37 | 7.21 | 5.15 | 1.75 | 7.91 | 7.25 | 5.23 | 6.46 | 3.32 |
+| SPIDER__H_POT | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | 7.81 | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | 5.48 | ≥10 | ≥10 |
+| SPIDER__H_WOK | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | 7.81 | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | 5.48 | ≥10 | ≥10 |
+
 ### Fixture and grasp tolerance (worst axis and sign; gate / contact, mm or deg)
 
 | Action | Fixture group: tolerance, binding pair | Grasp offset (tool x/y/z) | Grasp turn about the jaw axis |
@@ -85,62 +105,62 @@
 
 | Action / edge | as_designed | R09_requirement | dock_stops | touch_off | Largest terms (as designed, contact) |
 |---|---|---|---|---|---|
-| wok | gate 7.12/2.7, contact 3.81/1.33 | gate 2.91/1.22, contact 1.54/0.59 | gate 2.74/1.19, contact 1.39/0.55 | gate 2.23/1.13, contact 1.14/0.52 | grasp_turn 2.0/2.119 = 0.94, fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33 |
-| spatula | gate 10.35/4.12, contact 5.23/2.07 | gate 6.12/3.39, contact 3.07/1.67 | gate 6.02/3.37, contact 3.03/1.67 | gate 5.43/3.34, contact 2.72/1.65 | fixture:raw 15/9.777 = 1.53, grasp_turn 2.0/1.789 = 1.12, odometry_x 5.0/9.777 = 0.51 |
-| lever | gate 3.45/1.09, contact 2.75/0.87 | gate 1.25/0.43, contact 1.06/0.38 | gate 1.46/0.56, contact 1.1/0.41 | gate 1.01/0.39, contact 0.79/0.32 | grasp_turn 2.0/4.0 = 0.5, load_tilt_x 0.25/0.603 = 0.41, odometry_x 5.0/15.0 = 0.33 |
-| lid | gate 17.28/5.97, contact 4.56/1.77 | gate 6.33/2.55, contact 1.95/0.85 | gate 7.5/2.79, contact 1.89/0.85 | gate 5.78/2.41, contact 1.53/0.8 | grasp_turn 2.0/1.306 = 1.53, load_tilt_x 0.25/0.653 = 0.38, fixture:pot 3/7.969 = 0.38 |
-| spider | gate 6.47/2.5, contact 3.23/1.22 | gate 2.39/1.09, contact 1.32/0.58 | gate 2.92/1.29, contact 1.34/0.59 | gate 2.17/1.09, contact 1.04/0.54 | grasp_turn 2.0/2.006 = 1.0, load_tilt_x 0.25/0.631 = 0.4, odometry_x 5.0/15.0 = 0.33 |
-| H_SINK__H_WOK | gate 1.57/0.52, contact 1.57/0.52 | gate 0.71/0.28, contact 0.71/0.28 | gate 0.49/0.16, contact 0.49/0.16 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
-| H_SPAT__H_SINK | gate 1.57/0.52, contact 1.57/0.52 | gate 0.71/0.28, contact 0.71/0.28 | gate 0.49/0.16, contact 0.49/0.16 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
-| H_WOK__H_POT | gate 1.57/0.52, contact 1.57/0.52 | gate 0.71/0.28, contact 0.71/0.28 | gate 0.49/0.16, contact 0.49/0.16 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
-| LEV_C__H_SINK | gate 2.19/0.66, contact 1.78/0.56 | gate 0.94/0.33, contact 0.78/0.29 | gate 0.72/0.23, contact 0.57/0.18 | gate 0.47/0.15, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
-| LEV_C__H_SPAT | gate 2.19/0.66, contact 1.78/0.56 | gate 0.94/0.33, contact 0.78/0.29 | gate 0.72/0.23, contact 0.57/0.18 | gate 0.47/0.15, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
-| LEV_C__H_WOK | gate 2.19/0.66, contact 1.78/0.56 | gate 0.94/0.33, contact 0.78/0.29 | gate 0.72/0.23, contact 0.57/0.18 | gate 0.47/0.15, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
-| LEV_O__H_SINK | gate 7.21/2.24, contact 1.82/0.57 | gate 3.27/1.16, contact 0.79/0.29 | gate 2.58/0.85, contact 0.58/0.18 | gate 1.64/0.52, contact 0.39/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/14.043 = 0.21, dock_yaw 0.3/1.5 = 0.2 |
-| LEV_O__H_SPAT | gate 5.6/1.79, contact 1.81/0.57 | gate 2.56/0.88, contact 0.79/0.29 | gate 1.9/0.63, contact 0.58/0.18 | gate 1.26/0.4, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/14.262 = 0.21, dock_yaw 0.3/1.5 = 0.2 |
-| LEV_O__H_WOK | gate 7.26/2.26, contact 1.82/0.57 | gate 3.29/1.17, contact 0.79/0.29 | gate 2.6/0.85, contact 0.58/0.18 | gate 1.65/0.52, contact 0.39/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/14.043 = 0.21, dock_yaw 0.3/1.5 = 0.2 |
-| LEV_O__WOK | gate 7.26/2.26, contact 2.27/0.85 | gate 3.29/1.17, contact 0.85/0.31 | gate 2.6/0.85, contact 0.64/0.22 | gate 1.65/0.52, contact 0.48/0.18 | fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
-| LID_POT__H_POT | gate 1.94/0.63, contact 1.9/0.62 | gate 0.78/0.29, contact 0.78/0.29 | gate 0.59/0.19, contact 0.56/0.18 | gate 0.39/0.13, contact 0.37/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:cooker 5/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
-| LID_POT__H_WOK | gate 1.94/0.63, contact 1.9/0.62 | gate 0.78/0.29, contact 0.78/0.29 | gate 0.59/0.19, contact 0.56/0.18 | gate 0.39/0.13, contact 0.37/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:cooker 5/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
-| LID_RACK__H_POT | gate 1.77/0.56, contact 1.77/0.56 | gate 0.78/0.29, contact 0.78/0.29 | gate 0.56/0.18, contact 0.56/0.18 | gate 0.37/0.12, contact 0.37/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:spider_rest 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
-| LID_RACK__H_WOK | gate 1.77/0.56, contact 1.77/0.56 | gate 0.78/0.29, contact 0.78/0.29 | gate 0.56/0.18, contact 0.56/0.18 | gate 0.37/0.12, contact 0.37/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:spider_rest 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
-| SPAT__H_SINK | gate 1.57/0.52, contact 1.57/0.52 | gate 0.71/0.28, contact 0.71/0.28 | gate 0.49/0.16, contact 0.49/0.16 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
-| SPAT__H_SPAT | gate 1.57/0.52, contact 1.57/0.52 | gate 0.71/0.28, contact 0.71/0.28 | gate 0.49/0.16, contact 0.49/0.16 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
-| SPAT__LEV_C | gate 2.19/0.66, contact 1.78/0.56 | gate 0.94/0.33, contact 0.78/0.29 | gate 0.72/0.23, contact 0.57/0.18 | gate 0.47/0.15, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
-| SPIDER__H_POT | gate 2.07/0.66, contact 1.85/0.58 | gate 0.78/0.29, contact 0.78/0.29 | gate 0.75/0.28, contact 0.61/0.21 | gate 0.47/0.17, contact 0.4/0.13 | odometry_x 5.0/15.0 = 0.33, load_tilt_x 0.25/1.134 = 0.22, fixture:spider_rest 3/15.0 = 0.2 |
-| SPIDER__H_WOK | gate 2.07/0.66, contact 1.85/0.58 | gate 0.78/0.29, contact 0.78/0.29 | gate 0.75/0.28, contact 0.61/0.21 | gate 0.47/0.17, contact 0.4/0.13 | odometry_x 5.0/15.0 = 0.33, load_tilt_x 0.25/1.134 = 0.22, fixture:spider_rest 3/15.0 = 0.2 |
-| WOK__H_POT | gate 2.24/0.85, contact 2.24/0.85 | gate 0.84/0.31, contact 0.84/0.31 | gate 0.63/0.21, contact 0.63/0.21 | gate 0.47/0.18, contact 0.47/0.18 | fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
-| WOK__H_SINK | gate 2.24/0.85, contact 2.24/0.85 | gate 0.84/0.31, contact 0.84/0.31 | gate 0.63/0.21, contact 0.63/0.21 | gate 0.47/0.18, contact 0.47/0.18 | fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
-| WOK__H_WOK | gate 2.24/0.85, contact 2.24/0.85 | gate 0.84/0.31, contact 0.84/0.31 | gate 0.63/0.21, contact 0.63/0.21 | gate 0.47/0.18, contact 0.47/0.18 | fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
+| wok | gate 7.12/2.7, contact 3.81/1.33 | gate 2.57/1.19, contact 1.34/0.57 | gate 2.44/1.15, contact 1.22/0.53 | gate 2.23/1.13, contact 1.14/0.52 | grasp_turn 2.0/2.119 = 0.94, fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33 |
+| spatula | gate 10.35/4.12, contact 5.23/2.07 | gate 5.75/3.37, contact 2.89/1.67 | gate 5.59/3.34, contact 2.81/1.65 | gate 5.43/3.34, contact 2.72/1.65 | fixture:raw 15/9.777 = 1.53, grasp_turn 2.0/1.789 = 1.12, odometry_x 5.0/9.777 = 0.51 |
+| lever | gate 3.45/1.09, contact 2.75/0.87 | gate 1.06/0.4, contact 0.91/0.36 | gate 1.15/0.42, contact 0.9/0.34 | gate 1.01/0.39, contact 0.79/0.32 | grasp_turn 2.0/4.0 = 0.5, load_tilt_x 0.25/0.603 = 0.41, odometry_x 5.0/15.0 = 0.33 |
+| lid | gate 17.28/5.97, contact 4.56/1.77 | gate 5.75/2.49, contact 1.75/0.84 | gate 6.38/2.5, contact 1.69/0.82 | gate 5.78/2.41, contact 1.53/0.8 | grasp_turn 2.0/1.306 = 1.53, load_tilt_x 0.25/0.653 = 0.38, fixture:pot 3/7.969 = 0.38 |
+| spider | gate 6.47/2.5, contact 3.23/1.22 | gate 2.19/1.08, contact 1.17/0.56 | gate 2.43/1.12, contact 1.15/0.55 | gate 2.17/1.09, contact 1.04/0.54 | grasp_turn 2.0/2.006 = 1.0, load_tilt_x 0.25/0.631 = 0.4, odometry_x 5.0/15.0 = 0.33 |
+| H_SINK__H_WOK | gate 1.57/0.52, contact 1.57/0.52 | gate 0.56/0.24, contact 0.56/0.24 | gate 0.4/0.13, contact 0.4/0.13 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
+| H_SPAT__H_SINK | gate 1.57/0.52, contact 1.57/0.52 | gate 0.56/0.24, contact 0.56/0.24 | gate 0.4/0.13, contact 0.4/0.13 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
+| H_WOK__H_POT | gate 1.57/0.52, contact 1.57/0.52 | gate 0.56/0.24, contact 0.56/0.24 | gate 0.4/0.13, contact 0.4/0.13 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
+| LEV_C__H_SINK | gate 2.19/0.66, contact 1.78/0.56 | gate 0.75/0.29, contact 0.63/0.25 | gate 0.59/0.18, contact 0.47/0.14 | gate 0.47/0.15, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
+| LEV_C__H_SPAT | gate 2.19/0.66, contact 1.78/0.56 | gate 0.75/0.29, contact 0.63/0.25 | gate 0.59/0.18, contact 0.47/0.14 | gate 0.47/0.15, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
+| LEV_C__H_WOK | gate 2.19/0.66, contact 1.78/0.56 | gate 0.75/0.29, contact 0.63/0.25 | gate 0.59/0.18, contact 0.47/0.14 | gate 0.47/0.15, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
+| LEV_O__H_SINK | gate 7.21/2.24, contact 1.82/0.57 | gate 2.59/1.01, contact 0.64/0.26 | gate 2.11/0.68, contact 0.48/0.15 | gate 1.64/0.52, contact 0.39/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/14.043 = 0.21, dock_yaw 0.3/1.5 = 0.2 |
+| LEV_O__H_SPAT | gate 5.6/1.79, contact 1.81/0.57 | gate 2.08/0.79, contact 0.64/0.26 | gate 1.64/0.55, contact 0.48/0.15 | gate 1.26/0.4, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/14.262 = 0.21, dock_yaw 0.3/1.5 = 0.2 |
+| LEV_O__H_WOK | gate 7.26/2.26, contact 1.82/0.57 | gate 2.6/1.01, contact 0.64/0.26 | gate 2.12/0.69, contact 0.48/0.15 | gate 1.65/0.52, contact 0.39/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/14.043 = 0.21, dock_yaw 0.3/1.5 = 0.2 |
+| LEV_O__WOK | gate 7.26/2.26, contact 2.27/0.85 | gate 2.6/1.01, contact 0.7/0.28 | gate 2.12/0.69, contact 0.54/0.19 | gate 1.65/0.52, contact 0.48/0.18 | fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
+| LID_POT__H_POT | gate 1.94/0.63, contact 1.9/0.62 | gate 0.63/0.25, contact 0.63/0.25 | gate 0.48/0.15, contact 0.47/0.14 | gate 0.39/0.13, contact 0.37/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:cooker 5/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
+| LID_POT__H_WOK | gate 1.94/0.63, contact 1.9/0.62 | gate 0.63/0.25, contact 0.63/0.25 | gate 0.48/0.15, contact 0.47/0.14 | gate 0.39/0.13, contact 0.37/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:cooker 5/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
+| LID_RACK__H_POT | gate 1.77/0.56, contact 1.77/0.56 | gate 0.63/0.25, contact 0.63/0.25 | gate 0.47/0.14, contact 0.47/0.14 | gate 0.37/0.12, contact 0.37/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:spider_rest 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
+| LID_RACK__H_WOK | gate 1.77/0.56, contact 1.77/0.56 | gate 0.63/0.25, contact 0.63/0.25 | gate 0.47/0.14, contact 0.47/0.14 | gate 0.37/0.12, contact 0.37/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:spider_rest 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
+| SPAT__H_SINK | gate 1.57/0.52, contact 1.57/0.52 | gate 0.56/0.24, contact 0.56/0.24 | gate 0.4/0.13, contact 0.4/0.13 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
+| SPAT__H_SPAT | gate 1.57/0.52, contact 1.57/0.52 | gate 0.56/0.24, contact 0.56/0.24 | gate 0.4/0.13, contact 0.4/0.13 | gate 0.34/0.11, contact 0.34/0.11 | odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2, load_tilt_x 0.25/1.5 = 0.17 |
+| SPAT__LEV_C | gate 2.19/0.66, contact 1.78/0.56 | gate 0.75/0.29, contact 0.63/0.25 | gate 0.59/0.18, contact 0.47/0.14 | gate 0.47/0.15, contact 0.38/0.12 | odometry_x 5.0/15.0 = 0.33, fixture:upper 3/15.0 = 0.2, dock_yaw 0.3/1.5 = 0.2 |
+| SPIDER__H_POT | gate 2.07/0.66, contact 1.85/0.58 | gate 0.63/0.25, contact 0.63/0.25 | gate 0.58/0.2, contact 0.5/0.16 | gate 0.47/0.17, contact 0.4/0.13 | odometry_x 5.0/15.0 = 0.33, load_tilt_x 0.25/1.134 = 0.22, fixture:spider_rest 3/15.0 = 0.2 |
+| SPIDER__H_WOK | gate 2.07/0.66, contact 1.85/0.58 | gate 0.63/0.25, contact 0.63/0.25 | gate 0.58/0.2, contact 0.5/0.16 | gate 0.47/0.17, contact 0.4/0.13 | odometry_x 5.0/15.0 = 0.33, load_tilt_x 0.25/1.134 = 0.22, fixture:spider_rest 3/15.0 = 0.2 |
+| WOK__H_POT | gate 2.24/0.85, contact 2.24/0.85 | gate 0.69/0.28, contact 0.69/0.28 | gate 0.53/0.18, contact 0.53/0.18 | gate 0.47/0.18, contact 0.47/0.18 | fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
+| WOK__H_SINK | gate 2.24/0.85, contact 2.24/0.85 | gate 0.69/0.28, contact 0.69/0.28 | gate 0.53/0.18, contact 0.53/0.18 | gate 0.47/0.18, contact 0.47/0.18 | fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
+| WOK__H_WOK | gate 2.24/0.85, contact 2.24/0.85 | gate 0.69/0.28, contact 0.69/0.28 | gate 0.53/0.18, contact 0.53/0.18 | gate 0.47/0.18, contact 0.47/0.18 | fixture:plate1 10/15.0 = 0.67, odometry_x 5.0/15.0 = 0.33, dock_yaw 0.3/1.5 = 0.2 |
 
 ### Cart-only budget boxes, worst sign corner replayed (measured): min gate reserve / min gap (mm)
 
 | Action / edge | as_designed | R09_requirement | dock_stops | touch_off |
 |---|---|---|---|---|
-| wok | -0.931 / 4.069 | 3.0 / 8.0 | 2.193 / 7.193 | 2.628 / 7.628 |
-| spatula | -5.0 / 0.0 | 1.312 / 6.312 | 3.117 / 8.117 | 3.665 / 8.665 |
-| lever | -2.21 / 2.79 | 5.196 / >=10 | 5.211 / >=10 | 5.671 / >=10 |
-| lid | 3.544 / 8.544 (play not run) | >=10 / >=10 (play not run) | >=10 / >=10 (play not run) | >=10 / >=10 (play not run) |
-| spider | -4.184 / 5.816 (play not run) | 2.15 / 7.15 | 2.275 / >=10 (play not run) | 2.561 / >=10 (play not run) |
+| wok | -1.066 / 3.934 | 3.0 / 8.0 | 2.355 / 7.355 | 2.599 / 7.599 |
+| spatula | -4.439 / 0.561 | 1.312 / 6.312 | 2.871 / 7.871 | 3.026 / 8.026 |
+| lever | -2.061 / 2.939 | 5.196 / >=10 | 5.031 / >=10 | 5.545 / >=10 |
+| lid | 3.621 / 8.621 (play not run) | >=10 / >=10 (play not run) | >=10 / >=10 (play not run) | >=10 / >=10 (play not run) |
+| spider | -4.008 / 5.992 (play not run) | 2.15 / 7.15 | 2.033 / >=10 (play not run) | 2.453 / >=10 (play not run) |
 | H_SINK__H_WOK | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | H_SPAT__H_SINK | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | H_WOK__H_POT | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
-| LEV_C__H_SINK | 1.266 / 9.877 | 5.277 / >=10 | 6.346 / >=10 | 6.973 / >=10 |
-| LEV_C__H_SPAT | 1.265 / 9.877 | 5.281 / >=10 | 6.345 / >=10 | 6.971 / >=10 |
-| LEV_C__H_WOK | 1.266 / 9.877 | 5.281 / >=10 | 6.345 / >=10 | 6.971 / >=10 |
-| LEV_O__H_SINK | -4.435 / 5.565 | -0.967 / 9.033 | 0.016 / >=10 | 0.584 / >=10 |
-| LEV_O__H_SPAT | -3.673 / 6.327 | -0.575 / 9.425 | 0.627 / >=10 | 1.131 / >=10 |
-| LEV_O__H_WOK | -4.436 / 5.564 | -0.97 / 9.03 | 0.016 / >=10 | 0.587 / >=10 |
-| LEV_O__WOK | -4.432 / 5.568 | -0.968 / 9.032 | 0.015 / >=10 | 0.584 / >=10 |
+| LEV_C__H_SINK | 1.768 / >=10 | 5.277 / >=10 | 6.463 / >=10 | 6.904 / >=10 |
+| LEV_C__H_SPAT | 1.768 / >=10 | 5.281 / >=10 | 6.465 / >=10 | 6.903 / >=10 |
+| LEV_C__H_WOK | 1.768 / >=10 | 5.281 / >=10 | 6.465 / >=10 | 6.903 / >=10 |
+| LEV_O__H_SINK | -3.976 / 6.024 | -0.967 / 9.033 | 0.121 / >=10 | 0.528 / >=10 |
+| LEV_O__H_SPAT | -3.324 / 6.676 | -0.575 / 9.425 | 0.611 / >=10 | 0.989 / >=10 |
+| LEV_O__H_WOK | -3.974 / 6.026 | -0.97 / 9.03 | 0.117 / >=10 | 0.529 / >=10 |
+| LEV_O__WOK | -3.977 / 6.023 | -0.968 / 9.032 | 0.121 / >=10 | 0.528 / >=10 |
 | LID_POT__H_POT | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | LID_POT__H_WOK | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | LID_RACK__H_POT | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | LID_RACK__H_WOK | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | SPAT__H_SINK | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | SPAT__H_SPAT | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
-| SPAT__LEV_C | 1.265 / 9.877 | 5.281 / >=10 | 6.345 / >=10 | 6.971 / >=10 |
-| SPIDER__H_POT | 6.126 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
-| SPIDER__H_WOK | 8.056 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
+| SPAT__LEV_C | 1.768 / >=10 | 5.281 / >=10 | 6.465 / >=10 | 6.903 / >=10 |
+| SPIDER__H_POT | 7.852 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
+| SPIDER__H_WOK | 8.217 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | WOK__H_POT | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | WOK__H_SINK | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |
 | WOK__H_WOK | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 | >=10 / >=10 |

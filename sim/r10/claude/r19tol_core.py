@@ -19,14 +19,14 @@ Two thresholds per state: 'gate' = distance - the checker's gap (10 mm robot / 5
 the planning gate) and 'contact' = distance (real contact in the model).
 The MuJoCo-contact part of the checker (box-box artefacts, DECISIONS R11) is not used; r19tol_replay.py
 re-runs Checker.check(full=True) at the binding states as a cross-check.
-Arm option: ARM=<id> as everywhere (arms.current()); outputs go to results/r19/tol<arms.tag()>; stored
+Arm option: ARM=<id> as everywhere (arms.current()); outputs go to results/r19/tol/<arm> (UR5e: results/r19/tol); stored
 paths are taken from the tagged files if they exist (r17chain.py / r19hub.py ... ARM=<id>), else the
 UR5e files (same kinematics for an enclosing-geometry model such as ARM=ur5e_enc)."""
 import sys,os,json,math
 sys.path.insert(0,'.')
 import numpy as np,mujoco
 import arms
-ARM=arms.current();TAG=arms.tag(ARM);OUT='results/r19/tol'+TAG
+ARM=arms.current();TAG=arms.tag(ARM);OUT='results/r19/tol'+('/'+ARM if TAG else '')   # another arm option: results/r19/tol/<arm>
 MM,DEG=1e-3,math.pi/180
 CHAINS=dict(   # action -> stored chain (as r19smooth.CHAINS) and the world of each grasp approach (r17chain.action() GR)
  wok=dict(file='results/r17/chain_wok_s-1_final.json',label='wok_plate_rinse',worlds={0:{},16:{}}),
@@ -35,9 +35,17 @@ CHAINS=dict(   # action -> stored chain (as r19smooth.CHAINS) and the world of e
  lid=dict(file='results/r17/chain_lid_s-1_final.json',label='lid_off_to_rack',worlds={0:{'r16_lid':'on'},8:{'r16_lid':'rack'}}),
  spider=dict(file='results/r17/chain_spider_s+1_final.json',label='spider_pot_to_plate',worlds={0:{},18:{}}))
 HUBDIR='results/r19/hub'
+def hubdir():
+ return HUBDIR+TAG if TAG and PATHS!='base' and os.path.isdir(HUBDIR+TAG) else HUBDIR
+PATHS=next((a[6:] for a in sys.argv[1:] if a.startswith('PATHS=')),'auto')   # PATHS=base: always the stored UR5e paths
 def tagged(f):
+ """The arm option's own stored path (r17chain.py ... ARM=<id> -> *_<id>.json) if it exists and holds states,
+ else the stored UR5e path (same kinematics for ARM=ur5e_enc: the #12 re-check of the stored paths)."""
  t=f[:-5]+TAG+'.json'
- return t if TAG and os.path.exists(t) else f
+ if TAG and PATHS!='base' and os.path.exists(t):
+  r=J(t)
+  if r.get('play') or r.get('qs'):return t
+ return f
 def J(f):return json.load(open(f,encoding='utf-8'))
 def unwrap(Q):
  Q=np.array(Q,float)
@@ -106,7 +114,7 @@ def build_scene(key):
   sys.argv=[sys.argv[0],'commands']+[a for a in sys.argv[1:] if a.startswith('ARM=')]   # r19hub parses argv at import
   import r19hub
   tree,meta=r19hub.union_tree();ch=Checker(tree,meta)
-  d=HUBDIR+TAG if TAG and os.path.isdir(HUBDIR+TAG) else HUBDIR;f=f'{d}/edge_{kind[1]}.json';e=J(f)
+  f=f'{hubdir()}/edge_{kind[1]}.json';e=J(f)
   Q=np.array(e['qs'],float)
   return ch,Q,dict(file=f,kind='edge',edge=kind[1],method=e.get('method'),reported_min_reserve_mm=e.get('min_reserve_mm'),
    labels=[f"{e['a']}->{e['b']} {100*i/max(1,len(Q)-1):.1f}%" for i in range(len(Q))],src_n=len(Q),densified=False)

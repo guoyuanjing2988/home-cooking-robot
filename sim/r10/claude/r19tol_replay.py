@@ -2,7 +2,7 @@
 
 python r19tol_replay.py SET=actions|approaches|edges|all [PARTS=cart,fix,grasp] [EDGES=0:11]
        | SCENES=play:wok,app:lid:1,edge:WOK__H_WOK,...   [WORKERS=16] [SCEN=1] [ARM=<id>]
- -> results/r19/tol<arm tag>/scene_<key>__<part>.json
+ -> results/r19/tol[/<arm>]/scene_<key>__<part>.json
 Scenes: play = an action's stored play (2pi-unwrapped, joint-linear, densified to <= 4 mm point bound as
 r19smooth.py), app = one grasp approach / release retreat (empty gripper, object in the world, r17chain.py
 approach()), edge = one R19 hub edge (stored states, union scene). The R18b layout throughout.
@@ -34,7 +34,7 @@ def scene_list():
    out+=[f'app:{a}:{k}' for k,q in enumerate(r['approach_qs']) if q]
  if S in ('edges','all'):
   import glob
-  d=C.HUBDIR+C.TAG if C.TAG and os.path.isdir(C.HUBDIR+C.TAG) else C.HUBDIR
+  d=C.hubdir()
   E=['edge:'+os.path.basename(f)[5:-5] for f in sorted(glob.glob(f'{d}/edge_*.json')) if C.J(f).get('ok')]
   a,b=map(int,KV.get('EDGES',f'0:{len(E)}').split(':'));out+=E[a:b]
  return out
@@ -42,11 +42,12 @@ TR=dict(s0=.5*C.MM,smax=15*C.MM,res=.05*C.MM,unit=C.MM,u='mm')
 AN=dict(s0=.05*C.DEG,smax=1.5*C.DEG,res=.005*C.DEG,unit=C.DEG,u='deg')
 GRID_TR=[1,2,5,10];GRID_YAW=[.1,.2,.5,1.];GRID_TILT=[.1,.2,.5];GRID_CAP=10.   # mm: grid minima above this are reported as '>= 10' (the tolerance search covers larger values)
 # cart budget scenarios for SCEN=1 (half-ranges: m, m, m, rad, rad, rad); R19_TOLERANCE.md section 1 gives the sources
-SCENARIOS={   # cart pose half-ranges [x m, y m, z m, yaw rad, tilt_x rad, tilt_y rad]; derivation in R19_TOLERANCE.md section 1
- 'R09_requirement':[2*C.MM,2*C.MM,1*C.MM,.2*C.DEG,0.,0.],                     # posts/r09/integrator.md: +-2 mm XY, +-0.2 deg yaw, +-1 mm height (a requirement, no tilt given)
- 'as_designed':[6*C.MM,1.5*C.MM,1*C.MM,.3*C.DEG,.3*C.DEG,.15*C.DEG],           # estimated: bumper fixes y only, x from encoders, floor + load tilt, no calibration
- 'dock_stops':[.5*C.MM,.5*C.MM,.5*C.MM,.05*C.DEG,.1*C.DEG,.05*C.DEG],          # estimated: indexed stops / V-block + stiff bumper at each station, calibrated
- 'touch_off':[.3*C.MM,.3*C.MM,.3*C.MM,.03*C.DEG,.1*C.DEG,.03*C.DEG]}           # estimated: per-set re-localization; load tilt (posture-dependent) remains
+SCENARIOS={   # cart pose half-ranges [x m, y m, z m, yaw rad, tilt_x rad, tilt_y rad] = per-axis RSS of the cart terms of
+              # r19tol_report.BUDGET (R19_TOLERANCE.md section 1); R09: the requirement as written (no tilt given)
+ 'R09_requirement':[2*C.MM,2*C.MM,1*C.MM,.2*C.DEG,0.,0.],
+ 'as_designed':[5.4*C.MM,1.5*C.MM,1*C.MM,.36*C.DEG,.29*C.DEG,.07*C.DEG],
+ 'dock_stops':[1.04*C.MM,.5*C.MM,.5*C.MM,.054*C.DEG,.11*C.DEG,.03*C.DEG],
+ 'touch_off':[1.02*C.MM,.3*C.MM,.3*C.MM,.036*C.DEG,.104*C.DEG,.03*C.DEG]}
 NONE=dict(kind='none')
 def states_order(noms,pert,measure,sub=None):
  idx=np.arange(len(noms)) if sub is None else np.asarray(sub)

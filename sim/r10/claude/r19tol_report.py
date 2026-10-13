@@ -1,6 +1,6 @@
 """R19 tolerance (#13): merge the r19tol_replay.py results, apply the error budget, write the tables.
 
-python r19tol_report.py [ARM=<id>]  -> results/r19/tol<tag>/summary.json + tables.md (pasted into R19_TOLERANCE.md)
+python r19tol_report.py [ARM=<id>]  -> results/r19/tol[/<arm>]/summary.json + tables.md (pasted into R19_TOLERANCE.md)
 Per action (its stored play + its grasp approaches) and per hub edge:
   - the exact nominal minimum (gate / contact) vs the reserve the checker reported;
   - the measured tolerance per perturbation axis (worst sign), binding segment and pair;
@@ -25,11 +25,11 @@ BUDGET=[
  ('dock_y','y','mm',1.5,2.0,0.5,0.3,'E','bumper on the cabinet fronts: door flushness +-1 mm + bumper compression +-0.5 mm; datum rail / stop on the plinth; touch-off.'),
  ('dock_yaw','yaw','deg',0.3,0.2,0.05,0.03,'E','bumper over 0.56 m on fronts that are flush to +-1.5 mm -> +-0.3 deg; V-block + flat; touch-off. Pivot: the arm J1 axis.'),
  ('floor_z','z','mm',1.0,1.0,0.5,0.3,'E','floor height under the 4 contacts + tyre radius (R09 requirement +-1 mm height).'),
- ('floor_tilt_x','tilt_x','deg',0.15,0.0,0.15,0.03,'E','tile floor unevenness ~0.5 mm across the 0.21 m caster-to-drive-wheel base (flatness spec of tiled floors is commonly 2 mm / 2 m; not verified in the standard text). Toward the counter = tilt_x -. Touch-off / inclinometer measures and compensates it.'),
- ('floor_tilt_y','tilt_y','deg',0.07,0.0,0.07,0.03,'E','as above across the 0.44 m track.'),
+ ('floor_tilt_x','tilt_x','deg',0.15,0.0,0.05,0.03,'E','tile floor unevenness ~0.5 mm across the 0.21 m caster-to-drive-wheel base (flatness spec of tiled floors is commonly 2 mm / 2 m; not verified in the standard text). Toward the counter = tilt_x -. Static per station: measured at commissioning (3-point touch-off / inclinometer) and compensated in dock_stops / touch_off.'),
+ ('floor_tilt_y','tilt_y','deg',0.07,0.0,0.03,0.03,'E','as above across the 0.44 m track.'),
  ('load_tilt_x','tilt_x','deg',0.25,0.0,0.10,0.10,'E','tyre / caster / bumper / cabinet-front compliance under the arm moment (~60 N m with the wok at reach, #13): lean toward the counter. Posture-dependent, so a set-start touch-off does not remove it; stiffer bumper datum + measured pre-compensation. Mast bending: 0.003 deg (120x120x4 steel tube est.), negligible.'),
- ('mount_xy','any','mm',0.5,0.5,0.05,0.05,'E','arm base on the mast plate: four M8 bolts (S, UR manual) in clearance holes; dowel-pinned + calibrated plate.'),
- ('mount_yaw','yaw','deg',0.2,0.2,0.02,0.02,'E','base rotation in the bolt clearance; pinned.'),
+ ('mount_xy','any','mm',0.5,0.05,0.05,0.05,'E','arm base on the mast plate: four M8 bolts (S, UR manual) in clearance holes; dowel-pinned + calibrated plate.'),
+ ('mount_yaw','yaw','deg',0.2,0.02,0.02,0.02,'E','base rotation in the bolt clearance; pinned.'),
  ('arm_accuracy','any','mm',2.0,0.3,0.3,0.3,'S/E','UR5e absolute accuracy with the sim\'s nominal kinematics: >= 2 mm (S, ROS answers 324883); with the robot\'s own factory calibration exported into the checker: ~0.3 mm (E).'),
  ('arm_repeatability','any','mm',0.03,0.03,0.03,0.03,'S','UR5e pose repeatability +-0.03 mm, ISO 9283 (S, datasheet).'),
  ('tracking_sync','any','mm',1.5,0.5,0.5,0.5,'E','servoj path following + cart / arm clock skew (4-10 ms x 0.25 m/s); #6. Hardware-synchronized cart axis / slower near tight spots.'),
@@ -151,6 +151,19 @@ def main():
     cells.append(f"{f(g)} / {f(c)}")
    first=min(axes,key=lambda ax:T[f'cart:{ax}']['gate']['tol']/(1. if ax in 'xyz' else 10.))   # rank: 1 deg ~ 10 mm at ~0.6 m lever
    b=T[f'cart:{first}']['gate'];L.append(f"| {a} | "+' | '.join(cells)+f" | {first}: {' / '.join(b['pair'] or [])}, {b['label']} ({b.get('scene','')}) |")
+ L.append('\n### Grid (measured): min gate reserve over all states, worst sign, at each cart offset (mm; "≥10" = above 10 mm; negative = below the 10/5 mm gate, the gap is that + 10 or + 5)\n')
+ gv=[('x',2),('x',5),('x',10),('y',2),('y',5),('y',10),('z',2),('z',5),('yaw',.2),('yaw',.5),('yaw',1.),('tilt_x',.1),('tilt_x',.2),('tilt_x',.5),('tilt_y',.2),('tilt_y',.5)]
+ L.append('| Action / edge | '+' | '.join(f"{a} ±{v:g}" for a,v in gv)+' |\n|---|'+'---|'*len(gv))
+ for grp in ('actions','edges'):
+  for a,rec in out[grp].items():
+   if not rec:continue
+   rows=[r for s in rec['scenes'] for r in merged(R,s)['grid']];cells=[]
+   for ax,v in gv:
+    vals=[r['gate_min_mm'] for r in rows if r['axis']==ax and abs(abs(r['value'])-v)<1e-9]
+    num=[x for x in vals if isinstance(x,(int,float))]
+    cells.append(f"{min(num):.2f}" if num else ('≥10' if vals else '-'))
+   if all(c=='≥10' for c in cells):continue
+   L.append(f"| {a} | "+' | '.join(cells)+' |')
  L.append('\n### Fixture and grasp tolerance (worst axis and sign; gate / contact, mm or deg)\n\n| Action | Fixture group: tolerance, binding pair | Grasp offset (tool x/y/z) | Grasp turn about the jaw axis |\n|---|---|---|---|')
  for a,rec in out['actions'].items():
   T=rec['tolerance'];fx=collections.defaultdict(list)
