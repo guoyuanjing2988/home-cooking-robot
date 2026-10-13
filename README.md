@@ -84,6 +84,21 @@ All sizes are estimates unless stated. Nothing has been bought.
 
 With the user loading the rice cooker (`USERRICE=1`): A 38.2 / B 75.6 / C 35.6 min, arm busy 13.9 / 28.4 / 17.9 min. **Prep is not in these numbers.** The R19 audit estimates 21–40 more arm minutes per meal for prep, before the as-bought recount.
 
+## Motion clips
+
+The predefined motions, each a stored path checked in the sim (10 mm robot, 5 mm gripper/held object, every state). Clips are cropped from `sim/r10/claude/renders` and re-captioned in English; speed factors are noted. Made by `make_gifs.py` in the Build Day demo layer (not in this repo yet).
+
+| | |
+|---|---|
+| <img src="docs/motions/tomato_prep.gif" width="420" alt="Tomato: lift, rinse, lever cutter (R11)"><br>**Tomato: lift, rinse, lever cutter (R11)**<br>6,653 checked states. Starts with the tomato gripped; water and cutting not simulated. 2.6× | <img src="docs/motions/carrot_prep.gif" width="420" alt="Carrot: pick, wash, peel, slicer chute (R11)"><br>**Carrot: pick, wash, peel, slicer chute (R11)**<br>7,431 checked states; the cart drives between stations. 2.6× |
+| <img src="docs/motions/grasp_physics.gif" width="420" alt="Grasp with physics (R12)"><br>**Grasp with physics (R12)**<br>Food is a free body, never welded; slip measured. 6.8× | <img src="docs/motions/foods_bench.gif" width="420" alt="About 40 foods on the grasp bench (R13)"><br>**About 40 foods on the grasp bench (R13)**<br>702 rigid + 53 non-rigid runs; one grasp method per food. 1.4× |
+| <img src="docs/motions/fridge_door.gif" width="420" alt="Fridge door by the handle (R14)"><br>**Fridge door by the handle (R14)**<br>Door physics: 100 N seal, 14 kg door. | <img src="docs/motions/pour_drum.gif" width="420" alt="Pour drum, 4 compartments in order (R14)"><br>**Pour drum, 4 compartments in order (R14)**<br>Servo-turned; granules 100 % in order. Liquids not simulated. |
+| <img src="docs/motions/stir_bench.gif" width="420" alt="Stir stroke: scrape, lift, return (R15)"><br>**Stir stroke: scrape, lift, return (R15)**<br>Physics bench, 90 rigid dice. Executable at ~3.6 s/stroke (R19). | <img src="docs/motions/plating_tip.gif" width="420" alt="Plating tip onto a guarded plate (R15)"><br>**Plating tip onto a guarded plate (R15)**<br>81–91 % of rigid dice on the plate (98 % at half load). |
+| <img src="docs/motions/wok_plate_rinse.gif" width="420" alt="Wok: plate, rinse at the sink, back (R17)"><br>**Wok: plate, rinse at the sink, back (R17)**<br>One continuous path, 48.9 s, 2.0 mm min clearance (R19 re-check). 2.7× | <img src="docs/motions/faucet_lever.gif" width="420" alt="Faucet lever lifted 30° (R17)"><br>**Faucet lever lifted 30° (R17)**<br>3.5 s; clip-on block on the single-lever faucet. Slowed 3×. |
+| <img src="docs/motions/lid_rack.gif" width="420" alt="Lid off the pot, upright into the rack (R17)"><br>**Lid off the pot, upright into the rack (R17)**<br>20.2 s, 1.0 mm clearance: needs a keyed tab (#8). 1.2× | <img src="docs/motions/spider.gif" width="420" alt="Spider: scoop, drain, tip onto the plate (R17)"><br>**Spider: scoop, drain, tip onto the plate (R17)**<br>52.6 s, 2.1 mm clearance. 3.1× |
+
+Not rendered yet: the spatula rest → stroke start path (R18b, 26.9 s) and the R19 hub roadmap.
+
 ## Open items
 - **No real-food tests yet:**
   - stir quality with soft, oily and leafy food;
