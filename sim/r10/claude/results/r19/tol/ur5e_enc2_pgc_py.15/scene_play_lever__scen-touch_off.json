@@ -1,0 +1,52 @@
+{
+ "scene": "play:lever",
+ "part": "scen-touch_off",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lever_s+1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lever",
+  "obj": "lever",
+  "src_n": 16
+ },
+ "states": 128,
+ "stored_states": 16,
+ "nominal_s": 1.5,
+ "nominal_cached": true,
+ "held": true,
+ "scenarios": {
+  "touch_off": {
+   "half_range_mm_deg": [
+    1.02,
+    0.3,
+    0.3,
+    0.036,
+    0.104,
+    0.03
+   ],
+   "gate": {
+    "min_mm": 5.545,
+    "state": 127,
+    "label": "kf 0->1 (closed -> open)",
+    "pair": [
+     "R_gripper_r17_lever_bar",
+     "r17_lever_hub"
+    ],
+    "corner": [
+     1.02,
+     0.3,
+     -0.3,
+     0.036,
+     -0.104,
+     0.03
+    ],
+    "evals": 4096
+   },
+   "contact": {
+    "min_mm": ">=10",
+    "evals": 3584
+   }
+  }
+ },
+ "elapsed_s": 24.8
+}

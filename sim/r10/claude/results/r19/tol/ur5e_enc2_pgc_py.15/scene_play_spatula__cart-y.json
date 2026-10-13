@@ -1,0 +1,212 @@
+{
+ "scene": "play:spatula",
+ "part": "cart-y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "spatula",
+  "obj": "spatula_b",
+  "src_n": 249
+ },
+ "states": 2642,
+ "stored_states": 249,
+ "nominal_s": 3.8,
+ "nominal_cached": true,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 5.781,
+    "bounded": true,
+    "violation_at": 5.812,
+    "binding": {
+     "state": 21,
+     "value_mm": -0.007,
+     "pair": [
+      "R_gripper_r18_spat_blade2",
+      "stored_bowl_leafy_greens_collar_wall4"
+     ],
+     "label": "kf 0->1 (pick -> lifted)",
+     "src_index": 1.0
+    },
+    "evals": 297
+   },
+   "contact": {
+    "tol": 10.789,
+    "bounded": true,
+    "violation_at": 10.816,
+    "binding": {
+     "state": 21,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r18_spat_blade2",
+      "stored_bowl_leafy_greens_collar_wall4"
+     ],
+     "label": "kf 0->1 (pick -> lifted)",
+     "src_index": 1.0
+    },
+    "evals": 247
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 7.478,
+    "bounded": true,
+    "violation_at": 7.508,
+    "binding": {
+     "state": 2641,
+     "value_mm": -0.009,
+     "pair": [
+      "R_gripper_r18_spat_blade0",
+      "r15_wok_t4_9"
+     ],
+     "label": "kf 4->5 (over the wok -> stroke start)",
+     "src_index": 248.0
+    },
+    "evals": 1124
+   },
+   "contact": {
+    "tol": 14.038,
+    "bounded": true,
+    "violation_at": 14.066,
+    "binding": {
+     "state": 2641,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r18_spat_blade0",
+      "r15_wok_t4_9"
+     ],
+     "label": "kf 4->5 (over the wok -> stroke start)",
+     "src_index": 248.0
+    },
+    "evals": 1361
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 21,
+   "value": 5.6076,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.198,
+   "checker_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ],
+   "evaluator_gate_mm": 0.198,
+   "evaluator_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 21,
+   "value": 5.9864,
+   "checker_hits": [
+    [
+     "stored_bowl_leafy_greens_collar_bottom",
+     "R_gripper_r18_spat_blade2"
+    ],
+    [
+     "stored_bowl_leafy_greens_collar_wall4",
+     "R_gripper_r18_spat_blade2"
+    ],
+    [
+     "stored_bowl_leafy_greens_collar_wall5",
+     "R_gripper_r18_spat_blade2"
+    ],
+    [
+     "R_gripper_r18_spat_blade2",
+     "stored_bowl_leafy_greens_collar_bottom"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.18,
+   "checker_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ],
+   "evaluator_gate_mm": -0.18,
+   "evaluator_pair": [
+    "R_gripper_r18_spat_blade2",
+    "stored_bowl_leafy_greens_collar_wall4"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": -1,
+   "state": 2641,
+   "value": -7.2537,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.185,
+   "checker_pair": [
+    "r15_wok_t4_9",
+    "R_gripper_r18_spat_blade0"
+   ],
+   "evaluator_gate_mm": 0.185,
+   "evaluator_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": -1,
+   "state": 2641,
+   "value": -7.7332,
+   "checker_hits": [
+    [
+     "r15_wok_t4_8",
+     "R_gripper_r18_spat_blade4"
+    ],
+    [
+     "r15_wok_t4_9",
+     "R_gripper_r18_spat_blade0"
+    ],
+    [
+     "r15_wok_t4_8",
+     "R_gripper_r18_spat_blade4"
+    ],
+    [
+     "r15_wok_t4_9",
+     "R_gripper_r18_spat_blade0"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.181,
+   "checker_pair": [
+    "r15_wok_t4_9",
+    "R_gripper_r18_spat_blade0"
+   ],
+   "evaluator_gate_mm": -0.181,
+   "evaluator_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ]
+  }
+ ],
+ "elapsed_s": 14.0
+}

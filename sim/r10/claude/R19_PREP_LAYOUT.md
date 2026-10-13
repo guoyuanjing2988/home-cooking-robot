@@ -1,5 +1,7 @@
 # R19 prep layout and the core prep sets in today's kitchen (issue #4, steps 1–2, 2026-10-13)
 
+**Round 2 (true-geometry arm `ur5e_enc2_pgc`): see §9. All three sets pass there too, with no layout move.**
+
 **Why.** The user: "备菜是最重要你要做的之一了，肯定不是人来做". The prep audit (`R19_PREP_AUDIT.md`) found that the only two checked prep chains (carrot SD, tomato WD, R12) no longer work in today's (R18b) kitchen:
 - the wall spout they wash under is gone;
 - the peeler stands on the spatula rest;
@@ -289,7 +291,7 @@ The user's kitchen is L-shaped. The sink leg is the prep zone: microwave and ble
   - the potato and greens staging bowls stay.
 - **Code state:** other agents were editing `arms.py` (the `ur5e_enc` option appeared during this round). The `ARM` default stays `ur5e`; all runs above used the stock UR5e unless marked.
 
-## 7. Commands for the controller (full runs; run in the background)
+## 7. Commands for the controller (round 1, stock UR5e; for round 2 see §9.1. With the round-2 defaults, the stock arm needs `PRYAW=0 CHAPP=front CHUP=0,-.10,.20 LVC=F`)
 ```
 cd /c/Users/admin/Documents/YJGames/robot_rail/sim/r10/claude
 PY=C:/Users/admin/Documents/YJGames/robot_v5/board/work/t01/.venv/Scripts/python.exe
@@ -330,3 +332,111 @@ for f in press_full_ur5e_enc carrot_full_ur5e_enc tomato_full_ur5e_enc; do $PY r
 - **Final passing runs:** carrot 137 s, tomato 101 s, press 30 s.
 - **≤ 4 mm re-checks:** carrot 117 s, tomato 39 s, press 15 s (15–24 workers).
 - **`ARM=ur5e_enc` smokes:** about 2 min each; not passing (§6).
+
+---
+
+## 9. Round 2: the true-geometry arm `ur5e_enc2_pgc` (issue #12; 2026-10-13, after the controller's runs)
+
+**Why.** The controller re-ran the three sets with `ARM=ur5e_enc2_pgc` (`R19_UR5E_ENC.md` §7–8): k-DOP hulls that certifiably enclose the real UR5e, plus the PGC-140 housing from DH's drawing (Ø75 body).
+
+| Set | Controller's result (SEEDS=3 TRIES=12 KEEP=4) |
+|---|---|
+| tomato | pass, but only 0.07–0.14 mm reserve |
+| press | fail: the approach folds the arm (upper arm `R_geom_enc2_ua_1` vs wrist 2 `R_geom_enc2_w2_1`); one candidate hits the door with the upper arm |
+| carrot | fail: no "over the chute" anchor candidate could be followed |
+
+**Answer.** All three now pass with `ur5e_enc2_pgc`, with **no layout move**. Each is checked with the unchanged rules, and every state is re-checked fully at ≤ 4 mm.
+
+| Set | What changed | Time | ≤ 4 mm re-check: states (play + approaches), hits | Min reserve arm/held–env; self |
+|---|---|---|---|---|
+| **press** | The 3D-printed knob adapter is turned **45°** on the pusher stem (`PRYAW=45`); the bought stem and disc are not turned. The gripper takes the knob diagonally, so the arm no longer folds. Anchor at cart −1.274. | 4.6 s | 155 + 36 + 36, **0** | 1.0 mm (pusher disc 6 mm above the blade plate, by design, as R11); self **14.7 mm** |
+| **carrot** | The carrot comes to the chute from a direction turned **30°** (`CHAPP=30`, upright waypoint `CHUP=.05,-.087,.18`), so the gripper is front-right of the chute. Chute-anchor cart −1.28. | 49.9 s | 4,022 + 61 + 172, **0** | 2.01 mm; self 2.0 mm |
+| **tomato** | The lever-side anchor cart is fixed at **−0.35** (`LVC=-0.35`), giving a more open elbow at the set-back lever. | 36.5 s | 2,680 + 77 + 53, **0** | **2.22 mm in the play** (was 0.14); release 1.0 mm (finger 6 mm above the blade plate at the moment of opening: design geometry, not the door); self 1.44 mm |
+
+- The arm can push 102.5 N on the knob along the press, unchanged.
+- Max joint-load ratio is 0.38–0.46.
+- Results: `results/r19/prep/chain_{press,carrot,tomato}_r2_ur5e_enc2_pgc.json` and `*_verify4mm.json`. Explorations are in `results/r19/prep/explore2/`.
+- Render: `renders/r19/prep_layout_r19_enc2pgc.png`.
+
+**What was tried** (all `ARM=ur5e_enc2_pgc`, smoke runs of 1–2 seeds; logs in `explore2/`):
+- **Press:**
+  - knob yaw +30 / +45 / +60 / −45 / −60°: all pass;
+  - yaw −30°: no anchor;
+  - unturned knob with a fixed cart at −0.40 / −1.25: fail (upper arm vs base plate, or no anchor).
+  - Chosen: +45°. It has the largest self clearance (14.7 mm, against 2.3 mm for +30 / −45).
+- **Carrot:**
+  - from the front with a lower waypoint or a lower over-chute height: the anchor follows, but the lane join is blocked;
+  - from the right side (−x): the arm hits itself on the way to the lane;
+  - slicer moved 5 cm right, or the chute-anchor cart fixed: fail;
+  - **30° and 45° diagonal: pass.**
+  - Chosen: 30°. Both passed the ≤ 4 mm re-check (2.01 mm); 30° has the lower joint load.
+- **Tomato:**
+  - slide-in yaw −25 / −30 / −35°: no lever-side candidate;
+  - yaw −10°: 1.4 mm;
+  - **fixed lever-side cart −0.35, yaw −20 or −30°: 3.0 mm in the planning steps, 2.22 mm in the ≤ 4 mm re-check.**
+
+**Hardware consequence.** The keyed knob adapter is still to be drawn (R12 open item 5). It is now drawn turned 45° to the lever base's front. The bought AY-403 stem and pusher disc are unchanged.
+
+**Re-screen of the work spot with the turned knob** (candidate `tool_CBK45`; the stem is unturned, the knob's AABB is used as its envelope). The knob adapter changes the station's top. The cold-box spot and the slicer were re-screened with the new arm too.
+
+| Spot | 6 stored cooking chains with the `ur5e_enc2_pgc` geometry (every state + approaches) | Flagged hub edges (every state) |
+|---|---|---|
+| work spot `tool_CBK45` | 2,003 states, **0 hits** | 8 of 8 flagged edges, 15,666 states, **0 hits** |
+| cold box `cbox_CBX_-0.86_0.17` | **0 hits** | 8 of 8 flagged edges, **0 hits** |
+| slicer `slicer_FLT` | **0 hits** | 0 flagged |
+
+Notes on the re-screen:
+- **Turning the whole pusher was rejected.** It turns the bought stem too, and the turned stem (AABB) came 3.35 mm from the held spatula blade on the spatula fetch.
+- **Which cooking paths were used:**
+  - The cooking chains are the stored UR5e chains. `R19_UR5E_ENC.md` §8.2 adopts them unchanged for `ur5e_enc2_pgc`; wok and plate 2 are certified in the `PY=.15` layout.
+  - Only hits with the candidate boxes are counted, so the plating spot's y does not change the result.
+  - The hub edges are the stored UR5e roadmap with the new arm geometry.
+- **The screen is less conservative here.** The voxel pre-screen (which hub edges are flagged) was built from the stock geoms. Its dilation (4 cm for chains, 6 cm for hub edges, +2 cm for the fixture) exceeds the enc2 bloat plus the real arm's protrusion beyond the stock capsules (≤ 26.5 mm) plus the 10 mm gap. Even so, it is less conservative than in round 1.
+- **The `PY=.15` hub is being rebuilt by the controller.** Re-screen the spots against it when it exists (§9.1).
+- **Static note.** The cold-box tub (x −1.01…−0.71) is 1 cm from the counter edge at the sink. The screen lists the sink's side wall under the counter at 0 mm (AABB); there is no physical conflict.
+
+**Defaults of `r19prepchain.py` are now the round-2 settings:**
+- `PRYAW=45`
+- `CHAPP=30`, `CHUP=.05,-.087,.18`
+- `LVC=-0.35`
+
+With the stock `ARM=ur5e`:
+- these defaults pass the tomato (39.2 s), but the press and the carrot fail in a 2-seed smoke (other IK branches);
+- the round-1 settings still reproduce 4.6 / 48.6 / 36.7 s exactly: `PRYAW=0`, `CHAPP=front CHUP=0,-.10,.20`, `LVC=F`.
+
+The true-geometry arm is the physically meaningful model, so round 2 is the recommendation.
+
+**Code changes this round** (my files only):
+- `r19prepchain.py`: new options
+  - `SLICER`, `CHAPP`, `CHUP`, `CHOV`, `CHC`;
+  - `PRYAW` (turned knob object `pusher_y<deg>`), `PRC`;
+  - `LVC=F`.
+- `kitchen19.py`:
+  - `pusher_turned()`;
+  - candidate `tool_CBK45` and its turned-knob envelope.
+- `r19prep_layout.py`:
+  - mode `replayedges` (one process per flagged hub edge);
+  - `ONLYEDGE`, `CHAINSONLY`, `HUBFROM`;
+  - `HUBDIR` (screen / replay another hub roadmap; writes `layout_screen_<hubdir>.json`);
+  - arm-tagged replay outputs.
+- `r19prep_verify.py`:
+  - **skips a failed or empty chain** and writes `{"skipped": ...}` instead of crashing (tested on the failed press);
+  - takes the turned-knob object.
+
+### 9.1 Commands for the controller (round 2; background lanes)
+```
+cd /c/Users/admin/Documents/YJGames/robot_rail/sim/r10/claude
+PY=C:/Users/admin/Documents/YJGames/robot_v5/board/work/t01/.venv/Scripts/python.exe
+A="ARM=ur5e_enc2_pgc"
+# lane 1: full prep sets (defaults = round 2) + <= 4 mm re-check; ~5-8 min per set, ~1.5 min per re-check
+for a in press carrot tomato; do $PY r19prepchain.py ACT=$a SEEDS=3 TRIES=12 KEEP=4 TAG=full $A; done
+for a in press carrot tomato; do $PY r19prep_verify.py FILE=results/r19/prep/chain_${a}_full_ur5e_enc2_pgc.json NPROC=16; done
+$PY r19prep_render.py TAG=full_ur5e_enc2_pgc OUT=renders/r19/prep_layout_r19_enc2pgc.png
+# lane 2 (after the controller's PY=.15 hub for ur5e_enc2_pgc has its edge_*.json): re-screen the chosen spots against it
+H="HUBDIR=results/r19/hub_py.15_ur5e_enc2_pgc"
+$PY r19prep_layout.py screen $H $A                                   # ~2 min; writes layout_screen_hub_py.15_ur5e_enc2_pgc.json
+$PY r19prep_layout.py replayedges NAMES=tool_CBK45 NPAR=12 $H $A      # ~1-2 min
+$PY r19prep_layout.py replayedges NAMES=cbox_CBX_-0.86_0.17 NPAR=12 $H $A
+$PY r19prep_layout.py replayedges NAMES=slicer_FLT NPAR=12 $H $A
+```
+If the full press or carrot run picks another DP combination that fails, fall back to the smoke settings: `KEEP=1` gives exactly the round-2 results.

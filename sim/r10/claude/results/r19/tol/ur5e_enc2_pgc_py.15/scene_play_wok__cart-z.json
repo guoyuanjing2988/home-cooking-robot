@@ -1,0 +1,79 @@
+{
+ "scene": "play:wok",
+ "part": "cart-z",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "wok",
+  "obj": "wok",
+  "src_n": 470
+ },
+ "states": 4588,
+ "stored_states": 470,
+ "nominal_s": 6.8,
+ "nominal_cached": true,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 874
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 182
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 4.0,
+    "bounded": true,
+    "violation_at": 4.031,
+    "binding": {
+     "state": 0,
+     "value_mm": -0.031,
+     "pair": [
+      "R_gripper_r15_wok_t0",
+      "r15_cooker"
+     ],
+     "label": "",
+     "src_index": 0.0
+    },
+    "evals": 210
+   },
+   "contact": {
+    "tol": 8.984,
+    "bounded": true,
+    "violation_at": 9.012,
+    "binding": {
+     "state": 0,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r15_wok_t0",
+      "r15_cooker"
+     ],
+     "label": "",
+     "src_index": 0.0
+    },
+    "evals": 95
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 21.3
+}

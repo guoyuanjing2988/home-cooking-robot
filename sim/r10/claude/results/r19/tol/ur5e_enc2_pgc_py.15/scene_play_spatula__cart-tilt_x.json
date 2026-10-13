@@ -1,0 +1,99 @@
+{
+ "scene": "play:spatula",
+ "part": "cart-tilt_x",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "spatula",
+  "obj": "spatula_b",
+  "src_n": 249
+ },
+ "states": 2642,
+ "stored_states": 249,
+ "nominal_s": 2.1,
+ "nominal_cached": true,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.514,
+    "bounded": true,
+    "violation_at": 0.518,
+    "binding": {
+     "state": 2641,
+     "value_mm": -0.01,
+     "pair": [
+      "R_gripper_r18_spat_blade0",
+      "r15_wok_t4_9"
+     ],
+     "label": "kf 4->5 (over the wok -> stroke start)",
+     "src_index": 248.0
+    },
+    "evals": 1271
+   },
+   "contact": {
+    "tol": 0.961,
+    "bounded": true,
+    "violation_at": 0.965,
+    "binding": {
+     "state": 2641,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r18_spat_blade0",
+      "r15_wok_t4_9"
+     ],
+     "label": "kf 4->5 (over the wok -> stroke start)",
+     "src_index": 248.0
+    },
+    "evals": 2660
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.347,
+    "bounded": true,
+    "violation_at": 0.35,
+    "binding": {
+     "state": 48,
+     "value_mm": -0.004,
+     "pair": [
+      "R_gripper_r18_spat_blade2",
+      "stored_bowl_leafy_greens_collar_wall4"
+     ],
+     "label": "kf 0->1 (pick -> lifted)",
+     "src_index": 2.0
+    },
+    "evals": 520
+   },
+   "contact": {
+    "tol": 0.647,
+    "bounded": true,
+    "violation_at": 0.65,
+    "binding": {
+     "state": 56,
+     "value_mm": 0.007,
+     "pair": [
+      "R_gripper_r18_spat_blade2",
+      "stored_bowl_leafy_greens_collar_wall4"
+     ],
+     "label": "kf 0->1 (pick -> lifted)",
+     "src_index": 2.296
+    },
+    "evals": 606
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 18.1
+}

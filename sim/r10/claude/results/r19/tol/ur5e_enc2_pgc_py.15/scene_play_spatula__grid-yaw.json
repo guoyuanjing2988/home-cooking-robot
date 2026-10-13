@@ -1,0 +1,192 @@
+{
+ "scene": "play:spatula",
+ "part": "grid-yaw",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "spatula",
+  "obj": "spatula_b",
+  "src_n": 249
+ },
+ "states": 2642,
+ "stored_states": 249,
+ "nominal_s": 2.8,
+ "nominal_cached": true,
+ "held": true,
+ "nominal": {
+  "min_gate_mm": 4.8,
+  "gate_state": 21,
+  "gate_label": "kf 0->1 (pick -> lifted)",
+  "gate_pair": [
+   "R_gripper_r18_spat_blade4",
+   "raw_tomato"
+  ],
+  "min_contact_mm": 9.8,
+  "contact_state": 21,
+  "contact_label": "kf 0->1 (pick -> lifted)",
+  "contact_pair": [
+   "R_gripper_r18_spat_blade4",
+   "raw_tomato"
+  ],
+  "at_least": false,
+  "rho_m": {
+   "yaw": 0.688,
+   "tilt_x": 1.909,
+   "tilt_y": 1.896,
+   "held": 0.448
+  },
+  "note": "exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower",
+  "min_held_gate_mm": 4.8,
+  "held_pair": [
+   "R_gripper_r18_spat_blade4",
+   "raw_tomato"
+  ]
+ },
+ "checker_reported": {
+  "file": "results/r19/smooth/spatula_baseline.json",
+  "min_reserve_mm": 2.04,
+  "state": 2597,
+  "label": "kf 4->5 (over the wok -> stroke start)",
+  "exact_gate_there_mm": 17.127,
+  "exact_pair_there": [
+   "R_gripper_r18_spat_blade0",
+   "r15_wok_t4_9"
+  ],
+  "note": "r19smooth baseline: Checker.check(full=True), min over non-self categories"
+ },
+ "grid": [
+  {
+   "axis": "yaw",
+   "value": 0.1,
+   "unit": "deg",
+   "gate_min_mm": 4.062,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade4",
+    "raw_tomato"
+   ],
+   "gate_label": "kf 0->1 (pick -> lifted)",
+   "contact_min_mm": 9.062,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade4",
+    "raw_tomato"
+   ],
+   "contact_label": "kf 0->1 (pick -> lifted)"
+  },
+  {
+   "axis": "yaw",
+   "value": 0.2,
+   "unit": "deg",
+   "gate_min_mm": 3.323,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade4",
+    "raw_tomato"
+   ],
+   "gate_label": "kf 0->1 (pick -> lifted)",
+   "contact_min_mm": 8.323,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade4",
+    "raw_tomato"
+   ],
+   "contact_label": "kf 0->1 (pick -> lifted)"
+  },
+  {
+   "axis": "yaw",
+   "value": 0.5,
+   "unit": "deg",
+   "gate_min_mm": 1.1,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade4",
+    "raw_tomato"
+   ],
+   "gate_label": "kf 0->1 (pick -> lifted)",
+   "contact_min_mm": 6.1,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade4",
+    "raw_tomato"
+   ],
+   "contact_label": "kf 0->1 (pick -> lifted)"
+  },
+  {
+   "axis": "yaw",
+   "value": 1.0,
+   "unit": "deg",
+   "gate_min_mm": -2.62,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade4",
+    "raw_tomato"
+   ],
+   "gate_label": "kf 0->1 (pick -> lifted)",
+   "contact_min_mm": 2.38,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade4",
+    "raw_tomato"
+   ],
+   "contact_label": "kf 0->1 (pick -> lifted)"
+  },
+  {
+   "axis": "yaw",
+   "value": -0.1,
+   "unit": "deg",
+   "gate_min_mm": 5.117,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "gate_label": "kf 4->5 (over the wok -> stroke start)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "yaw",
+   "value": -0.2,
+   "unit": "deg",
+   "gate_min_mm": 4.52,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "gate_label": "kf 4->5 (over the wok -> stroke start)",
+   "contact_min_mm": 9.52,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "contact_label": "kf 4->5 (over the wok -> stroke start)"
+  },
+  {
+   "axis": "yaw",
+   "value": -0.5,
+   "unit": "deg",
+   "gate_min_mm": 2.73,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "gate_label": "kf 4->5 (over the wok -> stroke start)",
+   "contact_min_mm": 7.73,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "contact_label": "kf 4->5 (over the wok -> stroke start)"
+  },
+  {
+   "axis": "yaw",
+   "value": -1.0,
+   "unit": "deg",
+   "gate_min_mm": -0.256,
+   "gate_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "gate_label": "kf 4->5 (over the wok -> stroke start)",
+   "contact_min_mm": 4.744,
+   "contact_pair": [
+    "R_gripper_r18_spat_blade0",
+    "r15_wok_t4_9"
+   ],
+   "contact_label": "kf 4->5 (over the wok -> stroke start)"
+  }
+ ],
+ "elapsed_s": 7.6
+}
