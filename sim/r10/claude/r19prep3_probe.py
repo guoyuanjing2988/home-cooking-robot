@@ -109,7 +109,7 @@ def run(name):
  BASE=dict(r14=True,present=[],r15=True,r16=True,r17=True,r16_lid='rack',r15_drum_taken=True,r16_tools={'ladle':None},r14_fridge=True,r17_lever=0.,**K19.base_cfg())
  sc=K19.layout_scene(*Pr['stations'],objs=Pr['objs']);sc['stations']['slicer']=K19.LAYOUT['slicer']
  cfg=chain.chain_cfg('SD',**{**BASE,'r19':sc,**K17.held_cfg(Pr['obj'],sign)})
- tree,meta=build(cfg,None);K19.add(tree,cfg)
+ tree,meta=build(cfg,None);K19.add(tree,cfg);P3.mesh_held(tree)
  if Pr['obj']=='sbowl' or any(o[0]=='sbowl' for o in Pr['objs']):P3.drop_out_bowl(tree)   # the plain R11 out bowl is replaced by the knob version
  Rl,pl=K17.lever_pose(K17.LEVER_OPEN);K._add(tree.find('worldbody'),'u_open_',K.OBJ['lever']['parts'],Rl,pl,rgba='.75 .77 .8 1')
  ch=Checker(tree,meta);R=np.array(Pr['R']);p=np.array(Pr['p']);pt,Rt=K.tcp_pose(Pr['obj'],R,p,sign)

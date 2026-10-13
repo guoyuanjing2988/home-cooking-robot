@@ -143,7 +143,7 @@ def model(extra,world_obj=None):
  """Checker for the scene (+ extra cfg). world_obj = (name, R, p): that object also lies in the world."""
  cfg=chain.chain_cfg('SD',**{**BASE,**SCENE,**extra})
  if world_obj is not None:cfg['r19']=dict(cfg['r19'],objs=list(cfg['r19'].get('objs',[]))+[J(world_obj)])
- tree,meta=build(cfg,None);K19.add(tree,cfg)
+ tree,meta=build(cfg,None);K19.add(tree,cfg);P3.mesh_held(tree)   # R19 #38: step-3 parts (p3_*, held or in the world) as convex meshes (R11 rule; no-op for the R19 #4 sets)
  R,p=K17.lever_pose(K17.LEVER_OPEN);K._add(tree.find('worldbody'),'u_open_',K.OBJ['lever']['parts'],R,p,rgba='.75 .77 .8 1')   # union: faucet lever closed (cfg) AND open (copy)
  return Checker(tree,meta)
 ch=model(K17.held_cfg(OBJ,SIGN));m,d=ch.m,ch.d;ids=ch.arm_ids;sid=m.site('R_prep').id

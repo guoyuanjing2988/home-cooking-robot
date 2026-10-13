@@ -14,15 +14,15 @@ cups (roll about the lug). Differences to the R13 CAD basket (cad_r13.basket, so
    finger would stand 5 mm from (or in) the basket wall.
 
 Objects (frame = bottom centre of the floor, container axis = z, handle along +x):
- basket       R13 side-handle wash basket: Ø220 x 100 mm, drain holes (not modelled), keyed knob. Held as an
+ basket       R13 side-handle wash basket: Ø200 x 100 mm, drain holes (not modelled), keyed knob. Held as an
               envelope of basket + contents: walls, floor and a content cylinder up to the rim (the contents
               never stick out of the model; a closed top is conservative for everything outside).
  basket_open  the same basket without the content cylinder (lying in the world, food is dropped into it).
- tub          soak tub: round stainless basin, inner Ø250 x 75 mm (the Ø220 basket fits with 15 mm radial
+ tub          soak tub: round stainless basin, inner Ø230 x 75 mm (the Ø200 basket fits with 15 mm radial
               play; with the basket seated the basket strut passes 15 mm over the tub rim), same knob.
-              The R19 prep audit proposed a GN 1/3 pan (325 x 176 mm): the Ø220 basket does not fit in 176 mm.
+              The R19 prep audit proposed a GN 1/3 pan (325 x 176 mm): the Ø200 basket does not fit in 176 mm.
  bowl         prep / staging bowl Ø200 x 90 mm with the same strut + knob (target of the pours).
- ctray        lever-base catch tray: 110 x 120 x 50 mm open tray that sits under the AY-403 blade plate (the
+ ctray        lever-base catch tray: 110 x 120 x 40 mm open tray that sits under the AY-403 blade plate (the
               wedges fall into it), keyed knob on a front lug; pulled out toward the robot.
 Masses [est]: basket 0.35 kg, tub 0.50 kg, bowl 0.30 kg, catch tray 0.15 kg (stainless / PP sheet estimates).
 Water: density 998 kg/m3 at 20 C (see R19_PREP_STEP3.md for the source)."""
@@ -33,11 +33,11 @@ KNOB_OUT=.06                              # knob centre outside the outer wall (
 KNOB=dict(h=(.02,.015,.015))              # knob half sizes: along the handle (x), across (y = jaw axis), height
 STRUT=dict(hy=.012,hz=.006)               # strut half width (y), half thickness (z); its top is at the rim
 RHO_W=998.                                # kg/m3 water at 20 C
-BASKET=dict(R=.11,H=.10,t=.003)
-TUB=dict(R=.127,H=.075,t=.002,water_h=.055,zs=.075-.05)   # tub knob on a LOW side bracket (strut top 50 mm under the rim, knob top 20 mm under it): a seated basket's strut and fingers pass over it
+BASKET=dict(R=.10,H=.10,t=.003)         # R13 basket Ø200 (softfoods 'bulk' R .10 for pieces < 3 cm; R .11 for larger pieces)
+TUB=dict(R=.117,H=.075,t=.002,water_h=.055,zs=.075-.05)   # tub knob on a LOW side bracket (strut top 50 mm under the rim, knob top 20 mm under it): a seated basket's strut and fingers pass over it
 BOWL=dict(R=.10,H=.09,t=.003)
 SBOWL=dict(R=.085,H=.09,t=.003)          # the slicer out bowl (R11 vessel r .085 x .09) with the same strut + knob
-CTRAY=dict(X=.055,Y=.06,H=.05,t=.003,lug=.045)
+CTRAY=dict(X=.055,Y=.06,H=.04,t=.003,lug=.045)   # 40 mm tall: it slides out 18 mm over the base plate, 16 mm under the blade plate
 MASS_EST=dict(basket=.35,tub=.50,bowl=.30,sbowl=.25,ctray=.15)
 def _ring(pre,R,H,t,n=12,z0=0.):
  """n wall boxes on a circle (outer radius R, thickness t) from z0 to z0+H."""
@@ -68,9 +68,9 @@ def _register():
   pre=name.replace('_open','')
   parts,grip=container(pre,R,H,t,cont,zs)
   if name=='basket_open':parts=[(n.replace('p3_basket','p3_basketo'),*r) for n,*r in parts]
-  K.OBJ[name]=dict(parts=parts,grip=grip,a=np.array([-1.,0,0]),j=np.array([0,1.,0]),grip_part=[n for n,*_ in parts if n.endswith('_knob')][0])
+  K.OBJ[name]=dict(parts=parts,grip=grip,a=np.array([-1.,0,0]),j=np.array([0,1.,0]),hax=np.array([-1.,0,0]),grip_part=[n for n,*_ in parts if n.endswith('_knob')][0])
   K19.JAW[name]=0.;K19.MASS[name]=MASS_EST[pre]
- P,g=_ctray();K.OBJ['ctray']=dict(parts=P,grip=g,a=np.array([0,1.,0]),j=np.array([1.,0,0]),grip_part='p3_ctray_knob');K19.JAW['ctray']=0.;K19.MASS['ctray']=MASS_EST['ctray']
+ P,g=_ctray();K.OBJ['ctray']=dict(parts=P,grip=g,a=np.array([0,1.,0]),j=np.array([1.,0,0]),hax=np.array([0,1.,0]),grip_part='p3_ctray_knob');K19.JAW['ctray']=0.;K19.MASS['ctray']=MASS_EST['ctray']
 _register()
 def water_kg(R_in,h):return float(RHO_W*np.pi*R_in**2*h)
 def knob_world(name,R,p):return np.asarray(p,float)+np.asarray(R,float)@K.OBJ[name]['grip']
@@ -78,9 +78,10 @@ def at_knob(name,Rw,knob):
  """Object pose (R, p) that puts its knob at the world point knob with rotation Rw."""
  return np.asarray(Rw,float),np.asarray(knob,float)-np.asarray(Rw,float)@K.OBJ[name]['grip']
 def rolled_about_knob(name,R,p,deg):
- """The object rolled deg about its handle axis through the knob (the grasp approach axis): a wrist-3 roll."""
+ """The object rolled deg about its HANDLE axis (horizontal, through the knob): containers -x, catch tray +y (object
+ frame). With an unpitched knob this is the grasp approach axis (a wrist-3 roll); with a pitched knob it is not."""
  from scipy.spatial.transform import Rotation
- g=knob_world(name,R,p);ax=np.asarray(R,float)@K.OBJ[name]['a'];Rr=Rotation.from_rotvec(ax*np.radians(deg)).as_matrix()
+ g=knob_world(name,R,p);ax=np.asarray(R,float)@np.asarray(K.OBJ[name].get('hax',K.OBJ[name]['a']),float);Rr=Rotation.from_rotvec(ax*np.radians(deg)).as_matrix()
  return Rr@np.asarray(R,float),g+Rr@(np.asarray(p,float)-g)
 # ---- layout proposals (step 3): where the containers stand (checked by the chains / screened in r19prep3_screen.py) ----
 WORK=np.array([-0.86,.24,K19.COUNTER_TOP])     # the fetched-tool work spot (kitchen19.LAYOUT lever origin (-0.86, 0.21)); container centre 3 cm further back
@@ -91,3 +92,37 @@ def drop_out_bowl(tree):
  for b in list(w.findall('body')):
   if b.get('name')=='r19_slicer_out_bowl':w.remove(b)
  return tree
+def mesh_held(tree):
+ """R11 rule (scene.py mesh_tool, kitchen19seas.meshheld): MuJoCo 3.2.5 reports box-box gaps inside the contact
+ margin at about half the true gap; an 8-vertex box MESH is exact. Here also the cylinders: a held cylinder floor
+ 8 mm over a counter-piece edge was reported at 3.0 mm (true 8.0 mm, R19 #38). So every step-3 part, held
+ (R_gripper_p3_*, attached to R_tool by kitchen16 after scene.build's mesh pass) or lying in the world (p3_*), becomes
+ a convex mesh: boxes identical 8-vertex meshes, cylinders 16-gon prisms CIRCUMSCRIBED about the circle (never
+ smaller). Nothing else in the tree is touched (the R19 #4 sets keep their scenes)."""
+ import xml.etree.ElementTree as E
+ from scene import fmt
+ asset=tree.getroot().find('asset');n=16;t=2*np.pi*(np.arange(n)+.5)/n
+ for g in tree.getroot().iter('geom'):
+  nm=g.get('name') or ''
+  if not nm.startswith(('R_gripper_p3_','p3_')) or g.get('type') not in ('box','cylinder'):continue
+  h=np.fromstring(g.get('size'),sep=' ');mn='mb38_'+nm
+  if g.get('type')=='box':V=[[sx*h[0],sy*h[1],sz*h[2]] for sx in(-1,1) for sy in(-1,1) for sz in(-1,1)]
+  else:rc=h[0]/np.cos(np.pi/n);V=[[rc*np.cos(a),rc*np.sin(a),sz*h[1]] for a in t for sz in (-1,1)]
+  E.SubElement(asset,'mesh',name=mn,vertex=' '.join(fmt(v) for v in V))
+  g.set('type','mesh');g.set('mesh',mn);g.attrib.pop('size',None)
+ return tree
+def pitched(name):
+ """'<base>_p<deg>' (base = basket | basket_open | tub | bowl): the same container with its printed keyed knob turned
+ deg about the jaw axis on the strut, so the gripper takes it pitched DOWN by deg (approach toward the container and
+ downward; the R19 #4 rinse grasp is pitched 30 deg for the same reason: the elbow stays out of the cabinet doors).
+ Registered on first use; returns the name. Names without '_p' are returned unchanged."""
+ if name in K.OBJ or '_p' not in name:return name
+ base,deg=name.rsplit('_p',1);deg=float(deg);o=K.OBJ[base];th=np.radians(deg)
+ Ry=np.array([[np.cos(-th),0,np.sin(-th)],[0,1,0],[-np.sin(-th),0,np.cos(-th)]])
+ parts=[(n,t,q,s,(Ry if n==o['grip_part'] else R)) for n,t,q,s,R in o['parts']]
+ K.OBJ[name]=dict(o,parts=parts,a=np.array([-np.cos(th),0,-np.sin(th)]));K19.JAW[name]=K19.JAW[base];K19.MASS[name]=K19.MASS[base]
+ return name
+def ensure(names):
+ """Register the pitched variants named in a stored result (r19prep_verify.py)."""
+ for n in names:
+  if isinstance(n,str) and '_p' in n:pitched(n)
