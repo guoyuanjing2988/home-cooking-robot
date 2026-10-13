@@ -51,6 +51,13 @@ for _b in ('fr5','fr5_j6','cs66'):
  ARMS[_b+'_pgc']=dict(ARMS[_b],name=ARMS[_b]['name']+' + PGC-140 housing from the DH drawing',env=_b,oem='pgc_drawing',oem_source=ARMS['ur5e_enc2_pgc']['oem_source'])
 for _b in ('fr5','fr5_j6'):   # R19 #2 design proposal (E): the same gripper on a flange adapter 20 mm longer along the flange axis (the wrist-1 housing / PGC pair)
  ARMS[_b+'_pgc_sp20']=dict(ARMS[_b+'_pgc'],name=ARMS[_b+'_pgc']['name']+' on a 20 mm longer adapter',tool_spacer_m=.02)
+# R19 #36: + the PGC-140 cable outlet (boot) and the first part of its cable (r19cable.py, R19_CABLE.md); everything else as the base
+# option. <base>c = the conservative default routing both_dn (boot on both jaw sides: the side is a mounting choice); <base>c_<routing>
+# = one routing (r19cable.ROUTINGS); <base>c_ALL / <base>c_SEL = several routings at once, screening models only (never a certificate)
+import r19cable as _cab
+for _b in ('ur5e_enc2_pgc','fr5_j6_pgc_sp20'):
+ ARMS[_b+'c']=dict(ARMS[_b],name=ARMS[_b]['name']+' + cable outlet and first cable section (both jaw sides, R50 bend down)',cable='both_dn',cable_source='R19_CABLE.md section 1')
+ for _r in list(_cab.ROUTINGS)+list(_cab.SCREENS):ARMS[_b+'c_'+_r]=dict(ARMS[_b],name=ARMS[_b]['name']+' + cable, routing '+_r,cable=_r,cable_source='R19_CABLE.md section 1')
 def _cli():
  for a in sys.argv[1:]:
   if a.startswith('ARM='):return a[4:]
@@ -91,6 +98,7 @@ def enclose(tree,arm):
  return tree
 def swap(tree,arm):
  """Replace the UR5e under R_mount by `arm` (in place). R_tool keeps its pose relative to the flange."""
+ if ARMS[arm].get('cable'):_cab.add(tree,ARMS[arm]['cable'])   # R19 #36: cable shapes on R_tool (they move with it below)
  if ARMS[arm].get('enclose'):return enclose(tree,arm)
  spec=ARMS[arm];M=json.loads((H/'r19'/f"arm_{spec['model']}.json").read_text(encoding='utf-8'))
  mount=tree.find(".//body[@name='R_mount']");old=mount.find("body[@name='R_arm_base']")

@@ -571,3 +571,15 @@ Nothing bought.
   - The stored lid path is kept unchanged.
   - **Pot lift-off window (`POTWIN=1`): adopted (10-13 evening).** The lid's straight 20 mm lift off the pot rim follows the same window rule. Docking-stop corner: +6.59 mm with it, +1.18 mm without it. Tilt tolerance: 0.43°, against 0.30° without it. Contact force at both seats goes to #26.
 - **Report:** `sim/r10/claude/R19_POTZONE.md`. The hub edges, corner replays and the full tolerance set are running as controller lanes.
+
+## 2026-10-14 — Gripper cable routing `yp_a-45` (orchestrator decision under "其他你定", GitHub #36)
+- **Finding.** The PGC-140 has no M8/M12 socket on the body. Its cable leaves radially, under one jaw, through a 12 mm boot: Ø6.4 mm, 200 mm long, R50 bend, then an M12 8-pin plug [S: DH 2024 brochure p.17, PGC parameter sheet p.6].
+  - Modelled conservatively, with the outlet on both jaw sides and the cable bent down, the cable hits wrist 1 on the wok, plate 2, lid, lever, spider, hub and prep paths.
+- **Decision.** Mount the gripper with the cable outlet under the +y jaw (`R_finger_plus` side). Bend the cable at R50, halfway between "down" and "away from the flange side". Tie it to the wrist 20 mm after the bend.
+  - With this routing, every adopted UR5e chain, the stir, the 22 pot-zone hub edges and the #4 prep sets re-check with 0 hits. The cable keeps ≥ 34.5 mm past the 5 mm gate. On the FR5, the lid, lever, spatula, wok, plate 2 and stir also pass.
+- **The checking standard now includes the cable.** New certificates use `ARM=ur5e_enc2_pgcc_yp_a-45` or `ARM=fr5_j6_pgc_sp20c_yp_a-45`.
+  - `r19tol_core.py` needs a one-line exclusion for the cable shapes before any tolerance run with a `*_pgcc` option.
+- **Open:**
+  - the rest of the pigtail (about 96 mm) and the M12 plug;
+  - how the cable gets back to the arm (DH robot cable into the arm's tool connector, or the 5 m extension along the arm with a slack loop at J6);
+  - DH's CAD files, which would settle the exit height (not downloaded).
