@@ -1,0 +1,3418 @@
+{
+ "base": {
+  "ACT": "tomato",
+  "ARM": "fr5_j6_pgc_sp20",
+  "SEEDS": "2",
+  "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+  "XL1": "-0.65,.06,1.10",
+  "XL1R": "level",
+  "LVC": "-0.25",
+  "L2C": "-0.25"
+ },
+ "ref": "results/r19/prep/chain_tomato_fr5xfull_fr5_j6_pgc_sp20.json",
+ "joinq": 79,
+ "method": "R19 #2 / #38 (R19_FR5_PREP3.md): screen PICK-side variants of the FR5 tomato set against the folded T2L cradle with the\npan aboard (kitchen19p5 swing, as r19prep5_screen.py MODE=fold P5_kind=swing PAN=1). New file; a SCREEN, not a check.\nPer variant (r19fr5prep2_actions.py options on top of the adopted tomato options), in its own process:\n 1. the pick anchor's start candidates (r19prepchain.candidates: the same 96-start solver, seeds and UR5e seeds);\n 2. for each of the first NC distinct ones: r19prepchain.follow() pick -> first lane meet (same steps / IK / checker),\n    the grasp approach r19prepchain.approach() (50 mm, empty gripper, the tomato on its pad), and the meet join\n    r19prepchain.meet_join() to the TAP-side lane state of the adopted chain (REF play state JOINQ; a stand-in for the\n    tap side, which this pick change does not touch);\n 3. the folded-cradle gates of the pick anchor + follow states (play scene) and of the approach states (approach scene),\n    with r19prep5_screen.Meas (the checker's required gap: 10 mm arm / held vs a cart part) in r19prep5_screen.prep_scene\n    of REF (the tomato is a vertical cylinder, so its scene does not depend on the grasp's turn about the vertical).\n    States as stored (<= 1 cm TCP steps), not cut to 4 mm: a screen.\npython r19fr5prep2_probe.py VARS=<file> [NC=6] [NPROC=12] [TLIM=270] TAG=.. [base options]\n VARS: one variant per line '<name> KEY=VALUE ..'\n -> results/r19/fr5y/probe_<TAG>.json",
+ "variants": [
+  {
+   "name": "base",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25"
+   },
+   "n_cands": 26,
+   "stat": {
+    "collision": 42,
+    "pose": 132,
+    "ok": 18,
+    "ur_seeds_ok": 12
+   },
+   "tried": 6,
+   "clean": 1,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -0.756,
+     "q_deg": [
+      109.4,
+      -164.5,
+      -83.9,
+      -245.3,
+      -9.2,
+      -45.9
+     ],
+     "branch": "J1 109 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.227,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 3.46,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 0.2,
+     "join_cart_m": 0.001,
+     "join_s": 0.64,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 15.3,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 80
+     },
+     "fold_app": {
+      "min_gate_mm": -10.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 4,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 1,
+     "cart": -0.827,
+     "q_deg": [
+      110.5,
+      -162.3,
+      -97.3,
+      -238.7,
+      -10.0,
+      -41.3
+     ],
+     "branch": "J1 110 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.227,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.37,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 0.2,
+     "join_cart_m": 0.001,
+     "join_s": 0.64,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 25.1,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 80
+     },
+     "fold_app": {
+      "min_gate_mm": 3.1,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 2,
+     "cart": -0.802,
+     "q_deg": [
+      110.1,
+      -162.9,
+      -92.9,
+      -240.9,
+      -9.7,
+      -42.9
+     ],
+     "branch": "J1 110 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.227,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.87,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 0.2,
+     "join_cart_m": 0.001,
+     "join_s": 0.64,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 16.4,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 80
+     },
+     "fold_app": {
+      "min_gate_mm": -10.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 4,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 3,
+     "cart": -0.733,
+     "q_deg": [
+      109.1,
+      -165.6,
+      -79.3,
+      -247.5,
+      -9.0,
+      -47.2
+     ],
+     "branch": "J1 109 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.227,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 3.78,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 0.2,
+     "join_cart_m": 0.001,
+     "join_s": 0.64,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 19.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 80
+     },
+     "fold_app": {
+      "min_gate_mm": -10.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 4,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 4,
+     "cart": -0.814,
+     "q_deg": [
+      110.3,
+      -162.6,
+      -95.1,
+      -239.8,
+      -9.8,
+      -42.1
+     ],
+     "branch": "J1 110 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.227,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.76,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 0.2,
+     "join_cart_m": 0.001,
+     "join_s": 0.64,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 20.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 80
+     },
+     "fold_app": {
+      "min_gate_mm": -8.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 3,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 5,
+     "cart": -0.79,
+     "q_deg": [
+      109.9,
+      -163.2,
+      -90.7,
+      -242.0,
+      -9.5,
+      -43.7
+     ],
+     "branch": "J1 110 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.227,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 3.02,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 0.2,
+     "join_cart_m": 0.001,
+     "join_s": 0.64,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 14.3,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 80
+     },
+     "fold_app": {
+      "min_gate_mm": -10.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 4,
+      "states": 6
+     },
+     "clean": false
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": "A"
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 57
+  },
+  {
+   "name": "c110",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XCART": "pick:-1.10"
+   },
+   "n_cands": 2,
+   "stat": {
+    "pose": 157,
+    "collision": 20,
+    "ok": 15,
+    "ur_seeds_ok": 1
+   },
+   "tried": 2,
+   "clean": 0,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -1.1,
+     "q_deg": [
+      126.6,
+      -180.8,
+      -135.0,
+      -208.1,
+      -24.5,
+      -14.8
+     ],
+     "branch": "J1 127 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -1.1,
+      "step_deg": 1.32,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+        "R_cart_beam"
+       ]
+      ]
+     },
+     "lane_cart": -1.1,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 1.33,
+     "follow_s": 0.3,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 4,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+        "R_cart_beam"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 31.4,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 5
+     },
+     "fold_app": {
+      "min_gate_mm": 30.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_leaf_arm"
+      ],
+      "hit_states": 0,
+      "states": 5
+     },
+     "clean": false
+    },
+    {
+     "cand": 1,
+     "cart": -1.1,
+     "q_deg": [
+      126.6,
+      -180.8,
+      -135.0,
+      -208.1,
+      -24.5,
+      345.2
+     ],
+     "branch": "J1 127 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -1.1,
+      "step_deg": 1.32,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+        "R_cart_beam"
+       ]
+      ]
+     },
+     "lane_cart": -1.1,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 1.33,
+     "follow_s": 0.3,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 4,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+        "R_cart_beam"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 31.4,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 5
+     },
+     "fold_app": {
+      "min_gate_mm": 30.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_leaf_arm"
+      ],
+      "hit_states": 0,
+      "states": 5
+     },
+     "clean": false
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": -1.1
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 26
+  },
+  {
+   "name": "c100",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XCART": "pick:-1.00"
+   },
+   "n_cands": 4,
+   "stat": {
+    "pose": 107,
+    "ok": 46,
+    "collision": 39,
+    "ur_seeds_ok": 2
+   },
+   "tried": 4,
+   "clean": 2,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -1.0,
+     "q_deg": [
+      116.0,
+      -139.5,
+      -151.6,
+      -41.7,
+      14.6,
+      153.6
+     ],
+     "branch": "J1 116 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.974,
+      "step_deg": 3.1,
+      "pose_mm": 0.01,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "r07_closed_door_0_1"
+       ]
+      ]
+     },
+     "lane_cart": -0.974,
+     "follow_min_reserve_mm": 10.2,
+     "max_step_deg": 4.08,
+     "follow_s": 1.2,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 178.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 14
+     },
+     "fold_app": {
+      "min_gate_mm": 157.7,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 1,
+     "cart": -1.0,
+     "q_deg": [
+      116.0,
+      -167.0,
+      -123.7,
+      -222.1,
+      -14.6,
+      -26.4
+     ],
+     "branch": "J1 116 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.37,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 1.96,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 23.0,
+     "join_cart_m": 0.144,
+     "join_s": 1.2,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 38.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 94
+     },
+     "fold_app": {
+      "min_gate_mm": 94.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_leaf_arm"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 2,
+     "cart": -1.0,
+     "q_deg": [
+      116.0,
+      -139.5,
+      -151.6,
+      -41.7,
+      14.6,
+      -206.4
+     ],
+     "branch": "J1 116 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.974,
+      "step_deg": 3.1,
+      "pose_mm": 0.01,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "r07_closed_door_0_1"
+       ]
+      ]
+     },
+     "lane_cart": -0.974,
+     "follow_min_reserve_mm": 10.2,
+     "max_step_deg": 4.08,
+     "follow_s": 1.2,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 178.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 14
+     },
+     "fold_app": {
+      "min_gate_mm": 157.7,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 3,
+     "cart": -1.0,
+     "q_deg": [
+      116.0,
+      -167.0,
+      -123.7,
+      -222.1,
+      -14.6,
+      333.6
+     ],
+     "branch": "J1 116 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.37,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 1.96,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 23.0,
+     "join_cart_m": 0.144,
+     "join_s": 1.2,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 38.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 94
+     },
+     "fold_app": {
+      "min_gate_mm": 94.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_leaf_arm"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": -1.0
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 42
+  },
+  {
+   "name": "c095",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XCART": "pick:-0.95"
+   },
+   "n_cands": 4,
+   "stat": {
+    "pose": 118,
+    "ok": 48,
+    "collision": 26,
+    "ur_seeds_ok": 1
+   },
+   "tried": 4,
+   "clean": 2,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -0.95,
+     "q_deg": [
+      113.7,
+      -163.9,
+      -116.8,
+      -227.4,
+      -12.6,
+      -31.3
+     ],
+     "branch": "J1 114 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.322,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.14,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 15.8,
+     "join_cart_m": 0.096,
+     "join_s": 1.0,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 35.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 89
+     },
+     "fold_app": {
+      "min_gate_mm": 62.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_leaf_arm"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 1,
+     "cart": -0.95,
+     "q_deg": [
+      113.7,
+      -137.2,
+      -145.2,
+      -45.7,
+      12.6,
+      -211.3
+     ],
+     "branch": "J1 114 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.924,
+      "step_deg": 2.97,
+      "pose_mm": 0.01,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "r07_closed_door_0_1"
+       ]
+      ]
+     },
+     "lane_cart": -0.924,
+     "follow_min_reserve_mm": 1.7,
+     "max_step_deg": 4.09,
+     "follow_s": 1.1,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 141.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 13
+     },
+     "fold_app": {
+      "min_gate_mm": 112.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 2,
+     "cart": -0.95,
+     "q_deg": [
+      113.7,
+      -137.2,
+      -145.2,
+      -45.7,
+      12.6,
+      148.7
+     ],
+     "branch": "J1 114 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.924,
+      "step_deg": 2.97,
+      "pose_mm": 0.01,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "r07_closed_door_0_1"
+       ]
+      ]
+     },
+     "lane_cart": -0.924,
+     "follow_min_reserve_mm": 1.7,
+     "max_step_deg": 4.09,
+     "follow_s": 1.1,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 141.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 13
+     },
+     "fold_app": {
+      "min_gate_mm": 112.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 3,
+     "cart": -0.95,
+     "q_deg": [
+      113.7,
+      -163.9,
+      -116.8,
+      -227.4,
+      -12.6,
+      328.7
+     ],
+     "branch": "J1 114 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.322,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.14,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 15.8,
+     "join_cart_m": 0.096,
+     "join_s": 1.0,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 35.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 89
+     },
+     "fold_app": {
+      "min_gate_mm": 62.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_leaf_arm"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": -0.95
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 44
+  },
+  {
+   "name": "c090",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XCART": "pick:-0.90"
+   },
+   "n_cands": 5,
+   "stat": {
+    "ok": 60,
+    "pose": 124,
+    "collision": 8,
+    "ur_seeds_ok": 1
+   },
+   "tried": 5,
+   "clean": 1,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -0.9,
+     "q_deg": [
+      112.1,
+      -162.3,
+      -109.4,
+      -232.1,
+      -11.3,
+      -35.7
+     ],
+     "branch": "J1 112 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.273,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.28,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 8.0,
+     "join_cart_m": 0.047,
+     "join_s": 0.8,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 35.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 84
+     },
+     "fold_app": {
+      "min_gate_mm": 34.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_block"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 1,
+     "cart": -0.9,
+     "q_deg": [
+      112.1,
+      -136.6,
+      -138.6,
+      -48.6,
+      11.3,
+      -215.7
+     ],
+     "branch": "J1 112 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.883,
+      "step_deg": 3.2,
+      "pose_mm": 0.01,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "r07_closed_door_0_1"
+       ],
+       [
+        "r07_closed_door_0_1",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow"
+       ]
+      ]
+     },
+     "lane_cart": -0.883,
+     "follow_min_reserve_mm": -0.4,
+     "max_step_deg": 4.01,
+     "follow_s": 0.9,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 117.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 11
+     },
+     "fold_app": {
+      "min_gate_mm": 76.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 2,
+     "cart": -0.9,
+     "q_deg": [
+      112.1,
+      -136.6,
+      -138.6,
+      -48.6,
+      11.3,
+      144.3
+     ],
+     "branch": "J1 112 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.883,
+      "step_deg": 3.2,
+      "pose_mm": 0.01,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "r07_closed_door_0_1"
+       ],
+       [
+        "r07_closed_door_0_1",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow"
+       ]
+      ]
+     },
+     "lane_cart": -0.883,
+     "follow_min_reserve_mm": -0.4,
+     "max_step_deg": 4.01,
+     "follow_s": 0.9,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 117.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 11
+     },
+     "fold_app": {
+      "min_gate_mm": 76.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 3,
+     "cart": -0.9,
+     "q_deg": [
+      112.1,
+      -264.1,
+      138.6,
+      -198.3,
+      11.3,
+      144.3
+     ],
+     "branch": "J1 112 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -0.9,
+      "step_deg": 3.4,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ],
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "lane_cart": -0.9,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 3.4,
+     "follow_s": 0.1,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 2,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ],
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 54.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow",
+       "R_cart_p5_fix_bar"
+      ],
+      "hit_states": 0,
+      "states": 2
+     },
+     "fold_app": {
+      "min_gate_mm": 55.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow",
+       "R_cart_p5_fix_bar"
+      ],
+      "hit_states": 0,
+      "states": 3
+     },
+     "clean": false
+    },
+    {
+     "cand": 4,
+     "cart": -0.9,
+     "q_deg": [
+      112.1,
+      -264.1,
+      138.6,
+      -198.3,
+      11.3,
+      -215.7
+     ],
+     "branch": "J1 112 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -0.9,
+      "step_deg": 3.4,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ],
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "lane_cart": -0.9,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 3.4,
+     "follow_s": 0.1,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 2,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ],
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 54.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow",
+       "R_cart_p5_fix_bar"
+      ],
+      "hit_states": 0,
+      "states": 2
+     },
+     "fold_app": {
+      "min_gate_mm": 55.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow",
+       "R_cart_p5_fix_bar"
+      ],
+      "hit_states": 0,
+      "states": 3
+     },
+     "clean": false
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": -0.9
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 42
+  },
+  {
+   "name": "c085",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XCART": "pick:-0.85"
+   },
+   "n_cands": 4,
+   "stat": {
+    "collision": 6,
+    "pose": 133,
+    "ok": 53,
+    "ur_seeds_ok": 1
+   },
+   "tried": 4,
+   "clean": 1,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -0.85,
+     "q_deg": [
+      110.9,
+      -162.1,
+      -101.3,
+      -236.6,
+      -10.3,
+      -39.6
+     ],
+     "branch": "J1 111 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.227,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.35,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 0.2,
+     "join_cart_m": 0.001,
+     "join_s": 0.64,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 31.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 80
+     },
+     "fold_app": {
+      "min_gate_mm": 10.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_block"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 1,
+     "cart": -0.85,
+     "q_deg": [
+      110.9,
+      -137.0,
+      -131.8,
+      -51.1,
+      10.3,
+      140.4
+     ],
+     "branch": "J1 111 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -0.85,
+      "step_deg": 2.68,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "r07_closed_door_0_1"
+       ],
+       [
+        "r07_closed_door_0_1",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow"
+       ]
+      ]
+     },
+     "lane_cart": -0.85,
+     "follow_min_reserve_mm": -0.4,
+     "max_step_deg": 2.97,
+     "follow_s": 0.4,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 110.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "fold_app": {
+      "min_gate_mm": 61.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 2,
+     "cart": -0.85,
+     "q_deg": [
+      110.9,
+      -137.0,
+      -131.8,
+      -51.1,
+      10.3,
+      -219.6
+     ],
+     "branch": "J1 111 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -0.85,
+      "step_deg": 2.68,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "r07_closed_door_0_1"
+       ],
+       [
+        "r07_closed_door_0_1",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow"
+       ]
+      ]
+     },
+     "lane_cart": -0.85,
+     "follow_min_reserve_mm": -0.4,
+     "max_step_deg": 2.97,
+     "follow_s": 0.4,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 110.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "fold_app": {
+      "min_gate_mm": 61.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 3,
+     "cart": -0.85,
+     "q_deg": [
+      -98.8,
+      -43.8,
+      117.9,
+      -56.8,
+      157.3,
+      -163.9
+     ],
+     "branch": "J1 -99 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.392,
+     "follow_min_reserve_mm": 17.2,
+     "max_step_deg": 1.69,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 5.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": false,
+     "join_deg": 1000.0,
+     "join_cart_m": 0.166,
+     "join_s": null,
+     "join_why": "[{'side': 'a', 'join': {'ok': False, 'arm_deg': 258.3, 'at': 0.42, 'hits': [['upper_cabinet_1', 'R_finger_plus']]}}, {'side': 'b', 'join': {'ok': False, 'arm_deg': 272.4, 'at': 0.48, 'hits': [['north_wall', 'R_finger_minus']]}}]",
+     "fold_play": {
+      "min_gate_mm": 113.1,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 77
+     },
+     "fold_app": {
+      "min_gate_mm": 61.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": -0.85
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 48
+  },
+  {
+   "name": "c065",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XCART": "pick:-0.65"
+   },
+   "n_cands": 5,
+   "stat": {
+    "ok": 71,
+    "pose": 112,
+    "collision": 9,
+    "ur_seeds_ok": 1
+   },
+   "tried": 5,
+   "clean": 2,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -0.65,
+     "q_deg": [
+      108.2,
+      -171.7,
+      -59.4,
+      -257.0,
+      -8.4,
+      -51.5
+     ],
+     "branch": "J1 108 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.227,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 5.14,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 10.1,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 0.2,
+     "join_cart_m": 0.001,
+     "join_s": 0.64,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 30.3,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 80
+     },
+     "fold_app": {
+      "min_gate_mm": -0.3,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 1,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 1,
+     "cart": -0.65,
+     "q_deg": [
+      108.2,
+      -145.4,
+      -101.0,
+      -61.8,
+      8.4,
+      128.5
+     ],
+     "branch": "J1 108 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.078,
+     "follow_min_reserve_mm": 10.2,
+     "max_step_deg": 3.62,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 203.7,
+     "join_cart_m": 0.148,
+     "join_s": 4.2,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 42.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 113
+     },
+     "fold_app": {
+      "min_gate_mm": 60.4,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 2,
+     "cart": -0.65,
+     "q_deg": [
+      -91.5,
+      -29.1,
+      78.0,
+      -24.0,
+      164.1,
+      -155.9
+     ],
+     "branch": "J1 -91 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.172,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.19,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": false,
+     "join_deg": 1000.0,
+     "join_cart_m": 0.054,
+     "join_s": null,
+     "join_why": "[{'side': 'a', 'join': {'ok': False, 'arm_deg': 258.3, 'at': 0.42, 'hits': [['upper_cabinet_1', 'R_finger_plus']]}}, {'side': 'b', 'join': {'ok': False, 'arm_deg': 266.9, 'at': 0.43, 'hits': [['upper_cabinet_1', 'R_finger_plus']]}}]",
+     "fold_play": {
+      "min_gate_mm": 111.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 77
+     },
+     "fold_app": {
+      "min_gate_mm": 60.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 3,
+     "cart": -0.65,
+     "q_deg": [
+      -91.5,
+      -29.1,
+      78.0,
+      -24.0,
+      164.1,
+      204.1
+     ],
+     "branch": "J1 -91 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.172,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.19,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": false,
+     "join_deg": 1000.0,
+     "join_cart_m": 0.054,
+     "join_s": null,
+     "join_why": "[{'side': 'a', 'join': {'ok': False, 'arm_deg': 258.3, 'at': 0.42, 'hits': [['upper_cabinet_1', 'R_finger_plus']]}}, {'side': 'b', 'join': {'ok': False, 'arm_deg': 266.9, 'at': 0.43, 'hits': [['upper_cabinet_1', 'R_finger_plus']]}}]",
+     "fold_play": {
+      "min_gate_mm": 111.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 77
+     },
+     "fold_app": {
+      "min_gate_mm": 60.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 4,
+     "cart": -0.65,
+     "q_deg": [
+      108.2,
+      -145.4,
+      -101.0,
+      -61.8,
+      8.4,
+      -231.5
+     ],
+     "branch": "J1 108 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.078,
+     "follow_min_reserve_mm": 10.2,
+     "max_step_deg": 3.62,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 203.7,
+     "join_cart_m": 0.148,
+     "join_s": 4.2,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 42.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 113
+     },
+     "fold_app": {
+      "min_gate_mm": 60.4,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": -0.65
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 69
+  },
+  {
+   "name": "c060",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XCART": "pick:-0.60"
+   },
+   "n_cands": 6,
+   "stat": {
+    "ok": 88,
+    "pose": 94,
+    "collision": 10,
+    "ur_seeds_ok": 1
+   },
+   "tried": 6,
+   "clean": 3,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -0.6,
+     "q_deg": [
+      107.8,
+      -177.6,
+      -43.7,
+      -264.6,
+      -8.2,
+      -53.8
+     ],
+     "branch": "J1 108 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.633,
+      "step_deg": 11.32,
+      "pose_mm": 0.1,
+      "hits": []
+     },
+     "lane_cart": -0.633,
+     "follow_min_reserve_mm": 37.8,
+     "max_step_deg": 11.32,
+     "follow_s": 0.6,
+     "app_ok": true,
+     "app_min_reserve_mm": 8.0,
+     "app_food_gap_mm": 4.4,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 84.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 7
+     },
+     "fold_app": {
+      "min_gate_mm": 53.1,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 1,
+     "cart": -0.6,
+     "q_deg": [
+      107.8,
+      -148.7,
+      -92.1,
+      -65.2,
+      8.2,
+      -233.8
+     ],
+     "branch": "J1 108 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.036,
+     "follow_min_reserve_mm": 16.6,
+     "max_step_deg": 3.49,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 211.2,
+     "join_cart_m": 0.19,
+     "join_s": 4.36,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 42.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 117
+     },
+     "fold_app": {
+      "min_gate_mm": 60.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 2,
+     "cart": -0.6,
+     "q_deg": [
+      107.8,
+      -148.7,
+      -92.1,
+      -65.2,
+      8.2,
+      126.2
+     ],
+     "branch": "J1 108 E- W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.036,
+     "follow_min_reserve_mm": 16.6,
+     "max_step_deg": 3.49,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 211.2,
+     "join_cart_m": 0.19,
+     "join_s": 4.36,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 42.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 117
+     },
+     "fold_app": {
+      "min_gate_mm": 60.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 3,
+     "cart": -0.6,
+     "q_deg": [
+      -90.3,
+      -23.6,
+      65.3,
+      -15.0,
+      165.1,
+      -154.1
+     ],
+     "branch": "J1 -90 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.109,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.31,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": false,
+     "join_deg": 1000.0,
+     "join_cart_m": 0.117,
+     "join_s": null,
+     "join_why": "[{'side': 'a', 'join': {'ok': False, 'arm_deg': 258.3, 'at': 0.42, 'hits': [['upper_cabinet_1', 'R_finger_plus']]}}, {'side': 'b', 'carts': [np.float64(-0.109), np.float64(-0.226)], 'shuffle': {'cart': np.float64(-0.158), 'pose_mm': 0.73, 'hits': []}}]",
+     "fold_play": {
+      "min_gate_mm": 111.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 77
+     },
+     "fold_app": {
+      "min_gate_mm": 60.3,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 4,
+     "cart": -0.6,
+     "q_deg": [
+      107.8,
+      -236.4,
+      92.1,
+      -161.6,
+      8.2,
+      126.2
+     ],
+     "branch": "J1 108 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": 0.034,
+     "follow_min_reserve_mm": 5.8,
+     "max_step_deg": 2.51,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 4.5,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 278.3,
+     "join_cart_m": 0.26,
+     "join_s": 5.57,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 32.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 126
+     },
+     "fold_app": {
+      "min_gate_mm": 85.1,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 5,
+     "cart": -0.6,
+     "q_deg": [
+      -90.3,
+      -23.6,
+      65.3,
+      -15.0,
+      165.1,
+      205.9
+     ],
+     "branch": "J1 -90 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.109,
+     "follow_min_reserve_mm": 39.1,
+     "max_step_deg": 2.31,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 11.2,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": false,
+     "join_deg": 1000.0,
+     "join_cart_m": 0.117,
+     "join_s": null,
+     "join_why": "[{'side': 'a', 'join': {'ok': False, 'arm_deg': 258.3, 'at': 0.42, 'hits': [['upper_cabinet_1', 'R_finger_plus']]}}, {'side': 'b', 'carts': [np.float64(-0.109), np.float64(-0.226)], 'shuffle': {'cart': np.float64(-0.158), 'pose_mm': 0.73, 'hits': []}}]",
+     "fold_play": {
+      "min_gate_mm": 111.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 77
+     },
+     "fold_app": {
+      "min_gate_mm": 60.3,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": -0.6
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 73
+  },
+  {
+   "name": "y30",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XPY": "30"
+   },
+   "n_cands": 0,
+   "stat": {
+    "collision": 34,
+    "pose": 158,
+    "ur_seeds_ok": 0
+   },
+   "tried": 0,
+   "clean": 0,
+   "rows": [],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": "A"
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 30
+  },
+  {
+   "name": "ym30",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XPY": "-30"
+   },
+   "n_cands": 8,
+   "stat": {
+    "pose": 144,
+    "ok": 8,
+    "collision": 40,
+    "ur_seeds_ok": 0
+   },
+   "tried": 6,
+   "clean": 1,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -1.162,
+     "q_deg": [
+      111.3,
+      -172.0,
+      -131.1,
+      -221.5,
+      -36.2,
+      -2.5
+     ],
+     "branch": "J1 111 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.443,
+     "follow_min_reserve_mm": 21.2,
+     "max_step_deg": 1.8,
+     "follow_s": 7.5,
+     "app_ok": true,
+     "app_min_reserve_mm": 2.9,
+     "app_food_gap_mm": 5.0,
+     "app_fail": null,
+     "join_ok": true,
+     "join_deg": 36.0,
+     "join_cart_m": 0.217,
+     "join_s": 1.48,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 30.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 101
+     },
+     "fold_app": {
+      "min_gate_mm": 216.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": true
+    },
+    {
+     "cand": 1,
+     "cart": -0.908,
+     "q_deg": [
+      106.5,
+      -246.6,
+      119.2,
+      -215.2,
+      31.6,
+      175.1
+     ],
+     "branch": "J1 106 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -0.908,
+      "step_deg": 1.41,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "lane_cart": -0.908,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 1.41,
+     "follow_s": 0.1,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 1,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 187.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_leaf_plate"
+      ],
+      "hit_states": 0,
+      "states": 2
+     },
+     "fold_app": {
+      "min_gate_mm": 186.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_leaf_plate"
+      ],
+      "hit_states": 0,
+      "states": 2
+     },
+     "clean": false
+    },
+    {
+     "cand": 2,
+     "cart": -0.816,
+     "q_deg": [
+      105.9,
+      -244.3,
+      80.8,
+      1.1,
+      -31.0,
+      -5.3
+     ],
+     "branch": "J1 106 E+ W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -0.816,
+      "step_deg": 1.21,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ],
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "lane_cart": -0.816,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 1.23,
+     "follow_s": 0.3,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 2,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ],
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 40.4,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 4
+     },
+     "fold_app": {
+      "min_gate_mm": 22.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 3
+     },
+     "clean": false
+    },
+    {
+     "cand": 3,
+     "cart": -0.876,
+     "q_deg": [
+      106.3,
+      -243.5,
+      113.9,
+      -212.9,
+      31.3,
+      -185.1
+     ],
+     "branch": "J1 106 E+ W+",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -0.876,
+      "step_deg": 1.3,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "lane_cart": -0.876,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 1.31,
+     "follow_s": 0.2,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 1,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 172.1,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_leaf_plate"
+      ],
+      "hit_states": 0,
+      "states": 3
+     },
+     "fold_app": {
+      "min_gate_mm": 170.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_leaf_plate"
+      ],
+      "hit_states": 0,
+      "states": 2
+     },
+     "clean": false
+    },
+    {
+     "cand": 4,
+     "cart": -0.931,
+     "q_deg": [
+      106.7,
+      -259.1,
+      100.9,
+      -4.5,
+      -31.8,
+      -4.8
+     ],
+     "branch": "J1 107 E+ W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.926,
+      "step_deg": 1.29,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "lane_cart": -0.926,
+     "follow_min_reserve_mm": 3.1,
+     "max_step_deg": 1.34,
+     "follow_s": 0.5,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 5,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 58.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 7
+     },
+     "fold_app": {
+      "min_gate_mm": 27.9,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    },
+    {
+     "cand": 5,
+     "cart": -1.098,
+     "q_deg": [
+      109.5,
+      -168.2,
+      -123.7,
+      -234.8,
+      -34.2,
+      -360.0
+     ],
+     "branch": "J1 110 E- W-",
+     "start_reserve_mm": 2.2,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "out and up->lane",
+      "cart": -0.762,
+      "step_deg": 1.31,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_web_s",
+        "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+       ]
+      ]
+     },
+     "lane_cart": -0.762,
+     "follow_min_reserve_mm": 15.6,
+     "max_step_deg": 6.2,
+     "follow_s": 5.0,
+     "app_ok": true,
+     "app_min_reserve_mm": 2.5,
+     "app_food_gap_mm": 4.2,
+     "app_fail": null,
+     "fold_play": {
+      "min_gate_mm": 32.4,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 52
+     },
+     "fold_app": {
+      "min_gate_mm": 183.1,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 6
+     },
+     "clean": false
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": "A"
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 44
+  },
+  {
+   "name": "y45",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XPY": "45"
+   },
+   "n_cands": 0,
+   "stat": {
+    "collision": 47,
+    "pose": 145,
+    "ur_seeds_ok": 0
+   },
+   "tried": 0,
+   "clean": 0,
+   "rows": [],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": "A"
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 32
+  },
+  {
+   "name": "ym45",
+   "kv": {
+    "ACT": "tomato",
+    "ARM": "fr5_j6_pgc_sp20",
+    "SEEDS": "2",
+    "SEEDUR": "results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json",
+    "XL1": "-0.65,.06,1.10",
+    "XL1R": "level",
+    "LVC": "-0.25",
+    "L2C": "-0.25",
+    "XPY": "-45"
+   },
+   "n_cands": 8,
+   "stat": {
+    "pose": 141,
+    "collision": 43,
+    "ok": 8,
+    "ur_seeds_ok": 0
+   },
+   "tried": 6,
+   "clean": 0,
+   "rows": [
+    {
+     "cand": 0,
+     "cart": -1.009,
+     "q_deg": [
+      102.7,
+      -159.9,
+      -107.1,
+      -252.3,
+      -40.7,
+      -359.9
+     ],
+     "branch": "J1 103 E- W-",
+     "start_reserve_mm": 4.6,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -1.009,
+      "step_deg": 2.66,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+        "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+       ]
+      ]
+     },
+     "lane_cart": -1.009,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 2.66,
+     "follow_s": 0.1,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 0,
+      "hits": [
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ],
+       [
+        "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+        "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+       ],
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 51.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 2
+     },
+     "fold_app": {
+      "min_gate_mm": 51.3,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 1
+     },
+     "clean": false
+    },
+    {
+     "cand": 1,
+     "cart": -1.162,
+     "q_deg": [
+      101.7,
+      -164.9,
+      -125.9,
+      -230.8,
+      -40.4,
+      0.1
+     ],
+     "branch": "J1 102 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": true,
+     "follow_fail": null,
+     "lane_cart": -0.417,
+     "follow_min_reserve_mm": 16.7,
+     "max_step_deg": 1.6,
+     "follow_s": 7.5,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 0,
+      "hits": [
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ],
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ]
+      ]
+     },
+     "join_ok": true,
+     "join_deg": 30.9,
+     "join_cart_m": 0.191,
+     "join_s": 1.4,
+     "join_why": null,
+     "fold_play": {
+      "min_gate_mm": 40.7,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 99
+     },
+     "fold_app": {
+      "min_gate_mm": 68.7,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 1
+     },
+     "clean": false
+    },
+    {
+     "cand": 2,
+     "cart": -1.098,
+     "q_deg": [
+      102.0,
+      -162.2,
+      -118.2,
+      -241.3,
+      -40.7,
+      -359.8
+     ],
+     "branch": "J1 102 E- W-",
+     "start_reserve_mm": 3.0,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -1.089,
+      "step_deg": 1.21,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+        "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+       ]
+      ]
+     },
+     "lane_cart": -1.089,
+     "follow_min_reserve_mm": 16.7,
+     "max_step_deg": 1.25,
+     "follow_s": 1.1,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 0,
+      "hits": [
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ],
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 69.0,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 13
+     },
+     "fold_app": {
+      "min_gate_mm": 70.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 1
+     },
+     "clean": false
+    },
+    {
+     "cand": 3,
+     "cart": -0.931,
+     "q_deg": [
+      102.9,
+      -253.6,
+      94.6,
+      -5.9,
+      -40.0,
+      3.1
+     ],
+     "branch": "J1 103 E+ W-",
+     "start_reserve_mm": 0.9,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -0.915,
+      "step_deg": 1.06,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube",
+        "R_base_plate"
+       ]
+      ]
+     },
+     "lane_cart": -0.915,
+     "follow_min_reserve_mm": 3.1,
+     "max_step_deg": 2.54,
+     "follow_s": 0.8,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "counter_left_piece2"
+       ],
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ],
+       [
+        "counter_left_piece2",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 85.6,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_leaf_plate"
+      ],
+      "hit_states": 0,
+      "states": 10
+     },
+     "fold_app": {
+      "min_gate_mm": 87.7,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_leaf_plate"
+      ],
+      "hit_states": 0,
+      "states": 1
+     },
+     "clean": false
+    },
+    {
+     "cand": 4,
+     "cart": -1.023,
+     "q_deg": [
+      102.2,
+      -263.5,
+      108.0,
+      -6.2,
+      -40.9,
+      0.3
+     ],
+     "branch": "J1 102 E+ W-",
+     "start_reserve_mm": 0.5,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "lifted->out and up",
+      "cart": -1.005,
+      "step_deg": 1.28,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "r16_spatula_handle",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_web_e"
+       ],
+       [
+        "r16_spatula_handle",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_tube"
+       ],
+       [
+        "r16_spatula_handle",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_web_e"
+       ]
+      ]
+     },
+     "lane_cart": -1.005,
+     "follow_min_reserve_mm": -1.0,
+     "max_step_deg": 1.37,
+     "follow_s": 0.9,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 0,
+      "hits": [
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ],
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 116.7,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 11
+     },
+     "fold_app": {
+      "min_gate_mm": 147.8,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 1
+     },
+     "clean": false
+    },
+    {
+     "cand": 5,
+     "cart": -0.876,
+     "q_deg": [
+      102.9,
+      -238.1,
+      107.2,
+      -210.7,
+      39.7,
+      -179.3
+     ],
+     "branch": "J1 103 E+ W+",
+     "start_reserve_mm": 0.4,
+     "follow_ok": false,
+     "follow_fail": {
+      "at": "pick->lifted",
+      "cart": -0.876,
+      "step_deg": 1.66,
+      "pose_mm": 0.0,
+      "hits": [
+       [
+        "r16_spatula_handle",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_web_e"
+       ],
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "counter_left_piece2"
+       ]
+      ]
+     },
+     "lane_cart": -0.876,
+     "follow_min_reserve_mm": null,
+     "max_step_deg": 1.66,
+     "follow_s": 0.1,
+     "app_ok": false,
+     "app_min_reserve_mm": null,
+     "app_food_gap_mm": null,
+     "app_fail": {
+      "stop": 0,
+      "hits": [
+       [
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow",
+        "counter_left_piece2"
+       ],
+       [
+        "r19_carrot",
+        "R_finger_plus"
+       ],
+       [
+        "counter_left_piece2",
+        "R_geom_fr5_j6_pgc_sp20_upperarm_h_elbow"
+       ]
+      ]
+     },
+     "fold_play": {
+      "min_gate_mm": 30.2,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 2
+     },
+     "fold_app": {
+      "min_gate_mm": 32.5,
+      "pair": [
+       "R_geom_fr5_j6_pgc_sp20_forearm_tube",
+       "R_cart_p5_stg_body"
+      ],
+      "hit_states": 0,
+      "states": 1
+     },
+     "clean": false
+    }
+   ],
+   "keyframes": [
+    {
+     "label": "pick",
+     "p": [
+      -1.245,
+      0.12,
+      0.951
+     ],
+     "c": "A"
+    },
+    {
+     "label": "lifted",
+     "p": [
+      -1.245,
+      0.12,
+      0.993
+     ],
+     "c": "A"
+    },
+    {
+     "label": "out and up",
+     "p": [
+      -1.245,
+      0.08,
+      1.093
+     ],
+     "c": "F"
+    },
+    {
+     "label": "lane",
+     "p": [
+      -0.65,
+      0.06,
+      1.1
+     ],
+     "c": "F"
+    }
+   ],
+   "elapsed_s": 42
+  }
+ ],
+ "elapsed_s": 74
+}

@@ -1,0 +1,157 @@
+{
+ "summary": {
+  "mode": "fold",
+  "parts_cfg": {
+   "r19p5": {
+    "state": "folded",
+    "pan": true,
+    "kind": "swing"
+   }
+  },
+  "prefix": [
+   "R_cart_p5_"
+  ],
+  "paths": 3,
+  "errors": 0,
+  "states": 3582,
+  "hit_paths": [],
+  "worst": {
+   "kind": "prep",
+   "name": "tomato_fr5y_p90_fr5_j6_pgc_sp20",
+   "min_gate_mm": 30.11,
+   "min_dist_mm": 40.11,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+    "R_cart_p5_stg_body"
+   ]
+  },
+  "by_kind": {
+   "prep": 30.11,
+   "play": null,
+   "app": null,
+   "edge": null,
+   "other": null,
+   "stir": null
+  },
+  "prep_sets": {
+   "tomato_fr5y_p90_fr5_j6_pgc_sp20": {
+    "hit_states": 0,
+    "max_depth_mm": 0.0,
+    "min_gate_mm": 30.11,
+    "parts": {
+     "tomato_fr5y_p90_fr5_j6_pgc_sp20": {
+      "states": 3440,
+      "hits": 0,
+      "max_depth_mm": null
+     },
+     "tomato_fr5y_p90_fr5_j6_pgc_sp20@app0": {
+      "states": 90,
+      "hits": 0,
+      "max_depth_mm": null
+     },
+     "tomato_fr5y_p90_fr5_j6_pgc_sp20@app1": {
+      "states": 52,
+      "hits": 0,
+      "max_depth_mm": null
+     }
+    }
+   }
+  },
+  "potzone": {
+   "RACK": "keyed",
+   "SPX": "1.56",
+   "SPY": ".20"
+  },
+  "arm": "fr5_j6_pgc_sp20"
+ },
+ "method": "R19 prep step 5 (#38, T2L vs prep): screens of cart-mounted T2L hardware against stored certified paths, with WHERE,\nWHICH LINK and HOW DEEP. New file; r19prep4_screen.py / r19pot_screen.py are imported for their scene builders and\nstored-path lists and are not changed; writes only to results/r19/prep5/.\nMethod (as r19prep4_screen.py): each stored state is replayed in its own scene with the new cart parts added and ONLY\nthe pairs (moving robot / held geom) x (new part) are measured: enclosing-AABB separation, refined by the checker's\nown GJK lower bound (distance.Bounds.pair) within 30 mm of the gap; gate = distance - the checker's required gap for the\npair (ch.required: 10 mm arm / held object vs a CART part). Stored states 2pi-unwrapped, joint-linear between them, cut\nto <= 4 mm (r19smooth.sample_poly); the pot-zone layer (RACK=keyed, SPX 1.56, SPY 0.20) installed.\nNEW here, for every state with a violated pair:\n - depth = the exact penetration depth (minimum translation distance) of the two convex shapes, by the separating-axis\n   test over all face normals of both hulls and all edge x edge cross products (complete for convex polytopes; the\n   checker's own hull vertices; a capsule is its two end spheres sampled at 642 points each, i.e. under-estimated by\n   < 0.1 mm). A pair that does not intersect reports depth 0 and its distance.\n - depth is computed on every DSTRIDE-th (default 3rd) hit state of a path and on every hit state within DSTRIDE of the\n   deepest one found (a local refinement); hit counts, links and parts are from every state.\n - where = the centre of the two geoms' AABB overlap, in the CART frame (x from the arm base axis, +y toward the counter,\n   z world) and the world; the nearest keyframe of the set (by TCP distance to the keyframe's TCP pose; approaches are\n   labelled by their grasp keyframe).\nMODE=t2l | t2l_empty  the step-4 T2L cradle + bracket (+ the parked pan) of kitchen19p4 (prefix R_cart_p4_)\nMODE=fold | deployed  the kitchen19p5 fold-away cradle, folded / deployed (prefix R_cart_p5_)\nKINDS=prep[,play,app,edge,other,stir]  prep = the certified prep sets listed in SETS (default: the #38 step-5 list);\n      the others are r19prep4_screen's cooking chains (+ approaches), hub edges, cup chains, stir cycle.\npython r19prep5_screen.py MODE=t2l [KINDS=prep] [SETS=f1,f2] [WORKERS=16] [TAG=..] ARM=ur5e_enc2_pgc PY=.15\n -> results/r19/prep5/screen_<MODE>[_TAG].json",
+ "rows": [
+  {
+   "kind": "prep",
+   "name": "tomato_fr5y_p90_fr5_j6_pgc_sp20",
+   "states": 3440,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 8,
+   "pairs": 168,
+   "min_gate_mm": 30.11,
+   "min_dist_mm": 40.11,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+    "R_cart_p5_stg_body"
+   ],
+   "state": 140,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 3,
+   "hits_sample": [],
+   "elapsed_s": 3.6
+  },
+  {
+   "kind": "prep",
+   "name": "tomato_fr5y_p90_fr5_j6_pgc_sp20@app0",
+   "states": 90,
+   "max_step_bound_mm": 3.918,
+   "new_geoms": 8,
+   "pairs": 160,
+   "min_gate_mm": 34.53,
+   "min_dist_mm": 44.53,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+    "R_cart_p5_stg_block"
+   ],
+   "state": 86,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 3,
+   "hits_sample": [],
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "tomato_fr5y_p90_fr5_j6_pgc_sp20@app1",
+   "states": 52,
+   "max_step_bound_mm": 3.96,
+   "new_geoms": 8,
+   "pairs": 160,
+   "min_gate_mm": 164.57,
+   "min_dist_mm": 174.57,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6",
+    "R_cart_p5_stg_body"
+   ],
+   "state": 51,
+   "env_min_gap_mm": null,
+   "env_pair": null,
+   "env_cart": null,
+   "bounded_by_held_sphere": false,
+   "hit_states": 0,
+   "max_depth_mm": null,
+   "deepest": null,
+   "depth_by_part_mm": {},
+   "depth_by_link_mm": {},
+   "hit_states_by_keyframe": {},
+   "hit_state_range": null,
+   "depth_stride": 3,
+   "hits_sample": [],
+   "elapsed_s": 1.4
+  }
+ ]
+}
