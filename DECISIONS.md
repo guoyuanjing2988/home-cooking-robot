@@ -569,5 +569,5 @@ Nothing bought.
 - **Lid rack:** two V-groove pads under the upright lid's rim (`kitchen19pot.py`, `RACK=keyed`). They capture ±14.8 mm across the rim plane.
   - The last 50 mm of the straight drop into the rack is a declared contact window. Only lid parts against rack parts are exempt.
   - The stored lid path is kept unchanged.
-  - The optional pot lift-off window (`POTWIN=1`) is not adopted yet.
+  - **Pot lift-off window (`POTWIN=1`): adopted (10-13 evening).** The lid's straight 20 mm lift off the pot rim follows the same window rule. Docking-stop corner: +6.59 mm with it, +1.18 mm without it. Tilt tolerance: 0.43°, against 0.30° without it. Contact force at both seats goes to #26.
 - **Report:** `sim/r10/claude/R19_POTZONE.md`. The hub edges, corner replays and the full tolerance set are running as controller lanes.
