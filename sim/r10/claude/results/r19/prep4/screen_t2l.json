@@ -1,9 +1,9 @@
 {
  "summary": {
   "mode": "t2l",
-  "paths": 104,
+  "paths": 105,
   "errors": 0,
-  "states": 116618,
+  "states": 125046,
   "hit_paths": [
    "bascarrot_bc1_ur5e_enc2_pgc",
    "bascarrot_bc1_ur5e_enc2_pgc@app0",
@@ -44,6 +44,7 @@
    "app": 78.05,
    "edge": 58.63,
    "other": 128.77,
+   "stir": 195.55,
    "prep": -10.0
   },
   "potzone": {
@@ -54,7 +55,7 @@
   "arm": "ur5e_enc2_pgc",
   "empty_cradle": false
  },
- "method": "R19 prep step 4 (#38): screen the NEW step-4 parts against every stored path. New file; r19pot_screen.py is imported\nfor its helpers (stored-path list, <= 4 mm sampling, scene builders) and is not changed; nothing is written outside\nresults/r19/prep4/.\nSame method as r19pot_screen.py: a new part only adds pairs, so each stored state is replayed with the part in the\nscene and ONLY the pairs that involve the part are measured, exactly: enclosing-AABB separation, refined by the\nchecker's own GJK lower bound (distance.Bounds.pair) wherever it is within 30 mm of the gap; gate = distance - the\nchecker's required gap for that pair (ch.required: 10 mm robot-environment, 5 mm gripper / held-environment, 10 mm\narm vs a CART part; pairs the checker does not check are skipped, as it does). Stored states 2pi-unwrapped,\njoint-linear between them, cut to <= 4 mm point bound (r19smooth.sample_poly); hub edges as stored (<= 4 mm).\nThe current cooking layout (kitchen19pot: RACK=keyed, spider rest at SPX, SPY = 1.56, 0.20) is installed in every\nscene, and the adopted spider chain is the re-planned one of R19_POTZONE.md.\nMODE=t2l     the T2L cradle + bracket and the parked staging pan (kitchen19p4, CART geoms R_cart_p4_*): they move\n             with the cart, so their bounds are recomputed at every state.\nMODE=drawer  the slicer drawer (guide plate, rails, stop: p4_drawer_*) with the cranked-handle bowl parked under the\n             spout (p4_dbh_*). The R07 potato staging bowl and the plain R11 out bowl are removed by the design; a\n             removed obstacle cannot create a hit, so they are left in the replayed scenes.\nPaths: the adopted cooking chains (results/r17/chain_*_ur5e_enc2_pgc.json, wok + plate 2 at py.15, lever, lid,\nspatula; spider = results/r19/pot/chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json) + their approaches; the 22 hub\nedges (hub_py.15_ur5e_enc2_pgc); the checked cup chains (union scene, held cup bounded by a 0.20 m sphere about the\nTCP as r19pot_screen); the stored prep sets (results/r19/prep/chain_*_{full,r2}_ur5e_enc2_pgc.json + the step-3 smoke\npasses) and the step-4 passes (results/r19/prep4/chain_{ct2p_s1,stgwok_m5}_ur5e_enc2_pgc.json), replayed EXACTLY in\ntheir own scenes (held object, stations, union faucet) with their approaches.\npython r19prep4_screen.py MODE=t2l|drawer [WORKERS=16] [KINDS=play,app,edge,other,prep] -> results/r19/prep4/screen_<MODE>.json",
+ "method": "R19 prep step 4 (#38): screen the NEW step-4 parts against every stored path. New file; r19pot_screen.py is imported\nfor its helpers (stored-path list, <= 4 mm sampling, scene builders) and is not changed; nothing is written outside\nresults/r19/prep4/.\nSame method as r19pot_screen.py: a new part only adds pairs, so each stored state is replayed with the part in the\nscene and ONLY the pairs that involve the part are measured, exactly: enclosing-AABB separation, refined by the\nchecker's own GJK lower bound (distance.Bounds.pair) wherever it is within 30 mm of the gap; gate = distance - the\nchecker's required gap for that pair (ch.required: 10 mm robot-environment, 5 mm gripper / held-environment, 10 mm\narm vs a CART part; pairs the checker does not check are skipped, as it does). Stored states 2pi-unwrapped,\njoint-linear between them, cut to <= 4 mm point bound (r19smooth.sample_poly); hub edges as stored (<= 4 mm).\nThe current cooking layout (kitchen19pot: RACK=keyed, spider rest at SPX, SPY = 1.56, 0.20) is installed in every\nscene, and the adopted spider chain is the re-planned one of R19_POTZONE.md.\nMODE=t2l     the T2L cradle + bracket and the parked staging pan (kitchen19p4, CART geoms R_cart_p4_*): they move\n             with the cart, so their bounds are recomputed at every state.\nMODE=drawer  the slicer drawer (guide plate, rails, stop: p4_drawer_*) with the cranked-handle bowl parked under the\n             spout (p4_dbh_*). The R07 potato staging bowl and the plain R11 out bowl are removed by the design; a\n             removed obstacle cannot create a hit, so they are left in the replayed scenes.\nPaths: the adopted cooking chains (results/r17/chain_*_ur5e_enc2_pgc.json, wok + plate 2 at py.15, lever, lid,\nspatula; spider = results/r19/pot/chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json) + their approaches; the 22 hub\nedges (hub_py.15_ur5e_enc2_pgc); the stored stir cycle (results/r19/stir/lib_stir_cycle_<arm>.json, its own scene);\nthe checked cup chains (union scene, held cup bounded by a 0.20 m sphere about the\nTCP as r19pot_screen); the stored prep sets (results/r19/prep/chain_*_{full,r2}_ur5e_enc2_pgc.json + the step-3 smoke\npasses) and the step-4 passes (results/r19/prep4/chain_{ct2p_s1,stgwok_m5}_ur5e_enc2_pgc.json), replayed EXACTLY in\ntheir own scenes (held object, stations, union faucet) with their approaches.\npython r19prep4_screen.py MODE=t2l|drawer [WORKERS=16] [KINDS=play,app,edge,other,prep] -> results/r19/prep4/screen_<MODE>.json",
  "rows": [
   {
    "kind": "play",
@@ -73,7 +74,7 @@
    "state": 2288,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 12.2
+   "elapsed_s": 13.0
   },
   {
    "kind": "app",
@@ -92,7 +93,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.6
+   "elapsed_s": 5.3
   },
   {
    "kind": "app",
@@ -111,7 +112,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.4
+   "elapsed_s": 5.3
   },
   {
    "kind": "play",
@@ -130,7 +131,7 @@
    "state": 2261,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 9.5
+   "elapsed_s": 13.2
   },
   {
    "kind": "app",
@@ -149,7 +150,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.4
+   "elapsed_s": 5.2
   },
   {
    "kind": "app",
@@ -168,7 +169,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.9
+   "elapsed_s": 5.2
   },
   {
    "kind": "play",
@@ -187,7 +188,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.9
+   "elapsed_s": 5.4
   },
   {
    "kind": "app",
@@ -206,7 +207,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.7
+   "elapsed_s": 5.2
   },
   {
    "kind": "app",
@@ -225,7 +226,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.7
+   "elapsed_s": 5.1
   },
   {
    "kind": "play",
@@ -244,7 +245,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 6.3
+   "elapsed_s": 7.2
   },
   {
    "kind": "app",
@@ -263,7 +264,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.6
+   "elapsed_s": 5.4
   },
   {
    "kind": "app",
@@ -282,7 +283,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 5.0
+   "elapsed_s": 5.3
   },
   {
    "kind": "play",
@@ -301,7 +302,7 @@
    "state": 1607,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 6.6
+   "elapsed_s": 7.3
   },
   {
    "kind": "app",
@@ -320,7 +321,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.8
+   "elapsed_s": 5.4
   },
   {
    "kind": "play",
@@ -339,7 +340,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 7.4
+   "elapsed_s": 8.6
   },
   {
    "kind": "app",
@@ -358,7 +359,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.8
+   "elapsed_s": 5.1
   },
   {
    "kind": "app",
@@ -377,7 +378,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.8
+   "elapsed_s": 3.0
   },
   {
    "kind": "edge",
@@ -396,7 +397,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.8
+   "elapsed_s": 3.3
   },
   {
    "kind": "edge",
@@ -415,7 +416,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.9
+   "elapsed_s": 3.5
   },
   {
    "kind": "edge",
@@ -434,7 +435,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.9
+   "elapsed_s": 3.4
   },
   {
    "kind": "edge",
@@ -453,7 +454,7 @@
    "state": 1562,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.9
+   "elapsed_s": 4.5
   },
   {
    "kind": "edge",
@@ -472,7 +473,7 @@
    "state": 1762,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.5
+   "elapsed_s": 4.3
   },
   {
    "kind": "edge",
@@ -491,7 +492,7 @@
    "state": 1766,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.5
+   "elapsed_s": 4.3
   },
   {
    "kind": "edge",
@@ -510,7 +511,7 @@
    "state": 1517,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.2
+   "elapsed_s": 4.3
   },
   {
    "kind": "edge",
@@ -529,7 +530,7 @@
    "state": 1719,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.3
+   "elapsed_s": 4.4
   },
   {
    "kind": "edge",
@@ -548,7 +549,7 @@
    "state": 1737,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.3
+   "elapsed_s": 4.5
   },
   {
    "kind": "edge",
@@ -567,7 +568,7 @@
    "state": 1619,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.0
+   "elapsed_s": 5.0
   },
   {
    "kind": "edge",
@@ -586,7 +587,7 @@
    "state": 1773,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.6
+   "elapsed_s": 4.0
   },
   {
    "kind": "edge",
@@ -605,7 +606,7 @@
    "state": 1876,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.7
+   "elapsed_s": 3.9
   },
   {
    "kind": "edge",
@@ -624,7 +625,7 @@
    "state": 2020,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.8
+   "elapsed_s": 4.2
   },
   {
    "kind": "edge",
@@ -643,7 +644,7 @@
    "state": 2244,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.9
+   "elapsed_s": 4.2
   },
   {
    "kind": "edge",
@@ -700,7 +701,7 @@
    "state": 1200,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.3
+   "elapsed_s": 4.5
   },
   {
    "kind": "edge",
@@ -719,7 +720,7 @@
    "state": 2149,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.8
+   "elapsed_s": 4.0
   },
   {
    "kind": "edge",
@@ -738,7 +739,7 @@
    "state": 2363,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.6
+   "elapsed_s": 3.9
   },
   {
    "kind": "edge",
@@ -757,7 +758,7 @@
    "state": 1190,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.1
+   "elapsed_s": 3.4
   },
   {
    "kind": "edge",
@@ -776,7 +777,7 @@
    "state": 1176,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.0
+   "elapsed_s": 3.4
   },
   {
    "kind": "edge",
@@ -795,7 +796,7 @@
    "state": 912,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.9
+   "elapsed_s": 3.3
   },
   {
    "kind": "other",
@@ -814,7 +815,7 @@
    "state": 1888,
    "hit_states": 0,
    "bounded_by_held_sphere": true,
-   "elapsed_s": 4.3
+   "elapsed_s": 4.1
   },
   {
    "kind": "other",
@@ -833,7 +834,7 @@
    "state": 1740,
    "hit_states": 0,
    "bounded_by_held_sphere": true,
-   "elapsed_s": 4.2
+   "elapsed_s": 4.0
   },
   {
    "kind": "other",
@@ -852,7 +853,7 @@
    "state": 1666,
    "hit_states": 0,
    "bounded_by_held_sphere": true,
-   "elapsed_s": 4.1
+   "elapsed_s": 3.9
   },
   {
    "kind": "other",
@@ -871,7 +872,7 @@
    "state": 1592,
    "hit_states": 0,
    "bounded_by_held_sphere": true,
-   "elapsed_s": 4.2
+   "elapsed_s": 4.0
   },
   {
    "kind": "other",
@@ -890,7 +891,7 @@
    "state": 1735,
    "hit_states": 0,
    "bounded_by_held_sphere": true,
-   "elapsed_s": 4.3
+   "elapsed_s": 3.8
   },
   {
    "kind": "other",
@@ -909,7 +910,26 @@
    "state": 1740,
    "hit_states": 0,
    "bounded_by_held_sphere": true,
-   "elapsed_s": 4.3
+   "elapsed_s": 3.7
+  },
+  {
+   "kind": "stir",
+   "name": "stir_cycle",
+   "states": 8428,
+   "max_step_bound_mm": 4.0,
+   "new_geoms": 6,
+   "pairs": 168,
+   "min_gate_mm": 195.55,
+   "min_dist_mm": 205.55,
+   "pair": [
+    "R_geom_enc2_ua_0",
+    "R_cart_p4_stg_body"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 8047,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 10.4
   },
   {
    "kind": "prep",
@@ -928,7 +948,7 @@
    "state": 0,
    "hit_states": 113,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 9.8
+   "elapsed_s": 9.9
   },
   {
    "kind": "prep",
@@ -947,7 +967,7 @@
    "state": 0,
    "hit_states": 61,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 5.0
+   "elapsed_s": 5.5
   },
   {
    "kind": "prep",
@@ -966,7 +986,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 6.2
+   "elapsed_s": 6.9
   },
   {
    "kind": "prep",
@@ -985,7 +1005,7 @@
    "state": 1499,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 5.8
+   "elapsed_s": 6.3
   },
   {
    "kind": "prep",
@@ -1004,7 +1024,7 @@
    "state": 40,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.7
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1023,7 +1043,7 @@
    "state": 43,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.6
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1042,7 +1062,7 @@
    "state": 0,
    "hit_states": 1135,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 21.8
+   "elapsed_s": 25.8
   },
   {
    "kind": "prep",
@@ -1061,7 +1081,7 @@
    "state": 0,
    "hit_states": 87,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.0
+   "elapsed_s": 3.3
   },
   {
    "kind": "prep",
@@ -1080,7 +1100,7 @@
    "state": 0,
    "hit_states": 95,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.3
+   "elapsed_s": 3.7
   },
   {
    "kind": "prep",
@@ -1099,7 +1119,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.4
+   "elapsed_s": 5.0
   },
   {
    "kind": "prep",
@@ -1118,7 +1138,7 @@
    "state": 6,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.7
   },
   {
    "kind": "prep",
@@ -1137,7 +1157,7 @@
    "state": 4,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.6
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1156,7 +1176,7 @@
    "state": 2,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.6
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1175,7 +1195,7 @@
    "state": 1088,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 6.1
+   "elapsed_s": 6.8
   },
   {
    "kind": "prep",
@@ -1194,7 +1214,7 @@
    "state": 40,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.6
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1213,7 +1233,7 @@
    "state": 43,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.6
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1232,7 +1252,7 @@
    "state": 862,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 5.0
+   "elapsed_s": 5.3
   },
   {
    "kind": "prep",
@@ -1270,7 +1290,7 @@
    "state": 43,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.7
   },
   {
    "kind": "prep",
@@ -1289,7 +1309,7 @@
    "state": 0,
    "hit_states": 2158,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 23.3
+   "elapsed_s": 31.1
   },
   {
    "kind": "prep",
@@ -1308,7 +1328,7 @@
    "state": 0,
    "hit_states": 87,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.0
+   "elapsed_s": 3.2
   },
   {
    "kind": "prep",
@@ -1327,7 +1347,7 @@
    "state": 0,
    "hit_states": 95,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.2
+   "elapsed_s": 3.5
   },
   {
    "kind": "prep",
@@ -1346,7 +1366,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.4
+   "elapsed_s": 4.1
   },
   {
    "kind": "prep",
@@ -1365,7 +1385,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.4
+   "elapsed_s": 2.8
   },
   {
    "kind": "prep",
@@ -1384,7 +1404,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.7
   },
   {
    "kind": "prep",
@@ -1403,7 +1423,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 7.6
+   "elapsed_s": 8.5
   },
   {
    "kind": "prep",
@@ -1422,7 +1442,7 @@
    "state": 17,
    "hit_states": 43,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.4
+   "elapsed_s": 3.8
   },
   {
    "kind": "prep",
@@ -1441,7 +1461,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 5.8
+   "elapsed_s": 6.3
   },
   {
    "kind": "prep",
@@ -1460,7 +1480,7 @@
    "state": 0,
    "hit_states": 1335,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 21.9
+   "elapsed_s": 31.1
   },
   {
    "kind": "prep",
@@ -1479,7 +1499,7 @@
    "state": 0,
    "hit_states": 60,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.0
+   "elapsed_s": 3.5
   },
   {
    "kind": "prep",
@@ -1498,7 +1518,7 @@
    "state": 0,
    "hit_states": 172,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 6.5
+   "elapsed_s": 7.0
   },
   {
    "kind": "prep",
@@ -1517,7 +1537,7 @@
    "state": 0,
    "hit_states": 1118,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 22.7
+   "elapsed_s": 32.6
   },
   {
    "kind": "prep",
@@ -1536,7 +1556,7 @@
    "state": 0,
    "hit_states": 61,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.8
+   "elapsed_s": 5.0
   },
   {
    "kind": "prep",
@@ -1555,7 +1575,7 @@
    "state": 0,
    "hit_states": 172,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 6.4
+   "elapsed_s": 7.4
   },
   {
    "kind": "prep",
@@ -1574,7 +1594,7 @@
    "state": 0,
    "hit_states": 1303,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 24.5
+   "elapsed_s": 36.3
   },
   {
    "kind": "prep",
@@ -1593,7 +1613,7 @@
    "state": 0,
    "hit_states": 84,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.9
+   "elapsed_s": 3.2
   },
   {
    "kind": "prep",
@@ -1612,7 +1632,7 @@
    "state": 15,
    "hit_states": 96,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.4
+   "elapsed_s": 4.0
   },
   {
    "kind": "prep",
@@ -1631,7 +1651,7 @@
    "state": 77,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1650,7 +1670,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.4
+   "elapsed_s": 2.8
   },
   {
    "kind": "prep",
@@ -1669,7 +1689,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.7
   },
   {
    "kind": "prep",
@@ -1688,7 +1708,7 @@
    "state": 77,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.8
   },
   {
    "kind": "prep",
@@ -1707,7 +1727,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.7
   },
   {
    "kind": "prep",
@@ -1726,7 +1746,7 @@
    "state": 0,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.4
+   "elapsed_s": 2.7
   },
   {
    "kind": "prep",
@@ -1745,7 +1765,7 @@
    "state": 1572,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.8
+   "elapsed_s": 4.0
   },
   {
    "kind": "prep",
@@ -1764,7 +1784,7 @@
    "state": 11,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.8
   },
   {
    "kind": "prep",
@@ -1783,7 +1803,7 @@
    "state": 40,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.8
   },
   {
    "kind": "prep",
@@ -1802,7 +1822,7 @@
    "state": 7,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.6
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1821,7 +1841,7 @@
    "state": 0,
    "hit_states": 104,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 8.0
+   "elapsed_s": 9.4
   },
   {
    "kind": "prep",
@@ -1840,7 +1860,7 @@
    "state": 0,
    "hit_states": 77,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.0
+   "elapsed_s": 3.5
   },
   {
    "kind": "prep",
@@ -1859,7 +1879,7 @@
    "state": 52,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.8
+   "elapsed_s": 3.0
   },
   {
    "kind": "prep",
@@ -1878,7 +1898,7 @@
    "state": 0,
    "hit_states": 104,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 8.0
+   "elapsed_s": 9.8
   },
   {
    "kind": "prep",
@@ -1897,7 +1917,7 @@
    "state": 0,
    "hit_states": 77,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 3.1
+   "elapsed_s": 3.3
   },
   {
    "kind": "prep",
@@ -1916,7 +1936,7 @@
    "state": 52,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.7
+   "elapsed_s": 2.9
   },
   {
    "kind": "prep",
@@ -1935,7 +1955,7 @@
    "state": 3027,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 6.0
+   "elapsed_s": 6.8
   },
   {
    "kind": "prep",
@@ -1954,7 +1974,7 @@
    "state": 30,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.7
   },
   {
    "kind": "prep",
@@ -1973,7 +1993,7 @@
    "state": 38,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.5
+   "elapsed_s": 2.7
   },
   {
    "kind": "prep",
@@ -1992,7 +2012,7 @@
    "state": 2758,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 4.3
+   "elapsed_s": 5.1
   },
   {
    "kind": "prep",
@@ -2011,7 +2031,7 @@
    "state": 30,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.4
+   "elapsed_s": 2.6
   },
   {
    "kind": "prep",
@@ -2030,7 +2050,7 @@
    "state": 43,
    "hit_states": 0,
    "bounded_by_held_sphere": false,
-   "elapsed_s": 2.4
+   "elapsed_s": 2.6
   }
  ]
 }
