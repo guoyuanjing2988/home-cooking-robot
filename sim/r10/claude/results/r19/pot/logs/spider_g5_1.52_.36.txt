@@ -1,0 +1,20 @@
+pick start candidates 11 {'pose': 158, 'ok': 15, 'collision': 19, 'ur_seeds_ok': 12, 'r19pot_cabgate_dropped': 16}
+ cand 0 fail {'at': 'out and up->lane', 'kf': None, 'cart': np.float64(1.214), 'step_deg': 2.08, 'pose_mm': 3.15, 'reserve_mm': None, 'dt': np.float64(0.09739039423315266), 'hits': []}
+ cand 1 fail {'at': '->out and up', 'kf': None, 'cart': np.float64(1.298), 'step_deg': 2.06, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09762812094883312), 'hits': [['R_geom_enc2_ua_0', 'R_finger_plus'], ['R_geom_enc2_ua_2', 'R_finger_plus']]}
+ cand 2 fail {'at': 'out and up->lane', 'kf': None, 'cart': np.float64(1.232), 'step_deg': 1.14, 'pose_mm': 2.07, 'reserve_mm': None, 'dt': np.float64(0.09739039423315266), 'hits': []}
+ cand 3 fail {'at': 'pick->', 'kf': 1, 'cart': np.float64(1.207), 'step_deg': 1.73, 'pose_mm': 0.0, 'reserve_mm': 5.5, 'dt': np.float64(0.0733333333333334), 'hits': [['R_geom_enc2_fa_1', 'R_finger_plus']]}
+ cand 4 join fail {'ok': False, 'arm_deg': 190.6, 'at': 0.05, 'reason': 'object moves 50 mm / 0 deg in the join'}
+ cand 5 join fail {'ok': False, 'arm_deg': 269.8, 'at': 0.03, 'reason': 'object moves 56 mm / 9 deg in the join'}
+ cand 6 join fail {'ok': False, 'arm_deg': 190.6, 'at': 0.05, 'reason': 'object moves 50 mm / 0 deg in the join'}
+ cand 7 join fail {'ok': False, 'arm_deg': 269.8, 'at': 0.03, 'reason': 'object moves 56 mm / 9 deg in the join'}
+ cand 8 join fail {'ok': False, 'arm_deg': 269.8, 'at': 0.03, 'reason': 'object moves 56 mm / 9 deg in the join'}
+ cand 9 join fail {'ok': False, 'arm_deg': 269.8, 'at': 0.03, 'reason': 'object moves 56 mm / 9 deg in the join'}
+ cand 10 join fail {'ok': False, 'arm_deg': 282.3, 'at': 0.03, 'reason': 'object moves 42 mm / 15 deg in the join'}
+Traceback (most recent call last):
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19pot_chain.py", line 170, in <module>
+    K=g['K'];partial()
+             ^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19pot_chain.py", line 119, in partial
+    x=g['sides'](a)[0];other=[b for b in A if b!=a and (min(a,b)<x<max(a,b))][0];q_other=P0[arr[(other,x)]]
+                                                                                            ~~~^^^^^^^^^^^
+KeyError: (0, 14)

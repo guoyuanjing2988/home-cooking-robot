@@ -29,6 +29,9 @@ Actions (ACT=), defaults = the passing settings of R19_PREP_LAYOUT.md:
  press   LEVER_PRESS: front grasp of the keyed pusher knob, press 102 mm (the tomato is cut: appliance-
          contained, as R11/WD), return, release; reports the arm's available push along the press
  tap     exploration only: the held item OBJ= from LANE into the outlet and back (one anchor)
+ basket | baspour | tubfill | soak | tubempty | ctray | bascarrot   R19 #38 step 3 (r19prep3_actions.py, objects kitchen19p3.py):
+         basket wash at the tap + drain/shake, basket pour into the staging bowl, soak tub fill / basket in-out / empty,
+         lever catch-tray output transfer, carrot into the basket. Keyframes may carry load (kg) and com (object frame).
 Other knobs: SEEDS, TRIES, KEEP, PLAN=1 (RRT for blocked joins), LEVER=x,y[,yaw], LVC / TAPC (fixed anchor
 carts), CA2, L2C, W2 (waypoints), ANCH (anchors to keep), TROUTE=back, RZ (rinse height, default 0.98 m).
 Rinse dwell times are ESTIMATES (no sourced washing time); no process force is applied (the R10 9.19 N
@@ -45,6 +48,7 @@ from scene import build,save
 from checker import Checker
 from solver import solve
 import kitchen15 as K15,kitchen16 as K,kitchen17 as K17,kitchen19 as K19
+import kitchen19p3 as P3,r19prep3_actions as A3   # R19 #38 step-3 objects and sets (registered on import; nothing else changes)
 KV=dict(a.split('=',1) for a in sys.argv[1:]);ACT=KV['ACT'];SIGN=int(KV.get('SIGN',1))
 SEEDS=(14,15,16)[:int(KV.get('SEEDS',2))];TRIES=int(KV.get('TRIES',6))
 DESIGN=dict(pot_h=.12,rack=.04,lid_a=0.,car_a=45.,rack_ry=90.);K.set_design(**DESIGN)
@@ -67,6 +71,7 @@ def scene_with(*stations,**kw):
 def action():
  """object, scene extras, keyframes, grasp/release list [(keyframe, world cfg r19, object in the world?)]"""
  dxy=L['tray_dxy'];car=('carrot',I,K19.tray('carrot',dxy));tom=('tomato',I,K19.tray('tomato',dxy))
+ if ACT in A3.ACTS:return A3.action(ACT,KV,L,kf,scene_with,(car,tom))
  S=np.array([K19.FAUCET_OUT[0],K19.FAUCET_OUT[1],float(KV.get('RZ',.98))])   # held item centre under the outlet (1.10 m)
  def roll(R,deg):   # rotate the held item about the grasp approach axis (a wrist roll)
   a=R@K.OBJ['tomato' if ACT!='carrot' else 'carrot']['a'];return Rotation.from_rotvec(a*np.radians(deg)).as_matrix()@R
@@ -246,7 +251,7 @@ def approach(k,world,inw,q):
  rm=[o['reserve_mm'] for o in out if o['reserve_mm'] is not None]
  return dict(ok=True,kf=k,object_in_world=inw,window=bool(win),lift_mm=round(lift*1000,1),min_food_gap_mm=round(min(pen)*1000,1) if pen else None,min_reserve_mm=min(rm) if rm else None,time_s=round(APPROACH_M/VW,1),qs=[o['q'] for o in out])
 def load(q,k):
- mass=K19.MASS[OBJ];com=KF[k]['p']
+ mass=K19.MASS[OBJ] if KF[k].get('load') is None else KF[k]['load'];com=KF[k]['p'] if KF[k].get('com') is None else KF[k]['p']+KF[k]['R']@np.asarray(KF[k]['com'],float)   # R19 #38: per-keyframe held load (kg, CoM)
  d.qpos[:]=q;d.qvel[:]=0;mujoco.mj_forward(m,d);bid=m.site_bodyid[sid];jp=np.zeros((3,m.nv));jr=jp.copy();mujoco.mj_jac(m,d,jp,jr,com,bid)
  tau=d.qfrc_bias-jp.T@np.array([0,0,-mass*9.81]);ratios={n:float(abs(tau[ch.da[n]])/v) for n,v in ch.env.items()}
  return dict(kf=KF[k]['label'],held_kg=mass,max_joint_ratio=round(max(ratios.values()),3),pgc_moment_Nm=round(float(np.linalg.norm(np.cross(com-d.site_xpos[sid],[0,0,-mass*9.81]))),2))

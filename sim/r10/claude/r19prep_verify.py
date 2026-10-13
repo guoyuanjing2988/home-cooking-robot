@@ -26,6 +26,7 @@ def setup(R):
  from scene import build
  from checker import Checker
  import kitchen15 as K15,kitchen16 as K,kitchen17 as K17,kitchen19 as K19
+ import kitchen19p3   # R19 #38: registers the step-3 objects (basket, tub, bowl, catch tray)
  K.set_design(pot_h=.12,rack=.04,lid_a=0.,car_a=45.,rack_ry=90.);K.TOOL_XY['spatula']=(-1.15,.30);K.SPAT_ELEV,K.SPAT_YAW,K.SPAT_ROLL=8.,0.,180.
  L=R['layout'];K19.LAYOUT.update({k:(tuple(v) if isinstance(v,list) and k!='drop_bowls' else v) for k,v in L.items()})
  BASE=dict(r14=True,present=[],r15=True,r16=True,r17=True,r16_lid='rack',r15_drum_taken=True,r16_tools={'ladle':None},r14_fridge=True,r17_lever=0.,**K19.base_cfg())

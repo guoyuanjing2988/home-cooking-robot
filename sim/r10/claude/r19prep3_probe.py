@@ -51,6 +51,39 @@ def probes():
      kn=np.array([bc[0],bc[1]+dy,.85+.09+.10])+hx   # knob over (bowl centre + dy) shifted out along the handle, 10 cm over the bowl rim
      R0,p0=P3.at_knob('basket',Rz,kn);R2,p2=P3.rolled_about_knob('basket',R0,p0,deg)
      add(f'pour_{nm}_{deg}_dy{dy:+.2f}_y{yaw}','basket',R2,p2,[car,tom,('bowl',K.Rz(180).tolist(),[bc[0],bc[1],.85])],desc=f'basket rolled {deg} with its mouth over a bowl at {nm} (+{dy} in y), yaw {yaw}')
+ # round 3: a cooking-side staging bowl (T1 back strip behind the plating spots; plating spot 2 in the prep block), pours over it
+ import kitchen15 as K15
+ PL=np.array(K15.PLATE['c'],float)
+ for nm,bc in (('T1a',np.array([.30,.40])),('T1b',np.array([.25,.36])),('P2',np.array([.17,.15])),('P1',np.array([.43,.15])),('SR',np.array([-.02,.30]))):
+  for yaw in (180,-90,-135,135):
+   Rz=K.Rz(yaw)
+   add(f'stg_{nm}_bowl_y{yaw}','bowl',Rz,[bc[0],bc[1],.858],[car,tom],desc=f'staging bowl held 8 mm over {nm} {bc}, knob yaw {yaw}')
+  for yaw in (180,-90):
+   Rz=K.Rz(yaw);hx=Rz@np.array([.17,0,0])
+   for deg in (130,-130):
+    kn=np.array([bc[0],bc[1],.85+.09+.10])+hx;R0,p0=P3.at_knob('basket',Rz,kn);R2,p2=P3.rolled_about_knob('basket',R0,p0,deg)
+    add(f'stg_{nm}_pour_y{yaw}_{deg}','basket',R2,p2,[car,tom,('bowl',K.Rz(0).tolist(),[bc[0],bc[1],.85])],desc=f'basket (knob yaw {yaw}) rolled {deg} over a bowl at {nm}')
+  for deg in (90,-90,120,-120):
+   kn=np.array([bc[0],bc[1],.85+.09+.08]);ct=K.OBJ['ctray']
+   R0,p0=P3.at_knob('ctray',np.eye(3),kn+[0,-.0,0]);R0,p0=P3.at_knob('ctray',np.eye(3),np.array([bc[0],bc[1]-.10,.85+.09+.06]))
+   R2,p2=P3.rolled_about_knob('ctray',R0,p0,deg)
+   add(f'stg_{nm}_ctray_{deg}','ctray',R2,p2,[car,tom,('bowl',K.Rz(0).tolist(),[bc[0],bc[1],.85])],['lever'],desc=f'catch tray rolled {deg} over a bowl at {nm}')
+ # round 4: basket pour over a T1 bowl, more knob yaws / roll angles
+ for nm,bc in (('T1a',np.array([.30,.40])),('T1c',np.array([.30,.38])),('T1d',np.array([.22,.40]))):
+  for yaw in (0,-45,-90,-135):
+   Rz=K.Rz(yaw);hx=Rz@np.array([.17,0,0])
+   for deg in (130,-130,110,-110):
+    for dz in (.10,.14):
+     kn=np.array([bc[0],bc[1],.85+.09+dz])+hx;R0,p0=P3.at_knob('basket',Rz,kn);R2,p2=P3.rolled_about_knob('basket',R0,p0,deg)
+     add(f'tp_{nm}_y{yaw}_{deg}_z{dz:.2f}','basket',R2,p2,[car,tom,('bowl',K.Rz(180).tolist(),[bc[0],bc[1],.85])],desc=f'basket (knob yaw {yaw}) rolled {deg} over a T1 bowl {bc}, knob {dz} over the rim')
+ # round 5: basket front / tub back near the sink (prep-time spots), and both at the work spot
+ for bx,by in ((-0.86,.12),(-0.84,.13),(-0.82,.12)):
+  for yaw in (0,-20,20):
+   add(f'fr_bas_{bx:.2f}_{by:.2f}_y{yaw}','basket',K.Rz(yaw),[bx,by,.858],[car,tom],desc=f'basket held 8 mm over a front spot ({bx},{by}), yaw {yaw}')
+ for tx,ty in ((-0.86,.40),(-0.84,.41),(-0.82,.42),(-0.86,.38)):
+  for yaw in (0,-20,20):
+   add(f'bk_tub_{tx:.2f}_{ty:.2f}_y{yaw}','tub',K.Rz(yaw),[tx,ty,.858],[car,tom],desc=f'tub held 8 mm over a back spot ({tx},{ty}), yaw {yaw}')
+   add(f'bk_bin_{tx:.2f}_{ty:.2f}_y{yaw}','basket',K.Rz(yaw),[tx,ty,.85+P3.TUB['t']+.008],[car,tom,('tub',K.Rz(yaw).tolist(),[tx,ty,.85])],desc=f'basket held 8 mm over the tub floor, tub at the back spot ({tx},{ty}), yaw {yaw}')
  # slicer out bowl with a strut + knob toward +x (under the cabinet)
  sx,sy,_=L['slicer'];ob=K19.chute_top(*L['slicer']);bcen=np.array(K19.place('slicer',*L['slicer'])[1])+K19.Rz(L['slicer'][2])@K19.SLICER_BOWL
  add('sbowl_seat','sbowl',I,[bcen[0],bcen[1],.851+.008],[car,tom],desc='slicer out bowl (with a knob toward +x) held 8 mm over its seat under the spout')
