@@ -1,0 +1,105 @@
+{
+ "summary": {
+  "mode": "spot_1.62_0.26",
+  "paths": 3,
+  "errors": 0,
+  "states": 2576,
+  "hit_paths": [
+   "chain_lid_s-1_pot_keyed_nospider_fr5_j6_pgc_sp20.json"
+  ],
+  "worst": {
+   "kind": "play",
+   "name": "chain_lid_s-1_pot_keyed_nospider_fr5_j6_pgc_sp20.json",
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ]
+  },
+  "by_kind": {
+   "play": -10.0,
+   "app": 14.88,
+   "edge": null,
+   "other": null
+  }
+ },
+ "method": "R19 pot zone (GitHub #37, #8): re-screen a MOVED pot-zone fixture against every stored path. New file.\n\nA fixture move only changes the pairs that involve that fixture; every other pair of every stored state keeps the\ndistance it was checked with. So for each candidate the stored states are replayed with the fixture at its new\nplace and ONLY its pairs are measured, exactly: per state the enclosing-AABB separation of every robot geom vs\nevery moved-fixture geom, refined by the checker's own GJK lower bound (distance.Bounds.pair) wherever the AABB\nbound is within 30 mm of the gap; gate = distance - the checker's gap (10 mm robot-environment, 5 mm gripper /\nheld-environment). The old place of the fixture is gone from the scene (it can only have helped).\nMoved fixtures:\n SPOTS=x,y;x,y;...   spider rest (kitchen16 cradle pad + the spider lying on it): r16_rest_spider, r16_spider_*\n RACK=keyed          the keyed lid rack of kitchen19pot.py: r19pot_rack_* (with the declared lid window: in window\n                     states the held lid vs the rack is the intended contact, not a hit; reported separately)\nPaths (ARM=ur5e_enc2_pgc, PY=.15, the checking standard; stored states 2pi-unwrapped, joint-linear between\nstored states, cut to <= 4 mm point bound as r19smooth.sample_poly):\n - the adopted chains results/r17/chain_*_ur5e_enc2_pgc.json (wok and plate 2 at py.15, lever, lid, spatula; the\n   spider chain only in RACK mode or with EXTRA=) + their grasp approaches / release retreats (empty gripper);\n - the 22 hub edges results/r19/hub_py.15_ur5e_enc2_pgc/edge_*.json (stored <= 4 mm states, r19hub union scene);\n - the prep sets results/r19/prep/chain_*_full_ur5e_enc2_pgc.json and the checked cup chains (R19_CUPS.md table:\n   s10a/b/d/f, s11S, s11enc), replayed in the union scene WITHOUT their own held object: the held object is\n   bounded by a sphere of HELD_R = 0.20 m around the TCP (point-to-AABB lower bound), so their numbers are\n   conservative lower bounds; they need an exact replay only if that bound comes near the gap.\nEXTRA=<chain json>,...  more r17chain-format chains (e.g. a re-planned spider) with their r17chain approach worlds;\n                        ONLYEXTRA=1 screens only those (e.g. another arm's chain, run with that ARM=).\npython r19pot_screen.py SPOTS=1.60,.26 [RACK=keyed] [EXTRA=..] ARM=ur5e_enc2_pgc PY=.15 [WORKERS=12] [TAG=..]\n -> results/r19/pot/screen_<spot|rack>[_<TAG>].json",
+ "rows": [
+  {
+   "mode": [
+    "spot",
+    [
+     1.62,
+     0.26
+    ]
+   ],
+   "kind": "play",
+   "name": "chain_lid_s-1_pot_keyed_nospider_fr5_j6_pgc_sp20.json",
+   "states": 2319,
+   "max_step_bound_mm": 3.999,
+   "moved_geoms": 4,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "state": 1536,
+   "hit_states": 450,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 34.4
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.62,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "chain_lid_s-1_pot_keyed_nospider_fr5_j6_pgc_sp20.json@app0",
+   "states": 55,
+   "max_step_bound_mm": 3.815,
+   "moved_geoms": 4,
+   "min_gate_mm": null,
+   "min_dist_mm": null,
+   "pair": null,
+   "state": null,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.0
+  },
+  {
+   "mode": [
+    "spot",
+    [
+     1.62,
+     0.26
+    ]
+   ],
+   "kind": "app",
+   "name": "chain_lid_s-1_pot_keyed_nospider_fr5_j6_pgc_sp20.json@app1",
+   "states": 202,
+   "max_step_bound_mm": 3.941,
+   "moved_geoms": 4,
+   "min_gate_mm": 14.88,
+   "min_dist_mm": 24.88,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "state": 201,
+   "hit_states": 0,
+   "window_states": 0,
+   "window_min_dist_mm": null,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 13.3
+  }
+ ]
+}

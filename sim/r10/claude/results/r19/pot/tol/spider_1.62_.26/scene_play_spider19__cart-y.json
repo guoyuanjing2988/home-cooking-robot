@@ -1,0 +1,118 @@
+{
+ "scene": "play:spider19",
+ "part": "cart-y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r19/pot/chain_spider_s+1_pot_1.62_.26_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "spider19",
+  "obj": "spider",
+  "src_n": 512
+ },
+ "states": 4315,
+ "stored_states": 512,
+ "nominal_s": 4.8,
+ "nominal_cached": true,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 9.422,
+    "bounded": true,
+    "violation_at": 9.449,
+    "binding": {
+     "state": 815,
+     "value_mm": -0.013,
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ],
+     "label": "",
+     "src_index": 76.0
+    },
+    "evals": 6
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 2
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 426
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 2
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 815,
+   "value": 9.1393,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.297,
+   "checker_pair": [
+    "r14_upper_over_hood",
+    "R_geom_enc2_ua_4"
+   ],
+   "evaluator_gate_mm": 0.297,
+   "evaluator_pair": [
+    "R_geom_enc2_ua_4",
+    "r14_upper_over_hood"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 815,
+   "value": 9.7325,
+   "checker_hits": [
+    [
+     "r14_upper_over_hood",
+     "R_geom_enc2_ua_4"
+    ],
+    [
+     "r14_upper_over_hood",
+     "R_geom_enc2_ua_4"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.297,
+   "checker_pair": [
+    "r14_upper_over_hood",
+    "R_geom_enc2_ua_4"
+   ],
+   "evaluator_gate_mm": -0.297,
+   "evaluator_pair": [
+    "R_geom_enc2_ua_4",
+    "r14_upper_over_hood"
+   ]
+  }
+ ],
+ "elapsed_s": 7.7
+}

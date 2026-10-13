@@ -1,0 +1,4770 @@
+{
+ "issue": "#37 spider rest / #8 lid rack (R19_POTZONE.md)",
+ "standard": "ARM=ur5e_enc2_pgc PY=.15",
+ "layout": {
+  "spider_rest": [
+   1.56,
+   0.2
+  ],
+  "lid_rack": "keyed (kitchen19pot.py)",
+  "old": {
+   "spider_rest": [
+    1.52,
+    0.36
+   ],
+   "lid_rack": "R16 base + fins"
+  }
+ },
+ "certificates_4mm": {
+  "check_chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc_rack_sp1.56_.20.json": {
+   "ok": true,
+   "chain": "results/r19/pot/chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json",
+   "parts": {
+    "play": {
+     "states": 4108,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.995
+    },
+    "app0": {
+     "states": 49,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.788
+    },
+    "app1": {
+     "states": 49,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.788
+    }
+   }
+  },
+  "check_chain_lid_s-1_final_ur5e_enc2_pgc_rack_sp1.56_.20.json": {
+   "ok": true,
+   "chain": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+   "parts": {
+    "play": {
+     "states": 2410,
+     "hit_states": 0,
+     "window_states": 113,
+     "max_step_bound_mm": 3.999
+    },
+    "app0": {
+     "states": 55,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.849
+    },
+    "app1": {
+     "states": 166,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.961
+    }
+   }
+  },
+  "check_chain_spider_s+1_pot_1.56_.20_fr5_j6_pgc_rack.json": {
+   "ok": true,
+   "chain": "results/r19/pot/chain_spider_s+1_pot_1.56_.20_fr5_j6_pgc.json",
+   "parts": {
+    "play": {
+     "states": 5600,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.999
+    },
+    "app0": {
+     "states": 53,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.992
+    },
+    "app1": {
+     "states": 53,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.992
+    }
+   }
+  },
+  "check_chain_lid_s-1_pot_keyed_nospider_fr5_j6_pgc_sp20_rack_sp1.56_.20.json": {
+   "ok": true,
+   "chain": "results/r19/pot/chain_lid_s-1_pot_keyed_nospider_fr5_j6_pgc_sp20.json",
+   "parts": {
+    "play": {
+     "states": 2319,
+     "hit_states": 0,
+     "window_states": 136,
+     "max_step_bound_mm": 3.999
+    },
+    "app0": {
+     "states": 55,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.815
+    },
+    "app1": {
+     "states": 202,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.941
+    }
+   }
+  },
+  "check_chain_lid_s-1_pot_keyed_ur5e_enc2_pgc_rack_sp1.62_.26.json": {
+   "ok": true,
+   "chain": "results/r19/pot/chain_lid_s-1_pot_keyed_ur5e_enc2_pgc.json",
+   "parts": {
+    "play": {
+     "states": 2366,
+     "hit_states": 0,
+     "window_states": 122,
+     "max_step_bound_mm": 3.999
+    },
+    "app0": {
+     "states": 55,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.849
+    },
+    "app1": {
+     "states": 180,
+     "hit_states": 0,
+     "window_states": 0,
+     "max_step_bound_mm": 3.988
+    }
+   }
+  }
+ },
+ "rescreen": {
+  "screen_spot_1.56_0.20.json": {
+   "mode": "spot_1.56_0.20",
+   "paths": 45,
+   "errors": 0,
+   "states": 65756,
+   "hit_paths": [],
+   "worst": {
+    "kind": "play",
+    "name": "lid",
+    "min_gate_mm": 13.27,
+    "min_dist_mm": 23.27,
+    "pair": [
+     "R_geom_enc2_ua_0",
+     "r16_spider_block"
+    ]
+   },
+   "by_kind": {
+    "play": 13.27,
+    "app": 73.3,
+    "edge": 70.52,
+    "other": 508.75
+   }
+  },
+  "screen_rack_keyed.json": {
+   "mode": "rack_keyed",
+   "paths": 48,
+   "errors": 0,
+   "states": 70195,
+   "hit_paths": [],
+   "worst": {
+    "kind": "play",
+    "name": "lid",
+    "min_gate_mm": 32.32,
+    "min_dist_mm": 37.32,
+    "pair": [
+     "R_gripper_r16_lid_rim",
+     "r19pot_rack_f_xp"
+    ]
+   },
+   "by_kind": {
+    "play": 32.32,
+    "app": null,
+    "edge": null,
+    "other": 775.25
+   }
+  }
+ },
+ "tolerance": {
+  "lid_final_1.56_.20/scene_play_lid19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.3,
+     "contact": 0.653,
+     "unit": "deg",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall8"
+     ]
+    }
+   ]
+  },
+  "lid_final_1.56_.20/scene_play_lid19__grid-tilt_x.json": {
+   "nominal_gate_mm": 3.0,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_pot_wall0"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     3.473
+    ],
+    [
+     "tilt_x",
+     0.2,
+     3.949
+    ],
+    [
+     "tilt_x",
+     0.5,
+     5.395
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     2.007
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     1.017
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -1.935
+    ]
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_0__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.616,
+     "contact": 1.112,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_0__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_0__fix-lid_rack+spider_rest.json": {
+   "tolerances": []
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_0__grid-tilt_x+y+z.json": {
+   "nominal_gate_mm": 13.309,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     8.941
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     2.429
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     ">=10"
+    ],
+    [
+     "y",
+     5,
+     8.309
+    ],
+    [
+     "y",
+     10,
+     3.309
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ],
+    [
+     "z",
+     1,
+     ">=10"
+    ],
+    [
+     "z",
+     2,
+     ">=10"
+    ],
+    [
+     "z",
+     5,
+     ">=10"
+    ],
+    [
+     "z",
+     10,
+     ">=10"
+    ],
+    [
+     "z",
+     -1,
+     ">=10"
+    ],
+    [
+     "z",
+     -2,
+     ">=10"
+    ],
+    [
+     "z",
+     -5,
+     ">=10"
+    ],
+    [
+     "z",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_0__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": ">=10",
+     "contact_mm": ">=10",
+     "pair": null
+    }
+   }
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_1__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.766,
+     "contact": 1.027,
+     "unit": "deg",
+     "binding": [
+      "R_finger_minus",
+      "r16_lid_rim"
+     ]
+    }
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_1__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_1__fix-lid_rack+spider_rest.json": {
+   "tolerances": [
+    {
+     "axis": "x",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_1__grid-tilt_x+y+z.json": {
+   "nominal_gate_mm": 14.642,
+   "nominal_pair": [
+    "R_finger_plus",
+    "r16_lid_rim"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     5.086
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     ">=10"
+    ],
+    [
+     "y",
+     5,
+     9.779
+    ],
+    [
+     "y",
+     10,
+     4.924
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ],
+    [
+     "z",
+     1,
+     ">=10"
+    ],
+    [
+     "z",
+     2,
+     ">=10"
+    ],
+    [
+     "z",
+     5,
+     ">=10"
+    ],
+    [
+     "z",
+     10,
+     9.893
+    ],
+    [
+     "z",
+     -1,
+     ">=10"
+    ],
+    [
+     "z",
+     -2,
+     ">=10"
+    ],
+    [
+     "z",
+     -5,
+     ">=10"
+    ],
+    [
+     "z",
+     -10,
+     10.0
+    ]
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_app_lid19_1__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": ">=10",
+     "contact_mm": ">=10",
+     "pair": null
+    }
+   }
+  },
+  "lid_keyed_1.62_.24/scene_play_lid19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.3,
+     "contact": 0.653,
+     "unit": "deg",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall8"
+     ]
+    }
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_play_lid19__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 3.0,
+     "contact": 7.969,
+     "unit": "mm",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall0"
+     ]
+    }
+   ]
+  },
+  "lid_keyed_1.62_.24/scene_play_lid19__fix-lid_rack+spider_rest.json": {
+   "tolerances": [
+    {
+     "axis": "x",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": 1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": -1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": "spider_rest",
+     "gate": 10.611,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r16_spider_block"
+     ]
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_0__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.616,
+     "contact": 1.112,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_0__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_0__fix-lid_rack+spider_rest.json": {
+   "tolerances": []
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_0__grid-tilt_x+y+z.json": {
+   "nominal_gate_mm": 13.309,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     8.941
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     2.429
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     ">=10"
+    ],
+    [
+     "y",
+     5,
+     8.309
+    ],
+    [
+     "y",
+     10,
+     3.309
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ],
+    [
+     "z",
+     1,
+     ">=10"
+    ],
+    [
+     "z",
+     2,
+     ">=10"
+    ],
+    [
+     "z",
+     5,
+     ">=10"
+    ],
+    [
+     "z",
+     10,
+     ">=10"
+    ],
+    [
+     "z",
+     -1,
+     ">=10"
+    ],
+    [
+     "z",
+     -2,
+     ">=10"
+    ],
+    [
+     "z",
+     -5,
+     ">=10"
+    ],
+    [
+     "z",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_0__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": ">=10",
+     "contact_mm": ">=10",
+     "pair": null
+    }
+   }
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_1__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.766,
+     "contact": 1.027,
+     "unit": "deg",
+     "binding": [
+      "R_finger_minus",
+      "r16_lid_rim"
+     ]
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_1__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_1__fix-lid_rack+spider_rest.json": {
+   "tolerances": [
+    {
+     "axis": "x",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_1__grid-tilt_x+y+z.json": {
+   "nominal_gate_mm": 14.642,
+   "nominal_pair": [
+    "R_finger_plus",
+    "r16_lid_rim"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     5.086
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     ">=10"
+    ],
+    [
+     "y",
+     5,
+     9.779
+    ],
+    [
+     "y",
+     10,
+     4.924
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ],
+    [
+     "z",
+     1,
+     ">=10"
+    ],
+    [
+     "z",
+     2,
+     ">=10"
+    ],
+    [
+     "z",
+     5,
+     ">=10"
+    ],
+    [
+     "z",
+     10,
+     9.893
+    ],
+    [
+     "z",
+     -1,
+     ">=10"
+    ],
+    [
+     "z",
+     -2,
+     ">=10"
+    ],
+    [
+     "z",
+     -5,
+     ">=10"
+    ],
+    [
+     "z",
+     -10,
+     10.0
+    ]
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_app_lid19_1__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": ">=10",
+     "contact_mm": ">=10",
+     "pair": null
+    }
+   }
+  },
+  "lid_keyed_1.62_.26/scene_play_lid19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.3,
+     "contact": 0.653,
+     "unit": "deg",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall8"
+     ]
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_play_lid19__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 3.0,
+     "contact": 7.969,
+     "unit": "mm",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall0"
+     ]
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_play_lid19__fix-lid_rack+spider_rest.json": {
+   "tolerances": [
+    {
+     "axis": "x",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": "lid_rack",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": 1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": -1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": "spider_rest",
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_keyed_1.62_.26/scene_play_lid19__grid-tilt_x+y+z.json": {
+   "nominal_gate_mm": 3.0,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_pot_wall0"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     3.473
+    ],
+    [
+     "tilt_x",
+     0.2,
+     3.949
+    ],
+    [
+     "tilt_x",
+     0.5,
+     5.395
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     2.007
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     1.017
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -1.935
+    ],
+    [
+     "y",
+     1,
+     3.0
+    ],
+    [
+     "y",
+     2,
+     3.0
+    ],
+    [
+     "y",
+     5,
+     3.0
+    ],
+    [
+     "y",
+     10,
+     -0.009
+    ],
+    [
+     "y",
+     -1,
+     3.0
+    ],
+    [
+     "y",
+     -2,
+     3.0
+    ],
+    [
+     "y",
+     -5,
+     3.0
+    ],
+    [
+     "y",
+     -10,
+     3.0
+    ],
+    [
+     "z",
+     1,
+     4.0
+    ],
+    [
+     "z",
+     2,
+     5.0
+    ],
+    [
+     "z",
+     5,
+     8.0
+    ],
+    [
+     "z",
+     10,
+     9.991
+    ],
+    [
+     "z",
+     -1,
+     2.0
+    ],
+    [
+     "z",
+     -2,
+     1.0
+    ],
+    [
+     "z",
+     -5,
+     -2.0
+    ],
+    [
+     "z",
+     -10,
+     -5.0
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_0__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.616,
+     "contact": 1.112,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_0__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_0__grid-tilt_x.json": {
+   "nominal_gate_mm": 13.309,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     8.941
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     2.429
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_0__grid-y.json": {
+   "nominal_gate_mm": 13.309,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     ">=10"
+    ],
+    [
+     "y",
+     5,
+     8.309
+    ],
+    [
+     "y",
+     10,
+     3.309
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_0__grid-z.json": {
+   "nominal_gate_mm": 13.309,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "z",
+     1,
+     ">=10"
+    ],
+    [
+     "z",
+     2,
+     ">=10"
+    ],
+    [
+     "z",
+     5,
+     ">=10"
+    ],
+    [
+     "z",
+     10,
+     ">=10"
+    ],
+    [
+     "z",
+     -1,
+     ">=10"
+    ],
+    [
+     "z",
+     -2,
+     ">=10"
+    ],
+    [
+     "z",
+     -5,
+     ">=10"
+    ],
+    [
+     "z",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_0__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": ">=10",
+     "contact_mm": ">=10",
+     "pair": null
+    }
+   }
+  },
+  "lid_replan_keyed/scene_app_lid19_1__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.766,
+     "contact": 1.027,
+     "unit": "deg",
+     "binding": [
+      "R_finger_minus",
+      "r16_lid_rim"
+     ]
+    }
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_1__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_1__grid-tilt_x.json": {
+   "nominal_gate_mm": 14.642,
+   "nominal_pair": [
+    "R_finger_minus",
+    "r16_lid_rim"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     5.086
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_1__grid-y.json": {
+   "nominal_gate_mm": 14.642,
+   "nominal_pair": [
+    "R_finger_minus",
+    "r16_lid_rim"
+   ],
+   "grid": [
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     ">=10"
+    ],
+    [
+     "y",
+     5,
+     9.779
+    ],
+    [
+     "y",
+     10,
+     4.924
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_1__grid-z.json": {
+   "nominal_gate_mm": 14.642,
+   "nominal_pair": [
+    "R_finger_minus",
+    "r16_lid_rim"
+   ],
+   "grid": [
+    [
+     "z",
+     1,
+     ">=10"
+    ],
+    [
+     "z",
+     2,
+     ">=10"
+    ],
+    [
+     "z",
+     5,
+     ">=10"
+    ],
+    [
+     "z",
+     10,
+     9.886
+    ],
+    [
+     "z",
+     -1,
+     ">=10"
+    ],
+    [
+     "z",
+     -2,
+     ">=10"
+    ],
+    [
+     "z",
+     -5,
+     ">=10"
+    ],
+    [
+     "z",
+     -10,
+     10.0
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_app_lid19_1__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": ">=10",
+     "contact_mm": ">=10",
+     "pair": null
+    }
+   }
+  },
+  "lid_replan_keyed/scene_play_lid19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.3,
+     "contact": 0.653,
+     "unit": "deg",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall8"
+     ]
+    }
+   ]
+  },
+  "lid_replan_keyed/scene_play_lid19__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 3.0,
+     "contact": 7.969,
+     "unit": "mm",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall0"
+     ]
+    }
+   ]
+  },
+  "lid_replan_keyed/scene_play_lid19__grid-tilt_x.json": {
+   "nominal_gate_mm": 3.0,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_pot_wall0"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     3.473
+    ],
+    [
+     "tilt_x",
+     0.2,
+     3.949
+    ],
+    [
+     "tilt_x",
+     0.5,
+     5.395
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     2.007
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     1.017
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -1.935
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_play_lid19__grid-y.json": {
+   "nominal_gate_mm": 3.0,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_pot_wall0"
+   ],
+   "grid": [
+    [
+     "y",
+     1,
+     3.0
+    ],
+    [
+     "y",
+     2,
+     3.0
+    ],
+    [
+     "y",
+     5,
+     3.0
+    ],
+    [
+     "y",
+     10,
+     -0.009
+    ],
+    [
+     "y",
+     -1,
+     3.0
+    ],
+    [
+     "y",
+     -2,
+     3.0
+    ],
+    [
+     "y",
+     -5,
+     3.0
+    ],
+    [
+     "y",
+     -10,
+     3.0
+    ]
+   ]
+  },
+  "lid_replan_keyed/scene_play_lid19__grid-z.json": {
+   "nominal_gate_mm": 3.0,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_pot_wall0"
+   ],
+   "grid": [
+    [
+     "z",
+     1,
+     4.0
+    ],
+    [
+     "z",
+     2,
+     5.0
+    ],
+    [
+     "z",
+     5,
+     8.0
+    ],
+    [
+     "z",
+     10,
+     9.991
+    ],
+    [
+     "z",
+     -1,
+     2.0
+    ],
+    [
+     "z",
+     -2,
+     1.0
+    ],
+    [
+     "z",
+     -5,
+     -2.0
+    ],
+    [
+     "z",
+     -10,
+     -5.0
+    ]
+   ]
+  },
+  "lid_stored_keyed/scene_play_lid19__grid-tilt_x.json": {
+   "nominal_gate_mm": 3.0,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_pot_wall0"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     3.473
+    ],
+    [
+     "tilt_x",
+     0.2,
+     3.949
+    ],
+    [
+     "tilt_x",
+     0.5,
+     5.395
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     2.007
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     1.017
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -1.935
+    ]
+   ]
+  },
+  "lid_stored_keyed/scene_play_lid19__grid-y.json": {
+   "nominal_gate_mm": 3.0,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_pot_wall0"
+   ],
+   "grid": [
+    [
+     "y",
+     1,
+     3.0
+    ],
+    [
+     "y",
+     2,
+     3.0
+    ],
+    [
+     "y",
+     5,
+     3.0
+    ],
+    [
+     "y",
+     10,
+     -0.009
+    ],
+    [
+     "y",
+     -1,
+     3.0
+    ],
+    [
+     "y",
+     -2,
+     3.0
+    ],
+    [
+     "y",
+     -5,
+     3.0
+    ],
+    [
+     "y",
+     -10,
+     3.0
+    ]
+   ]
+  },
+  "lid_stored_keyed/scene_play_lid19__grid-z.json": {
+   "nominal_gate_mm": 3.0,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_pot_wall0"
+   ],
+   "grid": [
+    [
+     "z",
+     1,
+     4.0
+    ],
+    [
+     "z",
+     2,
+     5.0
+    ],
+    [
+     "z",
+     5,
+     8.0
+    ],
+    [
+     "z",
+     10,
+     9.991
+    ],
+    [
+     "z",
+     -1,
+     2.0
+    ],
+    [
+     "z",
+     -2,
+     1.0
+    ],
+    [
+     "z",
+     -5,
+     -2.0
+    ],
+    [
+     "z",
+     -10,
+     -5.0
+    ]
+   ]
+  },
+  "lid_stored_keyed_potwin/scene_play_lid19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.434,
+     "contact": 0.653,
+     "unit": "deg",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "lid_stored_keyed_potwin/scene_play_lid19__cart-z.json": {
+   "tolerances": [
+    {
+     "axis": "z",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "z",
+     "sign": -1,
+     "group": null,
+     "gate": 10.972,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": [
+      "R_gripper_r16_lid_rim",
+      "counter_right_piece6"
+     ]
+    }
+   ]
+  },
+  "lid_stored_keyed_potwin/scene_play_lid19__grid-tilt_x.json": {
+   "nominal_gate_mm": 9.991,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     7.705
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     5.419
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -1.437
+    ]
+   ]
+  },
+  "lid_stored_keyed_potwin/scene_play_lid19__grid-y.json": {
+   "nominal_gate_mm": 9.991,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "y",
+     1,
+     8.991
+    ],
+    [
+     "y",
+     2,
+     7.991
+    ],
+    [
+     "y",
+     5,
+     4.991
+    ],
+    [
+     "y",
+     10,
+     -0.009
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "lid_stored_keyed_potwin/scene_play_lid19__grid-z.json": {
+   "nominal_gate_mm": 9.991,
+   "nominal_pair": [
+    "R_gripper_r16_lid_rim",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "z",
+     1,
+     9.991
+    ],
+    [
+     "z",
+     2,
+     9.991
+    ],
+    [
+     "z",
+     5,
+     9.991
+    ],
+    [
+     "z",
+     10,
+     9.991
+    ],
+    [
+     "z",
+     -1,
+     9.991
+    ],
+    [
+     "z",
+     -2,
+     9.0
+    ],
+    [
+     "z",
+     -5,
+     6.0
+    ],
+    [
+     "z",
+     -10,
+     1.0
+    ]
+   ]
+  },
+  "spider_1.56_.20/scene_app_spider19_0__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.855,
+     "contact": 1.377,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.56_.20/scene_app_spider19_0__cart-y.json": {
+   "tolerances": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "spider_1.56_.20/scene_app_spider19_0__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 18.106,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     7.246
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     ">=10"
+    ],
+    [
+     "y",
+     5,
+     ">=10"
+    ],
+    [
+     "y",
+     10,
+     8.106
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.56_.20/scene_app_spider19_0__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": ">=10",
+     "contact_mm": ">=10",
+     "pair": null
+    }
+   }
+  },
+  "spider_1.56_.20/scene_app_spider19_1__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.855,
+     "contact": 1.377,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.56_.20/scene_app_spider19_1__cart-y.json": {
+   "tolerances": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "spider_1.56_.20/scene_app_spider19_1__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 18.106,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     7.246
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     ">=10"
+    ],
+    [
+     "y",
+     5,
+     ">=10"
+    ],
+    [
+     "y",
+     10,
+     8.106
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.56_.20/scene_app_spider19_1__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": ">=10",
+     "contact_mm": ">=10",
+     "pair": null
+    }
+   }
+  },
+  "spider_1.56_.20/scene_play_spider19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.33,
+     "contact": 0.679,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.56_.20/scene_play_spider19__cart-x.json": {
+   "tolerances": [
+    {
+     "axis": "x",
+     "sign": 1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    },
+    {
+     "axis": "x",
+     "sign": -1,
+     "group": null,
+     "gate": 5.0,
+     "contact": 9.969,
+     "unit": "mm",
+     "binding": [
+      "R_gripper_r16_spider_bowl",
+      "r16_pot_ear+1"
+     ]
+    }
+   ]
+  },
+  "spider_1.56_.20/scene_play_spider19__cart-y.json": {
+   "tolerances": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": null,
+     "gate": 9.415,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "spider_1.56_.20/scene_play_spider19__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 5.0,
+   "nominal_pair": [
+    "R_gripper_r16_spider_bowl",
+    "r16_pot_ear+1"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     5.0
+    ],
+    [
+     "tilt_x",
+     0.2,
+     5.0
+    ],
+    [
+     "tilt_x",
+     0.5,
+     5.0
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     5.0
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     3.716
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -4.855
+    ],
+    [
+     "y",
+     1,
+     5.0
+    ],
+    [
+     "y",
+     2,
+     5.0
+    ],
+    [
+     "y",
+     5,
+     4.436
+    ],
+    [
+     "y",
+     10,
+     -0.564
+    ],
+    [
+     "y",
+     -1,
+     5.0
+    ],
+    [
+     "y",
+     -2,
+     5.0
+    ],
+    [
+     "y",
+     -5,
+     5.007
+    ],
+    [
+     "y",
+     -10,
+     5.022
+    ]
+   ]
+  },
+  "spider_1.60_.24/scene_app_spider19_0__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.562,
+     "contact": 1.065,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.60_.24/scene_app_spider19_0__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 11.672,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     9.521
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     7.398
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     1.304
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     9.673
+    ],
+    [
+     "y",
+     5,
+     6.675
+    ],
+    [
+     "y",
+     10,
+     1.68
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.60_.24/scene_app_spider19_0__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 8.726,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.60_.24/scene_app_spider19_1__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.562,
+     "contact": 1.065,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.60_.24/scene_app_spider19_1__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 11.672,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     9.521
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     7.398
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     1.304
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     9.673
+    ],
+    [
+     "y",
+     5,
+     6.675
+    ],
+    [
+     "y",
+     10,
+     1.68
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.60_.24/scene_app_spider19_1__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 8.726,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.60_.24/scene_play_spider19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.328,
+     "contact": 0.678,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.60_.24/scene_play_spider19__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 9.436,
+   "nominal_pair": [
+    "R_geom_enc2_ua_4",
+    "r14_upper_over_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     6.575
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     3.716
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -4.855
+    ],
+    [
+     "y",
+     1,
+     8.436
+    ],
+    [
+     "y",
+     2,
+     7.436
+    ],
+    [
+     "y",
+     5,
+     4.436
+    ],
+    [
+     "y",
+     10,
+     -0.564
+    ],
+    [
+     "y",
+     -1,
+     10.0
+    ],
+    [
+     "y",
+     -2,
+     10.0
+    ],
+    [
+     "y",
+     -5,
+     10.0
+    ],
+    [
+     "y",
+     -10,
+     10.0
+    ]
+   ]
+  },
+  "spider_1.60_.24/scene_play_spider19__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 5.654,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.62_.24/scene_app_spider19_0__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.534,
+     "contact": 1.043,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.62_.24/scene_app_spider19_0__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 11.216,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     9.043
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     6.893
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     0.727
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     9.216
+    ],
+    [
+     "y",
+     5,
+     6.216
+    ],
+    [
+     "y",
+     10,
+     1.216
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.62_.24/scene_app_spider19_0__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 8.264,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.62_.24/scene_app_spider19_1__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.534,
+     "contact": 1.043,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.62_.24/scene_app_spider19_1__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 11.216,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     9.043
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     6.893
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     0.727
+    ],
+    [
+     "y",
+     1,
+     ">=10"
+    ],
+    [
+     "y",
+     2,
+     9.216
+    ],
+    [
+     "y",
+     5,
+     6.216
+    ],
+    [
+     "y",
+     10,
+     1.216
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.62_.24/scene_app_spider19_1__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 8.264,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.62_.24/scene_play_spider19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.328,
+     "contact": 0.678,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.62_.24/scene_play_spider19__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 9.436,
+   "nominal_pair": [
+    "R_geom_enc2_ua_4",
+    "r14_upper_over_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     6.575
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     3.716
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -4.855
+    ],
+    [
+     "y",
+     1,
+     8.436
+    ],
+    [
+     "y",
+     2,
+     7.436
+    ],
+    [
+     "y",
+     5,
+     4.436
+    ],
+    [
+     "y",
+     10,
+     -0.564
+    ],
+    [
+     "y",
+     -1,
+     10.0
+    ],
+    [
+     "y",
+     -2,
+     10.0
+    ],
+    [
+     "y",
+     -5,
+     10.0
+    ],
+    [
+     "y",
+     -10,
+     10.0
+    ]
+   ]
+  },
+  "spider_1.62_.24/scene_play_spider19__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 5.654,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.62_.26/scene_app_spider19_0__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.453,
+     "contact": 0.945,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.62_.26/scene_app_spider19_0__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 9.407,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     7.274
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     5.179
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -0.921
+    ],
+    [
+     "y",
+     1,
+     8.409
+    ],
+    [
+     "y",
+     2,
+     7.41
+    ],
+    [
+     "y",
+     5,
+     4.415
+    ],
+    [
+     "y",
+     10,
+     -0.568
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.62_.26/scene_app_spider19_0__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 6.476,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.62_.26/scene_app_spider19_1__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.453,
+     "contact": 0.945,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.62_.26/scene_app_spider19_1__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 9.407,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     7.274
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     5.179
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -0.921
+    ],
+    [
+     "y",
+     1,
+     8.409
+    ],
+    [
+     "y",
+     2,
+     7.41
+    ],
+    [
+     "y",
+     5,
+     4.415
+    ],
+    [
+     "y",
+     10,
+     -0.568
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.62_.26/scene_app_spider19_1__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 6.476,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.62_.26/scene_play_spider19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.328,
+     "contact": 0.678,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.62_.26/scene_play_spider19__cart-y.json": {
+   "tolerances": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "group": null,
+     "gate": 9.422,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    },
+    {
+     "axis": "y",
+     "sign": -1,
+     "group": null,
+     "gate": 15.0,
+     "contact": 15.0,
+     "unit": "mm",
+     "binding": null
+    }
+   ]
+  },
+  "spider_1.62_.26/scene_play_spider19__cart-yaw.json": {
+   "tolerances": [
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "yaw",
+     "sign": -1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    }
+   ]
+  },
+  "spider_1.62_.26/scene_play_spider19__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 9.436,
+   "nominal_pair": [
+    "R_geom_enc2_ua_4",
+    "r14_upper_over_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     6.575
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     3.716
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -4.855
+    ],
+    [
+     "y",
+     1,
+     8.436
+    ],
+    [
+     "y",
+     2,
+     7.436
+    ],
+    [
+     "y",
+     5,
+     4.436
+    ],
+    [
+     "y",
+     10,
+     -0.564
+    ],
+    [
+     "y",
+     -1,
+     10.0
+    ],
+    [
+     "y",
+     -2,
+     10.0
+    ],
+    [
+     "y",
+     -5,
+     10.0
+    ],
+    [
+     "y",
+     -10,
+     10.0
+    ]
+   ]
+  },
+  "spider_1.62_.26/scene_play_spider19__grid-z.json": {
+   "nominal_gate_mm": 9.436,
+   "nominal_pair": [
+    "R_geom_enc2_ua_4",
+    "r14_upper_over_hood"
+   ],
+   "grid": [
+    [
+     "z",
+     1,
+     9.436
+    ],
+    [
+     "z",
+     2,
+     9.436
+    ],
+    [
+     "z",
+     5,
+     9.436
+    ],
+    [
+     "z",
+     10,
+     9.436
+    ],
+    [
+     "z",
+     -1,
+     9.0
+    ],
+    [
+     "z",
+     -2,
+     8.0
+    ],
+    [
+     "z",
+     -5,
+     5.0
+    ],
+    [
+     "z",
+     -10,
+     -0.0
+    ]
+   ]
+  },
+  "spider_1.62_.26/scene_play_spider19__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 5.654,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.63_.26/scene_app_spider19_0__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.444,
+     "contact": 0.939,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.63_.26/scene_app_spider19_0__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 9.251,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     7.103
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     4.988
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -1.107
+    ],
+    [
+     "y",
+     1,
+     8.252
+    ],
+    [
+     "y",
+     2,
+     7.252
+    ],
+    [
+     "y",
+     5,
+     4.254
+    ],
+    [
+     "y",
+     10,
+     -0.74
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.63_.26/scene_app_spider19_0__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 6.314,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.63_.26/scene_app_spider19_1__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.444,
+     "contact": 0.939,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.63_.26/scene_app_spider19_1__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 9.251,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     7.103
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     4.988
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -1.107
+    ],
+    [
+     "y",
+     1,
+     8.252
+    ],
+    [
+     "y",
+     2,
+     7.252
+    ],
+    [
+     "y",
+     5,
+     4.254
+    ],
+    [
+     "y",
+     10,
+     -0.74
+    ],
+    [
+     "y",
+     -1,
+     ">=10"
+    ],
+    [
+     "y",
+     -2,
+     ">=10"
+    ],
+    [
+     "y",
+     -5,
+     ">=10"
+    ],
+    [
+     "y",
+     -10,
+     ">=10"
+    ]
+   ]
+  },
+  "spider_1.63_.26/scene_app_spider19_1__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 6.314,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   }
+  },
+  "spider_1.63_.26/scene_play_spider19__cart-tilt_x.json": {
+   "tolerances": [
+    {
+     "axis": "tilt_x",
+     "sign": 1,
+     "group": null,
+     "gate": 1.5,
+     "contact": 1.5,
+     "unit": "deg",
+     "binding": null
+    },
+    {
+     "axis": "tilt_x",
+     "sign": -1,
+     "group": null,
+     "gate": 0.328,
+     "contact": 0.678,
+     "unit": "deg",
+     "binding": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   ]
+  },
+  "spider_1.63_.26/scene_play_spider19__grid-tilt_x+y.json": {
+   "nominal_gate_mm": 9.408,
+   "nominal_pair": [
+    "R_geom_enc2_ua_0",
+    "r14_hood"
+   ],
+   "grid": [
+    [
+     "tilt_x",
+     0.1,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.2,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     0.5,
+     ">=10"
+    ],
+    [
+     "tilt_x",
+     -0.1,
+     6.575
+    ],
+    [
+     "tilt_x",
+     -0.2,
+     3.716
+    ],
+    [
+     "tilt_x",
+     -0.5,
+     -4.855
+    ],
+    [
+     "y",
+     1,
+     8.409
+    ],
+    [
+     "y",
+     2,
+     7.41
+    ],
+    [
+     "y",
+     5,
+     4.413
+    ],
+    [
+     "y",
+     10,
+     -0.577
+    ],
+    [
+     "y",
+     -1,
+     10.0
+    ],
+    [
+     "y",
+     -2,
+     10.0
+    ],
+    [
+     "y",
+     -5,
+     10.0
+    ],
+    [
+     "y",
+     -10,
+     10.0
+    ]
+   ]
+  },
+  "spider_1.63_.26/scene_play_spider19__scen-dock_stops.json": {
+   "scenarios": {
+    "dock_stops": {
+     "gate_mm": 5.654,
+     "contact_mm": ">=10",
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   }
+  }
+ },
+ "capture": {
+  "capture": {
+   "x_capture_m": 0.0148,
+   "y_capture_m": 0.09,
+   "mouth_half_width_m": 0.0198,
+   "design_claim_m": 0.005,
+   "note": "a rim edge landing on a flank slides to the groove line (45 deg flanks); along y the saddle (contacts 35.5 deg off vertical) centres the circle"
+  },
+  "arm_accuracy_mm": 2.0,
+  "rack_placement_mm": 1.0,
+  "scenarios": {
+   "R09_requirement": {
+    "window_states": 113,
+    "cart_disp_mm": {
+     "x": 3.329,
+     "y": 3.414,
+     "z": 1.0
+    },
+    "x_total_mm": 6.33,
+    "y_total_mm": 6.41,
+    "x_capture_mm": 14.8,
+    "y_capture_mm": 90.0,
+    "x_margin_mm": 8.47,
+    "y_margin_mm": 83.6,
+    "x_margin_vs_design_claim_mm": -1.33
+   },
+   "as_designed": {
+    "window_states": 113,
+    "cart_disp_mm": {
+     "x": 8.921,
+     "y": 8.694,
+     "z": 3.835
+    },
+    "x_total_mm": 11.92,
+    "y_total_mm": 11.69,
+    "x_capture_mm": 14.8,
+    "y_capture_mm": 90.0,
+    "x_margin_mm": 2.88,
+    "y_margin_mm": 78.3,
+    "x_margin_vs_design_claim_mm": -6.92
+   },
+   "dock_stops": {
+    "window_states": 113,
+    "cart_disp_mm": {
+     "x": 1.878,
+     "y": 2.641,
+     "z": 1.597
+    },
+    "x_total_mm": 4.88,
+    "y_total_mm": 5.64,
+    "x_capture_mm": 14.8,
+    "y_capture_mm": 90.0,
+    "x_margin_mm": 9.92,
+    "y_margin_mm": 84.4,
+    "x_margin_vs_design_claim_mm": 0.12
+   },
+   "touch_off": {
+    "window_states": 113,
+    "cart_disp_mm": {
+     "x": 1.739,
+     "y": 2.218,
+     "z": 1.348
+    },
+    "x_total_mm": 4.74,
+    "y_total_mm": 5.22,
+    "x_capture_mm": 14.8,
+    "y_capture_mm": 90.0,
+    "x_margin_mm": 10.06,
+    "y_margin_mm": 84.8,
+    "x_margin_vs_design_claim_mm": 0.26
+   }
+  },
+  "note": "Lead-in check of the keyed rack: at every lid-play state in the window, the displacement of the lowest rim point\n (the first point to meet the grooves) under the worst corner of each cart budget box, plus the arm accuracy\n (+-2 mm, R19_TOLERANCE section 1) and the rack placement tolerance PLACE (default 1 mm), against the capture range."
+ },
+ "hub_edges_new": {
+  "results/r19/pot/hub_final/edge_SPIDER__H_POT.json": {
+   "ok": true,
+   "method": "straight",
+   "time_s": 4.48,
+   "states_checked": 1989,
+   "min_reserve_mm": 2.3,
+   "elapsed_s": 275
+  }
+ },
+ "spider_replans_ur5e": {
+  "chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.56,
+    0.2
+   ],
+   "time_s": 50.7,
+   "overhead_min_past_gap_mm": 18.11,
+   "gate": 5.0
+  },
+  "chain_spider_s+1_pot_1.60_.24_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.6,
+    0.24
+   ],
+   "time_s": 51.8,
+   "overhead_min_past_gap_mm": 11.67,
+   "gate": 5.0
+  },
+  "chain_spider_s+1_pot_1.60_.26_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.6,
+    0.26
+   ],
+   "time_s": 52.0,
+   "overhead_min_past_gap_mm": 9.8,
+   "gate": 5.0
+  },
+  "chain_spider_s+1_pot_1.62_.24_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.62,
+    0.24
+   ],
+   "time_s": 52.1,
+   "overhead_min_past_gap_mm": 11.22,
+   "gate": 5.0
+  },
+  "chain_spider_s+1_pot_1.62_.26_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.62,
+    0.26
+   ],
+   "time_s": 52.3,
+   "overhead_min_past_gap_mm": 9.41,
+   "gate": 5.0
+  },
+  "chain_spider_s+1_pot_1.63_.26_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.63,
+    0.26
+   ],
+   "time_s": 52.5,
+   "overhead_min_past_gap_mm": 9.25,
+   "gate": 5.0
+  },
+  "chain_spider_s+1_pot_g0_1.52_.36_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.52,
+    0.36
+   ],
+   "time_s": 52.6,
+   "overhead_min_past_gap_mm": 4.03,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.56_.20_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.56,
+    0.2
+   ],
+   "time_s": 50.7,
+   "overhead_min_past_gap_mm": 18.11,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.56_.28_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.56,
+    0.28
+   ],
+   "time_s": 51.7,
+   "overhead_min_past_gap_mm": 8.71,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.56_.36_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.56,
+    0.36
+   ],
+   "time_s": 53.0,
+   "overhead_min_past_gap_mm": 4.22,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.58_.22_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.58,
+    0.22
+   ],
+   "time_s": 51.2,
+   "overhead_min_past_gap_mm": 14.55,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.60_.22_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.6,
+    0.22
+   ],
+   "time_s": 51.6,
+   "overhead_min_past_gap_mm": 13.86,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.60_.24_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.6,
+    0.24
+   ],
+   "time_s": 51.8,
+   "overhead_min_past_gap_mm": 11.67,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.60_.26_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.6,
+    0.26
+   ],
+   "time_s": 52.0,
+   "overhead_min_past_gap_mm": 9.8,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.60_.29_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.6,
+    0.29
+   ],
+   "time_s": 52.4,
+   "overhead_min_past_gap_mm": 7.41,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.60_.32_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.6,
+    0.32
+   ],
+   "time_s": 52.8,
+   "overhead_min_past_gap_mm": 5.87,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.60_.38_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.6,
+    0.38
+   ],
+   "time_s": 53.7,
+   "overhead_min_past_gap_mm": 3.8,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.62_.24_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.62,
+    0.24
+   ],
+   "time_s": 52.1,
+   "overhead_min_past_gap_mm": 11.22,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.62_.28_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.62,
+    0.28
+   ],
+   "time_s": 52.6,
+   "overhead_min_past_gap_mm": 8.01,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.63_.22_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.63,
+    0.22
+   ],
+   "time_s": 52.1,
+   "overhead_min_past_gap_mm": 12.82,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.63_.26_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.63,
+    0.26
+   ],
+   "time_s": 52.5,
+   "overhead_min_past_gap_mm": 9.25,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.63_.30_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.63,
+    0.3
+   ],
+   "time_s": 53.0,
+   "overhead_min_past_gap_mm": 6.68,
+   "gate": 0.0
+  },
+  "chain_spider_s+1_pot_g0_1.63_.34_ur5e_enc2_pgc.json": {
+   "spider": [
+    1.63,
+    0.34
+   ],
+   "time_s": 53.6,
+   "overhead_min_past_gap_mm": 5.26,
+   "gate": 0.0
+  }
+ },
+ "fr5_lid_path_vs_spider_spot": {
+  "spot_1.52_0.36": {
+   "min_gate_mm": -10.0,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 450
+  },
+  "spot_1.52_0.44": {
+   "min_gate_mm": 25.62,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 0
+  },
+  "spot_1.56_0.20": {
+   "min_gate_mm": 5.5,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 0
+  },
+  "spot_1.56_0.36": {
+   "min_gate_mm": -10.0,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 498
+  },
+  "spot_1.56_0.44": {
+   "min_gate_mm": 41.89,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 0
+  },
+  "spot_1.58_0.22": {
+   "min_gate_mm": -1.51,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 264
+  },
+  "spot_1.60_0.22": {
+   "min_gate_mm": -1.51,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 215
+  },
+  "spot_1.60_0.24": {
+   "min_gate_mm": -8.35,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 398
+  },
+  "spot_1.60_0.32": {
+   "min_gate_mm": -10.0,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 584
+  },
+  "spot_1.62_0.22": {
+   "min_gate_mm": -1.51,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 170
+  },
+  "spot_1.62_0.24": {
+   "min_gate_mm": -8.35,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 355
+  },
+  "spot_1.62_0.26": {
+   "min_gate_mm": -10.0,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 450
+  },
+  "spot_1.62_0.30": {
+   "min_gate_mm": -4.84,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 427
+  },
+  "spot_1.62_0.36": {
+   "min_gate_mm": 23.03,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 0
+  },
+  "spot_1.62_0.44": {
+   "min_gate_mm": 44.83,
+   "pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_spider_bowl"
+   ],
+   "hit_states": 0
+  },
+  "spot_1.63_0.26": {
+   "min_gate_mm": -9.99,
+   "pair": [
+    "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder",
+    "r16_spider_block"
+   ],
+   "hit_states": 427
+  },
+  "spot_1.66_0.30": {
+   "min_gate_mm": -5.0,
+   "pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_spider_bowl"
+   ],
+   "hit_states": 367
+  },
+  "spot_1.66_0.40": {
+   "min_gate_mm": -5.0,
+   "pair": [
+    "R_gripper_r16_lid_rim",
+    "r16_spider_bowl"
+   ],
+   "hit_states": 153
+  }
+ }
+}

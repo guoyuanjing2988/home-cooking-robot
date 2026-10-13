@@ -1,0 +1,81 @@
+{
+ "scene": "app:lid19:1",
+ "part": "cart-tilt_x",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+  "kind": "approach",
+  "act": "lid19",
+  "kf": 8,
+  "kf_label": "in the rack",
+  "r17_min_reserve_mm": 7.2,
+  "src_n": 7
+ },
+ "states": 166,
+ "stored_states": 7,
+ "nominal_s": 2.3,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 278
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 243
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.766,
+    "bounded": true,
+    "violation_at": 0.769,
+    "binding": {
+     "state": 0,
+     "value_mm": -0.048,
+     "pair": [
+      "R_finger_minus",
+      "r16_lid_rim"
+     ],
+     "label": "approach@in the rack#8 step 0 (0 cm back)",
+     "src_index": 0.0
+    },
+    "evals": 335
+   },
+   "contact": {
+    "tol": 1.027,
+    "bounded": true,
+    "violation_at": 1.03,
+    "binding": {
+     "state": 0,
+     "value_mm": 0.0,
+     "pair": [
+      "R_finger_minus",
+      "r16_lid_rim"
+     ],
+     "label": "approach@in the rack#8 step 0 (0 cm back)",
+     "src_index": 0.0
+    },
+    "evals": 394
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 12.2
+}

@@ -560,3 +560,14 @@ Nothing bought.
   - The PGC base cable connector is not modelled (not dimensioned on the drawing).
   - The prep sets still need re-planning for the true geometry (#4).
   - #13 is to be re-run with this arm.
+
+## 2026-10-13 — Pot zone: spider rest moved, keyed lid rack (orchestrator decision under "其他你定", GitHub #37 / #8)
+- **Spider rest** moves from (1.52, 0.36) to **(1.56, 0.20)**. On the true arm geometry, the old spot left the upper arm 10.4 mm from the cabinet over the hood, and no re-plan could keep 15 mm there. At the new spot it keeps ≥ 19.4 mm.
+- **Why this spot rather than (1.62, 0.26).** Both give the same UR5e result. Only (1.56, 0.20) also clears the FR5 lid path (#2).
+  - **Cost:** the spider's grip block sticks out 82 mm past the counter edge, at 1.16 m. The other spot sticks out 22 mm.
+  - Revisit this if people at that corner matter more than the FR5 option.
+- **Lid rack:** two V-groove pads under the upright lid's rim (`kitchen19pot.py`, `RACK=keyed`). They capture ±14.8 mm across the rim plane.
+  - The last 50 mm of the straight drop into the rack is a declared contact window. Only lid parts against rack parts are exempt.
+  - The stored lid path is kept unchanged.
+  - The optional pot lift-off window (`POTWIN=1`) is not adopted yet.
+- **Report:** `sim/r10/claude/R19_POTZONE.md`. The hub edges, corner replays and the full tolerance set are running as controller lanes.

@@ -6,6 +6,7 @@ python r19pot_chain.py ACT=spider|lid ... <every r17chain.py option> [SPX= SPY=]
                        [CABGATE=<mm>] [TAG=..] ARM=ur5e_enc2_pgc PY=.15
  SPX / SPY   spider rest (kitchen19pot.install(spider=...); r17chain.py reads the same keys)
  RACK=keyed  the keyed lid rack (V-saddle with lead-in V-grooves, kitchen19pot.py) instead of the R16 base + fins
+ POTWIN=1    with WINDOW=1 also the optional lift-off window at the pot (kitchen19pot.window_pot())
  WINDOW=1    the declared lid insertion contact window (kitchen19pot.window(), DECISIONS 2026-10-08): while the
              TCP is on the last 50 mm of the straight move down the rack's insertion axis, with the window's
              rotation, the held lid parts vs the keyed rack parts are allowed (Checker.permissions, the same
@@ -30,11 +31,9 @@ import checker as _chk
 _orig_perm=_chk.Checker.permissions
 def _perm(self,kind):
  allowed=_orig_perm(self,kind)
- W=WIN['W']
- if W is not None:
-  sid=self.m.site('R_prep').id
-  if P.in_window(W,self.d.site_xpos[sid],self.d.site_xmat[sid].reshape(3,3)):
-   nm=set(self.gnames);allowed=set(allowed)|{frozenset([a,b]) for a in W['parts'] if a in nm for b in W['faces'] if b in nm}
+ if WIN['W']:
+  sid=self.m.site('R_prep').id;add,n=P.allowed_pairs(WIN['W'],self.gnames,self.d.site_xpos[sid],self.d.site_xmat[sid].reshape(3,3))
+  if n:allowed=set(allowed)|add
  return allowed
 if KV.get('WINDOW')=='1':_chk.Checker.permissions=_perm
 _UG={}
@@ -64,10 +63,10 @@ def upper_gate(c,q):
   if v<best[0]:best=(float(v),[c.gnames[A[i]],c.gnames[B[i]]])
  return best
 src=open('r17chain.py',encoding='utf-8').read();cut=src.index('t0=time.monotonic();pieces={}')
-sys.argv=[sys.argv[0]]+[a for a in sys.argv[1:] if a.split('=',1)[0] not in ('RACK','WINDOW','CABGATE')]
+sys.argv=[sys.argv[0]]+[a for a in sys.argv[1:] if a.split('=',1)[0] not in ('RACK','WINDOW','CABGATE','POTWIN')]
 g={'__name__':'r17chain_pot','__file__':os.path.abspath('r17chain.py')}
 exec(compile(src[:cut],'r17chain.py','exec'),g)
-if KV.get('WINDOW')=='1':WIN['W']=P.window(sign=g['SIGN'])
+if KV.get('WINDOW')=='1':WIN['W']=P.windows(g['SIGN'],rack=KV.get('RACK')=='keyed',pot=KV.get('POTWIN')=='1')
 if EXTRA>0:
  _st=g['state']
  def state(c,q,full):
@@ -87,8 +86,8 @@ g['candidates']=candidates
 _save=g['save'];OUTF=[]
 def save(fn,res):
  fn=fn.replace('results/r17/','results/r19/pot/');os.makedirs('results/r19/pot',exist_ok=True)
- res=dict(res,r19pot=dict(layer=LAYER,window=None if WIN['W'] is None else {k:(v.tolist() if hasattr(v,'tolist') else v) for k,v in WIN['W'].items()},
-  cabgate_extra_mm=EXTRA*1000,upper_fixtures=list(UPPER),argv=sys.argv[1:]+[f'{k}={KV[k]}' for k in ('RACK','WINDOW','CABGATE') if k in KV]))
+ res=dict(res,r19pot=dict(layer=LAYER,windows=[{k:(v.tolist() if hasattr(v,'tolist') else v) for k,v in W.items()} for W in (WIN['W'] or [])],
+  cabgate_extra_mm=EXTRA*1000,upper_fixtures=list(UPPER),argv=sys.argv[1:]+[f'{k}={KV[k]}' for k in ('RACK','WINDOW','CABGATE','POTWIN') if k in KV]))
  OUTF.append(fn);return _save(fn,res)
 g['save']=save
 def partial():

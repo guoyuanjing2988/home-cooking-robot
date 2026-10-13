@@ -1,0 +1,69 @@
+{
+ "scene": "play:lid19",
+ "part": "cart-z",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lid19",
+  "obj": "lid",
+  "src_n": 205
+ },
+ "states": 2410,
+ "stored_states": 205,
+ "nominal_s": 23.2,
+ "nominal_cached": false,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 2148
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 1459
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 10.972,
+    "bounded": true,
+    "violation_at": 11.017,
+    "binding": {
+     "state": 2409,
+     "value_mm": -0.017,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "counter_right_piece6"
+     ],
+     "label": "",
+     "src_index": 204.0
+    },
+    "evals": 10736
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 1459
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 226.1
+}

@@ -19,7 +19,8 @@ stored states, cut to <= 4 mm point bound as r19smooth.sample_poly):
    s10a/b/d/f, s11S, s11enc), replayed in the union scene WITHOUT their own held object: the held object is
    bounded by a sphere of HELD_R = 0.20 m around the TCP (point-to-AABB lower bound), so their numbers are
    conservative lower bounds; they need an exact replay only if that bound comes near the gap.
-EXTRA=<chain json>,...  more r17chain-format chains (e.g. a re-planned spider) with their r17chain approach worlds.
+EXTRA=<chain json>,...  more r17chain-format chains (e.g. a re-planned spider) with their r17chain approach worlds;
+                        ONLYEXTRA=1 screens only those (e.g. another arm's chain, run with that ARM=).
 python r19pot_screen.py SPOTS=1.60,.26 [RACK=keyed] [EXTRA=..] ARM=ur5e_enc2_pgc PY=.15 [WORKERS=12] [TAG=..]
  -> results/r19/pot/screen_<spot|rack>[_<TAG>].json"""
 import sys,os,json,math,time,glob
@@ -140,7 +141,7 @@ def run_path(task):
   import traceback;return dict(kind=kind,name=name,error=traceback.format_exc()[-800:])
 def tasks(mode):
  T=[];extra=[e for e in KV.get('EXTRA','').split(',') if e]
- for key,(f,p2) in ADOPTED.items():
+ for key,(f,p2) in ([] if KV.get('ONLYEXTRA')=='1' else ADOPTED.items()):
   if key=='spider' and mode[0]=='spot':continue
   T.append((mode,'play',key,(f,p2)))
   for k,a in enumerate(J(f)['approach_qs']):
@@ -149,6 +150,7 @@ def tasks(mode):
   T.append((mode,'play',os.path.basename(f),(f,False)))
   for k,a in enumerate(J(f)['approach_qs']):
    if a:T.append((mode,'app',os.path.basename(f)+f'@app{k}',(f,False,k)))
+ if KV.get('ONLYEXTRA')=='1':return T
  for f in sorted(glob.glob(f'{HUBDIR}/edge_*.json')):
   if J(f).get('ok'):T.append((mode,'edge',os.path.basename(f)[5:-5],f))
  for f in sorted(glob.glob('results/r19/prep/chain_*_full_ur5e_enc2_pgc.json'))+[c for c in CUPS if os.path.exists(c)]:T.append((mode,'other',os.path.basename(f)[6:-5],f))

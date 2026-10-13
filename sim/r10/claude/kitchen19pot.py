@@ -100,6 +100,27 @@ def window(sign=-1):
  return dict(kind='grasp_release_support',object='lid',support='r19pot_rack',origin=np.asarray(pt,float),axis=np.array([0,0,1.]),length_m=WINDOW_L,
   rotation=np.asarray(Rt,float),parts=parts,faces=[n for n,_,_,_ in rack_parts()],lateral_tol_m=5e-5,rot_tol=5e-4,
   rule='DECISIONS 2026-10-08 lift/approach window: straight move <= 50 mm along the declared insertion axis (the rack V-grooves, world z); only the lid parts vs the rack parts')
+def window_pot(sign=-1):
+ """OPTIONAL second window (reported separately): the lid's existing straight lift off the pot (r17chain ACT=lid:
+ grasp at the seated lid, then straight up to kf 1, 20 mm above the seat, before the horizontal slide), i.e. a retreat
+ of 20 mm (<= 50 mm) along the pot's face normal (+z); intended contact: the held lid parts vs the pot rim
+ (r16_pot_wall*). The same DECISIONS rule; R17 treated its first 8 mm as an unchecked seat."""
+ R,p=K.lid_on({});pt,Rt=K.tcp_pose('lid',R,p,sign)
+ o=K.OBJ['lid'];parts=['R_gripper_'+q[0] for q in o['parts'] if q[0]!=o['grip_part']]
+ return dict(kind='grasp_release_support',object='lid',support='r16_pot',origin=np.asarray(pt,float),axis=np.array([0,0,1.]),length_m=.020,
+  rotation=np.asarray(Rt,float),parts=parts,faces=[],face_prefix='r16_pot_wall',lateral_tol_m=5e-5,rot_tol=5e-4,
+  rule='DECISIONS 2026-10-08 lift/approach window: straight lift 20 mm along the pot face normal (world z); only the lid parts vs the pot rim')
+def windows(sign=-1,rack=True,pot=False):
+ """The declared windows of the lid set: the keyed-rack insertion (with the keyed rack) and, optionally, the lift off the pot."""
+ return ([window(sign)] if rack else [])+([window_pot(sign)] if pot else [])
+def allowed_pairs(Ws,names,tcp_p,tcp_R):
+ """Pairs (frozensets of geom names) allowed by the windows the TCP pose is in; and how many windows are active."""
+ out=set();n=0;ns=set(names)
+ for W in Ws:
+  if not in_window(W,tcp_p,tcp_R):continue
+  n+=1;faces=[b for b in names if b in W['faces'] or (W.get('face_prefix') and b.startswith(W['face_prefix']))]
+  out|={frozenset([a,b]) for a in W['parts'] if a in ns for b in faces}
+ return out,n
 def in_window(W,tcp_p,tcp_R):
  """True if a TCP pose lies on the declared window segment with the window rotation."""
  d=np.asarray(tcp_p)-W['origin'];ax=float(d@W['axis']);lat=float(np.linalg.norm(d-ax*W['axis']))
