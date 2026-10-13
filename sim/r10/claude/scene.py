@@ -69,6 +69,23 @@ def lever_pusher(cfg):
  dz=cfg.get('lever_dz',0.);return [(n,[p[0],p[1],p[2]+dz],sz) for n,p,sz in LEVER_PUSHER]
 def lever_knob(cfg):return [LEVER_KNOB[0],LEVER_KNOB[1],LEVER_KNOB[2]+cfg.get('lever_dz',0.)]
 def plate_top(cfg):return .124+cfg.get('lever_dz',0.)
+def oem_pgc_drawing(tree,n=32):
+ """R19 #12 option: the PGC-140-50 housing as drawn by DH (PGC-140 Short Manual v2.1, Fig. 1.3(a), [M]) instead of
+ the 138.5 x 75 x 75 mm box: the body is round, diameter 75, 98 mm high from the flange face; its upper 46 mm
+ are 53 mm wide across the jaw plane (two flats, seen in the side view); above the body the standard jaws /
+ fingers: 73 mm span along the jaw stroke, 36.4 mm across, up to the 138.5 mm overall height. Same frame and
+ x range as the box (tool -x = toward the flange; jaws along y). Polygon prisms circumscribed about the circles
+ (n sides), as convex meshes. The cable connector at the base side (and its >= 30 mm bend) is not modelled, as
+ in the box. Encloses: the box minus its corners, never more than the box."""
+ tool=tree.find(".//body[@name='R_tool']");asset=tree.getroot().find('asset');r=.0375/np.cos(np.pi/n);t=2*np.pi*(np.arange(n)+.5)/n
+ x0,x1,x2,x3=-.1735,-.1735+.052,-.1735+.098,-.035   # flange face, start of the 53 mm part, body top, envelope top (as the box)
+ ring=np.c_[r*np.cos(t),r*np.sin(t)]   # (y, z)
+ def mesh(name,x_lo,x_hi,yz):
+  V=[[x,y,z] for x in (x_lo,x_hi) for y,z in yz];E.SubElement(asset,'mesh',name='M_'+name,vertex=' '.join(fmt(v) for v in V))
+  g=E.SubElement(tool,'geom',name=name,type='mesh',mesh='M_'+name,rgba='.15 .2 .25 1',contype='2',conaffinity='3',mass='.000001');return g
+ mesh('R_gripper_oem_envelope',x0,x1,ring)
+ flat=np.c_[ring[:,0],np.clip(ring[:,1],-.0265,.0265)];mesh('R_gripper_oem_upper',x1,x2,flat)
+ mesh('R_gripper_oem_jaws',x2,x3,[[sy*.0365,sz*.0182] for sy in (-1,1) for sz in (-1,1)])
 def build(cfg,held=None,mode='empty'):
  tree=E.parse(H/'models/base.xml');world=tree.find('worldbody')
  height=cfg.get('mount_height',.85)
@@ -110,8 +127,11 @@ def build(cfg,held=None,mode='empty'):
    g_=tree.find(f".//geom[@name='{n_}']");p_=np.fromstring(g_.get('pos'),sep=' ');p_[1]+=sg*fo;g_.set('pos',fmt(p_))
  # Full buyable PGC-140-50 housing envelope, in addition to inherited fingers.
  # Custom flange adapter orientation remains a design assumption.
- box(tree.find(".//body[@name='R_tool']"),'R_gripper_oem_envelope',[-.10425,0,0],[.1385,.075,.075],(.15,.2,.25,1)).set('contype','2')
- tree.find(".//geom[@name='R_gripper_oem_envelope']").set('conaffinity','3')
+ import arms as _arms
+ if _arms.ARMS[_arms.current(cfg)].get('oem')=='pgc_drawing':oem_pgc_drawing(tree)   # R19 #12: the gripper housing from the DH drawing (arm option ur5e_enc2_pgc)
+ else:
+  box(tree.find(".//body[@name='R_tool']"),'R_gripper_oem_envelope',[-.10425,0,0],[.1385,.075,.075],(.15,.2,.25,1)).set('contype','2')
+  tree.find(".//geom[@name='R_gripper_oem_envelope']").set('conaffinity','3')
  if cfg.get('finger'):
   import fingers;fingers.apply(tree,cfg)
  if cfg.get('verified_wheels'):

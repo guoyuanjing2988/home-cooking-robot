@@ -74,7 +74,7 @@ def tip(piv,a):
 def action():
  """object, scene extras (world objects), keyframes, grasp/release list (keyframe index, world cfg for the empty gripper)"""
  if ACT=='wok':
-  W0=K15.WOK0;PC=np.array(K15.PLATE['c'],float);PC[0]=float(KV.get('PX',PC[0]));FOOD=1.15;WATER=.5
+  W0=K15.WOK0;PC=np.array(K15.PLATE['c'],float);PC[0]=float(KV.get('PX',PC[0]));PC[1]=float(KV.get('PY',PC[1]));FOOD=1.15;WATER=.5   # R19 #12: PY = plating-spot y (default unchanged)
   PH=float(KV.get('PH',K15.PLATE['h']));target=PC+[0,0,PH+.03]+[0,.05,0];piv=target-K.Rx(90)@np.array([0,-K15.A_RIM,0]);o0=piv-[0,0,K15.DEPTH]
   # lift 13.5 cm in the cooker bowl before moving left: lower, the wok bottom met the handle bracket
   # (top 1.0 m) at the lane (run 1); the sink carry height is lower (rim under the spout)
@@ -103,7 +103,7 @@ def action():
    kf(I,W0+[0,0,.03],'F',0,'lowered',anchor=True),kf(I,W0+[0,0,.008],'A',0,'set down',seat=.008)]
   # grasp at the first keyframe, release at the last: the empty gripper with the wok on the cooker;
   # the faucet was opened before (lever up) and is closed after
-  sc=dict(r17_lever=K17.LEVER_OPEN,**({'r15_plate_h':PH} if 'PH' in KV else {}),**({'r15_plate_c':PC.tolist()} if 'PX' in KV else {}))   # PH: a soup bowl (8 cm) at the plating spot instead of a plate
+  sc=dict(r17_lever=K17.LEVER_OPEN,**({'r15_plate_h':PH} if 'PH' in KV else {}),**({'r15_plate_c':PC.tolist()} if 'PX' in KV or 'PY' in KV else {}))   # PH: a soup bowl (8 cm) at the plating spot instead of a plate
   return 'wok',sc,KF,[(0,sc),(len(KF)-1,sc)]
  if ACT=='spider':
   fl=K.POT['c'][2]+.002+K.POT['rack'];PX,PY=K.POT['c'][0],K.POT['c'][1];PC=np.array(K15.PLATE['c'],float)
@@ -140,7 +140,7 @@ OBJ,SCENE,KF,GR=action()
 BASE=dict(r14=True,present=[],r15=True,r16=True,r17=True,r16_lid='rack',r15_drum_taken=True,r16_tools=dict(K17.R17_TOOLS_OFF))   # R17: the pour drum is swung away from the rim except while stirring
 if 'TOOLS_OFF' in KV:BASE['r16_tools']={t:None for t in KV['TOOLS_OFF'].split(',')}   # tools not on the rest
 if 'SPATREST' in KV:BASE['r16_tools']={'ladle':None}   # R18: spatula on its rest at SPATREST
-if 'PLATE2' in KV:BASE['r17_plate2']=[float(KV['PLATE2']),K15.PLATE['c'][1],K15.PLATE['c'][2]]   # R18: a second plate (a finished dish waiting)
+if 'PLATE2' in KV:BASE['r17_plate2']=[float(KV['PLATE2']),float(KV.get('PY',K15.PLATE['c'][1])),K15.PLATE['c'][2]]   # R19 #12: the waiting dish moves with PY too   # R18: a second plate (a finished dish waiting)
 def model(extra):
  cfg=chain.chain_cfg('SD',**{**BASE,**SCENE,**extra});tree,meta=build(cfg,None);return Checker(tree,meta)
 ch=model(K17.held_cfg(OBJ,SIGN));m,d=ch.m,ch.d;ids=ch.arm_ids;sid=m.site('R_prep').id
@@ -369,7 +369,7 @@ if ok:
 def summ(out):
  rs=[s_['reserve_mm'] for s_ in out if s_['reserve_mm'] is not None]
  return dict(steps=len(out),time_s=round(sum(s_['dt'] for s_ in out),1),min_reserve_mm=min(rs) if rs else None,max_step_deg=max(s_['step_deg'] for s_ in out),cart=[out[0]['cart'],out[-1]['cart']])
-res=dict(act=ACT,obj=OBJ,**({} if ARM=='ur5e' else dict(arm=ARM)),grasp_sense=SIGN,design=DESIGN,scene=SCENE,wok_tilt=float(KV.get('GTILT',0)),wok_grasp=KV.get('GRASP','top'),tool_xy={k_:list(v) for k_,v in K.TOOL_XY.items()},ok=ok,time_s=round(tsum,1),elapsed_s=round(time.monotonic()-t0),
+res=dict(act=ACT,obj=OBJ,**({} if ARM=='ur5e' else dict(arm=ARM)),**({'plate_y':float(KV['PY'])} if 'PY' in KV else {}),grasp_sense=SIGN,design=DESIGN,scene=SCENE,wok_tilt=float(KV.get('GTILT',0)),wok_grasp=KV.get('GRASP','top'),tool_xy={k_:list(v) for k_,v in K.TOOL_XY.items()},ok=ok,time_s=round(tsum,1),elapsed_s=round(time.monotonic()-t0),
  keyframes=[dict(i=i,label=k_['label'],p=np.round(k_['p'],3).tolist(),c=k_['c'],anchor=k_['anchor'],meet=k_['meet']) for i,k_ in enumerate(KF)],
  anchors={KF[a]['label']+f'#{a}':{k_:v for k_,v in an.items() if k_!='q'} for a,an in anchors.items()},
  pieces=[dict(frm=KF[a]['label']+f'#{a}',to=KF[b]['label']+f'#{b}',**summ(out)) for (a,b),out in pieces.items()],

@@ -415,3 +415,179 @@ Every other UR5e result was checked in the current layout and stays as it is.
 - **Changed without a backup**, all my own files from round 1:
   - `r19enc_check.py`: `NEW=`, the skip of failed chains, mesh pieces in `enclose`, cover in `meshgap`;
   - `r19ur5e_encfit.py`: a `bloat` mode; the band attempt was removed.
+
+## 8. Third round: plate PY, adopted chains, the gripper housing from the DH drawing (2026-10-13)
+
+The controller's results with `ARM=ur5e_enc2`:
+- **Re-plans that pass:** lid (20.2 s, 1.0 mm) and spatula (26.7 s, 6.0 mm). Their ≤ 4 mm re-checks are clean.
+- **Re-plans that fail:**
+  - wok and plate 2: "lifted" and "lowered" starved;
+  - spider: two lane-middle joins (54 mm / 14°, 56 mm / 6°);
+  - lever: the kf 1 approach hits `R_geom_enc2_fa_1` vs `upper_cabinet_1`.
+
+### 8.0 Answer first
+- **Gripper.** DH's drawing shows the PGC-140-50 housing as a **Ø75 round body**, not the 75 × 75 mm box. With the
+  drawing-based housing (arm option `ur5e_enc2_pgc`, §8.4), the wrist-1 / gripper self pair is clear everywhere.
+  Self reserve is ≥ 0.78 mm; before it was intersecting.
+- **Plating spot.** With the plating spot (and the plate-2 dish) moved **20 mm toward the wall, y 0.13 → 0.15**, the
+  stored wok and plate-2 paths pass. 10 mm (`PY=.14`) is not enough.
+- **All six stored UR5e chains are now adopted for `ur5e_enc2_pgc`**: lever, spatula, lid and spider as stored; wok
+  and plate 2 in the `PY=.15` layout.
+  - Each has a certificate: the play re-checked at ≤ 4 mm with 0 hits, and every approach at ≤ 4 mm with 0 hits.
+  - The 7 hub endpoints in the `PY=.15` union scene are all ok (run here).
+  - **The hub can now be built** (lanes in §8.6).
+- **The only real violation left is in the hub:** the 4 `LEV_O` free moves (wrist 1 is 8.0 mm under a cabinet door).
+  The hub run re-plans them.
+- **For `ur5e_enc2` (the box gripper):** the lever is adopted. Spider and wok need re-plans; lanes are in §8.6.
+
+### 8.1 Wok and `PY` (task 1)
+**Option.** `r17chain.py` takes `PY=<y>`: the plating-spot y, default unchanged. The plate-2 dish (`PLATE2`) moves
+with it, and the chain stores `plate_y`. Backup: `r17chain.py.bak_r19enc3`. `r19enc_check.py recheck` also takes
+`PY=` and checks a stored path in the moved layout.
+
+**Smoke run here** (`PY=.14`, `ARM=ur5e_enc2`, `TAG=final_py14`, 233 s): **fail.** Rejecting pairs:
+
+| Anchor | Ok starts | Why the starts / candidates fail |
+|---|---|---|
+| lifted | 6 (105 pose, 81 collision) | 5 of 6 candidates fail lifted → pick on the elbow piece `R_geom_enc2_ua_4` – `r15_plate` (1 on `counter_right_piece2`) |
+| over the plate | 11 | the wrist-1 piece – gripper OEM box (self) while tipping 90°; `r15_plate` – elbow on the way to the lane |
+| under the tap | 16 | the wrist-1 piece – OEM box at "emptied" |
+| lowered | 6 | `r15_plate` – elbow; `sink_front_rim` – elbow on the lane |
+
+**"Lifted" is starved for the UR5e too.**
+- `r19enc_diag.py` re-runs r17chain's anchor solve and counts the pairs:
+  - UR5e: 6 ok starts (118 pose, 68 collision);
+  - `ur5e_enc2`: 3 (no `PY`) or 6 (`PY=.14`).
+- The rejected starts spread over the elbow vs the doors, cooker, hood and counter. Pose failures dominate.
+- So the anchor was always tight. With the enclosing arm, the candidates then die on the plate and on the self pair.
+
+**Plate shift screen** (`r19enc_diag.py plateshift`). The stored wok path is held fixed and the plate is moved. MuJoCo
+distances are conservative for this mesh–cylinder pair (−6.7 mm reserve at the original spot, where the exact check
+gives −3.2 mm).
+
+| Shift | Worst reserve |
+|---|---|
+| y +10 mm | 0.7 mm |
+| y +20 mm | 6.5 mm |
+| y +30 mm | 14.6 mm |
+| x shifts | 4.8 mm or less |
+
+**The full ≤ 4 mm check in the `PY=.15` layout, with `ur5e_enc2_pgc`:**
+- stored wok: 0 hits, arm 2.02 mm, self 1.87 mm;
+- stored plate 2: 0 hits, same values.
+
+**Smallest layout change: plating spot y 0.13 → 0.15**, which also moves the waiting dish at x 0.43.
+- The stored pour then lands 3 cm instead of 5 cm wall-side of the plate centre, still on the 240 mm plate.
+- It needs the decision recorded and the hub run with `PY=.15`. `r19hub.py` now takes `PY=` (default unchanged; backup
+  `r19hub.py.bak_r19enc3`); it reads `chain_wok_*_py.15_<arm>.json` and writes `results/r19/hub_py.15_<arm>/`.
+
+### 8.2 The adopter (task 2): `r19enc_adopt.py`
+`python r19enc_adopt.py ARM=<arm> SETS=... [PY=]` writes `chain_<...>[_py<y>]_<arm>.json`. The content is the stored
+chain unchanged, plus `arm`, `adopted_from` and an `adopted` certificate. A chain is adopted only when:
+1. **its play passes** the ≤ 4 mm re-check with that arm: 0 hits, the same stored-state count, and the play's md5
+   recorded;
+2. **every approach passes:** each `approach_qs` is cut to ≤ 4 mm and checked with the full checker in r17chain's own
+   empty-gripper scene. r17chain is executed only up to its main loop, with the chain's original options; nothing is
+   planned.
+
+An existing target is renamed to `*.replaced_<n>.json`, never overwritten.
+
+| Arm | Chain | Play (≤ 4 mm states) | Arm-env / gripper-env / self reserve (mm) | Approaches (states, min env reserve, mm) |
+|---|---|---|---|---|
+| `ur5e_enc2` | lever | 128 | 16.3 / 5.98 / 2.0 | kf0 19 st, 20.0; kf1 19 st, 2.67 (the controller's failed re-plan is kept as `…_ur5e_enc2.replaced_1.json`) |
+| `ur5e_enc2_pgc` | lever | 128 | 16.3 / 5.98 / 2.0 | as above |
+| `ur5e_enc2_pgc` | spatula | 2,642 | 79.6 / 2.04 / 2.0 | 168 st, 26.8 |
+| `ur5e_enc2_pgc` | lid | 2,410 | 2.08 / 1.0 / 1.11 | 55 st, 10.0; 166 st, 2.03 |
+| `ur5e_enc2_pgc` | spider | 4,335 | 1.12 / 2.05 / 0.78 | 52 st, 2.17 (each) |
+| `ur5e_enc2_pgc` | wok, `PY=.15` | 4,588 | 2.02 / 4.0 / 1.87 | 54 st, 2.07 (each) |
+| `ur5e_enc2_pgc` | plate 2, `PY=.15` | 4,561 | 2.02 / 4.0 / 1.87 | 54 st, 2.07 (each) |
+
+Further `ur5e_enc2_pgc` re-checks (`results/r19/enc2_pgc/`), all 0 hits:
+- the 4 hub edges that failed on the wrist-1 / OEM-box pair, now with self reserve 1.33–1.43 mm;
+- the stored wok in the old layout, except the 18 elbow–plate states.
+
+Not re-run with `pgc`:
+- **Stir:** it passed with the box gripper. The `pgc` housing lies inside the box, so it cannot add hits.
+- **Plate 2 in the old layout:** it has the same elbow–plate pair as the wok.
+
+### 8.3 Spider (task 3)
+- **`ur5e_enc2_pgc`:** the stored spider is adopted (§8.2). No re-plan is needed.
+- **`ur5e_enc2` (box gripper):** the stored spider fails on the wrist-1 / box self pair in 1,185 states, so it cannot
+  be adopted. Re-plan lane with more search: §8.6, lane C.
+
+### 8.4 The gripper envelope (task 4)
+
+**Sources.**
+- `research/finger_design_inputs.md` gives "138.5 × 75 × 75 mm (Ø75 body)" [M S1].
+- `research/hand_options.md` has no dimensions.
+- The DH catalog PDF (S1) is encrypted and I could not read it.
+- **The DH PGC-140 Short Manual v2.1, Fig. 1.3(a) and (b)** (S2) was read from its images:
+  - the body is **round, Ø75**, 98 mm high from the flange face;
+  - its **upper 46 mm are 53 mm wide** in the side view: two flats across the jaw plane;
+  - the jaws / standard fingers reach 138.5 mm overall, 73 mm span, 36.4 mm across;
+  - the top view is a Ø75 circle;
+  - a cable connector at the base side needs "Secure at least 30" mm. Its size is not dimensioned, so it is not
+    modelled, and the box did not model it either.
+
+**Option `ur5e_enc2_pgc`** (arms.py, with `ur5e_enc2`'s arm geoms). `scene.py` `oem_pgc_drawing()` builds three convex
+polygon prisms in the same tool frame and x range as the box:
+- `R_gripper_oem_envelope`: Ø75 × 52 mm;
+- `R_gripper_oem_upper`: Ø75 with the 53 mm flats × 46 mm;
+- `R_gripper_oem_jaws`: 73 × 36.4 × 40.5 mm.
+
+All three lie inside the old box (only its corners are removed, up to 15.5 mm on the diagonal). The default is
+unchanged: the box. Backups: `scene.py.bak_r19enc3`, `arms.py.bak_r19enc3`.
+
+**Does the self pair clear?** Yes: every path and edge that failed on wrist-1 vs the OEM box passes. Self reserve
+0.78–1.87 mm (lid 1.11, spider 0.78, wok 1.87, hub edges 1.33–1.43). Random-pose self-contact 37.7 % (box 45.1 %,
+UR5e 38.3 %).
+
+**Checks.** Default `ur5e`: compiled scene md5 and full checks are still identical to the original files.
+
+### 8.5 What is real and needs a decision
+1. **Plating spot +20 mm toward the wall (y 0.15).** This is the only layout change needed for the chains.
+2. **Accept the DH-drawing housing as the gripper model**, sourced [M]. Otherwise the box keeps the wrist-1 pair
+   failing, and wok, lid, spider and 4 hub edges need re-plans with a less folded wrist.
+3. **The 4 `LEV_O` hub edges:** wrist 1 is 8.0 mm below door `r07_closed_door_1_0`. The hub run (`r19hub edge`, via
+   search plus planner) re-plans them; no layout change.
+
+### 8.6 Controller lanes (background; none of these was run here except the endpoints)
+```bash
+cd /c/Users/admin/Documents/YJGames/robot_rail/sim/r10/claude
+PY=C:/Users/admin/Documents/YJGames/robot_v5/board/work/t01/.venv/Scripts/python.exe
+# lane A (recommended): the hub with the drawing-based gripper and the plating spot at y .15; all six chains are adopted
+A=ur5e_enc2_pgc; L="ARM=$A PY=.15"; D=results/r19/hub_py.15_$A; mkdir -p $D
+# ($PY r19hub.py endpoints $L  was run here: 7/7 ok)
+$PY r19hub.py tuck ELBOW=neg $L > $D/log_tuck_neg.txt 2>&1
+$PY r19hub.py tuck ELBOW=pos $L > $D/log_tuck_pos.txt 2>&1
+$PY r19hub.py hubs TUCK=neg $L > $D/log_hubs.txt 2>&1
+# then the 22 edges in 4 parallel lanes, every command with $L:
+for e in "SPAT LEV_C" "SPAT H_SPAT" "LID_RACK H_WOK" "WOK H_SINK" "SPAT H_SINK"; do set -- $e; $PY r19hub.py edge A=$1 B=$2 PLAN_S=120 $L > $D/log_$1__$2.txt 2>&1; done
+for e in "LEV_O WOK" "LEV_O H_SINK" "SPIDER H_WOK" "WOK H_POT" "LEV_O H_SPAT"; do set -- $e; $PY r19hub.py edge A=$1 B=$2 PLAN_S=120 $L > $D/log_$1__$2.txt 2>&1; done
+for e in "LID_RACK H_POT" "LEV_C H_SINK" "LID_POT H_WOK" "LEV_C H_SPAT" "WOK H_WOK"; do set -- $e; $PY r19hub.py edge A=$1 B=$2 PLAN_S=120 $L > $D/log_$1__$2.txt 2>&1; done
+for e in "SPIDER H_POT" "LID_POT H_POT" "LEV_C H_WOK" "LEV_O H_WOK" "H_SPAT H_SINK" "H_SINK H_WOK" "H_WOK H_POT"; do set -- $e; $PY r19hub.py edge A=$1 B=$2 PLAN_S=120 $L > $D/log_$1__$2.txt 2>&1; done
+$PY r19hub.py graph $L ; $PY r19hub.py commands $L
+# lane B (only if the box gripper must stay, ur5e_enc2): wok + plate 2 in the PY=.15 layout, with more search
+$PY r17chain.py ACT=wok SIGN=-1 GTILT=25 L2X=-.25 SINKC=-1.06 SPX=1.52 SPY=.36 PY=.15 TRIES=16 SEEDS=3 TAG=final_py.15 ARM=ur5e_enc2 > results/r17/log_wok_final_py.15_ur5e_enc2.txt 2>&1
+$PY r17chain.py ACT=wok SIGN=-1 GTILT=25 L2X=-.25 SINKC=-1.06 SPX=1.52 SPY=.36 PX=.17 PLATE2=.43 PY=.15 TRIES=16 SEEDS=3 TAG=r18plate2b_py.15 ARM=ur5e_enc2 > results/r17/log_wok_plate2b_py.15_ur5e_enc2.txt 2>&1
+# lane C (box gripper only): the spider with more search for the joins
+$PY r17chain.py ACT=spider SIGN=1 SPX=1.52 SPY=.36 TRIES=16 SEEDS=3 PLAN=1 PLAN_S=120 TAG=final ARM=ur5e_enc2 > results/r17/log_spider_final_s3_ur5e_enc2.txt 2>&1
+# after lanes B/C: the <= 4 mm re-checks (failed chains are skipped; a PY chain carries its plate_y, so no PY= needed)
+for S in wok wok_plate2b; do $PY r19enc_check.py recheck SET=$S SUFFIX=_py.15_ur5e_enc2 NEW=ur5e_enc2; done
+$PY r19enc_check.py recheck SET=spider SUFFIX=_ur5e_enc2 NEW=ur5e_enc2
+```
+
+`r19enc_check.py` resolves `CHAINS` file + `SUFFIX`, so the wok `SUFFIX` for lane B is `_py.15_ur5e_enc2`. If a lane
+B/C chain passes, adopt nothing: it is already a `_ur5e_enc2` chain.
+
+### 8.7 Files (round 3)
+- **New:**
+  - `r19enc_adopt.py`;
+  - `r19enc_diag.py` (anchor-start pairs, plate-shift screen);
+  - `results/r17/chain_*_ur5e_enc2_pgc.json` (6 adopted) and `chain_lever_s+1_final_ur5e_enc2.json` (adopted);
+  - `results/r19/enc2_pgc/*`;
+  - `results/r19/hub_py.15_ur5e_enc2_pgc/endpoints.json`;
+  - `results/r19/enc2/diag_*.json`, `plateshift_wok.json`, `adopt.json`.
+- **Changed, with `.bak_r19enc3` backups:** `r17chain.py` (`PY`), `scene.py` (`oem_pgc_drawing`), `arms.py`
+  (`ur5e_enc2_pgc`), `r19hub.py` (`PY`).
+- **Changed without a backup (my own file):** `r19enc_check.py` (`PY=` for the stored-path check).

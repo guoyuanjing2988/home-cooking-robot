@@ -1,6 +1,6 @@
 {
   "method": "R19 prep layout fixes (issue #4 step 1; new file, nothing else changed).\nWhere can the prep stations stand in today's (R18b) kitchen without blocking the checked cooking motion,\nand can the arm reach them?\n\nModes (python r19prep_layout.py MODE [KEY=VALUE ...], run from sim/r10/claude):\n map     free-space ceiling over the counters from the stored swept volumes: for every 2 cm column the\n         lowest swept voxel above the counter top (the 84 stored segments of the 6 checked cooking chains,\n         dilated 2 voxels, as r19prim_swept.py, plus the 22 checked hub edges, every 4th state, dilated 3,\n         as r19prep_screen.py). A fixture lower than the ceiling everywhere under it cannot be hit\n         (conservative). -> results/r19/prep/layout_map.json (+ .png)\n screen  every candidate spot (kitchen19.CANDIDATES): static overlap with the fixed items of today's\n         kitchen (raw tray, spatula + pad, prep bowls, fridge, faucet, sink, power track, counter ends)\n         and the voxel screen against all 106 stored segments -> results/r19/prep/layout_screen.json\n replay  ground truth for the named candidates (NAMES=a,b,..): every stored state of the 6 checked\n         chains (plus their grasp approach states) and EVERY state of the hub edges the screen flagged,\n         with the candidate's envelope boxes in the scene; fast checker (full=False, as\n         r18spatreplay.py / r19prep_spotreplay.py): a SCREEN-LEVEL replay, not a full check.\n         -> results/r19/prep/layout_replay_<name>.json   (NPAR=n parallel processes, one per name)\n reach   96-start collision-aware IK (solver.solve, unchanged checker, as r14reach.py) at the working\n         poses of the named candidates (kitchen19.REACH_PROBES), with the station geometry in the scene\n         and the cooking fixtures of today's kitchen -> results/r19/prep/layout_reach_<probe>.json\nGaps, checker and arm are unchanged (ARM=<id> as everywhere; default UR5e).",
-  "swept_build_s": 33.0,
+  "swept_build_s": 25.4,
   "segments": 106,
   "rows": [
     {
@@ -150,10 +150,10 @@
       "flagged": 35,
       "of": 106,
       "by_action": {
-        "spatula_fetch": 4,
-        "wok_plate_rinse": 9,
         "hub_edge": 10,
+        "wok_plate_rinse": 9,
         "wok_plate2_rinse": 9,
+        "spatula_fetch": 4,
         "faucet_open": 3
       },
       "flagged_segments": [
@@ -1291,10 +1291,10 @@
       "flagged": 51,
       "of": 106,
       "by_action": {
-        "hub_edge": 15,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 15,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 2
       },
       "flagged_segments": [
@@ -1892,8 +1892,8 @@
       "of": 106,
       "by_action": {
         "spatula_fetch": 3,
-        "wok_plate_rinse": 1,
-        "wok_plate2_rinse": 1
+        "wok_plate2_rinse": 1,
+        "wok_plate_rinse": 1
       },
       "flagged_segments": [
         "spatula_fetch__0-1",
@@ -2351,9 +2351,9 @@
       "of": 106,
       "by_action": {
         "spatula_fetch": 4,
-        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2,
         "hub_edge": 6,
-        "wok_plate2_rinse": 2
+        "wok_plate_rinse": 2
       },
       "flagged_segments": [
         "hub_edge__H_SPAT__H_SINK",
@@ -2676,9 +2676,9 @@
       "flagged": 22,
       "of": 106,
       "by_action": {
-        "spatula_fetch": 4,
+        "wok_plate2_rinse": 9,
         "wok_plate_rinse": 9,
-        "wok_plate2_rinse": 9
+        "spatula_fetch": 4
       },
       "flagged_segments": [
         "spatula_fetch__0-1",
@@ -3703,10 +3703,10 @@
       "flagged": 14,
       "of": 106,
       "by_action": {
+        "hub_edge": 6,
         "spatula_fetch": 4,
-        "wok_plate_rinse": 2,
         "wok_plate2_rinse": 2,
-        "hub_edge": 6
+        "wok_plate_rinse": 2
       },
       "flagged_segments": [
         "hub_edge__H_SPAT__H_SINK",
@@ -4073,9 +4073,9 @@
       "flagged": 10,
       "of": 106,
       "by_action": {
-        "wok_plate_rinse": 2,
         "hub_edge": 6,
-        "wok_plate2_rinse": 2
+        "wok_plate2_rinse": 2,
+        "wok_plate_rinse": 2
       },
       "flagged_segments": [
         "hub_edge__H_SPAT__H_SINK",
@@ -4257,10 +4257,10 @@
       "flagged": 14,
       "of": 106,
       "by_action": {
+        "hub_edge": 6,
         "spatula_fetch": 4,
-        "wok_plate_rinse": 2,
         "wok_plate2_rinse": 2,
-        "hub_edge": 6
+        "wok_plate_rinse": 2
       },
       "flagged_segments": [
         "hub_edge__H_SPAT__H_SINK",
@@ -4446,10 +4446,10 @@
       "flagged": 14,
       "of": 106,
       "by_action": {
+        "hub_edge": 6,
         "spatula_fetch": 4,
-        "wok_plate_rinse": 2,
         "wok_plate2_rinse": 2,
-        "hub_edge": 6
+        "wok_plate_rinse": 2
       },
       "flagged_segments": [
         "hub_edge__H_SPAT__H_SINK",
@@ -4755,8 +4755,8 @@
         "hub_edge": 10,
         "wok_plate_rinse": 9,
         "wok_plate2_rinse": 11,
-        "faucet_open": 3,
-        "spatula_fetch": 1
+        "spatula_fetch": 1,
+        "faucet_open": 3
       },
       "flagged_segments": [
         "faucet_open__0-1",
@@ -4967,10 +4967,10 @@
       "flagged": 47,
       "of": 106,
       "by_action": {
-        "hub_edge": 12,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 12,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 1
       },
       "flagged_segments": [
@@ -5200,10 +5200,10 @@
       "flagged": 47,
       "of": 106,
       "by_action": {
-        "hub_edge": 12,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 12,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 1
       },
       "flagged_segments": [
@@ -5259,7 +5259,7 @@
     {
       "name": "tool_CB",
       "item": "tool",
-      "desc": "CHOSEN: left counter by the sink, set back (blade plate y 0.20)",
+      "desc": "left counter by the sink, set back (blade plate y 0.20); the chosen spot is tool_CB_-0.86_0.21",
       "boxes": [
         {
           "name": "lever_base_plate",
@@ -5421,8 +5421,2321 @@
         "hub_edge": 8,
         "wok_plate_rinse": 9,
         "wok_plate2_rinse": 9,
-        "faucet_open": 3,
-        "spatula_fetch": 1
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.87_0.20",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.87,
+            0.235,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.87,
+            0.2,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.941,
+            0.2,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.945,
+            0.245,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.799,
+            0.2,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.795,
+            0.245,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.87,
+            0.27,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.87,
+            0.2,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.87,
+            0.2,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.87,
+            0.2,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 32,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.85_0.20",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.85,
+            0.235,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.85,
+            0.2,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.921,
+            0.2,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.925,
+            0.245,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.779,
+            0.2,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.775,
+            0.245,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.85,
+            0.27,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.85,
+            0.2,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.85,
+            0.2,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.85,
+            0.2,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 32,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.90_0.22",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.9,
+            0.255,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.9,
+            0.22,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.971,
+            0.22,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.975,
+            0.265,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.829,
+            0.22,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.825,
+            0.265,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.9,
+            0.29,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.9,
+            0.22,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.9,
+            0.22,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.9,
+            0.22,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": -0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 26,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 7,
+        "wok_plate2_rinse": 7,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.88_0.22",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.88,
+            0.255,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.88,
+            0.22,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.951,
+            0.22,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.955,
+            0.265,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.809,
+            0.22,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.805,
+            0.265,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.88,
+            0.29,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.88,
+            0.22,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.88,
+            0.22,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.88,
+            0.22,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": -0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 28,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 7,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.86_0.22",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.86,
+            0.255,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.86,
+            0.22,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.931,
+            0.22,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.935,
+            0.265,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.789,
+            0.22,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.785,
+            0.265,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.86,
+            0.29,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.86,
+            0.22,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.86,
+            0.22,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.86,
+            0.22,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": -0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 28,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 7,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.88_0.21",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.88,
+            0.245,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.88,
+            0.21,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.951,
+            0.21,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.955,
+            0.255,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.809,
+            0.21,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.805,
+            0.255,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.88,
+            0.28,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.88,
+            0.21,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.88,
+            0.21,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.88,
+            0.21,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": 0.2
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": 0.2
+        }
+      ],
+      "off_counter": [],
+      "flagged": 32,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.86_0.21",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.86,
+            0.245,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.86,
+            0.21,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.931,
+            0.21,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.935,
+            0.255,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.789,
+            0.21,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.785,
+            0.255,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.86,
+            0.28,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.86,
+            0.21,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.86,
+            0.21,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.86,
+            0.21,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": 0.2
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": 0.2
+        }
+      ],
+      "off_counter": [],
+      "flagged": 32,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.87_0.21",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.87,
+            0.25,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.87,
+            0.215,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.941,
+            0.215,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.945,
+            0.26,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.799,
+            0.215,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.795,
+            0.26,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.87,
+            0.285,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.87,
+            0.215,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.87,
+            0.215,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.87,
+            0.215,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": -0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 32,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "tool_CB_-0.90_0.21",
+      "item": "tool",
+      "desc": "set-back work spot variants",
+      "boxes": [
+        {
+          "name": "lever_base_plate",
+          "center": [
+            -0.9,
+            0.245,
+            0.856
+          ],
+          "size": [
+            0.22,
+            0.26,
+            0.012
+          ]
+        },
+        {
+          "name": "lever_blade_plate",
+          "center": [
+            -0.9,
+            0.21,
+            0.94
+          ],
+          "size": [
+            0.13,
+            0.13,
+            0.008
+          ]
+        },
+        {
+          "name": "lever_plate_leg-1",
+          "center": [
+            -0.971,
+            0.21,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail-1",
+          "center": [
+            -0.975,
+            0.255,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_plate_leg1",
+          "center": [
+            -0.829,
+            0.21,
+            0.899
+          ],
+          "size": [
+            0.012,
+            0.13,
+            0.074
+          ]
+        },
+        {
+          "name": "lever_rail1",
+          "center": [
+            -0.825,
+            0.255,
+            1.109
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.27
+          ]
+        },
+        {
+          "name": "lever_bin_back",
+          "center": [
+            -0.9,
+            0.28,
+            0.895
+          ],
+          "size": [
+            0.13,
+            0.006,
+            0.066
+          ]
+        },
+        {
+          "name": "lever_pusher",
+          "center": [
+            -0.9,
+            0.21,
+            1.064
+          ],
+          "size": [
+            0.11,
+            0.11,
+            0.025
+          ]
+        },
+        {
+          "name": "lever_pusher_stem",
+          "center": [
+            -0.9,
+            0.21,
+            1.107
+          ],
+          "size": [
+            0.02,
+            0.02,
+            0.06
+          ]
+        },
+        {
+          "name": "lever_pusher_knob",
+          "center": [
+            -0.9,
+            0.21,
+            1.152
+          ],
+          "size": [
+            0.03,
+            0.05,
+            0.03
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_bottom",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall6",
+          "gap_mm": 0.2
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall7",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall8",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall9",
+          "gap_mm": -0.0
+        },
+        {
+          "box": "lever_base_plate",
+          "fixture": "stored_bowl_tomato_bowl_outer_wall10",
+          "gap_mm": 0.2
+        }
+      ],
+      "off_counter": [],
+      "flagged": 30,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "cbox_CBX_-0.86_0.17",
+      "item": "cold_box",
+      "desc": "cold box along x at the set-back work spot",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -0.86,
+            0.17,
+            0.9
+          ],
+          "size": [
+            0.3,
+            0.08000000000000002,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -0.86,
+            0.132,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -0.86,
+            0.208,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -0.86,
+            0.17,
+            1.06
+          ],
+          "size": [
+            0.012000000000000005,
+            0.088,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "tub",
+          "fixture": "sink_left",
+          "gap_mm": 0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 30,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "cbox_CBX_-0.86_0.19",
+      "item": "cold_box",
+      "desc": "cold box along x at the set-back work spot",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -0.86,
+            0.19,
+            0.9
+          ],
+          "size": [
+            0.3,
+            0.08000000000000002,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -0.86,
+            0.152,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -0.86,
+            0.228,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -0.86,
+            0.19,
+            1.06
+          ],
+          "size": [
+            0.012000000000000005,
+            0.088,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "tub",
+          "fixture": "sink_left",
+          "gap_mm": 0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 30,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "cbox_CBX_-0.86_0.21",
+      "item": "cold_box",
+      "desc": "cold box along x at the set-back work spot",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -0.86,
+            0.21,
+            0.9
+          ],
+          "size": [
+            0.3,
+            0.08000000000000002,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -0.86,
+            0.172,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -0.86,
+            0.248,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -0.86,
+            0.21,
+            1.06
+          ],
+          "size": [
+            0.012000000000000005,
+            0.088,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "tub",
+          "fixture": "sink_left",
+          "gap_mm": 0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 30,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 1,
+        "faucet_open": 3
+      },
+      "flagged_segments": [
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "spatula_fetch__2-3",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__join_7"
+      ]
+    },
+    {
+      "name": "cbox_CBX_-0.86_0.15",
+      "item": "cold_box",
+      "desc": "cold box along x at the set-back work spot",
+      "boxes": [
+        {
+          "name": "tub",
+          "center": [
+            -0.86,
+            0.15,
+            0.9
+          ],
+          "size": [
+            0.3,
+            0.08000000000000002,
+            0.1
+          ]
+        },
+        {
+          "name": "post-1",
+          "center": [
+            -0.86,
+            0.112,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "post+1",
+          "center": [
+            -0.86,
+            0.188,
+            1.005
+          ],
+          "size": [
+            0.012,
+            0.012,
+            0.11
+          ]
+        },
+        {
+          "name": "bar",
+          "center": [
+            -0.86,
+            0.15,
+            1.06
+          ],
+          "size": [
+            0.012000000000000005,
+            0.088,
+            0.012
+          ]
+        }
+      ],
+      "static_overlaps": [
+        {
+          "box": "tub",
+          "fixture": "sink_left",
+          "gap_mm": 0.0
+        }
+      ],
+      "off_counter": [],
+      "flagged": 30,
+      "of": 106,
+      "by_action": {
+        "hub_edge": 8,
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 1,
+        "faucet_open": 3
       },
       "flagged_segments": [
         "faucet_open__0-1",
@@ -5520,9 +7833,9 @@
       "flagged": 27,
       "of": 106,
       "by_action": {
+        "hub_edge": 6,
         "wok_plate_rinse": 9,
         "wok_plate2_rinse": 9,
-        "hub_edge": 6,
         "spatula_fetch": 3
       },
       "flagged_segments": [
@@ -5720,8 +8033,8 @@
         "hub_edge": 8,
         "wok_plate_rinse": 9,
         "wok_plate2_rinse": 9,
-        "faucet_open": 3,
-        "spatula_fetch": 1
+        "spatula_fetch": 1,
+        "faucet_open": 3
       },
       "flagged_segments": [
         "faucet_open__0-1",
@@ -5933,9 +8246,9 @@
       "flagged": 20,
       "of": 106,
       "by_action": {
+        "wok_plate2_rinse": 7,
         "hub_edge": 5,
         "wok_plate_rinse": 7,
-        "wok_plate2_rinse": 7,
         "spatula_fetch": 1
       },
       "flagged_segments": [
@@ -6128,10 +8441,10 @@
       "flagged": 28,
       "of": 106,
       "by_action": {
-        "spatula_fetch": 4,
+        "hub_edge": 4,
         "wok_plate_rinse": 9,
         "wok_plate2_rinse": 9,
-        "hub_edge": 4,
+        "spatula_fetch": 4,
         "faucet_open": 2
       },
       "flagged_segments": [
@@ -6352,10 +8665,10 @@
       "flagged": 25,
       "of": 106,
       "by_action": {
-        "spatula_fetch": 4,
+        "hub_edge": 3,
         "wok_plate_rinse": 9,
         "wok_plate2_rinse": 9,
-        "hub_edge": 3
+        "spatula_fetch": 4
       },
       "flagged_segments": [
         "hub_edge__LEV_C__H_SPAT",
@@ -6543,8 +8856,8 @@
       "of": 106,
       "by_action": {
         "hub_edge": 11,
-        "wok_plate_rinse": 14,
         "wok_plate2_rinse": 14,
+        "wok_plate_rinse": 14,
         "faucet_open": 3
       },
       "flagged_segments": [
@@ -6745,8 +9058,8 @@
       "of": 106,
       "by_action": {
         "hub_edge": 11,
-        "wok_plate_rinse": 14,
         "wok_plate2_rinse": 14,
+        "wok_plate_rinse": 14,
         "faucet_open": 3
       },
       "flagged_segments": [
@@ -7162,9 +9475,9 @@
       "of": 106,
       "by_action": {
         "hub_edge": 11,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 3,
         "wok_plate2_rinse": 14,
+        "spider_pot_to_plate": 3,
+        "wok_plate_rinse": 14,
         "faucet_open": 2
       },
       "flagged_segments": [
@@ -7377,9 +9690,9 @@
       "of": 106,
       "by_action": {
         "hub_edge": 11,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 3,
         "wok_plate2_rinse": 14,
+        "spider_pot_to_plate": 3,
+        "wok_plate_rinse": 14,
         "faucet_open": 2
       },
       "flagged_segments": [
@@ -7813,10 +10126,10 @@
       "flagged": 41,
       "of": 106,
       "by_action": {
+        "wok_plate2_rinse": 14,
         "hub_edge": 7,
-        "wok_plate_rinse": 14,
         "spider_pot_to_plate": 6,
-        "wok_plate2_rinse": 14
+        "wok_plate_rinse": 14
       },
       "flagged_segments": [
         "hub_edge__LEV_C__H_SINK",
@@ -8024,10 +10337,10 @@
       "flagged": 39,
       "of": 106,
       "by_action": {
+        "wok_plate2_rinse": 14,
         "hub_edge": 7,
-        "wok_plate_rinse": 14,
         "spider_pot_to_plate": 4,
-        "wok_plate2_rinse": 14
+        "wok_plate_rinse": 14
       },
       "flagged_segments": [
         "hub_edge__LEV_C__H_SINK",
@@ -8235,8 +10548,8 @@
       "by_action": {
         "hub_edge": 7,
         "wok_plate2_rinse": 14,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 4
+        "spider_pot_to_plate": 4,
+        "wok_plate_rinse": 14
       },
       "flagged_segments": [
         "hub_edge__LEV_C__H_SINK",
@@ -8440,11 +10753,11 @@
       "of": 106,
       "by_action": {
         "hub_edge": 16,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
-        "faucet_open": 3,
-        "spatula_fetch": 1
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
+        "spatula_fetch": 1,
+        "faucet_open": 3
       },
       "flagged_segments": [
         "faucet_open__0-1",
@@ -8661,11 +10974,11 @@
       "of": 106,
       "by_action": {
         "hub_edge": 16,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 2,
         "wok_plate2_rinse": 14,
-        "faucet_open": 3,
-        "spatula_fetch": 1
+        "spider_pot_to_plate": 2,
+        "wok_plate_rinse": 14,
+        "spatula_fetch": 1,
+        "faucet_open": 3
       },
       "flagged_segments": [
         "faucet_open__0-1",
@@ -8873,8 +11186,8 @@
       "of": 106,
       "by_action": {
         "hub_edge": 12,
-        "wok_plate_rinse": 14,
         "wok_plate2_rinse": 14,
+        "wok_plate_rinse": 14,
         "faucet_open": 3
       },
       "flagged_segments": [
@@ -9087,10 +11400,10 @@
       "flagged": 50,
       "of": 106,
       "by_action": {
-        "hub_edge": 15,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 15,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 1
       },
       "flagged_segments": [
@@ -9308,10 +11621,10 @@
       "flagged": 51,
       "of": 106,
       "by_action": {
-        "hub_edge": 15,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 15,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 1,
         "faucet_open": 1
       },
@@ -9526,10 +11839,10 @@
       "flagged": 46,
       "of": 106,
       "by_action": {
-        "hub_edge": 15,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 2,
         "wok_plate2_rinse": 14,
+        "hub_edge": 15,
+        "spider_pot_to_plate": 2,
+        "wok_plate_rinse": 14,
         "faucet_open": 1
       },
       "flagged_segments": [
@@ -9760,10 +12073,10 @@
       "flagged": 47,
       "of": 106,
       "by_action": {
-        "hub_edge": 12,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 12,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 1
       },
       "flagged_segments": [
@@ -9993,10 +12306,10 @@
       "flagged": 47,
       "of": 106,
       "by_action": {
-        "hub_edge": 12,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 12,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 1
       },
       "flagged_segments": [
@@ -10216,10 +12529,10 @@
       "flagged": 44,
       "of": 106,
       "by_action": {
+        "wok_plate2_rinse": 14,
         "hub_edge": 12,
-        "wok_plate_rinse": 14,
         "spider_pot_to_plate": 4,
-        "wok_plate2_rinse": 14
+        "wok_plate_rinse": 14
       },
       "flagged_segments": [
         "hub_edge__H_SINK__H_WOK",
@@ -10437,10 +12750,10 @@
       "flagged": 46,
       "of": 106,
       "by_action": {
-        "hub_edge": 10,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 10,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 2
       },
       "flagged_segments": [
@@ -10659,10 +12972,10 @@
       "flagged": 46,
       "of": 106,
       "by_action": {
-        "hub_edge": 10,
-        "wok_plate_rinse": 14,
-        "spider_pot_to_plate": 6,
         "wok_plate2_rinse": 14,
+        "hub_edge": 10,
+        "spider_pot_to_plate": 6,
+        "wok_plate_rinse": 14,
         "spatula_fetch": 2
       },
       "flagged_segments": [
@@ -10876,10 +13189,10 @@
       "flagged": 43,
       "of": 106,
       "by_action": {
+        "wok_plate2_rinse": 14,
         "hub_edge": 9,
-        "wok_plate_rinse": 14,
         "spider_pot_to_plate": 6,
-        "wok_plate2_rinse": 14
+        "wok_plate_rinse": 14
       },
       "flagged_segments": [
         "hub_edge__H_WOK__H_POT",
@@ -11085,8 +13398,8 @@
       "of": 106,
       "by_action": {
         "spatula_fetch": 3,
-        "wok_plate_rinse": 2,
-        "wok_plate2_rinse": 2
+        "wok_plate2_rinse": 2,
+        "wok_plate_rinse": 2
       },
       "flagged_segments": [
         "spatula_fetch__0-1",
@@ -12066,8 +14379,8 @@
       "flagged": 10,
       "of": 106,
       "by_action": {
-        "spatula_fetch": 4,
-        "hub_edge": 6
+        "hub_edge": 6,
+        "spatula_fetch": 4
       },
       "flagged_segments": [
         "hub_edge__H_SPAT__H_SINK",

@@ -40,7 +40,10 @@ ARMS={
  'ur5e_enc':dict(name='Universal Robots UR5e, collision geoms enclosing the Menagerie visual meshes (R19 #12)',speeds_degps=[180.]*6,payload_kg=5.,com_radius_m=.35,
   speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc.json'),
  'ur5e_enc2':dict(name='Universal Robots UR5e, convex collision pieces enclosing the Menagerie visual meshes (R19 #12, tighter)',speeds_degps=[180.]*6,payload_kg=5.,com_radius_m=.35,
-  speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc2.json')}
+  speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc2.json'),
+ 'ur5e_enc2_pgc':dict(name='ur5e_enc2 with the PGC-140-50 housing as drawn by DH (round body, R19 #12) instead of the 75 mm box',speeds_degps=[180.]*6,payload_kg=5.,com_radius_m=.35,
+  speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc2.json',oem='pgc_drawing',
+  oem_source='M: DH PGC-140 Short Manual v2.1, Fig. 1.3(a) (Dimension drawing): Ø75 body, 98 mm body height, 53 mm across the jaw plane over the top 46 mm, 73 mm finger span, 36.4 mm, 138.5 mm overall; https://uploads.unchainedrobotics.de/media/file_upload/PGC-140-Short-Manual_v2.1_e46a3c6b.pdf')}
 def _cli():
  for a in sys.argv[1:]:
   if a.startswith('ARM='):return a[4:]

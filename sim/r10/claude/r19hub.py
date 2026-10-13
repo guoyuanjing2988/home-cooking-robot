@@ -66,7 +66,8 @@ import kitchen15 as K15,kitchen16 as K,kitchen17 as K17
 CMD=sys.argv[1] if len(sys.argv)>1 else 'commands'
 KV=dict(a.split('=',1) for a in sys.argv[2:])
 import arms;ARM=arms.current()   # R19 arm option (ARM=<id>; default ur5e: everything as before)
-OUT='results/r19/hub'+arms.tag(ARM)
+OUT='results/r19/hub'+('_py'+KV['PY'] if 'PY' in KV else '')+arms.tag(ARM)   # R19 #12: PY=<y> = the plating spot (and the waiting dish) at this y, default unchanged
+if 'PY' in KV:K15.PLATE['c'][1]=float(KV['PY'])
 K.set_design(pot_h=.12,rack=.04,lid_a=0.,car_a=45.,rack_ry=90.)   # as r17chain.py DESIGN
 K.TOOL_XY['spatula']=(-1.15,.30);K.SPAT_ELEV=8.;K.SPAT_ROLL=180.   # R18b: spatula flat left of the sink, flipped
 BASE=dict(r14=True,present=[],r15=True,r16=True,r17=True,r15_drum_taken=True,r16_tools={'ladle':None})
@@ -78,7 +79,7 @@ JAW=.025;TWO_PI=2*np.pi
 ACT={'wok':['results/r17/chain_wok_s-1_final.json','results/r17/chain_wok_s-1_r18plate2b.json'],
  'lever':['results/r17/chain_lever_s+1_final.json'],'lid':['results/r17/chain_lid_s-1_final.json'],
  'spider':['results/r17/chain_spider_s+1_final.json'],'spatula':['results/r17/chain_spatula_s-1_r18roll-1.15_.30.json']}
-ACT={a:[f[:-5]+arms.tag(ARM)+'.json' for f in fs] for a,fs in ACT.items()}   # R19: the chains re-run on the arm option (r17chain.py ... ARM=<id> -> *_<id>.json)
+ACT={a:[f[:-5]+(('_py'+KV['PY'] if 'PY' in KV else '') if a=='wok' else '')+arms.tag(ARM)+'.json' for f in fs] for a,fs in ACT.items()}   # R19 #12: with PY the wok chains of that layout (r19enc_adopt.py PY=)   # R19: the chains re-run on the arm option (r17chain.py ... ARM=<id> -> *_<id>.json)
 ENDS={'WOK':('wok',0),'LEV_C':('lever',0),'LEV_O':('lever',1),'LID_POT':('lid',0),'LID_RACK':('lid',1),'SPIDER':('spider',0),'SPAT':('spatula',0)}
 NOSHIFT=set(KV.get('NOSHIFT','').split(','))-{''}   # actions kept at their stored labels (the spatula chain ends in the R15 stir cycle, whose states
 # are not stored: it is relabelled by the same 2pi multiples, valid while its joints stay in range; flagged in R19_HUB.md)
@@ -369,7 +370,7 @@ def cmd_commands():
   for a,b in edge_list(ph):
    if ph==2 and (a,b) in edge_list(1):continue
    f=f'{OUT}/edge_{a}__{b}.json';ok=os.path.exists(f) and J(f).get('ok')
-   print(('# done: ' if ok else '')+f'{py} r19hub.py edge A={a} B={b} PLAN_S=120'+('' if ARM=='ur5e' else f' ARM={ARM}'))
+   print(('# done: ' if ok else '')+f'{py} r19hub.py edge A={a} B={b} PLAN_S=120'+('' if ARM=='ur5e' else f' ARM={ARM}')+(f" PY={KV['PY']}" if 'PY' in KV else ''))
   if ph==1:
    for e,h in FALLBACK.items():print(f'# only if edge_{e}__{h}.json is not ok: {py} r19hub.py edge A={e} B=F_{e} PLAN_S=120 ; {py} r19hub.py edge A=F_{e} B={h}')
  print(f'{py} r19hub.py graph')

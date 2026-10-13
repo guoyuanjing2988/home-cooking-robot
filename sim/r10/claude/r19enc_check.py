@@ -11,7 +11,8 @@ Commands (each < 5 min with 24 workers, except as noted in R19_UR5E_ENC.md):
  python r19enc_check.py recheck SET=<set> [WORKERS=24] [EDGES=A__B,C__D] [NEW=ur5e_enc|ur5e_enc2] [SUFFIX=_<arm>]
    (NEW = the enclosing arm checked next to ur5e, default ur5e_enc -> results/r19/enc; ur5e_enc2 -> results/r19/enc2;
     every command below takes NEW=; a chain with "ok": false or no play is skipped, not checked)
-   SET = wok | wok_plate2b | lever | lid | spider | spatula   (results/r17/chain_*.json; SUFFIX=_ur5e_enc re-checks the
+   SET = wok | wok_plate2b | lever | lid | spider | spatula   (results/r17/chain_*.json; PY=<y> moves the plating spot and the
+         plate-2 dish for the check -> <set>_py<y>.json; SUFFIX=_ur5e_enc re-checks the
          re-planned chain_*_ur5e_enc.json instead, -> <set>_ur5e_enc.json)
          stir                                                (results/r19/stir/stirwalk2_h_scrape_dice_r17.json)
          hub                                                 (results/r19/hub/edge_*.json; EDGES= a subset -> hub_<i>.json lanes)
@@ -71,9 +72,11 @@ def ctx(key,arm):
   if r.get('wok_tilt'):K17.set_wok_tilt(r['wok_tilt'])
   for k,v in r.get('tool_xy',{}).items():K.TOOL_XY[k]=tuple(v)
   K.TOOL_XY['spatula']=(-1.15,.30);K.SPAT_ELEV=8.;K.SPAT_YAW=0.;K.SPAT_ROLL=180.
-  BASE=dict(r14=True,present=[],r15=True,r16=True,r17=True,r16_lid='rack',r15_drum_taken=True)
-  ex={'r17_plate2':[.43,K15.PLATE['c'][1],K15.PLATE['c'][2]]} if plate2 else {}
-  cfg=chain.chain_cfg('SD',**{**BASE,**r.get('scene',{}),**ex,'r16_tools':{'ladle':None},**K17.held_cfg(r['obj'],r['grasp_sense'])})
+  BASE=dict(r14=True,present=[],r15=True,r16=True,r17=True,r16_lid='rack',r15_drum_taken=True);scene=dict(r.get('scene',{}))
+  py=float(KV['PY']) if 'PY' in KV else r.get('plate_y')   # PY=: re-check the stored path with the plating spot (and the plate-2 dish) moved to this y
+  if 'PY' in KV and r['obj']=='wok':pc=list(scene.get('r15_plate_c',K15.PLATE['c']));pc[1]=py;scene['r15_plate_c']=[float(v) for v in pc]
+  ex={'r17_plate2':[.43,K15.PLATE['c'][1] if py is None else py,K15.PLATE['c'][2]]} if plate2 else {}   # plate_y: r17chain PY
+  cfg=chain.chain_cfg('SD',**{**BASE,**scene,**ex,'r16_tools':{'ladle':None},**K17.held_cfg(r['obj'],r['grasp_sense'])})
   tree,meta=build(cfg,None);meshheld(tree);c['ch']=Checker(tree,meta)
  elif key=='stir':   # r19stir_save.py model(sign) with SCENE=r17
   import xml.etree.ElementTree as E
@@ -135,7 +138,7 @@ def _work(a):
 def recheck():
  import multiprocessing as mp
  key=KV['SET'];WK=int(KV.get('WORKERS',24));t0=time.monotonic();os.makedirs(OUT,exist_ok=True)
- lane=KV.get('LANE');fn=f"{OUT}/{key}{KV.get('SUFFIX','')}{'_'+lane if lane else ''}.json"
+ lane=KV.get('LANE');fn=f"{OUT}/{key}{KV.get('SUFFIX','')}{'_py'+KV['PY'] if 'PY' in KV else ''}{'_'+lane if lane else ''}.json"
  P=states(key)
  if not P:
   json.dump(dict(set=key+KV.get('SUFFIX',''),skipped='chain not ok or no play states: nothing to re-check',paths={}),open(fn,'w'));print(key,'skipped: chain not ok / empty play ->',fn);return
@@ -148,7 +151,7 @@ def recheck():
  pool=mp.Pool(WK);res=pool.map(_work,[(key,arm,Q) for name,arm,i,Q in jobs],chunksize=1);pool.close()
  per={n:{a:[] for a in ARMS_} for n in P}
  for (name,arm,i,Q),r in zip(jobs,res):per[name][arm]+=r
- out=dict(set=key+KV.get('SUFFIX',''),method=__doc__,paths={})
+ out=dict(set=key+KV.get('SUFFIX',''),**({'plate_y':float(KV['PY'])} if 'PY' in KV else {}),method=__doc__,paths={})
  for name in P:
   out['paths'][name]=dict(**{k:v for k,v in meta[name].items() if k!='src'},**{arm:summarize(per[name][arm],meta[name]['src']) for arm in ARMS_},
    per_state={arm:[dict(env=min([v[0] for k,v in s['cl'].items() if k!='self'],default=None),self=s['cl'].get('self',[None])[0],hits=s['hits'],**({'plume':s['plume'][0]} if 'plume' in s else {})) for s in per[name][arm]] for arm in ARMS_})
