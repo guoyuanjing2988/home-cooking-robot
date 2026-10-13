@@ -1,0 +1,584 @@
+{
+ "arm": "ur5e_enc2_pgc",
+ "lib": "results/r19/stir/lib_stir_cycle_ur5e_enc2_pgc_short01_u06_j8000.json",
+ "law": {
+  "W": 0.1,
+  "cycle_s": 14.0309,
+  "period_per_stroke_s": 2.8062,
+  "segment_s": [
+   2.182,
+   0.496,
+   1.989,
+   0.515,
+   1.966,
+   0.629,
+   2.142,
+   0.751,
+   2.634,
+   0.726
+  ],
+  "peak_v_degps": [
+   69.7,
+   134.5,
+   75.2,
+   95.7,
+   75.0,
+   111.3
+  ],
+  "peak_a_degps2": [
+   290.0,
+   394.0,
+   332.0,
+   392.0,
+   311.0,
+   396.0
+  ],
+  "peak_j_degps3": [
+   7185.0,
+   7541.0,
+   7203.0,
+   7556.0,
+   5676.0,
+   7383.0
+  ],
+  "peak_j_geometric_degps3": [
+   6219.0,
+   7706.0,
+   7012.0,
+   7314.0,
+   4821.0,
+   7006.0
+  ],
+  "worst_ratio": {
+   "v": 0.7472,
+   "a": 0.9912,
+   "cap": 0.9996,
+   "j": 0.9445
+  },
+  "converged": true,
+  "iters": 8,
+  "kappa_min": 0.28937,
+  "sdot_at_cycle_ends": [
+   0.4611,
+   0.4611
+  ],
+  "three_cycles_from_rest_s": 42.454,
+  "works_median_sdot": 0.927,
+  "works_min_sdot": 0.375,
+  "works_share_sdot_ge_095": 0.443,
+  "J_degps3": 8000.0,
+  "jerk_margin": 0.95,
+  "W_s": 0.1,
+  "A_degps2": 400.0,
+  "elapsed_s": 6
+ },
+ "certificate": {
+  "arm": "ur5e_enc2_pgc",
+  "cache": "results/r19/stir/spill/cycle_ur5e_enc2_pgc_short01_u06/cert_new.pkl, results/r19/stir/spill/cycle_ur5e_enc2_pgc_short01_u06/cert_old.pkl (per-state results)",
+  "checker": "checker.Checker.check(full=True): MuJoCo contacts + GJK lower-bound certificate (distance.Bounds), 10 mm robot-environment, 5 mm gripper/held-environment, 0 mm self, joint ranges; R11 mesh rule for the held boxes (r19enc_check.meshheld); hit pairs re-measured with the exact convex bound (r19enc_check.one)",
+  "plume_rule": "every robot geom except R_gripper_spatula*, R_cart*, R_dock* >= 0 mm from a cylinder of radius 0.20 m about the wok axis, rim .. 1.25 m (r15reach.py / r19stir_save.py), while the heat is on",
+  "spacing": "consecutive checked states <= 4 mm apart by point_bound.segment_bound (r19smooth.FastBound, sub-steps <= 0.5 mm)",
+  "scene": "r19stir_save.py SCENE=r17 (R17 kitchen: lid rack, spider rest at (1.52, .36), faucet), spatula held 0.45 m, jaw sense -1, cart at x 0.550",
+  "scene_model_md5": "da5f08173ce059213dd8462081f90f72",
+  "geometry_md5": "f5667acf12c2dc5a8ea5fdf69db3959e",
+  "states_md5": "a098653bf7d59fed9539b5d6a980c968",
+  "ok": true,
+  "states": 4547,
+  "max_step_bound_mm": 4.0,
+  "hit_states": 0,
+  "out_of_range_states": 0,
+  "min_env_reserve_mm": 2.0,
+  "min_env_pair": [
+   "r15_wok_t1_1",
+   "R_gripper_spatula_blade2"
+  ],
+  "min_self_reserve_mm": 2.0,
+  "min_self_pair": [
+   "R_geom_enc2_w1_1",
+   "R_geom_enc2_w3_1"
+  ],
+  "min_reserve_by_category": {
+   "arm_arm_or_frame": {
+    "mm": 124.77,
+    "pair": [
+     "R_cart_beam",
+     "R_geom_enc2_ua_5"
+    ]
+   },
+   "held_gripper_environment": {
+    "mm": 2.0,
+    "pair": [
+     "r15_wok_t1_1",
+     "R_gripper_spatula_blade2"
+    ]
+   },
+   "robot_environment": {
+    "mm": 21.64,
+    "pair": [
+     "r14_hood",
+     "R_geom_enc2_fa_1"
+    ]
+   },
+   "self": {
+    "mm": 2.0,
+    "pair": [
+     "R_geom_enc2_w1_1",
+     "R_geom_enc2_w3_1"
+    ]
+   }
+  },
+  "min_plume_mm": 29.04,
+  "min_plume_geom": "R_finger_plus",
+  "plume_violations": 0,
+  "works_reach": "results/r19/stir/reach/reach_stir_h_scrape_dice_i{i:03d}_g0.45_cx.55_r19_k48_ur5e_enc2_pgc.json",
+  "elapsed_s_this_run": null,
+  "date": "2026-10-14",
+  "reused_segments_from": "results/r19/stir/lib_stir_cycle_ur5e_enc2_pgc.json",
+  "current_layout_recheck": {
+   "file": "results/r19/stir/spill/cycle_ur5e_enc2_pgc_short01_u06/std_recheck.json",
+   "ok": true,
+   "states": 4547,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "min_env_reserve_mm": 2.0,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": 29.04,
+   "plume_violations": 0,
+   "relabel_2pi": [
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ },
+ "segments": [
+  {
+   "name": "work0",
+   "states": 592,
+   "max_step_bound_mm": 3.999,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 124.77,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t1_1",
+      "R_gripper_spatula_blade2"
+     ]
+    },
+    "robot_environment": {
+     "mm": 36.56,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "R_geom_enc2_w3_1"
+     ]
+    }
+   },
+   "min_plume_mm": 63.32,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return0->1",
+   "states": 245,
+   "max_step_bound_mm": 3.999,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 126.21,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t4_10",
+      "R_gripper_spatula_blade1"
+     ]
+    },
+    "robot_environment": {
+     "mm": 59.66,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.1,
+     "pair": [
+      "R_geom_enc2_w1_0",
+      "R_geom_enc2_w3_1"
+     ]
+    }
+   },
+   "min_plume_mm": 94.03,
+   "min_plume_geom": "R_base_plate",
+   "plume_violations": 0
+  },
+  {
+   "name": "work1",
+   "states": 430,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 128.09,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t3_10",
+      "R_gripper_spatula_blade2"
+     ]
+    },
+    "robot_environment": {
+     "mm": 46.64,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.06,
+     "pair": [
+      "R_geom_enc2_w1_0",
+      "R_geom_enc2_w3_1"
+     ]
+    }
+   },
+   "min_plume_mm": 63.3,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return1->2",
+   "states": 301,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 127.98,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t3_9",
+      "R_gripper_spatula_blade2"
+     ]
+    },
+    "robot_environment": {
+     "mm": 82.03,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 9.19,
+     "pair": [
+      "R_geom_enc2_fa_3",
+      "R_geom_enc2_w3_0"
+     ]
+    }
+   },
+   "min_plume_mm": 94.03,
+   "min_plume_geom": "R_base_plate",
+   "plume_violations": 0
+  },
+  {
+   "name": "work2",
+   "states": 424,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 127.25,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t1_4",
+      "R_gripper_spatula_blade0"
+     ]
+    },
+    "robot_environment": {
+     "mm": 43.48,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.25,
+     "pair": [
+      "R_geom_enc2_sh_1",
+      "R_geom_enc2_fa_1"
+     ]
+    }
+   },
+   "min_plume_mm": 29.04,
+   "min_plume_geom": "R_finger_plus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return2->3",
+   "states": 226,
+   "max_step_bound_mm": 3.999,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 127.43,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.03,
+     "pair": [
+      "r15_wok_t2_11",
+      "R_gripper_spatula_blade2"
+     ]
+    },
+    "robot_environment": {
+     "mm": 71.17,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.01,
+     "pair": [
+      "R_geom_enc2_w1_0",
+      "R_geom_enc2_w3_0"
+     ]
+    }
+   },
+   "min_plume_mm": 74.96,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "work3",
+   "states": 589,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 127.77,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.01,
+     "pair": [
+      "r15_camera",
+      "R_gripper_spatula_handle"
+     ]
+    },
+    "robot_environment": {
+     "mm": 44.64,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "R_geom_enc2_w3_0"
+     ]
+    }
+   },
+   "min_plume_mm": 31.23,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return3->4",
+   "states": 510,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 127.62,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t4_8",
+      "R_gripper_spatula_handle"
+     ]
+    },
+    "robot_environment": {
+     "mm": 59.78,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.01,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "R_geom_enc2_w3_1"
+     ]
+    }
+   },
+   "min_plume_mm": 73.5,
+   "min_plume_geom": "R_finger_plus",
+   "plume_violations": 0
+  },
+  {
+   "name": "work4",
+   "states": 824,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 125.36,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t3_0",
+      "R_gripper_spatula_blade0"
+     ]
+    },
+    "robot_environment": {
+     "mm": 21.64,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "R_geom_enc2_w1_1"
+     ]
+    }
+   },
+   "min_plume_mm": 30.11,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return4->0",
+   "states": 406,
+   "max_step_bound_mm": 3.999,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 126.43,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.02,
+     "pair": [
+      "r15_wok_t4_8",
+      "R_gripper_spatula_blade2"
+     ]
+    },
+    "robot_environment": {
+     "mm": 21.64,
+     "pair": [
+      "r14_hood",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "self": {
+     "mm": 2.5,
+     "pair": [
+      "R_geom_enc2_sh_0",
+      "R_geom_enc2_fa_1"
+     ]
+    }
+   },
+   "min_plume_mm": 73.7,
+   "min_plume_geom": "R_finger_plus",
+   "plume_violations": 0
+  }
+ ],
+ "pick": {
+  "return1->2": 0,
+  "return0->1": 0,
+  "return4->0": 0
+ }
+}

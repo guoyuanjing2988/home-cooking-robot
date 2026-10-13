@@ -1,0 +1,584 @@
+{
+ "arm": "fr5_j6_pgc_sp20",
+ "lib": "results/r19/stir/lib_stir_cycle_fr5_j6_pgc_sp20_short01_u06_j8000.json",
+ "law": {
+  "W": 0.2,
+  "cycle_s": 13.223,
+  "period_per_stroke_s": 2.6446,
+  "segment_s": [
+   2.24,
+   0.494,
+   2.024,
+   0.45,
+   2.091,
+   0.573,
+   2.046,
+   0.465,
+   2.245,
+   0.595
+  ],
+  "peak_v_degps": [
+   71.7,
+   162.7,
+   72.3,
+   95.1,
+   78.4,
+   127.9
+  ],
+  "peak_a_degps2": [
+   296.0,
+   687.0,
+   425.0,
+   694.0,
+   426.0,
+   550.0
+  ],
+  "peak_j_degps3": [
+   7447.0,
+   7508.0,
+   7386.0,
+   7439.0,
+   7554.0,
+   7452.0
+  ],
+  "peak_j_geometric_degps3": [
+   6955.0,
+   7428.0,
+   7211.0,
+   7458.0,
+   7486.0,
+   7945.0
+  ],
+  "worst_ratio": {
+   "v": 0.9039,
+   "a": 0.8672,
+   "cap": 0.98,
+   "j": 0.9442
+  },
+  "converged": true,
+  "iters": 4,
+  "kappa_min": 0.35139,
+  "sdot_at_cycle_ends": [
+   0.3425,
+   0.3425
+  ],
+  "three_cycles_from_rest_s": 40.094,
+  "works_median_sdot": 0.894,
+  "works_min_sdot": 0.343,
+  "works_share_sdot_ge_095": 0.384,
+  "J_degps3": 8000.0,
+  "jerk_margin": 0.95,
+  "W_s": 0.2,
+  "A_degps2": 800.0,
+  "elapsed_s": 4
+ },
+ "certificate": {
+  "arm": "fr5_j6_pgc_sp20",
+  "cache": "results/r19/stir/spill/cycle_fr5_j6_pgc_sp20_short01_u06/cert_new.pkl, results/r19/stir/spill/cycle_fr5_j6_pgc_sp20_short01_u06/cert_old.pkl (per-state results)",
+  "checker": "checker.Checker.check(full=True): MuJoCo contacts + GJK lower-bound certificate (distance.Bounds), 10 mm robot-environment, 5 mm gripper/held-environment, 0 mm self, joint ranges; R11 mesh rule for the held boxes (r19enc_check.meshheld); hit pairs re-measured with the exact convex bound (r19enc_check.one)",
+  "plume_rule": "every robot geom except R_gripper_spatula*, R_cart*, R_dock* >= 0 mm from a cylinder of radius 0.20 m about the wok axis, rim .. 1.25 m (r15reach.py / r19stir_save.py), while the heat is on",
+  "spacing": "consecutive checked states <= 4 mm apart by point_bound.segment_bound (r19smooth.FastBound, sub-steps <= 0.5 mm)",
+  "scene": "r19stir_save.py SCENE=r17 (R17 kitchen: lid rack, spider rest at (1.52, .36), faucet), spatula held 0.45 m, jaw sense -1, cart at x 0.550",
+  "scene_model_md5": "dce91b217bdc879ee1674dda8a8713a7",
+  "geometry_md5": "7f9ca29e9c516e85cbe6e0baa18d8d45",
+  "states_md5": "9dd3977738fa8c89458ca4508fb3d99e",
+  "ok": true,
+  "states": 4039,
+  "max_step_bound_mm": 4.0,
+  "hit_states": 0,
+  "out_of_range_states": 0,
+  "min_env_reserve_mm": 2.0,
+  "min_env_pair": [
+   "r15_wok_t3_6",
+   "R_gripper_spatula_blade4"
+  ],
+  "min_self_reserve_mm": 2.0,
+  "min_self_pair": [
+   "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+   "R_geom_fr5_j6_pgc_sp20_wrist2_neck"
+  ],
+  "min_reserve_by_category": {
+   "arm_arm_or_frame": {
+    "mm": 107.69,
+    "pair": [
+     "R_cart_beam",
+     "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+    ]
+   },
+   "held_gripper_environment": {
+    "mm": 2.0,
+    "pair": [
+     "r15_wok_t3_6",
+     "R_gripper_spatula_blade4"
+    ]
+   },
+   "robot_environment": {
+    "mm": 10.03,
+    "pair": [
+     "r07_closed_door_1_0",
+     "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+    ]
+   },
+   "self": {
+    "mm": 2.0,
+    "pair": [
+     "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+     "R_geom_fr5_j6_pgc_sp20_wrist2_neck"
+    ]
+   }
+  },
+  "min_plume_mm": 29.04,
+  "min_plume_geom": "R_finger_plus",
+  "plume_violations": 0,
+  "works_reach": "results/r19/stir/reach/reach_stir_h_scrape_dice_i{i:03d}_g0.45_cx.55_r19_k48_fr5_j6_pgc_sp20.json",
+  "elapsed_s_this_run": null,
+  "date": "2026-10-14",
+  "reused_segments_from": "results/r19/stir/lib_stir_cycle_fr5_j6_pgc_sp20.json",
+  "current_layout_recheck": {
+   "file": "results/r19/stir/spill/cycle_fr5_j6_pgc_sp20_short01_u06/std_recheck.json",
+   "ok": true,
+   "states": 4039,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "min_env_reserve_mm": 2.0,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": 29.04,
+   "plume_violations": 0,
+   "relabel_2pi": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1
+   ]
+  }
+ },
+ "segments": [
+  {
+   "name": "work0",
+   "states": 516,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 107.69,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t1_8",
+      "R_gripper_spatula_blade1"
+     ]
+    },
+    "robot_environment": {
+     "mm": 45.15,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+      "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     ]
+    }
+   },
+   "min_plume_mm": 63.31,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return0->1",
+   "states": 231,
+   "max_step_bound_mm": 3.999,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 109.25,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.02,
+     "pair": [
+      "r15_wok_t4_10",
+      "R_gripper_spatula_handle"
+     ]
+    },
+    "robot_environment": {
+     "mm": 51.16,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.02,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_wrist1_neck",
+      "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     ]
+    }
+   },
+   "min_plume_mm": 94.03,
+   "min_plume_geom": "R_base_plate",
+   "plume_violations": 0
+  },
+  {
+   "name": "work1",
+   "states": 402,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 111.84,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.01,
+     "pair": [
+      "r15_wok_t3_9",
+      "R_gripper_spatula_handle"
+     ]
+    },
+    "robot_environment": {
+     "mm": 74.44,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.07,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+      "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+     ]
+    }
+   },
+   "min_plume_mm": 63.29,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return1->2",
+   "states": 284,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 111.89,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.01,
+     "pair": [
+      "r15_wok_t3_9",
+      "R_gripper_spatula_blade2"
+     ]
+    },
+    "robot_environment": {
+     "mm": 68.59,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.02,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+      "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+     ]
+    }
+   },
+   "min_plume_mm": 94.03,
+   "min_plume_geom": "R_base_plate",
+   "plume_violations": 0
+  },
+  {
+   "name": "work2",
+   "states": 386,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 110.53,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t3_6",
+      "R_gripper_spatula_blade4"
+     ]
+    },
+    "robot_environment": {
+     "mm": 67.93,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+      "R_geom_fr5_j6_pgc_sp20_wrist2_neck"
+     ]
+    }
+   },
+   "min_plume_mm": 29.04,
+   "min_plume_geom": "R_finger_plus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return2->3",
+   "states": 213,
+   "max_step_bound_mm": 3.999,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 110.92,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.01,
+     "pair": [
+      "r15_wok_t3_11",
+      "R_gripper_spatula_blade2"
+     ]
+    },
+    "robot_environment": {
+     "mm": 49.39,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+      "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     ]
+    }
+   },
+   "min_plume_mm": 74.93,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "work3",
+   "states": 533,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 111.4,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.02,
+     "pair": [
+      "r15_wok_t3_0",
+      "R_gripper_spatula_blade2"
+     ]
+    },
+    "robot_environment": {
+     "mm": 51.95,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.04,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+      "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     ]
+    }
+   },
+   "min_plume_mm": 31.24,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return3->4",
+   "states": 444,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 110.46,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.03,
+     "pair": [
+      "r15_wok_t4_8",
+      "R_gripper_spatula_handle"
+     ]
+    },
+    "robot_environment": {
+     "mm": 10.03,
+     "pair": [
+      "r07_closed_door_1_0",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+      "R_geom_fr5_j6_pgc_sp20_wrist2_h_j6"
+     ]
+    }
+   },
+   "min_plume_mm": 74.73,
+   "min_plume_geom": "R_finger_plus",
+   "plume_violations": 0
+  },
+  {
+   "name": "work4",
+   "states": 690,
+   "max_step_bound_mm": 4.0,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 107.86,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t3_11",
+      "R_gripper_spatula_blade0"
+     ]
+    },
+    "robot_environment": {
+     "mm": 18.28,
+     "pair": [
+      "r07_closed_door_1_0",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_wrist1_h_j5",
+      "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     ]
+    }
+   },
+   "min_plume_mm": 29.04,
+   "min_plume_geom": "R_finger_minus",
+   "plume_violations": 0
+  },
+  {
+   "name": "return4->0",
+   "states": 340,
+   "max_step_bound_mm": 3.999,
+   "ok": true,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "hit_pairs": [],
+   "min_reserve_by_category": {
+    "arm_arm_or_frame": {
+     "mm": 108.9,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_sp20_upperarm_h_shoulder"
+     ]
+    },
+    "held_gripper_environment": {
+     "mm": 2.0,
+     "pair": [
+      "r15_wok_t3_8",
+      "R_gripper_spatula_blade1"
+     ]
+    },
+    "robot_environment": {
+     "mm": 16.19,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_elbow"
+     ]
+    },
+    "self": {
+     "mm": 2.0,
+     "pair": [
+      "R_geom_fr5_j6_pgc_sp20_forearm_h_wrist1",
+      "R_geom_fr5_j6_pgc_sp20_wrist2_neck"
+     ]
+    }
+   },
+   "min_plume_mm": 74.44,
+   "min_plume_geom": "R_finger_plus",
+   "plume_violations": 0
+  }
+ ],
+ "pick": {
+  "return4->0": 0,
+  "return1->2": 0,
+  "return0->1": 0
+ }
+}

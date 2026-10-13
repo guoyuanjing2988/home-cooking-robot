@@ -1,0 +1,135 @@
+{
+ "driver": "arm",
+ "arm": "ur5e_enc2_pgc",
+ "arm_law": {
+  "library": "results/r19/stir/lib_stir_cycle_ur5e_enc2_pgc_j8000.json",
+  "law_file": "results/r19/stir/retime/fromrest_ur5e_enc2_pgc_j8000.npz",
+  "period_s": 13.939,
+  "stored_period_s": 13.939025172225373,
+  "per_stroke_s": 2.7878,
+  "strokes_in_window": 4.49,
+  "works_vs_bench_max_mm": 15.568,
+  "works_vs_bench_max_deg": 2.487,
+  "samples": 1450,
+  "law": "jerk-limited periodic law (middle of 3 unrolled cycles), one period from t = 0 (s = 0) on a 2 ms grid; repeat with t + period, s + length; q(t) = q(s(t)); |d3q/dt3| <= 8000 deg/s^3 on the 2 ms grid",
+  "lift_removed_m": 0.01
+ },
+ "method": "scrape",
+ "food": "dice",
+ "n": 90,
+ "mass_g": 319,
+ "period_s": 2.7878,
+ "mu": 0.3,
+ "stir_s": 12.0,
+ "seed": 6,
+ "zones": [
+  {
+   "hot_r_m": 0.09,
+   "hot_frac": {
+    "mean": 0.456,
+    "cv": 0.63,
+    "min": 0.0,
+    "p10": 0.0,
+    "p90": 0.818,
+    "max": 0.9
+   },
+   "never_hot": 15,
+   "dwell_max_s": 2.91,
+   "dwell_p90_s": 1.942,
+   "cold_max_s": 12.01,
+   "cold_p50_s": 3.39,
+   "cold_p90_s": 12.01
+  },
+  {
+   "hot_r_m": 0.13,
+   "hot_frac": {
+    "mean": 0.619,
+    "cv": 0.504,
+    "min": 0.0,
+    "p10": 0.0,
+    "p90": 0.854,
+    "max": 0.901
+   },
+   "never_hot": 15,
+   "dwell_max_s": 2.91,
+   "dwell_p90_s": 1.973,
+   "cold_max_s": 12.01,
+   "cold_p50_s": 0.36,
+   "cold_p90_s": 12.01
+  }
+ ],
+ "flips_per_10s": {
+  "mean": 2.31,
+  "min": 0.0
+ },
+ "spilled": 0,
+ "spilled_far_side": 0,
+ "wall_s": 343.4,
+ "diag": {
+  "never_hot_final_r_m": [
+   0.041,
+   0.072,
+   0.053,
+   0.023,
+   0.047,
+   0.061,
+   0.037,
+   0.07,
+   0.043,
+   0.057,
+   0.037,
+   0.028,
+   0.051,
+   0.036,
+   0.076
+  ],
+  "never_hot_height_above_steel_mm": [
+   23,
+   25,
+   24,
+   23,
+   24,
+   24,
+   24,
+   25,
+   23,
+   24,
+   42,
+   23,
+   24,
+   23,
+   25
+  ],
+  "pieces_more_than_12mm_above_steel_at_end": 17
+ },
+ "xml_md5": "3db72ed90f69771466fe9a9fe823e9d1",
+ "edge_on_steel_N": {
+  "p95": 15.039,
+  "mean": 1.69
+ },
+ "weld": ".005 1",
+ "edge_clear_m": 0.0015,
+ "spatula_F_N": {
+  "p95": 7.12,
+  "max": 93.2,
+  "mean": 1.54
+ },
+ "jam_samples_over_30N": 3,
+ "spatula_M_grip_Nm": {
+  "p95": 2.661,
+  "max": 14.16
+ },
+ "grip_from_edge_m": 0.45,
+ "blade_v_mps": {
+  "max": 0.54,
+  "p95": 0.424
+ },
+ "blade_a_mps2": {
+  "p95": 2.534,
+  "max": 3.5
+ },
+ "blade_w_degps": {
+  "p95": 105,
+  "max": 125
+ }
+}

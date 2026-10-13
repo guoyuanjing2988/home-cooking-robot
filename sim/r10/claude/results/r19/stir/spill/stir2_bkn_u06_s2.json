@@ -1,0 +1,132 @@
+{
+ "driver": "bench",
+ "arm": null,
+ "arm_law": null,
+ "method": "scrape",
+ "food": "dice",
+ "n": 90,
+ "mass_g": 319,
+ "period_s": 2.4,
+ "mu": 0.3,
+ "stir_s": 12.0,
+ "seed": 2,
+ "zones": [
+  {
+   "hot_r_m": 0.09,
+   "hot_frac": {
+    "mean": 0.448,
+    "cv": 0.643,
+    "min": 0.0,
+    "p10": 0.0,
+    "p90": 0.815,
+    "max": 0.875
+   },
+   "never_hot": 15,
+   "dwell_max_s": 2.29,
+   "dwell_p90_s": 1.732,
+   "cold_max_s": 12.01,
+   "cold_p50_s": 3.995,
+   "cold_p90_s": 12.01
+  },
+  {
+   "hot_r_m": 0.13,
+   "hot_frac": {
+    "mean": 0.622,
+    "cv": 0.493,
+    "min": 0.0,
+    "p10": 0.0,
+    "p90": 0.87,
+    "max": 0.904
+   },
+   "never_hot": 15,
+   "dwell_max_s": 2.32,
+   "dwell_p90_s": 1.761,
+   "cold_max_s": 12.01,
+   "cold_p50_s": 0.335,
+   "cold_p90_s": 12.01
+  }
+ ],
+ "flips_per_10s": {
+  "mean": 2.53,
+  "min": 0.0
+ },
+ "spilled": 0,
+ "spilled_far_side": 0,
+ "wall_s": 358.0,
+ "diag": {
+  "never_hot_final_r_m": [
+   0.03,
+   0.013,
+   0.045,
+   0.018,
+   0.04,
+   0.027,
+   0.011,
+   0.061,
+   0.045,
+   0.054,
+   0.048,
+   0.026,
+   0.057,
+   0.06,
+   0.029
+  ],
+  "never_hot_height_above_steel_mm": [
+   23,
+   23,
+   23,
+   23,
+   23,
+   23,
+   24,
+   24,
+   24,
+   24,
+   24,
+   23,
+   24,
+   24,
+   23
+  ],
+  "pieces_more_than_12mm_above_steel_at_end": 15
+ },
+ "xml_md5": "4bf3b4d399bc301947ca44412439f284",
+ "edge_on_steel_N": {
+  "p95": 0.0,
+  "mean": 0.97
+ },
+ "weld": ".005 1",
+ "edge_clear_m": 0.0015,
+ "spatula_F_N": {
+  "p95": 9.541,
+  "max": 32.6,
+  "mean": 1.55
+ },
+ "jam_samples_over_30N": 2,
+ "spatula_M_grip_Nm": {
+  "p95": 3.297,
+  "max": 11.08
+ },
+ "grip_from_edge_m": 0.45,
+ "blade_v_mps": {
+  "max": 0.53,
+  "p95": 0.432
+ },
+ "blade_a_mps2": {
+  "p95": 3.109,
+  "max": 4.3
+ },
+ "blade_w_degps": {
+  "p95": 150,
+  "max": 208
+ },
+ "spill_driver": {
+  "mode": "bkeys",
+  "arm": "ur5e_enc2_pgc",
+  "lib": "results/r19/stir/lib_stir_cycle_ur5e_enc2_pgc.json",
+  "law": "results/r19/stir/phys/fromrest_ur5e_enc2_pgc.npz",
+  "ret": null,
+  "ramp": null,
+  "note": "mocap overridden by r19spill_drive.py; blade_* metrics are the bench keyframes, not the driven series"
+ }
+}
