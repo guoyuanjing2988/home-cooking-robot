@@ -583,3 +583,6 @@ Nothing bought.
   - the rest of the pigtail (about 96 mm) and the M12 plug;
   - how the cable gets back to the arm (DH robot cable into the arm's tool connector, or the 5 m extension along the arm with a slack loop at J6);
   - DH's CAD files, which would settle the exit height (not downloaded).
+- **2026-10-14, user: "都你定". The open items are decided as follows (orchestrator decisions):**
+  - **Route back to the arm:** the gripper cable plugs into the arm's tool connector at the wrist, using DH's robot-specific cable, or a short adapter cable if DH does not list one for the arm. No 5 m extension along the arm. This keeps the run short and leaves no slack loop to snag. Compatibility with the FR5 and UR5e tool connectors is to be confirmed by reading the published documentation.
+  - **DH CAD:** downloaded from DH's site to `inputs/dh_cad/`: the 2D drawing PDF, the simplified STEP model v4.0 and the standard flange STEP. They are used as read-only reference data, to measure the cable exit and replace the [E] exit height.
