@@ -34,6 +34,7 @@ R17=KV.get('ARM') in ('r17','r18');CHECKED=KV.get('ARM')=='checked' or R17
 if CHECKED:ARM.update(json.load(open('results/r16/arm_checked.json'))['arm_s'])
 if R17:ARM.update(json.load(open('results/r18/arm18.json' if KV.get('ARM')=='r18' else 'results/r17/arm17.json'))['arm_s'])   # R18: ARM=r18, the spatula on the counter left of the sink   # wok_plate (with the sink rinse), rinse=0, dump, fill, spider
 A=ARM
+if KV.get('USERRICE')=='1':A=dict(A,rice=0)   # R19 user decision 10-13: the person loads and starts the rice cooker
 MEALS={
  'A 干锅土豆/桂花芋头/西兰花/蒜蓉丝瓜/蛤蜊排骨盅':[
   S('蛤蜊排骨盅','cups + taro plate into steamer, lid, steam 30 min','zone2',4*A['plate_in']/2+A['plate_in']+A['lid'],1800),
@@ -143,7 +144,7 @@ def run(steps):
  return dict(total_min=round(end/60,1),arm_busy_min=round(arm_busy/60,1),arm_share=round(arm_busy/end,2),
   dish_ready_min={k:round(v/60,1) for k,v in ready.items()},wait_before_serving_min={k:round((end-v)/60,1) for k,v in ready.items()},log=sorted(log,key=lambda e:e['start_s']))
 out={k:run(v) for k,v in MEALS.items()}
-os.makedirs('results/r16',exist_ok=True);TAGF=SET+(('_'+KV['ARM']) if R17 else '_checked' if CHECKED else '');json.dump(dict(set=SET,checked=CHECKED,arm_s=ARM,meals=out),open(f'results/r16/meal_{TAGF}.json','w'),indent=1,ensure_ascii=False)
+os.makedirs('results/r16',exist_ok=True);TAGF=SET+(('_'+KV['ARM']) if R17 else '_checked' if CHECKED else '')+('_userrice' if KV.get('USERRICE')=='1' else '');json.dump(dict(set=SET,checked=CHECKED,arm_s=ARM,meals=out),open(f'results/r16/meal_{TAGF}.json','w'),indent=1,ensure_ascii=False)
 for k,r in out.items():print(k,'| total',r['total_min'],'min | arm busy',r['arm_busy_min'],'min (',r['arm_share'],') | waits',r['wait_before_serving_min'])
 # Gantt
 try:

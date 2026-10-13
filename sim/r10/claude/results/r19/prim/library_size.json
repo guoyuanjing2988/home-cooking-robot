@@ -1,0 +1,485 @@
+{
+ "source": "r19prim_library.py",
+ "catalogue": {
+  "FAUCET_OPEN": {
+   "status": "verified",
+   "hubs": [
+    "H_fau_closed_pre",
+    "H_fau_open_post"
+   ]
+  },
+  "FAUCET_CLOSE": {
+   "status": "verified",
+   "hubs": [
+    "H_fau_open_post",
+    "H_fau_closed_pre"
+   ]
+  },
+  "WOK_PLATE_RINSE": {
+   "status": "verified",
+   "hubs": [
+    "H_wok_pre"
+   ]
+  },
+  "WOK_DUMP_RINSE": {
+   "status": "composed_from_verified",
+   "hubs": [
+    "H_wok_pre"
+   ]
+  },
+  "WOK_FILL": {
+   "status": "composed_from_verified",
+   "hubs": [
+    "H_wok_pre"
+   ]
+  },
+  "WOK_OIL_POUR": {
+   "status": "not_verified",
+   "hubs": [
+    "H_wok_pre"
+   ]
+  },
+  "SPATULA_FETCH": {
+   "status": "verified",
+   "hubs": [
+    "H_spat_pre",
+    "H_stir0"
+   ]
+  },
+  "SPATULA_STOW": {
+   "status": "verified",
+   "hubs": [
+    "H_stir0",
+    "H_spat_pre"
+   ]
+  },
+  "STIR_CYCLE_dice": {
+   "status": "partially_verified",
+   "hubs": [
+    "H_stir0"
+   ]
+  },
+  "STIR_CYCLE_shreds_leafy": {
+   "status": "not_verified",
+   "hubs": [
+    "H_stir0"
+   ]
+  },
+  "SPIDER_FETCH": {
+   "status": "verified",
+   "hubs": [
+    "H_spider_pre",
+    "H_spider_lane"
+   ]
+  },
+  "SPIDER_SCOOP_pot": {
+   "status": "verified",
+   "hubs": [
+    "H_spider_lane"
+   ]
+  },
+  "SPIDER_SCOOP_wok": {
+   "status": "not_verified",
+   "hubs": [
+    "H_spider_lane"
+   ]
+  },
+  "SPIDER_SCOOP_fryer": {
+   "status": "not_verified",
+   "hubs": [
+    "H_spider_lane"
+   ]
+  },
+  "SPIDER_DUMP_plate": {
+   "status": "verified",
+   "hubs": [
+    "H_spider_lane"
+   ]
+  },
+  "SPIDER_STOW": {
+   "status": "verified",
+   "hubs": [
+    "H_spider_lane",
+    "H_spider_pre"
+   ]
+  },
+  "LID_OFF_pot": {
+   "status": "verified",
+   "hubs": [
+    "H_lid_on_pre",
+    "H_lid_rack_post"
+   ]
+  },
+  "LID_ON_pot": {
+   "status": "verified",
+   "hubs": [
+    "H_lid_rack_post",
+    "H_lid_on_pre"
+   ]
+  },
+  "LID_OFF_wok": {
+   "status": "not_verified",
+   "hubs": [
+    "H_wlid_on_pre",
+    "H_wlid_rack_post"
+   ]
+  },
+  "LID_ON_wok": {
+   "status": "not_verified",
+   "hubs": [
+    "H_wlid_rack_post",
+    "H_wlid_on_pre"
+   ]
+  },
+  "LID_OFF_stew": {
+   "status": "not_verified",
+   "hubs": [
+    "H_slid_on_pre",
+    "H_slid_rack_post"
+   ]
+  },
+  "LID_ON_stew": {
+   "status": "not_verified",
+   "hubs": [
+    "H_slid_rack_post",
+    "H_slid_on_pre"
+   ]
+  },
+  "CARRIER_IN": {
+   "status": "verified",
+   "hubs": [
+    "H_carrier_stage_pre",
+    "H_carrier_pot_post"
+   ]
+  },
+  "CARRIER_OUT": {
+   "status": "verified",
+   "hubs": [
+    "H_carrier_pot_post",
+    "H_carrier_stage_pre"
+   ]
+  },
+  "CARRIER_DRAIN": {
+   "status": "not_verified",
+   "hubs": [
+    "H_carrier_pot_post"
+   ]
+  },
+  "CUP_FETCH": {
+   "status": "not_verified",
+   "hubs": [
+    "H_cup_station",
+    "H_cup_lane"
+   ]
+  },
+  "CUP_POUR_wok": {
+   "status": "not_verified",
+   "hubs": [
+    "H_cup_lane"
+   ]
+  },
+  "CUP_POUR_stew": {
+   "status": "not_verified",
+   "hubs": [
+    "H_cup_lane"
+   ]
+  },
+  "CUP_POUR_plate": {
+   "status": "not_verified",
+   "hubs": [
+    "H_cup_lane"
+   ]
+  },
+  "CUP_POUR_fryer": {
+   "status": "not_verified",
+   "hubs": [
+    "H_cup_lane"
+   ]
+  },
+  "CUP_RETURN": {
+   "status": "not_verified",
+   "hubs": [
+    "H_cup_lane",
+    "H_cup_station"
+   ]
+  },
+  "DRUM_LOAD": {
+   "status": "not_verified",
+   "hubs": [
+    "H_cup_station",
+    "H_drum"
+   ]
+  },
+  "DRUM_UNLOAD": {
+   "status": "not_verified",
+   "hubs": [
+    "H_drum",
+    "H_cup_station"
+   ]
+  },
+  "STEW_CUP_IN": {
+   "status": "not_verified",
+   "hubs": [
+    "H_stage_cups",
+    "H_stew_pre"
+   ]
+  },
+  "STEW_CUP_OUT": {
+   "status": "not_verified",
+   "hubs": [
+    "H_stew_pre",
+    "H_stage_cups"
+   ]
+  },
+  "RICE_DOSE": {
+   "status": "not_verified",
+   "hubs": [
+    "H_rice_port"
+   ]
+  },
+  "RICE_WASH": {
+   "status": "not_verified",
+   "hubs": [
+    "H_rice_port",
+    "H_fau_open_post"
+   ]
+  },
+  "RICE_TO_COOKER": {
+   "status": "not_verified",
+   "hubs": [
+    "H_rice_cooker"
+   ]
+  },
+  "ARRANGE": {
+   "status": "not_verified",
+   "hubs": [
+    "H_plate_spot"
+   ]
+  }
+ },
+ "meals": {
+  "A": {
+   "set_instances": 71,
+   "distinct_sets": 28,
+   "hubs": 21,
+   "by_status": {
+    "verified": 12,
+    "composed_from_verified": 0,
+    "partially_verified": 1,
+    "not_verified": 15
+   },
+   "instances_by_status": {
+    "verified": 21,
+    "composed_from_verified": 0,
+    "partially_verified": 9,
+    "not_verified": 41
+   },
+   "counts": {
+    "CARRIER_IN": 2,
+    "LID_ON_pot": 2,
+    "RICE_DOSE": 1,
+    "RICE_WASH": 1,
+    "RICE_TO_COOKER": 1,
+    "STEW_CUP_IN": 4,
+    "LID_ON_stew": 1,
+    "CUP_FETCH": 9,
+    "CUP_POUR_fryer": 1,
+    "CUP_RETURN": 9,
+    "SPIDER_FETCH": 1,
+    "SPIDER_SCOOP_fryer": 1,
+    "SPIDER_DUMP_plate": 1,
+    "SPIDER_STOW": 1,
+    "CUP_POUR_wok": 6,
+    "LID_ON_wok": 1,
+    "LID_OFF_wok": 1,
+    "STIR_CYCLE_shreds_leafy": 2,
+    "SPATULA_STOW": 2,
+    "FAUCET_OPEN": 2,
+    "WOK_PLATE_RINSE": 2,
+    "FAUCET_CLOSE": 2,
+    "SPATULA_FETCH": 2,
+    "STIR_CYCLE_dice": 9,
+    "LID_OFF_pot": 2,
+    "CARRIER_OUT": 2,
+    "WOK_OIL_POUR": 1,
+    "CUP_POUR_plate": 2
+   }
+  },
+  "B": {
+   "set_instances": 167,
+   "distinct_sets": 30,
+   "hubs": 20,
+   "by_status": {
+    "verified": 12,
+    "composed_from_verified": 2,
+    "partially_verified": 1,
+    "not_verified": 15
+   },
+   "instances_by_status": {
+    "verified": 33,
+    "composed_from_verified": 3,
+    "partially_verified": 35,
+    "not_verified": 96
+   },
+   "counts": {
+    "FAUCET_OPEN": 5,
+    "WOK_FILL": 2,
+    "FAUCET_CLOSE": 5,
+    "CUP_FETCH": 27,
+    "CUP_POUR_wok": 16,
+    "CUP_RETURN": 27,
+    "SPIDER_FETCH": 3,
+    "SPIDER_SCOOP_wok": 3,
+    "SPIDER_DUMP_plate": 3,
+    "SPIDER_STOW": 3,
+    "CUP_POUR_stew": 5,
+    "LID_ON_stew": 1,
+    "WOK_DUMP_RINSE": 1,
+    "SPATULA_FETCH": 4,
+    "SPATULA_STOW": 4,
+    "STIR_CYCLE_dice": 35,
+    "LID_ON_wok": 2,
+    "RICE_DOSE": 1,
+    "RICE_WASH": 1,
+    "RICE_TO_COOKER": 1,
+    "CARRIER_IN": 1,
+    "LID_ON_pot": 1,
+    "LID_OFF_pot": 1,
+    "CARRIER_OUT": 1,
+    "CARRIER_DRAIN": 1,
+    "CUP_POUR_plate": 6,
+    "LID_OFF_wok": 2,
+    "WOK_PLATE_RINSE": 2,
+    "WOK_OIL_POUR": 2,
+    "ARRANGE": 1
+   }
+  },
+  "C": {
+   "set_instances": 103,
+   "distinct_sets": 26,
+   "hubs": 15,
+   "by_status": {
+    "verified": 12,
+    "composed_from_verified": 2,
+    "partially_verified": 1,
+    "not_verified": 11
+   },
+   "instances_by_status": {
+    "verified": 26,
+    "composed_from_verified": 2,
+    "partially_verified": 6,
+    "not_verified": 69
+   },
+   "counts": {
+    "RICE_DOSE": 1,
+    "RICE_WASH": 1,
+    "RICE_TO_COOKER": 1,
+    "CARRIER_IN": 1,
+    "LID_ON_pot": 1,
+    "CUP_FETCH": 18,
+    "CUP_POUR_stew": 4,
+    "CUP_RETURN": 18,
+    "CUP_POUR_wok": 12,
+    "STIR_CYCLE_dice": 6,
+    "SPATULA_STOW": 3,
+    "FAUCET_OPEN": 5,
+    "WOK_PLATE_RINSE": 3,
+    "FAUCET_CLOSE": 5,
+    "SPATULA_FETCH": 3,
+    "STIR_CYCLE_shreds_leafy": 10,
+    "WOK_FILL": 1,
+    "SPIDER_FETCH": 1,
+    "SPIDER_SCOOP_wok": 1,
+    "SPIDER_DUMP_plate": 1,
+    "SPIDER_STOW": 1,
+    "WOK_DUMP_RINSE": 1,
+    "LID_OFF_pot": 1,
+    "CARRIER_OUT": 1,
+    "CUP_POUR_plate": 2,
+    "WOK_OIL_POUR": 1
+   }
+  }
+ },
+ "total": {
+  "distinct_sets": 34,
+  "reverse_only_sets": 8,
+  "by_status": {
+   "verified": [
+    "CARRIER_IN",
+    "CARRIER_OUT",
+    "FAUCET_CLOSE",
+    "FAUCET_OPEN",
+    "LID_OFF_pot",
+    "LID_ON_pot",
+    "SPATULA_FETCH",
+    "SPATULA_STOW",
+    "SPIDER_DUMP_plate",
+    "SPIDER_FETCH",
+    "SPIDER_STOW",
+    "WOK_PLATE_RINSE"
+   ],
+   "composed_from_verified": [
+    "WOK_DUMP_RINSE",
+    "WOK_FILL"
+   ],
+   "partially_verified": [
+    "STIR_CYCLE_dice"
+   ],
+   "not_verified": [
+    "ARRANGE",
+    "CARRIER_DRAIN",
+    "CUP_FETCH",
+    "CUP_POUR_fryer",
+    "CUP_POUR_plate",
+    "CUP_POUR_stew",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "LID_OFF_wok",
+    "LID_ON_stew",
+    "LID_ON_wok",
+    "RICE_DOSE",
+    "RICE_TO_COOKER",
+    "RICE_WASH",
+    "SPIDER_SCOOP_fryer",
+    "SPIDER_SCOOP_wok",
+    "STEW_CUP_IN",
+    "STIR_CYCLE_shreds_leafy",
+    "WOK_OIL_POUR"
+   ]
+  },
+  "station_hubs": 19,
+  "held_hubs": 3,
+  "travel_hubs": 6,
+  "hubs_total": 28,
+  "transit_sets": 24,
+  "primitive_classes": 16,
+  "primitive_segments_estimate": 343,
+  "primitive_segments_note": "verified sets: their measured segment counts; others: the median verified set (12); reversed sets add none; transits 3 each (depart, cart move, arrive)",
+  "note": "DESIGN PROPOSAL: the catalogue and the meal-to-set mapping follow meal16.py ARM=r18 arm-time formulas; statuses come from the data. Seasoning additions while stirring may come from the drum (R15) instead of arm pours; both are counted as cup pours here."
+ },
+ "effort": {
+  "today": {
+   "new_action_final_run_elapsed_s": {
+    "wok_plate_rinse": 275,
+    "wok_plate2_rinse": 279,
+    "faucet_open": 26,
+    "lid_off_to_rack": 133,
+    "spider_pot_to_plate": 215,
+    "spatula_fetch": 433
+   },
+   "all_saved_runs_elapsed_h": 8.52,
+   "saved_runs": 142,
+   "ok_runs": 20,
+   "layout_change": "re-plan every affected whole chain (R18 plate spot 2: 279 s, although 283 of 470 states and the whole tip were identical) or replay every chain state (1677 states x 16.3 ms = 27 s per candidate spot)",
+   "free_moves": "never checked (estimate |dx|/0.25 + 1 + 1.6 s)",
+   "runtime": "sequence of whole actions + unchecked free moves"
+  },
+  "library": {
+   "design_time": "each set verified once with the same planner; a new set that reuses verified primitives needs only its new segments (WOK_DUMP/FILL here: 6 + 4 micro-join states and a load computation, no planning)",
+   "composition": "0 geometric checks: consecutive sets meet at identical hub states (exact vector equality); 8 of 8 junctions in the plating sequence are identical hubs",
+   "layout_change": "swept-voxel screen 67 ms per fixture, then replay only flagged segments: R18b spatula rest 4 segments / 180 states (2.9 s) instead of 1677 states (26.7 s) or a re-plan of all chains (928 s); worst query 23 segments / 706 states; 0 missed hits in 4 queries",
+   "transits": "verified once per hub pair: 2 of 4 plating transits found as straight decoupled moves (faucet_to_wok 6.96 s, wok_to_faucet 6.96 s); 2 need a planned path and better clearance hubs",
+   "runtime": "no geometric check; hub-state match, pre/post conditions, monitors"
+  }
+ }
+}

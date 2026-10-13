@@ -1,0 +1,1782 @@
+{
+  "method": "R19 prep audit: where can prep appliances stand without blocking the checked cooking motion?\n(read-only screen; new file, nothing else changed)\n\nUses the stored swept volumes of r19prim_swept.py (results/r19/prim/swept_voxels.npz: 84 segments of the\nchecked R17/R18 actions: wok plate + sink rinse at both plating spots, faucet, lid, spider, spatula fetch)\nand adds the 22 checked R19 hub-roadmap edges (results/r19/hub/edge_*.json 'qs', empty hand, every 4th\nstate). A candidate appliance is an axis-aligned envelope box on the counter (sizes from the market\nresearch, labelled). A segment is FLAGGED if its swept voxels, dilated by 2 (hub edges: 3, because of the\n4th-state subsampling), meet the appliance voxels dilated by 1, as in r19prim_swept.py. Flagged = must be\nreplayed with the checker (it may still pass); not flagged = cannot be hit (conservative by construction).\nNOT screened: the arm's own reach to the appliance (chute, lever), and prep motions themselves.\npython r19prep_screen.py -> results/r19/prep/screen.json",
+  "swept_build_s": 25.4,
+  "screen_s": 5.4,
+  "segments": 106,
+  "hub_edges": [
+    "hub_edge__H_SINK__H_WOK",
+    "hub_edge__H_SPAT__H_SINK",
+    "hub_edge__H_WOK__H_POT",
+    "hub_edge__LEV_C__H_SINK",
+    "hub_edge__LEV_C__H_SPAT",
+    "hub_edge__LEV_C__H_WOK",
+    "hub_edge__LEV_O__H_SINK",
+    "hub_edge__LEV_O__H_SPAT",
+    "hub_edge__LEV_O__H_WOK",
+    "hub_edge__LEV_O__WOK",
+    "hub_edge__LID_POT__H_POT",
+    "hub_edge__LID_POT__H_WOK",
+    "hub_edge__LID_RACK__H_POT",
+    "hub_edge__LID_RACK__H_WOK",
+    "hub_edge__SPAT__H_SINK",
+    "hub_edge__SPAT__H_SPAT",
+    "hub_edge__SPAT__LEV_C",
+    "hub_edge__SPIDER__H_POT",
+    "hub_edge__SPIDER__H_WOK",
+    "hub_edge__WOK__H_POT",
+    "hub_edge__WOK__H_SINK",
+    "hub_edge__WOK__H_WOK"
+  ],
+  "appliances": {
+    "slicer_3in1": {
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "basis": "\u5353\u664b 3-in-1 21x33x28 cm (market_r10 13.2 M2) + its out bowl at the discharge end (R11 model: body 33 cm + bowl 17 cm)"
+    },
+    "meat_slicer": {
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "basis": "850 W \u5207\u8089\u5207\u83dc\u4e00\u4f53\u673a 32-37 x 30-34 x 31-42 cm, ~21 kg (market_r10 13.8 A), largest values"
+    },
+    "belt_cutter": {
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "basis": "\u5207\u8471\u82b1\u673a belt cutter 28 x 26 x 38 cm, 8.7 kg (market_r10 13.8 B)"
+    },
+    "lever_base": {
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "basis": "AY-403 lever base: 223 mm deep, 420 mm tall incl. handle (market_r10 13.2 M1); width ~22 cm (R11 base plate)"
+    },
+    "tool_work_spot": {
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "basis": "R11 peeler station envelope at the fetched-tool spot (scene.py peel station, guards + open lid)"
+    }
+  },
+  "rows": [
+    {
+      "appliance": "slicer_3in1",
+      "spot": "R11 slicer spot (0.30, front)",
+      "center": [
+        0.3,
+        0.13
+      ],
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "flagged": 57,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 14,
+        "wok_plate2_rinse": 14,
+        "faucet_open": 2,
+        "spider_pot_to_plate": 9,
+        "spatula_fetch": 2,
+        "hub_edge": 16
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__0-1",
+        "wok_plate_rinse__1-2",
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate_rinse__14-15",
+        "wok_plate_rinse__15-16",
+        "wok_plate_rinse__approach_0",
+        "wok_plate_rinse__approach_16",
+        "wok_plate2_rinse__0-1",
+        "wok_plate2_rinse__1-2",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "wok_plate2_rinse__14-15",
+        "wok_plate2_rinse__15-16",
+        "wok_plate2_rinse__approach_0",
+        "wok_plate2_rinse__approach_16",
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "spider_pot_to_plate__7-8",
+        "spider_pot_to_plate__join_8",
+        "spider_pot_to_plate__8-9",
+        "spider_pot_to_plate__9-10",
+        "spider_pot_to_plate__10-11",
+        "spider_pot_to_plate__11-12",
+        "spider_pot_to_plate__12-13",
+        "spider_pot_to_plate__13-14",
+        "spider_pot_to_plate__14-15",
+        "spatula_fetch__3-4",
+        "spatula_fetch__4-5",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_WOK__H_POT",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__LID_POT__H_WOK",
+        "hub_edge__LID_RACK__H_WOK",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__SPIDER__H_WOK",
+        "hub_edge__WOK__H_POT",
+        "hub_edge__WOK__H_SINK",
+        "hub_edge__WOK__H_WOK"
+      ]
+    },
+    {
+      "appliance": "slicer_3in1",
+      "spot": "right counter back (0.30, back)",
+      "center": [
+        0.3,
+        0.475
+      ],
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "flagged": 27,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 8,
+        "wok_plate2_rinse": 8,
+        "faucet_open": 3,
+        "hub_edge": 8
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "slicer_3in1",
+      "spot": "left counter front (-1.00)",
+      "center": [
+        -1.0,
+        0.13
+      ],
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "flagged": 40,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "faucet_open": 3,
+        "spatula_fetch": 4,
+        "hub_edge": 13
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__join_7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__join_7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__12-13",
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__WOK__H_SINK"
+      ]
+    },
+    {
+      "appliance": "slicer_3in1",
+      "spot": "left counter back (-1.00)",
+      "center": [
+        -1.0,
+        0.475
+      ],
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "flagged": 3,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 3
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "appliance": "slicer_3in1",
+      "spot": "left counter back by the sink (-0.88)",
+      "center": [
+        -0.88,
+        0.475
+      ],
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "flagged": 7,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2,
+        "spatula_fetch": 3
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "appliance": "slicer_3in1",
+      "spot": "far left front (-1.62)",
+      "center": [
+        -1.62,
+        0.13
+      ],
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "flagged": 14,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "slicer_3in1",
+      "spot": "far left back (-1.62)",
+      "center": [
+        -1.62,
+        0.475
+      ],
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "appliance": "slicer_3in1",
+      "spot": "left counter middle front (-1.30)",
+      "center": [
+        -1.3,
+        0.13
+      ],
+      "size_m": [
+        0.5,
+        0.21,
+        0.28
+      ],
+      "flagged": 28,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 9,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__join_7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__join_7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__12-13",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "meat_slicer",
+      "spot": "R11 slicer spot (0.30, front)",
+      "center": [
+        0.3,
+        0.195
+      ],
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "flagged": 57,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 14,
+        "wok_plate2_rinse": 14,
+        "faucet_open": 2,
+        "spider_pot_to_plate": 9,
+        "spatula_fetch": 2,
+        "hub_edge": 16
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__0-1",
+        "wok_plate_rinse__1-2",
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate_rinse__14-15",
+        "wok_plate_rinse__15-16",
+        "wok_plate_rinse__approach_0",
+        "wok_plate_rinse__approach_16",
+        "wok_plate2_rinse__0-1",
+        "wok_plate2_rinse__1-2",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "wok_plate2_rinse__14-15",
+        "wok_plate2_rinse__15-16",
+        "wok_plate2_rinse__approach_0",
+        "wok_plate2_rinse__approach_16",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "spider_pot_to_plate__7-8",
+        "spider_pot_to_plate__join_8",
+        "spider_pot_to_plate__8-9",
+        "spider_pot_to_plate__9-10",
+        "spider_pot_to_plate__10-11",
+        "spider_pot_to_plate__11-12",
+        "spider_pot_to_plate__12-13",
+        "spider_pot_to_plate__13-14",
+        "spider_pot_to_plate__14-15",
+        "spatula_fetch__3-4",
+        "spatula_fetch__4-5",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_WOK__H_POT",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__LID_POT__H_WOK",
+        "hub_edge__LID_RACK__H_WOK",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__SPIDER__H_WOK",
+        "hub_edge__WOK__H_POT",
+        "hub_edge__WOK__H_SINK",
+        "hub_edge__WOK__H_WOK"
+      ]
+    },
+    {
+      "appliance": "meat_slicer",
+      "spot": "right counter back (0.30, back)",
+      "center": [
+        0.3,
+        0.41
+      ],
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "flagged": 37,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 10,
+        "wok_plate2_rinse": 10,
+        "faucet_open": 2,
+        "spider_pot_to_plate": 4,
+        "hub_edge": 11
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__1-2",
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate_rinse__14-15",
+        "wok_plate2_rinse__1-2",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "wok_plate2_rinse__14-15",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "spider_pot_to_plate__9-10",
+        "spider_pot_to_plate__10-11",
+        "spider_pot_to_plate__11-12",
+        "spider_pot_to_plate__12-13",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__WOK__H_POT",
+        "hub_edge__WOK__H_SINK",
+        "hub_edge__WOK__H_WOK"
+      ]
+    },
+    {
+      "appliance": "meat_slicer",
+      "spot": "left counter front (-1.00)",
+      "center": [
+        -1.0,
+        0.195
+      ],
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "flagged": 40,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "faucet_open": 3,
+        "spatula_fetch": 4,
+        "hub_edge": 13
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__join_7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__join_7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__12-13",
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__WOK__H_SINK"
+      ]
+    },
+    {
+      "appliance": "meat_slicer",
+      "spot": "left counter back (-1.00)",
+      "center": [
+        -1.0,
+        0.41
+      ],
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "flagged": 4,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "appliance": "meat_slicer",
+      "spot": "left counter back by the sink (-0.88)",
+      "center": [
+        -0.88,
+        0.41
+      ],
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "flagged": 24,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 5,
+        "wok_plate2_rinse": 5,
+        "faucet_open": 2,
+        "spatula_fetch": 4,
+        "hub_edge": 8
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "meat_slicer",
+      "spot": "far left front (-1.62)",
+      "center": [
+        -1.62,
+        0.195
+      ],
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "flagged": 14,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "meat_slicer",
+      "spot": "far left back (-1.62)",
+      "center": [
+        -1.62,
+        0.41
+      ],
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "appliance": "meat_slicer",
+      "spot": "left counter middle front (-1.30)",
+      "center": [
+        -1.3,
+        0.195
+      ],
+      "size_m": [
+        0.37,
+        0.34,
+        0.42
+      ],
+      "flagged": 22,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 6,
+        "wok_plate2_rinse": 6,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__join_7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "belt_cutter",
+      "spot": "R11 slicer spot (0.30, front)",
+      "center": [
+        0.3,
+        0.155
+      ],
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "flagged": 54,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 14,
+        "wok_plate2_rinse": 14,
+        "spider_pot_to_plate": 9,
+        "spatula_fetch": 2,
+        "hub_edge": 15
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__0-1",
+        "wok_plate_rinse__1-2",
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate_rinse__14-15",
+        "wok_plate_rinse__15-16",
+        "wok_plate_rinse__approach_0",
+        "wok_plate_rinse__approach_16",
+        "wok_plate2_rinse__0-1",
+        "wok_plate2_rinse__1-2",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "wok_plate2_rinse__14-15",
+        "wok_plate2_rinse__15-16",
+        "wok_plate2_rinse__approach_0",
+        "wok_plate2_rinse__approach_16",
+        "spider_pot_to_plate__7-8",
+        "spider_pot_to_plate__join_8",
+        "spider_pot_to_plate__8-9",
+        "spider_pot_to_plate__9-10",
+        "spider_pot_to_plate__10-11",
+        "spider_pot_to_plate__11-12",
+        "spider_pot_to_plate__12-13",
+        "spider_pot_to_plate__13-14",
+        "spider_pot_to_plate__14-15",
+        "spatula_fetch__3-4",
+        "spatula_fetch__4-5",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_WOK__H_POT",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__LID_POT__H_WOK",
+        "hub_edge__LID_RACK__H_WOK",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__SPIDER__H_WOK",
+        "hub_edge__WOK__H_POT",
+        "hub_edge__WOK__H_SINK",
+        "hub_edge__WOK__H_WOK"
+      ]
+    },
+    {
+      "appliance": "belt_cutter",
+      "spot": "right counter back (0.30, back)",
+      "center": [
+        0.3,
+        0.45
+      ],
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "flagged": 21,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 8,
+        "wok_plate2_rinse": 8,
+        "hub_edge": 5
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "belt_cutter",
+      "spot": "left counter front (-1.00)",
+      "center": [
+        -1.0,
+        0.155
+      ],
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "flagged": 40,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "faucet_open": 3,
+        "spatula_fetch": 4,
+        "hub_edge": 13
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__join_7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__join_7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__12-13",
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__WOK__H_SINK"
+      ]
+    },
+    {
+      "appliance": "belt_cutter",
+      "spot": "left counter back (-1.00)",
+      "center": [
+        -1.0,
+        0.45
+      ],
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "flagged": 4,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "appliance": "belt_cutter",
+      "spot": "left counter back by the sink (-0.88)",
+      "center": [
+        -0.88,
+        0.45
+      ],
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "appliance": "belt_cutter",
+      "spot": "far left front (-1.62)",
+      "center": [
+        -1.62,
+        0.155
+      ],
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "flagged": 14,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "belt_cutter",
+      "spot": "far left back (-1.62)",
+      "center": [
+        -1.62,
+        0.45
+      ],
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "appliance": "belt_cutter",
+      "spot": "left counter middle front (-1.30)",
+      "center": [
+        -1.3,
+        0.155
+      ],
+      "size_m": [
+        0.28,
+        0.26,
+        0.38
+      ],
+      "flagged": 20,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 5,
+        "wok_plate2_rinse": 5,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "lever_base",
+      "spot": "R11 slicer spot (0.30, front)",
+      "center": [
+        0.3,
+        0.155
+      ],
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "flagged": 50,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 14,
+        "wok_plate2_rinse": 14,
+        "spider_pot_to_plate": 6,
+        "spatula_fetch": 2,
+        "hub_edge": 14
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__0-1",
+        "wok_plate_rinse__1-2",
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate_rinse__14-15",
+        "wok_plate_rinse__15-16",
+        "wok_plate_rinse__approach_0",
+        "wok_plate_rinse__approach_16",
+        "wok_plate2_rinse__0-1",
+        "wok_plate2_rinse__1-2",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "wok_plate2_rinse__14-15",
+        "wok_plate2_rinse__15-16",
+        "wok_plate2_rinse__approach_0",
+        "wok_plate2_rinse__approach_16",
+        "spider_pot_to_plate__8-9",
+        "spider_pot_to_plate__9-10",
+        "spider_pot_to_plate__10-11",
+        "spider_pot_to_plate__11-12",
+        "spider_pot_to_plate__12-13",
+        "spider_pot_to_plate__13-14",
+        "spatula_fetch__3-4",
+        "spatula_fetch__4-5",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_WOK__H_POT",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__LID_POT__H_WOK",
+        "hub_edge__LID_RACK__H_WOK",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__SPIDER__H_WOK",
+        "hub_edge__WOK__H_POT",
+        "hub_edge__WOK__H_SINK",
+        "hub_edge__WOK__H_WOK"
+      ]
+    },
+    {
+      "appliance": "lever_base",
+      "spot": "right counter back (0.30, back)",
+      "center": [
+        0.3,
+        0.45
+      ],
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "flagged": 18,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 8,
+        "wok_plate2_rinse": 8,
+        "hub_edge": 2
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_WOK"
+      ]
+    },
+    {
+      "appliance": "lever_base",
+      "spot": "left counter front (-1.00)",
+      "center": [
+        -1.0,
+        0.155
+      ],
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "flagged": 36,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 9,
+        "faucet_open": 3,
+        "spatula_fetch": 4,
+        "hub_edge": 11
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__join_7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__12-13",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__join_7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__12-13",
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "lever_base",
+      "spot": "left counter back (-1.00)",
+      "center": [
+        -1.0,
+        0.45
+      ],
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "flagged": 4,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "appliance": "lever_base",
+      "spot": "left counter back by the sink (-0.88)",
+      "center": [
+        -0.88,
+        0.45
+      ],
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "appliance": "lever_base",
+      "spot": "far left front (-1.62)",
+      "center": [
+        -1.62,
+        0.155
+      ],
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "flagged": 10,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "lever_base",
+      "spot": "far left back (-1.62)",
+      "center": [
+        -1.62,
+        0.45
+      ],
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "appliance": "lever_base",
+      "spot": "left counter middle front (-1.30)",
+      "center": [
+        -1.3,
+        0.155
+      ],
+      "size_m": [
+        0.22,
+        0.26,
+        0.42
+      ],
+      "flagged": 20,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 5,
+        "wok_plate2_rinse": 5,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "tool_work_spot",
+      "spot": "R11 slicer spot (0.30, front)",
+      "center": [
+        0.3,
+        0.155
+      ],
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "flagged": 57,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 14,
+        "wok_plate2_rinse": 14,
+        "faucet_open": 2,
+        "spider_pot_to_plate": 9,
+        "spatula_fetch": 2,
+        "hub_edge": 16
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__0-1",
+        "wok_plate_rinse__1-2",
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate_rinse__14-15",
+        "wok_plate_rinse__15-16",
+        "wok_plate_rinse__approach_0",
+        "wok_plate_rinse__approach_16",
+        "wok_plate2_rinse__0-1",
+        "wok_plate2_rinse__1-2",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "wok_plate2_rinse__14-15",
+        "wok_plate2_rinse__15-16",
+        "wok_plate2_rinse__approach_0",
+        "wok_plate2_rinse__approach_16",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "spider_pot_to_plate__7-8",
+        "spider_pot_to_plate__join_8",
+        "spider_pot_to_plate__8-9",
+        "spider_pot_to_plate__9-10",
+        "spider_pot_to_plate__10-11",
+        "spider_pot_to_plate__11-12",
+        "spider_pot_to_plate__12-13",
+        "spider_pot_to_plate__13-14",
+        "spider_pot_to_plate__14-15",
+        "spatula_fetch__3-4",
+        "spatula_fetch__4-5",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_WOK__H_POT",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__LID_POT__H_WOK",
+        "hub_edge__LID_RACK__H_WOK",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__SPIDER__H_WOK",
+        "hub_edge__WOK__H_POT",
+        "hub_edge__WOK__H_SINK",
+        "hub_edge__WOK__H_WOK"
+      ]
+    },
+    {
+      "appliance": "tool_work_spot",
+      "spot": "right counter back (0.30, back)",
+      "center": [
+        0.3,
+        0.45
+      ],
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "flagged": 26,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 8,
+        "wok_plate2_rinse": 8,
+        "faucet_open": 2,
+        "hub_edge": 8
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__2-3",
+        "wok_plate_rinse__join_3",
+        "wok_plate_rinse__3-4",
+        "wok_plate_rinse__4-5",
+        "wok_plate_rinse__5-6",
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__12-13",
+        "wok_plate_rinse__13-14",
+        "wok_plate2_rinse__2-3",
+        "wok_plate2_rinse__join_3",
+        "wok_plate2_rinse__3-4",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__12-13",
+        "wok_plate2_rinse__13-14",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "tool_work_spot",
+      "spot": "left counter front (-1.00)",
+      "center": [
+        -1.0,
+        0.155
+      ],
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "flagged": 40,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 9,
+        "wok_plate2_rinse": 11,
+        "faucet_open": 3,
+        "spatula_fetch": 4,
+        "hub_edge": 13
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__6-7",
+        "wok_plate_rinse__join_7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate_rinse__join_12",
+        "wok_plate_rinse__12-13",
+        "wok_plate2_rinse__4-5",
+        "wok_plate2_rinse__5-6",
+        "wok_plate2_rinse__6-7",
+        "wok_plate2_rinse__join_7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "wok_plate2_rinse__join_12",
+        "wok_plate2_rinse__12-13",
+        "faucet_open__0-1",
+        "faucet_open__approach_0",
+        "faucet_open__approach_1",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SINK__H_WOK",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_C__H_WOK",
+        "hub_edge__LEV_O__H_SINK",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__LEV_O__H_WOK",
+        "hub_edge__LEV_O__WOK",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C",
+        "hub_edge__WOK__H_SINK"
+      ]
+    },
+    {
+      "appliance": "tool_work_spot",
+      "spot": "left counter back (-1.00)",
+      "center": [
+        -1.0,
+        0.45
+      ],
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "flagged": 4,
+      "of": 106,
+      "by_action": {
+        "spatula_fetch": 4
+      },
+      "flagged_segments": [
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "appliance": "tool_work_spot",
+      "spot": "left counter back by the sink (-0.88)",
+      "center": [
+        -0.88,
+        0.45
+      ],
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "flagged": 8,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2,
+        "spatula_fetch": 4
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0"
+      ]
+    },
+    {
+      "appliance": "tool_work_spot",
+      "spot": "far left front (-1.62)",
+      "center": [
+        -1.62,
+        0.155
+      ],
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "flagged": 14,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 2,
+        "wok_plate2_rinse": 2,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    },
+    {
+      "appliance": "tool_work_spot",
+      "spot": "far left back (-1.62)",
+      "center": [
+        -1.62,
+        0.45
+      ],
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "flagged": 0,
+      "of": 106,
+      "by_action": {},
+      "flagged_segments": []
+    },
+    {
+      "appliance": "tool_work_spot",
+      "spot": "left counter middle front (-1.30)",
+      "center": [
+        -1.3,
+        0.155
+      ],
+      "size_m": [
+        0.39,
+        0.26,
+        0.45
+      ],
+      "flagged": 22,
+      "of": 106,
+      "by_action": {
+        "wok_plate_rinse": 6,
+        "wok_plate2_rinse": 6,
+        "spatula_fetch": 4,
+        "hub_edge": 6
+      },
+      "flagged_segments": [
+        "wok_plate_rinse__join_7",
+        "wok_plate_rinse__7-8",
+        "wok_plate_rinse__8-9",
+        "wok_plate_rinse__9-10",
+        "wok_plate_rinse__10-11",
+        "wok_plate_rinse__11-12",
+        "wok_plate2_rinse__join_7",
+        "wok_plate2_rinse__7-8",
+        "wok_plate2_rinse__8-9",
+        "wok_plate2_rinse__9-10",
+        "wok_plate2_rinse__10-11",
+        "wok_plate2_rinse__11-12",
+        "spatula_fetch__0-1",
+        "spatula_fetch__1-2",
+        "spatula_fetch__2-3",
+        "spatula_fetch__approach_0",
+        "hub_edge__H_SPAT__H_SINK",
+        "hub_edge__LEV_C__H_SPAT",
+        "hub_edge__LEV_O__H_SPAT",
+        "hub_edge__SPAT__H_SINK",
+        "hub_edge__SPAT__H_SPAT",
+        "hub_edge__SPAT__LEV_C"
+      ]
+    }
+  ]
+}

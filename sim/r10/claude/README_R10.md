@@ -891,3 +891,93 @@ Code changes:
 - `r15stirwalk2.py SCENE=r17`.
 - `r17seq.py SPAT` and `OUT`.
 - `meal16.py ARM=r18`.
+
+## R19: less money, smoother motion, a library of pre-checked movements (2026-10-13)
+The user asked for several subagents to explore cheaper robot designs and a better way to instruct motion: "less money, more smooth movements … lots of predefined movements then movement sets, therefore no need check after each tiny movement." Five studies ran in parallel. Each wrote only new files.
+
+| Topic | Report | Code / results |
+|---|---|---|
+| Arm and hand cost | `research/r19_arm_hand_cost.md` | `r19/arm_candidates.json` |
+| System cost, task offload | `research/r19_system_cost.md` | — |
+| Movement library design | `R19_MOTION_LIBRARY.md` | `r19prim_*.py`, `results/r19/prim/` |
+| Smooth retiming | `R19_SMOOTH.md` | `r19smooth*.py`, `results/r19/smooth/` |
+| Hub roadmap (free moves) | `R19_HUB.md` | `r19hub*.py`, `results/r19/hub/` |
+
+**Money (all prices unconfirmed, nothing bought):**
+- **The arm dominates.**
+  - UR5e: about ¥150–180k.
+  - Fairino FR5: ¥23.8k guide price (2023). It has the same 180 °/s joints and nearly the same links. It needs the ±360° wrist-3 option, because the stock ±175° range is exceeded by 5 of the 7 saved chains. IP54.
+  - Elite CS66: the closest UR5e twin, IP65. No China price found.
+  - Dobot CR5A: replays a stored trajectory file on the controller.
+  - Any arm swap means re-checking the library.
+- **Hand:** no cheaper gripper meets the force, moment and IP needs. Keep the PGC-140-50.
+- **Everything else:** the appliances together are only about ¥5–13k. The rest of the money is in:
+  - the cart and its installation (an allowance);
+  - safety, PC and vision;
+  - labour;
+  - the custom seasoning station (¥7–18k in parts).
+
+**Arm time.** The wok is 55 % of the modelled arm time: 38.0 of 69.2 min over meals A/B/C.
+- Plating trips: 15.7 min, of which the spatula round trip is 6.4 min.
+- Stirring: 13.2 min.
+- Fill and dump: 6.1 min.
+
+**Movement library** (measured in the sim unless marked as a proposal):
+- Seven recurring sub-motion types hold 74 % of the motion time of the checked actions. Only 9 % is one-off: the lever, the lid roll and the stir strokes.
+- The R18 second plating spot re-planned 283 states that were identical to the first spot.
+- Swept-volume screening (84 stored segments, as voxels): after a fixture moves, a 67 ms screen picks the segments to replay. For the R18b spatula rest that was 4 segments, replayed in 2.9 s. Re-planning took 928 s.
+- **Proposal for meals A/B/C:**
+  - 34 movement sets: 12 checked, 2 composed from checked pieces, 1 partly checked, 19 still to check;
+  - about 28 hubs;
+  - 16 primitive types.
+
+**Hub roadmap (checked):**
+- **Layout:** one tucked posture at 4 cart stations (−1.48, −0.68, 0.172, 1.093), and 7 empty-hand action endpoints.
+- **One union scene for every free move:** the lever closed and open, the lid on the pot and in the rack, dishes on both plating spots.
+- **All 22 edges pass the full checker** (min reserve 2.0 mm). Three needed a via pose:
+  - LEV_O: retreat 15 cm toward the aisle;
+  - SPAT→LEV_C: tuck at the mid cart;
+  - LEV_O→WOK: both.
+- **All 42 routes between the 7 endpoints are checked.**
+- **Times against the estimates:**
+  - the checked↔checked moves in the meals are close to the estimate: WOK↔LEV_O 6.4 vs 6.0 s, SPAT→LEV_C 6.5 vs 5.8 s;
+  - moves inside the pot cluster are slower (9.3–9.8 vs 3.4–4.4 s), but they don't occur between checked actions in the meals.
+- These times use r17chain's speed caps. Free-move hand speed reaches 0.9 m/s, because nothing caps the TCP speed.
+
+**Smooth retiming (checked):**
+- All 5 checked actions were fitted with joint-space B-splines, and every state was re-checked at ≤ 4 mm: 0 hits, min reserve equal to the baseline.
+- **With the same caps** plus sourced URScript accelerations and a jerk limit, they are slower: wok 48.9 → 67.1 s.
+- **With UR5e joint speeds, 0.25 m/s TCP and cart 0.5 m/s²** they match or beat R17: wok 47.3 s, spatula 19.9 s, lid 19.9 s, spider 45.4 s.
+- **Stops:** 470 → 7 for the wok.
+- **The cart is the binding limit** at its 0.15 m/s². At 0.5 m/s² the sim's tip model keeps a 42.7 mm margin with the held wok.
+
+**Corrections to earlier claims (found in R19):**
+- **Stored paths contain exact ±2π joint jumps** (wok 2 rows, spider 3, lid 1, spatula 1).
+  - Unwrapped, they stay within ±2π. The poses are the same, so the checks hold.
+  - A real controller would spin the joint 360°, so any exporter must unwrap.
+- **R17 did not meet the ≤ 4 mm rule.** It stepped 10 mm TCP / 2°, and computed the full clearance bound only every 5th step.
+  - R19 re-checked all 5 stored paths at ≤ 4 mm, and all pass.
+  - Some true minimum reserves are lower than reported: the wok is 2.02 mm, not 3.3. The lid stays at 1.0 mm (`results/r19/smooth/summary.json`).
+  - The library study measured 0.3 mm for the lid's carry down to the rack, probably with the stock held-part model; this is unresolved.
+  - Either way, the lid and the rack need mechanical location (a keyed tab and a lead-in).
+- **R17/R18 action times assume unlimited acceleration** (a constant speed per step). Smooth execution at the same caps is 20–50 % slower. The faster sourced caps recover it (above).
+- **The R15 stir period of 2.63 s is not executable as checked.** Each working part ends at 0.54–0.88 m/s, while the return starts from rest.
+  - Option 1: stop at each hand-off, about 3.6 s per stroke.
+  - Option 2: velocity-matched returns, which need a re-check including the plume rule.
+  - The stir states were never stored, so `r15reach.py` and a state-saving `r15stirwalk2.py` must be re-run first.
+- **Model bug, conservative:** `scene.build` converts tool boxes to meshes (the R11 rule) before `kitchen14.add` adds the R15+ held parts.
+  - Those parts stay box primitives, which gives false hits (34 on the spatula chain).
+  - It can only reject, never pass. R18's spatula-rest rejections may include false ones.
+  - The fix, in `scene.py`, is not made yet.
+
+**Recommended architecture (proposal):**
+- **Layers:** recipe step → task → movement set → primitives → controller trajectory.
+- **Composition:** every set starts and ends at an exact hub state, so any sequence is checked by construction.
+- **Timing:** a set's geometry is checked once. Timing is generated at composition (TOPP plus a jerk limit) and needs only formula checks: joint, cart, jaw and food limits.
+- **Layout changes:** re-check only the sets whose swept volume the change touches.
+- **Runtime:** hub-state match, pre/post-conditions and monitors (joint torque, gripper, cameras, person sensing). No geometry checks.
+- **Stored format:**
+  - unwrapped hub states;
+  - cubic B-spline pieces between mandatory stops, with the contact windows flagged;
+  - a check certificate.
+- **Playback:** a dense joint stream (UR RTDE `servoj` at 500 Hz) or an on-controller trajectory file (Fairino, Dobot).

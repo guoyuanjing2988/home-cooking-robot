@@ -1,0 +1,835 @@
+{
+ "id": "fr5",
+ "name": "Fairino (FAIR INNOVATION) FR5",
+ "sources": {
+  "datasheet": "https://www.fairino.us/collaborative-robot/fairino/fr5",
+  "urdf": "https://raw.githubusercontent.com/FAIR-INNOVATION/frcobot_ros2/main/fairino_description/urdf/fairino5_v6.urdf",
+  "meshes": "https://github.com/FAIR-INNOVATION/frcobot_ros2/tree/main/fairino_description/meshes/fairino5_v6",
+  "joint_limits_yaml": "https://raw.githubusercontent.com/FAIR-INNOVATION/frcobot_ros2/main/fairino5_v6_moveit2_config/config/joint_limits.yaml",
+  "load_curve": "https://fairino-doc-en.readthedocs.io/latest/CobotsManual/installation.html (3.4.5.2.5, Figure 3.4-19)",
+  "installation": "https://fairino-doc-en.readthedocs.io/latest/CobotsManual/installation.html (3.4.1.2)",
+  "safety": "https://fairino-doc-en.readthedocs.io/latest/CobotsManual/safety.html"
+ },
+ "labels": {
+  "M": "manufacturer",
+  "E": "derived here",
+  "ND": "not published"
+ },
+ "links": [
+  {
+   "link": "base_link",
+   "mass": 1.6185,
+   "com": [
+    -0.00031896,
+    -0.00029673,
+    0.042463
+   ],
+   "inertia_full": [
+    0.0030836,
+    0.0030825,
+    0.0045209,
+    1.5354e-05,
+    -1.9315e-05,
+    -1.7918e-05
+   ],
+   "inertial_label": "M (URDF base_link; base is fixed to the mount, so it only adds to the cart mass)"
+  },
+  {
+   "link": "shoulder_link",
+   "mass": 4.64,
+   "com": [
+    -0.00019,
+    -0.00226,
+    0.13372
+   ],
+   "inertia_full": [
+    0.009383910000000004,
+    0.009324490000000003,
+    0.007742200000000004,
+    3.305000000000001e-05,
+    -5.8830000000000025e-05,
+    -0.00022287000000000012
+   ],
+   "inertial_label": "M mass and CoM (DH table, DH frame 1, moved into the URDF link frame here: the URDF carries the same numbers but in the DH frames, e.g. the upper-arm CoM x=+0.212 lies outside its own mesh); E inertia tensor (URDF values, assumed in the same DH frame, rotated with it)",
+   "capsules": [
+    {
+     "name": "j1",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      0.074,
+      0.0,
+      0.0,
+      0.2174
+     ],
+     "radius": 0.0596,
+     "nominal_radius": 0.058
+    },
+    {
+     "name": "j2stub",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      0.152,
+      0.0,
+      -0.0648,
+      0.152
+     ],
+     "radius": 0.0595,
+     "nominal_radius": 0.058
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.058,
+     -0.0648,
+     0.074
+    ],
+    [
+     0.058,
+     0.058,
+     0.2174
+    ]
+   ],
+   "enclosure_check": {
+    "points": 87100,
+    "max_outside_m": 0.0
+   },
+   "capsule_label": "E: capsules / cylinders (the wrist housings, whose flat faces sit a few mm from the next-but-one link) enclosing every vertex and every sampled triangle point of the vendor STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "upperarm_link",
+   "mass": 10.08,
+   "com": [
+    -0.21253,
+    0.0,
+    0.1212
+   ],
+   "inertia_full": [
+    0.02060496,
+    0.43899432,
+    0.435456,
+    0.00028019,
+    2.62e-06,
+    -2.68e-06
+   ],
+   "inertial_label": "M mass and CoM (DH table, DH frame 2, moved into the URDF link frame here: the URDF carries the same numbers but in the DH frames, e.g. the upper-arm CoM x=+0.212 lies outside its own mesh); E inertia tensor (URDF values, assumed in the same DH frame, rotated with it)",
+   "capsules": [
+    {
+     "name": "h_shoulder",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      0.06,
+      0.0,
+      0.0,
+      0.2034
+     ],
+     "radius": 0.0595,
+     "nominal_radius": 0.058
+    },
+    {
+     "name": "h_elbow",
+     "type": "cylinder",
+     "fromto": [
+      -0.425,
+      0.0,
+      0.06,
+      -0.425,
+      0.0,
+      0.2034
+     ],
+     "radius": 0.0595,
+     "nominal_radius": 0.058
+    },
+    {
+     "name": "web_e",
+     "type": "capsule",
+     "fromto": [
+      -0.425,
+      0.0,
+      0.138,
+      -0.3489,
+      0.0,
+      0.138
+     ],
+     "radius": 0.0594,
+     "nominal_radius": 0.058
+    },
+    {
+     "name": "tube",
+     "type": "capsule",
+     "fromto": [
+      -0.3352,
+      0.0,
+      0.138,
+      -0.0894,
+      0.0,
+      0.138
+     ],
+     "radius": 0.0477,
+     "nominal_radius": 0.0476
+    },
+    {
+     "name": "web_s",
+     "type": "capsule",
+     "fromto": [
+      0.0,
+      0.0,
+      0.138,
+      -0.0747,
+      0.0,
+      0.138
+     ],
+     "radius": 0.0594,
+     "nominal_radius": 0.058
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.483,
+     -0.058,
+     0.06
+    ],
+    [
+     0.058,
+     0.058,
+     0.2034
+    ]
+   ],
+   "enclosure_check": {
+    "points": 106920,
+    "max_outside_m": 0.0
+   },
+   "capsule_label": "E: capsules / cylinders (the wrist housings, whose flat faces sit a few mm from the next-but-one link) enclosing every vertex and every sampled triangle point of the vendor STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "forearm_link",
+   "mass": 2.71,
+   "com": [
+    -0.27238,
+    0.00017,
+    0.01259
+   ],
+   "inertia_full": [
+    0.00357541,
+    0.07148285,
+    0.07111915,
+    9.57e-05,
+    0.00022485,
+    3.43e-06
+   ],
+   "inertial_label": "M mass and CoM (DH table, DH frame 3, moved into the URDF link frame here: the URDF carries the same numbers but in the DH frames, e.g. the upper-arm CoM x=+0.212 lies outside its own mesh); E inertia tensor (URDF values, assumed in the same DH frame, rotated with it)",
+   "capsules": [
+    {
+     "name": "h_elbow",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      -0.04,
+      0.0,
+      0.0,
+      0.0648
+     ],
+     "radius": 0.0622,
+     "nominal_radius": 0.058
+    },
+    {
+     "name": "web",
+     "type": "capsule",
+     "fromto": [
+      0.0,
+      0.0,
+      0.012,
+      -0.0772,
+      0.0,
+      0.012
+     ],
+     "radius": 0.0495,
+     "nominal_radius": 0.045
+    },
+    {
+     "name": "tube",
+     "type": "capsule",
+     "fromto": [
+      -0.3489,
+      0.0,
+      0.0,
+      -0.0772,
+      0.0,
+      0.0
+     ],
+     "radius": 0.0455,
+     "nominal_radius": 0.04
+    },
+    {
+     "name": "h_wrist1",
+     "type": "cylinder",
+     "fromto": [
+      -0.395,
+      0.0,
+      -0.0495,
+      -0.395,
+      0.0,
+      0.0582
+     ],
+     "radius": 0.0456,
+     "nominal_radius": 0.04
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.435,
+     -0.058,
+     -0.0495
+    ],
+    [
+     0.058,
+     0.058,
+     0.0648
+    ]
+   ],
+   "enclosure_check": {
+    "points": 90140,
+    "max_outside_m": 0.0
+   },
+   "capsule_label": "E: capsules / cylinders (the wrist housings, whose flat faces sit a few mm from the next-but-one link) enclosing every vertex and every sampled triangle point of the vendor STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "wrist1_link",
+   "mass": 1.56,
+   "com": [
+    5e-05,
+    -0.01468,
+    0.09967
+   ],
+   "inertia_full": [
+    0.0016259500000000008,
+    0.0012552600000000004,
+    0.0015802000000000008,
+    3.4700000000000015e-06,
+    -2.8500000000000007e-06,
+    -6.131000000000002e-05
+   ],
+   "inertial_label": "M mass and CoM (DH table, DH frame 4, moved into the URDF link frame here: the URDF carries the same numbers but in the DH frames, e.g. the upper-arm CoM x=+0.212 lies outside its own mesh); E inertia tensor (URDF values, assumed in the same DH frame, rotated with it)",
+   "capsules": [
+    {
+     "name": "h_j5",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      -0.0582,
+      0.1021,
+      0.0,
+      0.0495,
+      0.1021
+     ],
+     "radius": 0.041,
+     "nominal_radius": 0.04
+    },
+    {
+     "name": "neck",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      0.0533,
+      0.0,
+      0.0,
+      0.1021
+     ],
+     "radius": 0.041,
+     "nominal_radius": 0.04
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.04,
+     -0.0582,
+     0.0533
+    ],
+    [
+     0.04,
+     0.0495,
+     0.1421
+    ]
+   ],
+   "enclosure_check": {
+    "points": 90480,
+    "max_outside_m": -0.0
+   },
+   "capsule_label": "E: capsules / cylinders (the wrist housings, whose flat faces sit a few mm from the next-but-one link) enclosing every vertex and every sampled triangle point of the vendor STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "wrist2_link",
+   "mass": 1.56,
+   "com": [
+    -5e-05,
+    0.01468,
+    0.09967
+   ],
+   "inertia_full": [
+    0.0016259500000000008,
+    0.0012552600000000004,
+    0.0015802000000000008,
+    3.4700000000000015e-06,
+    2.8500000000000007e-06,
+    6.131000000000002e-05
+   ],
+   "inertial_label": "M mass and CoM (DH table, DH frame 5, moved into the URDF link frame here: the URDF carries the same numbers but in the DH frames, e.g. the upper-arm CoM x=+0.212 lies outside its own mesh); E inertia tensor (URDF values, assumed in the same DH frame, rotated with it)",
+   "capsules": [
+    {
+     "name": "h_j6",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      -0.0495,
+      0.102,
+      0.0,
+      0.0582,
+      0.102
+     ],
+     "radius": 0.041,
+     "nominal_radius": 0.04
+    },
+    {
+     "name": "neck",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      0.0532,
+      0.0,
+      0.0,
+      0.102
+     ],
+     "radius": 0.041,
+     "nominal_radius": 0.04
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.04,
+     -0.0495,
+     0.0532
+    ],
+    [
+     0.04,
+     0.0582,
+     0.142
+    ]
+   ],
+   "enclosure_check": {
+    "points": 91780,
+    "max_outside_m": -0.0
+   },
+   "capsule_label": "E: capsules / cylinders (the wrist housings, whose flat faces sit a few mm from the next-but-one link) enclosing every vertex and every sampled triangle point of the vendor STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "wrist3_link",
+   "mass": 0.36,
+   "com": [
+    0.00093,
+    0.00081,
+    0.07995
+   ],
+   "inertia_full": [
+    0.00023009,
+    0.00023049,
+    0.0003593,
+    1.3e-07,
+    9.8e-07,
+    8.5e-07
+   ],
+   "inertial_label": "M mass and CoM (DH table, DH frame 6, moved into the URDF link frame here: the URDF carries the same numbers but in the DH frames, e.g. the upper-arm CoM x=+0.212 lies outside its own mesh); E inertia tensor (URDF values, assumed in the same DH frame, rotated with it)",
+   "capsules": [
+    {
+     "name": "flange",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      0.053,
+      0.0,
+      0.0,
+      0.099
+     ],
+     "radius": 0.0402,
+     "nominal_radius": 0.04
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.04,
+     -0.04,
+     0.0532
+    ],
+    [
+     0.04,
+     0.04,
+     0.099
+    ]
+   ],
+   "enclosure_check": {
+    "points": 94420,
+    "max_outside_m": 0.0
+   },
+   "capsule_label": "E: capsules / cylinders (the wrist housings, whose flat faces sit a few mm from the next-but-one link) enclosing every vertex and every sampled triangle point of the vendor STL (M); radius rounded up by 0.05 mm"
+  }
+ ],
+ "urdf_vs_dh": [
+  {
+   "joint": "j1",
+   "urdf_xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "note": "base_link -> j1 at the base origin (DH frame 0 = base_link)"
+  },
+  {
+   "joint": "j2",
+   "urdf_xyz": [
+    0.0,
+    0.0,
+    0.152
+   ],
+   "dh_xyz": [
+    0.0,
+    0.0,
+    0.152
+   ],
+   "dp_mm": 0.0,
+   "dR_deg": 0.0
+  },
+  {
+   "joint": "j3",
+   "urdf_xyz": [
+    -0.425,
+    0.0,
+    0.0
+   ],
+   "dh_xyz": [
+    -0.425,
+    0.0,
+    0.0
+   ],
+   "dp_mm": 0.0,
+   "dR_deg": 0.0
+  },
+  {
+   "joint": "j4",
+   "urdf_xyz": [
+    -0.39501,
+    0.0,
+    0.0
+   ],
+   "dh_xyz": [
+    -0.395,
+    0.0,
+    0.0
+   ],
+   "dp_mm": 0.01,
+   "dR_deg": 0.0
+  },
+  {
+   "joint": "j5",
+   "urdf_xyz": [
+    0.0,
+    0.0,
+    0.1021
+   ],
+   "dh_xyz": [
+    0.0,
+    0.0,
+    0.102
+   ],
+   "dp_mm": 0.1,
+   "dR_deg": 0.0
+  },
+  {
+   "joint": "j6",
+   "urdf_xyz": [
+    0.0,
+    0.0,
+    0.102
+   ],
+   "dh_xyz": [
+    0.0,
+    0.0,
+    0.102
+   ],
+   "dp_mm": 0.0,
+   "dR_deg": 0.0
+  }
+ ],
+ "joints": [
+  {
+   "name": "j1",
+   "parent": "base_link",
+   "child": "shoulder_link",
+   "xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "urdf_limit_rad": [
+    -3.0543,
+    3.0543
+   ],
+   "urdf_velocity_rad_s": 3.15,
+   "urdf_effort_Nm": 150.0,
+   "datasheet_limit_deg": [
+    -175,
+    175
+   ],
+   "datasheet_speed_degps": 180
+  },
+  {
+   "name": "j2",
+   "parent": "shoulder_link",
+   "child": "upperarm_link",
+   "xyz": [
+    0.0,
+    0.0,
+    0.152
+   ],
+   "rpy": [
+    1.5708,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "urdf_limit_rad": [
+    -4.6251,
+    1.4835
+   ],
+   "urdf_velocity_rad_s": 3.15,
+   "urdf_effort_Nm": 150.0,
+   "datasheet_limit_deg": [
+    -265,
+    85
+   ],
+   "datasheet_speed_degps": 180
+  },
+  {
+   "name": "j3",
+   "parent": "upperarm_link",
+   "child": "forearm_link",
+   "xyz": [
+    -0.425,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "urdf_limit_rad": [
+    -2.8274,
+    2.8274
+   ],
+   "urdf_velocity_rad_s": 3.15,
+   "urdf_effort_Nm": 150.0,
+   "datasheet_limit_deg": [
+    -160,
+    160
+   ],
+   "datasheet_speed_degps": 180
+  },
+  {
+   "name": "j4",
+   "parent": "forearm_link",
+   "child": "wrist1_link",
+   "xyz": [
+    -0.39501,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "urdf_limit_rad": [
+    -4.6251,
+    1.4835
+   ],
+   "urdf_velocity_rad_s": 3.2,
+   "urdf_effort_Nm": 28.0,
+   "datasheet_limit_deg": [
+    -265,
+    85
+   ],
+   "datasheet_speed_degps": 180
+  },
+  {
+   "name": "j5",
+   "parent": "wrist1_link",
+   "child": "wrist2_link",
+   "xyz": [
+    0.0,
+    0.0,
+    0.1021
+   ],
+   "rpy": [
+    1.5708,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "urdf_limit_rad": [
+    -3.0543,
+    3.0543
+   ],
+   "urdf_velocity_rad_s": 3.2,
+   "urdf_effort_Nm": 28.0,
+   "datasheet_limit_deg": [
+    -175,
+    175
+   ],
+   "datasheet_speed_degps": 180
+  },
+  {
+   "name": "j6",
+   "parent": "wrist2_link",
+   "child": "wrist3_link",
+   "xyz": [
+    0.0,
+    0.0,
+    0.102
+   ],
+   "rpy": [
+    -1.5708,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "urdf_limit_rad": [
+    -3.0543,
+    3.0543
+   ],
+   "urdf_velocity_rad_s": 3.2,
+   "urdf_effort_Nm": 28.0,
+   "datasheet_limit_deg": [
+    -175,
+    175
+   ],
+   "datasheet_speed_degps": 180
+  }
+ ],
+ "flange": {
+  "xyz": [
+   0,
+   0,
+   0.1
+  ],
+  "label": "M: DH d6 = 100 mm (Table 2.4-5); the URDF has no flange frame; the wrist3 STL ends at 99.0 mm",
+  "frame": "DH frame 6 (theta6 offset 0)"
+ },
+ "base_mesh": "C:/Users/admin/Documents/YJGames/robot_rail/sim/vendor_r19/fairino/meshes/base_link.STL",
+ "dh": {
+  "a": [
+   0,
+   -0.425,
+   -0.395,
+   0,
+   0,
+   0
+  ],
+  "d": [
+   0.152,
+   0,
+   0,
+   0.102,
+   0.102,
+   0.1
+  ],
+  "alpha": [
+   1.5707963267948966,
+   0,
+   0,
+   1.5707963267948966,
+   -1.5707963267948966,
+   0
+  ],
+  "mass": [
+   4.64,
+   10.08,
+   2.71,
+   1.56,
+   1.56,
+   0.36
+  ],
+  "com_mm": [
+   [
+    -0.19,
+    -18.28,
+    2.26
+   ],
+   [
+    212.47,
+    0,
+    121.2
+   ],
+   [
+    122.62,
+    0.17,
+    12.59
+   ],
+   [
+    0.05,
+    -2.33,
+    14.68
+   ],
+   [
+    -0.05,
+    2.33,
+    14.68
+   ],
+   [
+    0.93,
+    0.81,
+    -20.05
+   ]
+  ],
+  "source": "https://fairino-doc-en.readthedocs.io/latest/CobotsManual/robot_brief_introduction.html (Table 2.4-5); DH xlsx: https://fairino-doc-en.readthedocs.io/latest/_downloads/e40731353903151d7e48b23399b3ea18/FR%20Robots%20DH%20Transformation.xlsx"
+ }
+}

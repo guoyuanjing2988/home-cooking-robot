@@ -1,0 +1,1149 @@
+{
+ "source": "r19prim_transit.py",
+ "hubs": {
+  "H_spat_pre": [
+   -1.48,
+   -0.21,
+   0.0,
+   6.1216,
+   -2.7081,
+   -2.301,
+   -0.2558,
+   -3.4427,
+   -0.5733,
+   0.025,
+   0.025
+  ],
+  "H_fau_closed_pre": [
+   -0.6798,
+   -0.21,
+   0.0,
+   -2.6466,
+   -6.0718,
+   -0.5039,
+   -5.7351,
+   -0.6515,
+   -3.661,
+   0.025,
+   0.025
+  ],
+  "H_fau_open_post": [
+   -0.6798,
+   -0.21,
+   0.0,
+   -2.6571,
+   -6.0895,
+   -0.7652,
+   -5.8437,
+   -0.632,
+   -2.8784,
+   0.025,
+   0.025
+  ],
+  "H_wok_pre": [
+   0.1722,
+   -0.21,
+   0.0,
+   -3.145,
+   -5.564,
+   -1.4259,
+   2.8964,
+   -5.3947,
+   4.2875,
+   0.025,
+   0.025
+  ]
+ },
+ "step": "<= 1 deg largest joint, <= 1 cm cart",
+ "transits": [
+  {
+   "transit": "rest_to_faucet",
+   "frm": "H_spat_pre",
+   "to": "H_fau_closed_pre",
+   "lever_deg": 0.0,
+   "cart": [
+    -1.48,
+    -0.68
+   ],
+   "estimate_s": 5.6,
+   "ok": false,
+   "path": null,
+   "time_s": null,
+   "states": null,
+   "min_reserve_mm": null,
+   "tries": [
+    {
+     "candidate": "direct",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.441,
+       "hits": [
+        [
+         "R_geom_17",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.441,
+       "hits": [
+        [
+         "R_geom_17",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 55.5
+      },
+      {
+       "at": 0.441,
+       "hits": [
+        [
+         "R_geom_17",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "raised source posture (+lift)",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 21,
+       "time_s": 0.93,
+       "min_reserve_mm": 77.9
+      },
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 112.2
+      },
+      {
+       "at": 0.407,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_1"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "raised source posture (-lift)",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 21,
+       "time_s": 0.93,
+       "min_reserve_mm": 8.4
+      },
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 24.2
+      },
+      {
+       "at": 0.436,
+       "hits": [
+        [
+         "R_geom_17",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "raised target posture (+lift)",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.426,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_0"
+        ],
+        [
+         "r07_closed_door_0_0",
+         "R_geom_16"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "raised target posture (-lift)",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.441,
+       "hits": [
+        [
+         "R_geom_17",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "wrist joints first",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.441,
+       "hits": [
+        [
+         "R_geom_17",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "wrist joints last",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.47,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_1"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 1 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.294,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_0"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 1 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.294,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_0"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 1 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 55.5
+      },
+      {
+       "at": 0.294,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_1"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 2 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.166,
+       "hits": [
+        [
+         "R_geom_25",
+         "R_cart_mast"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 2 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.166,
+       "hits": [
+        [
+         "R_geom_25",
+         "R_cart_mast"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 2 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 55.5
+      },
+      {
+       "at": 0.166,
+       "hits": [
+        [
+         "R_geom_25",
+         "R_cart_mast"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 3 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.296,
+       "hits": [
+        [
+         "r07_closed_door_0_1",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 3 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.296,
+       "hits": [
+        [
+         "r07_closed_door_0_0",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 3 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 55.5
+      },
+      {
+       "at": 0.307,
+       "hits": [
+        [
+         "r07_closed_door_0_1",
+         "R_gripper_oem_envelope"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 4 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.468,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_1"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 4 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.468,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_0"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 4 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 55.5
+      },
+      {
+       "at": 0.468,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_1"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 5 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.467,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_1"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 5 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.467,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_0"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 5 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 55.5
+      },
+      {
+       "at": 0.467,
+       "hits": [
+        [
+         "R_geom_16",
+         "r07_closed_door_0_1"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 6 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.277,
+       "hits": [
+        [
+         "R_geom_21",
+         "R_gripper_oem_envelope"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 6 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.277,
+       "hits": [
+        [
+         "R_geom_21",
+         "R_gripper_oem_envelope"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 6 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "states": 81,
+       "time_s": 3.8,
+       "min_reserve_mm": 55.5
+      },
+      {
+       "at": 0.277,
+       "hits": [
+        [
+         "R_geom_21",
+         "R_gripper_oem_envelope"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "cart then planned joints",
+     "ok": false,
+     "pieces": [
+      [
+       {
+        "states": 81,
+        "time_s": 3.8,
+        "min_reserve_mm": 55.5
+       }
+      ],
+      {
+       "ok": false,
+       "method": null,
+       "elapsed_s": 100.1,
+       "restarts": 0,
+       "nodes": 0,
+       "reason": "finite_search_budget_exhausted"
+      }
+     ]
+    },
+    {
+     "candidate": "planned joints then cart",
+     "ok": false,
+     "pieces": [
+      [
+       {
+        "at": 0.012,
+        "hits": [
+         [
+          "stored_bowl_leafy_greens_bail_leg-1",
+          "R_finger_plus"
+         ]
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "elapsed_s": 85.8
+  },
+  {
+   "transit": "faucet_to_wok",
+   "frm": "H_fau_open_post",
+   "to": "H_wok_pre",
+   "lever_deg": 30.0,
+   "cart": [
+    -0.68,
+    0.172
+   ],
+   "estimate_s": 6.2,
+   "ok": true,
+   "path": "joints then cart",
+   "time_s": 6.96,
+   "states": 227,
+   "min_reserve_mm": 11.8,
+   "tries": [
+    {
+     "candidate": "direct",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.851,
+       "hits": [
+        [
+         "r15_wok_grip",
+         "R_finger_minus"
+        ],
+        [
+         "r15_wok_grip",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joints then cart",
+     "ok": true,
+     "pieces": [
+      {
+       "states": 141,
+       "time_s": 2.95,
+       "min_reserve_mm": 16.5
+      },
+      {
+       "states": 86,
+       "time_s": 4.01,
+       "min_reserve_mm": 11.8
+      }
+     ]
+    }
+   ],
+   "elapsed_s": 8.5
+  },
+  {
+   "transit": "wok_to_faucet",
+   "frm": "H_wok_pre",
+   "to": "H_fau_open_post",
+   "lever_deg": 30.0,
+   "cart": [
+    0.172,
+    -0.68
+   ],
+   "estimate_s": 6.2,
+   "ok": true,
+   "path": "cart then joints",
+   "time_s": 6.96,
+   "states": 227,
+   "min_reserve_mm": 16.7,
+   "tries": [
+    {
+     "candidate": "direct",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.057,
+       "hits": [
+        [
+         "r15_wok_grip",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.057,
+       "hits": [
+        [
+         "r15_wok_t4_6",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "cart then joints",
+     "ok": true,
+     "pieces": [
+      {
+       "states": 86,
+       "time_s": 4.01,
+       "min_reserve_mm": 20.2
+      },
+      {
+       "states": 141,
+       "time_s": 2.95,
+       "min_reserve_mm": 16.7
+      }
+     ]
+    }
+   ],
+   "elapsed_s": 11.3
+  },
+  {
+   "transit": "faucet_to_rest",
+   "frm": "H_fau_closed_pre",
+   "to": "H_spat_pre",
+   "lever_deg": 0.0,
+   "cart": [
+    -0.68,
+    -1.48
+   ],
+   "estimate_s": 5.6,
+   "ok": false,
+   "path": null,
+   "time_s": null,
+   "states": null,
+   "min_reserve_mm": null,
+   "tries": [
+    {
+     "candidate": "direct",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.011,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.011,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.111,
+       "hits": [
+        [
+         "r17_faucet_spout",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "raised source posture (+lift)",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.4,
+       "hits": [
+        [
+         "R_geom_25",
+         "counter_right"
+        ],
+        [
+         "R_geom_25",
+         "sink_right"
+        ],
+        [
+         "R_geom_26",
+         "counter_right"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "raised source posture (-lift)",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.95,
+       "hits": [
+        [
+         "R_geom_21",
+         "upper_cabinet_1"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "raised target posture (+lift)",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.017,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "raised target posture (-lift)",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.016,
+       "hits": [
+        [
+         "r17_lever_bracket",
+         "R_finger_plus"
+        ],
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "wrist joints first",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.52,
+       "hits": [
+        [
+         "R_geom_17",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "wrist joints last",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.012,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 1 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.012,
+       "hits": [
+        [
+         "r17_faucet_column",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 1 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.014,
+       "hits": [
+        [
+         "r17_faucet_column",
+         "R_finger_minus"
+        ],
+        [
+         "r17_faucet_spout",
+         "R_finger_minus"
+        ],
+        [
+         "r17_faucet_column",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 1 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.111,
+       "hits": [
+        [
+         "r17_faucet_spout",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 2 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.01,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 2 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.016,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 2 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.111,
+       "hits": [
+        [
+         "r17_faucet_spout",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 3 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.031,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 3 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.027,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 3 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.111,
+       "hits": [
+        [
+         "r17_faucet_spout",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 4 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.01,
+       "hits": [
+        [
+         "r17_lever_bracket",
+         "R_finger_plus"
+        ],
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 4 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.01,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 4 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.111,
+       "hits": [
+        [
+         "r17_faucet_spout",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 5 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.015,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 5 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.02,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 5 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.111,
+       "hits": [
+        [
+         "r17_faucet_spout",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 6 other winding",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.009,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 6 other winding, joints then cart",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.011,
+       "hits": [
+        [
+         "r17_lever_tip",
+         "R_finger_plus"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "candidate": "joint 6 other winding, cart then joints",
+     "ok": false,
+     "pieces": [
+      {
+       "at": 0.111,
+       "hits": [
+        [
+         "r17_faucet_spout",
+         "R_finger_minus"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "elapsed_s": 5.2
+  }
+ ],
+ "elapsed_s": 5.2
+}

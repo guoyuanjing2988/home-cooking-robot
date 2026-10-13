@@ -1,0 +1,447 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "r19-motion-library",
+ "title": "R19 home cooking robot motion library",
+ "description": "recipe step -> task -> movement set -> primitive -> controller command. Every set starts and ends at a hub state; sets join only at identical hub states, so a sequence of sets needs no new geometric check. Verification is offline, per primitive and per set, with the unchanged checker.",
+ "$defs": {
+  "State": {
+   "type": "array",
+   "items": {
+    "type": "number"
+   },
+   "minItems": 11,
+   "maxItems": 11,
+   "description": "cart x (m), base y, base yaw, 6 UR5e joints (rad, winding kept), 2 jaw openings (m)"
+  },
+  "Hub": {
+   "type": "object",
+   "required": [
+    "id",
+    "hand",
+    "q",
+    "station"
+   ],
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "hand": {
+     "enum": [
+      "empty",
+      "wok",
+      "spatula",
+      "spider",
+      "lid",
+      "carrier",
+      "cup",
+      "basket",
+      "lever"
+     ]
+    },
+    "station": {
+     "type": "string"
+    },
+    "q": {
+     "$ref": "#/$defs/State"
+    },
+    "match_tol": {
+     "type": "object",
+     "properties": {
+      "joint_deg": {
+       "type": "number"
+      },
+      "cart_mm": {
+       "type": "number"
+      }
+     },
+     "description": "runtime: the measured state must be within this of q before a set may start (default 0.05 deg / 0.5 mm)"
+    },
+    "object_pose": {
+     "type": "object",
+     "description": "held object or target pose at the hub (p, R) for runtime cross-checks"
+    },
+    "source": {
+     "$ref": "#/$defs/Source"
+    }
+   }
+  },
+  "Source": {
+   "type": "object",
+   "properties": {
+    "file": {
+     "type": "string"
+    },
+    "play": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 2,
+     "maxItems": 2,
+     "description": "state index range in the file playback"
+    },
+    "approach": {
+     "type": "array"
+    },
+    "keyframes": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "Primitive": {
+   "type": "object",
+   "required": [
+    "id",
+    "class",
+    "trajectory",
+    "verification"
+   ],
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "class": {
+     "enum": [
+      "approach",
+      "seat_lift",
+      "seat_lower",
+      "carry",
+      "insert",
+      "extract",
+      "reorient",
+      "tip",
+      "untip",
+      "lever",
+      "stroke",
+      "stroke_return",
+      "meet_join",
+      "transit",
+      "dwell",
+      "gripper"
+     ]
+    },
+    "params": {
+     "type": "object",
+     "description": "named parameters with their verified range/grid, e.g. {\"cart_shift_m\":{\"verified\":[0,-0.26]}}"
+    },
+    "trajectory": {
+     "type": "object",
+     "properties": {
+      "states": {
+       "type": "array",
+       "items": {
+        "$ref": "#/$defs/State"
+       }
+      },
+      "source": {
+       "$ref": "#/$defs/Source"
+      },
+      "reversible": {
+       "type": "boolean"
+      },
+      "timing": {
+       "type": "object",
+       "properties": {
+        "law": {
+         "enum": [
+          "per_step_limits",
+          "jerk_limited_along_path",
+          "servo_dense"
+         ]
+        },
+        "tcp_mps": {
+         "type": "number"
+        },
+        "deg_per_s": {
+         "type": "number"
+        },
+        "joint_degps": {
+         "type": "number"
+        },
+        "cart_mps": {
+         "type": "number"
+        }
+       }
+      }
+     }
+    },
+    "contact_window": {
+     "type": "boolean",
+     "description": "slow, straight, no blending; only the named intended contacts allowed (DECISIONS 2026-10-08)"
+    },
+    "blend": {
+     "type": "object",
+     "properties": {
+      "allowed": {
+       "type": "boolean"
+      },
+      "max_path_deviation_mm": {
+       "type": "number",
+       "description": "<= min clearance reserve of the segment minus tracking error"
+      }
+     }
+    },
+    "load": {
+     "type": "object",
+     "properties": {
+      "held_kg": {
+       "type": "number"
+      },
+      "max_pgc_moment_Nm": {
+       "type": "number"
+      },
+      "max_joint_ratio": {
+       "type": "number"
+      }
+     }
+    },
+    "verification": {
+     "$ref": "#/$defs/Verification"
+    },
+    "monitors": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/Monitor"
+     }
+    }
+   }
+  },
+  "Verification": {
+   "type": "object",
+   "required": [
+    "status"
+   ],
+   "properties": {
+    "status": {
+     "enum": [
+      "verified",
+      "composed_from_verified",
+      "partially_verified",
+      "not_verified"
+     ]
+    },
+    "checker": {
+     "type": "string"
+    },
+    "gaps_mm": {
+     "type": "object"
+    },
+    "step_bound": {
+     "type": "string"
+    },
+    "min_reserve_mm": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "scene_version": {
+     "type": "string",
+     "description": "hash of the fixture layout the check ran in"
+    },
+    "swept_volume": {
+     "type": "string",
+     "description": "voxel set key (2 cm) for layout-change screening"
+    },
+    "fixture_dependencies": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "param_grid": {
+     "type": "object"
+    },
+    "elapsed_s": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "evidence": {
+     "type": "string"
+    }
+   }
+  },
+  "Condition": {
+   "type": "object",
+   "required": [
+    "name",
+    "check"
+   ],
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "check": {
+     "type": "string",
+     "description": "how it is established at runtime: sensor or state flag"
+    },
+    "on_false": {
+     "type": "string"
+    }
+   }
+  },
+  "Monitor": {
+   "type": "object",
+   "properties": {
+    "signal": {
+     "type": "string"
+    },
+    "nominal": {
+     "description": "recorded during verification / commissioning"
+    },
+    "limit": {},
+    "action": {
+     "enum": [
+      "slow",
+      "pause",
+      "retreat_to_hub",
+      "stop",
+      "protective_stop"
+     ]
+    }
+   }
+  },
+  "MovementSet": {
+   "type": "object",
+   "required": [
+    "id",
+    "start_hub",
+    "end_hub",
+    "steps",
+    "pre",
+    "post",
+    "verification"
+   ],
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "params": {
+     "type": "object"
+    },
+    "start_hub": {
+     "type": "string"
+    },
+    "end_hub": {
+     "type": "string"
+    },
+    "pre": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/Condition"
+     }
+    },
+    "post": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/Condition"
+     }
+    },
+    "steps": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "primitive": {
+        "type": "string"
+       },
+       "reverse": {
+        "type": "boolean"
+       },
+       "params": {
+        "type": "object"
+       },
+       "io": {
+        "type": "string",
+        "description": "gripper / cooker / drum command at this point"
+       }
+      }
+     }
+    },
+    "reverse_of": {
+     "type": "string"
+    },
+    "time_s": {
+     "type": "number"
+    },
+    "stops": {
+     "type": "integer",
+     "description": "velocity zeros (contact windows, dwells, gripper)"
+    },
+    "on_failure": {
+     "type": "object",
+     "description": "per step: where to retreat (a hub or the last safe state) and what to report"
+    },
+    "verification": {
+     "$ref": "#/$defs/Verification"
+    }
+   }
+  },
+  "Task": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "sets": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "resources": {
+     "type": "array"
+    }
+   }
+  },
+  "RecipeStep": {
+   "type": "object",
+   "properties": {
+    "dish": {
+     "type": "string"
+    },
+    "label": {
+     "type": "string"
+    },
+    "tasks": {
+     "type": "array"
+    },
+    "heat": {
+     "type": "object"
+    },
+    "wait_s": {
+     "type": "number"
+    },
+    "end_cue": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "type": "object",
+ "properties": {
+  "hubs": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/Hub"
+   }
+  },
+  "primitives": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/Primitive"
+   }
+  },
+  "sets": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/MovementSet"
+   }
+  }
+ }
+}

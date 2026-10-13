@@ -445,3 +445,55 @@ Nothing bought.
   - the R15 stir cycle re-run in the current kitchen: passes, 2.63 s per stroke.
 - **Cost:** about 41 s more per plating than the R16 estimate. Meal B 75.6 min, was 75.0; A and C unchanged.
 - Evidence: `sim/r10/claude/README_R10.md` (The spatula lies on the counter).
+
+## 2026-10-13 — R19 exploration: cost, smooth motion, pre-checked movement library (proposed; user decisions pending)
+- **The user asked:** "less money, more smooth movements … lots of predefined movements then movement sets, therefore no need check after each tiny movement."
+  - Five parallel studies.
+  - Evidence: `sim/r10/claude/README_R10.md` (R19) and `research/r19_*.md`.
+- **Proposed motion architecture:**
+  - Movement sets start and end at fixed hub states.
+  - Each set's geometry is checked once offline. Timing is generated at composition, with formula checks only. Sequences are then checked by construction.
+  - After a layout change, only the sets whose stored swept volume is touched are re-checked.
+  - The hub roadmap is fully checked: 4 stations, 22 edges, 42 routes.
+- **Corrections recorded:**
+  - Stored paths need 2π unwrapping before export.
+  - R17 stepped coarser than the ≤ 4 mm rule. All 5 paths are now re-checked at ≤ 4 mm: all pass, with smaller true reserves.
+  - R17/R18 times assumed unlimited acceleration.
+  - The R15 stir period of 2.63 s has velocity jumps and is not executable as checked.
+  - A conservative held-part box bug in `scene.py`.
+- **Cost:**
+  - The biggest saving is a domestic cobot instead of the UR5e (¥150–180k): Fairino FR5 at a ¥23.8k guide price, or Elite CS66 / Dobot CR5A.
+  - The prices are unconfirmed. Any swap needs a re-check of the library.
+  - Nothing is bought.
+- **For the user to decide:**
+  - the seasoning station's scope;
+  - prep in or out of the robot;
+  - who loads the rice;
+  - a motorised stirrer / tilt cradle at the wok;
+  - a faucet sensor add-on;
+  - the fridge or a cooler;
+  - the fryer;
+  - the cart or a floor rail;
+  - which arm.
+
+## 2026-10-13 — User decisions on the R19 questions
+- **Arm (user: "你肯定先去验证便宜的能不能用吧").** Verify the cheap arms in the sim first.
+  - Start with the Fairino FR5, then the Elite CS66.
+  - The UR5e stays the baseline until a cheaper arm passes the same checks.
+- **Motorised stirrer / tilt cradle (user: "比较难吧，市面上有这种产品吗").** Not adopted. First survey the market for products that already stir and tip out by themselves, and how the robot could control and load them.
+- **Seasoning (user: "调料站你定，但肯定不是由人来做").**
+  - Dosing stays automatic. The person does not mix or dose seasonings per meal.
+  - The orchestrator sizes the station.
+  - Assumption to confirm with the user: the person only restocks bulk containers, like buying groceries.
+- **Prep (user: "备菜是最重要你要做的之一了，肯定不是人来做").**
+  - Washing, peeling and cutting stay the robot's job. Prep is a top priority, not an option to drop.
+  - Option O7 (prep out of the robot) is rejected.
+- **Rice (user: "电饭煲我可以做").**
+  - The person loads and starts the rice cooker.
+  - The rice hopper/auger module and the arm's rice actions are dropped from the design and the meal model.
+
+## 2026-10-13 — Ingredients arrive as the reference cook buys them (user decision)
+- **The user said:** "那些剁块，鱼和鱿鱼这些肯定摊主会搞定，你看我给你的视频他一般买回来什么样我们就是什么样".
+- **Starting state:** every ingredient arrives in the state the reference cook brings home in the three videos. For example, ribs come chopped by the butcher, and fish and squid come cleaned by the fishmonger.
+- **The robot's job:** everything he does himself in the videos (washing, peeling, cutting, scoring, mincing, marinating, soaking) stays the robot's job, per the 10-13 prep decision.
+- **Source for each ingredient:** the as-bought state comes from the video frames and transcripts (`research/homestyle_meals.md`; frames in the session scratchpad `home3/`), recorded in `research/r19_asbought.md`.

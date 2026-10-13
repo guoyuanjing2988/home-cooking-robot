@@ -1,0 +1,144 @@
+{
+  "envelope_Nm": {
+    "R_shoulder_pan_joint": 44.15764411726515,
+    "R_shoulder_lift_joint": 126.36278942750417,
+    "R_elbow_joint": 60.76440030499376,
+    "R_wrist_1_joint": 18.322336664452745,
+    "R_wrist_2_joint": 14.751492286288006,
+    "R_wrist_3_joint": 8.832463085309742
+  },
+  "witnesses": [
+    {
+      "joint": "R_shoulder_pan_joint",
+      "q": [
+        0.0,
+        0.0,
+        0.0,
+        0.22304632630359272,
+        3.141595795998492,
+        -1.3354168549861398e-05,
+        -2.211969986803758,
+        5.074899850572853,
+        1.4688240421829548
+      ],
+      "offset_world_m": [
+        0.15,
+        -0.0,
+        -0.0
+      ],
+      "torque_Nm": 44.15764411726515,
+      "mount_tilt_deg": -20
+    },
+    {
+      "joint": "R_shoulder_lift_joint",
+      "q": [
+        0.0,
+        0.0,
+        0.0,
+        -4.712382017960554,
+        -2.792522884664154,
+        -8.8510134418716e-06,
+        5.386040260833884,
+        1.570816500841919,
+        1.393715538230281
+      ],
+      "offset_world_m": [
+        -9.813807875042113e-07,
+        0.14999999999678965,
+        0.0
+      ],
+      "torque_Nm": 126.36278942750417,
+      "mount_tilt_deg": -20
+    },
+    {
+      "joint": "R_elbow_joint",
+      "q": [
+        0.0,
+        0.0,
+        0.0,
+        1.5707968850602632,
+        4.659768589894765,
+        -1.1691135078616448,
+        -0.8971457337337493,
+        1.5706654108365663,
+        -5.092741628526386
+      ],
+      "offset_world_m": [
+        -7.868967682039964e-08,
+        0.14999999999997934,
+        0.0
+      ],
+      "torque_Nm": 60.76440030499376,
+      "mount_tilt_deg": -20
+    },
+    {
+      "joint": "R_wrist_1_joint",
+      "q": [
+        0.0,
+        0.0,
+        0.0,
+        -4.712389168990146,
+        1.9420777752818073,
+        1.574192212084459,
+        -4.064364022920999,
+        1.5707601111653864,
+        -4.9628260735430185
+      ],
+      "offset_world_m": [
+        -2.6584673379348508e-08,
+        -0.14999999999999766,
+        0.0
+      ],
+      "torque_Nm": 18.322336664452745,
+      "mount_tilt_deg": -20
+    },
+    {
+      "joint": "R_wrist_2_joint",
+      "q": [
+        0.0,
+        0.0,
+        0.0,
+        -2.5504050714043593,
+        2.4347872207796906,
+        -1.599247112731913,
+        3.6767068759290633,
+        0.28742649890738614,
+        0.3741863715966048
+      ],
+      "offset_world_m": [
+        -0.08719157561931482,
+        0.12205584435421887,
+        0.0
+      ],
+      "torque_Nm": 14.751492286288006,
+      "mount_tilt_deg": -20
+    },
+    {
+      "joint": "R_wrist_3_joint",
+      "q": [
+        0.0,
+        0.0,
+        0.0,
+        5.940927916953741,
+        5.4258619259889045,
+        2.017625161971893,
+        5.325284776359008,
+        -2.322786175254946,
+        -2.9344319247003834
+      ],
+      "offset_world_m": [
+        -0.06438814717119484,
+        0.1354775498149437,
+        0.0
+      ],
+      "torque_Nm": 8.832463085309742,
+      "mount_tilt_deg": -20
+    }
+  ],
+  "rated_payload_kg": 6.0,
+  "CoM_radius_m": 0.15,
+  "method": "Rated 5kg/350mm CoM envelope in actual mount orientation.\n\nAnalytic maximisation over the spherical CoM boundary followed by two numeric\njoint-space restarts. Complete EOAT removed from gravity; only OEM arm retained.\nFeasible self-clear witnesses, not a certified global optimum. Near-zero upright\nbase-yaw gravity envelope is reported literally, never replaced by motor guesses.\n",
+  "source": "E: 6 kg rated (M, CS66 datasheet); the allowed CoG offset is ND (no CS66 payload diagram found); 0.15 m assumed, below the FR5 published 0.30 m and the UR5e file 0.35 m, so the wrist envelopes are on the strict side",
+  "arm": "cs66",
+  "arm_name": "Elite Robots CS66"
+}

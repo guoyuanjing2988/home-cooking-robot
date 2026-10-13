@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "created": "2026-10-13",
+    "purpose": "Kinematics, joint windows and speed limits of candidate 5-6 kg cobots, so a later sim swap of the UR5e is possible. Companion report: robot_rail/research/r19_arm_hand_cost.md",
+    "status": "research data, not a sim model; nothing bought; prices are in the report, all unconfirmed",
+    "labels": {
+      "M": "manufacturer datasheet / manual / official repo",
+      "O": "other source (distributor, marketplace, snippet)",
+      "E": "derived or estimated by the R19 hand agent",
+      "ND": "not published / not found"
+    },
+    "units": "lengths m, angles deg unless the key says rad, speeds deg/s unless the key says rad/s, masses kg",
+    "dh_convention": "UR-style standard DH (theta, d, a, alpha) as in the UR article; a2/a3 negative as UR publishes them. 'urdf_joint_origins' are copied verbatim from the vendor URDF/xacro; 'dh_ur_style' for non-UR vendors is a mapping by the R19 agent (E) unless marked M.",
+    "joint_convention_note": "Range tests assume the candidate uses the UR joint zero/sign convention (FR5 URDF frames follow ur_description's layout; elbow zero = straight for all). Not verified for JAKA, AUBO, Dobot J2/J4.",
+    "sim_requirements": {
+      "mass_payload_kg_now": 4.15,
+      "held_kg_wok_tip": 2.95,
+      "max_joint_ratio_ur5e_envelope": 0.629,
+      "stir_working_peak_joint_speed_degps_J1_J6": [59, 168, 100, 184, 72, 128],
+      "stir_period_formula": "period = 2.4 * max(1, max_j v_j/V_j) * 0.76 + return_s; UR5e: return 0.77 s at 180 deg/s, 360 deg/s^2 trapezoid (assumed accel)",
+      "sources": [
+        "sim/r10/claude/results/r15/stirwalk2_h_scrape_dice_r17.json",
+        "sim/r10/claude/r15stirwalk2.py",
+        "sim/r10/claude/results/r17/chain_wok_s-1_final.json"
+      ]
+    },
+    "playback_warning": "The saved results/r17/*.json 'play' arrays contain exact +-360 deg steps between consecutive states (2*pi-equivalent poses) on up to 4 joints per chain. np.unwrap each joint and choose the 2*pi*k offset inside the robot's joint window before sending anything to hardware. Layout of a play row: [carriage_x, base_y, base_yaw, q1..q6, finger_l, finger_r]."
+  },
+  "candidates": [
+    {
+      "id": "ur5e",
+      "name": "Universal Robots UR5e (baseline)",
+      "payload_kg": 5,
+      "reach_m": 0.85,
+      "arm_mass_kg": 20.7,
+      "ip_arm": "IP54",
+      "ambient_C": [0, 50],
+      "repeatability_mm": 0.03,
+      "dh_ur_style": {
+        "source_type": "M",
+        "d": [0.1625, 0, 0, 0.1333, 0.0997, 0.0996],
+        "a": [0, -0.425, -0.3922, 0, 0, 0],
+        "alpha_rad": [1.5707963, 0, 0, 1.5707963, -1.5707963, 0]
+      },
+      "link_masses_kg": [3.761, 8.058, 2.846, 1.37, 1.3, 0.365],
+      "joint_limits_deg": [[-360, 360], [-360, 360], [-360, 360], [-360, 360], [-360, 360], [-360, 360]],
+      "joint_limits_note": "datasheet +-360 all; the project's Menagerie MJCF limits the elbow to +-pi (size3_limited)",
+      "joint_speed_limits_degps": [180, 180, 180, 180, 180, 180],
+      "tcp_speed_max_mps": 4,
+      "stir_period_est_s": 2.63,
+      "sources": [
+        "https://www.universal-robots.com/manuals/latest/en/datasheets/ur5e/",
+        "https://www.universal-robots.com/articles/ur/application-installation/dh-parameters-for-calculations-of-kinematics-and-dynamics/"
+      ]
+    },
+    {
+      "id": "fairino_fr5",
+      "name": "Fairino (法奥) FR5",
+      "rank_in_report": "A (cheapest credible)",
+      "payload_kg": 5,
+      "payload_max_kg": 7,
+      "reach_m": 0.922,
+      "arm_mass_kg": 22,
+      "ip_arm": "IP54 (IP65 optional)",
+      "ambient_C": [0, 45],
+      "repeatability_mm": 0.02,
+      "urdf_joint_origins": {
+        "source_type": "M",
+        "file": "frcobot_ros2/fairino_description/urdf/fairino5_v6.urdf",
+        "j1": {"xyz": [0, 0, 0], "rpy": [0, 0, 0], "axis": [0, 0, 1]},
+        "j2": {"xyz": [0, 0, 0.152], "rpy": [1.5708, 0, 0], "axis": [0, 0, 1]},
+        "j3": {"xyz": [-0.425, 0, 0], "rpy": [0, 0, 0], "axis": [0, 0, 1]},
+        "j4": {"xyz": [-0.39501, 0, 0], "rpy": [0, 0, 0], "axis": [0, 0, 1]},
+        "j5": {"xyz": [0, 0, 0.1021], "rpy": [1.5708, 0, 0], "axis": [0, 0, 1]},
+        "j6": {"xyz": [0, 0, 0.102], "rpy": [-1.5708, 0, 0], "axis": [0, 0, 1]},
+        "flange": "ND: the URDF has no flange/tool frame after wrist3_link"
+      },
+      "dh_ur_style": {
+        "source_type": "E (mapped from URDF origins)",
+        "d": [0.152, 0, 0, 0.1021, 0.102, null],
+        "a": [0, -0.425, -0.39501, 0, 0, 0],
+        "alpha_rad": [1.5707963, 0, 0, 1.5707963, -1.5707963, 0],
+        "d6_note": "ND; take from the FR5 flange drawing"
+      },
+      "link_masses_kg": {"base": 1.6185, "shoulder": 4.64, "upperarm": 10.08, "forearm": 2.71, "wrist1": 1.56, "wrist2": 1.56, "wrist3": 0.36},
+      "link_com_xyz_m": {"base": [-0.00031896, -0.00029673, 0.042463], "shoulder": [-0.00019, -0.01828, 0.00226], "upperarm": [0.21247, 0.0, 0.1212], "forearm": [0.12262, 0.00017, 0.01259], "wrist1": [0.00005, -0.00233, 0.01468], "wrist2": [-0.00005, 0.00233, 0.01468], "wrist3": [0.00093, 0.00081, -0.02005]},
+      "joint_limits_rad_urdf": [[-3.0543, 3.0543], [-4.6251, 1.4835], [-2.8274, 2.8274], [-4.6251, 1.4835], [-3.0543, 3.0543], [-3.0543, 3.0543]],
+      "joint_limits_deg_datasheet": [[-175, 175], [-265, 85], [-160, 160], [-265, 85], [-175, 175], [-175, 175]],
+      "joint_limits_note": "J6 +-360 is an option per the datasheet",
+      "joint_speed_limits_rad_s_urdf": [3.15, 3.15, 3.15, 3.2, 3.2, 3.2],
+      "joint_speed_limits_degps_datasheet": [180, 180, 180, 180, 180, 180],
+      "joint_effort_Nm_urdf": [150, 150, 150, 28, 28, 28],
+      "tcp_speed_max_mps": 1,
+      "controller": {"size_mm": [245, 180, 44.5], "mass_kg": [2.1, 2.5], "input": "30-60 VDC (2 kW) or 100-240 VAC", "power_W": {"typical_avg": 276, "typical_peak": 410}, "source_type": "O", "conflict": "fairino.us lists 130x60x66 mm, 490 g as controller size (ND which box)"},
+      "range_test_on_saved_chains": {
+        "method": "E: np.unwrap, one 2*pi*k shift per chain and joint, J1 by span only",
+        "stock_J6_175": {"wok_final": "fail J6", "wok_r18plate2b": "fail J6", "lever_final": "fail J6", "lid_final": "fail J6", "spider_final": "fail J4", "spatula_roll_r18": "ok", "spatula_flat_r18": "fail J6"},
+        "J6_360_option": {"wok_final": "ok", "wok_r18plate2b": "ok", "lever_final": "ok", "lid_final": "ok", "spider_final": "fail J4 (needs -299.6..-268.3 deg, window -265..85)", "spatula_roll_r18": "ok", "spatula_flat_r18": "ok"},
+        "stir": "not testable (no joint path saved)"
+      },
+      "stir_period_est_s": 2.63,
+      "trajectory_interface": "ServoJ (period ND); PTP smooth time / LIN smooth radius; Spline and N-Spline; TrajectoryJ file upload to /fruser/traj + LoadTrajectoryJ(ovl) + MoveTrajectoryJ; LoadTrajectoryLA look-ahead (Bezier smoothing, max vel/acc/jerk); ROS 2 frcobot_ros2; Python/C++/C#/Java SDK",
+      "sources": [
+        "https://www.fairino.us/collaborative-robot/fairino/fr5",
+        "https://raw.githubusercontent.com/FAIR-INNOVATION/frcobot_ros2/main/fairino_description/urdf/fairino5_v6.urdf",
+        "https://top3dshop.com/product/fairino-fr5-robotic-arm",
+        "https://fairino-doc-it.readthedocs.io/3.9.3/SDKManual/CPPRobotTrajectoryRecurrence.html",
+        "https://fairino-doc-en.readthedocs.io/latest/CobotsManual/coding.html"
+      ]
+    },
+    {
+      "id": "elite_cs66",
+      "name": "Elite Robots (艾利特) CS66",
+      "rank_in_report": "B (closest UR twin, IP65)",
+      "payload_kg": 6,
+      "reach_m": 0.914,
+      "arm_mass_kg": 20,
+      "ip_arm": "IP65 (IP68 upgradable)",
+      "ambient_C": [0, 50],
+      "repeatability_mm": 0.03,
+      "dh_ur_style": {
+        "source_type": "M (config/cs66/physical_parameters.yaml)",
+        "d": [0.1625, 0, 0, 0.1475, 0.0965, 0.0920],
+        "a": [0, -0.4270, -0.3905, 0, 0, 0],
+        "alpha_rad": [1.5707963, 0, 0, 1.5707963, -1.5707963, 0],
+        "alpha_note": "alpha not read from the file; assumed UR-identical because the package mirrors ur_description's yaml schema (E)"
+      },
+      "link_masses_kg": {"base": 0.57127, "shoulder": 4.521, "upperarm": 7.533, "forearm": 3.009, "wrist1": 1.559, "wrist2": 1.447, "wrist3": 0.500},
+      "joint_limits_deg_urdf": [[-360, 360], [-360, 360], [-180, 180], [-360, 360], [-360, 360], [-360, 360]],
+      "joint_limits_deg_datasheet": "J1-J6 +-360",
+      "joint_speed_limits_degps_urdf": [180, 180, 180, 180, 180, 180],
+      "joint_speed_limits_degps_datasheet": [150, 150, 180, 230, 230, 230],
+      "joint_speed_note": "datasheet and URDF disagree; use the datasheet (conservative) until confirmed",
+      "joint_effort_Nm_urdf": [150, 150, 150, 28, 28, 28],
+      "tcp_speed_max_mps": 2.8,
+      "controller": {"size_mm": [505, 432, 257], "ip": "IP54", "input": "100-240 VAC", "power_W": {"typical": 250}, "source_type": "M"},
+      "range_test_on_saved_chains": {"all_7_chains": "ok (only the elbow is limited, +-180)", "stir": "not testable"},
+      "stir_period_est_s": [2.8, 3.0],
+      "variant_cs66a": {"joint_speed_limits_degps": "shoulder/elbow 210, wrists 410/470/470", "ip": "IP68", "mass_kg": 21, "payload_reach": "ND", "stir_period_est_s": [2.5, 2.6], "source": "https://www.geekpark.net/news/322671", "source_type": "O"},
+      "trajectory_interface": "writeServoj (default 8 ms, look-ahead 0.03-0.2 s); writeTrajectoryPoint(positions, time, blend_radius[, cartesian]); writeSpeedl; ROS 2 driver (ros2_control); C++ SDK",
+      "sources": [
+        "https://www.neobotix-robots.com/fileadmin/images/downloads/Datenbl%C3%A4tter/CS66_Datasheet.pdf",
+        "https://raw.githubusercontent.com/EliteRobots/Elite_Robots_CS_ROS2_Description/humble/config/cs66/physical_parameters.yaml",
+        "https://raw.githubusercontent.com/EliteRobots/Elite_Robots_CS_ROS2_Description/humble/config/cs66/joint_limits.yaml",
+        "https://raw.githubusercontent.com/EliteRobots/Elite_Robots_CS_SDK/main/doc/API/cn/EliteDriver.cn.md"
+      ]
+    },
+    {
+      "id": "dobot_cr5a",
+      "name": "Dobot (越疆) CR5A",
+      "rank_in_report": "C (on-controller trajectory playback)",
+      "payload_kg": 5,
+      "reach_m": 0.9,
+      "arm_mass_kg": 25,
+      "ip_arm": "IP54",
+      "repeatability_mm": 0.02,
+      "urdf_joint_origins": {
+        "source_type": "M",
+        "file": "DOBOT_6Axis_ROS2_V4/cra_description/urdf/cr5_robot.xacro",
+        "world_to_base_z": 0.03,
+        "joint1": {"xyz": [0, 0, 0.147], "rpy": [0, 0, 0], "axis": [0, 0, 1]},
+        "joint2": {"xyz": [0, 0, 0], "rpy": [1.5708, 1.5708, 0], "axis": [0, 0, 1]},
+        "joint3": {"xyz": [-0.427, -0.00034866, 0], "rpy": [0, 0, 0], "axis": [0, 0, 1]},
+        "joint4": {"xyz": [-0.357, 0.00034866, 0.141], "rpy": [0, 0, -1.5708], "axis": [0, 0, 1]},
+        "joint5": {"xyz": [0, -0.116, 0], "rpy": [1.5708, 0, 0], "axis": [0, 0, 1]},
+        "joint6": {"xyz": [0, 0.105, 0], "rpy": [-1.5708, 0, 0], "axis": [0, 0, 1]}
+      },
+      "dh_ur_style": {
+        "source_type": "E (mapped from xacro origins; joint2 rpy differs from UR, so the J2 zero may be offset by 90 deg: verify)",
+        "d": [0.147, 0, 0, 0.141, 0.116, 0.105],
+        "a": [0, -0.427, -0.357, 0, 0, 0]
+      },
+      "link_masses_kg": {"base": 0.9218, "link1": 1.6131, "link2": 5.5250, "link3": 2.8539, "link4": 0.6710, "link5": 0.7411, "link6": 0.1579},
+      "joint_limits_rad_xacro": [[-6.28, 6.28], [-6.28, 6.28], [-2.792, 2.792], [-6.28, 6.28], [-6.28, 6.28], [-6.28, 6.28]],
+      "joint_speed_limits_degps": [180, 180, 180, 223, 223, 223],
+      "joint_speed_source_type": "O (top3dshop); xacro gives velocity 0",
+      "tcp_speed_max_mps": 2,
+      "controller": {"input": "48 VDC", "power_W": 150, "size": "ND", "source_type": "O"},
+      "range_test_on_saved_chains": {"all_7_chains": "ok (elbow +-160 not exceeded)", "stir": "not testable"},
+      "stir_period_est_s": 2.6,
+      "trajectory_interface": "ServoJ(t>=0.004 s, aheadtime 20-100, gain 200-1000; recommended 33 Hz); MovJ/MovL with cp 0-100 or radius r; StartPath(file, isConst, multi 0.25-2, sample 8-1000 ms, freq (0,1] filter, 1 = off) plays a trajectory file stored on the controller; feedback port 30004 every 8 ms; ROS 2 V4 driver",
+      "sources": [
+        "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/main/cra_description/urdf/cr5_robot.xacro",
+        "https://top3dshop.com/product/dobot-cr5-collaborative-robot",
+        "https://a.storyblok.com/f/298593/x/ce7fbaa06a/dobot-tcp_ip-remote-control-interface-guide-v4-6-6_20260527_en.pdf"
+      ]
+    },
+    {
+      "id": "dobot_nova5",
+      "name": "Dobot (越疆) Nova 5 (cheap but slow; not in the top 3)",
+      "payload_kg": 5,
+      "reach_m": 0.85,
+      "arm_mass_kg": 14,
+      "ip_arm": "IP54",
+      "repeatability_mm": 0.05,
+      "urdf_joint_origins_approx": {
+        "source_type": "M file, but the values below came back ROUNDED from the fetch tool; re-read nova5_robot.xacro before use",
+        "joint1_z": 0.24,
+        "joint3_xyz": [-0.40, -0.01, 0],
+        "joint4_xyz": [-0.33, -0.01, 0.13],
+        "joint5_y": -0.12,
+        "joint6_y": 0.088
+      },
+      "joint_limits_deg_datasheet": [[-360, 360], [-180, 180], [-160, 160], [-360, 360], [-360, 360], [-360, 360]],
+      "joint_speed_limits_degps": [100, 100, 100, 100, 100, 100],
+      "controller": {"size_mm": [200, 120, 55], "mass_kg": 1.3, "input": "30-60 VDC", "power_W": {"typical": 230, "max": 770}, "source_type": "M"},
+      "stir_period_est_s": 4.7,
+      "sources": [
+        "https://id.dobot-robots.com/products/nova-series/nova5.html",
+        "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/main/cra_description/urdf/nova5_robot.xacro"
+      ]
+    },
+    {
+      "id": "aubo_i5",
+      "name": "AUBO (遨博) i5 (data partial)",
+      "payload_kg": 5,
+      "reach_m": 0.887,
+      "arm_mass_kg": 24,
+      "ip_arm": "IP54 (O)",
+      "urdf_joint_origins": {
+        "source_type": "M",
+        "file": "aubo_robot/aubo_description/urdf/aubo_i5.urdf",
+        "shoulder_joint": {"xyz": [0, 0, 0.122], "rpy": [0, 0, 3.1416]},
+        "upperArm_joint": {"xyz": [0, 0.1215, 0], "rpy": [-1.5708, -1.5708, 0]},
+        "foreArm_joint": {"xyz": [0.408, 0, 0], "rpy": [-3.1416, 0, 0]},
+        "wrist1_joint": {"xyz": [0.376, 0, 0], "rpy": [3.1416, 0, 1.5708]},
+        "wrist2_joint": {"xyz": [0, 0.1025, 0], "rpy": [-1.5708, 0, 0]},
+        "wrist3_joint": {"xyz": [0, -0.094, 0], "rpy": [1.5708, 0, 0]},
+        "note": "frame convention differs from UR; no DH mapping attempted"
+      },
+      "joint_limits_rad_urdf": [[-3.05, 3.05], [-3.05, 3.05], [-3.05, 3.05], [-3.05, 3.05], [-3.05, 3.05], [-3.05, 3.05]],
+      "joint_speed_limits_degps": [220, 220, 220, 230, 230, 230],
+      "joint_speed_source_type": "O (Unchained Robotics); older i5 documents may differ",
+      "stir_period_est_s": 2.6,
+      "sources": [
+        "https://raw.githubusercontent.com/AuboRobot/aubo_robot/master/aubo_description/urdf/aubo_i5.urdf",
+        "https://unchainedrobotics.de/en/products/robot/cobot/aubo-robotics-i5"
+      ]
+    },
+    {
+      "id": "jaka_zu5",
+      "name": "JAKA (节卡) Zu 5 (data partial)",
+      "payload_kg": 5,
+      "reach_m": 0.954,
+      "arm_mass_kg": 23,
+      "ip_arm": "IP54",
+      "repeatability_mm": 0.02,
+      "dh": "ND (no public URDF found in this round)",
+      "joint_limits_deg_vendor_convention": [[-360, 360], [-85, 265], [-175, 175], [-85, 265], [-360, 360], [-360, 360]],
+      "joint_speed_limits_degps": [180, 180, 180, 180, 180, 180],
+      "controller": {"size_mm": [410, 235, 307], "ip": "IP44", "input": "100-240 VAC", "power_W": {"average": 350}},
+      "source_type": "O",
+      "stir_period_est_s": 2.63,
+      "sources": ["https://www.evsint.com/cs/robots-by-brand/jaka/"]
+    }
+  ]
+}

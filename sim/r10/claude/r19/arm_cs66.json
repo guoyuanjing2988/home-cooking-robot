@@ -1,0 +1,673 @@
+{
+ "id": "cs66",
+ "name": "Elite Robots CS66",
+ "sources": {
+  "datasheet": "https://www.neobotix-robots.com/fileadmin/images/downloads/Datenbl%C3%A4tter/CS66_Datasheet.pdf (joint speeds J1-J2 150, J3 180, J4-J6 230 deg/s; J1-J6 +-360 deg; mounting any angle; 20 kg; IP65)",
+  "description": "https://github.com/EliteRobots/Elite_Robots_CS_ROS2_Description/tree/humble (config/cs66/*.yaml, meshes/cs66/collision/*.stl, urdf/cs_macro.xacro)"
+ },
+ "labels": {
+  "M": "manufacturer",
+  "E": "derived here",
+  "ND": "not published"
+ },
+ "links": [
+  {
+   "link": "base",
+   "mass": 0.57127,
+   "com": [
+    -0.00060346,
+    1.4311e-05,
+    0.060221
+   ],
+   "inertia_full": [
+    0.0010759,
+    0.0010109,
+    0.001408,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "inertial_label": "M mass and CoG (physical_parameters.yaml, link frames; vendor note: base values might be incorrect); E: diagonal of the vendor values (no valid CoG tensor found)"
+  },
+  {
+   "link": "shoulder",
+   "mass": 4.521,
+   "com": [
+    2.2e-05,
+    -0.016526,
+    -0.014442
+   ],
+   "inertia_full": [
+    0.012014324539160001,
+    0.008255246675192,
+    0.01154227348764,
+    1.6195290988e-05,
+    -2.463430204e-06,
+    0.001032242252332
+   ],
+   "inertial_label": "M mass and CoG (physical_parameters.yaml, link frames; vendor note: base values might be incorrect); E: inertia moved to the CoG by the parallel-axis theorem (sign +1)",
+   "capsules": [
+    {
+     "name": "j1",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      -0.0706,
+      0.0,
+      0.0,
+      0.0772
+     ],
+     "radius": 0.061,
+     "nominal_radius": 0.059
+    },
+    {
+     "name": "j2stub",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -0.0704,
+      0.0
+     ],
+     "radius": 0.061,
+     "nominal_radius": 0.059
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.0608,
+     -0.0704,
+     -0.0706
+    ],
+    [
+     0.0608,
+     0.0606,
+     0.0772
+    ]
+   ],
+   "enclosure_check": {
+    "points": 71180,
+    "max_outside_m": -0.0
+   },
+   "capsule_label": "E: cylinders (joint housings) / capsules (tubes, webs) enclosing every vertex and every sampled triangle point of the vendor collision STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "upperarm",
+   "mass": 7.533,
+   "com": [
+    -0.17828,
+    4e-06,
+    0.12803
+   ],
+   "inertia_full": [
+    0.013711467659771978,
+    0.29849441575309993,
+    0.29706294785227194,
+    -7.030406704e-05,
+    -0.0035678557827999724,
+    3.7322000400000006e-06
+   ],
+   "inertial_label": "M mass and CoG (physical_parameters.yaml, link frames; vendor note: base values might be incorrect); E: inertia moved to the CoG by the parallel-axis theorem (sign -1)",
+   "capsules": [
+    {
+     "name": "h_shoulder",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      0.0704,
+      0.0,
+      0.0,
+      0.2188
+     ],
+     "radius": 0.0633,
+     "nominal_radius": 0.0608
+    },
+    {
+     "name": "h_elbow",
+     "type": "cylinder",
+     "fromto": [
+      -0.427,
+      0.0,
+      0.0738,
+      -0.427,
+      0.0,
+      0.2188
+     ],
+     "radius": 0.052,
+     "nominal_radius": 0.05
+    },
+    {
+     "name": "web_e",
+     "type": "capsule",
+     "fromto": [
+      -0.427,
+      0.0,
+      0.1446,
+      -0.355,
+      0.0,
+      0.1446
+     ],
+     "radius": 0.0522,
+     "nominal_radius": 0.05
+    },
+    {
+     "name": "tube",
+     "type": "capsule",
+     "fromto": [
+      -0.343,
+      0.0,
+      0.141,
+      -0.119,
+      0.0,
+      0.141
+     ],
+     "radius": 0.0512,
+     "nominal_radius": 0.05
+    },
+    {
+     "name": "web_s",
+     "type": "capsule",
+     "fromto": [
+      0.0,
+      0.0,
+      0.1446,
+      -0.096,
+      0.0,
+      0.1446
+     ],
+     "radius": 0.0627,
+     "nominal_radius": 0.06
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.4769,
+     -0.0608,
+     0.0704
+    ],
+    [
+     0.0606,
+     0.0608,
+     0.2188
+    ]
+   ],
+   "enclosure_check": {
+    "points": 155640,
+    "max_outside_m": -0.0
+   },
+   "capsule_label": "E: cylinders (joint housings) / capsules (tubes, webs) enclosing every vertex and every sampled triangle point of the vendor collision STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "forearm",
+   "mass": 3.009,
+   "com": [
+    -0.20416,
+    -7e-06,
+    0.03064
+   ],
+   "inertia_full": [
+    0.005935521766159005,
+    0.0945660733632,
+    0.09218095130215898,
+    1.346177792e-05,
+    0.008057686361599998,
+    2.3237032e-07
+   ],
+   "inertial_label": "M mass and CoG (physical_parameters.yaml, link frames; vendor note: base values might be incorrect); E: inertia moved to the CoG by the parallel-axis theorem (sign -1)",
+   "capsules": [
+    {
+     "name": "h_elbow",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      -0.0354,
+      0.0,
+      0.0,
+      0.0738
+     ],
+     "radius": 0.0543,
+     "nominal_radius": 0.0485
+    },
+    {
+     "name": "web",
+     "type": "capsule",
+     "fromto": [
+      0.0,
+      0.0,
+      0.013,
+      -0.111,
+      0.0,
+      0.013
+     ],
+     "radius": 0.0508,
+     "nominal_radius": 0.045
+    },
+    {
+     "name": "tube",
+     "type": "capsule",
+     "fromto": [
+      -0.35,
+      0.0,
+      0.013,
+      -0.131,
+      0.0,
+      0.013
+     ],
+     "radius": 0.043,
+     "nominal_radius": 0.04
+    },
+    {
+     "name": "h_wrist1",
+     "type": "cylinder",
+     "fromto": [
+      -0.3905,
+      0.0,
+      -0.0544,
+      -0.3905,
+      0.0,
+      0.062
+     ],
+     "radius": 0.043,
+     "nominal_radius": 0.04
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.4301,
+     -0.0485,
+     -0.0544
+    ],
+    [
+     0.0485,
+     0.0485,
+     0.0738
+    ]
+   ],
+   "enclosure_check": {
+    "points": 79000,
+    "max_outside_m": 0.0
+   },
+   "capsule_label": "E: cylinders (joint housings) / capsules (tubes, webs) enclosing every vertex and every sampled triangle point of the vendor collision STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "wrist1",
+   "mass": 1.559,
+   "com": [
+    1.3e-05,
+    -0.00479,
+    -0.02274
+   ],
+   "inertia_full": [
+    0.0036589593997000004,
+    0.0034102289881290005,
+    0.001418129884629,
+    1.86392107e-06,
+    -3.10687158e-06,
+    0.0001694554514
+   ],
+   "inertial_label": "M mass and CoG (physical_parameters.yaml, link frames; vendor note: base values might be incorrect); E: inertia moved to the CoG by the parallel-axis theorem (sign +1)",
+   "capsules": [
+    {
+     "name": "h_j5",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      -0.049,
+      0.0,
+      0.0,
+      0.0674,
+      0.0
+     ],
+     "radius": 0.0398,
+     "nominal_radius": 0.0397
+    },
+    {
+     "name": "neck",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      -0.0855,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "radius": 0.0398,
+     "nominal_radius": 0.0397
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.0397,
+     -0.049,
+     -0.0855
+    ],
+    [
+     0.0397,
+     0.0674,
+     0.0396
+    ]
+   ],
+   "enclosure_check": {
+    "points": 67100,
+    "max_outside_m": -0.0
+   },
+   "capsule_label": "E: cylinders (joint housings) / capsules (tubes, webs) enclosing every vertex and every sampled triangle point of the vendor collision STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "wrist2",
+   "mass": 1.447,
+   "com": [
+    -1.4e-05,
+    0.005107,
+    -0.012702
+   ],
+   "inertia_full": [
+    0.002107499999909,
+    0.0018524395729999999,
+    0.001281359859685,
+    1.849542394e-06,
+    2.900317116e-06,
+    -8.828160795800001e-05
+   ],
+   "inertial_label": "M mass and CoG (physical_parameters.yaml, link frames; vendor note: base values might be incorrect); E: inertia moved to the CoG by the parallel-axis theorem (sign +1)",
+   "capsules": [
+    {
+     "name": "h_j6",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      -0.0674,
+      0.0,
+      0.0,
+      0.049,
+      0.0
+     ],
+     "radius": 0.0398,
+     "nominal_radius": 0.0397
+    },
+    {
+     "name": "neck",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      -0.0475,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "radius": 0.0398,
+     "nominal_radius": 0.0397
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.0397,
+     -0.0674,
+     -0.0475
+    ],
+    [
+     0.0397,
+     0.049,
+     0.0396
+    ]
+   ],
+   "enclosure_check": {
+    "points": 67680,
+    "max_outside_m": 0.0
+   },
+   "capsule_label": "E: cylinders (joint housings) / capsules (tubes, webs) enclosing every vertex and every sampled triangle point of the vendor collision STL (M); radius rounded up by 0.05 mm"
+  },
+  {
+   "link": "wrist3",
+   "mass": 0.5,
+   "com": [
+    -0.000684,
+    -0.000175,
+    -0.04234
+   ],
+   "inertia_full": [
+    0.0005350468874999998,
+    0.0005333282719999998,
+    0.0003262507595,
+    -1.7215000000000002e-07,
+    2.243528e-05,
+    4.970750000000001e-06
+   ],
+   "inertial_label": "M mass and CoG (physical_parameters.yaml, link frames; vendor note: base values might be incorrect); E: inertia moved to the CoG by the parallel-axis theorem (sign +1)",
+   "capsules": [
+    {
+     "name": "flange",
+     "type": "cylinder",
+     "fromto": [
+      0.0,
+      0.0,
+      -0.043,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "radius": 0.0443,
+     "nominal_radius": 0.0385
+    }
+   ],
+   "mesh_bbox": [
+    [
+     -0.038,
+     -0.0442,
+     -0.043
+    ],
+    [
+     0.038,
+     0.038,
+     0.0
+    ]
+   ],
+   "enclosure_check": {
+    "points": 17600,
+    "max_outside_m": 0.0
+   },
+   "capsule_label": "E: cylinders (joint housings) / capsules (tubes, webs) enclosing every vertex and every sampled triangle point of the vendor collision STL (M); radius rounded up by 0.05 mm"
+  }
+ ],
+ "frames_note": "M: default_kinematics.yaml; the chain equals the UR-convention DH (d1 .1625, a2 -.427, a3 -.3905, d4 .1475, d5 .0965, d6 .095) exactly, base frame = base_link, wrist3 frame = flange = DH frame 6 (checked numerically)",
+ "joints": [
+  {
+   "name": "shoulder_pan_joint",
+   "parent": "base",
+   "child": "shoulder",
+   "xyz": [
+    0,
+    0,
+    0.1625
+   ],
+   "rpy": [
+    0,
+    0,
+    0
+   ],
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "datasheet_limit_deg": [
+    -360,
+    360
+   ],
+   "limit_label": "M: URDF joint_limits.yaml (datasheet: J1-J6 +-360; the URDF elbow +-180 is the stricter and is used)",
+   "datasheet_speed_degps": 150,
+   "urdf_speed_degps": 180
+  },
+  {
+   "name": "shoulder_lift_joint",
+   "parent": "shoulder",
+   "child": "upperarm",
+   "xyz": [
+    0,
+    0,
+    0
+   ],
+   "rpy": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "datasheet_limit_deg": [
+    -360,
+    360
+   ],
+   "limit_label": "M: URDF joint_limits.yaml (datasheet: J1-J6 +-360; the URDF elbow +-180 is the stricter and is used)",
+   "datasheet_speed_degps": 150,
+   "urdf_speed_degps": 180
+  },
+  {
+   "name": "elbow_joint",
+   "parent": "upperarm",
+   "child": "forearm",
+   "xyz": [
+    -0.427,
+    0,
+    0
+   ],
+   "rpy": [
+    0,
+    0,
+    0
+   ],
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "datasheet_limit_deg": [
+    -180,
+    180
+   ],
+   "limit_label": "M: URDF joint_limits.yaml (datasheet: J1-J6 +-360; the URDF elbow +-180 is the stricter and is used)",
+   "datasheet_speed_degps": 180,
+   "urdf_speed_degps": 180
+  },
+  {
+   "name": "wrist_1_joint",
+   "parent": "forearm",
+   "child": "wrist1",
+   "xyz": [
+    -0.3905,
+    0,
+    0.1475
+   ],
+   "rpy": [
+    0,
+    0,
+    0
+   ],
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "datasheet_limit_deg": [
+    -360,
+    360
+   ],
+   "limit_label": "M: URDF joint_limits.yaml (datasheet: J1-J6 +-360; the URDF elbow +-180 is the stricter and is used)",
+   "datasheet_speed_degps": 230,
+   "urdf_speed_degps": 180
+  },
+  {
+   "name": "wrist_2_joint",
+   "parent": "wrist1",
+   "child": "wrist2",
+   "xyz": [
+    0,
+    -0.0965,
+    0
+   ],
+   "rpy": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "datasheet_limit_deg": [
+    -360,
+    360
+   ],
+   "limit_label": "M: URDF joint_limits.yaml (datasheet: J1-J6 +-360; the URDF elbow +-180 is the stricter and is used)",
+   "datasheet_speed_degps": 230,
+   "urdf_speed_degps": 180
+  },
+  {
+   "name": "wrist_3_joint",
+   "parent": "wrist2",
+   "child": "wrist3",
+   "xyz": [
+    0,
+    0.095,
+    0
+   ],
+   "rpy": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "datasheet_limit_deg": [
+    -360,
+    360
+   ],
+   "limit_label": "M: URDF joint_limits.yaml (datasheet: J1-J6 +-360; the URDF elbow +-180 is the stricter and is used)",
+   "datasheet_speed_degps": 230,
+   "urdf_speed_degps": 180
+  }
+ ],
+ "flange": {
+  "xyz": [
+   0,
+   0,
+   0
+  ],
+  "label": "M: the wrist3 link frame is the flange / tool0 (cs_macro.xacro), d6 = 0.095 (default_kinematics.yaml; physical_parameters.yaml says 0.092)",
+  "frame": "DH frame 6"
+ },
+ "base_mesh": "C:/Users/admin/Documents/YJGames/robot_rail/sim/vendor_r19/elite/meshes/base.stl",
+ "dh": {
+  "d": [
+   0.1625,
+   0,
+   0,
+   0.1475,
+   0.0965,
+   0.092
+  ],
+  "a": [
+   0,
+   -0.427,
+   -0.3905,
+   0,
+   0,
+   0
+  ],
+  "note": "physical_parameters.yaml dh_parameters; d6 = 0.0920 there but 0.0950 in default_kinematics.yaml (the URDF uses the latter)"
+ }
+}

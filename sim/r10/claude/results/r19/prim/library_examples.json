@@ -1,0 +1,3145 @@
+{
+ "source": "r19prim_library.py",
+ "schema": "schema.json",
+ "hubs": [
+  {
+   "id": "H_wok_pre",
+   "hand": "empty",
+   "station": "cooker (wok on it)",
+   "q": [
+    0.17223,
+    -0.21,
+    0.0,
+    -3.14504,
+    -5.564,
+    -1.42593,
+    2.89644,
+    -5.39472,
+    4.28752,
+    0.025,
+    0.025
+   ],
+   "match_tol": {
+    "joint_deg": 0.05,
+    "cart_mm": 0.5
+   },
+   "source": {
+    "file": "results/r17/chain_wok_s-1_final.json",
+    "approach": "pick#0 (6 cm back, jaws open)"
+   }
+  },
+  {
+   "id": "H_fau_closed_pre",
+   "hand": "empty",
+   "station": "faucet (lever closed)",
+   "q": [
+    -0.67981,
+    -0.21,
+    0.0,
+    -2.64658,
+    -6.07183,
+    -0.50395,
+    -5.73507,
+    -0.65146,
+    -3.66099,
+    0.025,
+    0.025
+   ],
+   "match_tol": {
+    "joint_deg": 0.05,
+    "cart_mm": 0.5
+   },
+   "source": {
+    "file": "results/r17/chain_lever_s+1_final.json",
+    "approach": "closed#0"
+   }
+  },
+  {
+   "id": "H_fau_open_post",
+   "hand": "empty",
+   "station": "faucet (lever open)",
+   "q": [
+    -0.67981,
+    -0.21,
+    0.0,
+    -2.6571,
+    -6.08949,
+    -0.76525,
+    -5.84373,
+    -0.63196,
+    -2.87844,
+    0.025,
+    0.025
+   ],
+   "match_tol": {
+    "joint_deg": 0.05,
+    "cart_mm": 0.5
+   },
+   "source": {
+    "file": "results/r17/chain_lever_s+1_final.json",
+    "approach": "open#1"
+   }
+  },
+  {
+   "id": "H_lid_on_pre",
+   "hand": "empty",
+   "station": "zone-2 pot (lid on)",
+   "q": [
+    0.88629,
+    -0.21,
+    0.0,
+    2.70331,
+    6.19516,
+    1.51023,
+    -0.23281,
+    5.38357,
+    0.57274,
+    0.025,
+    0.025
+   ],
+   "match_tol": {
+    "joint_deg": 0.05,
+    "cart_mm": 0.5
+   },
+   "source": {
+    "file": "results/r17/chain_lid_s-1_final.json",
+    "approach": "lift off#0"
+   }
+  },
+  {
+   "id": "H_lid_rack_post",
+   "hand": "empty",
+   "station": "lid rack (lid in it)",
+   "q": [
+    1.32563,
+    -0.21,
+    0.0,
+    -3.74016,
+    5.95982,
+    2.00826,
+    -0.43955,
+    5.9546,
+    -4.20824,
+    0.025,
+    0.025
+   ],
+   "match_tol": {
+    "joint_deg": 0.05,
+    "cart_mm": 0.5
+   },
+   "source": {
+    "file": "results/r17/chain_lid_s-1_final.json",
+    "approach": "in the rack#8"
+   }
+  },
+  {
+   "id": "H_spat_pre",
+   "hand": "empty",
+   "station": "spatula rest (-1.15, 0.30), flipped",
+   "q": [
+    -1.48,
+    -0.21,
+    0.0,
+    6.12163,
+    -2.7081,
+    -2.30101,
+    -0.25584,
+    -3.44266,
+    -0.57333,
+    0.025,
+    0.025
+   ],
+   "match_tol": {
+    "joint_deg": 0.05,
+    "cart_mm": 0.5
+   },
+   "source": {
+    "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+    "approach": "pick#0"
+   }
+  },
+  {
+   "id": "H_spat_stroke",
+   "hand": "spatula",
+   "station": "wok, stroke start (before the 0.5 s hand-off)",
+   "q": [
+    0.47238,
+    -0.21,
+    0.0,
+    6.2271,
+    4.9264,
+    -2.21677,
+    -1.16078,
+    -4.33986,
+    -0.06022,
+    0.015,
+    0.015
+   ],
+   "match_tol": {
+    "joint_deg": 0.05,
+    "cart_mm": 0.5
+   },
+   "source": {
+    "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+    "play": [
+     248,
+     248
+    ],
+    "keyframes": [
+     "stroke start#5"
+    ]
+   }
+  },
+  {
+   "id": "H_stir0",
+   "hand": "spatula",
+   "station": "wok, R15 stroke-0 start",
+   "q": null,
+   "note": "verified (README_R10 R18b hand-off; r15stirwalk2 SCENE=r17) but its state is NOT saved: r15stirwalk2.py writes no joint states. Must be stored before the stir cycle can be a library entry."
+  }
+ ],
+ "primitives": {
+  "wok": [
+   {
+    "id": "wok_plate_rinse.seat_lift.0",
+    "class": "seat_lift",
+    "time_s": 0.22,
+    "states": 3,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       0,
+       3
+      ],
+      "keyframes": [
+       "pick#0",
+       "lifted#1"
+      ]
+     },
+     "start": [
+      0.17223,
+      -0.21,
+      0.0,
+      -3.07183,
+      -5.54501,
+      -1.36495,
+      2.76503,
+      -5.43567,
+      4.36707,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.17223,
+      -0.21,
+      0.0,
+      -3.08557,
+      -5.56819,
+      -1.38161,
+      2.81498,
+      -5.42822,
+      4.35171,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 4.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.carry.1",
+    "class": "carry",
+    "time_s": 0.54,
+    "states": 6,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       3,
+       9
+      ],
+      "keyframes": [
+       "lifted#1",
+       "up and left#2"
+      ]
+     },
+     "start": [
+      0.17223,
+      -0.21,
+      0.0,
+      -3.08557,
+      -5.56819,
+      -1.38161,
+      2.81498,
+      -5.42822,
+      4.35171,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.11849,
+      -0.21,
+      0.0,
+      -3.09843,
+      -5.59754,
+      -1.3801,
+      2.85208,
+      -5.42116,
+      4.33755,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 12.0,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 11.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.carry.2",
+    "class": "carry",
+    "time_s": 1.61,
+    "states": 18,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       9,
+       27
+      ],
+      "keyframes": [
+       "up and left#2",
+       "lane#3"
+      ]
+     },
+     "start": [
+      0.11849,
+      -0.21,
+      0.0,
+      -3.09843,
+      -5.59754,
+      -1.3801,
+      2.85208,
+      -5.42116,
+      4.33755,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.04245,
+      -0.21,
+      0.0,
+      -3.0985,
+      -5.59925,
+      -1.37652,
+      2.85027,
+      -5.42111,
+      4.33745,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 13.6,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 12.6
+    }
+   },
+   {
+    "id": "wok_plate_rinse.meet_join.3",
+    "class": "meet_join",
+    "time_s": 0.64,
+    "states": 1,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       27,
+       28
+      ],
+      "keyframes": [
+       "lane#3",
+       "lane#3"
+      ]
+     },
+     "start": [
+      -0.04245,
+      -0.21,
+      0.0,
+      -3.0985,
+      -5.59925,
+      -1.37652,
+      2.85027,
+      -5.42111,
+      4.33745,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.04245,
+      -0.21,
+      0.0,
+      -3.0985,
+      -5.59925,
+      -1.37652,
+      2.85027,
+      -5.42111,
+      4.33745,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 25.7,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 24.7
+    }
+   },
+   {
+    "id": "wok_plate_rinse.carry.4",
+    "class": "carry",
+    "time_s": 1.9,
+    "states": 20,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       28,
+       48
+      ],
+      "keyframes": [
+       "lane#3",
+       "over the plate#4"
+      ]
+     },
+     "start": [
+      -0.04245,
+      -0.21,
+      0.0,
+      -3.0985,
+      -5.59925,
+      -1.37652,
+      2.85027,
+      -5.42111,
+      4.33745,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.22777,
+      -0.21,
+      0.0,
+      -3.08425,
+      -5.61031,
+      -1.38433,
+      2.85886,
+      -5.42895,
+      4.35319,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 25.7,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 24.7
+    }
+   },
+   {
+    "id": "wok_plate_rinse.tip.5",
+    "class": "tip",
+    "time_s": 2.36,
+    "states": 45,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       48,
+       93
+      ],
+      "keyframes": [
+       "over the plate#4",
+       "tipped 90 (plated)#5"
+      ]
+     },
+     "start": [
+      -0.22777,
+      -0.21,
+      0.0,
+      -3.08425,
+      -5.61031,
+      -1.38433,
+      2.85886,
+      -5.42895,
+      4.35319,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.46569,
+      -0.21,
+      0.0,
+      -3.10581,
+      -5.51323,
+      -0.76774,
+      4.11793,
+      -5.41713,
+      1.95391,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 4.7,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.dwell.6",
+    "class": "dwell",
+    "time_s": 2.0,
+    "states": 0,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       93,
+       93
+      ],
+      "keyframes": [
+       "tipped 90 (plated)#5",
+       "tipped 90 (plated)#5"
+      ]
+     },
+     "start": [
+      -0.46569,
+      -0.21,
+      0.0,
+      -3.10581,
+      -5.51323,
+      -0.76774,
+      4.11793,
+      -5.41713,
+      1.95391,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.46569,
+      -0.21,
+      0.0,
+      -3.10581,
+      -5.51323,
+      -0.76774,
+      4.11793,
+      -5.41713,
+      1.95391,
+      0.015,
+      0.015
+     ]
+    },
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.untip.7",
+    "class": "untip",
+    "time_s": 2.36,
+    "states": 45,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       93,
+       138
+      ],
+      "keyframes": [
+       "tipped 90 (plated)#5",
+       "level#6"
+      ]
+     },
+     "start": [
+      -0.46569,
+      -0.21,
+      0.0,
+      -3.10581,
+      -5.51323,
+      -0.76774,
+      4.11793,
+      -5.41713,
+      1.95391,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.22758,
+      -0.21,
+      0.0,
+      -3.08426,
+      -5.60991,
+      -1.38505,
+      2.85934,
+      -5.42904,
+      4.35297,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 4.7,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.carry.8",
+    "class": "carry",
+    "time_s": 6.86,
+    "states": 70,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       138,
+       208
+      ],
+      "keyframes": [
+       "level#6",
+       "lane#7"
+      ]
+     },
+     "start": [
+      -0.22758,
+      -0.21,
+      0.0,
+      -3.08426,
+      -5.60991,
+      -1.38505,
+      2.85934,
+      -5.42904,
+      4.35297,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.90043,
+      -0.21,
+      0.0,
+      -3.05172,
+      -5.54192,
+      -1.3771,
+      2.75887,
+      -5.44635,
+      4.38992,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 25.5,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 24.5
+    }
+   },
+   {
+    "id": "wok_plate_rinse.meet_join.9",
+    "class": "meet_join",
+    "time_s": 0.84,
+    "states": 7,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       208,
+       215
+      ],
+      "keyframes": [
+       "lane#7",
+       "lane#7"
+      ]
+     },
+     "start": [
+      -0.90043,
+      -0.21,
+      0.0,
+      -3.05172,
+      -5.54192,
+      -1.3771,
+      2.75887,
+      -5.44635,
+      4.38992,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.94622,
+      -0.21,
+      0.0,
+      -3.05869,
+      -5.63178,
+      -1.1959,
+      2.67283,
+      -5.44267,
+      4.38199,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 28.8,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 27.8
+    }
+   },
+   {
+    "id": "wok_plate_rinse.insert.10",
+    "class": "insert",
+    "time_s": 1.66,
+    "states": 17,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       215,
+       232
+      ],
+      "keyframes": [
+       "lane#7",
+       "under the tap#8"
+      ]
+     },
+     "start": [
+      -0.94622,
+      -0.21,
+      0.0,
+      -3.05869,
+      -5.63178,
+      -1.1959,
+      2.67283,
+      -5.44267,
+      4.38199,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -1.06,
+      -0.21,
+      0.0,
+      -2.93235,
+      0.62721,
+      -1.21865,
+      -3.66886,
+      0.77926,
+      4.53468,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 50.2,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.dwell.11",
+    "class": "dwell",
+    "time_s": 5.0,
+    "states": 0,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       232,
+       232
+      ],
+      "keyframes": [
+       "under the tap#8",
+       "under the tap#8"
+      ]
+     },
+     "start": [
+      -1.06,
+      -0.21,
+      0.0,
+      -2.93235,
+      0.62721,
+      -1.21865,
+      -3.66886,
+      0.77926,
+      4.53468,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -1.06,
+      -0.21,
+      0.0,
+      -2.93235,
+      0.62721,
+      -1.21865,
+      -3.66886,
+      0.77926,
+      4.53468,
+      0.015,
+      0.015
+     ]
+    },
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.extract.12",
+    "class": "extract",
+    "time_s": 0.92,
+    "states": 10,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       232,
+       242
+      ],
+      "keyframes": [
+       "under the tap#8",
+       "forward#9"
+      ]
+     },
+     "start": [
+      -1.06,
+      -0.21,
+      0.0,
+      -2.93235,
+      0.62721,
+      -1.21865,
+      -3.66886,
+      0.77926,
+      4.53468,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -1.10549,
+      -0.21,
+      0.0,
+      -3.08865,
+      0.58303,
+      -1.19275,
+      -3.52294,
+      0.85665,
+      4.34839,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 22.7,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.tip.13",
+    "class": "tip",
+    "time_s": 2.36,
+    "states": 45,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       242,
+       287
+      ],
+      "keyframes": [
+       "forward#9",
+       "emptied#10"
+      ]
+     },
+     "start": [
+      -1.10549,
+      -0.21,
+      0.0,
+      -3.08865,
+      0.58303,
+      -1.19275,
+      -3.52294,
+      0.85665,
+      4.34839,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -1.32516,
+      -0.21,
+      0.0,
+      -3.10696,
+      0.6581,
+      -0.56312,
+      -2.25883,
+      0.8667,
+      1.95517,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 3.3,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.dwell.14",
+    "class": "dwell",
+    "time_s": 1.0,
+    "states": 0,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       287,
+       287
+      ],
+      "keyframes": [
+       "emptied#10",
+       "emptied#10"
+      ]
+     },
+     "start": [
+      -1.32516,
+      -0.21,
+      0.0,
+      -3.10696,
+      0.6581,
+      -0.56312,
+      -2.25883,
+      0.8667,
+      1.95517,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -1.32516,
+      -0.21,
+      0.0,
+      -3.10696,
+      0.6581,
+      -0.56312,
+      -2.25883,
+      0.8667,
+      1.95517,
+      0.015,
+      0.015
+     ]
+    },
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.untip.15",
+    "class": "untip",
+    "time_s": 2.36,
+    "states": 45,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       287,
+       332
+      ],
+      "keyframes": [
+       "emptied#10",
+       "level#11"
+      ]
+     },
+     "start": [
+      -1.32516,
+      -0.21,
+      0.0,
+      -3.10696,
+      0.6581,
+      -0.56312,
+      -2.25883,
+      0.8667,
+      1.95517,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -1.10537,
+      -0.21,
+      0.0,
+      -3.08867,
+      0.58334,
+      -1.19323,
+      -3.52252,
+      0.85657,
+      4.34808,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 3.4,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.carry.16",
+    "class": "carry",
+    "time_s": 1.62,
+    "states": 17,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       332,
+       349
+      ],
+      "keyframes": [
+       "level#11",
+       "lane#12"
+      ]
+     },
+     "start": [
+      -1.10537,
+      -0.21,
+      0.0,
+      -3.08867,
+      0.58334,
+      -1.19323,
+      -3.52252,
+      0.85657,
+      4.34808,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.93676,
+      -0.21,
+      0.0,
+      -3.05734,
+      0.67091,
+      -1.23527,
+      -3.59148,
+      0.8398,
+      4.38348,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 22.7,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 21.7
+    }
+   },
+   {
+    "id": "wok_plate_rinse.meet_join.17",
+    "class": "meet_join",
+    "time_s": 0.84,
+    "states": 7,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       349,
+       356
+      ],
+      "keyframes": [
+       "lane#12",
+       "lane#12"
+      ]
+     },
+     "start": [
+      -0.93676,
+      -0.21,
+      0.0,
+      -3.05734,
+      0.67091,
+      -1.23527,
+      -3.59148,
+      0.8398,
+      4.38348,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.88923,
+      -0.21,
+      0.0,
+      -3.04983,
+      0.76172,
+      -1.41824,
+      -3.50508,
+      0.83585,
+      4.39208,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 22.8,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 21.8
+    }
+   },
+   {
+    "id": "wok_plate_rinse.carry.18",
+    "class": "carry",
+    "time_s": 8.71,
+    "states": 88,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       356,
+       444
+      ],
+      "keyframes": [
+       "lane#12",
+       "lane#13"
+      ]
+     },
+     "start": [
+      -0.88923,
+      -0.21,
+      0.0,
+      -3.04983,
+      0.76172,
+      -1.41824,
+      -3.50508,
+      0.83585,
+      4.39208,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.04032,
+      -0.21,
+      0.0,
+      -3.09833,
+      -5.5954,
+      -1.38461,
+      2.85439,
+      -5.42121,
+      4.33763,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 22.8,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 21.8
+    }
+   },
+   {
+    "id": "wok_plate_rinse.carry.19",
+    "class": "carry",
+    "time_s": 1.6,
+    "states": 16,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       444,
+       460
+      ],
+      "keyframes": [
+       "lane#13",
+       "#14"
+      ]
+     },
+     "start": [
+      -0.04032,
+      -0.21,
+      0.0,
+      -3.09833,
+      -5.5954,
+      -1.38461,
+      2.85439,
+      -5.42121,
+      4.33763,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.11849,
+      -0.21,
+      0.0,
+      -3.09843,
+      -5.59754,
+      -1.3801,
+      2.85208,
+      -5.42116,
+      4.33755,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 13.6,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 12.6
+    }
+   },
+   {
+    "id": "wok_plate_rinse.carry.20",
+    "class": "carry",
+    "time_s": 0.54,
+    "states": 6,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       460,
+       466
+      ],
+      "keyframes": [
+       "#14",
+       "lowered#15"
+      ]
+     },
+     "start": [
+      0.11849,
+      -0.21,
+      0.0,
+      -3.09843,
+      -5.59754,
+      -1.3801,
+      2.85208,
+      -5.42116,
+      4.33755,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.17223,
+      -0.21,
+      0.0,
+      -3.08557,
+      -5.56819,
+      -1.38161,
+      2.81498,
+      -5.42822,
+      4.35171,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 12.0,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 11.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.seat_lower.21",
+    "class": "seat_lower",
+    "time_s": 0.22,
+    "states": 3,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "play": [
+       466,
+       469
+      ],
+      "keyframes": [
+       "lowered#15",
+       "set down#16"
+      ]
+     },
+     "start": [
+      0.17223,
+      -0.21,
+      0.0,
+      -3.08557,
+      -5.56819,
+      -1.38161,
+      2.81498,
+      -5.42822,
+      4.35171,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.17223,
+      -0.21,
+      0.0,
+      -3.07183,
+      -5.54501,
+      -1.36495,
+      2.76503,
+      -5.43567,
+      4.36707,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 4.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.approach.22",
+    "class": "approach",
+    "time_s": 0.6,
+    "states": 7,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "approach": "pick#0"
+     }
+    },
+    "min_reserve_mm": 2.4,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.approach.23",
+    "class": "approach",
+    "time_s": 0.6,
+    "states": 7,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_wok_s-1_final.json",
+      "approach": "set down#16"
+     }
+    },
+    "min_reserve_mm": 2.4,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "wok_plate_rinse.gripper.24",
+    "class": "gripper",
+    "time_s": 1.6,
+    "states": 0,
+    "contact_window": false,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   }
+  ],
+  "lever": [
+   {
+    "id": "faucet_open.lever.0",
+    "class": "lever",
+    "time_s": 0.75,
+    "states": 15,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lever_s+1_final.json",
+      "play": [
+       0,
+       15
+      ],
+      "keyframes": [
+       "closed#0",
+       "open#1"
+      ]
+     },
+     "start": [
+      -0.73981,
+      -0.21,
+      0.0,
+      -2.64658,
+      -6.07183,
+      -0.50395,
+      -5.73507,
+      -0.65146,
+      -3.66099,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.73981,
+      -0.21,
+      0.0,
+      -2.6571,
+      -6.08949,
+      -0.76525,
+      -5.84373,
+      -0.63196,
+      -2.87844,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 6.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "faucet_open.approach.1",
+    "class": "approach",
+    "time_s": 0.6,
+    "states": 7,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lever_s+1_final.json",
+      "approach": "closed#0"
+     }
+    },
+    "min_reserve_mm": 20.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "faucet_open.approach.2",
+    "class": "approach",
+    "time_s": 0.6,
+    "states": 7,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lever_s+1_final.json",
+      "approach": "open#1"
+     }
+    },
+    "min_reserve_mm": 7.4,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "faucet_open.gripper.3",
+    "class": "gripper",
+    "time_s": 1.6,
+    "states": 0,
+    "contact_window": false,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   }
+  ],
+  "lid": [
+   {
+    "id": "lid_off_to_rack.seat_lift.0",
+    "class": "seat_lift",
+    "time_s": 0.12,
+    "states": 2,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       0,
+       2
+      ],
+      "keyframes": [
+       "lift off#0",
+       "#1"
+      ]
+     },
+     "start": [
+      0.88629,
+      -0.21,
+      0.0,
+      2.83231,
+      6.15253,
+      1.54525,
+      -0.12387,
+      5.42557,
+      0.41421,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.88629,
+      -0.21,
+      0.0,
+      2.8222,
+      6.12434,
+      1.56981,
+      -0.1286,
+      5.42274,
+      0.42702,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 3.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.extract.1",
+    "class": "extract",
+    "time_s": 2.3,
+    "states": 23,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       2,
+       25
+      ],
+      "keyframes": [
+       "#1",
+       "slide out#2"
+      ]
+     },
+     "start": [
+      0.88629,
+      -0.21,
+      0.0,
+      2.8222,
+      6.12434,
+      1.56981,
+      -0.1286,
+      5.42274,
+      0.42702,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.88629,
+      -0.21,
+      0.0,
+      2.37079,
+      6.2653,
+      1.33547,
+      -0.32904,
+      5.22758,
+      0.92836,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 13.3,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.carry.2",
+    "class": "carry",
+    "time_s": 2.5,
+    "states": 25,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       25,
+       50
+      ],
+      "keyframes": [
+       "slide out#2",
+       "up#3"
+      ]
+     },
+     "start": [
+      0.88629,
+      -0.21,
+      0.0,
+      2.37079,
+      6.2653,
+      1.33547,
+      -0.32904,
+      5.22758,
+      0.92836,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.88629,
+      -0.21,
+      0.0,
+      2.24647,
+      5.7743,
+      1.55709,
+      -0.11277,
+      5.15639,
+      1.0433,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 10.0,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 9.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.reorient.3",
+    "class": "reorient",
+    "time_s": 2.03,
+    "states": 45,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       50,
+       95
+      ],
+      "keyframes": [
+       "up#3",
+       "roll 90 deg#4"
+      ]
+     },
+     "start": [
+      0.88629,
+      -0.21,
+      0.0,
+      2.24647,
+      5.7743,
+      1.55709,
+      -0.11277,
+      5.15639,
+      1.0433,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.88629,
+      -0.21,
+      0.0,
+      1.98737,
+      5.3753,
+      1.91355,
+      -0.5254,
+      5.55996,
+      2.93093,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 10.0,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 9.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.carry.4",
+    "class": "carry",
+    "time_s": 1.53,
+    "states": 24,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       95,
+       119
+      ],
+      "keyframes": [
+       "roll 90 deg#4",
+       "carry#5"
+      ]
+     },
+     "start": [
+      0.88629,
+      -0.21,
+      0.0,
+      1.98737,
+      5.3753,
+      1.91355,
+      -0.5254,
+      5.55996,
+      2.93093,
+      0.015,
+      0.015
+     ],
+     "end": [
+      1.107,
+      -0.21,
+      0.0,
+      1.70709,
+      5.34448,
+      1.86418,
+      -0.5481,
+      5.30444,
+      3.08556,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 10.0,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 9.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.meet_join.5",
+    "class": "meet_join",
+    "time_s": 0.6,
+    "states": 1,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       119,
+       120
+      ],
+      "keyframes": [
+       "carry#5",
+       "carry#5"
+      ]
+     },
+     "start": [
+      1.107,
+      -0.21,
+      0.0,
+      1.70709,
+      5.34448,
+      1.86418,
+      -0.5481,
+      5.30444,
+      3.08556,
+      0.015,
+      0.015
+     ],
+     "end": [
+      1.107,
+      -0.21,
+      0.0,
+      1.70709,
+      5.34448,
+      1.86418,
+      -0.5481,
+      5.30444,
+      3.08556,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 82.1,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 81.1
+    }
+   },
+   {
+    "id": "lid_off_to_rack.carry.6",
+    "class": "carry",
+    "time_s": 3.18,
+    "states": 32,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       120,
+       152
+      ],
+      "keyframes": [
+       "carry#5",
+       "#6"
+      ]
+     },
+     "start": [
+      1.107,
+      -0.21,
+      0.0,
+      1.70709,
+      5.34448,
+      1.86418,
+      -0.5481,
+      5.30444,
+      3.08556,
+      0.015,
+      0.015
+     ],
+     "end": [
+      1.425,
+      -0.21,
+      0.0,
+      -4.57609,
+      5.34448,
+      1.86418,
+      -0.5481,
+      5.30444,
+      -3.19763,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 6.7,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 5.7
+    }
+   },
+   {
+    "id": "lid_off_to_rack.carry.7",
+    "class": "carry",
+    "time_s": 4.4,
+    "states": 44,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       152,
+       196
+      ],
+      "keyframes": [
+       "#6",
+       "over the rack#7"
+      ]
+     },
+     "start": [
+      1.425,
+      -0.21,
+      0.0,
+      -4.57609,
+      5.34448,
+      1.86418,
+      -0.5481,
+      5.30444,
+      -3.19763,
+      0.015,
+      0.015
+     ],
+     "end": [
+      1.32563,
+      -0.21,
+      0.0,
+      -3.64589,
+      5.77819,
+      2.10395,
+      -0.0727,
+      5.97212,
+      -4.50393,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 0.3,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.insert.8",
+    "class": "insert",
+    "time_s": 0.76,
+    "states": 8,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "play": [
+       196,
+       204
+      ],
+      "keyframes": [
+       "over the rack#7",
+       "in the rack#8"
+      ]
+     },
+     "start": [
+      1.32563,
+      -0.21,
+      0.0,
+      -3.64589,
+      5.77819,
+      2.10395,
+      -0.0727,
+      5.97212,
+      -4.50393,
+      0.015,
+      0.015
+     ],
+     "end": [
+      1.32563,
+      -0.21,
+      0.0,
+      -3.55669,
+      6.03703,
+      1.95351,
+      0.09234,
+      5.96383,
+      -4.79135,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 1.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.approach.9",
+    "class": "approach",
+    "time_s": 0.6,
+    "states": 7,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "approach": "lift off#0"
+     }
+    },
+    "min_reserve_mm": 10.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.approach.10",
+    "class": "approach",
+    "time_s": 0.6,
+    "states": 7,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_lid_s-1_final.json",
+      "approach": "in the rack#8"
+     }
+    },
+    "min_reserve_mm": 7.2,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "lid_off_to_rack.gripper.11",
+    "class": "gripper",
+    "time_s": 1.6,
+    "states": 0,
+    "contact_window": false,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   }
+  ],
+  "spatula": [
+   {
+    "id": "spatula_fetch.seat_lift.0",
+    "class": "seat_lift",
+    "time_s": 0.48,
+    "states": 6,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+      "play": [
+       0,
+       6
+      ],
+      "keyframes": [
+       "pick#0",
+       "lifted#1"
+      ]
+     },
+     "start": [
+      -1.48,
+      -0.21,
+      0.0,
+      6.27951,
+      -2.85456,
+      -2.32705,
+      0.4573,
+      -3.38917,
+      -0.01243,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -1.48,
+      -0.21,
+      0.0,
+      6.23111,
+      -2.62694,
+      -2.42505,
+      0.14266,
+      -3.40191,
+      -0.20363,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 5.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "spatula_fetch.carry.1",
+    "class": "carry",
+    "time_s": 1.54,
+    "states": 15,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+      "play": [
+       6,
+       21
+      ],
+      "keyframes": [
+       "lifted#1",
+       "out and up#2"
+      ]
+     },
+     "start": [
+      -1.48,
+      -0.21,
+      0.0,
+      6.23111,
+      -2.62694,
+      -2.42505,
+      0.14266,
+      -3.40191,
+      -0.20363,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -1.48,
+      -0.21,
+      0.0,
+      5.92274,
+      -2.13184,
+      -2.27644,
+      -1.23671,
+      -3.57994,
+      -0.97941,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 10.1,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 9.1
+    }
+   },
+   {
+    "id": "spatula_fetch.carry.2",
+    "class": "carry",
+    "time_s": 10.48,
+    "states": 110,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+      "play": [
+       21,
+       131
+      ],
+      "keyframes": [
+       "out and up#2",
+       "lane#3"
+      ]
+     },
+     "start": [
+      -1.48,
+      -0.21,
+      0.0,
+      5.92274,
+      -2.13184,
+      -2.27644,
+      -1.23671,
+      -3.57994,
+      -0.97941,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.38671,
+      -0.21,
+      0.0,
+      5.33162,
+      -2.461,
+      -1.66234,
+      -1.84983,
+      -4.11605,
+      -1.3928,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 82.6,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 81.6
+    }
+   },
+   {
+    "id": "spatula_fetch.meet_join.3",
+    "class": "meet_join",
+    "time_s": 0.8,
+    "states": 1,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+      "play": [
+       131,
+       132
+      ],
+      "keyframes": [
+       "lane#3",
+       "lane#3"
+      ]
+     },
+     "start": [
+      -0.38671,
+      -0.21,
+      0.0,
+      5.33162,
+      -2.461,
+      -1.66234,
+      -1.84983,
+      -4.11605,
+      -1.3928,
+      0.015,
+      0.015
+     ],
+     "end": [
+      -0.38671,
+      -0.21,
+      0.0,
+      5.33162,
+      -2.46097,
+      -1.66238,
+      -1.84977,
+      -4.11605,
+      -1.39274,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 109.2,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 108.2
+    }
+   },
+   {
+    "id": "spatula_fetch.carry.4",
+    "class": "carry",
+    "time_s": 9.93,
+    "states": 100,
+    "contact_window": false,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+      "play": [
+       132,
+       232
+      ],
+      "keyframes": [
+       "lane#3",
+       "over the wok#4"
+      ]
+     },
+     "start": [
+      -0.38671,
+      -0.21,
+      0.0,
+      5.33162,
+      -2.46097,
+      -1.66238,
+      -1.84977,
+      -4.11605,
+      -1.39274,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.48708,
+      -0.21,
+      0.0,
+      5.96845,
+      4.91564,
+      -1.85418,
+      -1.61111,
+      -4.35845,
+      -0.33624,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 78.1,
+    "blend": {
+     "allowed": true,
+     "max_path_deviation_mm": 77.1
+    }
+   },
+   {
+    "id": "spatula_fetch.insert.5",
+    "class": "insert",
+    "time_s": 1.58,
+    "states": 16,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+      "play": [
+       232,
+       248
+      ],
+      "keyframes": [
+       "over the wok#4",
+       "stroke start#5"
+      ]
+     },
+     "start": [
+      0.48708,
+      -0.21,
+      0.0,
+      5.96845,
+      4.91564,
+      -1.85418,
+      -1.61111,
+      -4.35845,
+      -0.33624,
+      0.015,
+      0.015
+     ],
+     "end": [
+      0.47238,
+      -0.21,
+      0.0,
+      6.2271,
+      4.9264,
+      -2.21677,
+      -1.16078,
+      -4.33986,
+      -0.06022,
+      0.015,
+      0.015
+     ]
+    },
+    "min_reserve_mm": 5.3,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "spatula_fetch.approach.6",
+    "class": "approach",
+    "time_s": 0.6,
+    "states": 7,
+    "contact_window": true,
+    "trajectory": {
+     "source": {
+      "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+      "approach": "pick#0"
+     }
+    },
+    "min_reserve_mm": 27.0,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   },
+   {
+    "id": "spatula_fetch.gripper.7",
+    "class": "gripper",
+    "time_s": 1.6,
+    "states": 0,
+    "contact_window": false,
+    "blend": {
+     "allowed": false,
+     "max_path_deviation_mm": 0.0
+    }
+   }
+  ]
+ },
+ "sets": [
+  {
+   "id": "FAUCET_OPEN",
+   "params": {},
+   "start_hub": "H_fau_closed_pre",
+   "end_hub": "H_fau_open_post",
+   "pre": [
+    {
+     "name": "lever closed",
+     "check": "faucet lever angle 0 (camera or the gripper at the block)",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "hand empty",
+     "check": "gripper open, force 0",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "clip-on block present",
+     "check": "camera / grasp width at closing",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "post": [
+    {
+     "name": "lever open 30 deg",
+     "check": "water flowing: camera / sound; gripper released",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "steps": [
+    {
+     "primitive": "faucet_open.lever.0"
+    },
+    {
+     "primitive": "faucet_open.approach.1"
+    },
+    {
+     "primitive": "faucet_open.approach.2"
+    },
+    {
+     "primitive": "faucet_open.gripper.3"
+    }
+   ],
+   "reverse_of": null,
+   "time_s": 3.5,
+   "stops_today": 6,
+   "stops_library": 6,
+   "verification": {
+    "status": "verified",
+    "checker": "checker.py (binding R05 reference), 10 mm robot-env, 5 mm gripper/held-env, joint ranges",
+    "step_bound": "object <= 1 cm / 2 deg per state; joins <= 1 deg; full bounds every 5th state",
+    "min_reserve_mm": 6.0,
+    "max_pgc_moment_Nm": null,
+    "max_joint_ratio": null,
+    "elapsed_s": 26,
+    "evidence": "results/r17/chain_lever_s+1_final.json",
+    "swept_volume": "swept_voxels.npz: faucet_open__*",
+    "fixture_dependencies": [
+     "counters_cabinet_fronts",
+     "faucet",
+     "sink",
+     "upper_cabinets",
+     "walls"
+    ]
+   },
+   "note": "FAUCET_CLOSE = the same primitives reversed, H_fau_open_post -> H_fau_closed_pre (r17seq.py uses 2 x lever_s)"
+  },
+  {
+   "id": "WOK_PLATE_RINSE",
+   "params": {
+    "spot": {
+     "values": {
+      "1": {
+       "plate_x": 0.43,
+       "cart_shift_m": 0.0
+      },
+      "2": {
+       "plate_x": 0.17,
+       "cart_shift_m": -0.26
+      }
+     },
+     "verified": [
+      "1",
+      "2"
+     ],
+     "note": "spot 2 (R18 chain_wok_s-1_r18plate2b) = spot 1 with the tip/untip arm motion identical (0.0000 deg) and the cart 0.26 m left; only the two carries to and from the plate change length (inventory.json reuse.plate_spot_2)"
+    }
+   },
+   "start_hub": "H_wok_pre",
+   "end_hub": "H_wok_pre",
+   "pre": [
+    {
+     "name": "wok on the cooker, keyed",
+     "check": "cooker slot switch / camera",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "heat off (power 0)",
+     "check": "servo knob position",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "food in wok <= 1.15 kg",
+     "check": "cooker scale or recipe estimate",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "plate in the guarded stand at spot",
+     "check": "camera",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "faucet open",
+     "check": "FAUCET_OPEN done and water seen",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "hand empty",
+     "check": "gripper",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "post": [
+    {
+     "name": "wok back on the cooker, rinsed, empty",
+     "check": "slot switch + camera",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "dish on the plate",
+     "check": "camera",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "hand empty",
+     "check": "gripper",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "steps": [
+    {
+     "primitive": "wok_plate_rinse.seat_lift.0"
+    },
+    {
+     "primitive": "wok_plate_rinse.carry.1"
+    },
+    {
+     "primitive": "wok_plate_rinse.carry.2"
+    },
+    {
+     "primitive": "wok_plate_rinse.meet_join.3"
+    },
+    {
+     "primitive": "wok_plate_rinse.carry.4"
+    },
+    {
+     "primitive": "wok_plate_rinse.tip.5"
+    },
+    {
+     "primitive": "wok_plate_rinse.dwell.6"
+    },
+    {
+     "primitive": "wok_plate_rinse.untip.7"
+    },
+    {
+     "primitive": "wok_plate_rinse.carry.8"
+    },
+    {
+     "primitive": "wok_plate_rinse.meet_join.9"
+    },
+    {
+     "primitive": "wok_plate_rinse.insert.10"
+    },
+    {
+     "primitive": "wok_plate_rinse.dwell.11"
+    },
+    {
+     "primitive": "wok_plate_rinse.extract.12"
+    },
+    {
+     "primitive": "wok_plate_rinse.tip.13"
+    },
+    {
+     "primitive": "wok_plate_rinse.dwell.14"
+    },
+    {
+     "primitive": "wok_plate_rinse.untip.15"
+    },
+    {
+     "primitive": "wok_plate_rinse.carry.16"
+    },
+    {
+     "primitive": "wok_plate_rinse.meet_join.17"
+    },
+    {
+     "primitive": "wok_plate_rinse.carry.18"
+    },
+    {
+     "primitive": "wok_plate_rinse.carry.19"
+    },
+    {
+     "primitive": "wok_plate_rinse.carry.20"
+    },
+    {
+     "primitive": "wok_plate_rinse.seat_lower.21"
+    },
+    {
+     "primitive": "wok_plate_rinse.approach.22"
+    },
+    {
+     "primitive": "wok_plate_rinse.approach.23"
+    },
+    {
+     "primitive": "wok_plate_rinse.gripper.24"
+    }
+   ],
+   "reverse_of": null,
+   "time_s": 48.9,
+   "stops_today": 27,
+   "stops_library": 16,
+   "verification": {
+    "status": "verified",
+    "checker": "checker.py (binding R05 reference), 10 mm robot-env, 5 mm gripper/held-env, joint ranges",
+    "step_bound": "object <= 1 cm / 2 deg per state; joins <= 1 deg; full bounds every 5th state",
+    "min_reserve_mm": 3.3,
+    "max_pgc_moment_Nm": 6.47,
+    "max_joint_ratio": 0.629,
+    "elapsed_s": 275,
+    "evidence": "results/r17/chain_wok_s-1_final.json",
+    "swept_volume": "swept_voxels.npz: wok_plate_rinse__*",
+    "fixture_dependencies": [
+     "cooker_wok_zone",
+     "counters_cabinet_fronts",
+     "faucet",
+     "hood",
+     "plating_spots",
+     "season_staple_station",
+     "sink"
+    ]
+   },
+   "start_equals_end": true,
+   "approach_equals_retreat": true
+  },
+  {
+   "id": "LID_OFF_TO_RACK",
+   "params": {},
+   "start_hub": "H_lid_on_pre",
+   "end_hub": "H_lid_rack_post",
+   "pre": [
+    {
+     "name": "lid on the zone-2 pot, tab to the front",
+     "check": "camera",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "rack slot free",
+     "check": "camera / slot switch",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "heat off or steam vented",
+     "check": "zone-2 power level 0 for >= N s (steam on the fingers, not simulated)",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "hand empty",
+     "check": "gripper",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "post": [
+    {
+     "name": "lid upright in the rack",
+     "check": "camera / rack switch",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "hand empty",
+     "check": "gripper",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "steps": [
+    {
+     "primitive": "lid_off_to_rack.seat_lift.0"
+    },
+    {
+     "primitive": "lid_off_to_rack.extract.1"
+    },
+    {
+     "primitive": "lid_off_to_rack.carry.2"
+    },
+    {
+     "primitive": "lid_off_to_rack.reorient.3"
+    },
+    {
+     "primitive": "lid_off_to_rack.carry.4"
+    },
+    {
+     "primitive": "lid_off_to_rack.meet_join.5"
+    },
+    {
+     "primitive": "lid_off_to_rack.carry.6"
+    },
+    {
+     "primitive": "lid_off_to_rack.carry.7"
+    },
+    {
+     "primitive": "lid_off_to_rack.insert.8"
+    },
+    {
+     "primitive": "lid_off_to_rack.approach.9"
+    },
+    {
+     "primitive": "lid_off_to_rack.approach.10"
+    },
+    {
+     "primitive": "lid_off_to_rack.gripper.11"
+    }
+   ],
+   "reverse_of": null,
+   "time_s": 20.2,
+   "stops_today": 14,
+   "stops_library": 9,
+   "verification": {
+    "status": "verified",
+    "checker": "checker.py (binding R05 reference), 10 mm robot-env, 5 mm gripper/held-env, joint ranges",
+    "step_bound": "object <= 1 cm / 2 deg per state; joins <= 1 deg; full bounds every 5th state",
+    "min_reserve_mm": 1.0,
+    "max_pgc_moment_Nm": 1.58,
+    "max_joint_ratio": 0.41,
+    "elapsed_s": 133,
+    "evidence": "results/r17/chain_lid_s-1_final.json",
+    "swept_volume": "swept_voxels.npz: lid_off_to_rack__*",
+    "fixture_dependencies": [
+     "cooker_wok_zone",
+     "counters_cabinet_fronts",
+     "hood",
+     "lid_rack",
+     "tool_rest_spider",
+     "upper_cabinets",
+     "zone2_pot"
+    ]
+   },
+   "note": "LID_ON = reversed (R16: lid on = reverse)"
+  },
+  {
+   "id": "SPATULA_FETCH",
+   "params": {},
+   "start_hub": "H_spat_pre",
+   "end_hub": "H_spat_stroke",
+   "pre": [
+    {
+     "name": "spatula on its pad, flipped (sense -1)",
+     "check": "camera: blade face up/down",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "wok on the cooker",
+     "check": "slot switch",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "pour drum swung away except while stirring",
+     "check": "drum servo state",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "hand empty",
+     "check": "gripper",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "post": [
+    {
+     "name": "spatula in hand, sense -1",
+     "check": "grasp width + finger-root force",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "blade 1 cm off the steel at stroke 0",
+     "check": "camera / joint state at hub",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "steps": [
+    {
+     "primitive": "spatula_fetch.seat_lift.0"
+    },
+    {
+     "primitive": "spatula_fetch.carry.1"
+    },
+    {
+     "primitive": "spatula_fetch.carry.2"
+    },
+    {
+     "primitive": "spatula_fetch.meet_join.3"
+    },
+    {
+     "primitive": "spatula_fetch.carry.4"
+    },
+    {
+     "primitive": "spatula_fetch.insert.5"
+    },
+    {
+     "primitive": "spatula_fetch.approach.6"
+    },
+    {
+     "primitive": "spatula_fetch.gripper.7"
+    }
+   ],
+   "reverse_of": null,
+   "time_s": 26.9,
+   "stops_today": 9,
+   "stops_library": 6,
+   "verification": {
+    "status": "verified",
+    "checker": "checker.py (binding R05 reference), 10 mm robot-env, 5 mm gripper/held-env, joint ranges",
+    "step_bound": "object <= 1 cm / 2 deg per state; joins <= 1 deg; full bounds every 5th state",
+    "min_reserve_mm": 6.0,
+    "max_pgc_moment_Nm": 1.31,
+    "max_joint_ratio": 0.368,
+    "elapsed_s": 433,
+    "evidence": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+    "swept_volume": "swept_voxels.npz: spatula_fetch__*",
+    "fixture_dependencies": [
+     "cooker_wok_zone",
+     "counters_cabinet_fronts",
+     "prep_items",
+     "sink"
+    ]
+   },
+   "note": "then the 0.5 s hand-off into H_stir0 (README_R10 R18b: cart 7.8 cm, joints <= 11 deg, no hits, reserve 2.0 mm); SPATULA_STOW = reversed"
+  },
+  {
+   "id": "STIR_CYCLE",
+   "params": {
+    "cycles": "n >= 1 (13.15 s each)",
+    "stroke": "h_scrape_dice (R15)"
+   },
+   "start_hub": "H_stir0",
+   "end_hub": "H_stir0",
+   "pre": [
+    {
+     "name": "spatula in hand, sense -1",
+     "check": "grasp width + finger-root force",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "heat <= half power while the spatula stops",
+     "check": "cooker servo (R15 policy)",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "person not within reach of the wok",
+     "check": "presence sensor",
+     "on_false": "pause (arm stops, heat to half)"
+    }
+   ],
+   "post": [
+    {
+     "name": "spatula at stroke-0 start",
+     "check": "joint state at hub",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "steps": [
+    {
+     "primitive": "stir.stroke.0"
+    },
+    {
+     "primitive": "stir.stroke_return.1"
+    },
+    {
+     "primitive": "stir.stroke.2"
+    },
+    {
+     "primitive": "stir.stroke_return.3"
+    },
+    {
+     "primitive": "stir.stroke.4"
+    },
+    {
+     "primitive": "stir.stroke_return.5"
+    },
+    {
+     "primitive": "stir.stroke.6"
+    },
+    {
+     "primitive": "stir.stroke_return.7"
+    },
+    {
+     "primitive": "stir.stroke.8"
+    },
+    {
+     "primitive": "stir.stroke_return.9"
+    }
+   ],
+   "time_s": 13.15,
+   "stops_today": 10,
+   "stops_library": 0,
+   "verification": {
+    "status": "partially_verified",
+    "evidence": "results/r15/stirwalk2_h_scrape_dice_r17.json",
+    "min_reserve_mm": 2.0,
+    "min_plume_mm": 25.8,
+    "note": "5 strokes + close checked in the current kitchen (feasible period 2.63 s, 184 deg/s peak). States not saved by r15stirwalk2.py: re-run with state output to store the trajectory; elapsed_s not recorded. Stroke force: contact p95 6-8 N, grip moment p95 2.2-2.9 N.m (R15 rigid-dice bench); real food untested."
+   }
+  },
+  {
+   "id": "WOK_DUMP_RINSE",
+   "start_hub": "H_wok_pre",
+   "end_hub": "H_wok_pre",
+   "params": {},
+   "pre": [
+    {
+     "name": "wok on the cooker",
+     "check": "slot switch",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "heat off",
+     "check": "servo",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "faucet open",
+     "check": "FAUCET_OPEN done",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "post": [
+    {
+     "name": "wok back, rinsed, empty",
+     "check": "slot switch + camera",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "steps": [
+    {
+     "primitive": "WOK_PLATE_RINSE steps without tip#4-5, dwell 2 s, untip#5-6"
+    },
+    {
+     "primitive": "micro-join play 48 -> 138"
+    }
+   ],
+   "time_s": 42.2,
+   "verification": {
+    "status": "composed_from_verified",
+    "evidence": "results/r17/chain_wok_s-1_final.json",
+    "note": "all states are states of the verified wok chain; the only new geometry is the micro-join where a tip loop is left out (checked here)",
+    "micro_joins": {
+     "plate": {
+      "frm": 48,
+      "to": 138,
+      "max_joint_deg": 0.0409,
+      "cart_mm": 0.19,
+      "states": 6,
+      "ok": true,
+      "min_reserve_mm": 52.4,
+      "time_s": 0.001
+     },
+     "sink": {
+      "frm": 242,
+      "to": 332,
+      "max_joint_deg": 0.0277,
+      "cart_mm": 0.12,
+      "states": 4,
+      "ok": true,
+      "min_reserve_mm": 22.7,
+      "time_s": 0.0
+     }
+    }
+   },
+   "meal_estimate_s": 73.5,
+   "note": "meal16 dump = 73.5 s (r17seq estimate incl. faucet and free moves); the wok part alone is this time_s"
+  },
+  {
+   "id": "WOK_FILL",
+   "start_hub": "H_wok_pre",
+   "end_hub": "H_wok_pre",
+   "params": {
+    "water_l": {
+     "max": 1.0,
+     "verified": [
+      1.0
+     ]
+    },
+    "fill_dwell_s": {
+     "value": 5.0,
+     "note": "= V / faucet flow; the flow of the user's faucet is not measured (the 5 s is the rinse dwell of the chain)"
+    }
+   },
+   "pre": [
+    {
+     "name": "wok on the cooker, empty",
+     "check": "slot switch + camera",
+     "on_false": "retreat to the start hub, report"
+    },
+    {
+     "name": "faucet open",
+     "check": "FAUCET_OPEN done",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "post": [
+    {
+     "name": "wok on the cooker with <= 1 L water",
+     "check": "cooker scale / camera",
+     "on_false": "retreat to the start hub, report"
+    }
+   ],
+   "steps": [
+    {
+     "primitive": "WOK_PLATE_RINSE steps without both tip loops"
+    },
+    {
+     "primitive": "micro-joins play 48 -> 138 and 242 -> 332"
+    }
+   ],
+   "time_s": 36.5,
+   "verification": {
+    "status": "composed_from_verified",
+    "evidence": "results/r17/chain_wok_s-1_final.json",
+    "note": "all states are states of the verified wok chain; the only new geometry is the micro-join where a tip loop is left out (checked here)",
+    "micro_joins": {
+     "plate": {
+      "frm": 48,
+      "to": 138,
+      "max_joint_deg": 0.0409,
+      "cart_mm": 0.19,
+      "states": 6,
+      "ok": true,
+      "min_reserve_mm": 52.4,
+      "time_s": 0.001
+     },
+     "sink": {
+      "frm": 242,
+      "to": 332,
+      "max_joint_deg": 0.0277,
+      "cart_mm": 0.12,
+      "states": 4,
+      "ok": true,
+      "min_reserve_mm": 22.7,
+      "time_s": 0.0
+     }
+    },
+    "load_with_1kg_water": {
+     "states": 149,
+     "max_joint_ratio": 0.55,
+     "max_pgc_moment_Nm": 5.88,
+     "pgc_limit_Nm": 7.0,
+     "reference_food_1p15kg_pick_to_plate": {
+      "max_joint_ratio": 0.52,
+      "max_pgc_moment_Nm": 6.23
+     }
+    }
+   },
+   "meal_estimate_s": 73.5
+  }
+ ],
+ "spider_natural_hubs": [
+  {
+   "keyframes": [
+    "lane#3",
+    "lane#15"
+   ],
+   "max_joint_diff_deg": 0.0,
+   "cart_diff_m": 0.0
+  },
+  {
+   "keyframes": [
+    "over the pot#4",
+    "drain#6"
+   ],
+   "max_joint_diff_deg": 0.0,
+   "cart_diff_m": 0.0
+  },
+  {
+   "keyframes": [
+    "lane middle#8",
+    "lane middle#14"
+   ],
+   "max_joint_diff_deg": 0.0,
+   "cart_diff_m": 0.0
+  },
+  {
+   "keyframes": [
+    "#9",
+    "lane#13"
+   ],
+   "max_joint_diff_deg": 0.0,
+   "cart_diff_m": 0.0
+  },
+  {
+   "keyframes": [
+    "over the plate#10",
+    "level again#12"
+   ],
+   "max_joint_diff_deg": 1.7e-05,
+   "cart_diff_m": 0.0
+  }
+ ],
+ "plating_sequence": {
+  "steps": [
+   {
+    "set": "SPATULA_STOW (reverse of SPATULA_FETCH)",
+    "start": "H_spat_stroke",
+    "end": "H_spat_pre",
+    "time_s": 27.4,
+    "status": "verified"
+   },
+   {
+    "set": "TRANSIT rest_to_faucet",
+    "start": "H_spat_pre",
+    "end": "H_fau_closed_pre",
+    "time_s": 5.6,
+    "status": "NOT FOUND (estimate)"
+   },
+   {
+    "set": "FAUCET_OPEN",
+    "start": "H_fau_closed_pre",
+    "end": "H_fau_open_post",
+    "time_s": 3.5,
+    "status": "verified"
+   },
+   {
+    "set": "TRANSIT faucet_to_wok",
+    "start": "H_fau_open_post",
+    "end": "H_wok_pre",
+    "time_s": 6.96,
+    "status": "verified"
+   },
+   {
+    "set": "WOK_PLATE_RINSE(spot)",
+    "start": "H_wok_pre",
+    "end": "H_wok_pre",
+    "time_s": 48.9,
+    "status": "verified"
+   },
+   {
+    "set": "TRANSIT wok_to_faucet",
+    "start": "H_wok_pre",
+    "end": "H_fau_open_post",
+    "time_s": 6.96,
+    "status": "verified"
+   },
+   {
+    "set": "FAUCET_CLOSE (reverse)",
+    "start": "H_fau_open_post",
+    "end": "H_fau_closed_pre",
+    "time_s": 3.5,
+    "status": "verified"
+   },
+   {
+    "set": "TRANSIT faucet_to_rest",
+    "start": "H_fau_closed_pre",
+    "end": "H_spat_pre",
+    "time_s": 5.6,
+    "status": "NOT FOUND (estimate)"
+   },
+   {
+    "set": "SPATULA_FETCH",
+    "start": "H_spat_pre",
+    "end": "H_spat_stroke",
+    "time_s": 27.4,
+    "status": "verified"
+   }
+  ],
+  "junctions": [
+   {
+    "after": "SPATULA_STOW (reverse of SPATULA_FETCH)",
+    "before": "TRANSIT rest_to_faucet",
+    "hub": "H_spat_pre",
+    "identical": true
+   },
+   {
+    "after": "TRANSIT rest_to_faucet",
+    "before": "FAUCET_OPEN",
+    "hub": "H_fau_closed_pre",
+    "identical": true
+   },
+   {
+    "after": "FAUCET_OPEN",
+    "before": "TRANSIT faucet_to_wok",
+    "hub": "H_fau_open_post",
+    "identical": true
+   },
+   {
+    "after": "TRANSIT faucet_to_wok",
+    "before": "WOK_PLATE_RINSE(spot)",
+    "hub": "H_wok_pre",
+    "identical": true
+   },
+   {
+    "after": "WOK_PLATE_RINSE(spot)",
+    "before": "TRANSIT wok_to_faucet",
+    "hub": "H_wok_pre",
+    "identical": true
+   },
+   {
+    "after": "TRANSIT wok_to_faucet",
+    "before": "FAUCET_CLOSE (reverse)",
+    "hub": "H_fau_open_post",
+    "identical": true
+   },
+   {
+    "after": "FAUCET_CLOSE (reverse)",
+    "before": "TRANSIT faucet_to_rest",
+    "hub": "H_fau_closed_pre",
+    "identical": true
+   },
+   {
+    "after": "TRANSIT faucet_to_rest",
+    "before": "SPATULA_FETCH",
+    "hub": "H_spat_pre",
+    "identical": true
+   }
+  ],
+  "all_junctions_at_identical_hubs": true,
+  "time_s": 135.8,
+  "r17seq_estimate_s": 134.3,
+  "unverified": [
+   "TRANSIT rest_to_faucet",
+   "TRANSIT faucet_to_rest"
+  ],
+  "note": "H_spat_stroke -> H_stir0 hand-off (0.5 s each way) is counted in the spatula times as in r17seq.py"
+ }
+}

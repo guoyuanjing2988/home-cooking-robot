@@ -1,0 +1,786 @@
+{
+ "source": "r19prim_swept.py",
+ "voxel_m": 0.02,
+ "dilation": {
+  "swept": 2,
+  "fixture": 1,
+  "why": "box sampling <= 2 cm (1 voxel) + the 10 mm robot gap (1 voxel); fixture box sampling (1 voxel)"
+ },
+ "voxelize_s": 46.9,
+ "per_chain": {
+  "wok_plate_rinse": {
+   "states": 470,
+   "substeps": 3078,
+   "segments": 21,
+   "voxels": 94336
+  },
+  "wok_plate2_rinse": {
+   "states": 470,
+   "substeps": 3078,
+   "segments": 21,
+   "voxels": 93994
+  },
+  "faucet_open": {
+   "states": 16,
+   "substeps": 136,
+   "segments": 3,
+   "voxels": 16701
+  },
+  "lid_off_to_rack": {
+   "states": 205,
+   "substeps": 1527,
+   "segments": 11,
+   "voxels": 57463
+  },
+  "spider_pot_to_plate": {
+   "states": 516,
+   "substeps": 2799,
+   "segments": 21,
+   "voxels": 79296
+  },
+  "spatula_fetch": {
+   "states": 249,
+   "substeps": 1578,
+   "segments": 7,
+   "voxels": 129201
+  }
+ },
+ "segments_stored": 84,
+ "npz_bytes": 2626450,
+ "replay_ms_per_state": 16.3,
+ "fixture_dependency": {
+  "cooker_wok_zone": {
+   "segments_flagged": 30,
+   "of": 84,
+   "chains": [
+    "lid_off_to_rack",
+    "spatula_fetch",
+    "wok_plate2_rinse",
+    "wok_plate_rinse"
+   ]
+  },
+  "hood": {
+   "segments_flagged": 43,
+   "of": 84,
+   "chains": [
+    "lid_off_to_rack",
+    "spider_pot_to_plate",
+    "wok_plate2_rinse",
+    "wok_plate_rinse"
+   ]
+  },
+  "season_staple_station": {
+   "segments_flagged": 2,
+   "of": 84,
+   "chains": [
+    "wok_plate_rinse"
+   ]
+  },
+  "plating_spots": {
+   "segments_flagged": 22,
+   "of": 84,
+   "chains": [
+    "spider_pot_to_plate",
+    "wok_plate2_rinse",
+    "wok_plate_rinse"
+   ]
+  },
+  "sink": {
+   "segments_flagged": 54,
+   "of": 84,
+   "chains": [
+    "faucet_open",
+    "spatula_fetch",
+    "spider_pot_to_plate",
+    "wok_plate2_rinse",
+    "wok_plate_rinse"
+   ]
+  },
+  "faucet": {
+   "segments_flagged": 13,
+   "of": 84,
+   "chains": [
+    "faucet_open",
+    "wok_plate2_rinse",
+    "wok_plate_rinse"
+   ]
+  },
+  "counters_cabinet_fronts": {
+   "segments_flagged": 84,
+   "of": 84,
+   "chains": [
+    "faucet_open",
+    "lid_off_to_rack",
+    "spatula_fetch",
+    "spider_pot_to_plate",
+    "wok_plate2_rinse",
+    "wok_plate_rinse"
+   ]
+  },
+  "upper_cabinets": {
+   "segments_flagged": 15,
+   "of": 84,
+   "chains": [
+    "faucet_open",
+    "lid_off_to_rack",
+    "spider_pot_to_plate"
+   ]
+  },
+  "walls": {
+   "segments_flagged": 3,
+   "of": 84,
+   "chains": [
+    "faucet_open"
+   ]
+  },
+  "zone2_pot": {
+   "segments_flagged": 17,
+   "of": 84,
+   "chains": [
+    "lid_off_to_rack",
+    "spider_pot_to_plate"
+   ]
+  },
+  "lid_rack": {
+   "segments_flagged": 3,
+   "of": 84,
+   "chains": [
+    "lid_off_to_rack"
+   ]
+  },
+  "tool_rest_spider": {
+   "segments_flagged": 13,
+   "of": 84,
+   "chains": [
+    "lid_off_to_rack",
+    "spider_pot_to_plate"
+   ]
+  },
+  "prep_items": {
+   "segments_flagged": 3,
+   "of": 84,
+   "chains": [
+    "spatula_fetch"
+   ]
+  }
+ },
+ "fixture_dependency_detail": {
+  "cooker_wok_zone": {
+   "wok_plate_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "tip: over the plate#4 -> tipped 90 (plated)#5",
+    "untip: tipped 90 (plated)#5 -> level#6",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "wok_plate2_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "lid_off_to_rack": [
+    "seat_lift: lift off#0 -> #1",
+    "extract: #1 -> slide out#2",
+    "carry: slide out#2 -> up#3",
+    "reorient: up#3 -> roll 90 deg#4",
+    "approach at kf 0"
+   ],
+   "spatula_fetch": [
+    "insert: over the wok#4 -> stroke start#5"
+   ]
+  },
+  "hood": {
+   "wok_plate_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "wok_plate2_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "lid_off_to_rack": [
+    "seat_lift: lift off#0 -> #1",
+    "extract: #1 -> slide out#2",
+    "carry: slide out#2 -> up#3",
+    "reorient: up#3 -> roll 90 deg#4",
+    "carry: roll 90 deg#4 -> carry#5",
+    "carry: #6 -> over the rack#7",
+    "insert: over the rack#7 -> in the rack#8",
+    "approach at kf 0",
+    "approach at kf 8"
+   ],
+   "spider_pot_to_plate": [
+    "seat_lift: pick#0 -> #1",
+    "carry: #1 -> out and up#2",
+    "carry: out and up#2 -> lane#3",
+    "carry: lane#3 -> over the pot#4",
+    "insert: over the pot#4 -> scoop#5",
+    "extract: scoop#5 -> drain#6",
+    "carry: drain#6 -> lane#7",
+    "carry: lane#15 -> out and up#16",
+    "carry: out and up#16 -> #17",
+    "seat_lower: #17 -> on the rest#18",
+    "approach at kf 0",
+    "approach at kf 18"
+   ]
+  },
+  "season_staple_station": {
+   "wok_plate_rinse": [
+    "tip: over the plate#4 -> tipped 90 (plated)#5",
+    "untip: tipped 90 (plated)#5 -> level#6"
+   ]
+  },
+  "plating_spots": {
+   "wok_plate_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "tip: over the plate#4 -> tipped 90 (plated)#5",
+    "untip: tipped 90 (plated)#5 -> level#6",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "wok_plate2_rinse": [
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "tip: over the plate#4 -> tipped 90 (plated)#5",
+    "untip: tipped 90 (plated)#5 -> level#6",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14"
+   ],
+   "spider_pot_to_plate": [
+    "tip: over the plate#10 -> tip 110 deg#11",
+    "untip: tip 110 deg#11 -> level again#12"
+   ]
+  },
+  "sink": {
+   "wok_plate_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "tip: over the plate#4 -> tipped 90 (plated)#5",
+    "untip: tipped 90 (plated)#5 -> level#6",
+    "carry: level#6 -> lane#7",
+    "meet join at kf 7",
+    "insert: lane#7 -> under the tap#8",
+    "extract: under the tap#8 -> forward#9",
+    "tip: forward#9 -> emptied#10",
+    "untip: emptied#10 -> level#11",
+    "carry: level#11 -> lane#12",
+    "meet join at kf 12",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "wok_plate2_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "tip: over the plate#4 -> tipped 90 (plated)#5",
+    "untip: tipped 90 (plated)#5 -> level#6",
+    "carry: level#6 -> lane#7",
+    "meet join at kf 7",
+    "insert: lane#7 -> under the tap#8",
+    "extract: under the tap#8 -> forward#9",
+    "tip: forward#9 -> emptied#10",
+    "untip: emptied#10 -> level#11",
+    "carry: level#11 -> lane#12",
+    "meet join at kf 12",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "faucet_open": [
+    "lever: closed#0 -> open#1",
+    "approach at kf 0",
+    "approach at kf 1"
+   ],
+   "spider_pot_to_plate": [
+    "carry: lane middle#8 -> #9",
+    "carry: #9 -> over the plate#10",
+    "tip: over the plate#10 -> tip 110 deg#11",
+    "untip: tip 110 deg#11 -> level again#12",
+    "carry: level again#12 -> lane#13",
+    "carry: lane#13 -> lane middle#14"
+   ],
+   "spatula_fetch": [
+    "carry: out and up#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the wok#4"
+   ]
+  },
+  "faucet": {
+   "wok_plate_rinse": [
+    "insert: lane#7 -> under the tap#8",
+    "extract: under the tap#8 -> forward#9",
+    "tip: forward#9 -> emptied#10",
+    "untip: emptied#10 -> level#11",
+    "carry: level#11 -> lane#12"
+   ],
+   "wok_plate2_rinse": [
+    "insert: lane#7 -> under the tap#8",
+    "extract: under the tap#8 -> forward#9",
+    "tip: forward#9 -> emptied#10",
+    "untip: emptied#10 -> level#11",
+    "carry: level#11 -> lane#12"
+   ],
+   "faucet_open": [
+    "lever: closed#0 -> open#1",
+    "approach at kf 0",
+    "approach at kf 1"
+   ]
+  },
+  "counters_cabinet_fronts": {
+   "wok_plate_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "tip: over the plate#4 -> tipped 90 (plated)#5",
+    "untip: tipped 90 (plated)#5 -> level#6",
+    "carry: level#6 -> lane#7",
+    "meet join at kf 7",
+    "insert: lane#7 -> under the tap#8",
+    "extract: under the tap#8 -> forward#9",
+    "tip: forward#9 -> emptied#10",
+    "untip: emptied#10 -> level#11",
+    "carry: level#11 -> lane#12",
+    "meet join at kf 12",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "wok_plate2_rinse": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> up and left#2",
+    "carry: up and left#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the plate#4",
+    "tip: over the plate#4 -> tipped 90 (plated)#5",
+    "untip: tipped 90 (plated)#5 -> level#6",
+    "carry: level#6 -> lane#7",
+    "meet join at kf 7",
+    "insert: lane#7 -> under the tap#8",
+    "extract: under the tap#8 -> forward#9",
+    "tip: forward#9 -> emptied#10",
+    "untip: emptied#10 -> level#11",
+    "carry: level#11 -> lane#12",
+    "meet join at kf 12",
+    "carry: lane#12 -> lane#13",
+    "carry: lane#13 -> #14",
+    "carry: #14 -> lowered#15",
+    "seat_lower: lowered#15 -> set down#16",
+    "approach at kf 0",
+    "approach at kf 16"
+   ],
+   "faucet_open": [
+    "lever: closed#0 -> open#1",
+    "approach at kf 0",
+    "approach at kf 1"
+   ],
+   "lid_off_to_rack": [
+    "seat_lift: lift off#0 -> #1",
+    "extract: #1 -> slide out#2",
+    "carry: slide out#2 -> up#3",
+    "reorient: up#3 -> roll 90 deg#4",
+    "carry: roll 90 deg#4 -> carry#5",
+    "meet join at kf 5",
+    "carry: carry#5 -> #6",
+    "carry: #6 -> over the rack#7",
+    "insert: over the rack#7 -> in the rack#8",
+    "approach at kf 0",
+    "approach at kf 8"
+   ],
+   "spider_pot_to_plate": [
+    "seat_lift: pick#0 -> #1",
+    "carry: #1 -> out and up#2",
+    "carry: out and up#2 -> lane#3",
+    "carry: lane#3 -> over the pot#4",
+    "insert: over the pot#4 -> scoop#5",
+    "extract: scoop#5 -> drain#6",
+    "carry: drain#6 -> lane#7",
+    "carry: lane#7 -> lane middle#8",
+    "meet join at kf 8",
+    "carry: lane middle#8 -> #9",
+    "carry: #9 -> over the plate#10",
+    "tip: over the plate#10 -> tip 110 deg#11",
+    "untip: tip 110 deg#11 -> level again#12",
+    "carry: level again#12 -> lane#13",
+    "carry: lane#13 -> lane middle#14",
+    "carry: lane middle#14 -> lane#15",
+    "carry: lane#15 -> out and up#16",
+    "carry: out and up#16 -> #17",
+    "seat_lower: #17 -> on the rest#18",
+    "approach at kf 0",
+    "approach at kf 18"
+   ],
+   "spatula_fetch": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> out and up#2",
+    "carry: out and up#2 -> lane#3",
+    "meet join at kf 3",
+    "carry: lane#3 -> over the wok#4",
+    "insert: over the wok#4 -> stroke start#5",
+    "approach at kf 0"
+   ]
+  },
+  "upper_cabinets": {
+   "faucet_open": [
+    "lever: closed#0 -> open#1",
+    "approach at kf 1"
+   ],
+   "lid_off_to_rack": [
+    "carry: #6 -> over the rack#7"
+   ],
+   "spider_pot_to_plate": [
+    "seat_lift: pick#0 -> #1",
+    "carry: #1 -> out and up#2",
+    "carry: out and up#2 -> lane#3",
+    "carry: lane#3 -> over the pot#4",
+    "insert: over the pot#4 -> scoop#5",
+    "extract: scoop#5 -> drain#6",
+    "carry: drain#6 -> lane#7",
+    "carry: lane#15 -> out and up#16",
+    "carry: out and up#16 -> #17",
+    "seat_lower: #17 -> on the rest#18",
+    "approach at kf 0",
+    "approach at kf 18"
+   ]
+  },
+  "walls": {
+   "faucet_open": [
+    "lever: closed#0 -> open#1",
+    "approach at kf 0",
+    "approach at kf 1"
+   ]
+  },
+  "zone2_pot": {
+   "lid_off_to_rack": [
+    "seat_lift: lift off#0 -> #1",
+    "extract: #1 -> slide out#2",
+    "carry: slide out#2 -> up#3",
+    "approach at kf 0"
+   ],
+   "spider_pot_to_plate": [
+    "seat_lift: pick#0 -> #1",
+    "carry: #1 -> out and up#2",
+    "carry: out and up#2 -> lane#3",
+    "carry: lane#3 -> over the pot#4",
+    "insert: over the pot#4 -> scoop#5",
+    "extract: scoop#5 -> drain#6",
+    "carry: drain#6 -> lane#7",
+    "carry: lane#7 -> lane middle#8",
+    "carry: lane#15 -> out and up#16",
+    "carry: out and up#16 -> #17",
+    "seat_lower: #17 -> on the rest#18",
+    "approach at kf 0",
+    "approach at kf 18"
+   ]
+  },
+  "lid_rack": {
+   "lid_off_to_rack": [
+    "carry: #6 -> over the rack#7",
+    "insert: over the rack#7 -> in the rack#8",
+    "approach at kf 8"
+   ]
+  },
+  "tool_rest_spider": {
+   "lid_off_to_rack": [
+    "seat_lift: lift off#0 -> #1",
+    "extract: #1 -> slide out#2",
+    "carry: slide out#2 -> up#3",
+    "reorient: up#3 -> roll 90 deg#4",
+    "carry: carry#5 -> #6",
+    "carry: #6 -> over the rack#7",
+    "insert: over the rack#7 -> in the rack#8",
+    "approach at kf 0",
+    "approach at kf 8"
+   ],
+   "spider_pot_to_plate": [
+    "seat_lift: pick#0 -> #1",
+    "seat_lower: #17 -> on the rest#18",
+    "approach at kf 0",
+    "approach at kf 18"
+   ]
+  },
+  "prep_items": {
+   "spatula_fetch": [
+    "seat_lift: pick#0 -> lifted#1",
+    "carry: lifted#1 -> out and up#2",
+    "approach at kf 0"
+   ]
+  }
+ },
+ "queries": [
+  {
+   "query": {
+    "name": "spatula (-0.85,0.30) elev 50",
+    "x": -0.85,
+    "y": 0.3,
+    "yaw": 0.0,
+    "elev": 50.0,
+    "roll": 0.0,
+    "r18": "rejected: hit by the upper arm on the wok sink trip and the faucet"
+   },
+   "screen": {
+    "wok_plate_rinse": [
+     "carry: level#6 -> lane#7",
+     "meet join at kf 7",
+     "insert: lane#7 -> under the tap#8",
+     "extract: under the tap#8 -> forward#9",
+     "tip: forward#9 -> emptied#10",
+     "untip: emptied#10 -> level#11",
+     "carry: level#11 -> lane#12",
+     "meet join at kf 12",
+     "carry: lane#12 -> lane#13"
+    ],
+    "wok_plate2_rinse": [
+     "tip: over the plate#4 -> tipped 90 (plated)#5",
+     "untip: tipped 90 (plated)#5 -> level#6",
+     "carry: level#6 -> lane#7",
+     "meet join at kf 7",
+     "insert: lane#7 -> under the tap#8",
+     "extract: under the tap#8 -> forward#9",
+     "tip: forward#9 -> emptied#10",
+     "untip: emptied#10 -> level#11",
+     "carry: level#11 -> lane#12",
+     "meet join at kf 12",
+     "carry: lane#12 -> lane#13"
+    ],
+    "faucet_open": [
+     "lever: closed#0 -> open#1",
+     "approach at kf 0",
+     "approach at kf 1"
+    ],
+    "lid_off_to_rack": [],
+    "spider_pot_to_plate": []
+   },
+   "truth": {
+    "wok_plate_rinse": {
+     "carry: level#6 -> lane#7": 15,
+     "meet join at kf 7": 7,
+     "insert: lane#7 -> under the tap#8": 1,
+     "carry: level#11 -> lane#12": 3,
+     "meet join at kf 12": 7,
+     "carry: lane#12 -> lane#13": 13
+    },
+    "wok_plate2_rinse": {
+     "carry: level#6 -> lane#7": 16,
+     "meet join at kf 7": 7,
+     "insert: lane#7 -> under the tap#8": 1,
+     "carry: level#11 -> lane#12": 3,
+     "meet join at kf 12": 7,
+     "carry: lane#12 -> lane#13": 13
+    },
+    "faucet_open": {
+     "lever: closed#0 -> open#1": 16
+    },
+    "lid_off_to_rack": {},
+    "spider_pot_to_plate": {}
+   },
+   "screen_ms": 68.2,
+   "replay_s": 27.1,
+   "replay_states": 1677,
+   "screen_states": 706,
+   "missed_by_screen": [],
+   "flagged_segments": 23,
+   "truly_hit_segments": 13,
+   "segments_total": 77
+  },
+  {
+   "query": {
+    "name": "spatula (-1.15,0.30) elev 50",
+    "x": -1.15,
+    "y": 0.3,
+    "yaw": 0.0,
+    "elev": 50.0,
+    "roll": 0.0,
+    "r18": "spatscan: blocks wok_s-1_final at state 230"
+   },
+   "screen": {
+    "wok_plate_rinse": [
+     "insert: lane#7 -> under the tap#8",
+     "extract: under the tap#8 -> forward#9",
+     "tip: forward#9 -> emptied#10",
+     "untip: emptied#10 -> level#11",
+     "carry: level#11 -> lane#12"
+    ],
+    "wok_plate2_rinse": [
+     "insert: lane#7 -> under the tap#8",
+     "extract: under the tap#8 -> forward#9",
+     "tip: forward#9 -> emptied#10",
+     "untip: emptied#10 -> level#11",
+     "carry: level#11 -> lane#12"
+    ],
+    "faucet_open": [],
+    "lid_off_to_rack": [],
+    "spider_pot_to_plate": []
+   },
+   "truth": {
+    "wok_plate_rinse": {
+     "insert: lane#7 -> under the tap#8": 3,
+     "extract: under the tap#8 -> forward#9": 10,
+     "tip: forward#9 -> emptied#10": 25,
+     "untip: emptied#10 -> level#11": 26,
+     "carry: level#11 -> lane#12": 4
+    },
+    "wok_plate2_rinse": {
+     "insert: lane#7 -> under the tap#8": 3,
+     "extract: under the tap#8 -> forward#9": 10,
+     "tip: forward#9 -> emptied#10": 25,
+     "untip: emptied#10 -> level#11": 26,
+     "carry: level#11 -> lane#12": 4
+    },
+    "faucet_open": {},
+    "lid_off_to_rack": {},
+    "spider_pot_to_plate": {}
+   },
+   "screen_ms": 70.2,
+   "replay_s": 27.6,
+   "replay_states": 1677,
+   "screen_states": 268,
+   "missed_by_screen": [],
+   "flagged_segments": 10,
+   "truly_hit_segments": 10,
+   "segments_total": 77
+  },
+  {
+   "query": {
+    "name": "spatula (-1.15,0.30) elev 8 flipped",
+    "x": -1.15,
+    "y": 0.3,
+    "yaw": 0.0,
+    "elev": 8.0,
+    "roll": 180.0,
+    "r18": "chosen R18b rest: no hits"
+   },
+   "screen": {
+    "wok_plate_rinse": [
+     "tip: forward#9 -> emptied#10",
+     "untip: emptied#10 -> level#11"
+    ],
+    "wok_plate2_rinse": [
+     "tip: forward#9 -> emptied#10",
+     "untip: emptied#10 -> level#11"
+    ],
+    "faucet_open": [],
+    "lid_off_to_rack": [],
+    "spider_pot_to_plate": []
+   },
+   "truth": {
+    "wok_plate_rinse": {},
+    "wok_plate2_rinse": {},
+    "faucet_open": {},
+    "lid_off_to_rack": {},
+    "spider_pot_to_plate": {}
+   },
+   "screen_ms": 66.6,
+   "replay_s": 26.7,
+   "replay_states": 1677,
+   "screen_states": 180,
+   "missed_by_screen": [],
+   "flagged_segments": 4,
+   "truly_hit_segments": 0,
+   "segments_total": 77
+  },
+  {
+   "query": {
+    "name": "spatula (1.60,0.30) elev 8",
+    "x": 1.6,
+    "y": 0.3,
+    "yaw": 0.0,
+    "elev": 8.0,
+    "roll": 0.0,
+    "r18": "see spatscan.json"
+   },
+   "screen": {
+    "wok_plate_rinse": [],
+    "wok_plate2_rinse": [],
+    "faucet_open": [],
+    "lid_off_to_rack": [
+     "carry: #6 -> over the rack#7",
+     "insert: over the rack#7 -> in the rack#8",
+     "approach at kf 8"
+    ],
+    "spider_pot_to_plate": [
+     "seat_lift: pick#0 -> #1",
+     "carry: #1 -> out and up#2",
+     "carry: out and up#16 -> #17",
+     "seat_lower: #17 -> on the rest#18",
+     "approach at kf 0",
+     "approach at kf 18"
+    ]
+   },
+   "truth": {
+    "wok_plate_rinse": {},
+    "wok_plate2_rinse": {},
+    "faucet_open": {},
+    "lid_off_to_rack": {},
+    "spider_pot_to_plate": {}
+   },
+   "screen_ms": 68.0,
+   "replay_s": 27.9,
+   "replay_states": 1677,
+   "screen_states": 112,
+   "missed_by_screen": [],
+   "flagged_segments": 9,
+   "truly_hit_segments": 0,
+   "segments_total": 77
+  }
+ ]
+}

@@ -26,7 +26,8 @@ class Checker(reference.Checker):
   self.desc={'intended':[]};self.meta=meta or {};self.xml=E.tostring(tree.getroot(),encoding='unicode')
   self.bind_model(mujoco.MjModel.from_xml_string(self.xml));self.intended=set()
   mujoco.mj_forward(self.m,self.d)
-  ep=H/f"assets/envelope_{int(self.meta.get('config',{}).get('mount_tilt_deg',0))}.json"
+  import arms;arm=arms.current(self.meta.get('config'))   # R19: the arm option (default UR5e: assets/envelope_<tilt>.json, 0.35 m, as before)
+  ep=H/arms.envelope_file(self.meta.get('config',{}).get('mount_tilt_deg',0),arm);self.com_radius=arms.ARMS[arm]['com_radius_m']
   if not ep.exists():raise ValueError('actual mounting envelope missing')
   self.env=load(str(ep.relative_to(H)))['envelope_Nm']
   canonical_tree,_=build(self.meta.get('config',{}),self.meta.get('held')) if self.meta.get('config') else (tree,{})
@@ -243,7 +244,7 @@ class Checker(reference.Checker):
   centre=(sum(self.m.body_mass[b]*self.d.xipos[b] for b in eoat_ids)+mass*(p+R@com))/total
   flange=self.m.site('R_attachment_site').id;radius=float(np.linalg.norm(centre-self.d.site_xpos[flange]))
   eoat_moment=float(np.linalg.norm(np.cross(R@work_v,np.asarray(force))+np.cross(R@com,[0,0,-mass*9.81])))
-  return dict(ok=max(ratios.values())<=1 and grip['margin']>=1 and total<=5 and radius<=.35 and eoat_moment<=7,ratios=ratios,max_ratio=max(ratios.values()),grip=grip,PGC_moment_Nm=eoat_moment,PGC_moment_limit_Nm=7,payload_kg=float(total),flange_com_radius_m=radius,held_com_local_m=com.tolist(),work_local_m=work_v.tolist())
+  return dict(ok=max(ratios.values())<=1 and grip['margin']>=1 and total<=5 and radius<=self.com_radius and eoat_moment<=7,ratios=ratios,max_ratio=max(ratios.values()),grip=grip,PGC_moment_Nm=eoat_moment,PGC_moment_limit_Nm=7,payload_kg=float(total),flange_com_radius_m=radius,held_com_local_m=com.tolist(),work_local_m=work_v.tolist())
  def pose_error(self,q,p,R):
   self.d.qpos[:]=q;mujoco.mj_kinematics(self.m,self.d);sid=self.m.site('R_prep').id
   return float(np.linalg.norm(self.d.site_xpos[sid]-p)),float(np.linalg.norm(Rotation.from_matrix(R@self.d.site_xmat[sid].reshape(3,3).T).as_rotvec()))

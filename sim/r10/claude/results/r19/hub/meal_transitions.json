@@ -1,0 +1,1611 @@
+{
+  "source": "results/r16/meal_stew_r18.json (meal16.py SET=stew ARM=r18), steps in schedule order",
+  "totals": {
+    "checked_checked": 38,
+    "checked_unchecked": 37,
+    "unchecked_unchecked": 62,
+    "handoff": 16
+  },
+  "endpoint_uses": {
+    "LID_RACK": 8,
+    "LID_POT": 8,
+    "SPIDER": 10,
+    "SPAT": 16,
+    "LEV_C": 23,
+    "LEV_O": 24,
+    "WOK": 24
+  },
+  "meals": {
+    "A \u5e72\u9505\u571f\u8c46/\u6842\u82b1\u828b\u5934/\u897f\u5170\u82b1/\u849c\u84c9\u4e1d\u74dc/\u86e4\u870a\u6392\u9aa8\u76c5": {
+      "actions": [
+        "U:carrier_in",
+        "LID_ON",
+        "U:rice",
+        "U:cup",
+        "U:cup",
+        "U:cup",
+        "U:cup",
+        "U:stew_lid",
+        "U:pour",
+        "SPIDER*",
+        "U:pour",
+        "U:pour",
+        "U:wok_lid",
+        "U:wok_lid",
+        "SPAT_FETCH",
+        "STIR",
+        "SPAT_STOW",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "SPAT_FETCH",
+        "STIR",
+        "SPAT_STOW",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "LID_OFF",
+        "U:carrier_out",
+        "U:carrier_in",
+        "LID_ON",
+        "U:pour",
+        "U:sauce_oil",
+        "U:pour",
+        "LID_OFF",
+        "U:carrier_out",
+        "U:pour"
+      ],
+      "counts": {
+        "checked_checked": 7,
+        "checked_unchecked": 12,
+        "unchecked_unchecked": 15,
+        "handoff": 4
+      },
+      "checked_checked_pairs": {
+        "SPAT->LEV_C": 2,
+        "LEV_O->WOK": 2,
+        "WOK->LEV_O": 2,
+        "LEV_C->LID_POT": 1
+      },
+      "transitions": [
+        {
+          "frm": "U:carrier_in",
+          "to": "LID_ON",
+          "frm_node": null,
+          "to_node": "LID_RACK",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "taro plate into the pot steamer, lid, 30 min"
+        },
+        {
+          "frm": "LID_ON",
+          "to": "U:rice",
+          "frm_node": "LID_POT",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "rice: dose, wash, cooker"
+        },
+        {
+          "frm": "U:rice",
+          "to": "U:cup",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "4 cups into the electric stew pot (water bath), lid, 30 min"
+        },
+        {
+          "frm": "U:cup",
+          "to": "U:cup",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "4 cups into the electric stew pot (water bath), lid, 30 min"
+        },
+        {
+          "frm": "U:cup",
+          "to": "U:cup",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "4 cups into the electric stew pot (water bath), lid, 30 min"
+        },
+        {
+          "frm": "U:cup",
+          "to": "U:cup",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "4 cups into the electric stew pot (water bath), lid, 30 min"
+        },
+        {
+          "frm": "U:cup",
+          "to": "U:stew_lid",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "4 cups into the electric stew pot (water bath), lid, 30 min"
+        },
+        {
+          "frm": "U:stew_lid",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "fry potato 3 min (fryer), lift out"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPIDER*",
+          "frm_node": null,
+          "to_node": "SPIDER",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "fry potato 3 min (fryer), lift out"
+        },
+        {
+          "frm": "SPIDER*",
+          "to": "U:pour",
+          "frm_node": "SPIDER",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:wok_lid",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "U:wok_lid",
+          "to": "U:wok_lid",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "U:wok_lid",
+          "to": "SPAT_FETCH",
+          "frm_node": null,
+          "to_node": "SPAT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "SPAT_FETCH",
+          "to": "STIR",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "STIR",
+          "to": "SPAT_STOW",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "SPAT_STOW",
+          "to": "LEV_OPEN",
+          "frm_node": "SPAT",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "rinse wok; oil, broccoli, sauce; lid 30 s; stir; plate"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "U:pour",
+          "frm_node": "LEV_C",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPAT_FETCH",
+          "frm_node": null,
+          "to_node": "SPAT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "SPAT_FETCH",
+          "to": "STIR",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "STIR",
+          "to": "SPAT_STOW",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "SPAT_STOW",
+          "to": "LEV_OPEN",
+          "frm_node": "SPAT",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok: pork, \u8c46\u74e3, chili, potato, sauce; stir 90 s; plate"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "LID_OFF",
+          "frm_node": "LEV_C",
+          "to_node": "LID_POT",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "steamer: taro out (lid), luffa in, lid, 3 min"
+        },
+        {
+          "frm": "LID_OFF",
+          "to": "U:carrier_out",
+          "frm_node": "LID_RACK",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "steamer: taro out (lid), luffa in, lid, 3 min"
+        },
+        {
+          "frm": "U:carrier_out",
+          "to": "U:carrier_in",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "steamer: taro out (lid), luffa in, lid, 3 min"
+        },
+        {
+          "frm": "U:carrier_in",
+          "to": "LID_ON",
+          "frm_node": null,
+          "to_node": "LID_RACK",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "steamer: taro out (lid), luffa in, lid, 3 min"
+        },
+        {
+          "frm": "LID_ON",
+          "to": "U:pour",
+          "frm_node": "LID_POT",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; heat 40 g oil 60 s; pour over garlic bowl"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:sauce_oil",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; heat 40 g oil 60 s; pour over garlic bowl"
+        },
+        {
+          "frm": "U:sauce_oil",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "drizzle osmanthus syrup"
+        },
+        {
+          "frm": "U:pour",
+          "to": "LID_OFF",
+          "frm_node": null,
+          "to_node": "LID_POT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "luffa out (lid), pour sauce over"
+        },
+        {
+          "frm": "LID_OFF",
+          "to": "U:carrier_out",
+          "frm_node": "LID_RACK",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "luffa out (lid), pour sauce over"
+        },
+        {
+          "frm": "U:carrier_out",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "luffa out (lid), pour sauce over"
+        }
+      ]
+    },
+    "B \u7ea2\u70e7\u8089/\u756a\u8304\u7092\u86cb/\u767d\u707c\u79cb\u8475\u5a03\u5a03\u83dc/\u6e05\u84b8\u9c88\u9c7c/\u9c9c\u7b0b\u6392\u9aa8\u6c64": {
+      "actions": [
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "U:pour",
+        "SPIDER*",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:stew_lid",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "SPAT_FETCH",
+        "STIR",
+        "SPAT_STOW",
+        "U:wok_lid",
+        "U:rice",
+        "U:carrier_in",
+        "LID_ON",
+        "LID_OFF",
+        "U:carrier_out",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:wok_lid",
+        "SPAT_FETCH",
+        "STIR",
+        "SPAT_STOW",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "U:pour",
+        "U:sauce_oil",
+        "U:sauce_oil",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:wok_lid",
+        "U:wok_lid",
+        "SPAT_FETCH",
+        "STIR",
+        "SPAT_STOW",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "SPIDER*",
+        "SPIDER*",
+        "U:arrange",
+        "U:pour"
+      ],
+      "counts": {
+        "checked_checked": 15,
+        "checked_unchecked": 15,
+        "unchecked_unchecked": 31,
+        "handoff": 6
+      },
+      "checked_checked_pairs": {
+        "LEV_O->WOK": 5,
+        "WOK->LEV_O": 5,
+        "LID_POT->LID_POT": 1,
+        "SPAT->LEV_C": 2,
+        "LEV_C->LEV_C": 1,
+        "SPIDER->SPIDER": 1
+      },
+      "transitions": [
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L cold water; pork belly in; blanch 5 min; lift out"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L cold water; pork belly in; blanch 5 min; lift out"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "U:pour",
+          "frm_node": "LEV_C",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L cold water; pork belly in; blanch 5 min; lift out"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPIDER*",
+          "frm_node": null,
+          "to_node": "SPIDER",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L cold water; pork belly in; blanch 5 min; lift out"
+        },
+        {
+          "frm": "SPIDER*",
+          "to": "U:pour",
+          "frm_node": "SPIDER",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "scalded ribs, shoots, scallops, hot water into the pot; lid; 60 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "scalded ribs, shoots, scallops, hot water into the pot; lid; 60 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "scalded ribs, shoots, scallops, hot water into the pot; lid; 60 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "scalded ribs, shoots, scallops, hot water into the pot; lid; 60 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:stew_lid",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "scalded ribs, shoots, scallops, hot water into the pot; lid; 60 min"
+        },
+        {
+          "frm": "U:stew_lid",
+          "to": "LEV_OPEN",
+          "frm_node": null,
+          "to_node": "LEV_C",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "U:pour",
+          "frm_node": "LEV_C",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPAT_FETCH",
+          "frm_node": null,
+          "to_node": "SPAT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "SPAT_FETCH",
+          "to": "STIR",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "STIR",
+          "to": "SPAT_STOW",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "SPAT_STOW",
+          "to": "U:wok_lid",
+          "frm_node": "SPAT",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok emptied at the sink; fry cubes, aromatics, \u7cd6\u8272, sauce, water (cup); lid; braise 40 min"
+        },
+        {
+          "frm": "U:wok_lid",
+          "to": "U:rice",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rice: dose, wash, cooker"
+        },
+        {
+          "frm": "U:rice",
+          "to": "U:carrier_in",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "fish plate into steamer, lid, 6 min"
+        },
+        {
+          "frm": "U:carrier_in",
+          "to": "LID_ON",
+          "frm_node": null,
+          "to_node": "LID_RACK",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "fish plate into steamer, lid, 6 min"
+        },
+        {
+          "frm": "LID_ON",
+          "to": "LID_OFF",
+          "frm_node": "LID_POT",
+          "to_node": "LID_POT",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "fish out, pour off water, soy, shreds"
+        },
+        {
+          "frm": "LID_OFF",
+          "to": "U:carrier_out",
+          "frm_node": "LID_RACK",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "fish out, pour off water, soy, shreds"
+        },
+        {
+          "frm": "U:carrier_out",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "fish out, pour off water, soy, shreds"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "fish out, pour off water, soy, shreds"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "fish out, pour off water, soy, shreds"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:wok_lid",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "lid off, reduce 3 min stirring, plate"
+        },
+        {
+          "frm": "U:wok_lid",
+          "to": "SPAT_FETCH",
+          "frm_node": null,
+          "to_node": "SPAT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "lid off, reduce 3 min stirring, plate"
+        },
+        {
+          "frm": "SPAT_FETCH",
+          "to": "STIR",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "lid off, reduce 3 min stirring, plate"
+        },
+        {
+          "frm": "STIR",
+          "to": "SPAT_STOW",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "lid off, reduce 3 min stirring, plate"
+        },
+        {
+          "frm": "SPAT_STOW",
+          "to": "LEV_OPEN",
+          "frm_node": "SPAT",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "lid off, reduce 3 min stirring, plate"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "lid off, reduce 3 min stirring, plate"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "lid off, reduce 3 min stirring, plate"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "U:pour",
+          "frm_node": "LEV_C",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; heat oil 60 s; over fish + over garlic bowl; mix sauce"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:sauce_oil",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; heat oil 60 s; over fish + over garlic bowl; mix sauce"
+        },
+        {
+          "frm": "U:sauce_oil",
+          "to": "U:sauce_oil",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; heat oil 60 s; over fish + over garlic bowl; mix sauce"
+        },
+        {
+          "frm": "U:sauce_oil",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; heat oil 60 s; over fish + over garlic bowl; mix sauce"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; heat oil 60 s; over fish + over garlic bowl; mix sauce"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "rinse wok; heat oil 60 s; over fish + over garlic bowl; mix sauce"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:wok_lid",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "U:wok_lid",
+          "to": "U:wok_lid",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "U:wok_lid",
+          "to": "SPAT_FETCH",
+          "frm_node": null,
+          "to_node": "SPAT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "SPAT_FETCH",
+          "to": "STIR",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "STIR",
+          "to": "SPAT_STOW",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "SPAT_STOW",
+          "to": "LEV_OPEN",
+          "frm_node": "SPAT",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "oil, eggs set, out; tomato, lid 30 s, eggs back; plate"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "LEV_OPEN",
+          "frm_node": "LEV_C",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; oil, salt; to boil 3 min"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; oil, salt; to boil 3 min"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; oil, salt; to boil 3 min"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "U:pour",
+          "frm_node": "LEV_C",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; oil, salt; to boil 3 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; oil, salt; to boil 3 min"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "salt, celery (the user serves it from the pot)"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "blanch and lift out, arrange, sauce"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "blanch and lift out, arrange, sauce"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPIDER*",
+          "frm_node": null,
+          "to_node": "SPIDER",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "blanch and lift out, arrange, sauce"
+        },
+        {
+          "frm": "SPIDER*",
+          "to": "SPIDER*",
+          "frm_node": "SPIDER",
+          "to_node": "SPIDER",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "blanch and lift out, arrange, sauce"
+        },
+        {
+          "frm": "SPIDER*",
+          "to": "U:arrange",
+          "frm_node": "SPIDER",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "blanch and lift out, arrange, sauce"
+        },
+        {
+          "frm": "U:arrange",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "blanch and lift out, arrange, sauce"
+        }
+      ]
+    },
+    "C \u828b\u5934\u84b8\u6392\u9aa8/\u9178\u8fa3\u571f\u8c46\u4e1d/\u9752\u6912\u7092\u9c7f\u9c7c/\u6e05\u7092\u8377\u5170\u8c46/\u9752\u74dc\u8089\u7247\u6c64": {
+      "actions": [
+        "U:rice",
+        "U:carrier_in",
+        "LID_ON",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "SPAT_FETCH",
+        "STIR",
+        "SPAT_STOW",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "SPAT_FETCH",
+        "STIR",
+        "SPAT_STOW",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "SPIDER*",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "U:pour",
+        "U:pour",
+        "U:pour",
+        "SPAT_FETCH",
+        "STIR",
+        "SPAT_STOW",
+        "LEV_OPEN",
+        "WOK",
+        "LEV_CLOSE",
+        "LID_OFF",
+        "U:carrier_out",
+        "U:pour",
+        "U:pour",
+        "U:sauce_oil"
+      ],
+      "counts": {
+        "checked_checked": 16,
+        "checked_unchecked": 10,
+        "unchecked_unchecked": 16,
+        "handoff": 6
+      },
+      "checked_checked_pairs": {
+        "SPAT->LEV_C": 3,
+        "LEV_O->WOK": 5,
+        "WOK->LEV_O": 5,
+        "LEV_C->LEV_C": 1,
+        "SPIDER->LEV_C": 1,
+        "LEV_C->LID_POT": 1
+      },
+      "transitions": [
+        {
+          "frm": "U:rice",
+          "to": "U:carrier_in",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "taro+rib plate into steamer, lid, 30 min"
+        },
+        {
+          "frm": "U:carrier_in",
+          "to": "LID_ON",
+          "frm_node": null,
+          "to_node": "LID_RACK",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "taro+rib plate into steamer, lid, 30 min"
+        },
+        {
+          "frm": "LID_ON",
+          "to": "U:pour",
+          "frm_node": "LID_POT",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "stew pot (water in at setup, heating): ginger, cucumber"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "stew pot (water in at setup, heating): ginger, cucumber"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPAT_FETCH",
+          "frm_node": null,
+          "to_node": "SPAT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "SPAT_FETCH",
+          "to": "STIR",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "STIR",
+          "to": "SPAT_STOW",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "SPAT_STOW",
+          "to": "LEV_OPEN",
+          "frm_node": "SPAT",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "aromatics, pepper, wine, squid, sauce; stir 60 s; plate"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "U:pour",
+          "frm_node": "LEV_C",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPAT_FETCH",
+          "frm_node": null,
+          "to_node": "SPAT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "SPAT_FETCH",
+          "to": "STIR",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "STIR",
+          "to": "SPAT_STOW",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "SPAT_STOW",
+          "to": "LEV_OPEN",
+          "frm_node": "SPAT",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "oil, garlic, peas, salt, water; stir 45 s; plate"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "LEV_OPEN",
+          "frm_node": "LEV_C",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; to boil 3 min; shreds in, back to boil"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; to boil 3 min; shreds in, back to boil"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; to boil 3 min; shreds in, back to boil"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "U:pour",
+          "frm_node": "LEV_C",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "wok to the tap: 1 L water; to boil 3 min; shreds in, back to boil"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "pork slices 3 min; salt (the user serves it from the pot)"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "pork slices 3 min; salt (the user serves it from the pot)"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPIDER*",
+          "frm_node": null,
+          "to_node": "SPIDER",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "SPIDER*",
+          "to": "LEV_OPEN",
+          "frm_node": "SPIDER",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "U:pour",
+          "frm_node": "LEV_C",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "U:pour",
+          "to": "SPAT_FETCH",
+          "frm_node": null,
+          "to_node": "SPAT",
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "SPAT_FETCH",
+          "to": "STIR",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "STIR",
+          "to": "SPAT_STOW",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "handoff",
+          "held": "spatula (checked hand-off, not a free move)",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "SPAT_STOW",
+          "to": "LEV_OPEN",
+          "frm_node": "SPAT",
+          "to_node": "LEV_C",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "LEV_OPEN",
+          "to": "WOK",
+          "frm_node": "LEV_O",
+          "to_node": "WOK",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "WOK",
+          "to": "LEV_CLOSE",
+          "frm_node": "WOK",
+          "to_node": "LEV_O",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "blanch 30 s, lift out; wok emptied at the sink; stir-fry 45 s with \u8c03\u5473\u6c34; plate"
+        },
+        {
+          "frm": "LEV_CLOSE",
+          "to": "LID_OFF",
+          "frm_node": "LEV_C",
+          "to_node": "LID_POT",
+          "kind": "checked_checked",
+          "held": "nothing",
+          "step": "out (lid), chili, scallion, hot oil from the wok"
+        },
+        {
+          "frm": "LID_OFF",
+          "to": "U:carrier_out",
+          "frm_node": "LID_RACK",
+          "to_node": null,
+          "kind": "checked_unchecked",
+          "held": "nothing",
+          "step": "out (lid), chili, scallion, hot oil from the wok"
+        },
+        {
+          "frm": "U:carrier_out",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "out (lid), chili, scallion, hot oil from the wok"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:pour",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "out (lid), chili, scallion, hot oil from the wok"
+        },
+        {
+          "frm": "U:pour",
+          "to": "U:sauce_oil",
+          "frm_node": null,
+          "to_node": null,
+          "kind": "unchecked_unchecked",
+          "held": "nothing",
+          "step": "out (lid), chili, scallion, hot oil from the wok"
+        }
+      ]
+    }
+  }
+}

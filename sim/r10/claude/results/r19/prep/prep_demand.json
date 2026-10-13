@@ -1,0 +1,1176 @@
+{
+  "method": "R19 prep audit: prep demand of the reference meals A/B/C and an arm-time ESTIMATE (new file).\n\nDemand: every ingredient of research/homestyle_meals.json (his own steps) with its prep operations.\nMasses are ESTIMATES for his family of 4 (he states only: 4 rib pieces + 3 clams per cup, 4 cups,\n5 eggs, 400 g rice); 'pcs' are estimated piece counts.\nArm time: each prep item is a list of movement-set instances; the unit times are labelled\n  M = derived from checked sim paths (R12 chains SD/WD, R16/R17 actions, R19 hub edges),\n  E = estimate by analogy (stated), not checked.\nFit: prep units must finish before the meal step that uses them (meal16 SET=stew ARM=r18 USERRICE=1,\nresults/r16/meal_stew_r18_userrice.json). They are put into the arm's idle windows, latest deadline\nlast; what does not fit before its deadline goes into a prep-first block before the meal clock starts.\nAppliance dwells (peeler 1-3 min, soaking) are unattended and not arm time. One arm, so this is a\npacking estimate only: sink and counter conflicts with the cooking steps are NOT modelled.\npython r19prep_demand.py -> results/r19/prep/prep_demand.json",
+  "units": {
+    "PIECE": {
+      "low_s": 30,
+      "high_s": 45,
+      "basis": "M: one piece tray -> wash -> station -> drop/press; SD carrot 28.1 s / WD tomato 22.3 s motion + 4 jaw events x 0.8 s + windows at 0.10 m/s; high +30 % for smooth timing at the r17 caps (R19_SMOOTH)"
+    },
+    "PIECE_SHORT": {
+      "low_s": 15,
+      "high_s": 25,
+      "basis": "E: one piece from a tray or the peeler output to the next station only (one carry leg 3-10 s measured in SD/WD + events)"
+    },
+    "BASKET": {
+      "low_s": 40,
+      "high_s": 60,
+      "basis": "E: R13 side-handle basket fetch, under the running tap, drain, pour, return; by analogy with the checked spider rest->pot->drain->plate->rest 52.6 s"
+    },
+    "FAUCET": {
+      "low_s": 15,
+      "high_s": 20,
+      "basis": "M: FAUCET_OPEN + FAUCET_CLOSE 3.5 s each (R17) + 2 hub spurs 3.5-4.2 s (R19 hub edges)"
+    },
+    "PEEL_BATCH": {
+      "low_s": 70,
+      "high_s": 100,
+      "basis": "E: abrasive drum peeler fetched: fetch 20 s, pour in, clamp, start, pour out, return 20 s (R14/R16 fetch analogies); appliance 1-3 min unattended (market_r10 sec.0)"
+    },
+    "TOOL": {
+      "low_s": 40,
+      "high_s": 50,
+      "basis": "E: fetch + return of a stored tool (lever base, chopper, cracker); R14 cold box 25 + 20 s estimate, R16/R17 lid 19-20 s checked"
+    },
+    "PLATE": {
+      "low_s": 15,
+      "high_s": 20,
+      "basis": "E: lever-cutter plate + pusher swap from the plate dock (market_r10 13.5 item 5)"
+    },
+    "FINGER": {
+      "low_s": 10,
+      "high_s": 15,
+      "basis": "E: finger-set swap in the R13 rack (designed, never simulated)"
+    },
+    "XFER": {
+      "low_s": 15,
+      "high_s": 20,
+      "basis": "E: output bowl / bin carried and poured into a staging bowl, carrier dish or cup; R16 carrier 17.7 s checked as the analogy"
+    },
+    "PRESS": {
+      "low_s": 8,
+      "high_s": 12,
+      "basis": "M: lever stroke: WD GT4 pusher grasp, 102 mm press, return, release (0.8 s motion + 2 jaw events) at 0.10 m/s, + a re-push of the item for the next section"
+    },
+    "MINCE": {
+      "low_s": 50,
+      "high_s": 80,
+      "basis": "E: chopper bowl: load, motor head on, run 5-10 s, head off, pour / scrape"
+    },
+    "EGG": {
+      "low_s": 15,
+      "high_s": 25,
+      "basis": "E: per egg: pick (R13 egg pinch passes at mu 0.15, ~7 N), place in a lever egg cracker, press, shell to waste"
+    },
+    "BEAT": {
+      "low_s": 20,
+      "high_s": 30,
+      "basis": "E: eggs beaten in the chopper bowl (pulse) or by a whisk tool"
+    },
+    "MIX": {
+      "low_s": 30,
+      "high_s": 45,
+      "basis": "E: marinate / \u4e0a\u6d46: seasonings into a lidded box, lid on, shake, lid off"
+    },
+    "SOAK": {
+      "low_s": 20,
+      "high_s": 30,
+      "basis": "E: into a soak basin at the sink and out again (drain)"
+    },
+    "SCALD": {
+      "low_s": 25,
+      "high_s": 35,
+      "basis": "E: kettle hot water over a bowl/basket (R16 estimate 20-30 s per pour; kettle grasp not checked)"
+    },
+    "PLACE": {
+      "low_s": 6,
+      "high_s": 10,
+      "basis": "E: one piece placed into a cup or arranged on a dish"
+    },
+    "ARRANGE": {
+      "low_s": 20,
+      "high_s": 30,
+      "basis": "E: pour pieces onto the steaming dish and spread by tipping"
+    },
+    "MEAT": {
+      "low_s": 30,
+      "high_s": 45,
+      "basis": "E: meat pinched (R13 pork 40 N passes), dropped into the meat-slicer chute, pusher, output out"
+    },
+    "FRIDGE": {
+      "low_s": 45,
+      "high_s": 45,
+      "basis": "E: R14 cold box fetch ~25 s + return ~20 s (estimated in R14; door arc checked, transfer not planned)"
+    }
+  },
+  "meals": {
+    "A": {
+      "meal": "A \u5e72\u9505\u571f\u8c46/\u6842\u82b1\u828b\u5934/\u897f\u5170\u82b1/\u849c\u84c9\u4e1d\u74dc/\u86e4\u870a\u6392\u9aa8\u76c5",
+      "cook_total_min": 38.2,
+      "cook_arm_min": 13.9,
+      "idle_windows_min": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.6,
+          7.3
+        ],
+        [
+          8.2,
+          21.9
+        ],
+        [
+          32.8,
+          35.8
+        ],
+        [
+          36.5,
+          37.3
+        ]
+      ],
+      "set_instances": {
+        "BASKET": 7,
+        "PLACE": 32,
+        "SOAK": 2,
+        "PIECE": 5,
+        "PEEL_BATCH": 2,
+        "PIECE_SHORT": 9,
+        "ARRANGE": 2,
+        "XFER": 5,
+        "MEAT": 1,
+        "PRESS": 27,
+        "MINCE": 1,
+        "TOOL": 3,
+        "PLATE": 2,
+        "FINGER": 5,
+        "FAUCET": 2,
+        "FRIDGE": 1
+      },
+      "set_instances_total": 106,
+      "items": [
+        {
+          "dish": "\u86e4\u870a\u6392\u9aa8\u76c5",
+          "ingredient": "\u6392\u9aa8 rib pieces",
+          "mass_g_est": 320,
+          "pieces_est": 16,
+          "ops": [
+            "buy chopped",
+            "wash",
+            "portion into cups"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "PLACE": 16
+          },
+          "arm_s": [
+            136,
+            220
+          ],
+          "deadline_s": 441,
+          "gap": "portioning 16 pieces is slow; pour-portion by weight would be ~4 partial pours"
+        },
+        {
+          "dish": "\u86e4\u870a\u6392\u9aa8\u76c5",
+          "ingredient": "\u86e4\u870a clams",
+          "mass_g_est": 250,
+          "pieces_est": 12,
+          "ops": [
+            "purge-soak",
+            "wash",
+            "portion into cups"
+          ],
+          "sets": {
+            "SOAK": 1,
+            "BASKET": 1,
+            "PLACE": 12
+          },
+          "arm_s": [
+            132,
+            210
+          ],
+          "deadline_s": 441,
+          "gap": "purge time unsourced"
+        },
+        {
+          "dish": "\u86e4\u870a\u6392\u9aa8\u76c5+\u5e72\u9505\u571f\u8c46",
+          "ingredient": "\u59dc ginger slices",
+          "mass_g_est": 30,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "slice"
+          ],
+          "sets": {
+            "PIECE": 1,
+            "PLACE": 4
+          },
+          "arm_s": [
+            54,
+            85
+          ],
+          "deadline_s": 441,
+          "gap": ""
+        },
+        {
+          "dish": "\u6842\u82b1\u7cd6\u828b\u5934",
+          "ingredient": "\u828b\u5934 taro",
+          "mass_g_est": 500,
+          "pieces_est": 6,
+          "ops": [
+            "wash",
+            "peel",
+            "block"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "PEEL_BATCH": 1,
+            "PIECE_SHORT": 6,
+            "ARRANGE": 1
+          },
+          "arm_s": [
+            220,
+            340
+          ],
+          "deadline_s": 59,
+          "gap": "taro not in the R13 bench; peeled taro slimy (mu ~0.2 dry, catalog)"
+        },
+        {
+          "dish": "\u5e72\u9505\u571f\u8c46",
+          "ingredient": "\u571f\u8c46 potato",
+          "mass_g_est": 500,
+          "pieces_est": 3,
+          "ops": [
+            "wash",
+            "peel",
+            "slice"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "PEEL_BATCH": 1,
+            "PIECE_SHORT": 3,
+            "XFER": 1
+          },
+          "arm_s": [
+            170,
+            255
+          ],
+          "deadline_s": 1316,
+          "gap": ""
+        },
+        {
+          "dish": "\u5e72\u9505\u571f\u8c46",
+          "ingredient": "\u4e94\u82b1\u8089 pork belly",
+          "mass_g_est": 150,
+          "pieces_est": 1,
+          "ops": [
+            "slice"
+          ],
+          "sets": {
+            "MEAT": 1,
+            "XFER": 1
+          },
+          "arm_s": [
+            45,
+            65
+          ],
+          "deadline_s": 1621,
+          "gap": "meat slicer not designed"
+        },
+        {
+          "dish": "\u5e72\u9505\u571f\u8c46",
+          "ingredient": "\u7ea2\u6912 red pepper",
+          "mass_g_est": 100,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "core",
+            "pieces"
+          ],
+          "sets": {
+            "PIECE": 1,
+            "XFER": 1
+          },
+          "arm_s": [
+            45,
+            65
+          ],
+          "deadline_s": 1621,
+          "gap": "pepper pinch fails (R13); fork/basket; wedge plate untested on pepper"
+        },
+        {
+          "dish": "\u5e72\u9505\u571f\u8c46",
+          "ingredient": "\u849c\u82d7 garlic sprouts",
+          "mass_g_est": 80,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "section"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "PRESS": 7,
+            "XFER": 1
+          },
+          "arm_s": [
+            111,
+            164
+          ],
+          "deadline_s": 1621,
+          "gap": "section plate designed only"
+        },
+        {
+          "dish": "\u869d\u6cb9\u897f\u5170\u82b1",
+          "ingredient": "\u897f\u5170\u82b1 broccoli",
+          "mass_g_est": 400,
+          "pieces_est": 1,
+          "ops": [
+            "florets",
+            "salt soak",
+            "stem peel+slice"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "SOAK": 1,
+            "XFER": 1
+          },
+          "arm_s": [
+            75,
+            110
+          ],
+          "deadline_s": 1376,
+          "gap": "floret cutting: no appliance (gap)"
+        },
+        {
+          "dish": "\u869d\u6cb9\u897f\u5170\u82b1",
+          "ingredient": "\u80e1\u841d\u535c carrot garnish",
+          "mass_g_est": 30,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "peel",
+            "slice"
+          ],
+          "sets": {
+            "PIECE": 1
+          },
+          "arm_s": [
+            30,
+            45
+          ],
+          "deadline_s": 1376,
+          "gap": "= the checked SD chain"
+        },
+        {
+          "dish": "\u849c\u84c9\u84b8\u4e1d\u74dc",
+          "ingredient": "\u4e1d\u74dc luffa",
+          "mass_g_est": 500,
+          "pieces_est": 2,
+          "ops": [
+            "peel",
+            "section",
+            "arrange"
+          ],
+          "sets": {
+            "PIECE": 2,
+            "PRESS": 20,
+            "ARRANGE": 1
+          },
+          "arm_s": [
+            240,
+            360
+          ],
+          "deadline_s": 1896,
+          "gap": "luffa peeling: no appliance (gap)"
+        },
+        {
+          "dish": "\u849c\u84c9\u84b8\u4e1d\u74dc",
+          "ingredient": "\u849c garlic + \u7ea2\u8fa3\u6912 chili",
+          "mass_g_est": 50,
+          "pieces_est": 1,
+          "ops": [
+            "peel cloves",
+            "mince"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "MINCE": 1
+          },
+          "arm_s": [
+            90,
+            140
+          ],
+          "deadline_s": 2150,
+          "gap": "clove peeling + mincer missing"
+        },
+        {
+          "dish": "(tools)",
+          "ingredient": "lever base, peeler, chopper sessions",
+          "mass_g_est": 0,
+          "pieces_est": 0,
+          "ops": [
+            "tool fetch/return",
+            "plate swaps",
+            "finger swaps",
+            "faucet"
+          ],
+          "sets": {
+            "TOOL": 3,
+            "PLATE": 2,
+            "FINGER": 5,
+            "FAUCET": 2,
+            "FRIDGE": 1
+          },
+          "arm_s": [
+            275,
+            350
+          ],
+          "deadline_s": 441,
+          "gap": ""
+        }
+      ],
+      "fit": {
+        "low": {
+          "arm_min": 27.1,
+          "prep_first_block_min": 6.9,
+          "meal_with_prep_min": 45.1,
+          "arm_busy_with_prep_min": 41.0
+        },
+        "high": {
+          "arm_min": 40.1,
+          "prep_first_block_min": 17.4,
+          "meal_with_prep_min": 55.6,
+          "arm_busy_with_prep_min": 54.0
+        }
+      }
+    },
+    "B": {
+      "meal": "B \u7ea2\u70e7\u8089/\u756a\u8304\u7092\u86cb/\u767d\u707c\u79cb\u8475\u5a03\u5a03\u83dc/\u6e05\u84b8\u9c88\u9c7c/\u9c9c\u7b0b\u6392\u9aa8\u6c64",
+      "cook_total_min": 75.6,
+      "cook_arm_min": 28.4,
+      "idle_windows_min": [
+        [
+          0.0,
+          0.8
+        ],
+        [
+          3.1,
+          7.2
+        ],
+        [
+          13.6,
+          45.9
+        ],
+        [
+          46.5,
+          52.5
+        ],
+        [
+          60.6,
+          61.6
+        ],
+        [
+          68.5,
+          71.3
+        ]
+      ],
+      "set_instances": {
+        "SCALD": 1,
+        "SOAK": 3,
+        "PIECE": 10,
+        "PRESS": 18,
+        "XFER": 7,
+        "BASKET": 5,
+        "MINCE": 2,
+        "ARRANGE": 1,
+        "EGG": 5,
+        "BEAT": 1,
+        "TOOL": 3,
+        "PLATE": 3,
+        "FINGER": 5,
+        "FAUCET": 2,
+        "FRIDGE": 1
+      },
+      "set_instances_total": 67,
+      "items": [
+        {
+          "dish": "\u9c9c\u7b0b\u6392\u9aa8\u6c64",
+          "ingredient": "\u6392\u9aa8 ribs",
+          "mass_g_est": 500,
+          "pieces_est": 1,
+          "ops": [
+            "buy chopped",
+            "scald",
+            "soak 5 min"
+          ],
+          "sets": {
+            "SCALD": 1,
+            "SOAK": 1
+          },
+          "arm_s": [
+            45,
+            65
+          ],
+          "deadline_s": 434,
+          "gap": ""
+        },
+        {
+          "dish": "\u9c9c\u7b0b\u6392\u9aa8\u6c64",
+          "ingredient": "\u9c9c\u7b0b bamboo shoot",
+          "mass_g_est": 400,
+          "pieces_est": 2,
+          "ops": [
+            "remove sheath",
+            "halve",
+            "thick slices"
+          ],
+          "sets": {
+            "PIECE": 2,
+            "PRESS": 2,
+            "XFER": 1
+          },
+          "arm_s": [
+            91,
+            134
+          ],
+          "deadline_s": 434,
+          "gap": "sheath removal: no appliance (gap); buy shelled/boiled shoots"
+        },
+        {
+          "dish": "\u9c9c\u7b0b\u6392\u9aa8\u6c64",
+          "ingredient": "\u5e72\u8d1d dried scallops",
+          "mass_g_est": 15,
+          "pieces_est": 1,
+          "ops": [
+            "rehydrate soak"
+          ],
+          "sets": {
+            "SOAK": 1
+          },
+          "arm_s": [
+            20,
+            30
+          ],
+          "deadline_s": 434,
+          "gap": "soak time unsourced"
+        },
+        {
+          "dish": "\u9c9c\u7b0b\u6392\u9aa8\u6c64+\u7ea2\u70e7\u8089+\u9c7c",
+          "ingredient": "\u59dc ginger slices",
+          "mass_g_est": 40,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "slice"
+          ],
+          "sets": {
+            "PIECE": 1,
+            "XFER": 1
+          },
+          "arm_s": [
+            45,
+            65
+          ],
+          "deadline_s": 434,
+          "gap": ""
+        },
+        {
+          "dish": "\u9c9c\u7b0b\u6392\u9aa8\u6c64",
+          "ingredient": "\u82b9\u83dc celery",
+          "mass_g_est": 30,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "chop"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "MINCE": 1
+          },
+          "arm_s": [
+            90,
+            140
+          ],
+          "deadline_s": 4280,
+          "gap": ""
+        },
+        {
+          "dish": "\u7ea2\u70e7\u8089",
+          "ingredient": "\u4e94\u82b1\u8089 pork belly (blanched)",
+          "mass_g_est": 600,
+          "pieces_est": 1,
+          "ops": [
+            "scrape skin",
+            "cubes ~3 cm"
+          ],
+          "sets": {
+            "PIECE": 1,
+            "PRESS": 4,
+            "XFER": 1
+          },
+          "arm_s": [
+            77,
+            113
+          ],
+          "deadline_s": 485,
+          "gap": "cutting the blanched belly: no checked tool; lever 30 mm grid = concept, force unsourced"
+        },
+        {
+          "dish": "\u7ea2\u70e7\u8089+\u9c7c+\u756a\u8304\u7092\u86cb+\u767d\u707c\u6c41",
+          "ingredient": "\u8471 scallion (\u6bb5/\u8471\u82b1/\u8471\u4e1d)",
+          "mass_g_est": 60,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "section",
+            "rings",
+            "fine shreds"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "PRESS": 8,
+            "XFER": 2
+          },
+          "arm_s": [
+            134,
+            196
+          ],
+          "deadline_s": 51,
+          "gap": "fine scallion shreds: no tool (gap)"
+        },
+        {
+          "dish": "\u6e05\u84b8\u9c88\u9c7c",
+          "ingredient": "\u9c88\u9c7c sea bass",
+          "mass_g_est": 600,
+          "pieces_est": 1,
+          "ops": [
+            "buy cleaned + back-split",
+            "rinse",
+            "on the dish"
+          ],
+          "sets": {
+            "PIECE": 1,
+            "ARRANGE": 1
+          },
+          "arm_s": [
+            50,
+            75
+          ],
+          "deadline_s": 2755,
+          "gap": "R13 fork holds fish at mu 0.12; back-split by the stall"
+        },
+        {
+          "dish": "\u6e05\u84b8\u9c88\u9c7c",
+          "ingredient": "\u8471\u59dc\u80e1\u841d\u535c\u4e1d fine shreds",
+          "mass_g_est": 40,
+          "pieces_est": 2,
+          "ops": [
+            "shred",
+            "soak to curl"
+          ],
+          "sets": {
+            "PIECE": 2,
+            "SOAK": 1
+          },
+          "arm_s": [
+            80,
+            120
+          ],
+          "deadline_s": 3152,
+          "gap": "4 mm shred disc coarser than his"
+        },
+        {
+          "dish": "\u756a\u8304\u7092\u86cb",
+          "ingredient": "\u756a\u8304 tomato",
+          "mass_g_est": 450,
+          "pieces_est": 3,
+          "ops": [
+            "wash",
+            "(scald+peel: dropped in R16)",
+            "8 wedges"
+          ],
+          "sets": {
+            "PIECE": 3,
+            "XFER": 1
+          },
+          "arm_s": [
+            105,
+            155
+          ],
+          "deadline_s": 3698,
+          "gap": "= the checked WD chain per tomato"
+        },
+        {
+          "dish": "\u756a\u8304\u7092\u86cb",
+          "ingredient": "\u9e21\u86cb eggs",
+          "mass_g_est": 275,
+          "pieces_est": 5,
+          "ops": [
+            "crack",
+            "beat"
+          ],
+          "sets": {
+            "EGG": 5,
+            "BEAT": 1,
+            "TOOL": 1
+          },
+          "arm_s": [
+            135,
+            205
+          ],
+          "deadline_s": 3698,
+          "gap": "egg station missing"
+        },
+        {
+          "dish": "\u767d\u707c\u79cb\u8475\u5a03\u5a03\u83dc",
+          "ingredient": "\u5a03\u5a03\u83dc baby cabbage",
+          "mass_g_est": 400,
+          "pieces_est": 2,
+          "ops": [
+            "wash",
+            "quarter lengthwise"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "PRESS": 4,
+            "XFER": 1
+          },
+          "arm_s": [
+            87,
+            128
+          ],
+          "deadline_s": 4288,
+          "gap": "single-blade plate designed only"
+        },
+        {
+          "dish": "\u767d\u707c\u79cb\u8475\u5a03\u5a03\u83dc",
+          "ingredient": "\u79cb\u8475 okra",
+          "mass_g_est": 150,
+          "pieces_est": 10,
+          "ops": [
+            "wash"
+          ],
+          "sets": {
+            "BASKET": 1
+          },
+          "arm_s": [
+            40,
+            60
+          ],
+          "deadline_s": 4288,
+          "gap": ""
+        },
+        {
+          "dish": "\u767d\u707c\u6c41",
+          "ingredient": "\u849c garlic + \u5e72\u8fa3\u6912",
+          "mass_g_est": 30,
+          "pieces_est": 1,
+          "ops": [
+            "peel cloves",
+            "mince"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "MINCE": 1
+          },
+          "arm_s": [
+            90,
+            140
+          ],
+          "deadline_s": 3546,
+          "gap": "clove peeling + mincer missing"
+        },
+        {
+          "dish": "(tools)",
+          "ingredient": "lever base, chopper sessions",
+          "mass_g_est": 0,
+          "pieces_est": 0,
+          "ops": [
+            "tool fetch/return",
+            "plate swaps",
+            "finger swaps",
+            "faucet"
+          ],
+          "sets": {
+            "TOOL": 2,
+            "PLATE": 3,
+            "FINGER": 5,
+            "FAUCET": 2,
+            "FRIDGE": 1
+          },
+          "arm_s": [
+            250,
+            320
+          ],
+          "deadline_s": 434,
+          "gap": ""
+        }
+      ],
+      "fit": {
+        "low": {
+          "arm_min": 22.3,
+          "prep_first_block_min": 6.0,
+          "meal_with_prep_min": 81.6,
+          "arm_busy_with_prep_min": 50.7
+        },
+        "high": {
+          "arm_min": 32.4,
+          "prep_first_block_min": 10.4,
+          "meal_with_prep_min": 86.0,
+          "arm_busy_with_prep_min": 60.8
+        }
+      }
+    },
+    "C": {
+      "meal": "C \u828b\u5934\u84b8\u6392\u9aa8/\u9178\u8fa3\u571f\u8c46\u4e1d/\u9752\u6912\u7092\u9c7f\u9c7c/\u6e05\u7092\u8377\u5170\u8c46/\u9752\u74dc\u8089\u7247\u6c64",
+      "cook_total_min": 35.6,
+      "cook_arm_min": 17.9,
+      "idle_windows_min": [
+        [
+          0.0,
+          3.6
+        ],
+        [
+          4.2,
+          15.6
+        ],
+        [
+          25.0,
+          27.8
+        ]
+      ],
+      "set_instances": {
+        "BASKET": 6,
+        "MIX": 2,
+        "PEEL_BATCH": 2,
+        "PIECE_SHORT": 6,
+        "ARRANGE": 1,
+        "MINCE": 3,
+        "MEAT": 2,
+        "SCALD": 1,
+        "PIECE": 4,
+        "XFER": 2,
+        "SOAK": 2,
+        "TOOL": 3,
+        "PLATE": 2,
+        "FINGER": 5,
+        "FAUCET": 2,
+        "FRIDGE": 1
+      },
+      "set_instances_total": 44,
+      "items": [
+        {
+          "dish": "\u828b\u5934\u84b8\u6392\u9aa8",
+          "ingredient": "\u6392\u9aa8 ribs (small pieces)",
+          "mass_g_est": 450,
+          "pieces_est": 1,
+          "ops": [
+            "buy chopped",
+            "rinse",
+            "marinate"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "MIX": 1
+          },
+          "arm_s": [
+            70,
+            105
+          ],
+          "deadline_s": 217,
+          "gap": ""
+        },
+        {
+          "dish": "\u828b\u5934\u84b8\u6392\u9aa8",
+          "ingredient": "\u828b\u5934 taro",
+          "mass_g_est": 300,
+          "pieces_est": 4,
+          "ops": [
+            "wash",
+            "peel",
+            "blocks (plate bed)"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "PEEL_BATCH": 1,
+            "PIECE_SHORT": 4,
+            "ARRANGE": 1
+          },
+          "arm_s": [
+            190,
+            290
+          ],
+          "deadline_s": 217,
+          "gap": "taro not in the R13 bench"
+        },
+        {
+          "dish": "\u828b\u5934\u84b8\u6392\u9aa8",
+          "ingredient": "\u7ea2\u6912 chili + \u8471\u82b1",
+          "mass_g_est": 20,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "chop"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "MINCE": 1
+          },
+          "arm_s": [
+            90,
+            140
+          ],
+          "deadline_s": 2054,
+          "gap": ""
+        },
+        {
+          "dish": "\u9752\u6912\u7092\u9c7f\u9c7c",
+          "ingredient": "\u9c7f\u9c7c squid",
+          "mass_g_est": 400,
+          "pieces_est": 1,
+          "ops": [
+            "buy cleaned",
+            "score \u9ea6\u7a57\u82b1\u5200",
+            "cut",
+            "scald"
+          ],
+          "sets": {
+            "MEAT": 1,
+            "SCALD": 1
+          },
+          "arm_s": [
+            55,
+            80
+          ],
+          "deadline_s": 950,
+          "gap": "scoring: no tool (gap); rings/strips from the meat slicer instead"
+        },
+        {
+          "dish": "\u9752\u6912\u7092\u9c7f\u9c7c",
+          "ingredient": "\u9752\u6912 green pepper",
+          "mass_g_est": 150,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "core",
+            "pieces"
+          ],
+          "sets": {
+            "PIECE": 1,
+            "XFER": 1
+          },
+          "arm_s": [
+            45,
+            65
+          ],
+          "deadline_s": 950,
+          "gap": "pepper pinch fails (R13)"
+        },
+        {
+          "dish": "\u9752\u6912\u7092\u9c7f\u9c7c+\u6e05\u7092\u8377\u5170\u8c46+\u571f\u8c46\u4e1d",
+          "ingredient": "\u8471\u59dc\u849c aromatics",
+          "mass_g_est": 50,
+          "pieces_est": 1,
+          "ops": [
+            "peel garlic",
+            "mince/slice"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "MINCE": 1
+          },
+          "arm_s": [
+            90,
+            140
+          ],
+          "deadline_s": 950,
+          "gap": "clove peeling + mincer missing"
+        },
+        {
+          "dish": "\u9178\u8fa3\u571f\u8c46\u4e1d",
+          "ingredient": "\u571f\u8c46 potato",
+          "mass_g_est": 400,
+          "pieces_est": 2,
+          "ops": [
+            "wash",
+            "peel",
+            "julienne",
+            "rinse starch x2"
+          ],
+          "sets": {
+            "BASKET": 1,
+            "PEEL_BATCH": 1,
+            "PIECE_SHORT": 2,
+            "SOAK": 2
+          },
+          "arm_s": [
+            180,
+            270
+          ],
+          "deadline_s": 1420,
+          "gap": "4 mm shred disc (sourced) vs his finer hand cut"
+        },
+        {
+          "dish": "\u9178\u8fa3\u571f\u8c46\u4e1d",
+          "ingredient": "\u7ea2\u6912\u4e1d + \u5e72\u8fa3\u6912",
+          "mass_g_est": 30,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "shred"
+          ],
+          "sets": {
+            "PIECE": 1
+          },
+          "arm_s": [
+            30,
+            45
+          ],
+          "deadline_s": 1681,
+          "gap": ""
+        },
+        {
+          "dish": "\u9752\u74dc\u8089\u7247\u6c64",
+          "ingredient": "\u7626\u8089 lean pork",
+          "mass_g_est": 180,
+          "pieces_est": 1,
+          "ops": [
+            "thin slices",
+            "\u4e0a\u6d46"
+          ],
+          "sets": {
+            "MEAT": 1,
+            "MIX": 1
+          },
+          "arm_s": [
+            60,
+            90
+          ],
+          "deadline_s": 1665,
+          "gap": "meat slicer not designed"
+        },
+        {
+          "dish": "\u9752\u74dc\u8089\u7247\u6c64",
+          "ingredient": "\u9752\u74dc cucumber",
+          "mass_g_est": 200,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "slice"
+          ],
+          "sets": {
+            "PIECE": 1,
+            "XFER": 1
+          },
+          "arm_s": [
+            45,
+            65
+          ],
+          "deadline_s": 934,
+          "gap": "cucumber pinch needs mu >= 0.3 (R13); fork ok"
+        },
+        {
+          "dish": "\u9752\u74dc\u8089\u7247\u6c64",
+          "ingredient": "\u59dc ginger + \u82b9\u83dc celery",
+          "mass_g_est": 40,
+          "pieces_est": 1,
+          "ops": [
+            "wash",
+            "slice",
+            "chop"
+          ],
+          "sets": {
+            "PIECE": 1,
+            "MINCE": 1
+          },
+          "arm_s": [
+            80,
+            125
+          ],
+          "deadline_s": 934,
+          "gap": ""
+        },
+        {
+          "dish": "\u6e05\u7092\u8377\u5170\u8c46",
+          "ingredient": "\u8377\u5170\u8c46 snow peas",
+          "mass_g_est": 300,
+          "pieces_est": 40,
+          "ops": [
+            "wash",
+            "string/trim"
+          ],
+          "sets": {
+            "BASKET": 1
+          },
+          "arm_s": [
+            40,
+            60
+          ],
+          "deadline_s": 1203,
+          "gap": "stringing: no tool (gap)"
+        },
+        {
+          "dish": "(tools)",
+          "ingredient": "peeler, lever, meat slicer, chopper sessions",
+          "mass_g_est": 0,
+          "pieces_est": 0,
+          "ops": [
+            "tool fetch/return",
+            "plate swaps",
+            "finger swaps",
+            "faucet"
+          ],
+          "sets": {
+            "TOOL": 3,
+            "PLATE": 2,
+            "FINGER": 5,
+            "FAUCET": 2,
+            "FRIDGE": 1
+          },
+          "arm_s": [
+            275,
+            350
+          ],
+          "deadline_s": 217,
+          "gap": ""
+        }
+      ],
+      "fit": {
+        "low": {
+          "arm_min": 20.8,
+          "prep_first_block_min": 5.3,
+          "meal_with_prep_min": 40.9,
+          "arm_busy_with_prep_min": 38.7
+        },
+        "high": {
+          "arm_min": 30.4,
+          "prep_first_block_min": 12.7,
+          "meal_with_prep_min": 48.3,
+          "arm_busy_with_prep_min": 48.3
+        }
+      }
+    }
+  },
+  "set_instances_ABC": {
+    "PRESS": 45,
+    "PLACE": 32,
+    "PIECE": 19,
+    "BASKET": 18,
+    "PIECE_SHORT": 15,
+    "FINGER": 15,
+    "XFER": 14,
+    "TOOL": 9,
+    "SOAK": 7,
+    "PLATE": 7,
+    "MINCE": 6,
+    "FAUCET": 6,
+    "EGG": 5,
+    "PEEL_BATCH": 4,
+    "ARRANGE": 4,
+    "MEAT": 3,
+    "FRIDGE": 3,
+    "SCALD": 2,
+    "MIX": 2,
+    "BEAT": 1
+  }
+}

@@ -51,6 +51,7 @@ KV=dict(a.split('=',1) for a in sys.argv[1:]);ACT=KV['ACT'];SIGN=int(KV.get('SIG
 SEEDS=(14,15,16)[:int(KV.get('SEEDS',2))];TRIES=int(KV.get('TRIES',6))
 DESIGN=dict(pot_h=.12,rack=.04,lid_a=0.,car_a=45.,rack_ry=90.);K.set_design(**DESIGN)
 VW,WW,QW,CW,CART_OFF=.10,45.,60.,.25,.30
+import arms;ARM=arms.current();QW=min(QW,min(arms.speeds(ARM)))   # R19: ARM=<id> (default ur5e); the joint cap never exceeds the arm's slowest joint (60 for ur5e/fr5)
 APPROACH_M,JAW_HELD=.06,.015;JAW_OPEN=float(KV.get('JAW_OPEN',.025))   # 10 mm each side of a 30 mm block; at .040 a finger at the spider's front rest met the arm's own base cover
 I=np.eye(3)
 def kf(R,p,c=None,dw=0.,label='',anchor=False,meet=False,load=0.,seat=0.,walk=None):
@@ -282,7 +283,7 @@ def candidates(k):
   for k_,v in r['status_counts'].items():stat[k_]=stat.get(k_,0)+v
   out+=[dict(q=c_['q'],reserve_mm=c_['reserve_mm']) for c_ in r['candidates']]
  out=sorted(out,key=lambda c_:-c_['reserve_mm'])
- if KF[k].get('walk'):   # a checked R16 walk state of the same pose and grasp sense goes first
+ if KF[k].get('walk') and ARM=='ur5e':   # a checked R16 walk state (UR5e joint values; not for another arm) of the same pose and grasp sense goes first
   w=json.load(open(f"results/r16/walk_{KF[k]['walk'][0]}.json"))
   if w['jaw_sign']==SIGN:out=[dict(q=w['path'][KF[k]['walk'][1]]['q'],reserve_mm=-1.)]+out
  _cands[key]=(out,stat);return _cands[key]
@@ -368,7 +369,7 @@ if ok:
 def summ(out):
  rs=[s_['reserve_mm'] for s_ in out if s_['reserve_mm'] is not None]
  return dict(steps=len(out),time_s=round(sum(s_['dt'] for s_ in out),1),min_reserve_mm=min(rs) if rs else None,max_step_deg=max(s_['step_deg'] for s_ in out),cart=[out[0]['cart'],out[-1]['cart']])
-res=dict(act=ACT,obj=OBJ,grasp_sense=SIGN,design=DESIGN,scene=SCENE,wok_tilt=float(KV.get('GTILT',0)),wok_grasp=KV.get('GRASP','top'),tool_xy={k_:list(v) for k_,v in K.TOOL_XY.items()},ok=ok,time_s=round(tsum,1),elapsed_s=round(time.monotonic()-t0),
+res=dict(act=ACT,obj=OBJ,**({} if ARM=='ur5e' else dict(arm=ARM)),grasp_sense=SIGN,design=DESIGN,scene=SCENE,wok_tilt=float(KV.get('GTILT',0)),wok_grasp=KV.get('GRASP','top'),tool_xy={k_:list(v) for k_,v in K.TOOL_XY.items()},ok=ok,time_s=round(tsum,1),elapsed_s=round(time.monotonic()-t0),
  keyframes=[dict(i=i,label=k_['label'],p=np.round(k_['p'],3).tolist(),c=k_['c'],anchor=k_['anchor'],meet=k_['meet']) for i,k_ in enumerate(KF)],
  anchors={KF[a]['label']+f'#{a}':{k_:v for k_,v in an.items() if k_!='q'} for a,an in anchors.items()},
  pieces=[dict(frm=KF[a]['label']+f'#{a}',to=KF[b]['label']+f'#{b}',**summ(out)) for (a,b),out in pieces.items()],
@@ -376,5 +377,5 @@ res=dict(act=ACT,obj=OBJ,grasp_sense=SIGN,design=DESIGN,scene=SCENE,wok_tilt=flo
  min_reserve_mm=min([summ(o)['min_reserve_mm'] for o in pieces.values() if summ(o)['min_reserve_mm'] is not None],default=None),
  max_pgc_moment_Nm=max([l_['pgc_moment_Nm'] for l_ in loads],default=None),max_joint_ratio=max([l_['max_joint_ratio'] for l_ in loads],default=None),
  loads=loads,tries=log,play=play,approach_qs=[p_.get('qs') for p_ in apps])
-os.makedirs('results/r17',exist_ok=True);fn=f'results/r17/chain_{ACT}_s{SIGN:+d}'+('_'+KV['TAG'] if 'TAG' in KV else '')+'.json';save(fn,res)
+os.makedirs('results/r17',exist_ok=True);fn=f'results/r17/chain_{ACT}_s{SIGN:+d}'+('_'+KV['TAG'] if 'TAG' in KV else '')+arms.tag(ARM)+'.json';save(fn,res)
 print(fn);print(json.dumps({k_:v for k_,v in res.items() if k_ not in ('play','approach_qs','loads','keyframes','tries')},default=str,ensure_ascii=False))

@@ -19,6 +19,7 @@ import kitchen15 as K
 KV=dict(a.split('=',1) for a in sys.argv[1:])
 GRIP=float(KV.get('GRIP',.45));LIFT=float(KV.get('LIFT',.01));DT=.01;PLUME=.20;KPS=int(KV.get('KPS',16));NS=int(KV.get('NSTROKE',5));P=float(KV.get('PERIOD',2.4))
 VMAX,AMAX=180.,360.
+import arms;ARM=arms.current();VJ=np.array(arms.speeds(ARM))   # R19: per-joint speed limits of the arm option (ur5e: 180 all, as VMAX)
 SCN={}
 if KV.get('SCENE')=='r17':   # R18: the current (R17) kitchen: lid rack, spider rest at (1.52, .36), faucet, no tools on the counter end
  import kitchen16 as K16;K16.set_design(pot_h=.12,rack=.04,lid_a=0.,car_a=45.,rack_ry=90.);K16.TOOL_XY['spider']=(1.52,.36)
@@ -62,7 +63,7 @@ def transfer(q1,q2,sign):
  for s in np.linspace(0,1,41)[1:-1]:
   q=np.array(q1,float);q[ids]=np.asarray(q1)[ids]+s*dq;chk=ch.check(q,full=False,mass=0.)
   if chk['hits'] or plume(q)<0:return None,dict(blocked_at=round(float(s),2),hits=[h['pair'] for h in chk['hits']][:3])
- a=float(np.degrees(np.abs(dq)).max());tt=2*np.sqrt(a/AMAX) if a<VMAX**2/AMAX else a/VMAX+VMAX/AMAX
+ a=float(np.degrees(np.abs(dq)).max());tt=max((2*np.sqrt(aj/AMAX) if aj<v**2/AMAX else aj/v+v/AMAX) for aj,v in zip(np.degrees(np.abs(dq)),VJ))   # per joint (R19); = the VMAX formula when all limits are equal
  return tt,dict(max_joint_deg=round(a,1),time_s=round(tt,2))
 R0=[json.load(open(KV['REACH'].format(i=k*KPS))) for k in range(NS)]
 starts=[[c for c in r['cands'] if c['plume_mm'] is not None and c['plume_mm']>=0] for r in R0]
@@ -92,9 +93,9 @@ for c0 in sorted(starts[0],key=lambda c:-c['reserve_mm'])[:int(KV.get('TRIES',8)
  if ok:best=log[-1];break
 if best:
  W=[s for s in best['strokes'] if s.get('work')];Rr=[s['ret_into'] for s in best['strokes'] if s.get('ret_into')]
- vw=max(max(s['work']['vmax']) for s in W);scale=max(1.,vw/VMAX);ret=max(r['time_s'] for r in Rr)
+ vw=max(max(s['work']['vmax']) for s in W);scale=max(1.,max(float(np.max(np.array(s['work']['vmax'])/VJ)) for s in W));ret=max(r['time_s'] for r in Rr)   # per joint (R19)
  period=max(P*scale*.76+ret,P)   # working part slowed to the speed limit + the slowest return
  summary=dict(ok=True,working_part_joint_speed_max_degps=round(vw),working_slowdown=round(scale,2),return_time_max_s=ret,feasible_period_s=round(period,2),
   min_reserve_mm=min(s['work']['min_reserve_mm'] for s in W),min_plume_mm=min(s['work']['min_plume_mm'] for s in W))
 else:summary=dict(ok=False)
-tag=os.path.basename(KV['KEYS'])[5:-10]+('_'+KV['SCENE'] if 'SCENE' in KV else '');save(f'results/r15/stirwalk2_{tag}.json',dict(keys=KV['KEYS'],grip_m=GRIP,period_bench_s=P,**summary,attempts=log));print(json.dumps(summary))
+tag=os.path.basename(KV['KEYS'])[5:-10]+('_'+KV['SCENE'] if 'SCENE' in KV else '')+arms.tag(ARM);save(f'results/r15/stirwalk2_{tag}.json',dict(keys=KV['KEYS'],grip_m=GRIP,period_bench_s=P,**summary,attempts=log));print(json.dumps(summary))

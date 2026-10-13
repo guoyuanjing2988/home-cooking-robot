@@ -1,0 +1,2384 @@
+{
+ "source": "r19prim_inventory.py",
+ "chains": {
+  "wok_plate_rinse": {
+   "name": "wok_plate_rinse",
+   "file": "results/r17/chain_wok_s-1_final.json",
+   "act": "wok",
+   "obj": "wok",
+   "grasp_sense": -1,
+   "ok": true,
+   "time_s": 48.9,
+   "time_recomputed_s": 49.0,
+   "elapsed_s": 275,
+   "play_states": 470,
+   "approach_states": 14,
+   "anchors": 4,
+   "meets": 3,
+   "keyframes": 17,
+   "candidates_followed": 26,
+   "min_reserve_mm": 3.3,
+   "max_pgc_moment_Nm": 6.47,
+   "max_joint_ratio": 0.629,
+   "repeated_states_in_chain": 29,
+   "start_state": [
+    0.1722,
+    -0.21,
+    0.0,
+    -3.0718,
+    -5.545,
+    -1.365,
+    2.765,
+    -5.4357,
+    4.3671,
+    0.015,
+    0.015
+   ],
+   "end_state": [
+    0.1722,
+    -0.21,
+    0.0,
+    -3.0718,
+    -5.545,
+    -1.365,
+    2.765,
+    -5.4357,
+    4.3671,
+    0.015,
+    0.015
+   ],
+   "start_equals_end": true,
+   "segments": [
+    {
+     "cls": "seat_lift",
+     "frm": "pick#0",
+     "to": "lifted#1",
+     "i0": 0,
+     "i1": 3,
+     "states": 3,
+     "obj_path_m": 0.022,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 2.9,
+     "max_step_deg": 0.96,
+     "max_step_obj_mm": 7.3,
+     "time_s": 0.22
+    },
+    {
+     "cls": "carry",
+     "frm": "lifted#1",
+     "to": "up and left#2",
+     "i0": 3,
+     "i1": 9,
+     "states": 6,
+     "obj_path_m": 0.054,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.054,
+     "joint_path_deg": 2.1,
+     "max_step_deg": 0.36,
+     "max_step_obj_mm": 9.0,
+     "time_s": 0.54
+    },
+    {
+     "cls": "carry",
+     "frm": "up and left#2",
+     "to": "lane#3",
+     "i0": 9,
+     "i1": 27,
+     "states": 18,
+     "obj_path_m": 0.16,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.161,
+     "joint_path_deg": 0.7,
+     "max_step_deg": 0.46,
+     "max_step_obj_mm": 10.0,
+     "time_s": 1.61
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane#3",
+     "to": "lane#3",
+     "i0": 27,
+     "i1": 28,
+     "arm_deg": 0.5,
+     "cart_shuffle_m": 0.002,
+     "states": 1,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 0.0,
+     "max_step_deg": 0.0,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.64
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#3",
+     "to": "over the plate#4",
+     "i0": 28,
+     "i1": 48,
+     "states": 20,
+     "obj_path_m": 0.19,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.185,
+     "joint_path_deg": 0.9,
+     "max_step_deg": 0.05,
+     "max_step_obj_mm": 9.5,
+     "time_s": 1.9
+    },
+    {
+     "cls": "tip",
+     "frm": "over the plate#4",
+     "to": "tipped 90 (plated)#5",
+     "i0": 48,
+     "i1": 93,
+     "states": 45,
+     "obj_path_m": 0.134,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.239,
+     "joint_path_deg": 137.5,
+     "max_step_deg": 3.84,
+     "max_step_obj_mm": 3.0,
+     "time_s": 2.36
+    },
+    {
+     "cls": "dwell",
+     "frm": "tipped 90 (plated)#5",
+     "to": "tipped 90 (plated)#5",
+     "i0": 93,
+     "i1": 93,
+     "states": 0,
+     "time_s": 2.0
+    },
+    {
+     "cls": "untip",
+     "frm": "tipped 90 (plated)#5",
+     "to": "level#6",
+     "i0": 93,
+     "i1": 138,
+     "states": 45,
+     "obj_path_m": 0.134,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.24,
+     "joint_path_deg": 137.5,
+     "max_step_deg": 3.85,
+     "max_step_obj_mm": 3.0,
+     "time_s": 2.36
+    },
+    {
+     "cls": "carry",
+     "frm": "level#6",
+     "to": "lane#7",
+     "i0": 138,
+     "i1": 208,
+     "states": 70,
+     "obj_path_m": 0.682,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.673,
+     "joint_path_deg": 5.8,
+     "max_step_deg": 1.93,
+     "max_step_obj_mm": 9.9,
+     "time_s": 6.86
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane#7",
+     "to": "lane#7",
+     "i0": 208,
+     "i1": 215,
+     "arm_deg": 12.3,
+     "cart_shuffle_m": 0.055,
+     "states": 7,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.046,
+     "joint_path_deg": 10.4,
+     "max_step_deg": 2.19,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.84
+    },
+    {
+     "cls": "insert",
+     "frm": "lane#7",
+     "to": "under the tap#8",
+     "i0": 215,
+     "i1": 232,
+     "states": 17,
+     "obj_path_m": 0.166,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.114,
+     "joint_path_deg": 8.7,
+     "max_step_deg": 0.56,
+     "max_step_obj_mm": 9.8,
+     "time_s": 1.66
+    },
+    {
+     "cls": "dwell",
+     "frm": "under the tap#8",
+     "to": "under the tap#8",
+     "i0": 232,
+     "i1": 232,
+     "states": 0,
+     "time_s": 5.0
+    },
+    {
+     "cls": "extract",
+     "frm": "under the tap#8",
+     "to": "forward#9",
+     "i0": 232,
+     "i1": 242,
+     "states": 10,
+     "obj_path_m": 0.092,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.045,
+     "joint_path_deg": 10.7,
+     "max_step_deg": 1.18,
+     "max_step_obj_mm": 9.2,
+     "time_s": 0.92
+    },
+    {
+     "cls": "tip",
+     "frm": "forward#9",
+     "to": "emptied#10",
+     "i0": 242,
+     "i1": 287,
+     "states": 45,
+     "obj_path_m": 0.134,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.222,
+     "joint_path_deg": 137.1,
+     "max_step_deg": 3.87,
+     "max_step_obj_mm": 3.0,
+     "time_s": 2.36
+    },
+    {
+     "cls": "dwell",
+     "frm": "emptied#10",
+     "to": "emptied#10",
+     "i0": 287,
+     "i1": 287,
+     "states": 0,
+     "time_s": 1.0
+    },
+    {
+     "cls": "untip",
+     "frm": "emptied#10",
+     "to": "level#11",
+     "i0": 287,
+     "i1": 332,
+     "states": 45,
+     "obj_path_m": 0.134,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.222,
+     "joint_path_deg": 137.1,
+     "max_step_deg": 3.87,
+     "max_step_obj_mm": 3.0,
+     "time_s": 2.36
+    },
+    {
+     "cls": "carry",
+     "frm": "level#11",
+     "to": "lane#12",
+     "i0": 332,
+     "i1": 349,
+     "states": 17,
+     "obj_path_m": 0.158,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.169,
+     "joint_path_deg": 6.1,
+     "max_step_deg": 2.27,
+     "max_step_obj_mm": 9.9,
+     "time_s": 1.62
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane#12",
+     "to": "lane#12",
+     "i0": 349,
+     "i1": 356,
+     "arm_deg": 12.8,
+     "cart_shuffle_m": 0.057,
+     "states": 7,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.048,
+     "joint_path_deg": 10.5,
+     "max_step_deg": 2.2,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.84
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#12",
+     "to": "lane#13",
+     "i0": 356,
+     "i1": 444,
+     "states": 88,
+     "obj_path_m": 0.871,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.849,
+     "joint_path_deg": 4.4,
+     "max_step_deg": 0.05,
+     "max_step_obj_mm": 9.9,
+     "time_s": 8.71
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#13",
+     "to": "#14",
+     "i0": 444,
+     "i1": 460,
+     "states": 16,
+     "obj_path_m": 0.16,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.159,
+     "joint_path_deg": 0.3,
+     "max_step_deg": 0.02,
+     "max_step_obj_mm": 10.0,
+     "time_s": 1.6
+    },
+    {
+     "cls": "carry",
+     "frm": "#14",
+     "to": "lowered#15",
+     "i0": 460,
+     "i1": 466,
+     "states": 6,
+     "obj_path_m": 0.054,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.054,
+     "joint_path_deg": 2.1,
+     "max_step_deg": 0.36,
+     "max_step_obj_mm": 9.0,
+     "time_s": 0.54
+    },
+    {
+     "cls": "seat_lower",
+     "frm": "lowered#15",
+     "to": "set down#16",
+     "i0": 466,
+     "i1": 469,
+     "states": 3,
+     "obj_path_m": 0.022,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 2.9,
+     "max_step_deg": 0.96,
+     "max_step_obj_mm": 7.3,
+     "time_s": 0.22
+    },
+    {
+     "cls": "approach",
+     "frm": "pick#0",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 2.4
+    },
+    {
+     "cls": "approach",
+     "frm": "set down#16",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 2.4
+    },
+    {
+     "cls": "gripper",
+     "frm": "grasp+release",
+     "to": "",
+     "states": 0,
+     "time_s": 1.6
+    }
+   ]
+  },
+  "wok_plate2_rinse": {
+   "name": "wok_plate2_rinse",
+   "file": "results/r17/chain_wok_s-1_r18plate2b.json",
+   "act": "wok",
+   "obj": "wok",
+   "grasp_sense": -1,
+   "ok": true,
+   "time_s": 48.9,
+   "time_recomputed_s": 49.0,
+   "elapsed_s": 279,
+   "play_states": 470,
+   "approach_states": 14,
+   "anchors": 4,
+   "meets": 3,
+   "keyframes": 17,
+   "candidates_followed": 35,
+   "min_reserve_mm": 3.3,
+   "max_pgc_moment_Nm": 6.47,
+   "max_joint_ratio": 0.629,
+   "repeated_states_in_chain": 29,
+   "start_state": [
+    0.1722,
+    -0.21,
+    0.0,
+    -3.0718,
+    -5.545,
+    -1.365,
+    2.765,
+    -5.4357,
+    4.3671,
+    0.015,
+    0.015
+   ],
+   "end_state": [
+    0.1722,
+    -0.21,
+    0.0,
+    -3.0718,
+    -5.545,
+    -1.365,
+    2.765,
+    -5.4357,
+    4.3671,
+    0.015,
+    0.015
+   ],
+   "start_equals_end": true,
+   "segments": [
+    {
+     "cls": "seat_lift",
+     "frm": "pick#0",
+     "to": "lifted#1",
+     "i0": 0,
+     "i1": 3,
+     "states": 3,
+     "obj_path_m": 0.022,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 2.9,
+     "max_step_deg": 0.96,
+     "max_step_obj_mm": 7.3,
+     "time_s": 0.22
+    },
+    {
+     "cls": "carry",
+     "frm": "lifted#1",
+     "to": "up and left#2",
+     "i0": 3,
+     "i1": 9,
+     "states": 6,
+     "obj_path_m": 0.054,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.054,
+     "joint_path_deg": 2.1,
+     "max_step_deg": 0.36,
+     "max_step_obj_mm": 9.0,
+     "time_s": 0.54
+    },
+    {
+     "cls": "carry",
+     "frm": "up and left#2",
+     "to": "lane#3",
+     "i0": 9,
+     "i1": 27,
+     "states": 18,
+     "obj_path_m": 0.16,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.163,
+     "joint_path_deg": 1.1,
+     "max_step_deg": 0.88,
+     "max_step_obj_mm": 10.0,
+     "time_s": 1.62
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane#3",
+     "to": "lane#3",
+     "i0": 27,
+     "i1": 28,
+     "arm_deg": 0.9,
+     "cart_shuffle_m": 0.004,
+     "states": 1,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 0.0,
+     "max_step_deg": 0.0,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.64
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#3",
+     "to": "over the plate#4",
+     "i0": 28,
+     "i1": 74,
+     "states": 46,
+     "obj_path_m": 0.45,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.443,
+     "joint_path_deg": 0.9,
+     "max_step_deg": 0.02,
+     "max_step_obj_mm": 9.8,
+     "time_s": 4.5
+    },
+    {
+     "cls": "tip",
+     "frm": "over the plate#4",
+     "to": "tipped 90 (plated)#5",
+     "i0": 74,
+     "i1": 119,
+     "states": 45,
+     "obj_path_m": 0.134,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.239,
+     "joint_path_deg": 137.5,
+     "max_step_deg": 3.84,
+     "max_step_obj_mm": 3.0,
+     "time_s": 2.36
+    },
+    {
+     "cls": "dwell",
+     "frm": "tipped 90 (plated)#5",
+     "to": "tipped 90 (plated)#5",
+     "i0": 119,
+     "i1": 119,
+     "states": 0,
+     "time_s": 2.0
+    },
+    {
+     "cls": "untip",
+     "frm": "tipped 90 (plated)#5",
+     "to": "level#6",
+     "i0": 119,
+     "i1": 164,
+     "states": 45,
+     "obj_path_m": 0.134,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.24,
+     "joint_path_deg": 137.5,
+     "max_step_deg": 3.85,
+     "max_step_obj_mm": 3.0,
+     "time_s": 2.36
+    },
+    {
+     "cls": "carry",
+     "frm": "level#6",
+     "to": "lane#7",
+     "i0": 164,
+     "i1": 208,
+     "states": 44,
+     "obj_path_m": 0.423,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.415,
+     "joint_path_deg": 5.9,
+     "max_step_deg": 1.87,
+     "max_step_obj_mm": 9.8,
+     "time_s": 4.27
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane#7",
+     "to": "lane#7",
+     "i0": 208,
+     "i1": 215,
+     "arm_deg": 11.9,
+     "cart_shuffle_m": 0.053,
+     "states": 7,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.044,
+     "joint_path_deg": 10.0,
+     "max_step_deg": 2.1,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.84
+    },
+    {
+     "cls": "insert",
+     "frm": "lane#7",
+     "to": "under the tap#8",
+     "i0": 215,
+     "i1": 232,
+     "states": 17,
+     "obj_path_m": 0.166,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.114,
+     "joint_path_deg": 8.7,
+     "max_step_deg": 0.56,
+     "max_step_obj_mm": 9.8,
+     "time_s": 1.66
+    },
+    {
+     "cls": "dwell",
+     "frm": "under the tap#8",
+     "to": "under the tap#8",
+     "i0": 232,
+     "i1": 232,
+     "states": 0,
+     "time_s": 5.0
+    },
+    {
+     "cls": "extract",
+     "frm": "under the tap#8",
+     "to": "forward#9",
+     "i0": 232,
+     "i1": 242,
+     "states": 10,
+     "obj_path_m": 0.092,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.045,
+     "joint_path_deg": 10.7,
+     "max_step_deg": 1.18,
+     "max_step_obj_mm": 9.2,
+     "time_s": 0.92
+    },
+    {
+     "cls": "tip",
+     "frm": "forward#9",
+     "to": "emptied#10",
+     "i0": 242,
+     "i1": 287,
+     "states": 45,
+     "obj_path_m": 0.134,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.222,
+     "joint_path_deg": 137.1,
+     "max_step_deg": 3.87,
+     "max_step_obj_mm": 3.0,
+     "time_s": 2.36
+    },
+    {
+     "cls": "dwell",
+     "frm": "emptied#10",
+     "to": "emptied#10",
+     "i0": 287,
+     "i1": 287,
+     "states": 0,
+     "time_s": 1.0
+    },
+    {
+     "cls": "untip",
+     "frm": "emptied#10",
+     "to": "level#11",
+     "i0": 287,
+     "i1": 332,
+     "states": 45,
+     "obj_path_m": 0.134,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.222,
+     "joint_path_deg": 137.1,
+     "max_step_deg": 3.87,
+     "max_step_obj_mm": 3.0,
+     "time_s": 2.36
+    },
+    {
+     "cls": "carry",
+     "frm": "level#11",
+     "to": "lane#12",
+     "i0": 332,
+     "i1": 349,
+     "states": 17,
+     "obj_path_m": 0.158,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.169,
+     "joint_path_deg": 6.1,
+     "max_step_deg": 2.27,
+     "max_step_obj_mm": 9.9,
+     "time_s": 1.62
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane#12",
+     "to": "lane#12",
+     "i0": 349,
+     "i1": 356,
+     "arm_deg": 12.8,
+     "cart_shuffle_m": 0.057,
+     "states": 7,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.048,
+     "joint_path_deg": 10.5,
+     "max_step_deg": 2.2,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.84
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#12",
+     "to": "lane#13",
+     "i0": 356,
+     "i1": 444,
+     "states": 88,
+     "obj_path_m": 0.871,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.849,
+     "joint_path_deg": 4.4,
+     "max_step_deg": 0.05,
+     "max_step_obj_mm": 9.9,
+     "time_s": 8.71
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#13",
+     "to": "#14",
+     "i0": 444,
+     "i1": 460,
+     "states": 16,
+     "obj_path_m": 0.16,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.159,
+     "joint_path_deg": 0.3,
+     "max_step_deg": 0.02,
+     "max_step_obj_mm": 10.0,
+     "time_s": 1.6
+    },
+    {
+     "cls": "carry",
+     "frm": "#14",
+     "to": "lowered#15",
+     "i0": 460,
+     "i1": 466,
+     "states": 6,
+     "obj_path_m": 0.054,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.054,
+     "joint_path_deg": 2.1,
+     "max_step_deg": 0.36,
+     "max_step_obj_mm": 9.0,
+     "time_s": 0.54
+    },
+    {
+     "cls": "seat_lower",
+     "frm": "lowered#15",
+     "to": "set down#16",
+     "i0": 466,
+     "i1": 469,
+     "states": 3,
+     "obj_path_m": 0.022,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 2.9,
+     "max_step_deg": 0.96,
+     "max_step_obj_mm": 7.3,
+     "time_s": 0.22
+    },
+    {
+     "cls": "approach",
+     "frm": "pick#0",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 2.4
+    },
+    {
+     "cls": "approach",
+     "frm": "set down#16",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 2.4
+    },
+    {
+     "cls": "gripper",
+     "frm": "grasp+release",
+     "to": "",
+     "states": 0,
+     "time_s": 1.6
+    }
+   ]
+  },
+  "faucet_open": {
+   "name": "faucet_open",
+   "file": "results/r17/chain_lever_s+1_final.json",
+   "act": "lever",
+   "obj": "lever",
+   "grasp_sense": 1,
+   "ok": true,
+   "time_s": 3.5,
+   "time_recomputed_s": 3.5,
+   "elapsed_s": 26,
+   "play_states": 16,
+   "approach_states": 14,
+   "anchors": 1,
+   "meets": 0,
+   "keyframes": 2,
+   "candidates_followed": 8,
+   "min_reserve_mm": 6.0,
+   "max_pgc_moment_Nm": null,
+   "max_joint_ratio": null,
+   "repeated_states_in_chain": 0,
+   "start_state": [
+    -0.7398,
+    -0.21,
+    0.0,
+    -2.6466,
+    -6.0718,
+    -0.5039,
+    -5.7351,
+    -0.6515,
+    -3.661,
+    0.015,
+    0.015
+   ],
+   "end_state": [
+    -0.7398,
+    -0.21,
+    0.0,
+    -2.6571,
+    -6.0895,
+    -0.7652,
+    -5.8437,
+    -0.632,
+    -2.8784,
+    0.015,
+    0.015
+   ],
+   "start_equals_end": false,
+   "segments": [
+    {
+     "cls": "lever",
+     "frm": "closed#0",
+     "to": "open#1",
+     "i0": 0,
+     "i1": 15,
+     "states": 15,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 30.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 44.8,
+     "max_step_deg": 3.03,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.75
+    },
+    {
+     "cls": "approach",
+     "frm": "closed#0",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 20.0
+    },
+    {
+     "cls": "approach",
+     "frm": "open#1",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 7.4
+    },
+    {
+     "cls": "gripper",
+     "frm": "grasp+release",
+     "to": "",
+     "states": 0,
+     "time_s": 1.6
+    }
+   ]
+  },
+  "lid_off_to_rack": {
+   "name": "lid_off_to_rack",
+   "file": "results/r17/chain_lid_s-1_final.json",
+   "act": "lid",
+   "obj": "lid",
+   "grasp_sense": -1,
+   "ok": true,
+   "time_s": 20.2,
+   "time_recomputed_s": 20.2,
+   "elapsed_s": 133,
+   "play_states": 205,
+   "approach_states": 14,
+   "anchors": 2,
+   "meets": 1,
+   "keyframes": 9,
+   "candidates_followed": 32,
+   "min_reserve_mm": 1.0,
+   "max_pgc_moment_Nm": 1.58,
+   "max_joint_ratio": 0.41,
+   "repeated_states_in_chain": 2,
+   "start_state": [
+    0.8863,
+    -0.21,
+    0.0,
+    2.8323,
+    6.1525,
+    1.5453,
+    -0.1239,
+    5.4256,
+    0.4142,
+    0.015,
+    0.015
+   ],
+   "end_state": [
+    1.3256,
+    -0.21,
+    0.0,
+    -3.5567,
+    6.037,
+    1.9535,
+    0.0923,
+    5.9638,
+    -4.7914,
+    0.015,
+    0.015
+   ],
+   "start_equals_end": false,
+   "segments": [
+    {
+     "cls": "seat_lift",
+     "frm": "lift off#0",
+     "to": "#1",
+     "i0": 0,
+     "i1": 2,
+     "states": 2,
+     "obj_path_m": 0.012,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 1.6,
+     "max_step_deg": 0.81,
+     "max_step_obj_mm": 6.0,
+     "time_s": 0.12
+    },
+    {
+     "cls": "extract",
+     "frm": "#1",
+     "to": "slide out#2",
+     "i0": 2,
+     "i1": 25,
+     "states": 23,
+     "obj_path_m": 0.23,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 28.7,
+     "max_step_deg": 1.66,
+     "max_step_obj_mm": 10.0,
+     "time_s": 2.3
+    },
+    {
+     "cls": "carry",
+     "frm": "slide out#2",
+     "to": "up#3",
+     "i0": 25,
+     "i1": 50,
+     "states": 25,
+     "obj_path_m": 0.25,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 28.1,
+     "max_step_deg": 1.23,
+     "max_step_obj_mm": 10.0,
+     "time_s": 2.5
+    },
+    {
+     "cls": "reorient",
+     "frm": "up#3",
+     "to": "roll 90 deg#4",
+     "i0": 50,
+     "i1": 95,
+     "states": 45,
+     "obj_path_m": 0.011,
+     "obj_rot_deg": 90.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 108.2,
+     "max_step_deg": 2.85,
+     "max_step_obj_mm": 0.3,
+     "time_s": 2.03
+    },
+    {
+     "cls": "carry",
+     "frm": "roll 90 deg#4",
+     "to": "carry#5",
+     "i0": 95,
+     "i1": 119,
+     "states": 24,
+     "obj_path_m": 0.153,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.221,
+     "joint_path_deg": 16.1,
+     "max_step_deg": 0.76,
+     "max_step_obj_mm": 6.7,
+     "time_s": 1.53
+    },
+    {
+     "cls": "meet_join",
+     "frm": "carry#5",
+     "to": "carry#5",
+     "i0": 119,
+     "i1": 120,
+     "arm_deg": 0.0,
+     "cart_shuffle_m": 0.0,
+     "states": 1,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 0.0,
+     "max_step_deg": 0.0,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.6
+    },
+    {
+     "cls": "carry",
+     "frm": "carry#5",
+     "to": "#6",
+     "i0": 120,
+     "i1": 152,
+     "states": 32,
+     "obj_path_m": 0.318,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.318,
+     "joint_path_deg": 0.0,
+     "max_step_deg": 0.0,
+     "max_step_obj_mm": 9.9,
+     "time_s": 3.18
+    },
+    {
+     "cls": "carry",
+     "frm": "#6",
+     "to": "over the rack#7",
+     "i0": 152,
+     "i1": 196,
+     "states": 44,
+     "obj_path_m": 0.438,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.099,
+     "joint_path_deg": 74.8,
+     "max_step_deg": 6.68,
+     "max_step_obj_mm": 10.0,
+     "time_s": 4.4
+    },
+    {
+     "cls": "insert",
+     "frm": "over the rack#7",
+     "to": "in the rack#8",
+     "i0": 196,
+     "i1": 204,
+     "states": 8,
+     "obj_path_m": 0.076,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 16.5,
+     "max_step_deg": 2.07,
+     "max_step_obj_mm": 9.5,
+     "time_s": 0.76
+    },
+    {
+     "cls": "approach",
+     "frm": "lift off#0",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 10.0
+    },
+    {
+     "cls": "approach",
+     "frm": "in the rack#8",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 7.2
+    },
+    {
+     "cls": "gripper",
+     "frm": "grasp+release",
+     "to": "",
+     "states": 0,
+     "time_s": 1.6
+    }
+   ]
+  },
+  "spider_pot_to_plate": {
+   "name": "spider_pot_to_plate",
+   "file": "results/r17/chain_spider_s+1_final.json",
+   "act": "spider",
+   "obj": "spider",
+   "grasp_sense": 1,
+   "ok": true,
+   "time_s": 52.6,
+   "time_recomputed_s": 52.6,
+   "elapsed_s": 215,
+   "play_states": 516,
+   "approach_states": 14,
+   "anchors": 4,
+   "meets": 3,
+   "keyframes": 19,
+   "candidates_followed": 44,
+   "min_reserve_mm": 2.1,
+   "max_pgc_moment_Nm": 1.25,
+   "max_joint_ratio": 0.31,
+   "repeated_states_in_chain": 184,
+   "start_state": [
+    1.093,
+    -0.21,
+    0.0,
+    -3.3504,
+    -1.0762,
+    1.7553,
+    -5.2288,
+    0.918,
+    2.8776,
+    0.015,
+    0.015
+   ],
+   "end_state": [
+    1.093,
+    -0.21,
+    0.0,
+    -3.3504,
+    -1.0762,
+    1.7553,
+    -5.2288,
+    0.918,
+    2.8776,
+    0.015,
+    0.015
+   ],
+   "start_equals_end": true,
+   "segments": [
+    {
+     "cls": "seat_lift",
+     "frm": "pick#0",
+     "to": "#1",
+     "i0": 0,
+     "i1": 3,
+     "states": 3,
+     "obj_path_m": 0.022,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 3.3,
+     "max_step_deg": 1.09,
+     "max_step_obj_mm": 7.3,
+     "time_s": 0.22
+    },
+    {
+     "cls": "carry",
+     "frm": "#1",
+     "to": "out and up#2",
+     "i0": 3,
+     "i1": 19,
+     "states": 16,
+     "obj_path_m": 0.156,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 20.5,
+     "max_step_deg": 1.42,
+     "max_step_obj_mm": 9.8,
+     "time_s": 1.56
+    },
+    {
+     "cls": "carry",
+     "frm": "out and up#2",
+     "to": "lane#3",
+     "i0": 19,
+     "i1": 51,
+     "states": 32,
+     "obj_path_m": 0.292,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.007,
+     "joint_path_deg": 36.3,
+     "max_step_deg": 1.46,
+     "max_step_obj_mm": 9.7,
+     "time_s": 2.92
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane#3",
+     "to": "lane#3",
+     "i0": 51,
+     "i1": 51,
+     "arm_deg": 0.0,
+     "cart_shuffle_m": 0.0,
+     "states": 0,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 0.0,
+     "max_step_deg": 0.0,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.6
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#3",
+     "to": "over the pot#4",
+     "i0": 51,
+     "i1": 77,
+     "states": 26,
+     "obj_path_m": 0.256,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.049,
+     "joint_path_deg": 29.9,
+     "max_step_deg": 1.47,
+     "max_step_obj_mm": 9.9,
+     "time_s": 2.56
+    },
+    {
+     "cls": "insert",
+     "frm": "over the pot#4",
+     "to": "scoop#5",
+     "i0": 77,
+     "i1": 90,
+     "states": 13,
+     "obj_path_m": 0.12,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 23.3,
+     "max_step_deg": 1.9,
+     "max_step_obj_mm": 9.2,
+     "time_s": 1.2
+    },
+    {
+     "cls": "extract",
+     "frm": "scoop#5",
+     "to": "drain#6",
+     "i0": 90,
+     "i1": 103,
+     "states": 13,
+     "obj_path_m": 0.12,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 23.3,
+     "max_step_deg": 1.9,
+     "max_step_obj_mm": 9.2,
+     "time_s": 1.2
+    },
+    {
+     "cls": "dwell",
+     "frm": "drain#6",
+     "to": "drain#6",
+     "i0": 103,
+     "i1": 103,
+     "states": 0,
+     "time_s": 5.0
+    },
+    {
+     "cls": "carry",
+     "frm": "drain#6",
+     "to": "lane#7",
+     "i0": 103,
+     "i1": 127,
+     "states": 24,
+     "obj_path_m": 0.23,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 25.4,
+     "max_step_deg": 1.22,
+     "max_step_obj_mm": 9.6,
+     "time_s": 2.3
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#7",
+     "to": "lane middle#8",
+     "i0": 127,
+     "i1": 177,
+     "states": 50,
+     "obj_path_m": 0.433,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.489,
+     "joint_path_deg": 7.2,
+     "max_step_deg": 0.16,
+     "max_step_obj_mm": 8.8,
+     "time_s": 4.33
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane middle#8",
+     "to": "lane middle#8",
+     "i0": 177,
+     "i1": 178,
+     "arm_deg": 0.0,
+     "cart_shuffle_m": 0.0,
+     "states": 1,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 0.0,
+     "max_step_deg": 0.0,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.6
+    },
+    {
+     "cls": "carry",
+     "frm": "lane middle#8",
+     "to": "#9",
+     "i0": 178,
+     "i1": 222,
+     "states": 44,
+     "obj_path_m": 0.433,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.382,
+     "joint_path_deg": 6.3,
+     "max_step_deg": 0.15,
+     "max_step_obj_mm": 9.8,
+     "time_s": 4.33
+    },
+    {
+     "cls": "carry",
+     "frm": "#9",
+     "to": "over the plate#10",
+     "i0": 222,
+     "i1": 238,
+     "states": 16,
+     "obj_path_m": 0.155,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 20.4,
+     "max_step_deg": 1.47,
+     "max_step_obj_mm": 9.7,
+     "time_s": 1.55
+    },
+    {
+     "cls": "tip",
+     "frm": "over the plate#10",
+     "to": "tip 110 deg#11",
+     "i0": 238,
+     "i1": 294,
+     "states": 56,
+     "obj_path_m": 0.07,
+     "obj_rot_deg": 110.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 133.1,
+     "max_step_deg": 2.51,
+     "max_step_obj_mm": 1.2,
+     "time_s": 2.44
+    },
+    {
+     "cls": "untip",
+     "frm": "tip 110 deg#11",
+     "to": "level again#12",
+     "i0": 294,
+     "i1": 350,
+     "states": 56,
+     "obj_path_m": 0.07,
+     "obj_rot_deg": 110.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 133.1,
+     "max_step_deg": 2.51,
+     "max_step_obj_mm": 1.2,
+     "time_s": 2.44
+    },
+    {
+     "cls": "carry",
+     "frm": "level again#12",
+     "to": "lane#13",
+     "i0": 350,
+     "i1": 366,
+     "states": 16,
+     "obj_path_m": 0.155,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 20.4,
+     "max_step_deg": 1.47,
+     "max_step_obj_mm": 9.7,
+     "time_s": 1.55
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#13",
+     "to": "lane middle#14",
+     "i0": 366,
+     "i1": 412,
+     "states": 46,
+     "obj_path_m": 0.433,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.383,
+     "joint_path_deg": 6.3,
+     "max_step_deg": 0.15,
+     "max_step_obj_mm": 9.8,
+     "time_s": 4.33
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane middle#14",
+     "to": "lane middle#14",
+     "i0": 412,
+     "i1": 412,
+     "arm_deg": 0.0,
+     "cart_shuffle_m": 0.0,
+     "states": 0,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 0.0,
+     "max_step_deg": 0.0,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.6
+    },
+    {
+     "cls": "carry",
+     "frm": "lane middle#14",
+     "to": "lane#15",
+     "i0": 412,
+     "i1": 466,
+     "states": 54,
+     "obj_path_m": 0.538,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.537,
+     "joint_path_deg": 4.3,
+     "max_step_deg": 0.08,
+     "max_step_obj_mm": 10.0,
+     "time_s": 5.38
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#15",
+     "to": "out and up#16",
+     "i0": 466,
+     "i1": 496,
+     "states": 30,
+     "obj_path_m": 0.292,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.007,
+     "joint_path_deg": 36.3,
+     "max_step_deg": 1.46,
+     "max_step_obj_mm": 9.7,
+     "time_s": 2.92
+    },
+    {
+     "cls": "carry",
+     "frm": "out and up#16",
+     "to": "#17",
+     "i0": 496,
+     "i1": 512,
+     "states": 16,
+     "obj_path_m": 0.156,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 20.5,
+     "max_step_deg": 1.42,
+     "max_step_obj_mm": 9.8,
+     "time_s": 1.56
+    },
+    {
+     "cls": "seat_lower",
+     "frm": "#17",
+     "to": "on the rest#18",
+     "i0": 512,
+     "i1": 515,
+     "states": 3,
+     "obj_path_m": 0.022,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 3.3,
+     "max_step_deg": 1.09,
+     "max_step_obj_mm": 7.3,
+     "time_s": 0.22
+    },
+    {
+     "cls": "approach",
+     "frm": "pick#0",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 4.2
+    },
+    {
+     "cls": "approach",
+     "frm": "on the rest#18",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 4.2
+    },
+    {
+     "cls": "gripper",
+     "frm": "grasp+release",
+     "to": "",
+     "states": 0,
+     "time_s": 1.6
+    }
+   ]
+  },
+  "spatula_fetch": {
+   "name": "spatula_fetch",
+   "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30.json",
+   "act": "spatula",
+   "obj": "spatula_b",
+   "grasp_sense": -1,
+   "ok": true,
+   "time_s": 26.9,
+   "time_recomputed_s": 27.0,
+   "elapsed_s": 433,
+   "play_states": 249,
+   "approach_states": 7,
+   "anchors": 2,
+   "meets": 1,
+   "keyframes": 6,
+   "candidates_followed": 32,
+   "min_reserve_mm": 6.0,
+   "max_pgc_moment_Nm": 1.31,
+   "max_joint_ratio": 0.368,
+   "repeated_states_in_chain": 1,
+   "start_state": [
+    -1.48,
+    -0.21,
+    0.0,
+    6.2795,
+    -2.8546,
+    -2.3271,
+    0.4573,
+    -3.3892,
+    -0.0124,
+    0.015,
+    0.015
+   ],
+   "end_state": [
+    0.4724,
+    -0.21,
+    0.0,
+    6.2271,
+    4.9264,
+    -2.2168,
+    -1.1608,
+    -4.3399,
+    -0.0602,
+    0.015,
+    0.015
+   ],
+   "start_equals_end": false,
+   "segments": [
+    {
+     "cls": "seat_lift",
+     "frm": "pick#0",
+     "to": "lifted#1",
+     "i0": 0,
+     "i1": 6,
+     "states": 6,
+     "obj_path_m": 0.048,
+     "obj_rot_deg": 0.4,
+     "cart_m": 0.0,
+     "joint_path_deg": 18.0,
+     "max_step_deg": 3.43,
+     "max_step_obj_mm": 8.7,
+     "time_s": 0.48
+    },
+    {
+     "cls": "carry",
+     "frm": "lifted#1",
+     "to": "out and up#2",
+     "i0": 6,
+     "i1": 21,
+     "states": 15,
+     "obj_path_m": 0.144,
+     "obj_rot_deg": 0.3,
+     "cart_m": 0.106,
+     "joint_path_deg": 79.0,
+     "max_step_deg": 7.35,
+     "max_step_obj_mm": 9.7,
+     "time_s": 1.54
+    },
+    {
+     "cls": "carry",
+     "frm": "out and up#2",
+     "to": "lane#3",
+     "i0": 21,
+     "i1": 131,
+     "states": 110,
+     "obj_path_m": 1.031,
+     "obj_rot_deg": 0.0,
+     "cart_m": 1.093,
+     "joint_path_deg": 41.6,
+     "max_step_deg": 0.75,
+     "max_step_obj_mm": 9.9,
+     "time_s": 10.48
+    },
+    {
+     "cls": "meet_join",
+     "frm": "lane#3",
+     "to": "lane#3",
+     "i0": 131,
+     "i1": 132,
+     "arm_deg": 3.4,
+     "cart_shuffle_m": 0.042,
+     "states": 1,
+     "obj_path_m": 0.0,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.0,
+     "joint_path_deg": 0.0,
+     "max_step_deg": 0.0,
+     "max_step_obj_mm": 0.0,
+     "time_s": 0.8
+    },
+    {
+     "cls": "carry",
+     "frm": "lane#3",
+     "to": "over the wok#4",
+     "i0": 132,
+     "i1": 232,
+     "states": 100,
+     "obj_path_m": 0.993,
+     "obj_rot_deg": 54.0,
+     "cart_m": 0.874,
+     "joint_path_deg": 62.6,
+     "max_step_deg": 0.83,
+     "max_step_obj_mm": 10.0,
+     "time_s": 9.93
+    },
+    {
+     "cls": "insert",
+     "frm": "over the wok#4",
+     "to": "stroke start#5",
+     "i0": 232,
+     "i1": 248,
+     "states": 16,
+     "obj_path_m": 0.158,
+     "obj_rot_deg": 0.0,
+     "cart_m": 0.015,
+     "joint_path_deg": 25.8,
+     "max_step_deg": 1.76,
+     "max_step_obj_mm": 9.9,
+     "time_s": 1.58
+    },
+    {
+     "cls": "approach",
+     "frm": "pick#0",
+     "to": "pre-grasp",
+     "states": 7,
+     "time_s": 0.6,
+     "min_reserve_mm": 27.0
+    },
+    {
+     "cls": "gripper",
+     "frm": "grasp+release",
+     "to": "",
+     "states": 0,
+     "time_s": 1.6
+    }
+   ]
+  }
+ },
+ "stir_cycle": {
+  "name": "stir_cycle",
+  "file": "results/r15/stirwalk2_h_scrape_dice_r17.json",
+  "keys": "results/r15/stir_h_scrape_dice_keys.json",
+  "strokes": 5,
+  "period_s": 2.63,
+  "cycle_time_s": 13.15,
+  "states": 1110,
+  "min_reserve_mm": 2.0,
+  "min_plume_mm": 25.8,
+  "attempts": 2,
+  "elapsed_s": null,
+  "note": "elapsed_s not saved by r15stirwalk2.py; the 80 stroke-start poses were solved before by r15reach.py (96-start IK each)",
+  "segments": [
+   {
+    "cls": "stroke",
+    "stroke": 0,
+    "states": 183,
+    "time_s": 1.86,
+    "vmax_degps": 83.0,
+    "min_reserve_mm": 2.3,
+    "min_plume_mm": 25.8
+   },
+   {
+    "cls": "stroke_return",
+    "stroke": 1,
+    "states": 39,
+    "checked_points": 39,
+    "max_joint_deg": 22.8,
+    "time_s": 0.5
+   },
+   {
+    "cls": "stroke",
+    "stroke": 1,
+    "states": 183,
+    "time_s": 1.86,
+    "vmax_degps": 103.0,
+    "min_reserve_mm": 2.2,
+    "min_plume_mm": 25.8
+   },
+   {
+    "cls": "stroke_return",
+    "stroke": 2,
+    "states": 39,
+    "checked_points": 39,
+    "max_joint_deg": 33.2,
+    "time_s": 0.61
+   },
+   {
+    "cls": "stroke",
+    "stroke": 2,
+    "states": 183,
+    "time_s": 1.86,
+    "vmax_degps": 97.0,
+    "min_reserve_mm": 2.1,
+    "min_plume_mm": 29.0
+   },
+   {
+    "cls": "stroke_return",
+    "stroke": 3,
+    "states": 39,
+    "checked_points": 39,
+    "max_joint_deg": 36.3,
+    "time_s": 0.64
+   },
+   {
+    "cls": "stroke",
+    "stroke": 3,
+    "states": 183,
+    "time_s": 1.86,
+    "vmax_degps": 151.0,
+    "min_reserve_mm": 2.0,
+    "min_plume_mm": 31.3
+   },
+   {
+    "cls": "stroke_return",
+    "stroke": 4,
+    "states": 39,
+    "checked_points": 39,
+    "max_joint_deg": 54.0,
+    "time_s": 0.77
+   },
+   {
+    "cls": "stroke",
+    "stroke": 4,
+    "states": 183,
+    "time_s": 1.86,
+    "vmax_degps": 184.0,
+    "min_reserve_mm": 2.1,
+    "min_plume_mm": 29.8
+   },
+   {
+    "cls": "stroke_return",
+    "stroke": "close",
+    "states": 39,
+    "checked_points": 39,
+    "max_joint_deg": 31.1,
+    "time_s": 0.59
+   }
+  ]
+ },
+ "spatula_handoff": {
+  "name": "spatula_handoff",
+  "source": "README_R10 R18b: chain end -> R15 stir start, cart 7.8 cm, joints <= 11 deg, 0.5 s, min reserve 2.0 mm",
+  "cls": "meet_join",
+  "time_s": 0.5
+ },
+ "carrier": {
+  "name": "carrier_into_pot",
+  "file": "results/r16/chain_plate_in_r17layout.json",
+  "time_s": 17.7,
+  "states": 164,
+  "min_reserve_mm": 2.3,
+  "note": "R16 format: no playback states saved; pieces only",
+  "pieces": [
+   {
+    "frm": "in over the pot",
+    "to": "pick",
+    "steps": 156,
+    "time_s": 15.3,
+    "min_reserve_mm": 3.0,
+    "max_step_deg": 2.12,
+    "cart_moving_steps": 88,
+    "carry_env_violations": 88,
+    "fail": null
+   },
+   {
+    "frm": "in over the pot",
+    "to": "on the rack",
+    "steps": 8,
+    "time_s": 0.8,
+    "min_reserve_mm": 2.3,
+    "max_step_deg": 2.54,
+    "cart_moving_steps": 0,
+    "carry_env_violations": 0,
+    "fail": null
+   }
+  ]
+ },
+ "classes": {
+  "seat_lift": {
+   "count": 4,
+   "states": 14,
+   "state_share": 0.005,
+   "time_s": 1.0,
+   "time_share": 0.006,
+   "n_actions": 4,
+   "actions": [
+    "lid_off_to_rack",
+    "spatula_fetch",
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": true
+  },
+  "carry": {
+   "count": 27,
+   "states": 961,
+   "state_share": 0.366,
+   "time_s": 92.2,
+   "time_share": 0.558,
+   "n_actions": 4,
+   "actions": [
+    "lid_off_to_rack",
+    "spatula_fetch",
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": false
+  },
+  "meet_join": {
+   "count": 9,
+   "states": 18,
+   "state_share": 0.007,
+   "time_s": 6.0,
+   "time_share": 0.036,
+   "n_actions": 5,
+   "actions": [
+    "lid_off_to_rack",
+    "spatula_fetch",
+    "spatula_handoff",
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": false
+  },
+  "tip": {
+   "count": 3,
+   "states": 146,
+   "state_share": 0.056,
+   "time_s": 7.2,
+   "time_share": 0.043,
+   "n_actions": 2,
+   "actions": [
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": false
+  },
+  "dwell": {
+   "count": 4,
+   "states": 0,
+   "state_share": 0.0,
+   "time_s": 13.0,
+   "time_share": 0.079,
+   "n_actions": 2,
+   "actions": [
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": false
+  },
+  "untip": {
+   "count": 3,
+   "states": 146,
+   "state_share": 0.056,
+   "time_s": 7.2,
+   "time_share": 0.043,
+   "n_actions": 2,
+   "actions": [
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": false
+  },
+  "insert": {
+   "count": 4,
+   "states": 54,
+   "state_share": 0.021,
+   "time_s": 5.2,
+   "time_share": 0.031,
+   "n_actions": 4,
+   "actions": [
+    "lid_off_to_rack",
+    "spatula_fetch",
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": true
+  },
+  "extract": {
+   "count": 3,
+   "states": 46,
+   "state_share": 0.018,
+   "time_s": 4.4,
+   "time_share": 0.027,
+   "n_actions": 3,
+   "actions": [
+    "lid_off_to_rack",
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": true
+  },
+  "seat_lower": {
+   "count": 2,
+   "states": 6,
+   "state_share": 0.002,
+   "time_s": 0.4,
+   "time_share": 0.003,
+   "n_actions": 2,
+   "actions": [
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": true
+  },
+  "approach": {
+   "count": 9,
+   "states": 63,
+   "state_share": 0.024,
+   "time_s": 5.4,
+   "time_share": 0.033,
+   "n_actions": 5,
+   "actions": [
+    "faucet_open",
+    "lid_off_to_rack",
+    "spatula_fetch",
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": true
+  },
+  "gripper": {
+   "count": 5,
+   "states": 0,
+   "state_share": 0.0,
+   "time_s": 8.0,
+   "time_share": 0.048,
+   "n_actions": 5,
+   "actions": [
+    "faucet_open",
+    "lid_off_to_rack",
+    "spatula_fetch",
+    "spider_pot_to_plate",
+    "wok_plate_rinse"
+   ],
+   "contact_or_process": false
+  },
+  "lever": {
+   "count": 1,
+   "states": 15,
+   "state_share": 0.006,
+   "time_s": 0.8,
+   "time_share": 0.005,
+   "n_actions": 1,
+   "actions": [
+    "faucet_open"
+   ],
+   "contact_or_process": true
+  },
+  "reorient": {
+   "count": 1,
+   "states": 45,
+   "state_share": 0.017,
+   "time_s": 2.0,
+   "time_share": 0.012,
+   "n_actions": 1,
+   "actions": [
+    "lid_off_to_rack"
+   ],
+   "contact_or_process": false
+  },
+  "stroke": {
+   "count": 5,
+   "states": 915,
+   "state_share": 0.349,
+   "time_s": 9.3,
+   "time_share": 0.056,
+   "n_actions": 1,
+   "actions": [
+    "stir_cycle"
+   ],
+   "contact_or_process": true
+  },
+  "stroke_return": {
+   "count": 5,
+   "states": 195,
+   "state_share": 0.074,
+   "time_s": 3.1,
+   "time_share": 0.019,
+   "n_actions": 1,
+   "actions": [
+    "stir_cycle"
+   ],
+   "contact_or_process": false
+  }
+ },
+ "class_summary": {
+  "total_states": 2624,
+  "total_time_s": 165.3,
+  "shared_classes": [
+   "seat_lift",
+   "carry",
+   "meet_join",
+   "insert",
+   "extract",
+   "approach",
+   "gripper"
+  ],
+  "shared_state_share": 0.441,
+  "shared_time_share": 0.739,
+  "bespoke_classes": [
+   "lever",
+   "reorient",
+   "stroke",
+   "stroke_return"
+  ],
+  "bespoke_state_share": 0.446,
+  "bespoke_time_share": 0.092,
+  "carry_cart_dominant": {
+   "note": "carry segments whose arm joints move < 10 deg in total: the cart carries the object, the arm keeps its posture",
+   "count": 13,
+   "of": 27,
+   "time_s": 44.9,
+   "of_time_s": 92.2
+  }
+ },
+ "reuse": {
+  "plate_spot_2": {
+   "note": "R18: the whole wok chain was re-planned for plating 26 cm further left (elapsed_s 279) although only the plate segments change",
+   "states": 470,
+   "identical_to_spot1": 283,
+   "identical_share": 0.602,
+   "elapsed_s": 279,
+   "per_segment": [
+    {
+     "seg": "pick#0->lifted#1",
+     "cls": "seat_lift",
+     "states": 3,
+     "identical": 3,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "lifted#1->up and left#2",
+     "cls": "carry",
+     "states": 6,
+     "identical": 6,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "up and left#2->lane#3",
+     "cls": "carry",
+     "states": 18,
+     "identical": 16,
+     "max_arm_joint_diff_deg": 0.4188,
+     "cart_shift_m": [
+      -0.002,
+      0.0
+     ]
+    },
+    {
+     "seg": "lane#3->lane#3",
+     "cls": "meet_join",
+     "states": 1,
+     "identical": 0,
+     "max_arm_joint_diff_deg": 0.4188,
+     "cart_shift_m": [
+      -0.002,
+      -0.002
+     ]
+    },
+    {
+     "seg": "lane#3->over the plate#4",
+     "cls": "carry",
+     "states": 46,
+     "identical": 0
+    },
+    {
+     "seg": "over the plate#4->tipped 90 (plated)#5",
+     "cls": "tip",
+     "states": 45,
+     "identical": 0,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      -0.26,
+      -0.26
+     ]
+    },
+    {
+     "seg": "tipped 90 (plated)#5->tipped 90 (plated)#5",
+     "cls": "dwell",
+     "states": 0,
+     "identical": 0,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      -0.26,
+      -0.26
+     ]
+    },
+    {
+     "seg": "tipped 90 (plated)#5->level#6",
+     "cls": "untip",
+     "states": 45,
+     "identical": 0,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      -0.26,
+      -0.26
+     ]
+    },
+    {
+     "seg": "level#6->lane#7",
+     "cls": "carry",
+     "states": 44,
+     "identical": 0
+    },
+    {
+     "seg": "lane#7->lane#7",
+     "cls": "meet_join",
+     "states": 7,
+     "identical": 3,
+     "max_arm_joint_diff_deg": 0.3697,
+     "cart_shift_m": [
+      -0.002,
+      0.0
+     ]
+    },
+    {
+     "seg": "lane#7->under the tap#8",
+     "cls": "insert",
+     "states": 17,
+     "identical": 17,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "under the tap#8->under the tap#8",
+     "cls": "dwell",
+     "states": 0,
+     "identical": 0,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "under the tap#8->forward#9",
+     "cls": "extract",
+     "states": 10,
+     "identical": 10,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "forward#9->emptied#10",
+     "cls": "tip",
+     "states": 45,
+     "identical": 45,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "emptied#10->emptied#10",
+     "cls": "dwell",
+     "states": 0,
+     "identical": 0,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "emptied#10->level#11",
+     "cls": "untip",
+     "states": 45,
+     "identical": 45,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "level#11->lane#12",
+     "cls": "carry",
+     "states": 17,
+     "identical": 17,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "lane#12->lane#12",
+     "cls": "meet_join",
+     "states": 7,
+     "identical": 7,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "lane#12->lane#13",
+     "cls": "carry",
+     "states": 88,
+     "identical": 88,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "lane#13->#14",
+     "cls": "carry",
+     "states": 16,
+     "identical": 16,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "#14->lowered#15",
+     "cls": "carry",
+     "states": 6,
+     "identical": 6,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seg": "lowered#15->set down#16",
+     "cls": "seat_lower",
+     "states": 3,
+     "identical": 3,
+     "max_arm_joint_diff_deg": 0.0,
+     "cart_shift_m": [
+      0.0,
+      0.0
+     ]
+    }
+   ]
+  },
+  "within_chain": {
+   "wok_plate_rinse": {
+    "states": 470,
+    "repeated": 29,
+    "share": 0.062,
+    "start_equals_end": true
+   },
+   "faucet_open": {
+    "states": 16,
+    "repeated": 0,
+    "share": 0.0,
+    "start_equals_end": false
+   },
+   "lid_off_to_rack": {
+    "states": 205,
+    "repeated": 2,
+    "share": 0.01,
+    "start_equals_end": false
+   },
+   "spider_pot_to_plate": {
+    "states": 516,
+    "repeated": 184,
+    "share": 0.357,
+    "start_equals_end": true
+   },
+   "spatula_fetch": {
+    "states": 249,
+    "repeated": 1,
+    "share": 0.004,
+    "start_equals_end": false
+   }
+  },
+  "reversed_actions": {
+   "faucet_close": "faucet_open reversed (r17seq.py: 2 x lever_s)",
+   "lid_on": "lid_off_to_rack reversed",
+   "spatula_stow": "spatula_fetch reversed (r17seq.py: 2 x spat)",
+   "carrier_out": "carrier_into_pot reversed (arm_checked.json plate_out)"
+  }
+ },
+ "effort": {
+  "final_chains": {
+   "wok_plate_rinse": {
+    "elapsed_s": 275,
+    "play_states": 470,
+    "time_s": 48.9,
+    "elapsed_per_motion_s": 5.6,
+    "candidates_followed": 26
+   },
+   "wok_plate2_rinse": {
+    "elapsed_s": 279,
+    "play_states": 470,
+    "time_s": 48.9,
+    "elapsed_per_motion_s": 5.7,
+    "candidates_followed": 35
+   },
+   "faucet_open": {
+    "elapsed_s": 26,
+    "play_states": 16,
+    "time_s": 3.5,
+    "elapsed_per_motion_s": 7.4,
+    "candidates_followed": 8
+   },
+   "lid_off_to_rack": {
+    "elapsed_s": 133,
+    "play_states": 205,
+    "time_s": 20.2,
+    "elapsed_per_motion_s": 6.6,
+    "candidates_followed": 32
+   },
+   "spider_pot_to_plate": {
+    "elapsed_s": 215,
+    "play_states": 516,
+    "time_s": 52.6,
+    "elapsed_per_motion_s": 4.1,
+    "candidates_followed": 44
+   },
+   "spatula_fetch": {
+    "elapsed_s": 433,
+    "play_states": 249,
+    "time_s": 26.9,
+    "elapsed_per_motion_s": 16.1,
+    "candidates_followed": 32
+   }
+  },
+  "all_saved_runs": {
+   "lever": {
+    "saved_runs": 4,
+    "ok_runs": 3,
+    "elapsed_s": 93.0,
+    "ok_elapsed_s": 68.0
+   },
+   "lid": {
+    "saved_runs": 12,
+    "ok_runs": 2,
+    "elapsed_s": 1673.0,
+    "ok_elapsed_s": 266.0
+   },
+   "spatula": {
+    "saved_runs": 43,
+    "ok_runs": 3,
+    "elapsed_s": 13121.0,
+    "ok_elapsed_s": 1016.0
+   },
+   "spider": {
+    "saved_runs": 14,
+    "ok_runs": 6,
+    "elapsed_s": 2490.0,
+    "ok_elapsed_s": 1347.0
+   },
+   "wok": {
+    "saved_runs": 69,
+    "ok_runs": 6,
+    "elapsed_s": 13291.0,
+    "ok_elapsed_s": 1670.0
+   }
+  },
+  "all_saved_elapsed_h": 8.52,
+  "note": "only the last run per file name is saved, so the history is a lower bound; R15/R16 runs (stir reach, r16chain) did not save elapsed_s"
+ }
+}

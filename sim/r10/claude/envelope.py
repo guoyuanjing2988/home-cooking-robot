@@ -9,8 +9,10 @@ import sys,copy,xml.etree.ElementTree as E
 import numpy as np,mujoco
 from scipy.optimize import differential_evolution
 from scene import build,variants,save
+import arms   # R19: ARM=<id> (default ur5e: 5 kg at 0.35 m, assets/envelope_<tilt>.json, as before)
 def main(tilt):
  cfg=variants()[1];cfg['mount_tilt_deg']=tilt;t,_=build(cfg)
+ arm=arms.current(cfg);PAY,RAD=arms.ARMS[arm]['payload_kg'],arms.ARMS[arm]['com_radius_m']
  tool=t.find(".//body[@name='R_tool']")
  for p in t.iter('body'):
   if tool in list(p):p.remove(tool);break
@@ -23,11 +25,11 @@ def main(tilt):
   for c in d.contact[:d.ncon]:
    if set(map(int,c.geom))<=armgeoms and c.dist<0:return None if detail else 1e5-c.dist
   p=d.site_xpos[sid];mujoco.mj_jac(m,d,jp,jr,p,bid);j=dids[k]
-  base=d.qfrc_bias[j]+5*9.81*jp[2,j]
+  base=d.qfrc_bias[j]+PAY*9.81*jp[2,j]
   # derivative of z wrt joint at offset r is (axis x r).z
   v=np.cross(np.array([0.,0.,1.]),jr[:,j]);vn=np.linalg.norm(v)
-  radius=.35;off=np.zeros(3) if vn<1e-14 else np.sign(base or 1)*radius*v/vn
-  value=abs(base)+5*9.81*radius*vn
+  radius=RAD;off=np.zeros(3) if vn<1e-14 else np.sign(base or 1)*radius*v/vn
+  value=abs(base)+PAY*9.81*radius*vn
   return dict(joint=names[k],q=d.qpos.tolist(),offset_world_m=off.tolist(),torque_Nm=float(value),mount_tilt_deg=tilt) if detail else -value
  for k,n in enumerate(names):
   best=None
@@ -37,5 +39,5 @@ def main(tilt):
    if w and (best is None or w['torque_Nm']>best['torque_Nm']):best=w
   assert best is not None
   vals[n]=best['torque_Nm'];rows.append(best);print(tilt,n,vals[n],flush=True)
- save(f'assets/envelope_{tilt}.json',dict(envelope_Nm=vals,witnesses=rows,rated_payload_kg=5,CoM_radius_m=.35,method=__doc__,source='https://www.universal-robots.com/media/1807465/ur5e_e-series_datasheets_web.pdf'))
+ save(arms.envelope_file(tilt,arm),dict(envelope_Nm=vals,witnesses=rows,rated_payload_kg=PAY,CoM_radius_m=RAD,method=__doc__,source=arms.ARMS[arm]['payload_source'],**({} if arm=='ur5e' else dict(arm=arm,arm_name=arms.ARMS[arm]['name']))))
 if __name__=='__main__':main(int(sys.argv[1]))

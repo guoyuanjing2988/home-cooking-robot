@@ -311,6 +311,8 @@ def build(cfg,held=None,mode='empty'):
  E.indent(tree)
  if cfg.get('r14'):
   import kitchen14;kitchen14.add(tree,cfg)  # R14 storage / dispensing / cooking stations
+ import arms
+ if arms.current(cfg)!='ur5e':arms.swap(tree,arms.current(cfg))  # R19: another arm (ARM=..); the UR5e default is untouched
  return tree,dict(config=cfg,mount_height=height,mandoline_origin=mp.tolist(),mandoline_rotation=R.tolist(),peeler_origin=pp.tolist(),wash_bottom=bottom.tolist(),wash_mouth=mouth.tolist(),wash_normal=(wr@np.array([0,0,1])).tolist(),jet=[-.58,.33,.97] if cfg.get('long_spout') else [-.58,.43,.91],chute_top=chute_top,lever_origin=None if lever_origin is None else lever_origin.tolist(),held=held,mode=mode,raw_objects={n:dict(position=p,size=s,support='raw_tray') for n,p,s in raw})
 GRASP_W={'carrot':.035,'potato':.065,'tomato':.07,'greens':.10,'holder':.030,'catch_tray':.030,'pusher':.030}
 def jaw_q(cfg,held):

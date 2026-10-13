@@ -1,0 +1,827 @@
+{
+ "act": "lever",
+ "file": "results/r17/chain_lever_s+1_final.json",
+ "meshheld": true,
+ "sq": {},
+ "before": {
+  "r17_time_s": 3.5,
+  "recon_time_s": 3.5,
+  "motion_s": 0.75,
+  "dwell_s": 0.0,
+  "join_allowance_s": 0.0,
+  "stored_states": 16,
+  "label_jumps_2pi": 0,
+  "unwrapped_in_range": true,
+  "stops": {
+   "dwells": 0,
+   "joins_stop_and_go": 0,
+   "reversals_gt150": 0,
+   "corners_90_150": 0,
+   "corners_30_90": 0,
+   "turn_le5": 14
+  },
+  "corner_states": [],
+  "kf_idx": [
+   0,
+   15
+  ],
+  "fd_peaks": {
+   "v": [
+    0.0,
+    3.1,
+    7.8,
+    39.4,
+    16.4,
+    5.8,
+    60.0
+   ],
+   "a": [
+    0.0,
+    65.2,
+    161.7,
+    819.3,
+    329.2,
+    120.1,
+    1246.4
+   ],
+   "j": [
+    0.0,
+    1496.0,
+    4220.4,
+    18752.2,
+    6927.9,
+    2748.1,
+    25834.5
+   ]
+  },
+  "stopgo_every_state_s": 8.6,
+  "stop_start_fraction": 0.0,
+  "step_bound_mm": {
+   "max": 40.4
+  },
+  "fastbound_check_m": 0.0
+ },
+ "baseline_check": {
+  "states": 128,
+  "hit_states": 0,
+  "gjk_hit_states": 0,
+  "out_of_range_states": 0,
+  "first_hits": [],
+  "ranges_ok": true,
+  "min_reserve_mm": 5.98,
+  "min_self_mm": 2.08,
+  "max_spacing_mm": 3.835
+ },
+ "segments": [
+  {
+   "a": 0,
+   "b": 15,
+   "fixed": true,
+   "food": 0.0,
+   "r17_s": 0.75
+  }
+ ],
+ "limits": {
+  "same": {
+   "v_lin": 0.1,
+   "v_tcp": 1000000000.0,
+   "w_rot": 45.0,
+   "v_joint": 60.0,
+   "v_cart": 0.25,
+   "a_joint": 1.4,
+   "a_cart": 0.15,
+   "a_tcp": 1.2,
+   "j_joint": 14.0,
+   "j_cart": 1.5,
+   "a_food": 2.0,
+   "pgc": 7.0
+  },
+  "fast": {
+   "v_lin": 0.25,
+   "v_tcp": 0.25,
+   "w_rot": 90.0,
+   "w_rot_wok": 45.0,
+   "v_joint": 180.0,
+   "v_cart": 0.25,
+   "a_joint": 1.4,
+   "a_cart": 0.15,
+   "a_tcp": 1.2,
+   "j_joint": 14.0,
+   "j_cart": 1.5,
+   "a_food": 2.0,
+   "pgc": 7.0
+  },
+  "fastcart": {
+   "v_lin": 0.25,
+   "v_tcp": 0.25,
+   "w_rot": 90.0,
+   "w_rot_wok": 45.0,
+   "v_joint": 180.0,
+   "v_cart": 0.25,
+   "a_joint": 1.4,
+   "a_cart": 0.5,
+   "a_tcp": 1.2,
+   "j_joint": 14.0,
+   "j_cart": 5.0,
+   "a_food": 2.0,
+   "pgc": 7.0
+  }
+ },
+ "R17": {
+  "VW": 0.1,
+  "WW": 45.0,
+  "QW": 60.0,
+  "CW": 0.25,
+  "JOIN": 0.6,
+  "GRASP": 0.8,
+  "APPROACH_M": 0.06
+ },
+ "variants": {
+  "spline": {
+   "rounds": [
+    {
+     "round": 0,
+     "check": {
+      "states": 119,
+      "hit_states": 0,
+      "gjk_hit_states": 0,
+      "out_of_range_states": 0,
+      "first_hits": [],
+      "ranges_ok": true,
+      "min_reserve_mm": 5.98,
+      "min_self_mm": 2.92,
+      "max_spacing_mm": 3.997
+     },
+     "geometry": [
+      {
+       "a": 0,
+       "b": 15,
+       "kind": "fixed",
+       "L": 0.469
+      }
+     ]
+    }
+   ],
+   "final_check": {
+    "states": 119,
+    "hit_states": 0,
+    "gjk_hit_states": 0,
+    "out_of_range_states": 0,
+    "first_hits": [],
+    "ranges_ok": true,
+    "min_reserve_mm": 5.98,
+    "min_self_mm": 2.92,
+    "max_spacing_mm": 3.997
+   },
+   "fixed_piece_dev_mm": 0.7479,
+   "fixed_tcp_off_line_mm": 2.981,
+   "timing": {
+    "same": {
+     "total_s": 5.3,
+     "motion_s": 2.1,
+     "dwell_s": 0.0,
+     "grasp_release_s": 1.6,
+     "approach_s_each": 0.78,
+     "zero_velocity_points": 2,
+     "ramp_s": 2.1,
+     "ramp_fraction": 1.001,
+     "peak_v": [
+      0.0,
+      1.2,
+      3.0,
+      17.9,
+      8.2,
+      2.3,
+      48.9
+     ],
+     "peak_a": [
+      0.0,
+      4.6,
+      14.0,
+      38.8,
+      24.4,
+      8.5,
+      76.7
+     ],
+     "peak_j": [
+      0.0,
+      30.2,
+      70.5,
+      316.1,
+      163.4,
+      56.8,
+      718.3
+     ],
+     "peak_v_tcp": 0.05,
+     "peak_a_tcp": 0.078,
+     "peak_j_tcp": 0.73,
+     "peak_pgc_Nm": 0.0,
+     "peak_pgc_static_Nm": 0,
+     "peak_a_com": 0.0,
+     "worst_ratio": 0.957,
+     "stretched": [],
+     "segments": [
+      {
+       "a": 0,
+       "b": 15,
+       "fixed": true,
+       "time_s": 2.14,
+       "ramp_s": 2.14,
+       "iters": 1,
+       "worst": {
+        "v_joint": 0.814,
+        "a_joint": 0.957,
+        "j_joint": 0.895,
+        "v_tcp": 0.0,
+        "v_obj": 0.0,
+        "w": 0.721,
+        "a_tcp": 0.065
+       },
+       "peaks": {
+        "v": [
+         0.0,
+         1.2,
+         3.0,
+         17.9,
+         8.2,
+         2.3,
+         48.9
+        ],
+        "a": [
+         0.0,
+         4.6,
+         14.0,
+         38.8,
+         24.4,
+         8.5,
+         76.7
+        ],
+        "j": [
+         0.0,
+         30.2,
+         70.5,
+         316.1,
+         163.4,
+         56.8,
+         718.3
+        ],
+        "v_tcp": 0.05,
+        "a_tcp": 0.078,
+        "j_tcp": 0.73,
+        "a_com": 0.0,
+        "pgc_Nm": 0.0,
+        "pgc_static_Nm": null
+       }
+      }
+     ]
+    },
+    "fast": {
+     "total_s": 5.3,
+     "motion_s": 2.1,
+     "dwell_s": 0.0,
+     "grasp_release_s": 1.6,
+     "approach_s_each": 0.78,
+     "zero_velocity_points": 2,
+     "ramp_s": 2.1,
+     "ramp_fraction": 1.001,
+     "peak_v": [
+      0.0,
+      1.2,
+      3.0,
+      17.9,
+      8.2,
+      2.3,
+      48.9
+     ],
+     "peak_a": [
+      0.0,
+      4.6,
+      14.0,
+      38.8,
+      24.4,
+      8.5,
+      76.7
+     ],
+     "peak_j": [
+      0.0,
+      30.2,
+      70.5,
+      316.1,
+      163.4,
+      56.8,
+      718.3
+     ],
+     "peak_v_tcp": 0.05,
+     "peak_a_tcp": 0.078,
+     "peak_j_tcp": 0.73,
+     "peak_pgc_Nm": 0.0,
+     "peak_pgc_static_Nm": 0,
+     "peak_a_com": 0.0,
+     "worst_ratio": 0.957,
+     "stretched": [],
+     "segments": [
+      {
+       "a": 0,
+       "b": 15,
+       "fixed": true,
+       "time_s": 2.14,
+       "ramp_s": 2.14,
+       "iters": 1,
+       "worst": {
+        "v_joint": 0.814,
+        "a_joint": 0.957,
+        "j_joint": 0.895,
+        "v_tcp": 0.0,
+        "v_obj": 0.0,
+        "w": 0.721,
+        "a_tcp": 0.065
+       },
+       "peaks": {
+        "v": [
+         0.0,
+         1.2,
+         3.0,
+         17.9,
+         8.2,
+         2.3,
+         48.9
+        ],
+        "a": [
+         0.0,
+         4.6,
+         14.0,
+         38.8,
+         24.4,
+         8.5,
+         76.7
+        ],
+        "j": [
+         0.0,
+         30.2,
+         70.5,
+         316.1,
+         163.4,
+         56.8,
+         718.3
+        ],
+        "v_tcp": 0.05,
+        "a_tcp": 0.078,
+        "j_tcp": 0.73,
+        "a_com": 0.0,
+        "pgc_Nm": 0.0,
+        "pgc_static_Nm": null
+       }
+      }
+     ]
+    },
+    "fastcart": {
+     "total_s": 5.3,
+     "motion_s": 2.1,
+     "dwell_s": 0.0,
+     "grasp_release_s": 1.6,
+     "approach_s_each": 0.78,
+     "zero_velocity_points": 2,
+     "ramp_s": 2.1,
+     "ramp_fraction": 1.001,
+     "peak_v": [
+      0.0,
+      1.2,
+      3.0,
+      17.9,
+      8.2,
+      2.3,
+      48.9
+     ],
+     "peak_a": [
+      0.0,
+      4.6,
+      14.0,
+      38.8,
+      24.4,
+      8.5,
+      76.7
+     ],
+     "peak_j": [
+      0.0,
+      30.2,
+      70.5,
+      316.1,
+      163.4,
+      56.8,
+      718.3
+     ],
+     "peak_v_tcp": 0.05,
+     "peak_a_tcp": 0.078,
+     "peak_j_tcp": 0.73,
+     "peak_pgc_Nm": 0.0,
+     "peak_pgc_static_Nm": 0,
+     "peak_a_com": 0.0,
+     "worst_ratio": 0.957,
+     "stretched": [],
+     "segments": [
+      {
+       "a": 0,
+       "b": 15,
+       "fixed": true,
+       "time_s": 2.14,
+       "ramp_s": 2.14,
+       "iters": 1,
+       "worst": {
+        "v_joint": 0.814,
+        "a_joint": 0.957,
+        "j_joint": 0.895,
+        "v_tcp": 0.0,
+        "v_obj": 0.0,
+        "w": 0.721,
+        "a_tcp": 0.065
+       },
+       "peaks": {
+        "v": [
+         0.0,
+         1.2,
+         3.0,
+         17.9,
+         8.2,
+         2.3,
+         48.9
+        ],
+        "a": [
+         0.0,
+         4.6,
+         14.0,
+         38.8,
+         24.4,
+         8.5,
+         76.7
+        ],
+        "j": [
+         0.0,
+         30.2,
+         70.5,
+         316.1,
+         163.4,
+         56.8,
+         718.3
+        ],
+        "v_tcp": 0.05,
+        "a_tcp": 0.078,
+        "j_tcp": 0.73,
+        "a_com": 0.0,
+        "pgc_Nm": 0.0,
+        "pgc_static_Nm": null
+       }
+      }
+     ]
+    }
+   },
+   "stored": {
+    "n_params": 112,
+    "pieces": 1
+   }
+  },
+  "blend": {
+   "rounds": [
+    {
+     "round": 0,
+     "check": {
+      "states": 119,
+      "hit_states": 0,
+      "gjk_hit_states": 0,
+      "out_of_range_states": 0,
+      "first_hits": [],
+      "ranges_ok": true,
+      "min_reserve_mm": 5.98,
+      "min_self_mm": 2.92,
+      "max_spacing_mm": 3.997
+     },
+     "geometry": [
+      {
+       "a": 0,
+       "b": 15,
+       "kind": "fixed",
+       "L": 0.469
+      }
+     ]
+    }
+   ],
+   "final_check": {
+    "states": 119,
+    "hit_states": 0,
+    "gjk_hit_states": 0,
+    "out_of_range_states": 0,
+    "first_hits": [],
+    "ranges_ok": true,
+    "min_reserve_mm": 5.98,
+    "min_self_mm": 2.92,
+    "max_spacing_mm": 3.997
+   },
+   "fixed_piece_dev_mm": 0.7479,
+   "fixed_tcp_off_line_mm": 2.981,
+   "timing": {
+    "same": {
+     "total_s": 5.3,
+     "motion_s": 2.1,
+     "dwell_s": 0.0,
+     "grasp_release_s": 1.6,
+     "approach_s_each": 0.78,
+     "zero_velocity_points": 2,
+     "ramp_s": 2.1,
+     "ramp_fraction": 1.001,
+     "peak_v": [
+      0.0,
+      1.2,
+      3.0,
+      17.9,
+      8.2,
+      2.3,
+      48.9
+     ],
+     "peak_a": [
+      0.0,
+      4.6,
+      14.0,
+      38.8,
+      24.4,
+      8.5,
+      76.7
+     ],
+     "peak_j": [
+      0.0,
+      30.2,
+      70.5,
+      316.1,
+      163.4,
+      56.8,
+      718.3
+     ],
+     "peak_v_tcp": 0.05,
+     "peak_a_tcp": 0.078,
+     "peak_j_tcp": 0.73,
+     "peak_pgc_Nm": 0.0,
+     "peak_pgc_static_Nm": 0,
+     "peak_a_com": 0.0,
+     "worst_ratio": 0.957,
+     "stretched": [],
+     "segments": [
+      {
+       "a": 0,
+       "b": 15,
+       "fixed": true,
+       "time_s": 2.14,
+       "ramp_s": 2.14,
+       "iters": 1,
+       "worst": {
+        "v_joint": 0.814,
+        "a_joint": 0.957,
+        "j_joint": 0.895,
+        "v_tcp": 0.0,
+        "v_obj": 0.0,
+        "w": 0.721,
+        "a_tcp": 0.065
+       },
+       "peaks": {
+        "v": [
+         0.0,
+         1.2,
+         3.0,
+         17.9,
+         8.2,
+         2.3,
+         48.9
+        ],
+        "a": [
+         0.0,
+         4.6,
+         14.0,
+         38.8,
+         24.4,
+         8.5,
+         76.7
+        ],
+        "j": [
+         0.0,
+         30.2,
+         70.5,
+         316.1,
+         163.4,
+         56.8,
+         718.3
+        ],
+        "v_tcp": 0.05,
+        "a_tcp": 0.078,
+        "j_tcp": 0.73,
+        "a_com": 0.0,
+        "pgc_Nm": 0.0,
+        "pgc_static_Nm": null
+       }
+      }
+     ]
+    },
+    "fast": {
+     "total_s": 5.3,
+     "motion_s": 2.1,
+     "dwell_s": 0.0,
+     "grasp_release_s": 1.6,
+     "approach_s_each": 0.78,
+     "zero_velocity_points": 2,
+     "ramp_s": 2.1,
+     "ramp_fraction": 1.001,
+     "peak_v": [
+      0.0,
+      1.2,
+      3.0,
+      17.9,
+      8.2,
+      2.3,
+      48.9
+     ],
+     "peak_a": [
+      0.0,
+      4.6,
+      14.0,
+      38.8,
+      24.4,
+      8.5,
+      76.7
+     ],
+     "peak_j": [
+      0.0,
+      30.2,
+      70.5,
+      316.1,
+      163.4,
+      56.8,
+      718.3
+     ],
+     "peak_v_tcp": 0.05,
+     "peak_a_tcp": 0.078,
+     "peak_j_tcp": 0.73,
+     "peak_pgc_Nm": 0.0,
+     "peak_pgc_static_Nm": 0,
+     "peak_a_com": 0.0,
+     "worst_ratio": 0.957,
+     "stretched": [],
+     "segments": [
+      {
+       "a": 0,
+       "b": 15,
+       "fixed": true,
+       "time_s": 2.14,
+       "ramp_s": 2.14,
+       "iters": 1,
+       "worst": {
+        "v_joint": 0.814,
+        "a_joint": 0.957,
+        "j_joint": 0.895,
+        "v_tcp": 0.0,
+        "v_obj": 0.0,
+        "w": 0.721,
+        "a_tcp": 0.065
+       },
+       "peaks": {
+        "v": [
+         0.0,
+         1.2,
+         3.0,
+         17.9,
+         8.2,
+         2.3,
+         48.9
+        ],
+        "a": [
+         0.0,
+         4.6,
+         14.0,
+         38.8,
+         24.4,
+         8.5,
+         76.7
+        ],
+        "j": [
+         0.0,
+         30.2,
+         70.5,
+         316.1,
+         163.4,
+         56.8,
+         718.3
+        ],
+        "v_tcp": 0.05,
+        "a_tcp": 0.078,
+        "j_tcp": 0.73,
+        "a_com": 0.0,
+        "pgc_Nm": 0.0,
+        "pgc_static_Nm": null
+       }
+      }
+     ]
+    },
+    "fastcart": {
+     "total_s": 5.3,
+     "motion_s": 2.1,
+     "dwell_s": 0.0,
+     "grasp_release_s": 1.6,
+     "approach_s_each": 0.78,
+     "zero_velocity_points": 2,
+     "ramp_s": 2.1,
+     "ramp_fraction": 1.001,
+     "peak_v": [
+      0.0,
+      1.2,
+      3.0,
+      17.9,
+      8.2,
+      2.3,
+      48.9
+     ],
+     "peak_a": [
+      0.0,
+      4.6,
+      14.0,
+      38.8,
+      24.4,
+      8.5,
+      76.7
+     ],
+     "peak_j": [
+      0.0,
+      30.2,
+      70.5,
+      316.1,
+      163.4,
+      56.8,
+      718.3
+     ],
+     "peak_v_tcp": 0.05,
+     "peak_a_tcp": 0.078,
+     "peak_j_tcp": 0.73,
+     "peak_pgc_Nm": 0.0,
+     "peak_pgc_static_Nm": 0,
+     "peak_a_com": 0.0,
+     "worst_ratio": 0.957,
+     "stretched": [],
+     "segments": [
+      {
+       "a": 0,
+       "b": 15,
+       "fixed": true,
+       "time_s": 2.14,
+       "ramp_s": 2.14,
+       "iters": 1,
+       "worst": {
+        "v_joint": 0.814,
+        "a_joint": 0.957,
+        "j_joint": 0.895,
+        "v_tcp": 0.0,
+        "v_obj": 0.0,
+        "w": 0.721,
+        "a_tcp": 0.065
+       },
+       "peaks": {
+        "v": [
+         0.0,
+         1.2,
+         3.0,
+         17.9,
+         8.2,
+         2.3,
+         48.9
+        ],
+        "a": [
+         0.0,
+         4.6,
+         14.0,
+         38.8,
+         24.4,
+         8.5,
+         76.7
+        ],
+        "j": [
+         0.0,
+         30.2,
+         70.5,
+         316.1,
+         163.4,
+         56.8,
+         718.3
+        ],
+        "v_tcp": 0.05,
+        "a_tcp": 0.078,
+        "j_tcp": 0.73,
+        "a_com": 0.0,
+        "pgc_Nm": 0.0,
+        "pgc_static_Nm": null
+       }
+      }
+     ]
+    }
+   },
+   "stored": {
+    "n_params": 112,
+    "pieces": 1
+   }
+  }
+ },
+ "notes": [],
+ "elapsed_s": 19
+}

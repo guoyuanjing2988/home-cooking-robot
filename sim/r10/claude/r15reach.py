@@ -114,6 +114,7 @@ elif probe=='stand':
  _,_,b=K.spatula_tool(GRIP);pb=K.STAND['c']+[0,0,K.STAND['h']+.01];p=pb+Rb@b
  r,ch=run(probe,p,Rb@(-K.HD),lambda s:Rb@(s*ex),lambda s:dict(r15_spatula=GRIP,r15_spatula_jaw=s));res=dict(probe='stand',grip_m=GRIP,tcp=p.tolist(),handle_dir=(Rb@K.HD).tolist(),**r);tag=f"stand_g{GRIP:g}"
 os.makedirs('results/r15',exist_ok=True)
-tag+=('_cx'+KV['CARTX'] if 'CARTX' in KV else '')+('_'+KV['TAG'] if 'TAG' in KV else '')
+import arms
+tag+=('_cx'+KV['CARTX'] if 'CARTX' in KV else '')+('_'+KV['TAG'] if 'TAG' in KV else '')+arms.tag()   # R19: _<arm> for a non-UR arm (ARM=..)
 res['plume_m']=PLUME;save(f'results/r15/reach_{tag}.json',res)
 print(json.dumps({k:v for k,v in res.items() if k not in ('cands','best')}|{'best_reserve':res['best'] and res['best']['reserve_mm'],'best_plume':res['best'] and res['best']['plume_mm']},default=str))
