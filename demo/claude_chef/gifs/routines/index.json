@@ -1,0 +1,281 @@
+{
+ "mise_en_place": {
+  "file": "routines/mise_en_place.gif",
+  "arm": "path",
+  "arm_caption": "arm: tomato chain (R11, checked path)",
+  "sim_span_s": [
+   0.0,
+   190.0
+  ],
+  "steps": []
+ },
+ "season_wok": {
+  "file": "routines/season_wok.gif",
+  "arm": "path",
+  "arm_caption": "arm: wok lift + tip (R17 path); tip into the oil cup",
+  "sim_span_s": [
+   190.0,
+   273.0
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/season_wok_s1.gif",
+    "step": "pour_into_wok(source=cup1)",
+    "t": [
+     191.0,
+     199.0
+    ]
+   },
+   {
+    "file": "routines/steps/season_wok_s3.gif",
+    "step": "wait(until=target \u00b0C)",
+    "t": [
+     200.0,
+     245.0
+    ]
+   },
+   {
+    "file": "routines/steps/season_wok_s19.gif",
+    "step": "tip_wok(into=oil_cup)",
+    "t": [
+     246.0,
+     273.0
+    ]
+   }
+  ]
+ },
+ "heat_to": {
+  "file": "routines/heat_to.gif",
+  "arm": "none",
+  "arm_caption": "no arm: knob servo + IR thermometer",
+  "sim_span_s": [
+   283.0,
+   287.0
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/heat_to_s1.gif",
+    "step": "wait(seconds=3)",
+    "t": [
+     284.0,
+     287.0
+    ]
+   }
+  ]
+ },
+ "add_off_heat": {
+  "file": "routines/add_off_heat.gif",
+  "arm": "path",
+  "arm_caption": "arm: cup pour (Mac R19 chain)",
+  "sim_span_s": [
+   287.0,
+   297.0
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/add_off_heat_s1.gif",
+    "step": "pour_into_wok(source=egg)",
+    "t": [
+     288.0,
+     296.0
+    ]
+   }
+  ]
+ },
+ "fry_still": {
+  "file": "routines/fry_still.gif",
+  "arm": "none",
+  "arm_caption": "no arm: the egg fries undisturbed",
+  "sim_span_s": [
+   297.0,
+   352.0
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/fry_still_s0.gif",
+    "step": "wait(seconds=55)",
+    "t": [
+     297.0,
+     352.0
+    ]
+   }
+  ]
+ },
+ "flip_and_fry": {
+  "file": "routines/flip_and_fry.gif",
+  "arm": "path",
+  "arm_caption": "arm: spatula fetch (R18b path); flip stroke not simulated",
+  "sim_span_s": [
+   352.0,
+   403.4
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/flip_and_fry_s0.gif",
+    "step": "flip_egg()",
+    "t": [
+     352.0,
+     383.4
+    ]
+   },
+   {
+    "file": "routines/steps/flip_and_fry_s1.gif",
+    "step": "wait(seconds=20)",
+    "t": [
+     383.4,
+     403.4
+    ]
+   }
+  ]
+ },
+ "take_out": {
+  "file": "routines/take_out.gif",
+  "arm": "path",
+  "arm_caption": "arm: wok plate + rinse (R17, checked path)",
+  "sim_span_s": [
+   403.4,
+   458.8
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/take_out_s1.gif",
+    "step": "tip_wok(into=holding_bowl)",
+    "t": [
+     404.4,
+     458.8
+    ]
+   }
+  ]
+ },
+ "stir_fry": {
+  "file": "routines/stir_fry.gif",
+  "arm": "path",
+  "arm_caption": "arm: spatula fetch (R18b path); strokes: R15",
+  "sim_span_s": [
+   468.8,
+   537.2
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/stir_fry_s1.gif",
+    "step": "stir(seconds=40)",
+    "t": [
+     469.8,
+     537.2
+    ]
+   }
+  ]
+ },
+ "season_and_toss": {
+  "file": "routines/season_and_toss.gif",
+  "arm": "path",
+  "arm_caption": "arm: cup pour (Mac R19 chain), then stir",
+  "sim_span_s": [
+   537.2,
+   630.0
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/season_and_toss_s1.gif",
+    "step": "pour_into_wok(source=cup3)",
+    "t": [
+     538.2,
+     573.6
+    ]
+   },
+   {
+    "file": "routines/steps/season_and_toss_s2.gif",
+    "step": "pour_into_wok(source=cup4)",
+    "t": [
+     573.6,
+     581.6
+    ]
+   },
+   {
+    "file": "routines/steps/season_and_toss_s4.gif",
+    "step": "stir(seconds=20)",
+    "t": [
+     582.6,
+     630.0
+    ]
+   }
+  ]
+ },
+ "drum_add_stir": {
+  "file": "routines/drum_add_stir.gif",
+  "arm": "bench",
+  "arm_caption": "servo drum release (R14 physics, no arm)",
+  "sim_span_s": [
+   693.0,
+   714.5
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/drum_add_stir_s0.gif",
+    "step": "drum_release(stir_seconds=20)",
+    "t": [
+     693.0,
+     714.5
+    ]
+   }
+  ]
+ },
+ "return_and_toss": {
+  "file": "routines/return_and_toss.gif",
+  "arm": "pose",
+  "arm_caption": "arm: bowl pour = cup pour pattern (not checked for the bowl)",
+  "sim_span_s": [
+   721.0,
+   795.8
+  ],
+  "steps": [
+   {
+    "file": "routines/steps/return_and_toss_s1.gif",
+    "step": "pour_into_wok(source=holding_bowl)",
+    "t": [
+     722.0,
+     757.4
+    ]
+   },
+   {
+    "file": "routines/steps/return_and_toss_s3.gif",
+    "step": "stir(seconds=10)",
+    "t": [
+     758.4,
+     795.8
+    ]
+   }
+  ]
+ },
+ "egg_into_hot_oil": {
+  "file": "routines/egg_into_hot_oil.gif",
+  "arm": "path",
+  "arm_caption": "arm: cup pour (Mac R19 chain)",
+  "steps": [
+   {
+    "file": "routines/steps/egg_into_hot_oil_s1.gif",
+    "step": "pour_into_wok(source=cup2)",
+    "t": [
+     274.0,
+     282.0
+    ]
+   },
+   {
+    "file": "routines/steps/egg_into_hot_oil_s3.gif",
+    "step": "wait(until=target \u00b0C)",
+    "t": [
+     283.0,
+     289.0
+    ]
+   },
+   {
+    "file": "routines/steps/egg_into_hot_oil_s6.gif",
+    "step": "pour_into_wok(source=egg)",
+    "t": [
+     290.0,
+     298.0
+    ]
+   }
+  ]
+ }
+}

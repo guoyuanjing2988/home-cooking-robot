@@ -1,0 +1,245 @@
+<title>Cooking Routine Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a parts catalogue for recipes — summary strip, the demo run as a timeline, then the filterable routine catalogue and dish coverage */
+:root {
+  --bg: #f2f3f5; --surface: #ffffff; --ink: #1a2028; --muted: #5a6472; --line: #d8dce2; --soft: #eef1f4;
+  --steel: #2c6a99; --copper: #b4602b; --ok: #2f8a57; --amber: #a87412; --red: #b3412f; --grey: #77808c;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --body: "Barlow", "PingFang SC", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11151a; --surface: #192028; --ink: #e7eaee; --muted: #9aa3af; --line: #2b333d; --soft: #1f2730;
+  --steel: #7db2db; --copper: #e3965d; --ok: #5cc48a; --amber: #e0b04f; --red: #ec7b67; --grey: #9aa3af; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11151a; --surface: #192028; --ink: #e7eaee; --muted: #9aa3af; --line: #2b333d; --soft: #1f2730;
+  --steel: #7db2db; --copper: #e3965d; --ok: #5cc48a; --amber: #e0b04f; --red: #ec7b67; --grey: #9aa3af; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font: 400 15.5px/1.5 var(--body); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 56px; display: grid; gap: 34px; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--copper); }
+h1 { font: 600 clamp(32px, 5vw, 46px)/1.05 var(--display); margin: 6px 0 0; text-wrap: balance; }
+h2 { font: 600 25px/1.1 var(--display); margin: 0; letter-spacing: .01em; text-wrap: balance; }
+.lede { margin: 0; color: var(--muted); max-width: 72ch; }
+header { display: grid; gap: 10px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 8px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; }
+.stat b { display: block; font: 600 30px/1 var(--display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); }
+.why { display: grid; gap: 8px; border-left: 3px solid var(--copper); padding: 4px 0 4px 16px; max-width: 80ch; }
+.why p { margin: 0; }
+.why .mono { font: 400 13px/1.5 var(--mono); color: var(--muted); }
+section { display: grid; gap: 14px; }
+.sub { margin: 0; color: var(--muted); font-size: 14.5px; max-width: 80ch; }
+ol.run { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; counter-reset: s; }
+ol.run li { counter-increment: s; display: grid; grid-template-columns: 34px 54px minmax(0, 1fr); gap: 10px; align-items: baseline;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 8px 12px; }
+ol.run li::before { content: counter(s); font: 500 12px/1 var(--mono); color: var(--muted); }
+ol.run .t { font: 500 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.call { font: 500 14px/1.4 var(--mono); overflow-wrap: anywhere; }
+.call .single { color: var(--grey); }
+.steps { font: 400 12.5px/1.5 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.whyline { font-size: 13.5px; color: var(--muted); }
+.tag { font: 500 11px/1 var(--mono); padding: 3px 6px; border-radius: 3px; border: 1px solid currentColor; white-space: nowrap; margin-left: 6px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.controls input { font: 400 14px var(--body); padding: 7px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); min-width: 0; flex: 1 1 220px; max-width: 320px; }
+button.f { font: 500 12.5px/1 var(--mono); padding: 7px 10px; border-radius: 4px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; }
+button.f[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+button.f:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+.count { font: 400 13px var(--mono); color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 13px 15px; display: grid; gap: 7px; align-content: start; min-width: 0; }
+.strip { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+.strip figure { margin: 0; flex: 0 0 132px; }
+.strip img { width: 132px; height: auto; display: block; border-radius: 3px; background: #0e1014; }
+.strip figcaption { font: 400 10.5px/1.3 var(--mono); color: var(--muted); padding-top: 3px; overflow-wrap: anywhere; }
+.kvl { font: 500 11px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+table.how { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+table.how td { border-top: 1px solid var(--line); padding: 5px 4px; vertical-align: top; }
+table.how td.st { width: 1%; white-space: nowrap; }
+table.how .act { font: 500 11px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+table.how .ms { font: 500 11.5px var(--mono); overflow-wrap: anywhere; }
+table.how .oq { color: var(--red); font-size: 12px; }
+.howwrap { overflow-x: auto; }
+.st-checked_path { color: var(--ok); } .st-checked_old_layout { color: var(--amber); } .st-checked_pose { color: var(--amber); }
+.st-bench_only { color: var(--grey); } .st-planned { color: var(--steel); } .st-no_design { color: var(--red); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font: 400 12.5px var(--mono); color: var(--muted); }
+table.sets { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+table.sets th, table.sets td { text-align: left; border-top: 1px solid var(--line); padding: 6px 8px; vertical-align: top; }
+table.sets th { font: 500 11.5px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+table.sets td.n { font-variant-numeric: tabular-nums; text-align: right; }
+figure.gif { margin: -13px -15px 4px; } figure.gif img { display: block; width: 100%; height: auto; border-radius: 6px 6px 0 0; background: #0e1014; }
+figure.gif figcaption { font: 400 11.5px/1.4 var(--mono); color: var(--muted); padding: 5px 15px 0; }
+.nogif { font: 400 12px/1.4 var(--mono); color: var(--muted); border: 1px dashed var(--line); border-radius: 4px; padding: 8px 10px; }
+.card .head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.card .nm { font: 600 19px/1.15 var(--display); }
+.card .zh { font-size: 15px; color: var(--muted); margin-left: 4px; }
+.card .id { font: 400 12px var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.card p { margin: 0; font-size: 14px; }
+.kv { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 3px 8px; font-size: 13px; }
+.kv dt { color: var(--muted); font: 500 11.5px/1.7 var(--mono); text-transform: uppercase; letter-spacing: .04em; }
+.kv dd { margin: 0; overflow-wrap: anywhere; }
+.chain { font: 400 12.5px/1.5 var(--mono); }
+.quote { font-size: 13px; color: var(--muted); }
+.s-demo { color: var(--copper); } .s-demo_ready { color: var(--steel); } .s-sim_motion_checked { color: var(--ok); }
+.s-needs_check { color: var(--amber); } .s-needs_hardware { color: var(--grey); } .s-two_hands { color: var(--red); }
+.dishes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 8px 18px; }
+details.dish { background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 8px 12px; min-width: 0; }
+details.dish summary { cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) 120px 48px; gap: 10px; align-items: center; list-style: none; }
+details.dish summary::-webkit-details-marker { display: none; }
+.bar { height: 8px; background: var(--soft); border-radius: 4px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--ok); }
+.pct { font: 500 12.5px var(--mono); text-align: right; font-variant-numeric: tabular-nums; }
+details.dish ol { margin: 8px 0 2px; padding-left: 22px; font: 400 12.5px/1.6 var(--mono); }
+details.dish li.no { color: var(--red); }
+.empty { color: var(--muted); font-style: italic; }
+footer { font: 400 13px/1.5 var(--mono); color: var(--muted); }
+footer a { color: var(--steel); }
+@media (max-width: 560px) { ol.run li { grid-template-columns: 26px minmax(0, 1fr); } ol.run .t { grid-column: 2; } ol.run .body { grid-column: 1 / -1; } details.dish summary { grid-template-columns: minmax(0, 1fr) 70px 44px; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">home-cooking-robot · Build Day 13 Oct 2026</div>
+    <h1>Cooking routines</h1>
+    <p class="lede">A routine is a predefined sequence of robot steps that runs straight through, with stop rules from the thermometer and the clock. Claude chooses which routine runs and with what settings. It never waits mid-routine for a decision, and it never invents a motion.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="why">
+    <p><strong>Why routines.</strong> In a real-time run (run04) the stove kept going while Claude thought, about 10 s per decision. Claude released the starch water, then stopped to think before stirring, and the hidden food model logged lumps 9 s later.</p>
+    <p class="mono">t=865 s drum_release (starch water) · 10 s decision · t=874 s starch_lumps: thickened without stirring</p>
+    <p>"Release and stir" is now one routine. A real kitchen needs hundreds of them, extracted from recipes and verified one by one (issue #32).</p>
+  </div>
+
+  <section>
+    <h2 id="runTitle">Demo run</h2>
+    <p class="sub" id="runSub"></p>
+    <ol class="run" id="run"></ol>
+  </section>
+
+  <section>
+    <h2>Routine catalogue</h2>
+    <p class="sub">Extracted phase by phase from Wang Gang's 42 recipes and the home-style meals. The status says how far each routine is from running on the robot.</p>
+    <div class="controls" id="statusF"></div>
+    <div class="controls" id="catF"></div>
+    <div class="controls"><input id="q" type="search" placeholder="Search: 勾芡, egg, steam…" aria-label="Search routines"><span class="count" id="count"></span></div>
+    <div class="grid" id="lib"></div>
+  </section>
+
+  <section>
+    <h2>Movement sets: how the arm does each step</h2>
+    <p class="sub">Every arm motion the routines need, most-used first. Green means a continuous path was collision-checked in the current kitchen; anything else is not yet shown to work.</p>
+    <div class="legend" id="setsLegend"></div>
+    <div class="howwrap" id="sets"></div>
+  </section>
+
+  <section>
+    <h2>Dish coverage</h2>
+    <p class="sub">Each recipe as a sequence of routine calls. A phase counts as covered when a routine type exists for it; red rows are phases no routine covers yet.</p>
+    <div class="dishes" id="dishes"></div>
+  </section>
+
+  <footer>Data: <a href="https://github.com/guoyuanjing2988/home-cooking-robot" target="_blank" rel="noopener">home-cooking-robot</a> research/wanggang_cooking.json, homestyle_meals.json, R19_MOTION_LIBRARY.md · demo: build_day/cook_api.py</footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const STATUS = {demo: 'runs in the demo', demo_ready: 'demo-ready', sim_motion_checked: 'motions checked',
+  needs_check: 'motions unchecked', needs_hardware: 'needs hardware', two_hands: 'needs two hands'};
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const mmss = t => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+const types = DATA.types || [];
+const tag = st => `<span class="tag s-${esc(st)}">${esc(STATUS[st] || st)}</span>`;
+
+(function stats() {
+  const s = DATA.stats || {};
+  const dishes = Object.values(DATA.dishes || {});
+  const full = dishes.filter(d => (d.calls || []).length && d.calls.every(c => c.covered)).length;
+  const inst = dishes.reduce((a, d) => a + (d.calls || []).length, 0);
+  const cov = dishes.reduce((a, d) => a + (d.calls || []).filter(c => c.covered).length, 0);
+  const runnable = types.filter(t => t.status === 'demo' || t.status === 'demo_ready').length || Object.keys(DATA.exec).length;
+  const wg = s.wanggang || {}, hs = s.homestyle || {};
+  const ph = wg.phases_total ? `${(wg.phases_covered || 0) + (hs.steps_covered || 0)}/${wg.phases_total + (hs.steps_total || 0)}` : `${cov}/${inst}`;
+  const items = [[types.length, 'routine types'], [s.routine_calls_total || inst, 'routine calls across all dishes'], [ph, 'recipe steps a routine covers'],
+    [`${full}/${dishes.length}`, 'dishes fully covered'], [Object.keys(DATA.exec).length, 'routines executable in the demo']];
+  document.getElementById('stats').innerHTML = items.map(([b, s]) => `<div class="stat"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('');
+})();
+
+(function run() {
+  const r = DATA.run;
+  if (!r.name) { document.getElementById('run').innerHTML = '<li class="empty">No run yet.</li>'; return; }
+  const seq = r.seq, nR = seq.filter(x => x.routine).length;
+  document.getElementById('runTitle').textContent = `Demo run: 西红柿炒蛋 (${r.name}${r.realtime ? ', real time' : ''})`;
+  document.getElementById('runSub').textContent = `${seq.length} decisions by Claude, ${nR} of them routines. Each routine below ran its steps without stopping for Claude.`;
+  document.getElementById('run').innerHTML = seq.map(x => {
+    const args = Object.entries(x.args).map(([k, v]) => `${k}=${typeof v === 'object' ? (Array.isArray(v) ? v.map(i => typeof i === 'object' ? `${i.what} ${i.grams}g` : i).join(', ') : JSON.stringify(v)) : v}`).join(', ');
+    const steps = x.steps.length ? `<div class="steps">${x.steps.length} steps: ${esc(x.steps.join(' → '))}</div>` : '';
+    return `<li><span class="t">${mmss(x.t)}</span><div class="body"><div class="call ${x.routine ? '' : 'single'}">${esc(x.a)}(${esc(args)})${x.routine ? tag('demo') : '<span class="tag s-needs_hardware">single skill</span>'}${x.ok ? '' : '<span class="tag s-two_hands">refused</span>'}</div>${steps}<div class="whyline">${esc(x.why)}</div></div></li>`;
+  }).join('');
+})();
+
+const ST = {checked_path: 'path checked', checked_old_layout: 'path checked, old layout', checked_pose: 'pose only', bench_only: 'bench only', planned: 'planned, unchecked', no_design: 'no design'};
+const stTag = st => `<span class="tag st-${esc(st)}">${esc(ST[st] || st)}</span>`;
+function howTable(id) {
+  const rows = (DATA.arm || {})[id];
+  if (!rows || !rows.length) return '';
+  return `<div class="howwrap"><table class="how"><tbody>${rows.map(r => `<tr><td class="st">${r.actor === 'arm' || r.status ? stTag(r.status) : ''}</td><td><span class="act">${esc(r.actor)}</span> ${esc(r.step)}${r.movement_set ? ` <span class="ms">${esc(r.movement_set)}${r.new_set ? ' (new)' : ''}</span>` : ''}<div>${esc(r.how)}</div>${r.open_question ? `<div class="oq">${esc(r.open_question)}</div>` : ''}</td></tr>`).join('')}</tbody></table></div>`;
+}
+(function sets() {
+  const S = DATA.sets || {}, el = document.getElementById('sets'); if (!el) return;
+  const L = Object.entries(S).sort((a, b) => (b[1].uses || 0) - (a[1].uses || 0));
+  if (!L.length) { el.innerHTML = '<p class="empty">Not generated yet.</p>'; return; }
+  const by = {}; L.forEach(([, v]) => by[v.status] = (by[v.status] || 0) + 1);
+  document.getElementById('setsLegend').innerHTML = Object.keys(ST).filter(k => by[k]).map(k => `<span>${stTag(k)} ${by[k]}</span>`).join('');
+  el.innerHTML = `<table class="sets"><thead><tr><th>status</th><th>movement set</th><th>how the arm does it</th><th>uses</th></tr></thead><tbody>${L.map(([n, v]) => `<tr><td>${stTag(v.status)}</td><td class="ms">${esc(n)}</td><td>${esc(v.how)}${v.evidence ? `<div class="quote">${esc(v.evidence)}</div>` : ''}</td><td class="n">${v.uses ?? ''}</td></tr>`).join('')}</tbody></table>`;
+})();
+const state = {status: 'all', cat: 'all', q: ''};
+function filters() {
+  const sts = ['all', ...Object.keys(STATUS).filter(s => types.some(t => t.status === s))];
+  const cats = ['all', ...[...new Set(types.map(t => t.category))].sort()];
+  const mk = (id, list, key, label) => document.getElementById(id).innerHTML = list.map(v =>
+    `<button class="f" data-k="${key}" data-v="${esc(v)}" aria-pressed="${state[key] === v}">${esc(label(v))}</button>`).join('');
+  mk('statusF', sts, 'status', v => v === 'all' ? 'all statuses' : `${STATUS[v]} (${types.filter(t => t.status === v).length})`);
+  mk('catF', cats, 'cat', v => v === 'all' ? 'all categories' : `${v} (${types.filter(t => t.category === v).length})`);
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('button.f'); if (!b) return;
+  state[b.dataset.k] = b.dataset.v; filters(); lib();
+});
+document.getElementById('q').addEventListener('input', e => { state.q = e.target.value.trim().toLowerCase(); lib(); });
+function lib() {
+  const L = types.filter(t => (state.status === 'all' || t.status === state.status) && (state.cat === 'all' || t.category === state.cat)
+    && (!state.q || JSON.stringify(t).toLowerCase().includes(state.q)))
+    .sort((a, b) => (b.instances || 0) - (a.instances || 0));
+  document.getElementById('count').textContent = `${L.length} of ${types.length}`;
+  document.getElementById('lib').innerHTML = L.map(t => {
+    const params = (t.parameters || []).map(p => typeof p === 'string' ? p : `${p.name}${p.unit ? ' (' + p.unit + ')' : ''}${p.range || p.typical_range || p.typical ? ' ' + (p.range || p.typical_range || p.typical) : ''}`).join(' · ');
+    const steps = (t.steps || []).map(s => typeof s === 'string' ? s : (s.step || s.name || JSON.stringify(s))).join(' → ');
+    const ms = Array.isArray(t.movement_sets) ? t.movement_sets.join(', ') : (t.movement_sets || '');
+    const g = (DATA.gifs || {})[t.id];
+    const stepsStrip = g && g.steps && g.steps.length ? `<div class="strip">${g.steps.map(x => `<figure><img src="${esc(x.file)}" alt="${esc(x.step)}" loading="lazy"><figcaption>${esc(x.step)}<br>t ${x.t[0]}–${x.t[1]} s</figcaption></figure>`).join('')}</div>` : '';
+    const media = g ? `<figure class="gif"><img src="${esc(g.src)}" alt="${esc(t.name_en)} demo" loading="lazy"><figcaption>${g.own ? 'routine run in the sim · ' : 'related clip · '}${esc(g.cap)}</figcaption></figure>` : '<div class="nogif">No clip yet: its arm motions are not planned.</div>';
+    return `<article class="card">${media}<div class="head"><div><span class="nm">${esc(t.name_en)}</span><span class="zh">${esc(t.name_zh)}</span></div>${tag(t.status)}</div>
+      <div class="id">${esc(t.id)} · ${esc(t.category)} · ${t.instances ?? 0} uses in ${(t.dishes || []).length} dishes</div>
+      <p>${esc(t.purpose)}</p>
+      ${stepsStrip ? `<div class="kvl">Each step, seen from above the wok</div>${stepsStrip}` : ''}
+      ${howTable(t.id)}
+      <dl class="kv">${params ? `<dt>params</dt><dd>${esc(params)}</dd>` : ''}${steps && !(DATA.arm || {})[t.id] ? `<dt>steps</dt><dd class="chain">${esc(steps)}</dd>` : ''}
+      ${t.stop_condition ? `<dt>stop</dt><dd>${esc(t.stop_condition)}</dd>` : ''}${ms ? `<dt>motion</dt><dd>${esc(ms)}</dd>` : ''}
+      ${t.hardware_needed && t.hardware_needed.length ? `<dt>needs</dt><dd>${esc([].concat(t.hardware_needed).join(', '))}</dd>` : ''}</dl>
+      ${t.example_quote ? `<div class="quote">“${esc(t.example_quote)}”</div>` : ''}${t.notes ? `<div class="quote">${esc(t.notes)}</div>` : ''}</article>`;
+  }).join('') || '<p class="empty">No routine matches.</p>';
+}
+(function dishes() {
+  const D = Object.entries(DATA.dishes || {}).map(([id, d]) => {
+    const n = (d.calls || []).length, c = (d.calls || []).filter(x => x.covered).length;
+    return {id, d, n, c, p: n ? c / n : 0};
+  }).sort((a, b) => (b.id === 'xihongshichaodan') - (a.id === 'xihongshichaodan') || b.p - a.p);
+  document.getElementById('dishes').innerHTML = D.map(({id, d, n, c, p}) => `<details class="dish" ${id === 'xihongshichaodan' ? 'open' : ''}>
+    <summary><span>${esc(d.dish || id)}</span><span class="bar"><i style="width:${(p * 100).toFixed(0)}%"></i></span><span class="pct">${c}/${n}</span></summary>
+    <ol>${(d.calls || []).map(x => `<li class="${x.covered ? '' : 'no'}">${esc(x.routine || '—')}${x.params && Object.keys(x.params).length ? ' (' + esc(Object.entries(x.params).map(([k, v]) => k + '=' + (typeof v === 'object' ? JSON.stringify(v) : v)).join(', ')) + ')' : ''}${x.covered ? '' : ' — ' + esc(x.why_not || 'not covered')}</li>`).join('')}</ol></details>`).join('');
+})();
+filters(); lib();
+</script>

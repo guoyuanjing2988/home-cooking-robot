@@ -1,0 +1,5725 @@
+{
+ "name": "run03",
+ "seed": 0,
+ "decisions": [
+  {
+   "step": 0,
+   "decision": {
+    "observe": "The wok is clean, cold and empty and the cooker is off. The hand is free, the cold box is still in the fridge, and 2 whole tomatoes wait on the raw tray.",
+    "why": "The arm can't work over a hot wok, so we prepare everything first, like Wang Gang's ingredients are all ready before the fire goes on. Step one: bring out the 3 beaten eggs from the fridge.",
+    "action": "fridge_fetch",
+    "args": {},
+    "expect": "The cold box with the cup of beaten eggs (150 g, 5 °C) is on the counter and the fridge door is closed. The hand is free again."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_000",
+    "purpose": "cook_decision",
+    "prompt_chars": 6214,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.22837200000000002,
+    "turns": 2,
+    "seconds": 6.47,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "cold box on the counter: beaten eggs 150 g (5 °C)",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 25.0,
+     "heat": 0.0,
+     "load_g": 1.0,
+     "t_s": 25.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 2,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150
+     },
+     "cups": {},
+     "drum": null,
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 25.0,
+    "heat": 0.0,
+    "T_wok": 30.0,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 30.0,
+    "items": {}
+   },
+   "t": 25.0
+  },
+  {
+   "step": 1,
+   "decision": {
+    "observe": "The cold box is on the counter with 150 g of beaten eggs at 5 °C. The wok is cold and empty, the heat is 0, the hand is free, and 2 whole tomatoes are left on the tray.",
+    "why": "Wang Gang uses about 300 g of chopped tomato, which is two tomatoes. The cooker keeps heating while the arm works, so we cut the tomatoes now, with the heat off, and only turn it on once everything is ready.",
+    "action": "prep_tomato",
+    "args": {},
+    "expect": "About 150 g of tomato wedges in the tomato bowl and 1 whole tomato left. The heat stays at 0."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_001",
+    "purpose": "cook_decision",
+    "prompt_chars": 6557,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.227824,
+    "turns": 2,
+    "seconds": 8.08,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "8 wedges cut; tomato bowl now 150 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 70.0,
+     "heat": 0.0,
+     "load_g": 0.0,
+     "t_s": 70.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 1,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 150
+     },
+     "cups": {},
+     "drum": null,
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 70.0,
+    "heat": 0.0,
+    "T_wok": 30.0,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 30.0,
+    "items": {}
+   },
+   "t": 70.0
+  },
+  {
+   "step": 2,
+   "decision": {
+    "observe": "Cold box is on the counter with 150 g of beaten eggs. The tomato bowl holds 150 g of wedges and one whole tomato is left. The heat is off, the wok is dry and empty, and no cups are dosed yet.",
+    "why": "Wang Gang uses about 300 g of tomato, and we only have half of that. The cooker keeps running while the arm is busy, so all the prep has to be done before the heat goes on. Cutting the second tomato now means the wok won't be waiting on prep later.",
+    "action": "prep_tomato",
+    "args": {},
+    "expect": "8 more wedges in the bowl, about 300 g of tomato in total, no whole tomatoes left, and the heat still at 0."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_002",
+    "purpose": "cook_decision",
+    "prompt_chars": 6665,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1282518,
+    "turns": 2,
+    "seconds": 6.29,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "8 wedges cut; tomato bowl now 300 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 115.0,
+     "heat": 0.0,
+     "load_g": 6.0,
+     "t_s": 115.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {},
+     "drum": null,
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 115.0,
+    "heat": 0.0,
+    "T_wok": 30.0,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 30.0,
+    "items": {}
+   },
+   "t": 115.0
+  },
+  {
+   "step": 3,
+   "decision": {
+    "observe": "Cold box is on the counter (150 g beaten eggs at 5 °C), the tomato bowl holds 300 g of wedges, the wok is empty and cold, heat is 0, and no cups are filled yet.",
+    "why": "Wang Gang starts by oiling up the hot wok (润锅). We'll get every ingredient ready before the cooker comes on, so nothing burns while the arm is busy. First comes a generous cup of oil for oiling the wok.",
+    "action": "dose_cup",
+    "args": {
+     "what": "oil",
+     "grams": 30
+    },
+    "expect": "cup1 holds 30 g of oil and the arm holds it. The wok stays cold, with heat at 0."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_003",
+    "purpose": "cook_decision",
+    "prompt_chars": 6775,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.13359580000000001,
+    "turns": 2,
+    "seconds": 8.82,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "cup1: oil 30 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 125.0,
+     "heat": 0.0,
+     "load_g": 1.0,
+     "t_s": 125.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup1": "oil 30 g"
+     },
+     "drum": null,
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 125.0,
+    "heat": 0.0,
+    "T_wok": 30.0,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 30.0,
+    "items": {}
+   },
+   "t": 125.0
+  },
+  {
+   "step": 4,
+   "decision": {
+    "observe": "Wok is cold and empty (no thermometer reading, heat 0). Cold box is on the counter with 150 g beaten eggs, the bowl holds 300 g tomato wedges, and cup1 has 30 g oil for 润锅.",
+    "why": "Get everything ready before the heat goes on. The drum holds the later additions in Wang Gang's order: ketchup, water, starch water, then the finishing oil (明油). It can release each one with the heat on and without the arm, so the eggs and tomato never wait on the robot.",
+    "action": "load_drum",
+    "args": {
+     "items": [
+      {
+       "what": "ketchup",
+       "grams": 5
+      },
+      {
+       "what": "water",
+       "grams": 100
+      },
+      {
+       "what": "starch_water",
+       "grams": 25
+      },
+      {
+       "what": "finishing_oil",
+       "grams": 5
+      }
+     ]
+    },
+    "expect": "The drum is loaded with 4 compartments (ketchup, water, starch water, finishing oil) and seated behind the wok. The wok is still cold, the heat is 0 and no cups are used up."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_004",
+    "purpose": "cook_decision",
+    "prompt_chars": 6882,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1416878,
+    "turns": 2,
+    "seconds": 12.62,
+    "ok": true
+   },
+   "result": {
+    "code": "INVALID_ARGS",
+    "message": "water: grams in [0.5, 60]",
+    "ok": false,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 125.0,
+     "heat": 0.0,
+     "load_g": 0.0,
+     "t_s": 125.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup1": "oil 30 g"
+     },
+     "drum": null,
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 125.0,
+    "heat": 0.0,
+    "T_wok": 30.0,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 30.0,
+    "items": {}
+   },
+   "t": 125.0
+  },
+  {
+   "step": 5,
+   "decision": {
+    "observe": "Wok is empty and dry, heat is off. Cup1 holds 30 g oil, and the eggs (150 g) and tomato wedges (300 g) are on the counter. The drum load was refused because a water compartment holds at most 60 g.",
+    "why": "Wang Gang adds the ketchup, then the water, then the starch slurry, then a splash of 明油, one after another while the tomatoes cook. Loading all four into the drum now means the servo can release each one into the hot wok on cue, without the arm. 60 g is an adequate amount of water for a 1-minute simmer.",
+    "action": "load_drum",
+    "args": {
+     "items": [
+      {
+       "what": "ketchup",
+       "grams": 5
+      },
+      {
+       "what": "water",
+       "grams": 60
+      },
+      {
+       "what": "starch_water",
+       "grams": 25
+      },
+      {
+       "what": "finishing_oil",
+       "grams": 5
+      }
+     ]
+    },
+    "expect": "The drum sits in the holder behind the wok with ketchup 5 g, water 60 g, starch water 25 g and finishing oil 5 g, in that order. The heat stays at 0."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_005",
+    "purpose": "cook_decision",
+    "prompt_chars": 7163,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1356558,
+    "turns": 2,
+    "seconds": 11.04,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "drum in the holder: ketchup 5 g → water 60 g → starch_water 25 g → finishing_oil 5 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 160.0,
+     "heat": 0.0,
+     "load_g": 4.0,
+     "t_s": 160.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup1": "oil 30 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 160.0,
+    "heat": 0.0,
+    "T_wok": 30.0,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 30.0,
+    "items": {}
+   },
+   "t": 160.0
+  },
+  {
+   "step": 6,
+   "decision": {
+    "observe": "The wok is empty, cold and off (heat 0, no thermometer reading). On the counter: 150 g beaten egg and 300 g tomato wedges. cup1 holds 30 g oil, and the drum is loaded with ketchup, water, starch water and finishing oil.",
+    "why": "Wang Gang seasons with 1 g salt and 1 g sugar, and the drum is already full. Dosing these cups now, before any heat, means nothing can burn while the arm is busy at the station later.",
+    "action": "dose_cup",
+    "args": {
+     "what": "salt",
+     "grams": 1
+    },
+    "expect": "cup2 holds 1 g salt. The wok stays cold and the heat stays at 0."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_006",
+    "purpose": "cook_decision",
+    "prompt_chars": 7600,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1343158,
+    "turns": 2,
+    "seconds": 8.18,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "cup2: salt 1 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 170.0,
+     "heat": 0.0,
+     "load_g": 13.0,
+     "t_s": 170.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup1": "oil 30 g",
+      "cup2": "salt 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 170.0,
+    "heat": 0.0,
+    "T_wok": 30.0,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 30.0,
+    "items": {}
+   },
+   "t": 170.0
+  },
+  {
+   "step": 7,
+   "decision": {
+    "observe": "The wok is cold, empty and dry, with the heat off. On the counter: 150 g beaten eggs and 300 g tomato wedges. Cup1 holds 30 g oil and cup2 holds 1 g salt. The drum is loaded with ketchup, water, starch water and finishing oil.",
+    "why": "Wang Gang seasons the tomatoes with 1 g salt and 1 g sugar. I'm dosing the sugar now while the cooker is still off, so the arm is free later when the wok is hot and the eggs and tomatoes need attention.",
+    "action": "dose_cup",
+    "args": {
+     "what": "sugar",
+     "grams": 1
+    },
+    "expect": "Cup3 holds 1 g sugar and the wok is still cold with the heat at 0. All prep is done, so next I heat the wok for 润锅."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_007",
+    "purpose": "cook_decision",
+    "prompt_chars": 7662,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1339518,
+    "turns": 2,
+    "seconds": 8.23,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "cup3: sugar 1 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 180.0,
+     "heat": 0.0,
+     "load_g": 9.0,
+     "t_s": 180.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup1": "oil 30 g",
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 180.0,
+    "heat": 0.0,
+    "T_wok": 30.0,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 30.0,
+    "items": {}
+   },
+   "t": 180.0
+  },
+  {
+   "step": 8,
+   "decision": {
+    "observe": "Everything is ready on the counter: 150 g beaten eggs, 300 g tomato wedges, cup1 oil 30 g, cup2 salt 1 g, cup3 sugar 1 g, and the drum is loaded (ketchup → water → starch water → finishing oil). The wok is empty and cold, the heat is 0 and the arm is free.",
+    "why": "Wang Gang starts with \"Heat up the wok.\" Our prep is done, so we can heat the empty wok on full power before oiling it (润锅). A hot wok plus oil makes a non-stick surface, so the egg won't stick later.",
+    "action": "set_heat",
+    "args": {
+     "level": 1
+    },
+    "expect": "Heat goes to 1.0. The empty wok starts heating; nothing is in it yet, so there's nothing to burn."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_008",
+    "purpose": "cook_decision",
+    "prompt_chars": 7795,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1393278,
+    "turns": 2,
+    "seconds": 9.37,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 1",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 181.0,
+     "heat": 1.0,
+     "load_g": 0.0,
+     "t_s": 181.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup1": "oil 30 g",
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    },
+    "image": "runs/run03/wok_001.png"
+   },
+   "truth": {
+    "t": 181.0,
+    "heat": 1.0,
+    "T_wok": 34.043,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 34.043,
+    "items": {}
+   },
+   "t": 181.0
+  },
+  {
+   "step": 9,
+   "decision": {
+    "observe": "The wok is empty, dry and dark, with no smoke or discolouration. The heat is on full and the thermometer shows nothing yet because there is no oil to read.",
+    "why": "Wang Gang starts by heating up the wok. A short burst on full power heats the bare steel so the oil can coat it. The wok is empty, so waiting is allowed and nothing can burn yet.",
+    "action": "wait",
+    "args": {
+     "seconds": 20
+    },
+    "expect": "The wok should still look empty and dry, maybe with a faint heat sheen, and no smoke alarm. Next I'll turn the heat off and pour in cup1 oil to coat the wok."
+   },
+   "seen_image": "runs/run03/wok_001.png",
+   "claude": {
+    "tag": "run03_009",
+    "purpose": "cook_decision",
+    "prompt_chars": 8011,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.14730139999999997,
+    "turns": 3,
+    "seconds": 10.42,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "waited 20 s",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 201.0,
+     "heat": 1.0,
+     "load_g": 0.0,
+     "t_s": 201.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup1": "oil 30 g",
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    },
+    "image": "runs/run03/wok_002.png"
+   },
+   "truth": {
+    "t": 201.0,
+    "heat": 1.0,
+    "T_wok": 112.646,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 112.646,
+    "items": {}
+   },
+   "t": 201.0
+  },
+  {
+   "step": 10,
+   "decision": {
+    "observe": "The wok is empty, dry and dark with no smoke. The thermometer shows nothing because there is no oil yet. It has been on full heat for 20 s and the cold box, tomato wedges, oil cup and drum are all ready.",
+    "why": "Wang Gang starts by heating the wok, then adds oil to coat it. The dry wok has had 20 s at full power, so it is hot. Pouring needs the arm over the wok, so we turn the heat off (离火) first and then pour the oil.",
+    "action": "set_heat",
+    "args": {
+     "level": 0
+    },
+    "expect": "The heat reads 0 and the wok stays hot and empty, ready for pour_into_wok(cup1) with the 30 g of oil."
+   },
+   "seen_image": "runs/run03/wok_002.png",
+   "claude": {
+    "tag": "run03_010",
+    "purpose": "cook_decision",
+    "prompt_chars": 8106,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1483842,
+    "turns": 3,
+    "seconds": 8.98,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 0",
+    "ok": true,
+    "sensors": {
+     "thermo_C": null,
+     "thermo_src": "dry",
+     "elapsed_s": 202.0,
+     "heat": 0.0,
+     "load_g": 0.0,
+     "t_s": 202.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup1": "oil 30 g",
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 202.0,
+    "heat": 0.0,
+    "T_wok": 112.412,
+    "oil_g": 0.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [],
+    "load_g": 0.0,
+    "wok_C": 112.412,
+    "items": {}
+   },
+   "t": 202.0
+  },
+  {
+   "step": 11,
+   "decision": {
+    "observe": "The wok is empty and dry after 20 s on full power, and the thermometer shows nothing yet (\"dry\"). The heat is now off, so the arm can work over the wok. Cup1 holds 30 g of oil.",
+    "why": "Wang Gang starts with \"Heat up the wok / Add some oil to oil up the wok.\" The wok is hot, so I pour the oil in to coat it (润锅) and stop the eggs from sticking later. The heat stays off while the arm is over the wok, as the plume rule requires.",
+    "action": "pour_into_wok",
+    "args": {
+     "source": "cup1"
+    },
+    "expect": "30 g of oil spreads in the hot wok and the load reads about 30 g. The thermometer should start giving an oil temperature, probably well above room temperature."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_011",
+    "purpose": "cook_decision",
+    "prompt_chars": 8048,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1378638,
+    "turns": 2,
+    "seconds": 8.23,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "poured oil 30 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 104.5,
+     "thermo_src": "oil",
+     "elapsed_s": 210.0,
+     "heat": 0.0,
+     "load_g": 10.0,
+     "t_s": 210.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [],
+     "plate": []
+    },
+    "image": "runs/run03/wok_003.png"
+   },
+   "truth": {
+    "t": 210.0,
+    "heat": 0.0,
+    "T_wok": 104.487,
+    "oil_g": 30.0,
+    "film_g": 0.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     }
+    ],
+    "load_g": 30.0,
+    "wok_C": 104.487,
+    "items": {
+     "oil": {
+      "grams": 30.0
+     }
+    }
+   },
+   "t": 210.0
+  },
+  {
+   "step": 12,
+   "decision": {
+    "observe": "A small amber pool of oil sits in the centre of the dark, preheated wok. The thermometer reads 104.5 °C and the heat is off, so the oil is hot enough to coat the steel.",
+    "why": "Wang Gang's 润锅: heat the wok, oil it, then pour the oil out. The wok is hot and oiled, and the heat is already off, so tipping is allowed. Tipping the wok runs the hot oil over its walls to season them before it goes into the oil cup. Next we add fresh oil for the eggs and bring it to 120 °C.",
+    "action": "tip_wok",
+    "args": {
+     "into": "oil_cup"
+    },
+    "expect": "The wok comes back to the cooker with a glossy, seasoned surface and almost no free oil. The oil cup holds about 25–30 g of oil, and the wok temperature drops slightly."
+   },
+   "seen_image": "runs/run03/wok_003.png",
+   "claude": {
+    "tag": "run03_012",
+    "purpose": "cook_decision",
+    "prompt_chars": 8289,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1534852,
+    "turns": 3,
+    "seconds": 12.12,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "wok emptied into oil_cup: oil",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 99.2,
+     "thermo_src": "oil",
+     "elapsed_s": 237.0,
+     "heat": 0.0,
+     "load_g": 0.0,
+     "t_s": 237.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 237.0,
+    "heat": 0.0,
+    "T_wok": 99.5,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     }
+    ],
+    "load_g": 3.0,
+    "wok_C": 99.5,
+    "items": {}
+   },
+   "t": 237.0
+  },
+  {
+   "step": 13,
+   "decision": {
+    "observe": "润锅 done: the wok is empty with a thin oil film, the thermometer reads 99 °C, and the heat is off. The used oil is in the oil cup. Eggs (150 g) and tomato wedges (300 g) are on the counter, salt and sugar are in cups, and the drum is loaded.",
+    "why": "The wok is seasoned, so now we need fresh oil to fry the eggs. Wang Gang adds the beaten egg when the oil reaches 120 °C. First the station doses about 20 g of oil into a new cup while the heat is off, so nothing can burn while the arm is busy.",
+    "action": "dose_cup",
+    "args": {
+     "what": "oil",
+     "grams": 20
+    },
+    "expect": "A new cup holds 20 g of oil. The wok stays empty and cools a little, to about 95 °C."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_013",
+    "purpose": "cook_decision",
+    "prompt_chars": 8285,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1250078,
+    "turns": 2,
+    "seconds": 8.17,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "cup1: oil 20 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 96.5,
+     "thermo_src": "oil",
+     "elapsed_s": 247.0,
+     "heat": 0.0,
+     "load_g": 0.0,
+     "t_s": 247.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g",
+      "cup1": "oil 20 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 247.0,
+    "heat": 0.0,
+    "T_wok": 97.624,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     }
+    ],
+    "load_g": 3.0,
+    "wok_C": 97.624,
+    "items": {}
+   },
+   "t": 247.0
+  },
+  {
+   "step": 14,
+   "decision": {
+    "observe": "The wok is empty and greased after the oil pour-out, sitting at 96.5 °C with the heat off. Cup1 holds 20 g of fresh frying oil, the beaten eggs are on the counter and all four drum compartments are still loaded.",
+    "why": "The wok has been oiled and the oil poured out, as Wang Gang does. Next comes the frying oil for the eggs. The arm has to pour over the wok, so this has to happen while the heat is still off. After that we heat the oil to his 120 °C cue.",
+    "action": "pour_into_wok",
+    "args": {
+     "source": "cup1"
+    },
+    "expect": "20 g of oil lands in the warm wok. The thermometer should read the oil at about 90–95 °C, which is under 120 °C. Next we turn the heat on and watch for 120 °C."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_014",
+    "purpose": "cook_decision",
+    "prompt_chars": 8403,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.13800379999999998,
+    "turns": 2,
+    "seconds": 7.96,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "poured oil 20 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 92.3,
+     "thermo_src": "oil",
+     "elapsed_s": 255.0,
+     "heat": 0.0,
+     "load_g": 27.0,
+     "t_s": 255.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_004.png"
+   },
+   "truth": {
+    "t": 255.0,
+    "heat": 0.0,
+    "T_wok": 92.776,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "load_g": 23.0,
+    "wok_C": 92.776,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     }
+    }
+   },
+   "t": 255.0
+  },
+  {
+   "step": 15,
+   "decision": {
+    "observe": "The wok holds a small amber pool of 20 g fresh oil in the centre. The thermometer reads 92 °C and the heat is off. No smoke.",
+    "why": "Wang Gang adds the beaten egg only when the oil reaches 120 °C. At 92 °C the oil is too cool, so I bring it up on medium heat. Medium keeps such a thin layer of oil from overshooting, so I can catch 120 °C exactly.",
+    "action": "set_heat",
+    "args": {
+     "level": 0.5
+    },
+    "expect": "The cooker comes on at 0.5 and the oil temperature starts to climb from about 92 °C toward 120 °C over the next several seconds."
+   },
+   "seen_image": "runs/run03/wok_004.png",
+   "claude": {
+    "tag": "run03_015",
+    "purpose": "cook_decision",
+    "prompt_chars": 8634,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15067339999999999,
+    "turns": 3,
+    "seconds": 9.37,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 0.5",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 96.1,
+     "thermo_src": "oil",
+     "elapsed_s": 256.0,
+     "heat": 0.5,
+     "load_g": 22.0,
+     "t_s": 256.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_005.png"
+   },
+   "truth": {
+    "t": 256.0,
+    "heat": 0.5,
+    "T_wok": 94.518,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "load_g": 23.0,
+    "wok_C": 94.518,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     }
+    }
+   },
+   "t": 256.0
+  },
+  {
+   "step": 16,
+   "decision": {
+    "observe": "The wok holds a small, clear amber pool of fresh oil in the centre with no smoke. The thermometer reads 96 °C at half power.",
+    "why": "Wang Gang adds the egg only once the oil reaches 120 °C. It is climbing about 4 °C per second, so a short wait should get it there. Pouring the egg needs the heat off, and the oil cools a little when the heat goes off, so I aim slightly above 120 °C.",
+    "action": "wait",
+    "args": {
+     "seconds": 6
+    },
+    "expect": "Oil at roughly 115–125 °C, shimmering slightly, still no smoke. Then I set the heat to 0 and pour in the beaten egg."
+   },
+   "seen_image": "runs/run03/wok_005.png",
+   "claude": {
+    "tag": "run03_016",
+    "purpose": "cook_decision",
+    "prompt_chars": 8721,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1521044,
+    "turns": 3,
+    "seconds": 9.56,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "waited 6 s",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 106.9,
+     "thermo_src": "oil",
+     "elapsed_s": 262.0,
+     "heat": 0.5,
+     "load_g": 16.0,
+     "t_s": 262.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_006.png"
+   },
+   "truth": {
+    "t": 262.0,
+    "heat": 0.5,
+    "T_wok": 104.858,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "load_g": 23.0,
+    "wok_C": 104.858,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     }
+    }
+   },
+   "t": 262.0
+  },
+  {
+   "step": 17,
+   "decision": {
+    "observe": "The wok holds a thin, clear pool of oil in the centre with no smoke. The thermometer reads 107 °C at half power, up about 11 °C in the last 6 s.",
+    "why": "Wang Gang adds the beaten egg when the oil reaches 120 °C. We're at 107 °C and climbing, so we heat for another 6 s. The cooker has to switch off for the pour, and the oil cools a little then, so it should be close to 120 °C when the egg goes in.",
+    "action": "wait",
+    "args": {
+     "seconds": 6
+    },
+    "expect": "Oil at about 117–120 °C and still clear, with no smoke. Next I set the heat to 0 and pour in the egg."
+   },
+   "seen_image": "runs/run03/wok_006.png",
+   "claude": {
+    "tag": "run03_017",
+    "purpose": "cook_decision",
+    "prompt_chars": 8817,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.152814,
+    "turns": 3,
+    "seconds": 9.0,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "waited 6 s",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 115.5,
+     "thermo_src": "oil",
+     "elapsed_s": 268.0,
+     "heat": 0.5,
+     "load_g": 32.0,
+     "t_s": 268.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_007.png"
+   },
+   "truth": {
+    "t": 268.0,
+    "heat": 0.5,
+    "T_wok": 115.013,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "load_g": 23.0,
+    "wok_C": 115.013,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     }
+    }
+   },
+   "t": 268.0
+  },
+  {
+   "step": 18,
+   "decision": {
+    "observe": "The wok is clean and glossy, with a pool of oil in the centre. The thermometer reads 115.5 °C at half power, so the oil is just short of Wang Gang's 120 °C.",
+    "why": "Wang Gang adds the egg when the oil reaches 120 °C. The heat has to go off before the arm pours, and the oil cools while the egg goes in. So we let it climb a few degrees past 120 °C first. Then the egg lands in oil at about 120 °C.",
+    "action": "wait",
+    "args": {
+     "seconds": 6
+    },
+    "expect": "The oil rises to about 124–128 °C and shimmers, with no smoke. Next I set the heat to 0 and pour in the beaten egg."
+   },
+   "seen_image": "runs/run03/wok_007.png",
+   "claude": {
+    "tag": "run03_018",
+    "purpose": "cook_decision",
+    "prompt_chars": 8910,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15350999999999998,
+    "turns": 3,
+    "seconds": 10.08,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "waited 6 s",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 125.1,
+     "thermo_src": "oil",
+     "elapsed_s": 274.0,
+     "heat": 0.5,
+     "load_g": 16.0,
+     "t_s": 274.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_008.png"
+   },
+   "truth": {
+    "t": 274.0,
+    "heat": 0.5,
+    "T_wok": 124.978,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "load_g": 23.0,
+    "wok_C": 124.978,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     }
+    }
+   },
+   "t": 274.0
+  },
+  {
+   "step": 19,
+   "decision": {
+    "observe": "The wok camera shows a pool of amber oil in the centre of the wok. It is thin and glossy, with no smoke. The thermometer reads 125 °C, heat is at 0.5, and the smoke detector is off.",
+    "why": "Wang Gang adds the beaten egg once the oil reaches 120 °C, and it is 125 °C now. The arm will be over the wok to pour, so the cooker must go off first (离火). The oil loses only a few degrees in the time that takes, so the egg still lands in hot oil.",
+    "action": "set_heat",
+    "args": {
+     "level": 0
+    },
+    "expect": "Heat goes to 0 and the oil stays at about 123–125 °C, so the next step can safely pour in the egg."
+   },
+   "seen_image": "runs/run03/wok_008.png",
+   "claude": {
+    "tag": "run03_019",
+    "purpose": "cook_decision",
+    "prompt_chars": 9003,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1517328,
+    "turns": 3,
+    "seconds": 8.49,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 0",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 123.3,
+     "thermo_src": "oil",
+     "elapsed_s": 275.0,
+     "heat": 0.0,
+     "load_g": 18.0,
+     "t_s": 275.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "egg": 150,
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_009.png"
+   },
+   "truth": {
+    "t": 275.0,
+    "heat": 0.0,
+    "T_wok": 124.719,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "load_g": 23.0,
+    "wok_C": 124.719,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     }
+    }
+   },
+   "t": 275.0
+  },
+  {
+   "step": 20,
+   "decision": {
+    "observe": "The thermometer reads 123 °C with the heat off. The camera shows a pool of clear amber oil in the bottom of the wok, with no smoke.",
+    "why": "Wang Gang adds the beaten egg when the oil reaches 120 °C. We're at 123 °C and the heat is already off, which the arm needs before it can pour over the wok. The 8-second pour will bring the oil down to about 120 °C, so the eggs land at his temperature.",
+    "action": "pour_into_wok",
+    "args": {
+     "source": "egg"
+    },
+    "expect": "Yellow liquid egg spreads across the bottom of the wok and starts to puff and set at the edges. The thermometer should drop to around 100–115 °C, so next I'll turn the heat to low (0.3) to fry the egg for 1 minute."
+   },
+   "seen_image": "runs/run03/wok_009.png",
+   "claude": {
+    "tag": "run03_020",
+    "purpose": "cook_decision",
+    "prompt_chars": 9090,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.152671,
+    "turns": 3,
+    "seconds": 8.76,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "poured egg 150 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 123.0,
+     "thermo_src": "oil",
+     "elapsed_s": 283.0,
+     "heat": 0.0,
+     "load_g": 163.0,
+     "t_s": 283.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_010.png"
+   },
+   "truth": {
+    "t": 283.0,
+    "heat": 0.0,
+    "T_wok": 122.673,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     }
+    ],
+    "egg": {
+     "g": 150.0,
+     "T_down": 5.0,
+     "T_up": 5.0,
+     "set_down": 0.0,
+     "set_up": 0.0,
+     "brown_down": 0.0,
+     "brown_up": 0.0,
+     "burnt": false,
+     "pieces": 1,
+     "in_sauce_s": 0.0,
+     "flipped": false
+    },
+    "load_g": 173.0,
+    "wok_C": 122.673,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     },
+     "egg": {
+      "grams": 150.0
+     }
+    }
+   },
+   "t": 283.0
+  },
+  {
+   "step": 21,
+   "decision": {
+    "observe": "The beaten egg has spread into a pale yellow, still-liquid disc in the oil, with a few small sizzle bubbles at the edge. The thermometer reads 123 °C and the heat is off.",
+    "why": "The egg went in at about 120 °C, as Wang Gang says. Now he fries it on low heat for 1 minute until it sets. The cooker is off, so I turn it to low (0.3) to keep the oil hot without browning the egg too fast.",
+    "action": "set_heat",
+    "args": {
+     "level": 0.3
+    },
+    "expect": "The heat goes to 0.3 and the thermometer stays around 115–125 °C. The egg edges start to set and turn opaque."
+   },
+   "seen_image": "runs/run03/wok_010.png",
+   "claude": {
+    "tag": "run03_021",
+    "purpose": "cook_decision",
+    "prompt_chars": 9201,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15170659999999997,
+    "turns": 3,
+    "seconds": 8.34,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 0.3",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 121.9,
+     "thermo_src": "oil",
+     "elapsed_s": 284.0,
+     "heat": 0.3,
+     "load_g": 171.0,
+     "t_s": 284.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_011.png"
+   },
+   "truth": {
+    "t": 284.0,
+    "heat": 0.3,
+    "T_wok": 122.235,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     }
+    ],
+    "egg": {
+     "g": 150.0,
+     "T_down": 9.297,
+     "T_up": 5.078,
+     "set_down": 0.0,
+     "set_up": 0.0,
+     "brown_down": 0.0,
+     "brown_up": 0.0,
+     "burnt": false,
+     "pieces": 1,
+     "in_sauce_s": 0.0,
+     "flipped": false
+    },
+    "load_g": 173.0,
+    "wok_C": 122.235,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     },
+     "egg": {
+      "grams": 150.0
+     }
+    }
+   },
+   "t": 284.0
+  },
+  {
+   "step": 22,
+   "decision": {
+    "observe": "The beaten egg has spread into one pale-yellow disc in the middle of the wok. Small oil bubbles sizzle around the edge and the top still looks wet and glossy. The thermometer reads 122 °C with heat at 0.3 (low).",
+    "why": "Wang Gang says to fry on low heat for about 1 minute, until the egg is consolidated. The pour went in right at the 120 °C cue. Now we leave it alone for 30 s so the bottom can set, then check before the flip.",
+    "action": "wait",
+    "args": {
+     "seconds": 30
+    },
+    "expect": "The edges are set and turning slightly golden, and the top is less runny. The oil should stay at about 115–135 °C with no smoke."
+   },
+   "seen_image": "runs/run03/wok_011.png",
+   "claude": {
+    "tag": "run03_022",
+    "purpose": "cook_decision",
+    "prompt_chars": 9289,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1539844,
+    "turns": 3,
+    "seconds": 8.63,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "waited 30 s",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 124.9,
+     "thermo_src": "oil",
+     "elapsed_s": 314.0,
+     "heat": 0.3,
+     "load_g": 175.0,
+     "t_s": 314.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_012.png"
+   },
+   "truth": {
+    "t": 314.0,
+    "heat": 0.3,
+    "T_wok": 124.125,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     }
+    ],
+    "egg": {
+     "g": 150.0,
+     "T_down": 74.944,
+     "T_up": 21.61,
+     "set_down": 0.186,
+     "set_up": 0.0,
+     "brown_down": 0.011,
+     "brown_up": 0.0,
+     "burnt": false,
+     "pieces": 1,
+     "in_sauce_s": 0.0,
+     "flipped": false
+    },
+    "load_g": 173.0,
+    "wok_C": 124.125,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     },
+     "egg": {
+      "grams": 150.0
+     }
+    }
+   },
+   "t": 314.0
+  },
+  {
+   "step": 23,
+   "decision": {
+    "observe": "The egg is one round, pale-yellow pancake. Its edges are set and slightly golden, and small oil bubbles are sizzling around the rim. The top still looks a little glossy and wet. Oil is at 125 °C on low heat (0.3), with no smoke.",
+    "why": "Wang Gang fries the egg on low heat for one full minute until it holds together. It has had only 30 s, so the centre is still wet on top. The oil is holding at a gentle 125 °C, so there is no risk of burning. We wait another 30 s before flipping.",
+    "action": "wait",
+    "args": {
+     "seconds": 30
+    },
+    "expect": "The egg is firm all the way through, with a matte top and light golden edges. The oil stays around 120–130 °C, and then it is ready to flip."
+   },
+   "seen_image": "runs/run03/wok_012.png",
+   "claude": {
+    "tag": "run03_023",
+    "purpose": "cook_decision",
+    "prompt_chars": 9388,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15594039999999998,
+    "turns": 3,
+    "seconds": 10.22,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "waited 30 s",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 136.3,
+     "thermo_src": "oil",
+     "elapsed_s": 344.0,
+     "heat": 0.3,
+     "load_g": 166.0,
+     "t_s": 344.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_013.png"
+   },
+   "truth": {
+    "t": 344.0,
+    "heat": 0.3,
+    "T_wok": 135.762,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     }
+    ],
+    "egg": {
+     "g": 150.0,
+     "T_down": 98.974,
+     "T_up": 44.212,
+     "set_down": 0.884,
+     "set_up": 0.0,
+     "brown_down": 0.057,
+     "brown_up": 0.0,
+     "burnt": false,
+     "pieces": 1,
+     "in_sauce_s": 0.0,
+     "flipped": false
+    },
+    "load_g": 173.0,
+    "wok_C": 135.762,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     },
+     "egg": {
+      "grams": 150.0
+     }
+    }
+   },
+   "t": 344.0
+  },
+  {
+   "step": 24,
+   "decision": {
+    "observe": "The egg has set into one round pale-yellow pancake with a golden-orange patch in the middle where it touches the hot spot. The edges are dry with small oil bubbles around them. The oil is at 136 °C on low heat (0.3) after about 60 s of frying.",
+    "why": "Wang Gang says to fry on low heat for 1 minute until the egg is consolidated, then flip it. It has been a minute, the egg holds together as one piece and the centre is turning golden. Flipping now browns the other side before the underside burns.",
+    "action": "flip_egg",
+    "args": {},
+    "expect": "The egg flips over in one piece and shows a golden-brown cooked side. The oil temperature stays at about 135–145 °C and nothing smokes."
+   },
+   "seen_image": "runs/run03/wok_013.png",
+   "claude": {
+    "tag": "run03_024",
+    "purpose": "cook_decision",
+    "prompt_chars": 9484,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15517,
+    "turns": 3,
+    "seconds": 8.7,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "spatula taken from its rest first (27.4 s); egg turned over",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 146.5,
+     "thermo_src": "oil",
+     "elapsed_s": 375.4,
+     "heat": 0.3,
+     "load_g": 178.0,
+     "t_s": 375.4,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_014.png"
+   },
+   "truth": {
+    "t": 375.4,
+    "heat": 0.3,
+    "T_wok": 146.649,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     }
+    ],
+    "egg": {
+     "g": 147.004,
+     "T_down": 62.732,
+     "T_up": 100.0,
+     "set_down": 0.002,
+     "set_up": 0.987,
+     "brown_down": 0.0,
+     "brown_up": 0.197,
+     "burnt": false,
+     "pieces": 4,
+     "in_sauce_s": 0.0,
+     "flipped": true
+    },
+    "load_g": 170.004,
+    "wok_C": 146.649,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     },
+     "egg": {
+      "grams": 147.004
+     }
+    }
+   },
+   "t": 375.4
+  },
+  {
+   "step": 25,
+   "decision": {
+    "observe": "The egg has been flipped and has set into firm yellow pieces with golden-brown spots and no runny liquid left. The oil reads 146 °C and is still climbing slowly on low heat (0.3).",
+    "why": "Wang Gang flips the egg and fries the other side, then takes it out once it's done. The second side only needs a short time on low heat to set and pick up light colour. Waiting 20 s keeps the oil well below the 210 °C smoke threshold.",
+    "action": "wait",
+    "args": {
+     "seconds": 20
+    },
+    "expect": "The underside sets and turns light golden, and the thermometer reads about 150–155 °C. Next I'll turn the heat off and tip the egg into the holding bowl."
+   },
+   "seen_image": "runs/run03/wok_014.png",
+   "claude": {
+    "tag": "run03_025",
+    "purpose": "cook_decision",
+    "prompt_chars": 9670,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15561199999999997,
+    "turns": 3,
+    "seconds": 10.17,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "waited 20 s",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 151.4,
+     "thermo_src": "oil",
+     "elapsed_s": 395.4,
+     "heat": 0.3,
+     "load_g": 156.0,
+     "t_s": 395.4,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_015.png"
+   },
+   "truth": {
+    "t": 395.4,
+    "heat": 0.3,
+    "T_wok": 149.193,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     }
+    ],
+    "egg": {
+     "g": 145.947,
+     "T_down": 100.0,
+     "T_up": 95.157,
+     "set_down": 0.692,
+     "set_up": 0.997,
+     "brown_down": 0.074,
+     "brown_up": 0.197,
+     "burnt": false,
+     "pieces": 4,
+     "in_sauce_s": 0.0,
+     "flipped": true
+    },
+    "load_g": 168.947,
+    "wok_C": 149.193,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     },
+     "egg": {
+      "grams": 145.947
+     }
+    }
+   },
+   "t": 395.4
+  },
+  {
+   "step": 26,
+   "decision": {
+    "observe": "The egg is fully set into fluffy yellow pieces with golden-brown patches on the flipped side and no runny liquid left. The oil reads 151 °C and is still rising at heat 0.3, and the spatula is in hand.",
+    "why": "Wang Gang: \"When it's done, take out the egg.\" Both sides are set and golden. If we keep frying, the egg turns dry and brown. Tipping the wok needs the heat off first (离火), so we cut the power now. Then the egg goes into the holding bowl and gets added back at the end.",
+    "action": "set_heat",
+    "args": {
+     "level": 0
+    },
+    "expect": "Heat goes to 0 and the oil temperature starts to drop slowly from about 151 °C. The egg looks the same, ready for tip_wok into the holding bowl."
+   },
+   "seen_image": "runs/run03/wok_015.png",
+   "claude": {
+    "tag": "run03_026",
+    "purpose": "cook_decision",
+    "prompt_chars": 9596,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.154806,
+    "turns": 3,
+    "seconds": 9.15,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 0",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 150.6,
+     "thermo_src": "oil",
+     "elapsed_s": 396.4,
+     "heat": 0.0,
+     "load_g": 182.0,
+     "t_s": 396.4,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_016.png"
+   },
+   "truth": {
+    "t": 396.4,
+    "heat": 0.0,
+    "T_wok": 148.29,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     }
+    ],
+    "egg": {
+     "g": 145.76,
+     "T_down": 100.0,
+     "T_up": 95.102,
+     "set_down": 0.713,
+     "set_up": 0.997,
+     "brown_down": 0.079,
+     "brown_up": 0.197,
+     "burnt": false,
+     "pieces": 4,
+     "in_sauce_s": 0.0,
+     "flipped": true
+    },
+    "load_g": 168.76,
+    "wok_C": 148.29,
+    "items": {
+     "oil": {
+      "grams": 20.0
+     },
+     "egg": {
+      "grams": 145.76
+     }
+    }
+   },
+   "t": 396.4
+  },
+  {
+   "step": 27,
+   "decision": {
+    "observe": "The egg is set into golden pieces with brown spots on both sides, and it isn't burnt. The oil reads 151 °C, the heat is off and 182 g is in the wok.",
+    "why": "Wang Gang: \"When it's done, take out the egg.\" Both sides are set and golden, so the egg comes out now before it overcooks. It goes into the holding bowl to be added back at the end. The heat is already off, so the arm can lift the wok.",
+    "action": "tip_wok",
+    "args": {
+     "into": "holding_bowl"
+    },
+    "expect": "The egg is in the holding bowl and the wok is back on the cooker with only a thin film of oil, a little cooler (about 130–140 °C), ready for the tomato."
+   },
+   "seen_image": "runs/run03/wok_016.png",
+   "claude": {
+    "tag": "run03_027",
+    "purpose": "cook_decision",
+    "prompt_chars": 9576,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1539276,
+    "turns": 3,
+    "seconds": 8.42,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "spatula put back on its rest first (27.4 s); wok emptied into holding_bowl: egg, oil",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 116.1,
+     "thermo_src": "oil",
+     "elapsed_s": 450.8,
+     "heat": 0.0,
+     "load_g": 6.0,
+     "t_s": 450.8,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {
+      "tomato": 300
+     },
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    }
+   },
+   "truth": {
+    "t": 450.8,
+    "heat": 0.0,
+    "T_wok": 114.907,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     }
+    ],
+    "load_g": 3.0,
+    "wok_C": 114.907,
+    "items": {}
+   },
+   "t": 450.8
+  },
+  {
+   "step": 28,
+   "decision": {
+    "observe": "The fried egg is resting in the holding bowl. The wok is empty apart from a thin film of oil (about 6 g) at 116 °C, the heat is off and the hand is free. The 300 g of tomato wedges are waiting on the counter.",
+    "why": "Wang Gang: 'Add chopped tomato, fry them in low heat.' The heat is already off, so the arm can safely reach over the wok. The leftover oil film at 116 °C is just right for the tomatoes. They go in now, and then we switch on low heat.",
+    "action": "pour_into_wok",
+    "args": {
+     "source": "tomato"
+    },
+    "expect": "About 300 g of red tomato wedges land in the wok. The thermometer drops sharply below 100 °C as the cold, wet wedges hit the oil, and the load reads about 300 g."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_028",
+    "purpose": "cook_decision",
+    "prompt_chars": 9593,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.14277979999999998,
+    "turns": 2,
+    "seconds": 7.34,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "poured tomato 300 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 112.5,
+     "thermo_src": "oil",
+     "elapsed_s": 458.8,
+     "heat": 0.0,
+     "load_g": 318.0,
+     "t_s": 458.8,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {
+      "cup2": "salt 1 g",
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_017.png"
+   },
+   "truth": {
+    "t": 458.8,
+    "heat": 0.0,
+    "T_wok": 113.012,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     }
+    ],
+    "tomato": {
+     "g": 300.0,
+     "g0": 300.0,
+     "T_surf": 30.0,
+     "T_core": 30.0,
+     "soft": 0.0,
+     "scorch": 0.0
+    },
+    "load_g": 303.0,
+    "wok_C": 113.012,
+    "items": {
+     "tomato": {
+      "grams": 300.0
+     }
+    }
+   },
+   "t": 458.8
+  },
+  {
+   "step": 29,
+   "decision": {
+    "observe": "About 16 raw red tomato wedges are spread in one layer in the wok with a thin film of leftover egg oil. They still look firm and bright with no softening. Thermometer 112 °C, heat off.",
+    "why": "The heat is already off and the arm is free, so this is the cheapest moment to add the 1 g of salt. Salt pulls juice out of the tomato so it softens faster in the low-heat fry Wang Gang asks for. Doing it now means we won't have to cut the heat (离火) again later.",
+    "action": "pour_into_wok",
+    "args": {
+     "source": "cup2"
+    },
+    "expect": "Salt goes onto the tomatoes, load goes up about 1 g, and the thermometer drifts down to about 105–110 °C with the heat still off."
+   },
+   "seen_image": "runs/run03/wok_017.png",
+   "claude": {
+    "tag": "run03_029",
+    "purpose": "cook_decision",
+    "prompt_chars": 9664,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1578654,
+    "turns": 3,
+    "seconds": 10.79,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "poured salt 1 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 111.1,
+     "thermo_src": "oil",
+     "elapsed_s": 466.8,
+     "heat": 0.0,
+     "load_g": 322.0,
+     "t_s": 466.8,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {
+      "cup3": "sugar 1 g"
+     },
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_018.png"
+   },
+   "truth": {
+    "t": 466.8,
+    "heat": 0.0,
+    "T_wok": 108.181,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     }
+    ],
+    "tomato": {
+     "g": 300.0,
+     "g0": 300.0,
+     "T_surf": 35.249,
+     "T_core": 30.123,
+     "soft": 0.0,
+     "scorch": 0.0
+    },
+    "load_g": 304.0,
+    "wok_C": 108.181,
+    "items": {
+     "tomato": {
+      "grams": 300.0
+     },
+     "salt": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 466.8
+  },
+  {
+   "step": 30,
+   "decision": {
+    "observe": "Raw tomato wedges, still firm and bright red, are spread across a nearly dry wok. Salt is in, the thermometer reads 111 °C and the heat is off. Sugar is still waiting in cup3.",
+    "why": "Wang Gang seasons with 1 g salt and 1 g sugar. Pouring needs the arm over the wok, which is only allowed with the heat off. So the sugar goes in now, before we switch to low heat to fry the tomato and release the ketchup from the drum.",
+    "action": "pour_into_wok",
+    "args": {
+     "source": "cup3"
+    },
+    "expect": "The sugar goes in and the load rises by about 1 g. The temperature drifts down a few degrees to around 108 °C, and the tomato wedges look unchanged."
+   },
+   "seen_image": "runs/run03/wok_018.png",
+   "claude": {
+    "tag": "run03_030",
+    "purpose": "cook_decision",
+    "prompt_chars": 9493,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15398379999999998,
+    "turns": 3,
+    "seconds": 9.74,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "poured sugar 1 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 105.8,
+     "thermo_src": "oil",
+     "elapsed_s": 474.8,
+     "heat": 0.0,
+     "load_g": 309.0,
+     "t_s": 474.8,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_019.png"
+   },
+   "truth": {
+    "t": 474.8,
+    "heat": 0.0,
+    "T_wok": 103.829,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     }
+    ],
+    "tomato": {
+     "g": 300.0,
+     "g0": 300.0,
+     "T_surf": 39.465,
+     "T_core": 30.449,
+     "soft": 0.0,
+     "scorch": 0.0
+    },
+    "load_g": 305.0,
+    "wok_C": 103.829,
+    "items": {
+     "tomato": {
+      "grams": 300.0
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 474.8
+  },
+  {
+   "step": 31,
+   "decision": {
+    "observe": "The wok holds 16 raw, bright-red tomato wedges with the salt and sugar on top. The oil reads 106 °C and the heat is off. The 4-compartment drum is loaded with ketchup, water, starch water and finishing oil.",
+    "why": "Wang Gang: \"Add chopped tomato, fry them in low heat.\" Everything is in the wok and nothing more needs the arm over it. So we switch the cooker back on at low power (0.3) and fry the tomato gently before the ketchup goes in.",
+    "action": "set_heat",
+    "args": {
+     "level": 0.3
+    },
+    "expect": "Heat at 0.3. The temperature should hold around 100–110 °C, kept down by the 300 g of moist tomato. The wedges should still look the same, ready to be stir-fried next."
+   },
+   "seen_image": "runs/run03/wok_019.png",
+   "claude": {
+    "tag": "run03_031",
+    "purpose": "cook_decision",
+    "prompt_chars": 9281,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1534064,
+    "turns": 3,
+    "seconds": 9.12,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 0.3",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 102.7,
+     "thermo_src": "oil",
+     "elapsed_s": 475.8,
+     "heat": 0.3,
+     "load_g": 305.0,
+     "t_s": 475.8,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_020.png"
+   },
+   "truth": {
+    "t": 475.8,
+    "heat": 0.3,
+    "T_wok": 104.515,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     }
+    ],
+    "tomato": {
+     "g": 300.0,
+     "g0": 300.0,
+     "T_surf": 39.934,
+     "T_core": 30.501,
+     "soft": 0.0,
+     "scorch": 0.0
+    },
+    "load_g": 305.0,
+    "wok_C": 104.515,
+    "items": {
+     "tomato": {
+      "grams": 300.0
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 475.8
+  },
+  {
+   "step": 32,
+   "decision": {
+    "observe": "The wedges look raw: about 16 bright red pieces with firm, sharp edges, no juice released, lying in a thin film of oil. Thermometer reads 103 °C with the heat on low (0.3) and 305 g in the wok.",
+    "why": "Wang Gang says \"Add chopped tomato, fry them in low heat.\" The heat is already low, so now the wedges need to be stir-fried until their edges soften and juice starts to run. After that the ketchup goes in from the drum, which needs no arm.",
+    "action": "stir",
+    "args": {
+     "seconds": 30
+    },
+    "expect": "The arm first picks up the spatula (27.4 s), then stirs for 30 s. Afterwards the wedges should be glossy, with slightly collapsed edges and some red juice pooling. Temperature should stay around 100–110 °C, with no smoke."
+   },
+   "seen_image": "runs/run03/wok_020.png",
+   "claude": {
+    "tag": "run03_032",
+    "purpose": "cook_decision",
+    "prompt_chars": 9258,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1537962,
+    "turns": 3,
+    "seconds": 11.92,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "spatula taken from its rest first (27.4 s); stirred 30 s (8 strokes)",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 135.6,
+     "thermo_src": "oil",
+     "elapsed_s": 533.2,
+     "heat": 0.3,
+     "load_g": 292.0,
+     "t_s": 533.2,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "ketchup 5 g",
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_021.png"
+   },
+   "truth": {
+    "t": 533.2,
+    "heat": 0.3,
+    "T_wok": 134.571,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     }
+    ],
+    "tomato": {
+     "g": 295.616,
+     "g0": 300.0,
+     "T_surf": 68.841,
+     "T_core": 37.225,
+     "soft": 0.049,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 4.274,
+     "water_g": 0.0,
+     "juice_g": 4.274,
+     "ketchup_g": 0.0,
+     "starch_g": 0.0,
+     "T": 100.0,
+     "boiling": true,
+     "gel": 0.0,
+     "thick": 0.0,
+     "lumps": 0.0,
+     "scorch": 0.0,
+     "reduced": 0.0,
+     "pool_r": 0.032,
+     "depth": 0.003
+    },
+    "load_g": 304.889,
+    "wok_C": 134.571,
+    "items": {
+     "tomato": {
+      "grams": 295.616
+     },
+     "sauce": {
+      "grams": 4.274
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 533.2
+  },
+  {
+   "step": 33,
+   "decision": {
+    "observe": "Thermometer reads 136 °C on low heat. The 16 tomato wedges are still firm and keep their shape, and a little orange-red juice is starting to pool in the middle of the wok.",
+    "why": "The tomatoes have fried on low heat and are starting to give up their juice. Wang Gang's next step is \"Add 5 g of ketchup, enhancing the tomato flavor.\" The drum's first compartment holds the 5 g of ketchup, so the servo can drop it in with the heat on and the spatula still in hand.",
+    "action": "drum_release",
+    "args": {},
+    "expect": "Ketchup drops into the wok and the load rises by about 5 g. The drum then has water 60 g, starch_water 25 g and finishing_oil 5 g left. Next I stir to coat the wedges."
+   },
+   "seen_image": "runs/run03/wok_021.png",
+   "claude": {
+    "tag": "run03_033",
+    "purpose": "cook_decision",
+    "prompt_chars": 9362,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.16466419999999998,
+    "turns": 4,
+    "seconds": 193.18,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "released ketchup 5 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 135.6,
+     "thermo_src": "oil",
+     "elapsed_s": 534.7,
+     "heat": 0.3,
+     "load_g": 314.0,
+     "t_s": 534.7,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_022.png"
+   },
+   "truth": {
+    "t": 534.7,
+    "heat": 0.3,
+    "T_wok": 135.006,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     }
+    ],
+    "tomato": {
+     "g": 294.85,
+     "g0": 300.0,
+     "T_surf": 69.559,
+     "T_core": 37.501,
+     "soft": 0.057,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 8.504,
+     "water_g": 3.5,
+     "juice_g": 5.004,
+     "ketchup_g": 5.0,
+     "starch_g": 0.0,
+     "T": 69.133,
+     "boiling": false,
+     "gel": 0.0,
+     "thick": 0.0,
+     "lumps": 0.0,
+     "scorch": 0.0,
+     "reduced": 0.0,
+     "pool_r": 0.078,
+     "depth": 0.016
+    },
+    "load_g": 309.854,
+    "wok_C": 135.006,
+    "items": {
+     "tomato": {
+      "grams": 294.85
+     },
+     "sauce": {
+      "grams": 8.504
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 534.7
+  },
+  {
+   "step": 34,
+   "decision": {
+    "observe": "Wedges are still whole and glossy red with a fresh orange-red ketchup pool in the centre of the wok. Oil reads 136 °C, low heat 0.3, load 314 g, no smoke.",
+    "why": "Wang Gang: \"After mixing it well, add adequate water.\" The ketchup is just sitting in a pool, so we stir it through the tomatoes before the water goes in. The spatula is already in hand, so stirring starts right away.",
+    "action": "stir",
+    "args": {
+     "seconds": 15
+    },
+    "expect": "Ketchup coats the wedges evenly, edges begin to soften and release juice, temperature stays around 130–140 °C with no smoke."
+   },
+   "seen_image": "runs/run03/wok_022.png",
+   "claude": {
+    "tag": "run03_034",
+    "purpose": "cook_decision",
+    "prompt_chars": 9313,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1525018,
+    "turns": 3,
+    "seconds": 15.22,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "stirred 15 s (4 strokes)",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 130.3,
+     "thermo_src": "oil",
+     "elapsed_s": 549.7,
+     "heat": 0.3,
+     "load_g": 295.0,
+     "t_s": 549.7,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "water 60 g",
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_023.png"
+   },
+   "truth": {
+    "t": 549.7,
+    "heat": 0.3,
+    "T_wok": 129.259,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     }
+    ],
+    "tomato": {
+     "g": 285.012,
+     "g0": 300.0,
+     "T_surf": 75.302,
+     "T_core": 40.47,
+     "soft": 0.167,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 14.951,
+     "water_g": 2.605,
+     "juice_g": 12.346,
+     "ketchup_g": 5.0,
+     "starch_g": 0.0,
+     "T": 100.0,
+     "boiling": true,
+     "gel": 0.0,
+     "thick": 0.0,
+     "lumps": 0.0,
+     "scorch": 0.0,
+     "reduced": 0.001,
+     "pool_r": 0.078,
+     "depth": 0.016
+    },
+    "load_g": 306.464,
+    "wok_C": 129.259,
+    "items": {
+     "tomato": {
+      "grams": 285.012
+     },
+     "sauce": {
+      "grams": 14.951
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 549.7
+  },
+  {
+   "step": 35,
+   "decision": {
+    "observe": "Tomato wedges are glossy red with orange-red ketchup juice pooling in the centre and light steam rising. The thermometer reads 130 °C at heat 0.3, and the wedges still hold their shape.",
+    "why": "The ketchup is mixed in well. Wang Gang's next step is \"add adequate amount of water and simmer for 1 min\". The drum releases its next compartment, 60 g of water, while the heat stays on and the arm keeps the spatula.",
+    "action": "drum_release",
+    "args": {},
+    "expect": "60 g of water goes into the wok, the load rises to about 355 g, and the temperature drops toward 100 °C as the sauce loosens into a simmering liquid."
+   },
+   "seen_image": "runs/run03/wok_023.png",
+   "claude": {
+    "tag": "run03_035",
+    "purpose": "cook_decision",
+    "prompt_chars": 9336,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1525248,
+    "turns": 3,
+    "seconds": 7.97,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "released water 60 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 43.6,
+     "thermo_src": "liquid",
+     "elapsed_s": 551.2,
+     "heat": 0.3,
+     "load_g": 362.0,
+     "t_s": 551.2,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_024.png"
+   },
+   "truth": {
+    "t": 551.2,
+    "heat": 0.3,
+    "T_wok": 128.9,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     }
+    ],
+    "tomato": {
+     "g": 283.884,
+     "g0": 300.0,
+     "T_surf": 75.761,
+     "T_core": 40.784,
+     "soft": 0.179,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 75.741,
+     "water_g": 62.548,
+     "juice_g": 13.193,
+     "ketchup_g": 5.0,
+     "starch_g": 0.0,
+     "T": 44.548,
+     "boiling": false,
+     "gel": 0.0,
+     "thick": 0.0,
+     "lumps": 0.0,
+     "scorch": 0.0,
+     "reduced": 0.0,
+     "pool_r": 0.085,
+     "depth": 0.019
+    },
+    "load_g": 366.125,
+    "wok_C": 128.9,
+    "items": {
+     "tomato": {
+      "grams": 283.884
+     },
+     "sauce": {
+      "grams": 75.741
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 551.2
+  },
+  {
+   "step": 36,
+   "decision": {
+    "observe": "Tomato wedges, still firm with crisp edges, sit in a shallow pinkish-orange pool of water and ketchup. The thermometer reads 44 °C in the liquid and load is 362 g, so the 60 g of water just went in and cooled everything down.",
+    "why": "Wang Gang adds water and simmers for 1 minute until the tomatoes soften. The cold water dropped the wok to 44 °C, and low heat would take too long to bring it back to a simmer. Medium heat (0.5) gets it bubbling again without scorching, and waits of any length are still allowed at that level.",
+    "action": "set_heat",
+    "args": {
+     "level": 0.5
+    },
+    "expect": "Heat goes to 0.5 and the liquid temperature starts climbing toward about 100 °C, where small bubbles will appear around the tomato wedges."
+   },
+   "seen_image": "runs/run03/wok_024.png",
+   "claude": {
+    "tag": "run03_036",
+    "purpose": "cook_decision",
+    "prompt_chars": 9331,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1555536,
+    "turns": 3,
+    "seconds": 9.28,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 0.5",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 50.3,
+     "thermo_src": "liquid",
+     "elapsed_s": 552.2,
+     "heat": 0.5,
+     "load_g": 384.0,
+     "t_s": 552.2,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_025.png"
+   },
+   "truth": {
+    "t": 552.2,
+    "heat": 0.5,
+    "T_wok": 127.917,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     }
+    ],
+    "tomato": {
+     "g": 281.811,
+     "g0": 300.0,
+     "T_surf": 74.941,
+     "T_core": 40.992,
+     "soft": 0.202,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 77.815,
+     "water_g": 62.548,
+     "juice_g": 15.266,
+     "ketchup_g": 5.0,
+     "starch_g": 0.0,
+     "T": 52.035,
+     "boiling": false,
+     "gel": 0.0,
+     "thick": 0.0,
+     "lumps": 0.0,
+     "scorch": 0.0,
+     "reduced": 0.0,
+     "pool_r": 0.085,
+     "depth": 0.019
+    },
+    "load_g": 366.125,
+    "wok_C": 127.917,
+    "items": {
+     "tomato": {
+      "grams": 281.811
+     },
+     "sauce": {
+      "grams": 77.815
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 552.2
+  },
+  {
+   "step": 37,
+   "decision": {
+    "observe": "Tomato wedges are sitting in a shallow pink-orange pool of water and ketchup. The liquid reads 50 °C because the 60 g of water just cooled the wok. No bubbles yet, the wedges still hold their shape, and the heat is at 0.5.",
+    "why": "Wang Gang says: \"After mixing it well, add water and simmer for 1 min.\" The water is in but cold, so I stir to mix the ketchup into it while medium heat brings the sauce up to a simmer. Stirring keeps everything moving and stays inside the half-power rule, which forbids long idle waits.",
+    "action": "stir",
+    "args": {
+     "seconds": 30
+    },
+    "expect": "The liquid climbs toward 90–100 °C with small bubbles at the edges. The sauce turns an even red-orange and the tomato wedges start to soften and slump."
+   },
+   "seen_image": "runs/run03/wok_025.png",
+   "claude": {
+    "tag": "run03_037",
+    "purpose": "cook_decision",
+    "prompt_chars": 9304,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1548926,
+    "turns": 3,
+    "seconds": 10.02,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "stirred 30 s (8 strokes)",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 99.3,
+     "thermo_src": "liquid",
+     "elapsed_s": 582.2,
+     "heat": 0.5,
+     "load_g": 367.0,
+     "t_s": 582.2,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_026.png"
+   },
+   "truth": {
+    "t": 582.2,
+    "heat": 0.5,
+    "T_wok": 135.012,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     }
+    ],
+    "tomato": {
+     "g": 235.522,
+     "g0": 300.0,
+     "T_surf": 86.799,
+     "T_core": 47.853,
+     "soft": 0.716,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 122.05,
+     "water_g": 61.459,
+     "juice_g": 60.59,
+     "ketchup_g": 5.0,
+     "starch_g": 0.0,
+     "T": 100.0,
+     "boiling": true,
+     "gel": 0.0,
+     "thick": 0.0,
+     "lumps": 0.0,
+     "scorch": 0.0,
+     "reduced": 0.0,
+     "pool_r": 0.087,
+     "depth": 0.02
+    },
+    "load_g": 364.071,
+    "wok_C": 135.012,
+    "items": {
+     "tomato": {
+      "grams": 235.522
+     },
+     "sauce": {
+      "grams": 122.05
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 582.2
+  },
+  {
+   "step": 38,
+   "decision": {
+    "observe": "The liquid reads 99 °C and is simmering, with steam rising and small bubbles in a thin orange-red sauce. The tomato wedges are still mostly whole and firm-edged.",
+    "why": "Wang Gang adds water and simmers for about 1 minute, until the tomatoes are soft. The sauce only just reached a boil, so I keep stirring at medium heat for another 30 s. That finishes the simmer, softens the wedges and keeps anything from catching on the bottom.",
+    "action": "stir",
+    "args": {
+     "seconds": 30
+    },
+    "expect": "The thermometer should stay around 100 °C with a steady simmer. The wedges should look softer and start to slump and break down, and the sauce should turn a deeper red with a bit less liquid. After that I'll release the starch water from the drum."
+   },
+   "seen_image": "runs/run03/wok_026.png",
+   "claude": {
+    "tag": "run03_038",
+    "purpose": "cook_decision",
+    "prompt_chars": 9310,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15520899999999999,
+    "turns": 3,
+    "seconds": 10.24,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "stirred 30 s (8 strokes)",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 99.6,
+     "thermo_src": "liquid",
+     "elapsed_s": 612.2,
+     "heat": 0.5,
+     "load_g": 369.0,
+     "t_s": 612.2,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "starch_water 25 g",
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_027.png"
+   },
+   "truth": {
+    "t": 612.2,
+    "heat": 0.5,
+    "T_wok": 141.429,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     }
+    ],
+    "tomato": {
+     "g": 214.318,
+     "g0": 300.0,
+     "T_surf": 95.037,
+     "T_core": 56.945,
+     "soft": 0.952,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 132.53,
+     "water_g": 56.612,
+     "juice_g": 75.918,
+     "ketchup_g": 5.0,
+     "starch_g": 0.0,
+     "T": 100.0,
+     "boiling": true,
+     "gel": 0.0,
+     "thick": 0.0,
+     "lumps": 0.0,
+     "scorch": 0.0,
+     "reduced": 0.003,
+     "pool_r": 0.087,
+     "depth": 0.02
+    },
+    "load_g": 353.348,
+    "wok_C": 141.429,
+    "items": {
+     "tomato": {
+      "grams": 214.318
+     },
+     "sauce": {
+      "grams": 132.53
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 612.2
+  },
+  {
+   "step": 39,
+   "decision": {
+    "observe": "The sauce has been simmering at about 100 °C for over a minute. Steam is rising, the orange-red sauce is bubbling, and the tomato wedges have gone limp and curled at the edges, so they are soft.",
+    "why": "Wang Gang: \"Cook until tomatoes are soft, add some starch water mix to thicken the sauce.\" The 1-minute simmer is done and the wedges have collapsed. The drum releases the 25 g of starch water with the heat still on and the spatula still in hand, so the sauce keeps bubbling.",
+    "action": "drum_release",
+    "args": {},
+    "expect": "25 g of starch water goes into the wok, the load rises by about 25 g, and the temperature dips slightly but stays near 95–100 °C. I'll stir next so it thickens evenly into a glossy, clinging sauce."
+   },
+   "seen_image": "runs/run03/wok_027.png",
+   "claude": {
+    "tag": "run03_039",
+    "purpose": "cook_decision",
+    "prompt_chars": 9306,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.153488,
+    "turns": 3,
+    "seconds": 8.8,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "released starch_water 25 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 88.8,
+     "thermo_src": "liquid",
+     "elapsed_s": 613.7,
+     "heat": 0.5,
+     "load_g": 384.0,
+     "t_s": 613.7,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_028.png"
+   },
+   "truth": {
+    "t": 613.7,
+    "heat": 0.5,
+    "T_wok": 141.608,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     }
+    ],
+    "tomato": {
+     "g": 213.916,
+     "g0": 300.0,
+     "T_surf": 95.226,
+     "T_core": 57.398,
+     "soft": 0.956,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 153.554,
+     "water_g": 77.594,
+     "juice_g": 75.959,
+     "ketchup_g": 5.0,
+     "starch_g": 3.75,
+     "T": 86.853,
+     "boiling": false,
+     "gel": 0.0,
+     "thick": 0.0,
+     "lumps": 0.0,
+     "scorch": 0.0,
+     "reduced": 0.0,
+     "pool_r": 0.089,
+     "depth": 0.021
+    },
+    "load_g": 377.72,
+    "wok_C": 141.608,
+    "items": {
+     "tomato": {
+      "grams": 213.916
+     },
+     "sauce": {
+      "grams": 153.554
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 613.7
+  },
+  {
+   "step": 40,
+   "decision": {
+    "observe": "Soft red tomato wedges sit in an orange, slightly glossy sauce pooled in the wok center; the starch water has just gone in, the liquid reads 89 °C, and the heat is at 0.5.",
+    "why": "Wang Gang adds starch water once the tomatoes are soft. Now it has to be stirred straight in while the sauce bubbles, so it spreads evenly and thickens without lumps. Only after the sauce turns thick and glossy do we splash on the finishing oil.",
+    "action": "stir",
+    "args": {
+     "seconds": 20
+    },
+    "expect": "The sauce comes back to about 95–100 °C and turns thicker and glossier, coating the tomato wedges with no watery pool left at the bottom."
+   },
+   "seen_image": "runs/run03/wok_028.png",
+   "claude": {
+    "tag": "run03_040",
+    "purpose": "cook_decision",
+    "prompt_chars": 9282,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1532098,
+    "turns": 3,
+    "seconds": 8.1,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "stirred 20 s (5 strokes)",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 97.0,
+     "thermo_src": "liquid",
+     "elapsed_s": 633.7,
+     "heat": 0.5,
+     "load_g": 373.0,
+     "t_s": 633.7,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": [
+       "finishing_oil 5 g"
+      ]
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_029.png"
+   },
+   "truth": {
+    "t": 633.7,
+    "heat": 0.5,
+    "T_wok": 141.703,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     }
+    ],
+    "tomato": {
+     "g": 211.078,
+     "g0": 300.0,
+     "T_surf": 96.631,
+     "T_core": 63.007,
+     "soft": 0.988,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 150.711,
+     "water_g": 74.765,
+     "juice_g": 75.946,
+     "ketchup_g": 5.0,
+     "starch_g": 3.75,
+     "T": 100.0,
+     "boiling": true,
+     "gel": 0.96,
+     "thick": 0.955,
+     "lumps": 0.048,
+     "scorch": 0.0,
+     "reduced": 0.027,
+     "pool_r": 0.088,
+     "depth": 0.021
+    },
+    "load_g": 372.04,
+    "wok_C": 141.703,
+    "items": {
+     "tomato": {
+      "grams": 211.078
+     },
+     "sauce": {
+      "grams": 150.711
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 633.7
+  },
+  {
+   "step": 41,
+   "decision": {
+    "observe": "The tomatoes have broken down into a glossy red sauce that clings to the wedges. There is no thin, watery pool left, and steam is rising. The liquid thermometer reads 97 °C at heat 0.5.",
+    "why": "The starch water has thickened the sauce: it looks glossy and coats the tomato instead of running off. Wang Gang says: \"After it's thickened, splash some oil on top.\" The drum's last compartment holds the 5 g of finishing oil (明油), and it can drop in with the heat still on.",
+    "action": "drum_release",
+    "args": {},
+    "expect": "The drum releases 5 g of finishing oil, the load goes up by about 5 g, the sauce surface gets shinier and the drum is empty."
+   },
+   "seen_image": "runs/run03/wok_029.png",
+   "claude": {
+    "tag": "run03_041",
+    "purpose": "cook_decision",
+    "prompt_chars": 9294,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.153045,
+    "turns": 3,
+    "seconds": 8.71,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "released finishing_oil 5 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 101.0,
+     "thermo_src": "liquid",
+     "elapsed_s": 635.2,
+     "heat": 0.5,
+     "load_g": 386.0,
+     "t_s": 635.2,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": []
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_030.png"
+   },
+   "truth": {
+    "t": 635.2,
+    "heat": 0.5,
+    "T_wok": 141.803,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 5.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     },
+     {
+      "t": 635.2,
+      "kind": "add",
+      "detail": "finishing_oil 5 g"
+     }
+    ],
+    "tomato": {
+     "g": 210.978,
+     "g0": 300.0,
+     "T_surf": 96.805,
+     "T_core": 63.413,
+     "soft": 0.989,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 150.14,
+     "water_g": 74.432,
+     "juice_g": 75.708,
+     "ketchup_g": 5.0,
+     "starch_g": 3.75,
+     "T": 100.0,
+     "boiling": true,
+     "gel": 0.968,
+     "thick": 0.967,
+     "lumps": 0.048,
+     "scorch": 0.0,
+     "reduced": 0.031,
+     "pool_r": 0.088,
+     "depth": 0.021
+    },
+    "load_g": 376.368,
+    "wok_C": 141.803,
+    "items": {
+     "oil": {
+      "grams": 5.0
+     },
+     "tomato": {
+      "grams": 210.978
+     },
+     "sauce": {
+      "grams": 150.14
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 635.2
+  },
+  {
+   "step": 42,
+   "decision": {
+    "observe": "The tomato sauce is glossy red with soft, slumped wedges and a light layer of steam. The finishing oil has just gone in. Thermometer reads 101 °C in the liquid, heat is at 0.5, load is 386 g, and there's no smoke.",
+    "why": "The sauce has thickened and the 明油 is in, so the last step is Wang Gang's \"add the fried eggs.\" The arm has to reach over the wok to pour from the holding bowl, so we turn the heat off first (离火). That also keeps the sauce from catching while the spatula goes back to its rest.",
+    "action": "set_heat",
+    "args": {
+     "level": 0
+    },
+    "expect": "Heat reads 0. The temperature stays around 100 °C and drops slowly. The sauce stops bubbling hard and is ready for pour_into_wok('holding_bowl')."
+   },
+   "seen_image": "runs/run03/wok_030.png",
+   "claude": {
+    "tag": "run03_042",
+    "purpose": "cook_decision",
+    "prompt_chars": 9291,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1538938,
+    "turns": 3,
+    "seconds": 9.48,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "heat 0",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 99.1,
+     "thermo_src": "liquid",
+     "elapsed_s": 636.2,
+     "heat": 0.0,
+     "load_g": 394.0,
+     "t_s": 636.2,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": []
+     },
+     "holding_bowl": [
+      "egg",
+      "oil"
+     ],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_031.png"
+   },
+   "truth": {
+    "t": 636.2,
+    "heat": 0.0,
+    "T_wok": 139.942,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 5.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     },
+     {
+      "t": 635.2,
+      "kind": "add",
+      "detail": "finishing_oil 5 g"
+     }
+    ],
+    "tomato": {
+     "g": 210.916,
+     "g0": 300.0,
+     "T_surf": 96.8,
+     "T_core": 63.682,
+     "soft": 0.99,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 149.763,
+     "water_g": 74.215,
+     "juice_g": 75.549,
+     "ketchup_g": 5.0,
+     "starch_g": 3.75,
+     "T": 100.0,
+     "boiling": true,
+     "gel": 0.97,
+     "thick": 0.972,
+     "lumps": 0.05,
+     "scorch": 0.0,
+     "reduced": 0.033,
+     "pool_r": 0.088,
+     "depth": 0.021
+    },
+    "load_g": 375.929,
+    "wok_C": 139.942,
+    "items": {
+     "oil": {
+      "grams": 5.0
+     },
+     "tomato": {
+      "grams": 210.916
+     },
+     "sauce": {
+      "grams": 149.763
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 636.2
+  },
+  {
+   "step": 43,
+   "decision": {
+    "observe": "The tomato wedges are soft and sitting in a glossy red sauce that has thickened, with steam rising. The thermometer reads 99 °C in the liquid and the heat is off. The fried egg and its oil are waiting in the holding bowl.",
+    "why": "The sauce has thickened and the finishing oil is in, so phase 5 is complete. Wang Gang's last step is \"Finally, add the fried eggs.\" The heat is already off, so the arm can safely reach over the wok to pour the eggs back from the holding bowl.",
+    "action": "pour_into_wok",
+    "args": {
+     "source": "holding_bowl"
+    },
+    "expect": "The spatula goes back to its rest first. Then the golden egg lands on top of the red tomato sauce, the load rises to about 550 g, and the temperature drops a few degrees to around 90 °C. Next I'll turn the heat back on and stir it a few times."
+   },
+   "seen_image": "runs/run03/wok_031.png",
+   "claude": {
+    "tag": "run03_043",
+    "purpose": "cook_decision",
+    "prompt_chars": 9268,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1530882,
+    "turns": 3,
+    "seconds": 10.27,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "spatula put back on its rest first (27.4 s); poured egg 140 g, oil 20 g",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 98.0,
+     "thermo_src": "liquid",
+     "elapsed_s": 671.6,
+     "heat": 0.0,
+     "load_g": 523.0,
+     "t_s": 671.6,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": []
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_032.png"
+   },
+   "truth": {
+    "t": 671.6,
+    "heat": 0.0,
+    "T_wok": 101.925,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 5.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     },
+     {
+      "t": 635.2,
+      "kind": "add",
+      "detail": "finishing_oil 5 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "egg 140 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "egg": {
+     "g": 139.88,
+     "T_down": 100.0,
+     "T_up": 93.055,
+     "set_down": 0.994,
+     "set_up": 1.0,
+     "brown_down": 0.199,
+     "brown_up": 0.197,
+     "burnt": false,
+     "pieces": 4,
+     "in_sauce_s": 0.0,
+     "flipped": true
+    },
+    "tomato": {
+     "g": 210.091,
+     "g0": 300.0,
+     "T_surf": 95.65,
+     "T_core": 71.786,
+     "soft": 0.999,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 144.116,
+     "water_g": 71.017,
+     "juice_g": 73.1,
+     "ketchup_g": 5.0,
+     "starch_g": 3.75,
+     "T": 100.0,
+     "boiling": true,
+     "gel": 0.996,
+     "thick": 1.0,
+     "lumps": 0.07,
+     "scorch": 0.0,
+     "reduced": 0.07,
+     "pool_r": 0.088,
+     "depth": 0.02
+    },
+    "load_g": 529.337,
+    "wok_C": 101.925,
+    "items": {
+     "oil": {
+      "grams": 25.0
+     },
+     "egg": {
+      "grams": 139.88
+     },
+     "tomato": {
+      "grams": 210.091
+     },
+     "sauce": {
+      "grams": 144.116
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 671.6
+  },
+  {
+   "step": 44,
+   "decision": {
+    "observe": "The fried egg is back in the wok on top of glossy red tomato sauce. Steam is rising, the thermometer reads 98 °C and the heat is off (load 523 g).",
+    "why": "Wang Gang: \"Add the fried eggs, mix it a few times, and it is ready to be plated.\" The sauce is already thick and hot, so a few strokes with the heat off coat the egg without overcooking it. Keeping the heat off also means we can tip straight onto the plate afterwards.",
+    "action": "stir",
+    "args": {
+     "seconds": 11
+    },
+    "expect": "Egg pieces coated in the red glossy sauce and spread evenly through the tomato. The temperature should stay around 90–95 °C and there should be no smoke, ready for tip_wok to the plate."
+   },
+   "seen_image": "runs/run03/wok_032.png",
+   "claude": {
+    "tag": "run03_044",
+    "purpose": "cook_decision",
+    "prompt_chars": 9400,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15510279999999999,
+    "turns": 3,
+    "seconds": 10.5,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "spatula taken from its rest first (27.4 s); stirred 11 s (3 strokes)",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 97.3,
+     "thermo_src": "liquid",
+     "elapsed_s": 710.0,
+     "heat": 0.0,
+     "load_g": 530.0,
+     "t_s": 710.0,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": []
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_033.png"
+   },
+   "truth": {
+    "t": 710.0,
+    "heat": 0.0,
+    "T_wok": 94.699,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 5.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     },
+     {
+      "t": 635.2,
+      "kind": "add",
+      "detail": "finishing_oil 5 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "egg 140 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "egg": {
+     "g": 139.88,
+     "T_down": 97.51,
+     "T_up": 96.627,
+     "set_down": 1.0,
+     "set_up": 1.0,
+     "brown_down": 0.199,
+     "brown_up": 0.197,
+     "burnt": false,
+     "pieces": 8,
+     "in_sauce_s": 38.4,
+     "flipped": true
+    },
+    "tomato": {
+     "g": 210.008,
+     "g0": 300.0,
+     "T_surf": 93.352,
+     "T_core": 77.849,
+     "soft": 1.0,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 144.2,
+     "water_g": 71.017,
+     "juice_g": 73.183,
+     "ketchup_g": 5.0,
+     "starch_g": 3.75,
+     "T": 95.947,
+     "boiling": false,
+     "gel": 1.0,
+     "thick": 1.0,
+     "lumps": 0.073,
+     "scorch": 0.0,
+     "reduced": 0.069,
+     "pool_r": 0.088,
+     "depth": 0.02
+    },
+    "load_g": 529.337,
+    "wok_C": 94.699,
+    "items": {
+     "oil": {
+      "grams": 25.0
+     },
+     "egg": {
+      "grams": 139.88
+     },
+     "tomato": {
+      "grams": 210.008
+     },
+     "sauce": {
+      "grams": 144.2
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 710.0
+  },
+  {
+   "step": 45,
+   "decision": {
+    "observe": "The egg is back in the wok, but it is still mostly a separate yellow patch beside the glossy red tomato sauce. The thermometer reads 97 °C, the heat is off and the load is 530 g.",
+    "why": "Wang Gang: \"add the fried eggs, mix it a few times.\" So far there have been only 3 strokes, and the egg isn't coated in the thickened sauce yet. Two more off-heat strokes will coat it without breaking it up. The residual heat (97 °C) keeps it hot for plating.",
+    "action": "stir",
+    "args": {
+     "seconds": 7.2
+    },
+    "expect": "The egg pieces are coated in red-orange sauce and spread through the tomato, with no plain yellow patch left. The thermometer reads about 95 °C. Next step is to tip it onto the plate."
+   },
+   "seen_image": "runs/run03/wok_033.png",
+   "claude": {
+    "tag": "run03_045",
+    "purpose": "cook_decision",
+    "prompt_chars": 9461,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.15544419999999998,
+    "turns": 3,
+    "seconds": 10.34,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "stirred 7.2 s (2 strokes)",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 98.3,
+     "thermo_src": "liquid",
+     "elapsed_s": 717.2,
+     "heat": 0.0,
+     "load_g": 531.0,
+     "t_s": 717.2,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "spatula",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": []
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": []
+    },
+    "image": "runs/run03/wok_034.png"
+   },
+   "truth": {
+    "t": 717.2,
+    "heat": 0.0,
+    "T_wok": 93.809,
+    "oil_g": 20.0,
+    "film_g": 3.0,
+    "glaze_g": 5.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {
+     "salt": 1.0,
+     "sugar": 1.0
+    },
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     },
+     {
+      "t": 635.2,
+      "kind": "add",
+      "detail": "finishing_oil 5 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "egg 140 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "egg": {
+     "g": 139.88,
+     "T_down": 96.902,
+     "T_up": 96.302,
+     "set_down": 1.0,
+     "set_up": 1.0,
+     "brown_down": 0.199,
+     "brown_up": 0.197,
+     "burnt": false,
+     "pieces": 13,
+     "in_sauce_s": 45.6,
+     "flipped": true
+    },
+    "tomato": {
+     "g": 210.005,
+     "g0": 300.0,
+     "T_surf": 92.956,
+     "T_core": 78.719,
+     "soft": 1.0,
+     "scorch": 0.0
+    },
+    "sauce": {
+     "liquid_g": 144.203,
+     "water_g": 71.017,
+     "juice_g": 73.186,
+     "ketchup_g": 5.0,
+     "starch_g": 3.75,
+     "T": 95.325,
+     "boiling": false,
+     "gel": 1.0,
+     "thick": 1.0,
+     "lumps": 0.073,
+     "scorch": 0.0,
+     "reduced": 0.069,
+     "pool_r": 0.088,
+     "depth": 0.02
+    },
+    "load_g": 529.337,
+    "wok_C": 93.809,
+    "items": {
+     "oil": {
+      "grams": 25.0
+     },
+     "egg": {
+      "grams": 139.88
+     },
+     "tomato": {
+      "grams": 210.005
+     },
+     "sauce": {
+      "grams": 144.203
+     },
+     "salt": {
+      "grams": 1.0
+     },
+     "sugar": {
+      "grams": 1.0
+     }
+    }
+   },
+   "t": 717.2
+  },
+  {
+   "step": 46,
+   "decision": {
+    "observe": "Golden egg pieces are folded through soft red tomato wedges in a glossy, thickened sauce. The thermometer reads 98 °C, the heat is off and the load is 531 g with no smoke.",
+    "why": "Wang Gang: \"Add the fried eggs, mix it a few times, and it is ready to be plated.\" The eggs have had five strokes through the sauce and are coated without breaking up. More stirring would shred them, so with the heat already off we serve now.",
+    "action": "tip_wok",
+    "args": {
+     "into": "plate"
+    },
+    "expect": "The tomato and egg slide onto the plate with the glossy red sauce. The wok is rinsed at the sink and set back on the cooker, and the dish is finished."
+   },
+   "seen_image": "runs/run03/wok_034.png",
+   "claude": {
+    "tag": "run03_046",
+    "purpose": "cook_decision",
+    "prompt_chars": 9416,
+    "n_images": 1,
+    "attempts": 1,
+    "cost_usd": 0.1533022,
+    "turns": 3,
+    "seconds": 8.64,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "spatula put back on its rest first (27.4 s); wok emptied into plate: egg, oil, salt, sauce, sugar, tomato",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 84.5,
+     "thermo_src": "oil",
+     "elapsed_s": 824.1,
+     "heat": 0.0,
+     "load_g": 0.0,
+     "t_s": 824.1,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": []
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": [
+      "egg",
+      "oil",
+      "salt",
+      "sauce",
+      "sugar",
+      "tomato"
+     ]
+    }
+   },
+   "truth": {
+    "t": 824.1,
+    "heat": 0.0,
+    "T_wok": 85.437,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     },
+     {
+      "t": 635.2,
+      "kind": "add",
+      "detail": "finishing_oil 5 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "egg 140 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "load_g": 3.0,
+    "wok_C": 85.437,
+    "items": {}
+   },
+   "t": 824.1
+  },
+  {
+   "step": 47,
+   "decision": {
+    "observe": "The wok is empty (load 0 g) and has been rinsed and set back. The thermometer reads 84.5 °C with the heat at 0, and the smoke detector never went off. The plate holds egg, tomato, sauce, oil, salt and sugar.",
+    "why": "Wang Gang's last line is \"add the fried eggs, mix it a few times, and it is ready to be plated.\" The eggs went back in, were mixed a few times and were tipped onto the plate. Every phase is done, so we stop and report.",
+    "action": "done",
+    "args": {
+     "success": true,
+     "summary": "西红柿炒蛋 is cooked in Wang Gang's style and plated safely. (1) 润锅: the wok was heated, oiled, and the oil poured out into the oil cup. (2) The 150 g of beaten eggs went in at about 120 °C. They fried on low heat (0.3) until set, were flipped once and fried on the other side, then were taken out into the holding bowl at about 151 °C. (3) 300 g of tomato wedges, 1 g salt and 1 g sugar fried on low heat with stirring, then 5 g ketchup went in. (4) 60 g water went in and simmered at medium heat (0.5) for about a minute, holding about 100 °C. (5) 25 g starch water thickened the sauce, then 5 g finishing oil (明油) went on top. (6) With the heat off, the eggs (140 g, plus 20 g oil carried over from frying) went back in and were stirred 5 strokes, then everything was tipped onto the plate and the wok was rinsed. Peak temperature was 151 °C, well below the 210 °C smoke detector and the 250 °C guard. Deviations: the 1 g white vinegar was skipped, the eggs were beaten by the user beforehand, and the eggs were judged done by time and temperature (about 60 s per side) rather than checked visually."
+    },
+    "expect": "The episode ends with the tomato and egg dish on the plate, no smoke alarm and no power cut."
+   },
+   "seen_image": null,
+   "claude": {
+    "tag": "run03_047",
+    "purpose": "cook_decision",
+    "prompt_chars": 9493,
+    "n_images": 0,
+    "attempts": 1,
+    "cost_usd": 0.1504518,
+    "turns": 2,
+    "seconds": 11.36,
+    "ok": true
+   },
+   "result": {
+    "code": "OK",
+    "message": "mission finished",
+    "ok": true,
+    "sensors": {
+     "thermo_C": 83.8,
+     "thermo_src": "oil",
+     "elapsed_s": 824.1,
+     "heat": 0.0,
+     "load_g": 0.0,
+     "t_s": 824.1,
+     "smoke_detector": false
+    },
+    "kitchen": {
+     "hand": "free",
+     "tomatoes_whole_left": 0,
+     "coldbox_fetched": true,
+     "counter": {},
+     "cups": {},
+     "drum": {
+      "remaining": []
+     },
+     "holding_bowl": [],
+     "oil_cup": [
+      "oil"
+     ],
+     "plate": [
+      "egg",
+      "oil",
+      "salt",
+      "sauce",
+      "sugar",
+      "tomato"
+     ]
+    }
+   },
+   "truth": {
+    "t": 824.1,
+    "heat": 0.0,
+    "T_wok": 85.437,
+    "oil_g": 0.0,
+    "film_g": 3.0,
+    "glaze_g": 0.0,
+    "smoking": false,
+    "unsafe": false,
+    "cutoff": false,
+    "dissolved": {},
+    "events": [
+     {
+      "t": 210.0,
+      "kind": "add",
+      "detail": "oil 30 g"
+     },
+     {
+      "t": 255.0,
+      "kind": "add",
+      "detail": "oil 20 g"
+     },
+     {
+      "t": 283.0,
+      "kind": "add",
+      "detail": "egg 150 g"
+     },
+     {
+      "t": 375.4,
+      "kind": "flip",
+      "detail": "egg"
+     },
+     {
+      "t": 458.8,
+      "kind": "add",
+      "detail": "tomato 300 g"
+     },
+     {
+      "t": 534.7,
+      "kind": "add",
+      "detail": "ketchup 5 g"
+     },
+     {
+      "t": 551.2,
+      "kind": "add",
+      "detail": "water 60 g"
+     },
+     {
+      "t": 613.7,
+      "kind": "add",
+      "detail": "starch_water 25 g"
+     },
+     {
+      "t": 635.2,
+      "kind": "add",
+      "detail": "finishing_oil 5 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "egg 140 g"
+     },
+     {
+      "t": 671.6,
+      "kind": "add",
+      "detail": "oil 20 g"
+     }
+    ],
+    "load_g": 3.0,
+    "wok_C": 85.437,
+    "items": {}
+   },
+   "t": 824.1
+  }
+ ],
+ "events": [],
+ "final": {
+  "plate": {
+   "egg": {
+    "grams": 139.87959880456762,
+    "state": {
+     "g": 139.87959880456762,
+     "g0": 150.0,
+     "T": [
+      88.93379646100949,
+      88.93693212676254
+     ],
+     "set": [
+      0.9999999985325809,
+      0.9999998562273917
+     ],
+     "brown": [
+      0.1967565942743854,
+      0.19854915854839117
+     ],
+     "down": 1,
+     "pieces": 13,
+     "stirred_s": 18.20000000000001,
+     "in_sauce_s": 152.5000000000023
+    }
+   },
+   "tomato": {
+    "grams": 210.00001237270965,
+    "state": {
+     "g": 210.00001237270965,
+     "g0": 300.0,
+     "Ts": 87.68027582115009,
+     "Tc": 85.17642907057959,
+     "soft": 0.9999998625254357,
+     "scorch": 0.0
+    }
+   },
+   "sauce": {
+    "grams": 147.95785403665258,
+    "state": {
+     "water": 71.01662564753396,
+     "juice": 73.19122838911862,
+     "ketchup": 5.0,
+     "starch": 3.75,
+     "T": 87.79496631075824,
+     "gel": 0.999999881314303,
+     "lumps": 0.07314082589583834,
+     "scorch": 0.0,
+     "peak": 154.95290286932533
+    }
+   },
+   "oil": {
+    "grams": 25.0,
+    "state": {
+     "T": 85.43712132952122
+    }
+   },
+   "salt": {
+    "grams": 1.0,
+    "state": null
+   },
+   "sugar": {
+    "grams": 1.0,
+    "state": null
+   }
+  },
+  "holding_bowl": {},
+  "t": 824.1000000000022
+ }
+}

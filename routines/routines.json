@@ -1,0 +1,8917 @@
+{
+ "generated": "2026-10-13",
+ "sources": [
+  "home-cooking-robot/research/wanggang_cooking.json (42 recipes, 258 phases)",
+  "home-cooking-robot/research/homestyle_meals.json + .md (meals A/B/C, 15 dishes + rice)",
+  "home-cooking-robot/sim/r10/claude/R19_MOTION_LIBRARY.md + results/r19/prim/library_size.json (movement-set statuses)",
+  "home-cooking-robot/sim/r10/claude/R19_PREP_AUDIT.md (prep coverage)",
+  "build_day/cook_api.py ROUTINES + runs/run05/run.json (demo routines and the executed 西红柿炒蛋 sequence)"
+ ],
+ "types": [
+  {
+   "id": "mise_en_place",
+   "name_zh": "备料",
+   "name_en": "Mise en place",
+   "category": "prep",
+   "purpose": "Everything before the heat goes on: cold box out, tomatoes cut, seasonings dosed into cups, pour drum loaded.",
+   "parameters": [
+    {
+     "name": "tomatoes",
+     "unit": "count",
+     "typical": "0–2"
+    },
+    {
+     "name": "cups",
+     "unit": "list of {what, grams}",
+     "typical": "≤ 6"
+    },
+    {
+     "name": "drum",
+     "unit": "list of {what, grams}",
+     "typical": "≤ 4, release order"
+    }
+   ],
+   "steps": [
+    "fridge_fetch",
+    "prep_tomato × n",
+    "dose_cup × n",
+    "load_drum"
+   ],
+   "stop_condition": "all listed steps done",
+   "sensors_needed": [
+    "scale (station)"
+   ],
+   "movement_sets": [
+    "new (fridge box transfer)",
+    "CUP_FETCH",
+    "DRUM_LOAD"
+   ],
+   "hardware_needed": "fridge cold box, lever cutter, seasoning station, pour drum",
+   "status": "demo",
+   "notes": "In the demo only tomato is cut by the robot; eggs come pre-beaten. Other ingredients need the prep_* types below.",
+   "dishes": [
+    "danchaofan",
+    "jiucaichaodan",
+    "xihongshichaodan"
+   ],
+   "instances": 3,
+   "example_quote": ""
+  },
+  {
+   "id": "heat_to",
+   "name_zh": "烧到油温",
+   "name_en": "Heat to temperature",
+   "category": "wok",
+   "purpose": "Heat the wok (with oil or food) at a power level until the thermometer reads the target (油温 N 成热).",
+   "parameters": [
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "target_C",
+     "unit": "°C",
+     "typical": "120 (4成) · 150 (5成) · 180 (6成) · 210 (7–8成)"
+    }
+   ],
+   "steps": [
+    "set_heat(level)",
+    "wait 3 s steps"
+   ],
+   "stop_condition": "thermometer ≥ target_C, or 120 s, or > 200 °C",
+   "sensors_needed": [
+    "IR thermometer",
+    "clock"
+   ],
+   "movement_sets": [],
+   "hardware_needed": "induction + knob servo",
+   "status": "demo",
+   "notes": "No arm motion.",
+   "dishes": [],
+   "instances": 0,
+   "example_quote": ""
+  },
+  {
+   "id": "add_off_heat",
+   "name_zh": "离火下料",
+   "name_en": "Add off heat",
+   "category": "wok",
+   "purpose": "Heat off (plume rule), arm pours a cup / bowl into the wok, heat back to level.",
+   "parameters": [
+    {
+     "name": "source",
+     "unit": "cup id | egg | tomato | holding_bowl",
+     "typical": "—"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    }
+   ],
+   "steps": [
+    "set_heat(0)",
+    "pour_into_wok(source)",
+    "set_heat(level)"
+   ],
+   "stop_condition": "pour done",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN"
+   ],
+   "hardware_needed": "UR5e + PGC, robot cups",
+   "status": "demo",
+   "notes": "",
+   "dishes": [
+    "home_C_qinggaroupiantang",
+    "hongshaoliyu",
+    "hongshaorou",
+    "huangmenji",
+    "jiangyouchaofan",
+    "jingjiangrousi",
+    "jiucaichaodan",
+    "kelejichi",
+    "mapodoufu",
+    "naohuadoufu",
+    "qiezhilizhi",
+    "suancaiyu",
+    "suanlatang",
+    "tangcupaigu",
+    "tudoushaoniunan",
+    "yutoudoufutang"
+   ],
+   "instances": 20,
+   "example_quote": "热油倒出之后直接下入调好的茄汁"
+  },
+  {
+   "id": "fry_still",
+   "name_zh": "静煎",
+   "name_en": "Fry undisturbed",
+   "category": "wok",
+   "purpose": "Leave the food to fry without stirring (煎 / 定型).",
+   "parameters": [
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "3–120"
+    }
+   ],
+   "steps": [
+    "wait(seconds)"
+   ],
+   "stop_condition": "clock (heat must be ≤ 0.5)",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [],
+   "hardware_needed": "induction",
+   "status": "demo",
+   "notes": "",
+   "dishes": [
+    "hongshaoliyu",
+    "jiangyouchaofan",
+    "jiucaichaodan",
+    "kelejichi",
+    "mapodoufu",
+    "suancaiyu"
+   ],
+   "instances": 6,
+   "example_quote": "油温升至6成热之后我们把处理好的鱼骨头下"
+  },
+  {
+   "id": "flip_and_fry",
+   "name_zh": "翻面再煎",
+   "name_en": "Flip and fry",
+   "category": "wok",
+   "purpose": "Turn the piece over with the spatula, fry the other side.",
+   "parameters": [
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "0–120"
+    }
+   ],
+   "steps": [
+    "flip_egg",
+    "wait(seconds)"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "SPATULA_FETCH",
+    "new (flip stroke)"
+   ],
+   "hardware_needed": "UR5e + spatula",
+   "status": "demo",
+   "notes": "Flipping a single piece is not simulated (uses the scrape stroke).",
+   "dishes": [
+    "hongshaoliyu",
+    "kelejichi"
+   ],
+   "instances": 2,
+   "example_quote": "锅烧热之后加入适量的底油烧至5成热"
+  },
+  {
+   "id": "stir_fry",
+   "name_zh": "翻炒",
+   "name_en": "Stir-fry",
+   "category": "wok",
+   "purpose": "Set the heat and stir with the spatula for a time.",
+   "parameters": [
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "3.6–90"
+    }
+   ],
+   "steps": [
+    "set_heat(level)",
+    "stir(seconds)"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "UR5e + keyed spatula",
+   "status": "demo",
+   "notes": "",
+   "dishes": [
+    "home_A_haoyouxilanhua",
+    "huiguorou",
+    "jiucaichaodan",
+    "xiaochaorou"
+   ],
+   "instances": 4,
+   "example_quote": "继续开中大火翻炒出辣椒的锅气"
+  },
+  {
+   "id": "drum_add_stir",
+   "name_zh": "鼓仓加料翻炒",
+   "name_en": "Drum add + stir",
+   "category": "wok",
+   "purpose": "Release the next drum compartment (liquid / sauce / oil from the edge) and stir straight after it, no pause.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "compartment content",
+     "typical": "water, ketchup, soy, vinegar, wine, finishing oil, sauce"
+    },
+    {
+     "name": "grams",
+     "unit": "g",
+     "typical": "2–60"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "3.6–90"
+    }
+   ],
+   "steps": [
+    "drum_release(stir_seconds)"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice",
+    "servo drum (no arm)"
+   ],
+   "hardware_needed": "pour drum + spatula",
+   "status": "demo",
+   "notes": "Covers 锅边淋 soy / vinegar / wine, 明油, dissolved seasoning water. Ingredients other than the model's are not simulated.",
+   "dishes": [
+    "chaomian",
+    "congbaoyangrou",
+    "danchaofan",
+    "disanxian",
+    "fengweiqiezi",
+    "ganbiansijidou",
+    "gongbaojiding",
+    "home_A_ganguotudou",
+    "home_A_haoyouxilanhua",
+    "home_B_fanqiechaodan",
+    "home_B_hongshaorou",
+    "home_C_qingchaohelandou",
+    "home_C_qingjiaochaoyouyu",
+    "home_C_suanlatudousi",
+    "hongshaoliyu",
+    "hongshaorou",
+    "huangmenji",
+    "huiguorou",
+    "jiangyouchaofan",
+    "jiaoliuroduan",
+    "jiaoyanpaigu",
+    "jingjiangrousi",
+    "laziji",
+    "mapodoufu",
+    "mayishangshu",
+    "qiezhilizhi",
+    "qingchao_qiangchao",
+    "qingjiaorousi",
+    "shousibaocai",
+    "suanlatang",
+    "tudoushaoniunan",
+    "tudousi",
+    "xiaochaoqiezi",
+    "xiaochaorou",
+    "xihongshichaodan",
+    "xilanhua"
+   ],
+   "instances": 54,
+   "example_quote": "热油倒出之后直接下入调好的茄汁"
+  },
+  {
+   "id": "take_out",
+   "name_zh": "出锅",
+   "name_en": "Take out",
+   "category": "plating",
+   "purpose": "Heat off and tip the whole wok into the plate (serve + rinse), the holding bowl, or the oil cup.",
+   "parameters": [
+    {
+     "name": "into",
+     "unit": "enum",
+     "typical": "plate | holding_bowl | oil_cup"
+    }
+   ],
+   "steps": [
+    "set_heat(0)",
+    "tip_wok(into)"
+   ],
+   "stop_condition": "tip done",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "FAUCET_OPEN",
+    "WOK_PLATE_RINSE",
+    "FAUCET_CLOSE",
+    "WOK_OIL_POUR (oil_cup, not verified)"
+   ],
+   "hardware_needed": "keyed wok grip, faucet lever block",
+   "status": "demo",
+   "notes": "Plate tip ≤ 1150 g food (PGC 6.47 of 7 N·m). holding_bowl / oil_cup return path not re-run.",
+   "dishes": [
+    "chaomian",
+    "congbaoyangrou",
+    "danchaofan",
+    "dandanmian",
+    "disanxian",
+    "fengweiqiezi",
+    "ganbiansijidou",
+    "gongbaojiding",
+    "home_A_ganguotudou",
+    "home_A_haoyouxilanhua",
+    "home_B_fanqiechaodan",
+    "home_B_hongshaorou",
+    "home_C_qingchaohelandou",
+    "home_C_qingjiaochaoyouyu",
+    "home_C_suanlatudousi",
+    "hongshaoliyu",
+    "hongshaorou",
+    "huangmenji",
+    "huiguorou",
+    "jiangyouchaofan",
+    "jiaoliuroduan",
+    "jiaoyanpaigu",
+    "jingjiangrousi",
+    "jiucaichaodan",
+    "kelejichi",
+    "laziji",
+    "mapodoufu",
+    "mayishangshu",
+    "naohuadoufu",
+    "qiezhilizhi",
+    "qingchao_qiangchao",
+    "qingjiaorousi",
+    "shousibaocai",
+    "shuizhuroupian",
+    "suancaiyu",
+    "tangcupaigu",
+    "tudoushaoniunan",
+    "tudousi",
+    "xiaochaoqiezi",
+    "xiaochaorou",
+    "xihongshichaodan",
+    "xilanhua",
+    "yutoudoufutang",
+    "yuxiangqiezi",
+    "yuxiangrousi"
+   ],
+   "instances": 58,
+   "example_quote": "最后加入炸好的里脊翻炒均匀即可出锅装盘"
+  },
+  {
+   "id": "return_and_toss",
+   "name_zh": "回锅翻匀",
+   "name_en": "Return and toss",
+   "category": "wok",
+   "purpose": "Heat off, pour the holding bowl back, heat on and stir.",
+   "parameters": [
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "3.6–60"
+    }
+   ],
+   "steps": [
+    "set_heat(0)",
+    "pour_into_wok(holding_bowl)",
+    "set_heat(level)",
+    "stir(seconds)"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new (holding-bowl pour)",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "holding bowl",
+   "status": "demo",
+   "notes": "",
+   "dishes": [
+    "chaomian",
+    "congbaoyangrou",
+    "danchaofan",
+    "disanxian",
+    "fengweiqiezi",
+    "ganbiansijidou",
+    "gongbaojiding",
+    "home_A_ganguotudou",
+    "home_B_fanqiechaodan",
+    "jiangyouchaofan",
+    "jiaoliuroduan",
+    "jiaoyanpaigu",
+    "laziji",
+    "qiezhilizhi",
+    "qingjiaorousi",
+    "shousibaocai",
+    "suancaiyu",
+    "tangcupaigu",
+    "xiaochaorou",
+    "xihongshichaodan"
+   ],
+   "instances": 20,
+   "example_quote": "最后加入炸好的里脊翻炒均匀即可出锅装盘"
+  },
+  {
+   "id": "season_and_toss",
+   "name_zh": "调味翻匀",
+   "name_en": "Season and toss",
+   "category": "wok",
+   "purpose": "Heat off, pour the seasoning cups in (salt, sugar, ...), heat on and stir so they dissolve evenly.",
+   "parameters": [
+    {
+     "name": "cups",
+     "unit": "cup ids",
+     "typical": "1–6"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "3.6–60"
+    }
+   ],
+   "steps": [
+    "set_heat(0)",
+    "pour_into_wok(cup) × n",
+    "set_heat(level)",
+    "stir(seconds)"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "seasoning cups",
+   "status": "demo",
+   "notes": "Added to the demo after run05 (run05 poured salt and sugar as two add_off_heat calls).",
+   "dishes": [
+    "xihongshichaodan"
+   ],
+   "instances": 1,
+   "example_quote": "煮/焖"
+  },
+  {
+   "id": "wok_grease",
+   "name_zh": "润锅/滑锅",
+   "name_en": "Season the wok (热锅冷油)",
+   "category": "wok",
+   "purpose": "Heat the empty wok, add oil, heat it, pour the hot oil out, add fresh cold oil (热锅冷油, non-stick film).",
+   "parameters": [
+    {
+     "name": "oil_g",
+     "unit": "g",
+     "typical": "30–60"
+    },
+    {
+     "name": "pour_out",
+     "unit": "bool",
+     "typical": "true (false = oil stays)"
+    },
+    {
+     "name": "target_C",
+     "unit": "°C",
+     "typical": "150–200"
+    },
+    {
+     "name": "fresh_oil_g",
+     "unit": "g",
+     "typical": "10–30"
+    }
+   ],
+   "steps": [
+    "add_off_heat(cup oil, 1.0)",
+    "heat_to(1.0, target_C)",
+    "take_out(oil_cup)",
+    "add_off_heat(cup fresh oil)"
+   ],
+   "stop_condition": "thermometer ≥ target_C (or 120 s)",
+   "sensors_needed": [
+    "IR thermometer",
+    "clock"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "WOK_OIL_POUR"
+   ],
+   "hardware_needed": "oil cup",
+   "status": "demo_ready",
+   "notes": "Exactly what run05 did (pour cup1 → heat_to 150 → take_out oil_cup → add cup2). His 晃锅 (swirl) is replaced by the tip to the oil cup, which wets the wall.",
+   "dishes": [
+    "chaomian",
+    "congbaoyangrou",
+    "danchaofan",
+    "hongshaorou",
+    "huiguorou",
+    "jiangyouchaofan",
+    "jingjiangrousi",
+    "jiucaichaodan",
+    "mapodoufu",
+    "mayishangshu",
+    "qingjiaorousi",
+    "shuizhuroupian",
+    "suancaiyu",
+    "xiaochaoqiezi",
+    "xiaochaorou",
+    "xihongshichaodan",
+    "yuxiangqiezi",
+    "yuxiangrousi"
+   ],
+   "instances": 18,
+   "example_quote": "锅烧热之后加入适量的油滑锅"
+  },
+  {
+   "id": "egg_set_and_hold",
+   "name_zh": "滑蛋盛出",
+   "name_en": "Set eggs and hold",
+   "category": "wok",
+   "purpose": "Pour beaten egg into oil at temperature, fry still until the underside sets, flip, fry, tip into the holding bowl.",
+   "parameters": [
+    {
+     "name": "target_C",
+     "unit": "°C",
+     "typical": "120–150"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "still_s",
+     "unit": "s",
+     "typical": "20–60"
+    },
+    {
+     "name": "flip_s",
+     "unit": "s",
+     "typical": "0–30"
+    }
+   ],
+   "steps": [
+    "heat_to(level, target_C)",
+    "add_off_heat(egg, level)",
+    "fry_still(still_s)",
+    "flip_and_fry(flip_s)",
+    "take_out(holding_bowl)"
+   ],
+   "stop_condition": "clock (camera rule optional: no liquid sheen on top)",
+   "sensors_needed": [
+    "IR thermometer",
+    "clock",
+    "camera (optional)"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "new (flip)",
+    "new (tip to holding bowl)"
+   ],
+   "hardware_needed": "holding bowl",
+   "status": "demo_ready",
+   "notes": "The demo did these 5 calls one by one; as one routine there is no gap between pour and still-fry.",
+   "dishes": [
+    "chaomian",
+    "home_B_fanqiechaodan",
+    "jiangyouchaofan",
+    "xihongshichaodan"
+   ],
+   "instances": 4,
+   "example_quote": "热锅滑油之后小火煎成略微老一点的荷包蛋"
+  },
+  {
+   "id": "add_stir_fry",
+   "name_zh": "下料翻炒",
+   "name_en": "Add and stir-fry",
+   "category": "wok",
+   "purpose": "Add an ingredient off heat, then stir at a level for a time (炒 / 炒至断生 / 炒匀).",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "ingredient",
+     "typical": "—"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "3–300"
+    },
+    {
+     "name": "stroke",
+     "unit": "enum",
+     "typical": "dice | shreds_leafy"
+    }
+   ],
+   "steps": [
+    "add_off_heat(cup, level)",
+    "stir_fry(level, seconds)"
+   ],
+   "stop_condition": "clock; optional camera rule (colour change / wilt area)",
+   "sensors_needed": [
+    "clock",
+    "camera (optional)"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice",
+    "STIR_CYCLE_shreds_leafy (shreds / leafy)"
+   ],
+   "hardware_needed": "spatula",
+   "status": "demo_ready",
+   "notes": "Runs in the demo with tomato (add_off_heat + stir_fry). Other ingredients: same calls, not in the wok model; shreds / leafy need the unverified stroke set.",
+   "dishes": [
+    "chaomian",
+    "congbaoyangrou",
+    "danchaofan",
+    "dandanmian",
+    "ganbiansijidou",
+    "home_A_ganguotudou",
+    "home_A_haoyouxilanhua",
+    "home_B_fanqiechaodan",
+    "home_C_qingchaohelandou",
+    "home_C_qingjiaochaoyouyu",
+    "home_C_suanlatudousi",
+    "hongshaoliyu",
+    "huangmenji",
+    "huiguorou",
+    "jiangyouchaofan",
+    "jiaoyanpaigu",
+    "jingjiangrousi",
+    "jiucaichaodan",
+    "mapodoufu",
+    "mayishangshu",
+    "qingchao_qiangchao",
+    "qingjiaorousi",
+    "shousibaocai",
+    "shuizhuroupian",
+    "suancaiyu",
+    "tudoushaoniunan",
+    "tudousi",
+    "xiaochaoqiezi",
+    "xiaochaorou",
+    "xihongshichaodan",
+    "xilanhua",
+    "yuxiangqiezi",
+    "yuxiangrousi"
+   ],
+   "instances": 41,
+   "example_quote": "家庭小灶这一步大概需要1分钟左右"
+  },
+  {
+   "id": "bloom_aromatics",
+   "name_zh": "爆香",
+   "name_en": "Bloom aromatics",
+   "category": "wok",
+   "purpose": "Oil at temperature, aromatics (姜蒜葱 / 干辣椒 / 花椒) in, short stir until fragrant, then the next ingredient goes in at once.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "aromatics",
+     "typical": "姜蒜葱, 干辣椒, 花椒, 泡椒"
+    },
+    {
+     "name": "target_C",
+     "unit": "°C",
+     "typical": "150–180"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "10–40"
+    }
+   ],
+   "steps": [
+    "heat_to(level, target_C)",
+    "add_off_heat(aromatics cup, level)",
+    "stir_fry(level, seconds)"
+   ],
+   "stop_condition": "clock 10–30 s; abort early if thermometer > 200 °C (smell has no sensor: time + temperature proxy)",
+   "sensors_needed": [
+    "IR thermometer",
+    "clock"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "spatula",
+   "status": "needs_check",
+   "notes": "Aromatics are not in the wok model; CUP_POUR_wok not verified, stir set partially verified.",
+   "dishes": [
+    "congbaoyangrou",
+    "disanxian",
+    "fengweiqiezi",
+    "ganbiansijidou",
+    "gongbaojiding",
+    "home_A_ganguotudou",
+    "home_B_hongshaorou",
+    "home_C_qingchaohelandou",
+    "home_C_qingjiaochaoyouyu",
+    "home_C_suanlatudousi",
+    "hongshaoliyu",
+    "hongshaorou",
+    "huangmenji",
+    "huiguorou",
+    "jiaoliuroduan",
+    "jiaoyanpaigu",
+    "jingjiangrousi",
+    "kelejichi",
+    "laziji",
+    "mapodoufu",
+    "naohuadoufu",
+    "qingchao_qiangchao",
+    "qingjiaorousi",
+    "shousibaocai",
+    "shuizhuroupian",
+    "tudousi",
+    "xiaochaoqiezi",
+    "xiaochaorou",
+    "xilanhua",
+    "yuxiangqiezi",
+    "yuxiangrousi"
+   ],
+   "instances": 32,
+   "example_quote": "姜蒜末下锅之后必须翻炒出香味"
+  },
+  {
+   "id": "fry_paste_red_oil",
+   "name_zh": "炒出红油",
+   "name_en": "Fry paste to red oil",
+   "category": "wok",
+   "purpose": "Paste (豆瓣 / 火锅底料 / 甜面酱) into low-heat oil, often with the wok off heat first, stir until the oil turns red.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "paste",
+     "typical": "豆瓣, 豆豉, 火锅底料, 甜面酱"
+    },
+    {
+     "name": "grams",
+     "unit": "g",
+     "typical": "3–30"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "10–60"
+    },
+    {
+     "name": "off_heat_first",
+     "unit": "bool",
+     "typical": "—"
+    }
+   ],
+   "steps": [
+    "set_heat(0) (if off_heat_first)",
+    "add_off_heat(paste cup, level)",
+    "stir_fry(level, seconds)"
+   ],
+   "stop_condition": "camera rule: oil hue red (a* threshold) or clock; cap thermometer ≤ 140 °C",
+   "sensors_needed": [
+    "camera",
+    "IR thermometer",
+    "clock"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "spatula",
+   "status": "needs_check",
+   "notes": "Paste from a cup: sticky; scraping the cup is not designed.",
+   "dishes": [
+    "home_A_ganguotudou",
+    "huiguorou",
+    "mapodoufu",
+    "mayishangshu",
+    "naohuadoufu",
+    "shuizhuroupian",
+    "tudoushaoniunan"
+   ],
+   "instances": 7,
+   "example_quote": "油温5成热之后把锅离火"
+  },
+  {
+   "id": "render_fat",
+   "name_zh": "煸",
+   "name_en": "Render / dry-fry meat",
+   "category": "wok",
+   "purpose": "Meat (五花 / 肉末 / 腊肉) in a little oil, medium-low, stirred until the fat runs and it curls or crisps.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "meat",
+     "typical": "五花片/粒, 肉末, 牛肉粒"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "20–120"
+    }
+   ],
+   "steps": [
+    "add_off_heat(meat cup, level)",
+    "stir_fry(level, seconds)"
+   ],
+   "stop_condition": "clock; camera: pieces curl / colour (golden)",
+   "sensors_needed": [
+    "clock",
+    "camera"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "spatula",
+   "status": "needs_check",
+   "notes": "",
+   "dishes": [
+    "dandanmian",
+    "ganbiansijidou",
+    "home_A_ganguotudou",
+    "home_B_hongshaorou",
+    "hongshaoliyu",
+    "hongshaorou",
+    "huiguorou",
+    "mapodoufu",
+    "mayishangshu",
+    "xiaochaoqiezi",
+    "xiaochaorou",
+    "yuxiangqiezi"
+   ],
+   "instances": 12,
+   "example_quote": "肉末放进去给它"
+  },
+  {
+   "id": "dry_stir",
+   "name_zh": "干煸",
+   "name_en": "Dry-stir until wrinkled/dry",
+   "category": "wok",
+   "purpose": "Long low-medium stir until surface water is gone (酸菜) or skins wrinkle (四季豆); pour excess oil off mid-way.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "veg",
+     "typical": "四季豆, 酸菜"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "60–200"
+    }
+   ],
+   "steps": [
+    "add_off_heat(cup, level)",
+    "stir_fry(level, seconds)",
+    "(pour_off_excess_oil)"
+   ],
+   "stop_condition": "clock; thermometer rise (> 120 °C = water gone); camera wrinkle texture",
+   "sensors_needed": [
+    "clock",
+    "IR thermometer",
+    "camera"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "spatula",
+   "status": "needs_check",
+   "notes": "",
+   "dishes": [
+    "ganbiansijidou",
+    "suancaiyu"
+   ],
+   "instances": 2,
+   "example_quote": "大概这里是二两"
+  },
+  {
+   "id": "slide_oil_meat",
+   "name_zh": "滑油/滑炒",
+   "name_en": "Slide-cook marinated meat",
+   "category": "wok",
+   "purpose": "Marinated meat into warm oil (120 °C), do not move until the bottom sets, break apart with gentle strokes until colour changes, optionally take out.",
+   "parameters": [
+    {
+     "name": "target_C",
+     "unit": "°C",
+     "typical": "100–150"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "set_s",
+     "unit": "s",
+     "typical": "5–15"
+    },
+    {
+     "name": "separate_s",
+     "unit": "s",
+     "typical": "15–40"
+    },
+    {
+     "name": "take_out",
+     "unit": "bool",
+     "typical": "—"
+    }
+   ],
+   "steps": [
+    "heat_to(level, target_C)",
+    "add_off_heat(meat cup, level)",
+    "fry_still(set_s)",
+    "stir_fry(level, separate_s) (gentle strokes)",
+    "take_out(holding_bowl) (optional)"
+   ],
+   "stop_condition": "clock; camera: no pink area",
+   "sensors_needed": [
+    "IR thermometer",
+    "clock",
+    "camera"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "STIR_CYCLE_shreds_leafy",
+    "new (gentle separate stroke)"
+   ],
+   "hardware_needed": "spatula",
+   "status": "needs_check",
+   "notes": "Shreds need the unverified shreds stroke. Batter-coated pieces for deep-frying use deep_fry instead.",
+   "dishes": [
+    "chaomian",
+    "congbaoyangrou",
+    "jingjiangrousi",
+    "qingjiaorousi",
+    "xiaochaorou",
+    "yuxiangrousi"
+   ],
+   "instances": 6,
+   "example_quote": "把油温烧至6成热（约180度）"
+  },
+  {
+   "id": "caramelize_sugar",
+   "name_zh": "炒糖色",
+   "name_en": "Caramelize sugar",
+   "category": "sauce",
+   "purpose": "Rock sugar with a little oil/water on low heat until amber, then boiling water or the meat goes in at once.",
+   "parameters": [
+    {
+     "name": "sugar_g",
+     "unit": "g",
+     "typical": "15–30"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "max_s",
+     "unit": "s",
+     "typical": "60–180"
+    },
+    {
+     "name": "then",
+     "unit": "enum",
+     "typical": "water | meat"
+    }
+   ],
+   "steps": [
+    "add_off_heat(sugar cup, 0.3)",
+    "stir_fry(0.3, until rule)",
+    "drum_add_stir(boiling water) or add_off_heat(meat)"
+   ],
+   "stop_condition": "camera: amber hue reached, or thermometer ≥ 165 °C, or max_s",
+   "sensors_needed": [
+    "camera",
+    "IR thermometer",
+    "clock"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "spatula, drum",
+   "status": "needs_check",
+   "notes": "Timing-critical (burns in seconds): this is the case routines are for. Caramel is not in the wok model.",
+   "dishes": [
+    "home_B_hongshaorou",
+    "hongshaorou",
+    "huangmenji"
+   ],
+   "instances": 3,
+   "example_quote": "重新加入冰糖20克下锅"
+  },
+  {
+   "id": "thicken",
+   "name_zh": "勾芡/收汁(碗汁)",
+   "name_en": "Thicken with starch",
+   "category": "sauce",
+   "purpose": "Release starch water or a starch-containing bowl sauce (碗汁/料汁) from the drum and stir until the sauce coats.",
+   "parameters": [
+    {
+     "name": "sauce",
+     "unit": "what",
+     "typical": "starch_water | 碗汁 | 茄汁 | 料汁"
+    },
+    {
+     "name": "grams",
+     "unit": "g",
+     "typical": "15–80"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "max_s",
+     "unit": "s",
+     "typical": "10–30"
+    }
+   ],
+   "steps": [
+    "set_heat(level)",
+    "drum_release(stir_seconds = until rule)"
+   ],
+   "stop_condition": "camera gloss rule (specular area on sauce > threshold, no free liquid at the wok bottom) or max_s",
+   "sensors_needed": [
+    "camera",
+    "clock"
+   ],
+   "movement_sets": [
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice",
+    "servo drum (no arm)"
+   ],
+   "hardware_needed": "pour drum",
+   "status": "demo_ready",
+   "notes": "The brief's example: the LLM pause between release and stir made the sauce lumpy. starch_water is in the wok model; the gloss rule is not in the camera model yet (time cap only).",
+   "dishes": [
+    "congbaoyangrou",
+    "disanxian",
+    "fengweiqiezi",
+    "gongbaojiding",
+    "home_C_qingjiaochaoyouyu",
+    "hongshaoliyu",
+    "jiaoliuroduan",
+    "qiezhilizhi",
+    "shuizhuroupian",
+    "xihongshichaodan",
+    "xilanhua",
+    "yuxiangqiezi",
+    "yuxiangrousi"
+   ],
+   "instances": 14,
+   "example_quote": "热油倒出之后直接下入调好的茄汁"
+  },
+  {
+   "id": "thicken_multi_off_heat",
+   "name_zh": "少量多次勾芡",
+   "name_en": "Thicken in passes off heat",
+   "category": "sauce",
+   "purpose": "Heat off, starch water to the centre, gentle push strokes, heat back to low; repeat 2–4 times (麻婆豆腐 / 脑花豆腐).",
+   "parameters": [
+    {
+     "name": "passes",
+     "unit": "count",
+     "typical": "2–4"
+    },
+    {
+     "name": "grams_each",
+     "unit": "g",
+     "typical": "10–20"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "interval_s",
+     "unit": "s",
+     "typical": "30–60"
+    }
+   ],
+   "steps": [
+    "repeat: set_heat(0), drum_release, stir(push strokes), set_heat(level), wait(interval_s)"
+   ],
+   "stop_condition": "passes done; camera gloss rule on the last pass",
+   "sensors_needed": [
+    "camera",
+    "clock"
+   ],
+   "movement_sets": [
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice",
+    "new (push stroke for soft tofu)"
+   ],
+   "hardware_needed": "pour drum (all 4 compartments)",
+   "status": "needs_check",
+   "notes": "Soft tofu needs a push stroke, not the scrape stroke.",
+   "dishes": [
+    "mapodoufu",
+    "naohuadoufu",
+    "suanlatang"
+   ],
+   "instances": 5,
+   "example_quote": "调好味之后将锅离火"
+  },
+  {
+   "id": "simmer_open",
+   "name_zh": "煮/烧(敞口)",
+   "name_en": "Simmer uncovered",
+   "category": "wok",
+   "purpose": "Liquid in (drum / WOK_FILL), bring to the boil, hold at a level for a time; optional skim and basting.",
+   "parameters": [
+    {
+     "name": "liquid",
+     "unit": "what",
+     "typical": "water, stock, cola, beer, 糖色"
+    },
+    {
+     "name": "grams",
+     "unit": "g",
+     "typical": "60–1000"
+    },
+    {
+     "name": "boil_level",
+     "unit": "0–1",
+     "typical": "1.0"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "60–1800"
+    },
+    {
+     "name": "skim",
+     "unit": "bool",
+     "typical": "—"
+    }
+   ],
+   "steps": [
+    "drum_add_stir(liquid) or wok_fill_water",
+    "heat_to(1.0, 98)",
+    "set_heat(level)",
+    "wait(seconds)"
+   ],
+   "stop_condition": "clock after the thermometer reads ≥ 98 °C; boil-dry guard: > 110 °C stops",
+   "sensors_needed": [
+    "IR thermometer",
+    "clock"
+   ],
+   "movement_sets": [
+    "servo drum (no arm)",
+    "WOK_FILL (large volumes)"
+   ],
+   "hardware_needed": "pour drum",
+   "status": "demo_ready",
+   "notes": "Water is in the wok model (run05 simmered 50 s). Skimming (撇浮沫) has no tool: skipped or spider (SPIDER_SCOOP_wok, not verified). > 1 L needs WOK_FILL.",
+   "dishes": [
+    "baiqieji_koushuiji",
+    "home_C_qinggaroupiantang",
+    "hongshaoliyu",
+    "hongshaorou",
+    "huangmenji",
+    "kelejichi",
+    "mapodoufu",
+    "naohuadoufu",
+    "qiezhilizhi",
+    "shuizhuroupian",
+    "suancaiyu",
+    "suanlatang",
+    "xilanhua",
+    "yutoudoufutang"
+   ],
+   "instances": 20,
+   "example_quote": "热油倒出之后直接下入调好的茄汁"
+  },
+  {
+   "id": "braise_lid",
+   "name_zh": "焖(盖盖)",
+   "name_en": "Braise with lid",
+   "category": "wok",
+   "purpose": "Liquid in, boil, lid on, hold at a level for a time (30 s 焖 on high up to 60 min braise), lid off.",
+   "parameters": [
+    {
+     "name": "liquid_g",
+     "unit": "g",
+     "typical": "0–1000"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "30–3600"
+    }
+   ],
+   "steps": [
+    "drum_add_stir(water) or wok_fill_water",
+    "heat_to(1.0, 98)",
+    "set_heat(level)",
+    "lid on",
+    "wait(seconds)",
+    "lid off"
+   ],
+   "stop_condition": "clock; boil-dry guard on the thermometer",
+   "sensors_needed": [
+    "IR thermometer",
+    "clock"
+   ],
+   "movement_sets": [
+    "LID_ON_wok",
+    "LID_OFF_wok"
+   ],
+   "hardware_needed": "wok lid + lid rack",
+   "status": "needs_check",
+   "notes": "Wok lid sets are not verified (meal A 西兰花, meal B 红烧肉 / 番茄炒蛋 need them).",
+   "dishes": [
+    "home_A_haoyouxilanhua",
+    "home_B_fanqiechaodan",
+    "home_B_hongshaorou",
+    "hongshaoliyu",
+    "huangmenji",
+    "kelejichi",
+    "tudoushaoniunan"
+   ],
+   "instances": 8,
+   "example_quote": "然后将鲤鱼下锅烧6分钟"
+  },
+  {
+   "id": "reduce_sauce",
+   "name_zh": "收汁(无芡)",
+   "name_en": "Reduce sauce",
+   "category": "sauce",
+   "purpose": "Uncovered, medium-high, stir now and then until the liquid is thick and glossy (no starch).",
+   "parameters": [
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "max_s",
+     "unit": "s",
+     "typical": "30–600"
+    },
+    {
+     "name": "stir_every_s",
+     "unit": "s",
+     "typical": "20–60"
+    }
+   ],
+   "steps": [
+    "set_heat(level)",
+    "repeat: wait, stir(4 s)"
+   ],
+   "stop_condition": "thermometer of the bottom rises above ~105 °C (water gone) or camera gloss, or max_s",
+   "sensors_needed": [
+    "IR thermometer",
+    "camera",
+    "clock"
+   ],
+   "movement_sets": [
+    "SPATULA_FETCH",
+    "STIR_CYCLE_dice"
+   ],
+   "hardware_needed": "spatula",
+   "status": "needs_check",
+   "notes": "",
+   "dishes": [
+    "home_B_hongshaorou",
+    "hongshaorou",
+    "huangmenji",
+    "jingjiangrousi",
+    "kelejichi",
+    "tangcupaigu",
+    "tudoushaoniunan"
+   ],
+   "instances": 7,
+   "example_quote": "然后放这个汤"
+  },
+  {
+   "id": "sear_skin_dry",
+   "name_zh": "烙皮",
+   "name_en": "Sear pork skin",
+   "category": "wok",
+   "purpose": "Dry wok very hot, slab of pork skin-down, sear until the skin is golden and blistered, lift it out.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "slab",
+     "typical": "五花 / 后腿 500–600 g"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "60–240"
+    }
+   ],
+   "steps": [
+    "heat_to(1.0, 220)",
+    "place slab skin-down (gripper)",
+    "fry_still(seconds)",
+    "lift slab to the sink tray"
+   ],
+   "stop_condition": "camera: skin colour; clock",
+   "sensors_needed": [
+    "IR thermometer",
+    "camera",
+    "clock"
+   ],
+   "movement_sets": [
+    "new (place / lift slab)"
+   ],
+   "hardware_needed": "gripper finger set for raw meat",
+   "status": "needs_check",
+   "notes": "He moves the slab around to sear evenly; one arm can do it but the grip on a hot slab is not designed.",
+   "dishes": [
+    "hongshaorou",
+    "huiguorou"
+   ],
+   "instances": 2,
+   "example_quote": "煎 (烙皮: dry-sear the "
+  },
+  {
+   "id": "poach_slices",
+   "name_zh": "滑片",
+   "name_en": "Poach slices in soup",
+   "category": "wok",
+   "purpose": "Heat off, coated slices in one by one, low heat ~15 s, gentle push, lift into the serving bowl with the spider.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "slices",
+     "typical": "鱼片, 肉片"
+    },
+    {
+     "name": "level",
+     "unit": "0–1 knob",
+     "typical": "0.3 low · 0.5 medium · 0.7 med-high · 1.0 full"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "15–90"
+    }
+   ],
+   "steps": [
+    "set_heat(0)",
+    "add_off_heat(slice cup, level)",
+    "wait(seconds)",
+    "spider scoop wok → serving bowl"
+   ],
+   "stop_condition": "clock; camera: slices opaque",
+   "sensors_needed": [
+    "clock",
+    "camera"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "SPIDER_FETCH",
+    "SPIDER_SCOOP_wok",
+    "SPIDER_DUMP_plate",
+    "SPIDER_STOW"
+   ],
+   "hardware_needed": "spider strainer",
+   "status": "needs_check",
+   "notes": "SPIDER_SCOOP_wok not verified (only the pot scoop is).",
+   "dishes": [
+    "home_C_qinggaroupiantang",
+    "shuizhuroupian",
+    "suancaiyu"
+   ],
+   "instances": 3,
+   "example_quote": "然后将锅离火"
+  },
+  {
+   "id": "fish_out_item",
+   "name_zh": "捞出(单件/料头)",
+   "name_en": "Fish out an item",
+   "category": "wok",
+   "purpose": "Lift a named item (葱段, 姜, bones + 酸菜, a piece) out of the liquid with the spider.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "item",
+     "typical": "—"
+    },
+    {
+     "name": "into",
+     "unit": "enum",
+     "typical": "discard | serving_bowl | holding_bowl"
+    }
+   ],
+   "steps": [
+    "SPIDER fetch",
+    "scoop wok",
+    "dump",
+    "stow"
+   ],
+   "stop_condition": "scoop done",
+   "sensors_needed": [
+    "camera (locate)"
+   ],
+   "movement_sets": [
+    "SPIDER_FETCH",
+    "SPIDER_SCOOP_wok",
+    "SPIDER_DUMP_plate",
+    "SPIDER_STOW"
+   ],
+   "hardware_needed": "spider strainer",
+   "status": "needs_check",
+   "notes": "",
+   "dishes": [
+    "hongshaorou",
+    "kelejichi",
+    "suancaiyu",
+    "yutoudoufutang"
+   ],
+   "instances": 4,
+   "example_quote": "辅料翻炒均匀之后再将事先准备好的热水下锅"
+  },
+  {
+   "id": "pour_off_excess_oil",
+   "name_zh": "倒出多余油",
+   "name_en": "Pour off excess oil, keep food",
+   "category": "wok",
+   "purpose": "Tip the wok so the excess oil runs out while the food stays in.",
+   "parameters": [
+    {
+     "name": "keep_oil_g",
+     "unit": "g",
+     "typical": "10–30"
+    }
+   ],
+   "steps": [
+    "(he holds the food back with the ladle while tipping)"
+   ],
+   "stop_condition": "oil out",
+   "sensors_needed": [
+    "camera"
+   ],
+   "movement_sets": [
+    "WOK_OIL_POUR",
+    "new"
+   ],
+   "hardware_needed": "oil cup",
+   "status": "two_hands",
+   "notes": "One arm cannot hold the food back and tip at once. Workaround: spider the food into the holding bowl, take_out(oil_cup), add back (3 sets, +~40 s); or use less oil so no pour-off is needed.",
+   "dishes": [
+    "ganbiansijidou",
+    "hongshaorou",
+    "jingjiangrousi"
+   ],
+   "instances": 3,
+   "example_quote": "大概这里是二两"
+  },
+  {
+   "id": "ladle_baste",
+   "name_zh": "舀汤浇",
+   "name_en": "Baste with a ladle",
+   "category": "wok",
+   "purpose": "Ladle sauce over a whole fish / piece without turning it.",
+   "parameters": [
+    {
+     "name": "times",
+     "unit": "count",
+     "typical": "3–6"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "60–360"
+    }
+   ],
+   "steps": [
+    "fetch ladle",
+    "repeat: scoop sauce, pour over",
+    "stow ladle"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "ladle (not designed)",
+   "status": "needs_hardware",
+   "notes": "Workaround: lid on (braise_lid) instead of basting.",
+   "dishes": [],
+   "instances": 0,
+   "example_quote": ""
+  },
+  {
+   "id": "hot_oil_pour_over",
+   "name_zh": "泼油/浇热油",
+   "name_en": "Pour hot oil over",
+   "category": "sauce",
+   "purpose": "Heat oil in the wok to 180–240 °C, heat off, tip the wok so the oil runs over the food / aromatics in a bowl or plate.",
+   "parameters": [
+    {
+     "name": "oil_g",
+     "unit": "g",
+     "typical": "20–80"
+    },
+    {
+     "name": "target_C",
+     "unit": "°C",
+     "typical": "180–240"
+    },
+    {
+     "name": "onto",
+     "unit": "enum",
+     "typical": "plate | bowl"
+    }
+   ],
+   "steps": [
+    "add_off_heat(cup oil, 1.0)",
+    "heat_to(1.0, target_C)",
+    "set_heat(0)",
+    "tip wok over the bowl/plate",
+    "wok back"
+   ],
+   "stop_condition": "thermometer ≥ target_C",
+   "sensors_needed": [
+    "IR thermometer"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_wok",
+    "CUP_RETURN",
+    "WOK_OIL_POUR"
+   ],
+   "hardware_needed": "keyed wok grip",
+   "status": "needs_check",
+   "notes": "R17: a 6–8 cm bowl at the plating spot was hit by the forearm during the wok pick; hot-oil pour not verified.",
+   "dishes": [
+    "baiqieji_koushuiji",
+    "home_A_suanrongsigua",
+    "home_B_baizhuozhi",
+    "home_B_qingzhengluyu",
+    "home_C_yutouzhengpaigu",
+    "shuizhuroupian",
+    "suancaiyu",
+    "xilanhua",
+    "zhengluyu"
+   ],
+   "instances": 9,
+   "example_quote": "然后准备适量的植物油烧至6成热"
+  },
+  {
+   "id": "deep_fry",
+   "name_zh": "炸/复炸",
+   "name_en": "Deep-fry (and re-fry)",
+   "category": "fry",
+   "purpose": "Oil (fryer or wide oil in the wok) to temperature, food in, do not stir until set, separate, fry for a time, lift out with the spider; pass 2 = hotter, shorter.",
+   "parameters": [
+    {
+     "name": "vessel",
+     "unit": "enum",
+     "typical": "fryer | wok"
+    },
+    {
+     "name": "target_C",
+     "unit": "°C",
+     "typical": "150–240"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "20–360"
+    },
+    {
+     "name": "pass",
+     "unit": "count",
+     "typical": "1 | 2"
+    }
+   ],
+   "steps": [
+    "heat oil (fryer thermostat or heat_to)",
+    "pour food from cup",
+    "wait(set) + gentle separate",
+    "wait(rest of seconds)",
+    "spider scoop → tray/holding bowl"
+   ],
+   "stop_condition": "clock; oil thermometer held at target; camera: golden colour",
+   "sensors_needed": [
+    "oil thermometer",
+    "clock",
+    "camera"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_fryer",
+    "CUP_RETURN",
+    "SPIDER_FETCH",
+    "SPIDER_SCOOP_fryer",
+    "SPIDER_DUMP_plate",
+    "SPIDER_STOW"
+   ],
+   "hardware_needed": "fryer, spider",
+   "status": "needs_check",
+   "notes": "Use the fryer, not 750 g of oil in the wok. Pieces added one by one (逐步下入) become one pour; battering (挂糊) is prep [missing].",
+   "dishes": [
+    "congbaoyangrou",
+    "disanxian",
+    "fengweiqiezi",
+    "gongbaojiding",
+    "home_A_ganguotudou",
+    "huangmenji",
+    "jiaoliuroduan",
+    "jiaoyanpaigu",
+    "laziji",
+    "qiezhilizhi",
+    "tangcupaigu",
+    "yutoudoufutang"
+   ],
+   "instances": 17,
+   "example_quote": "在烧油的时候我们把处理好的里脊"
+  },
+  {
+   "id": "wok_fill_water",
+   "name_zh": "锅中加水(龙头)",
+   "name_en": "Fill wok at the tap",
+   "category": "wok",
+   "purpose": "Carry the wok to the faucet, fill ~1 L, set it back (for soups, blanching water, 煮).",
+   "parameters": [
+    {
+     "name": "water_g",
+     "unit": "g",
+     "typical": "300–1000"
+    }
+   ],
+   "steps": [
+    "FAUCET_OPEN",
+    "WOK_FILL",
+    "FAUCET_CLOSE"
+   ],
+   "stop_condition": "fill time (flow-calibrated)",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "FAUCET_OPEN",
+    "WOK_FILL",
+    "FAUCET_CLOSE"
+   ],
+   "hardware_needed": "faucet lever block",
+   "status": "sim_motion_checked",
+   "notes": "WOK_FILL is composed from the verified wok chain (micro-joins checked in R19, 1 L load PGC 5.88 N·m). Flow volume not calibrated; > 1 L not checked.",
+   "dishes": [
+    "home_B_hongshaorou",
+    "home_C_qinggaroupiantang",
+    "hongshaorou",
+    "huangmenji",
+    "suancaiyu",
+    "suanlatang",
+    "tudoushaoniunan",
+    "yutoudoufutang"
+   ],
+   "instances": 8,
+   "example_quote": "辅料翻炒均匀之后再将事先准备好的热水下锅"
+  },
+  {
+   "id": "wash_wok",
+   "name_zh": "洗锅",
+   "name_en": "Rinse the wok",
+   "category": "cleanup",
+   "purpose": "Wok to the sink, rinse under the running tap, dump, back on the cooker.",
+   "parameters": [],
+   "steps": [
+    "set_heat(0)",
+    "FAUCET_OPEN",
+    "WOK_DUMP_RINSE",
+    "FAUCET_CLOSE"
+   ],
+   "stop_condition": "sequence done",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "FAUCET_OPEN",
+    "WOK_DUMP_RINSE",
+    "FAUCET_CLOSE"
+   ],
+   "hardware_needed": "faucet lever block",
+   "status": "sim_motion_checked",
+   "notes": "Composed from verified sets. Rinse only (no scrubbing). The spatula rest ↔ faucet transits are not verified (R19 §1).",
+   "dishes": [
+    "shousibaocai",
+    "suancaiyu",
+    "xiaochaorou"
+   ],
+   "instances": 5,
+   "example_quote": "洗锅之后重新把锅烧热"
+  },
+  {
+   "id": "blanch_lift",
+   "name_zh": "焯水/煮后捞出",
+   "name_en": "Blanch or boil, then lift out",
+   "category": "pot_steam",
+   "purpose": "Pot (zone 2) or wok water to the boil (or cold start for meat), food in, time, optional skim, lift out with the spider (optional cold-water dip).",
+   "parameters": [
+    {
+     "name": "vessel",
+     "unit": "enum",
+     "typical": "pot | wok"
+    },
+    {
+     "name": "start",
+     "unit": "enum",
+     "typical": "boiling | cold"
+    },
+    {
+     "name": "additive",
+     "unit": "what",
+     "typical": "salt, oil, vinegar, 料酒"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "10–3600"
+    },
+    {
+     "name": "chill",
+     "unit": "bool",
+     "typical": "—"
+    }
+   ],
+   "steps": [
+    "(water already in the pot / wok_fill_water)",
+    "heat_to(1.0, 98)",
+    "pour food cup into the pot",
+    "wait(seconds)",
+    "SPIDER_FETCH",
+    "SPIDER_SCOOP_pot",
+    "SPIDER_DUMP_plate (or holding bowl)",
+    "SPIDER_STOW"
+   ],
+   "stop_condition": "clock after boil (thermometer ≥ 98 °C)",
+   "sensors_needed": [
+    "IR thermometer",
+    "clock"
+   ],
+   "movement_sets": [
+    "new (cup pour into the pot)",
+    "SPIDER_FETCH",
+    "SPIDER_SCOOP_pot",
+    "SPIDER_DUMP_plate",
+    "SPIDER_STOW"
+   ],
+   "hardware_needed": "zone-2 pot, spider",
+   "status": "needs_check",
+   "notes": "The spider chain from the pot is verified; pouring food into the pot and filling the pot are not designed. Skimming foam: no tool.",
+   "dishes": [
+    "dandanmian",
+    "disanxian",
+    "home_B_baizhuo",
+    "home_B_hongshaorou",
+    "home_B_xiansunpaigutang",
+    "home_C_qingjiaochaoyouyu",
+    "home_C_suanlatudousi",
+    "hongshaorou",
+    "huangmenji",
+    "huiguorou",
+    "shousibaocai",
+    "suancaiyu",
+    "suanlatang",
+    "tangcupaigu",
+    "tudoushaoniunan",
+    "tudousi",
+    "xilanhua"
+   ],
+   "instances": 20,
+   "example_quote": "先给排骨焯下水"
+  },
+  {
+   "id": "steam_plate",
+   "name_zh": "蒸",
+   "name_en": "Steam a plate",
+   "category": "pot_steam",
+   "purpose": "Plate on the dish carrier into the steaming pot, lid on, steam for a time from full steam, lid off, carrier out.",
+   "parameters": [
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "180–10800"
+    },
+    {
+     "name": "level",
+     "unit": "0–1",
+     "typical": "0.5–1.0"
+    }
+   ],
+   "steps": [
+    "heat_to(1.0, 98) (pot)",
+    "CARRIER_IN",
+    "LID_ON_pot",
+    "wait(seconds)",
+    "LID_OFF_pot",
+    "CARRIER_OUT"
+   ],
+   "stop_condition": "clock from boil (pot water thermometer ≥ 98 °C)",
+   "sensors_needed": [
+    "thermometer (pot)",
+    "clock"
+   ],
+   "movement_sets": [
+    "CARRIER_IN",
+    "LID_ON_pot",
+    "LID_OFF_pot",
+    "CARRIER_OUT"
+   ],
+   "hardware_needed": "zone-2 pot + steaming rack + lid rack + dish carrier",
+   "status": "sim_motion_checked",
+   "notes": "All four sets verified. Loading the food onto the dish is arrange_on_plate (not verified); pot water filled by the user.",
+   "dishes": [
+    "home_A_guihuayutou",
+    "home_A_suanrongsigua",
+    "home_B_qingzhengluyu",
+    "home_C_yutouzhengpaigu",
+    "tangcupaigu",
+    "yuxiangqiezi",
+    "zhengluyu"
+   ],
+   "instances": 8,
+   "example_quote": "隔水蒸"
+  },
+  {
+   "id": "stew_pot",
+   "name_zh": "炖/煲汤",
+   "name_en": "Stew pot soup",
+   "category": "stew",
+   "purpose": "Ingredients and water into the electric stew pot, lid on, program for a time, lid off, season.",
+   "parameters": [
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "1800–7200"
+    },
+    {
+     "name": "water_g",
+     "unit": "g",
+     "typical": "1000–2000"
+    }
+   ],
+   "steps": [
+    "CUP_POUR_stew × n",
+    "water in",
+    "LID_ON_stew",
+    "wait",
+    "LID_OFF_stew",
+    "CUP_POUR_stew (salt)"
+   ],
+   "stop_condition": "clock (pot program)",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_stew",
+    "CUP_RETURN",
+    "LID_ON_stew",
+    "LID_OFF_stew"
+   ],
+   "hardware_needed": "electric stew pot",
+   "status": "needs_check",
+   "notes": "Water fill of the stew pot has no set.",
+   "dishes": [
+    "home_B_xiansunpaigutang"
+   ],
+   "instances": 1,
+   "example_quote": ""
+  },
+  {
+   "id": "steam_cups",
+   "name_zh": "炖盅蒸",
+   "name_en": "Steam stew cups",
+   "category": "pot_steam",
+   "purpose": "Fill 4 炖盅 (pieces + water to 90 %), cover with cling film, steam 30 min, take out.",
+   "parameters": [
+    {
+     "name": "cups",
+     "unit": "count",
+     "typical": "4"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "1800"
+    }
+   ],
+   "steps": [
+    "STEW_CUP_IN × 4",
+    "LID_ON_pot",
+    "wait",
+    "LID_OFF_pot",
+    "STEW_CUP_OUT × 4"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "STEW_CUP_IN",
+    "STEW_CUP_OUT",
+    "LID_ON_pot",
+    "LID_OFF_pot"
+   ],
+   "hardware_needed": "stew cups",
+   "status": "two_hands",
+   "notes": "Cling film needs two hands. Workaround: cups with ceramic lids; then needs_check (STEW_CUP_IN not verified).",
+   "dishes": [
+    "home_A_gelipaigu"
+   ],
+   "instances": 3,
+   "example_quote": ""
+  },
+  {
+   "id": "steep_off_heat",
+   "name_zh": "浸熟(白切)",
+   "name_en": "Steep off heat",
+   "category": "pot_steam",
+   "purpose": "Salted water to the boil, heat off, dip the whole chicken 3× to fill the cavity, then steep 30–40 min, hook out into cold water.",
+   "parameters": [
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "1800–2400"
+    }
+   ],
+   "steps": [
+    "heat_to(1.0, 98)",
+    "set_heat(0)",
+    "dip × 3",
+    "wait",
+    "hook out",
+    "cold_water_chill"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "whole-bird basket or hook (not designed)",
+   "status": "needs_hardware",
+   "notes": "Workaround: chicken in a wire basket that the arm lowers and lifts.",
+   "dishes": [
+    "baiqieji_koushuiji"
+   ],
+   "instances": 2,
+   "example_quote": "现在我们把鸡放下去"
+  },
+  {
+   "id": "cold_water_chill",
+   "name_zh": "过凉",
+   "name_en": "Chill in cold water",
+   "category": "pot_steam",
+   "purpose": "Move cooked food into a bowl of cold water, then drain.",
+   "parameters": [
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "30–600"
+    }
+   ],
+   "steps": [
+    "spider dump into the cold-water bowl",
+    "wait",
+    "drain"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "SPIDER_DUMP_plate (to a bowl, new target)",
+    "new (drain)"
+   ],
+   "hardware_needed": "cold-water bowl + basket",
+   "status": "needs_hardware",
+   "notes": "Soak / drain has no design (R19_PREP_AUDIT [missing]).",
+   "dishes": [
+    "baiqieji_koushuiji",
+    "chaomian"
+   ],
+   "instances": 2,
+   "example_quote": "现在我们这个鸡捞出来"
+  },
+  {
+   "id": "serve_soup",
+   "name_zh": "盛汤",
+   "name_en": "Serve soup",
+   "category": "plating",
+   "purpose": "Soup into the serving bowl: tip the wok if ≤ 1150 g, otherwise ladle; optional salt pre-dosed in the bowl.",
+   "parameters": [
+    {
+     "name": "mass_g",
+     "unit": "g",
+     "typical": "500–2500"
+    },
+    {
+     "name": "season_in_bowl",
+     "unit": "what",
+     "typical": "盐, 芹菜, 白胡椒"
+    }
+   ],
+   "steps": [
+    "set_heat(0)",
+    "tip_wok(serving bowl) or ladle × n"
+   ],
+   "stop_condition": "done",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "WOK_PLATE_RINSE (tip variant)",
+    "new (ladle)"
+   ],
+   "hardware_needed": "serving bowl spot; ladle (not designed)",
+   "status": "needs_hardware",
+   "notes": "Tipping into a bowl is not simulated; soups over 1.15 kg exceed the checked wok payload.",
+   "dishes": [
+    "home_B_xiansunpaigutang",
+    "home_C_qinggaroupiantang",
+    "shuizhuroupian",
+    "suancaiyu",
+    "suanlatang",
+    "yutoudoufutang"
+   ],
+   "instances": 7,
+   "example_quote": "然后再把锅中的鱼汤开大火烧开"
+  },
+  {
+   "id": "rice_cooker",
+   "name_zh": "煮饭",
+   "name_en": "Cook rice",
+   "category": "other",
+   "purpose": "Dose rice, wash, into the cooker, water, start.",
+   "parameters": [
+    {
+     "name": "rice_g",
+     "unit": "g",
+     "typical": "200–400"
+    }
+   ],
+   "steps": [
+    "RICE_DOSE",
+    "RICE_WASH",
+    "RICE_TO_COOKER",
+    "press start"
+   ],
+   "stop_condition": "cooker finishes",
+   "sensors_needed": [
+    "cooker signal"
+   ],
+   "movement_sets": [
+    "RICE_DOSE",
+    "RICE_WASH",
+    "RICE_TO_COOKER"
+   ],
+   "hardware_needed": "rice cooker",
+   "status": "needs_check",
+   "notes": "R19_PREP_AUDIT: the user loads the rice cooker (outlet obsolete).",
+   "dishes": [
+    "home_B_rice"
+   ],
+   "instances": 1,
+   "example_quote": ""
+  },
+  {
+   "id": "cold_mix_bowl",
+   "name_zh": "拌",
+   "name_en": "Mix in a bowl",
+   "category": "sauce",
+   "purpose": "Dose sauce items into a bowl and stir; or toss food with sauce in a bowl.",
+   "parameters": [
+    {
+     "name": "items",
+     "unit": "list",
+     "typical": "酱油, 醋, 红油, 香油 …"
+    }
+   ],
+   "steps": [
+    "dose_cup × n into the bowl",
+    "stir with a spoon"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "bowl fixture + mixing spoon (not designed)",
+   "status": "needs_hardware",
+   "notes": "",
+   "dishes": [
+    "baiqieji_koushuiji",
+    "dandanmian",
+    "home_A_haoyouxilanhua",
+    "home_A_suanrongsigua",
+    "home_B_baizhuozhi",
+    "paihuanggua"
+   ],
+   "instances": 6,
+   "example_quote": "最后冷却之后再均匀地放入碗中"
+  },
+  {
+   "id": "pour_cup_over_plate",
+   "name_zh": "淋汁/撒料",
+   "name_en": "Pour a cup over the plate",
+   "category": "plating",
+   "purpose": "Pour a sauce cup (糖桂花, 白灼汁, 鱼酱油) or sprinkle a garnish cup (葱花, 花生碎) over the plated food.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "cup",
+     "typical": "—"
+    }
+   ],
+   "steps": [
+    "CUP_FETCH",
+    "CUP_POUR_plate",
+    "CUP_RETURN"
+   ],
+   "stop_condition": "pour done",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "CUP_FETCH",
+    "CUP_POUR_plate",
+    "CUP_RETURN"
+   ],
+   "hardware_needed": "robot cups",
+   "status": "needs_check",
+   "notes": "",
+   "dishes": [
+    "home_A_guihuayutou",
+    "home_A_suanrongsigua",
+    "home_B_baizhuo",
+    "home_B_qingzhengluyu",
+    "home_C_yutouzhengpaigu",
+    "paihuanggua",
+    "shuizhuroupian",
+    "xilanhua",
+    "zhengluyu"
+   ],
+   "instances": 10,
+   "example_quote": "然后准备适量的植物油烧至6成热"
+  },
+  {
+   "id": "arrange_on_plate",
+   "name_zh": "摆盘",
+   "name_en": "Arrange on a plate",
+   "category": "plating",
+   "purpose": "Place pieces on a plate (steaming bed, fish with ginger, re-plating).",
+   "parameters": [
+    {
+     "name": "pieces",
+     "unit": "count",
+     "typical": "1–20"
+    }
+   ],
+   "steps": [
+    "ARRANGE"
+   ],
+   "stop_condition": "done",
+   "sensors_needed": [
+    "camera"
+   ],
+   "movement_sets": [
+    "ARRANGE"
+   ],
+   "hardware_needed": "plate dock",
+   "status": "needs_check",
+   "notes": "",
+   "dishes": [
+    "home_A_guihuayutou",
+    "home_A_suanrongsigua",
+    "home_B_baizhuo",
+    "home_B_qingzhengluyu",
+    "home_C_yutouzhengpaigu",
+    "paihuanggua",
+    "xilanhua",
+    "zhengluyu"
+   ],
+   "instances": 8,
+   "example_quote": "西蓝花捞出之后将花朝底"
+  },
+  {
+   "id": "drain_plate_juice",
+   "name_zh": "倒掉盘中汤水",
+   "name_en": "Drain the plate juices",
+   "category": "plating",
+   "purpose": "Tip the steamed plate to pour off the fishy water.",
+   "parameters": [],
+   "steps": [
+    "CARRIER_DRAIN"
+   ],
+   "stop_condition": "done",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "CARRIER_DRAIN"
+   ],
+   "hardware_needed": "dish carrier",
+   "status": "needs_check",
+   "notes": "",
+   "dishes": [
+    "home_B_qingzhengluyu",
+    "zhengluyu"
+   ],
+   "instances": 2,
+   "example_quote": "过滤多余的水份之后再重新摆盘"
+  },
+  {
+   "id": "bowl_pack_invert",
+   "name_zh": "码碗扣盘",
+   "name_en": "Pack bowl and invert",
+   "category": "plating",
+   "purpose": "Pack florets head-down in a bowl, invert onto a plate, lift the bowl.",
+   "parameters": [],
+   "steps": [
+    "place florets",
+    "plate on bowl",
+    "invert both"
+   ],
+   "stop_condition": "done",
+   "sensors_needed": [
+    "camera"
+   ],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "—",
+   "status": "two_hands",
+   "notes": "Inverting bowl + plate together needs two hands. Workaround: arrange on the plate directly (arrange_on_plate), no dome.",
+   "dishes": [
+    "xilanhua"
+   ],
+   "instances": 1,
+   "example_quote": "西蓝花捞出之后将花朝底"
+  },
+  {
+   "id": "reboil_plate_juices",
+   "name_zh": "回锅过滤盘汁",
+   "name_en": "Re-boil and strain plate juices",
+   "category": "sauce",
+   "purpose": "Pick the shreds off the fish, pour the plate juices into the wok, re-boil, strain, pour back.",
+   "parameters": [],
+   "steps": [
+    "chopsticks lift shreds",
+    "pour plate into wok",
+    "boil",
+    "strain",
+    "pour back"
+   ],
+   "stop_condition": "done",
+   "sensors_needed": [
+    "thermometer"
+   ],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "strainer",
+   "status": "two_hands",
+   "notes": "Chopsticks + plate + strainer at once. Optional 进阶 step: skip.",
+   "dishes": [
+    "zhengluyu"
+   ],
+   "instances": 1,
+   "example_quote": "首先把姜葱丝和辣椒丝用筷子夹起"
+  },
+  {
+   "id": "wok_toss",
+   "name_zh": "颠锅",
+   "name_en": "Toss the wok",
+   "category": "wok",
+   "purpose": "Lift and flick the wok to toss.",
+   "parameters": [
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "3–30"
+    }
+   ],
+   "steps": [
+    "lift wok",
+    "flick",
+    "set back"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "keyed wok grip",
+   "status": "needs_check",
+   "notes": "Not used in the mappings: every 颠锅 is replaced by stir_fry strokes (also what the homestyle cook does).",
+   "dishes": [],
+   "instances": 0,
+   "example_quote": ""
+  },
+  {
+   "id": "prep_wash",
+   "name_zh": "清洗",
+   "name_en": "Wash produce",
+   "category": "prep",
+   "purpose": "Hold a firm item under the tap, or a basket of small / leafy items.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "item",
+     "typical": "—"
+    },
+    {
+     "name": "mode",
+     "unit": "enum",
+     "typical": "held | basket"
+    }
+   ],
+   "steps": [
+    "FAUCET_OPEN",
+    "hold / basket under the tap",
+    "FAUCET_CLOSE"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "FAUCET_OPEN",
+    "new (wash under R17 outlet)",
+    "FAUCET_CLOSE"
+   ],
+   "hardware_needed": "basket, spinner",
+   "status": "needs_check",
+   "notes": "R19_PREP_AUDIT: washing chains were checked under the removed R07 spout; must be re-planned under the faucet.",
+   "dishes": [],
+   "instances": 0,
+   "example_quote": ""
+  },
+  {
+   "id": "prep_cut",
+   "name_zh": "切配(楔/段/片/丝)",
+   "name_en": "Cut with lever cutter / slicer",
+   "category": "prep",
+   "purpose": "Wedges / sections on the lever cutter; slices / shreds / dice in the 卓晋 slicer.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "item",
+     "typical": "—"
+    },
+    {
+     "name": "cut",
+     "unit": "enum",
+     "typical": "wedge | section | slice | shred | dice"
+    }
+   ],
+   "steps": [
+    "pick item",
+    "lever cutter or slicer chute",
+    "out bowl"
+   ],
+   "stop_condition": "done",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new (prep chains; tomato WD checked in R11)"
+   ],
+   "hardware_needed": "lever cutter, slicer",
+   "status": "needs_check",
+   "notes": "Tomato wedges are the demo prep_tomato. Slicer stands in the plating area (static overlap 77 mm) until moved.",
+   "dishes": [
+    "home_A_guihuayutou",
+    "home_A_haoyouxilanhua",
+    "home_A_suanrongsigua",
+    "home_B_fanqiechaodan",
+    "home_B_xiansunpaigutang",
+    "home_C_suanlatudousi",
+    "home_C_yutouzhengpaigu"
+   ],
+   "instances": 7,
+   "example_quote": ""
+  },
+  {
+   "id": "prep_peel",
+   "name_zh": "去皮",
+   "name_en": "Peel",
+   "category": "prep",
+   "purpose": "Roots in the abrasive peeler; tomato skin by scalding.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "item",
+     "typical": "potato, taro, carrot, luffa"
+    }
+   ],
+   "steps": [
+    "peeler station"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "abrasive peeler",
+   "status": "needs_check",
+   "notes": "Luffa, bamboo, broccoli stem peeling: [missing].",
+   "dishes": [
+    "home_A_guihuayutou",
+    "home_A_suanrongsigua"
+   ],
+   "instances": 2,
+   "example_quote": ""
+  },
+  {
+   "id": "prep_mince_meat_cut",
+   "name_zh": "剁末/切肉",
+   "name_en": "Mince / slice meat",
+   "category": "prep",
+   "purpose": "Garlic / ginger mince, meat slices and shreds, cooked meat cubes, squid scoring.",
+   "parameters": [
+    {
+     "name": "what",
+     "unit": "item",
+     "typical": "—"
+    }
+   ],
+   "steps": [
+    "—"
+   ],
+   "stop_condition": "—",
+   "sensors_needed": [],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "chopper cup / meat slicer (not designed)",
+   "status": "needs_hardware",
+   "notes": "R19_PREP_AUDIT [missing]. Practical route: buy pre-cut.",
+   "dishes": [
+    "baiqieji_koushuiji",
+    "chaomian",
+    "home_A_suanrongsigua",
+    "home_B_hongshaorou",
+    "home_B_qingzhengluyu",
+    "home_C_qinggaroupiantang",
+    "home_C_qingjiaochaoyouyu",
+    "huiguorou",
+    "shuizhuroupian",
+    "tudoushaoniunan"
+   ],
+   "instances": 10,
+   "example_quote": "现在我们这个鸡捞出来"
+  },
+  {
+   "id": "prep_egg_beat",
+   "name_zh": "打蛋",
+   "name_en": "Crack and beat eggs",
+   "category": "prep",
+   "purpose": "Crack eggs into a cup and beat.",
+   "parameters": [
+    {
+     "name": "eggs",
+     "unit": "count",
+     "typical": "2–5"
+    }
+   ],
+   "steps": [
+    "—"
+   ],
+   "stop_condition": "—",
+   "sensors_needed": [],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "—",
+   "status": "two_hands",
+   "notes": "One gripper cannot crack an egg. Workaround (the demo): the user cracks and beats them, cup in the cold box.",
+   "dishes": [
+    "danchaofan",
+    "home_B_fanqiechaodan",
+    "jiangyouchaofan"
+   ],
+   "instances": 3,
+   "example_quote": ""
+  },
+  {
+   "id": "prep_marinate",
+   "name_zh": "腌制/上浆",
+   "name_en": "Marinate / coat",
+   "category": "prep",
+   "purpose": "Mix meat with seasoning and starch, rest.",
+   "parameters": [
+    {
+     "name": "minutes",
+     "unit": "min",
+     "typical": "10–30"
+    }
+   ],
+   "steps": [
+    "dose_cup × n into the meat bowl",
+    "mix"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "mixing bowl + paddle (not designed)",
+   "status": "needs_hardware",
+   "notes": "R19_PREP_AUDIT [missing].",
+   "dishes": [
+    "home_C_qinggaroupiantang",
+    "home_C_yutouzhengpaigu",
+    "qiezhilizhi"
+   ],
+   "instances": 3,
+   "example_quote": ""
+  },
+  {
+   "id": "soak_bowl",
+   "name_zh": "浸泡",
+   "name_en": "Soak in a bowl",
+   "category": "prep",
+   "purpose": "Soak food in hot / warm / salted water for a time, then drain (tofu, noodles, mushrooms).",
+   "parameters": [
+    {
+     "name": "water_C",
+     "unit": "°C",
+     "typical": "20–95"
+    },
+    {
+     "name": "seconds",
+     "unit": "s",
+     "typical": "300–2400"
+    }
+   ],
+   "steps": [
+    "food into bowl",
+    "hot water from kettle",
+    "wait",
+    "drain"
+   ],
+   "stop_condition": "clock",
+   "sensors_needed": [
+    "clock"
+   ],
+   "movement_sets": [
+    "new (kettle pour, drain)"
+   ],
+   "hardware_needed": "kettle, soak basket (not designed)",
+   "status": "needs_hardware",
+   "notes": "R19_PREP_AUDIT: soak and scald [missing]; kettle grasp unchecked.",
+   "dishes": [
+    "chaomian",
+    "home_A_haoyouxilanhua",
+    "home_C_suanlatudousi",
+    "huangmenji",
+    "jiangyouchaofan",
+    "mapodoufu",
+    "mayishangshu",
+    "naohuadoufu"
+   ],
+   "instances": 8,
+   "example_quote": "准备干香菇几颗用温水浸泡40分钟备用"
+  },
+  {
+   "id": "portion_into_cups",
+   "name_zh": "分装炖盅",
+   "name_en": "Portion into cups",
+   "category": "prep",
+   "purpose": "Put counted pieces (ribs, clams, ginger) into each stew cup with water.",
+   "parameters": [
+    {
+     "name": "pieces",
+     "unit": "count",
+     "typical": "8 per cup"
+    }
+   ],
+   "steps": [
+    "ARRANGE × n"
+   ],
+   "stop_condition": "done",
+   "sensors_needed": [
+    "camera"
+   ],
+   "movement_sets": [
+    "ARRANGE",
+    "new"
+   ],
+   "hardware_needed": "—",
+   "status": "needs_check",
+   "notes": "",
+   "dishes": [
+    "home_A_gelipaigu"
+   ],
+   "instances": 1,
+   "example_quote": ""
+  },
+  {
+   "id": "grind_spice",
+   "name_zh": "研磨",
+   "name_en": "Grind spices",
+   "category": "prep",
+   "purpose": "Grind the roasted 椒盐 to powder.",
+   "parameters": [],
+   "steps": [
+    "—"
+   ],
+   "stop_condition": "—",
+   "sensors_needed": [],
+   "movement_sets": [
+    "new"
+   ],
+   "hardware_needed": "spice grinder (not designed)",
+   "status": "needs_hardware",
+   "notes": "Workaround: buy ground 椒盐.",
+   "dishes": [
+    "jiaoyanpaigu"
+   ],
+   "instances": 1,
+   "example_quote": "锅烧热之后加入配好的椒盐"
+  }
+ ],
+ "dishes": {
+  "xihongshichaodan": {
+   "dish": "西红柿炒蛋",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 6,
+   "calls": [
+    {
+     "routine": "mise_en_place",
+     "params": {
+      "tomatoes": 2,
+      "cups": [
+       {
+        "what": "oil",
+        "grams": 40
+       },
+       {
+        "what": "oil",
+        "grams": 25
+       },
+       {
+        "what": "salt",
+        "grams": 1
+       },
+       {
+        "what": "sugar",
+        "grams": 1
+       }
+      ],
+      "drum": [
+       {
+        "what": "ketchup",
+        "grams": 5
+       },
+       {
+        "what": "water",
+        "grams": 60
+       },
+       {
+        "what": "starch_water",
+        "grams": 25
+       },
+       {
+        "what": "finishing_oil",
+        "grams": 5
+       }
+      ],
+      "note": "eggs: 3 beaten by the user (cup in the cold box); tomatoes cut into 8 wedges each"
+     },
+     "phase": -1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 150,
+      "fresh_oil_g": 25
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "egg_set_and_hold",
+     "params": {
+      "target_C": 120,
+      "level": 0.3,
+      "still_s": 50,
+      "flip_s": 30
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "tomato",
+      "level": 0.3,
+      "seconds": 45,
+      "stroke": "dice"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "ketchup",
+      "grams": 5,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "water",
+      "grams": 60,
+      "seconds": 15
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "season_and_toss",
+     "params": {
+      "cups": [
+       "salt 1 g",
+       "sugar 1 g"
+      ],
+      "level": 0.5,
+      "seconds": 50
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "starch_water",
+      "grams": 25,
+      "level": 0.5,
+      "max_s": 20
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "finishing_oil",
+      "grams": 5,
+      "seconds": 4
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.5,
+      "seconds": 8
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "jiucaichaodan": {
+   "dish": "韭菜炒鸡蛋",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "mise_en_place",
+     "params": {
+      "cups": [
+       {
+        "what": "oil",
+        "grams": 40
+       },
+       {
+        "what": "oil",
+        "grams": 25
+       },
+       {
+        "what": "韭菜 chopped",
+        "grams": 150
+       }
+      ],
+      "drum": [
+       {
+        "what": "salt water",
+        "grams": 5
+       }
+      ],
+      "note": "eggs beaten by the user (prep_egg_beat is two_hands)"
+     },
+     "phase": -1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 25
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "韭菜",
+      "level": 0.7,
+      "seconds": 20,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "egg (poured over the chives)",
+      "level": 0.3
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_still",
+     "params": {
+      "seconds": 60
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "stir_fry",
+     "params": {
+      "level": 0.5,
+      "seconds": 20,
+      "note": "break the patty up, 锅气"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "danchaofan": {
+   "dish": "蛋炒饭",
+   "source": "wanggang",
+   "n_phases": 7,
+   "phases_covered": 7,
+   "calls": [
+    {
+     "routine": "prep_egg_beat",
+     "params": {
+      "eggs": 3
+     },
+     "phase": -1,
+     "covered": false,
+     "why_not": "separating whites and yolks: one gripper cannot; user separates them (as the demo eggs)"
+    },
+    {
+     "routine": "mise_en_place",
+     "params": {
+      "cups": [
+       {
+        "what": "oil",
+        "grams": 40
+       },
+       {
+        "what": "oil",
+        "grams": 20
+       },
+       {
+        "what": "egg white",
+        "grams": 90
+       },
+       {
+        "what": "egg yolk + oil",
+        "grams": 60
+       },
+       {
+        "what": "bacon/sausage/corn",
+        "grams": 120
+       },
+       {
+        "what": "cooked rice",
+        "grams": 400
+       }
+      ],
+      "drum": [
+       {
+        "what": "soy sauce",
+        "grams": 3
+       },
+       {
+        "what": "scallion",
+        "grams": 10
+       }
+      ]
+     },
+     "phase": -1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 20
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "egg white",
+      "level": 0.5,
+      "seconds": 30
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "egg yolk + a little oil",
+      "level": 0.3,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "bacon, sausage, corn",
+      "level": 0.4,
+      "seconds": 30
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.4,
+      "seconds": 10,
+      "note": "颠锅 → scrape strokes"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "rice",
+      "level": 0.2,
+      "seconds": 300,
+      "note": "颠锅 → scrape strokes; 5 min very low"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "soy sauce (from the edge)",
+      "grams": 3,
+      "seconds": 4,
+      "level": 1.0
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "scallion",
+      "grams": 10,
+      "seconds": 4
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "qiezhilizhi": {
+   "dish": "茄汁糖醋里脊",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "prep_marinate",
+     "params": {
+      "what": "里脊 in batter"
+     },
+     "phase": -1,
+     "covered": false,
+     "why_not": "battering the pork (挂糊) has no design (R19_PREP_AUDIT [missing])"
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 150,
+      "seconds": 120,
+      "pass": 1,
+      "note": "5成热, add, do not stir, 中小火; spider separates then lifts"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 200,
+      "seconds": 90,
+      "pass": 2,
+      "note": "复炸 to golden, into the holding bowl"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "cup (oil 10 g)",
+      "level": 0.4,
+      "note": "wok is clean: frying was in the fryer"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "茄汁 (ketchup + sugar + vinegar)",
+      "grams": 40,
+      "seconds": 8
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water",
+      "grams": 60,
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "starch_water",
+      "grams": 20,
+      "level": 0.4,
+      "max_s": 15
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "finishing_oil",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.4,
+      "seconds": 10
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "huiguorou": {
+   "dish": "回锅肉",
+   "source": "wanggang",
+   "n_phases": 9,
+   "phases_covered": 8,
+   "calls": [
+    {
+     "routine": "sear_skin_dry",
+     "params": {
+      "what": "后腿肉 500 g",
+      "level": 0.7,
+      "seconds": 120
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "cold",
+      "seconds": 1800,
+      "what": "pork",
+      "chill": true
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "cooked pork slices 2 mm"
+     },
+     "phase": 1,
+     "covered": false,
+     "why_not": "slicing cooked pork 2 mm: no meat slicer (R19_PREP_AUDIT [missing])"
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 15
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "pork slices",
+      "level": 0.4,
+      "seconds": 60
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "豆豉",
+      "target_C": 150,
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_paste_red_oil",
+     "params": {
+      "what": "豆瓣",
+      "grams": 5,
+      "level": 0,
+      "seconds": 20,
+      "off_heat_first": true
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "stir_fry",
+     "params": {
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "sauce (酱油/糖/料酒)",
+      "grams": 15,
+      "seconds": 10
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "蒜苗",
+      "level": 0.5,
+      "seconds": 15,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "yuxiangrousi": {
+   "dish": "鱼香肉丝",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 30
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "slide_oil_meat",
+     "params": {
+      "target_C": 180,
+      "level": 0.6,
+      "set_s": 8,
+      "separate_s": 30,
+      "take_out": false,
+      "note": "肉丝 + 豆瓣"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜蒜末",
+      "target_C": 160,
+      "level": 0.6,
+      "seconds": 10
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "葱粒",
+      "level": 0.6,
+      "seconds": 60
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "碗汁 (鱼香汁 with starch)",
+      "grams": 60,
+      "level": 0.7,
+      "max_s": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "gongbaojiding": {
+   "dish": "宫保鸡丁",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 160,
+      "seconds": 60,
+      "pass": 1,
+      "note": "滑油 chicken in 750 g oil → fryer"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "干辣椒 + 花椒",
+      "target_C": 150,
+      "level": 0.4,
+      "seconds": 23
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.8,
+      "seconds": 15
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "碗汁",
+      "grams": 50,
+      "level": 1.0,
+      "max_s": 10
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "花生 + 葱 + 红油",
+      "grams": 40,
+      "seconds": 3,
+      "note": "peanuts in the drum (granules release 100 %, R14)"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "mapodoufu": {
+   "dish": "麻婆豆腐",
+   "source": "wanggang",
+   "n_phases": 12,
+   "phases_covered": 12,
+   "calls": [
+    {
+     "routine": "soak_bowl",
+     "params": {
+      "water_C": 90,
+      "seconds": 300,
+      "what": "tofu in salted water"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 30
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "牛肉粒",
+      "level": 0.3,
+      "seconds": 60
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "花椒",
+      "level": 1.0,
+      "seconds": 60
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_paste_red_oil",
+     "params": {
+      "what": "豆瓣 + 豆豉",
+      "grams": 25,
+      "level": 0.3,
+      "seconds": 20
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜蒜葱 + 辣椒面",
+      "target_C": 130,
+      "level": 0.3,
+      "seconds": 3
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water + seasoning",
+      "grams": 300,
+      "level": 1.0,
+      "seconds": 30,
+      "note": "300 g > one drum compartment: wok_fill_water or 2 compartments"
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "tofu (drained)",
+      "level": 0.3
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_still",
+     "params": {
+      "seconds": 120,
+      "note": "tofu simmered on low; no stirring"
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken_multi_off_heat",
+     "params": {
+      "passes": 3,
+      "grams_each": 15,
+      "level": 0.3,
+      "interval_s": 60,
+      "note": "phases 8–10 are one routine"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken_multi_off_heat",
+     "params": {
+      "passes": 0,
+      "note": "(pass 2 of the routine above)"
+     },
+     "phase": 9,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken_multi_off_heat",
+     "params": {
+      "passes": 0,
+      "note": "(pass 3 of the routine above)"
+     },
+     "phase": 10,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "花椒油",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 11,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 11,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "hongshaorou": {
+   "dish": "红烧肉",
+   "source": "wanggang",
+   "n_phases": 10,
+   "phases_covered": 10,
+   "calls": [
+    {
+     "routine": "sear_skin_dry",
+     "params": {
+      "what": "五花 slab",
+      "level": 0.7,
+      "seconds": 120
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "caramelize_sugar",
+     "params": {
+      "sugar_g": 20,
+      "level": 0.3,
+      "max_s": 120,
+      "then": "water"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "boiling water",
+      "grams": 150,
+      "level": 1.0,
+      "seconds": 60
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl",
+      "note": "糖色 kept aside"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "cold",
+      "additive": "料酒 15 g",
+      "seconds": 300,
+      "skim": true
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 30
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "五花 cubes",
+      "level": 0.5,
+      "seconds": 120
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_off_excess_oil",
+     "params": {
+      "keep_oil_g": 20
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "葱姜 + 香料",
+      "target_C": 150,
+      "level": 0.3,
+      "seconds": 20
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "酱油 (from the side)",
+      "grams": 5,
+      "seconds": 10
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_fill_water",
+     "params": {
+      "water_g": 600,
+      "note": "water to 1 cm over the pork"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "holding_bowl (糖色)",
+      "level": 1.0
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water + 糖色",
+      "grams": 600,
+      "level": 0.3,
+      "seconds": 3600
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fish_out_item",
+     "params": {
+      "what": "葱姜 + 香料",
+      "into": "discard"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "reduce_sauce",
+     "params": {
+      "level": 0.5,
+      "max_s": 600,
+      "stir_every_s": 30
+     },
+     "phase": 9,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 9,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "tangcupaigu": {
+   "dish": "糖醋排骨",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "cold",
+      "additive": "料酒/干辣椒/花椒",
+      "seconds": 300
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steam_plate",
+     "params": {
+      "seconds": 9000,
+      "level": 0.5,
+      "note": "ribs in a 盆 with seasoned water; broth kept"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 190,
+      "seconds": 90,
+      "pass": 1
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "cup (steaming broth + 糖醋)",
+      "level": 0.4
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.4,
+      "seconds": 10
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "reduce_sauce",
+     "params": {
+      "level": 0.3,
+      "max_s": 300,
+      "stir_every_s": 15,
+      "note": "炸收: until the sauce is dry, never high heat"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "qingjiaorousi": {
+   "dish": "青椒肉丝",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 6,
+   "calls": [
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 30
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "slide_oil_meat",
+     "params": {
+      "target_C": 120,
+      "level": 0.4,
+      "set_s": 5,
+      "separate_s": 30,
+      "take_out": true
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜蒜 in lard",
+      "target_C": 150,
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "青椒丝",
+      "level": 0.5,
+      "seconds": 30,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.5,
+      "seconds": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "seasoning sauce",
+      "grams": 15,
+      "seconds": 5
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "finishing_oil",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "tudousi": {
+   "dish": "炝炒/酸辣土豆丝",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "additive": "white vinegar",
+      "seconds": 20
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "干辣椒 + 蒜片",
+      "target_C": 180,
+      "level": 0.6,
+      "seconds": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "potato shreds",
+      "level": 1.0,
+      "seconds": 40,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 + 醋 (from the edge)",
+      "grams": 6,
+      "seconds": 5
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "scallion",
+      "grams": 10,
+      "seconds": 5
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "ganbiansijidou": {
+   "dish": "干煸四季豆",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "dry_stir",
+     "params": {
+      "what": "四季豆",
+      "level": 0.4,
+      "seconds": 183
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_off_excess_oil",
+     "params": {
+      "keep_oil_g": 20
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "肉末",
+      "level": 0.3,
+      "seconds": 36
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "花椒 + 干辣椒",
+      "target_C": 170,
+      "level": 1.0,
+      "seconds": 44
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "蒜 (cools the wok)",
+      "level": 1.0,
+      "seconds": 3
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "salt + 花椒油",
+      "grams": 5,
+      "seconds": 5
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "shuizhuroupian": {
+   "dish": "水煮肉片",
+   "source": "wanggang",
+   "n_phases": 10,
+   "phases_covered": 9,
+   "calls": [
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 40
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "干辣椒 + 花椒",
+      "level": 0.3,
+      "seconds": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "刀口辣椒"
+     },
+     "phase": 1,
+     "covered": false,
+     "why_not": "mincing the fried chilies (刀口辣椒) on a board: no chopper"
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "干辣椒 + 花椒",
+      "target_C": 170,
+      "level": 0.6,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "vegetable bed",
+      "level": 1.0,
+      "seconds": 20,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "serving bowl (veg bed)",
+      "note": "tip into a bowl: not simulated"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜蒜泡椒",
+      "target_C": 170,
+      "level": 0.6,
+      "seconds": 20
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_paste_red_oil",
+     "params": {
+      "what": "豆瓣",
+      "grams": 10,
+      "level": 0.3,
+      "seconds": 20
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water",
+      "grams": 600,
+      "level": 1.0,
+      "seconds": 60
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "starch_water",
+      "grams": 20,
+      "level": 0.3,
+      "max_s": 10
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "poach_slices",
+     "params": {
+      "what": "肉片 (上浆)",
+      "level": 0.5,
+      "seconds": 60
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "serve_soup",
+     "params": {
+      "mass_g": 600,
+      "note": "some soup ladled over the pork"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "刀口辣椒 + 蒜末"
+     },
+     "phase": 9,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 60,
+      "target_C": 210,
+      "onto": "bowl"
+     },
+     "phase": 9,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "kelejichi": {
+   "dish": "可乐鸡翅",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜片",
+      "target_C": 150,
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "wings",
+      "level": 0.3,
+      "note": "he lays wings one by one on the ginger bed; here poured off heat (plume rule)"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_still",
+     "params": {
+      "seconds": 180
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "flip_and_fry",
+     "params": {
+      "seconds": 180
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "cola",
+      "grams": 500,
+      "level": 1.0,
+      "seconds": 60,
+      "skim": true
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "braise_lid",
+     "params": {
+      "liquid_g": 0,
+      "level": 0.3,
+      "seconds": 900
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fish_out_item",
+     "params": {
+      "what": "葱姜",
+      "into": "discard"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "reduce_sauce",
+     "params": {
+      "level": 0.5,
+      "max_s": 300,
+      "stir_every_s": 30
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "xilanhua": {
+   "dish": "清炒西兰花 (+白灼/蚝油)",
+   "source": "wanggang",
+   "n_phases": 9,
+   "phases_covered": 9,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "additive": "salt + oil",
+      "seconds": 60,
+      "note": "spider out to arrange"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bowl_pack_invert",
+     "params": {
+      "note": "two_hands: replaced by arrange_on_plate (no dome)"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "arrange_on_plate",
+     "params": {
+      "pieces": 12,
+      "note": "workaround for the dome"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 40,
+      "target_C": 180,
+      "onto": "bowl (蒜蓉)"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "蒜蓉 oil sauce"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water + salt + oil + 土豆淀粉 (拉丝芡)",
+      "grams": 600,
+      "level": 0.3,
+      "seconds": 60
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "wok",
+      "start": "boiling",
+      "seconds": 60,
+      "note": "florets in the thickened water"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "oil_cup",
+      "note": "pour most of the liquid out (留下少部分): a full tip loses it all; use the drum for fresh 蚝油汁 instead"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "蚝油",
+      "grams": 20,
+      "seconds": 5
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "starch_water",
+      "grams": 15,
+      "level": 0.5,
+      "max_s": 15
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate",
+      "note": "sauce over the plated broccoli"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "additive": "salt + oil",
+      "seconds": 60
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "胡萝卜 + 红椒 + 蒜蓉",
+      "target_C": 150,
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water",
+      "grams": 60,
+      "level": 1.0,
+      "seconds": 20
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "starch_water",
+      "grams": 15,
+      "level": 0.5,
+      "max_s": 10
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "broccoli (blanched)",
+      "level": 0.6,
+      "seconds": 10
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "finishing_oil",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "disanxian": {
+   "dish": "地三鲜",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "seconds": 300,
+      "what": "potato cubes"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 180,
+      "seconds": 80,
+      "pass": 1
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "蒜 + 葱",
+      "target_C": 150,
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 (from the edge)",
+      "grams": 3,
+      "seconds": 3
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "water + starch sauce",
+      "grams": 60,
+      "level": 0.5,
+      "max_s": 10
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.6,
+      "seconds": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "xiaochaorou": {
+   "dish": "小炒肉",
+   "source": "wanggang",
+   "n_phases": 7,
+   "phases_covered": 7,
+   "calls": [
+    {
+     "routine": "slide_oil_meat",
+     "params": {
+      "target_C": 120,
+      "level": 0,
+      "set_s": 5,
+      "separate_s": 30,
+      "take_out": true,
+      "note": "wok off the fire for 滑油"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wash_wok",
+     "params": {},
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 0
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "五花",
+      "level": 0.3,
+      "seconds": 60
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜蒜末 + 辣椒",
+      "target_C": 160,
+      "level": 0.6,
+      "seconds": 20
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.6,
+      "seconds": 20,
+      "note": "里脊 back half-way"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "stir_fry",
+     "params": {
+      "level": 0.8,
+      "seconds": 30
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 (from the edge)",
+      "grams": 2,
+      "seconds": 5
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "蒜苗叶",
+      "level": 0.8,
+      "seconds": 25,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "fengweiqiezi": {
+   "dish": "风味茄子(烧茄子)",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 180,
+      "seconds": 60,
+      "pass": 1,
+      "note": "small batches"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "蒜 + 葱 + 花椒 + 辣椒",
+      "target_C": 160,
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "碗汁",
+      "grams": 60,
+      "level": 0.3,
+      "max_s": 10
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "finishing_oil",
+      "grams": 5,
+      "seconds": 2
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.4,
+      "seconds": 5
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "yuxiangqiezi": {
+   "dish": "鱼香茄子",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 6,
+   "calls": [
+    {
+     "routine": "steam_plate",
+     "params": {
+      "seconds": 900,
+      "level": 0.5
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "肉末",
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜蒜葱 + 泡椒",
+      "target_C": 140,
+      "level": 0.3,
+      "seconds": 20
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "鱼香汁 (with starch)",
+      "grams": 60,
+      "level": 0.3,
+      "max_s": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "steamed eggplant",
+      "level": 0.3,
+      "seconds": 30
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "mayishangshu": {
+   "dish": "蚂蚁上树",
+   "source": "wanggang",
+   "n_phases": 7,
+   "phases_covered": 7,
+   "calls": [
+    {
+     "routine": "soak_bowl",
+     "params": {
+      "water_C": 80,
+      "seconds": 900,
+      "what": "粉丝"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "肉末 + 花椒",
+      "level": 0.3,
+      "seconds": 40
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_paste_red_oil",
+     "params": {
+      "what": "豆瓣 + 姜蒜",
+      "grams": 3,
+      "level": 0.2,
+      "seconds": 20
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "noodles",
+      "level": 0.4,
+      "seconds": 30,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 (from the edge)",
+      "grams": 2,
+      "seconds": 10
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "蒜苗 + 葱 + 葱油",
+      "grams": 30,
+      "seconds": 3
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "laziji": {
+   "dish": "辣子鸡",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 210,
+      "seconds": 60,
+      "pass": 1
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 240,
+      "seconds": 20,
+      "pass": 2,
+      "note": "fryer max is usually ~190 °C: 240 °C needs a check"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "干辣椒 + 花椒",
+      "target_C": 180,
+      "level": 0.5,
+      "seconds": 30
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.3,
+      "seconds": 120
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "醋 (edge) + 花生 + 油",
+      "grams": 30,
+      "seconds": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "suancaiyu": {
+   "dish": "酸菜鱼",
+   "source": "wanggang",
+   "n_phases": 12,
+   "phases_covered": 12,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "seconds": 120,
+      "what": "酸菜"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wash_wok",
+     "params": {},
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "dry_stir",
+     "params": {
+      "what": "酸菜",
+      "level": 0.5,
+      "seconds": 120
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "泡萝卜 + 泡姜 + 野山椒",
+      "level": 0.5,
+      "seconds": 60
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wash_wok",
+     "params": {},
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 20
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "fish bones + head",
+      "level": 0.5
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_still",
+     "params": {
+      "seconds": 120
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 1.0,
+      "seconds": 10
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_fill_water",
+     "params": {
+      "water_g": 1000,
+      "note": "he uses hot water"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water",
+      "grams": 1000,
+      "level": 0.6,
+      "seconds": 180,
+      "skim": true
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fish_out_item",
+     "params": {
+      "what": "bones + 酸菜",
+      "into": "serving_bowl"
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "poach_slices",
+     "params": {
+      "what": "鱼片",
+      "level": 0.3,
+      "seconds": 15
+     },
+     "phase": 9,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "serve_soup",
+     "params": {
+      "mass_g": 1200,
+      "note": "dregs held back"
+     },
+     "phase": 10,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 60,
+      "target_C": 230,
+      "onto": "bowl"
+     },
+     "phase": 11,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "jingjiangrousi": {
+   "dish": "京酱肉丝",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 40
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "slide_oil_meat",
+     "params": {
+      "target_C": 60,
+      "level": 0.4,
+      "set_s": 10,
+      "separate_s": 30,
+      "take_out": false,
+      "note": "cold oil start"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_off_excess_oil",
+     "params": {
+      "keep_oil_g": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "蒜蓉",
+      "target_C": 150,
+      "level": 0.5,
+      "seconds": 15
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "料酒 (from the edge)",
+      "grams": 4,
+      "seconds": 5
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "甜面酱",
+      "level": 0.4,
+      "seconds": 3
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "water (from the edge)",
+      "grams": 30,
+      "seconds": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "cup (sugar 5 g)",
+      "level": 0.4
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "reduce_sauce",
+     "params": {
+      "level": 0.4,
+      "max_s": 30,
+      "stir_every_s": 5
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "congbaoyangrou": {
+   "dish": "葱爆羊肉",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 6,
+   "calls": [
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 60
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "wok",
+      "target_C": 150,
+      "seconds": 60,
+      "pass": 1,
+      "note": "葱心 in shallow oil, spider out"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "slide_oil_meat",
+     "params": {
+      "target_C": 160,
+      "level": 0.5,
+      "set_s": 5,
+      "separate_s": 28,
+      "take_out": true
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜蒜末 + 小米辣",
+      "target_C": 160,
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "大葱",
+      "level": 0.8,
+      "seconds": 20
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "oil on the wall",
+      "grams": 10,
+      "seconds": 3
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.8,
+      "seconds": 3
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "料汁 (10 g 玉米淀粉)",
+      "grams": 40,
+      "level": 0.8,
+      "max_s": 5
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "dandanmian": {
+   "dish": "担担面",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "肉末 to crisp",
+      "level": 0.5,
+      "seconds": 180
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "芽菜",
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "serving bowl",
+      "note": "to the sauce bowl"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "seconds": 180,
+      "chill": true,
+      "what": "noodles"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "cold_mix_bowl",
+     "params": {
+      "items": [
+       "noodles",
+       "肉末",
+       "花生碎",
+       "葱花",
+       "香油"
+      ]
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "suanlatang": {
+   "dish": "酸辣汤",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "additive": "salt",
+      "seconds": 20,
+      "what": "猪血 + 豆腐"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_fill_water",
+     "params": {
+      "water_g": 1000
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water",
+      "grams": 1000,
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "cup (salt 7 g)",
+      "level": 1.0
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken_multi_off_heat",
+     "params": {
+      "passes": 1,
+      "grams_each": 40,
+      "level": 0.3,
+      "interval_s": 10,
+      "note": "off heat, 拉丝 soup"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "木耳/火腿/姜/虾米",
+      "level": 0.8
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "—",
+      "grams": 0,
+      "level": 0.8,
+      "seconds": 60
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "香醋",
+      "grams": 10,
+      "seconds": 4
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "egg (drizzled)",
+      "grams": 50,
+      "seconds": 4,
+      "note": "egg drizzle from the drum while stirring"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "猪血 + 豆腐 + 青菜丝",
+      "level": 1.0
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "—",
+      "grams": 0,
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "serve_soup",
+     "params": {
+      "mass_g": 1200
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "paihuanggua": {
+   "dish": "拍黄瓜",
+   "source": "wanggang",
+   "n_phases": 2,
+   "phases_covered": 2,
+   "calls": [
+    {
+     "routine": "cold_mix_bowl",
+     "params": {
+      "items": [
+       "红油 20 g",
+       "酱油",
+       "醋",
+       "糖",
+       "蒜"
+      ]
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "arrange_on_plate",
+     "params": {
+      "pieces": 1,
+      "note": "cucumber core on the plate"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "mixed cucumber + sauce"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "baiqieji_koushuiji": {
+   "dish": "白切鸡 / 口水鸡",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water + salt 100–150 g + 姜葱 (pot)",
+      "grams": 4000,
+      "level": 1.0,
+      "seconds": 60,
+      "note": "pot, 4 kg water: no fill set for the pot"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steep_off_heat",
+     "params": {
+      "seconds": 0,
+      "note": "dip-lift-drain 3×"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steep_off_heat",
+     "params": {
+      "seconds": 2400
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "cold_water_chill",
+     "params": {
+      "seconds": 600
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "chicken"
+     },
+     "phase": 3,
+     "covered": false,
+     "why_not": "chopping a whole cooked chicken: no chopper"
+    },
+    {
+     "routine": "cold_mix_bowl",
+     "params": {
+      "items": [
+       "酱油",
+       "chicken stock",
+       "红油",
+       "糖",
+       "醋"
+      ]
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 40,
+      "target_C": 200,
+      "onto": "bowl (姜葱蓉)"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "hongshaoliyu": {
+   "dish": "红烧鲤鱼",
+   "source": "wanggang",
+   "n_phases": 7,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "whole carp",
+      "level": 0.4
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_still",
+     "params": {
+      "seconds": 150
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "flip_and_fry",
+     "params": {
+      "seconds": 150
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 0,
+     "covered": false,
+     "why_not": "whole fish out of the wok and back later without breaking it: needs a fish turner + ladle (two hands); workaround: leave the fish in and cook the sauce around it"
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "五花粒",
+      "level": 0.5,
+      "seconds": 60
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "姜蒜粒",
+      "target_C": 150,
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "香菇 + 葱",
+      "level": 0.5,
+      "seconds": 10
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 (from the edge)",
+      "grams": 6,
+      "seconds": 3
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "beer",
+      "grams": 500,
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "braise_lid",
+     "params": {
+      "liquid_g": 0,
+      "level": 0.5,
+      "seconds": 360,
+      "note": "workaround for 舀汤浇 (ladle_baste needs a ladle)"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 5,
+     "covered": false,
+     "why_not": "lift the whole fish onto the plate and keep the sauce: two hands (turner + ladle); workaround: thicken first, then tip fish + sauce together"
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "starch_water",
+      "grams": 20,
+      "level": 0.6,
+      "max_s": 10
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "finishing_oil",
+      "grams": 5,
+      "seconds": 2
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "shousibaocai": {
+   "dish": "手撕包菜",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 6,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "additive": "salt + oil",
+      "seconds": 13
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wash_wok",
+     "params": {},
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "cabbage",
+      "level": 1.0,
+      "seconds": 18,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wash_wok",
+     "params": {},
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "猪油 + 辣椒 + 辣椒籽 + 蒜",
+      "target_C": 170,
+      "level": 0.7,
+      "seconds": 12
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 1.0,
+      "seconds": 20
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "酱油 + 醋 (from the edge)",
+      "grams": 8,
+      "seconds": 10
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "xiaochaoqiezi": {
+   "dish": "小炒茄子(肉片)",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 30,
+      "pour_out": false,
+      "target_C": 220,
+      "fresh_oil_g": 0
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "五花",
+      "level": 0.4,
+      "seconds": 60
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "大蒜 + 辣椒",
+      "target_C": 160,
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "茄子",
+      "level": 0.5,
+      "seconds": 240
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 + 老抽 (from the edge)",
+      "grams": 5,
+      "seconds": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "huangmenji": {
+   "dish": "黄焖鸡",
+   "source": "wanggang",
+   "n_phases": 11,
+   "phases_covered": 11,
+   "calls": [
+    {
+     "routine": "soak_bowl",
+     "params": {
+      "water_C": 40,
+      "seconds": 2400,
+      "what": "dried 香菇"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "cold",
+      "seconds": 300,
+      "what": "chicken"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "wok",
+      "target_C": 170,
+      "seconds": 120,
+      "pass": 1,
+      "note": "potatoes in 底油, spider out"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "caramelize_sugar",
+     "params": {
+      "sugar_g": 20,
+      "level": 0.3,
+      "max_s": 120,
+      "then": "meat"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "chicken",
+      "level": 0.4,
+      "seconds": 120
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "香菇 + 姜蒜粒",
+      "target_C": 150,
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "蚝油 + 黄豆酱 + 老抽",
+      "level": 0.4,
+      "seconds": 60
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "黄酒 (from the edge)",
+      "grams": 15,
+      "seconds": 3
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_fill_water",
+     "params": {
+      "water_g": 600
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "braise_lid",
+     "params": {
+      "liquid_g": 600,
+      "level": 0.5,
+      "seconds": 900
+     },
+     "phase": 8,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "fried potatoes",
+      "level": 0.3
+     },
+     "phase": 9,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "—",
+      "grams": 0,
+      "level": 0.3,
+      "seconds": 600
+     },
+     "phase": 9,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "青红椒",
+      "level": 0.5
+     },
+     "phase": 10,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "reduce_sauce",
+     "params": {
+      "level": 0.5,
+      "max_s": 30,
+      "stir_every_s": 10
+     },
+     "phase": 10,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 + 明油",
+      "grams": 10,
+      "seconds": 3
+     },
+     "phase": 10,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 10,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "zhengluyu": {
+   "dish": "清蒸鲈鱼",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 3,
+   "calls": [
+    {
+     "routine": "steam_plate",
+     "params": {
+      "seconds": 480,
+      "level": 0.5
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drain_plate_juice",
+     "params": {},
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "arrange_on_plate",
+     "params": {
+      "pieces": 1
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "葱姜丝 + 辣椒丝"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 40,
+      "target_C": 200,
+      "onto": "plate"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "鱼酱油"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "reboil_plate_juices",
+     "params": {},
+     "phase": 3,
+     "covered": false,
+     "why_not": "optional 进阶 step: chopsticks + plate + strainer at once"
+    }
+   ]
+  },
+  "qingchao_qiangchao": {
+   "dish": "清炒菠菜 / 炝炒油麦菜",
+   "source": "wanggang",
+   "n_phases": 5,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "蒜末 + 菠菜",
+      "level": 0.5,
+      "seconds": 30,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "salt + sugar dissolved in hot water",
+      "grams": 20,
+      "seconds": 3,
+      "note": "replaces dissolving in the wok spoon"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "蒜 + 干辣椒",
+      "target_C": 160,
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "油麦菜",
+      "level": 0.4,
+      "seconds": 30,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "salt + sugar water",
+      "grams": 20,
+      "seconds": 3
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "yutoudoufutang": {
+   "dish": "鱼头豆腐汤",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "wok",
+      "target_C": 150,
+      "seconds": 120,
+      "pass": 1,
+      "note": "fish head, then 姜葱 in the same oil"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "oil_cup",
+      "note": "oil poured out, fish stays: spider the head out first (see pour_off_excess_oil)"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_fill_water",
+     "params": {
+      "water_g": 1000,
+      "note": "he adds 2 kg (四斤): > 1 L not checked"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water",
+      "grams": 2000,
+      "level": 0.3,
+      "seconds": 900
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "tofu",
+      "level": 1.0
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "—",
+      "grams": 0,
+      "level": 0.3,
+      "seconds": 120
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fish_out_item",
+     "params": {
+      "what": "葱",
+      "into": "discard"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "serve_soup",
+     "params": {
+      "mass_g": 2000,
+      "season_in_bowl": "盐 3 g"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "serve_soup",
+     "params": {
+      "mass_g": 0,
+      "note": "(salt in the bowl and stir: covered by the call above)"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "jiaoyanpaigu": {
+   "dish": "椒盐排骨",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 6,
+   "calls": [
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "椒盐 dry-roast, no oil",
+      "level": 0.3,
+      "seconds": 300
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "holding_bowl"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "grind_spice",
+     "params": {},
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 180,
+      "seconds": 60,
+      "pass": 1
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 150,
+      "seconds": 40,
+      "pass": 1,
+      "note": "蒜蓉 in a fine basket"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 210,
+      "seconds": 180,
+      "pass": 2
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "葱椒粒 in 猪油",
+      "target_C": 180,
+      "level": 0.5,
+      "seconds": 20
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.6,
+      "seconds": 20
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "蒜末 + 椒盐粉 3 g",
+      "grams": 20,
+      "seconds": 8
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "jiaoliuroduan": {
+   "dish": "焦溜肉段",
+   "source": "wanggang",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 160,
+      "seconds": 180,
+      "pass": 1
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 200,
+      "seconds": 20,
+      "pass": 2
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "葱姜蒜 + 辅料",
+      "target_C": 170,
+      "level": 0.6,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 1.0,
+      "seconds": 3
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "碗汁",
+      "grams": 60,
+      "level": 1.0,
+      "max_s": 8
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "芝麻油",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "tudoushaoniunan": {
+   "dish": "土豆烧牛腩",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 5,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "cold",
+      "additive": "料酒 + 姜 + 花椒 + 小茴香",
+      "seconds": 3600,
+      "skim": true,
+      "note": "lid on: LID_ON_pot"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "牛腩 cubes"
+     },
+     "phase": 0,
+     "covered": false,
+     "why_not": "cubing the cooked brisket: no meat cutter"
+    },
+    {
+     "routine": "fry_paste_red_oil",
+     "params": {
+      "what": "草果/葱/姜/花椒 → 豆瓣 → 甜面酱",
+      "grams": 40,
+      "level": 0,
+      "seconds": 60,
+      "off_heat_first": true
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "beef cubes",
+      "level": 0.5,
+      "seconds": 30
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "料酒 (from the edge) + 泡椒",
+      "grams": 20,
+      "seconds": 5
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_fill_water",
+     "params": {
+      "water_g": 800
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "potato",
+      "level": 0.4
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "braise_lid",
+     "params": {
+      "liquid_g": 800,
+      "level": 0.4,
+      "seconds": 900
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "tomato",
+      "level": 0.4
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "braise_lid",
+     "params": {
+      "liquid_g": 0,
+      "level": 0.4,
+      "seconds": 900
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "reduce_sauce",
+     "params": {
+      "level": 0.7,
+      "max_s": 120,
+      "stir_every_s": 20
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "葱油",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "chaomian": {
+   "dish": "鸡蛋肉丝炒面",
+   "source": "wanggang",
+   "n_phases": 7,
+   "phases_covered": 6,
+   "calls": [
+    {
+     "routine": "egg_set_and_hold",
+     "params": {
+      "target_C": 120,
+      "level": 0.3,
+      "still_s": 40,
+      "flip_s": 40,
+      "note": "荷包蛋 a bit firm"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "egg strips"
+     },
+     "phase": 0,
+     "covered": false,
+     "why_not": "cutting the fried egg into strips: no cutter for it"
+    },
+    {
+     "routine": "soak_bowl",
+     "params": {
+      "water_C": 90,
+      "seconds": 420,
+      "what": "instant noodles"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "cold_water_chill",
+     "params": {
+      "seconds": 60
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "slide_oil_meat",
+     "params": {
+      "target_C": 150,
+      "level": 0.5,
+      "set_s": 5,
+      "separate_s": 25,
+      "take_out": false
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "noodles",
+      "level": 0.5,
+      "seconds": 5,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 + 老抽 (from the edge)",
+      "grams": 5,
+      "seconds": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "辅料 (veg)",
+      "level": 1.0,
+      "seconds": 3,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "oil from the edge",
+      "grams": 10,
+      "seconds": 3
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 1.0,
+      "seconds": 5
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "jiangyouchaofan": {
+   "dish": "酱油炒饭",
+   "source": "wanggang",
+   "n_phases": 8,
+   "phases_covered": 8,
+   "calls": [
+    {
+     "routine": "soak_bowl",
+     "params": {
+      "water_C": 20,
+      "seconds": 600,
+      "what": "dried radish"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_egg_beat",
+     "params": {
+      "eggs": 2
+     },
+     "phase": -1,
+     "covered": false,
+     "why_not": "separating whites and yolks: user does it"
+    },
+    {
+     "routine": "wok_grease",
+     "params": {
+      "oil_g": 40,
+      "pour_out": true,
+      "target_C": 180,
+      "fresh_oil_g": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "egg_set_and_hold",
+     "params": {
+      "target_C": 120,
+      "level": 0.3,
+      "still_s": 30,
+      "flip_s": 20,
+      "note": "egg white"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "yolk",
+      "level": 0.3
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_still",
+     "params": {
+      "seconds": 30,
+      "note": "40% oil, slow"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "radish",
+      "level": 0.4,
+      "seconds": 10
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "oil from the edge",
+      "grams": 10,
+      "seconds": 3
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "rice",
+      "level": 0.4,
+      "seconds": 60
+     },
+     "phase": 6,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "oil + soy sauce (from the edge)",
+      "grams": 12,
+      "seconds": 63,
+      "level": 0.7
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 7,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "naohuadoufu": {
+   "dish": "脑花豆腐",
+   "source": "wanggang",
+   "n_phases": 6,
+   "phases_covered": 6,
+   "calls": [
+    {
+     "routine": "soak_bowl",
+     "params": {
+      "water_C": 95,
+      "seconds": 300,
+      "what": "tofu + 脑花"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "葱头 → 火锅底料",
+      "target_C": 120,
+      "level": 0.3,
+      "seconds": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_paste_red_oil",
+     "params": {
+      "what": "豆瓣",
+      "grams": 15,
+      "level": 0.3,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water + seasoning",
+      "grams": 400,
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "tofu + 脑花 (slowly)",
+      "level": 0.3
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "—",
+      "grams": 0,
+      "level": 0.3,
+      "seconds": 600
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken_multi_off_heat",
+     "params": {
+      "passes": 4,
+      "grams_each": 10,
+      "level": 0.8,
+      "interval_s": 10,
+      "note": "少量多次 until the oil turns glossy (亮油)"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate",
+      "note": "he serves in a clay pot on a burner"
+     },
+     "phase": 5,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_A_gelipaigu": {
+   "dish": "蛤蜊排骨盅 (A)",
+   "source": "homestyle",
+   "n_phases": 3,
+   "phases_covered": 2,
+   "calls": [
+    {
+     "routine": "portion_into_cups",
+     "params": {
+      "pieces": 8
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steam_cups",
+     "params": {
+      "cups": 4
+     },
+     "phase": 0,
+     "covered": false,
+     "why_not": "cling film needs two hands; workaround: lidded cups"
+    },
+    {
+     "routine": "steam_cups",
+     "params": {
+      "cups": 4,
+      "seconds": 1800,
+      "note": "with lidded cups"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steam_cups",
+     "params": {
+      "cups": 4,
+      "note": "cups out = STEW_CUP_OUT"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_A_guihuayutou": {
+   "dish": "桂花糖芋头 (A)",
+   "source": "homestyle",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "prep_peel",
+     "params": {
+      "what": "taro"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_cut",
+     "params": {
+      "what": "taro",
+      "cut": "dice"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "arrange_on_plate",
+     "params": {
+      "pieces": 12
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steam_plate",
+     "params": {
+      "seconds": 1800,
+      "level": 0.6
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steam_plate",
+     "params": {
+      "seconds": 0,
+      "note": "chopstick probe → time only"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "糖桂花酱"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_A_ganguotudou": {
+   "dish": "干锅土豆 (A)",
+   "source": "homestyle",
+   "n_phases": 3,
+   "phases_covered": 3,
+   "calls": [
+    {
+     "routine": "deep_fry",
+     "params": {
+      "vessel": "fryer",
+      "target_C": 180,
+      "seconds": 180,
+      "pass": 1
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "五花片 + 姜",
+      "level": 0.5,
+      "seconds": 30
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "fry_paste_red_oil",
+     "params": {
+      "what": "豆瓣",
+      "grams": 5,
+      "level": 0.3,
+      "seconds": 15
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "干辣椒 + 花椒",
+      "target_C": 150,
+      "level": 0.5,
+      "seconds": 10
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.8,
+      "seconds": 15
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "生抽 + 十三香",
+      "grams": 8,
+      "seconds": 5
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "红椒 + 蒜苗",
+      "level": 0.8,
+      "seconds": 15
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_A_haoyouxilanhua": {
+   "dish": "蚝油西兰花 (A)",
+   "source": "homestyle",
+   "n_phases": 3,
+   "phases_covered": 3,
+   "calls": [
+    {
+     "routine": "prep_cut",
+     "params": {
+      "what": "broccoli florets",
+      "cut": "section"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "soak_bowl",
+     "params": {
+      "water_C": 20,
+      "seconds": 600,
+      "what": "salted water"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "cold_mix_bowl",
+     "params": {
+      "items": [
+       "water",
+       "蚝油"
+      ],
+      "note": "or premix into a drum compartment"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "broccoli + salt",
+      "level": 1.0,
+      "seconds": 10
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "蚝油 water",
+      "grams": 60,
+      "seconds": 3
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "braise_lid",
+     "params": {
+      "liquid_g": 0,
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "stir_fry",
+     "params": {
+      "level": 1.0,
+      "seconds": 5
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_A_suanrongsigua": {
+   "dish": "蒜蓉蒸丝瓜 (A)",
+   "source": "homestyle",
+   "n_phases": 4,
+   "phases_covered": 2,
+   "calls": [
+    {
+     "routine": "prep_peel",
+     "params": {
+      "what": "luffa"
+     },
+     "phase": 0,
+     "covered": false,
+     "why_not": "luffa peeling: [missing] in R19_PREP_AUDIT"
+    },
+    {
+     "routine": "prep_cut",
+     "params": {
+      "what": "luffa",
+      "cut": "section"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "arrange_on_plate",
+     "params": {
+      "pieces": 10
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steam_plate",
+     "params": {
+      "seconds": 180,
+      "level": 1.0
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "蒜蓉"
+     },
+     "phase": 2,
+     "covered": false,
+     "why_not": "garlic mince: no chopper (buy minced garlic)"
+    },
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 40,
+      "target_C": 200,
+      "onto": "bowl"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "cold_mix_bowl",
+     "params": {
+      "items": [
+       "蒸鱼豉油",
+       "陈醋"
+      ]
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "garlic sauce"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_B_xiansunpaigutang": {
+   "dish": "鲜笋排骨汤 (B)",
+   "source": "homestyle",
+   "n_phases": 3,
+   "phases_covered": 3,
+   "calls": [
+    {
+     "routine": "prep_cut",
+     "params": {
+      "what": "bamboo shoot",
+      "cut": "slice"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "seconds": 60,
+      "what": "ribs (scald)"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "stew_pot",
+     "params": {
+      "seconds": 3600,
+      "water_g": 1500
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "serve_soup",
+     "params": {
+      "mass_g": 2000,
+      "season_in_bowl": "salt + celery"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_B_hongshaorou": {
+   "dish": "红烧肉 (B)",
+   "source": "homestyle",
+   "n_phases": 5,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "cold",
+      "additive": "葱姜 + 料酒",
+      "seconds": 300
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "五花 cubes"
+     },
+     "phase": 1,
+     "covered": false,
+     "why_not": "scraping the skin + cubing cooked belly: no tool"
+    },
+    {
+     "routine": "render_fat",
+     "params": {
+      "what": "五花 cubes",
+      "level": 0.5,
+      "seconds": 90
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "葱姜 + 八角 + 桂皮 + 干辣椒",
+      "target_C": 150,
+      "level": 0.4,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "caramelize_sugar",
+     "params": {
+      "sugar_g": 20,
+      "level": 0.3,
+      "max_s": 90,
+      "then": "meat"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "料酒 + 盐 + 生抽",
+      "grams": 20,
+      "seconds": 10
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_fill_water",
+     "params": {
+      "water_g": 800,
+      "note": "he uses boiling water"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "braise_lid",
+     "params": {
+      "liquid_g": 800,
+      "level": 0.5,
+      "seconds": 2400
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "reduce_sauce",
+     "params": {
+      "level": 0.7,
+      "max_s": 300,
+      "stir_every_s": 20
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 4,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_B_rice": {
+   "dish": "米饭 (B)",
+   "source": "homestyle",
+   "n_phases": 1,
+   "phases_covered": 1,
+   "calls": [
+    {
+     "routine": "rice_cooker",
+     "params": {
+      "rice_g": 400
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_B_qingzhengluyu": {
+   "dish": "清蒸海鲈鱼 (B)",
+   "source": "homestyle",
+   "n_phases": 4,
+   "phases_covered": 3,
+   "calls": [
+    {
+     "routine": "arrange_on_plate",
+     "params": {
+      "pieces": 3,
+      "note": "fish bought split; ginger + scallion bed"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steam_plate",
+     "params": {
+      "seconds": 360,
+      "level": 1.0
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "三丝"
+     },
+     "phase": 2,
+     "covered": false,
+     "why_not": "fine 葱姜胡萝卜丝 1–2 mm: no tool (slicer shred disc is 4 mm)"
+    },
+    {
+     "routine": "drain_plate_juice",
+     "params": {},
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "蒸鱼豉油 + 三丝"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 40,
+      "target_C": 220,
+      "onto": "plate"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_B_baizhuozhi": {
+   "dish": "白灼汁 (B)",
+   "source": "homestyle",
+   "n_phases": 1,
+   "phases_covered": 1,
+   "calls": [
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 30,
+      "target_C": 200,
+      "onto": "bowl"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "cold_mix_bowl",
+     "params": {
+      "items": [
+       "蒸鱼豉油",
+       "陈醋",
+       "糖"
+      ]
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_B_fanqiechaodan": {
+   "dish": "番茄炒蛋 (B)",
+   "source": "homestyle",
+   "n_phases": 3,
+   "phases_covered": 2,
+   "calls": [
+    {
+     "routine": "prep_cut",
+     "params": {
+      "what": "tomato",
+      "cut": "wedge",
+      "note": "he scalds and peels; skip peeling"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_egg_beat",
+     "params": {
+      "eggs": 5
+     },
+     "phase": 0,
+     "covered": false,
+     "why_not": "crack + beat 5 eggs: user does it"
+    },
+    {
+     "routine": "egg_set_and_hold",
+     "params": {
+      "target_C": 130,
+      "level": 0.6,
+      "still_s": 20,
+      "flip_s": 10
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "scallion + tomato + salt + sugar",
+      "level": 1.0,
+      "seconds": 20
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "water",
+      "grams": 40,
+      "seconds": 3
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "braise_lid",
+     "params": {
+      "liquid_g": 0,
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "return_and_toss",
+     "params": {
+      "level": 0.8,
+      "seconds": 8
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "葱叶",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_B_baizhuo": {
+   "dish": "白灼秋葵娃娃菜 (B)",
+   "source": "homestyle",
+   "n_phases": 2,
+   "phases_covered": 2,
+   "calls": [
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "additive": "oil + salt",
+      "seconds": 60,
+      "what": "baby cabbage"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "additive": "oil + salt",
+      "seconds": 30,
+      "what": "okra"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "arrange_on_plate",
+     "params": {
+      "pieces": 12
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "白灼汁"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_C_yutouzhengpaigu": {
+   "dish": "芋头蒸排骨 (C)",
+   "source": "homestyle",
+   "n_phases": 4,
+   "phases_covered": 4,
+   "calls": [
+    {
+     "routine": "prep_marinate",
+     "params": {
+      "minutes": 20
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "prep_cut",
+     "params": {
+      "what": "taro",
+      "cut": "dice"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "arrange_on_plate",
+     "params": {
+      "pieces": 20
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "steam_plate",
+     "params": {
+      "seconds": 1800,
+      "level": 0.6
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "pour_cup_over_plate",
+     "params": {
+      "what": "红椒 + 葱花"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "hot_oil_pour_over",
+     "params": {
+      "oil_g": 15,
+      "target_C": 200,
+      "onto": "plate"
+     },
+     "phase": 3,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_C_qingjiaochaoyouyu": {
+   "dish": "青椒炒鱿鱼 (C)",
+   "source": "homestyle",
+   "n_phases": 2,
+   "phases_covered": 1,
+   "calls": [
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "squid"
+     },
+     "phase": 0,
+     "covered": false,
+     "why_not": "scoring squid 麦穗花刀: buy pre-scored"
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "seconds": 20,
+      "what": "squid (scald)"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "葱姜蒜",
+      "target_C": 160,
+      "level": 0.7,
+      "seconds": 10
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "青椒 + squid",
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "料酒",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "thicken",
+     "params": {
+      "sauce": "碗汁 (water, 生抽, 蚝油, starch)",
+      "grams": 50,
+      "level": 1.0,
+      "max_s": 10
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_C_suanlatudousi": {
+   "dish": "酸辣土豆丝 (C)",
+   "source": "homestyle",
+   "n_phases": 3,
+   "phases_covered": 3,
+   "calls": [
+    {
+     "routine": "prep_cut",
+     "params": {
+      "what": "potato",
+      "cut": "shred"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "soak_bowl",
+     "params": {
+      "water_C": 20,
+      "seconds": 300,
+      "what": "shreds (starch rinse)"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "blanch_lift",
+     "params": {
+      "vessel": "pot",
+      "start": "boiling",
+      "additive": "oil + salt",
+      "seconds": 10
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "蒜 + 红椒 + 干辣椒",
+      "target_C": 170,
+      "level": 0.8,
+      "seconds": 10
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "potato shreds",
+      "level": 1.0,
+      "seconds": 30,
+      "stroke": "shreds_leafy"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "调味水 (salt, vinegars, 生抽)",
+      "grams": 20,
+      "seconds": 5
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "葱叶",
+      "grams": 5,
+      "seconds": 3
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_C_qinggaroupiantang": {
+   "dish": "青瓜肉片汤 (C)",
+   "source": "homestyle",
+   "n_phases": 3,
+   "phases_covered": 2,
+   "calls": [
+    {
+     "routine": "prep_mince_meat_cut",
+     "params": {
+      "what": "pork slices"
+     },
+     "phase": 0,
+     "covered": false,
+     "why_not": "slicing lean pork: no meat slicer"
+    },
+    {
+     "routine": "prep_marinate",
+     "params": {
+      "minutes": 10
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "wok_fill_water",
+     "params": {
+      "water_g": 900
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "simmer_open",
+     "params": {
+      "liquid": "water",
+      "grams": 900,
+      "level": 1.0,
+      "seconds": 60
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_off_heat",
+     "params": {
+      "source": "ginger + cucumber",
+      "level": 1.0
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "poach_slices",
+     "params": {
+      "what": "肉片",
+      "level": 1.0,
+      "seconds": 60
+     },
+     "phase": 1,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "serve_soup",
+     "params": {
+      "mass_g": 1100,
+      "season_in_bowl": "芹菜 + 白胡椒"
+     },
+     "phase": 2,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  },
+  "home_C_qingchaohelandou": {
+   "dish": "清炒荷兰豆 (C)",
+   "source": "homestyle",
+   "n_phases": 1,
+   "phases_covered": 1,
+   "calls": [
+    {
+     "routine": "bloom_aromatics",
+     "params": {
+      "what": "蒜",
+      "target_C": 160,
+      "level": 0.8,
+      "seconds": 10
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "add_stir_fry",
+     "params": {
+      "what": "荷兰豆 + salt",
+      "level": 1.0,
+      "seconds": 30
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "drum_add_stir",
+     "params": {
+      "what": "water",
+      "grams": 20,
+      "seconds": 5
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    },
+    {
+     "routine": "take_out",
+     "params": {
+      "into": "plate"
+     },
+     "phase": 0,
+     "covered": true,
+     "why_not": ""
+    }
+   ]
+  }
+ },
+ "stats": {
+  "n_types": 57,
+  "types_by_category": {
+   "prep": 10,
+   "wok": 25,
+   "plating": 6,
+   "sauce": 7,
+   "fry": 1,
+   "cleanup": 1,
+   "pot_steam": 5,
+   "stew": 1,
+   "other": 1
+  },
+  "types_by_status": {
+   "demo": 10,
+   "demo_ready": 5,
+   "needs_check": 25,
+   "two_hands": 5,
+   "needs_hardware": 9,
+   "sim_motion_checked": 3
+  },
+  "wanggang": {
+   "recipes_mapped": 42,
+   "recipes_total": 42,
+   "phases_total": 258,
+   "phases_covered": 250
+  },
+  "homestyle": {
+   "dishes_mapped": 17,
+   "steps_total": 49,
+   "steps_covered": 41
+  },
+  "routine_calls_total": 505,
+  "routine_calls_on_phases": 499,
+  "calls_by_type_status": {
+   "demo": 168,
+   "demo_ready": 97,
+   "two_hands": 11,
+   "needs_hardware": 39,
+   "needs_check": 169,
+   "sim_motion_checked": 21
+  },
+  "dishes_fully_covered": [
+   "congbaoyangrou",
+   "danchaofan",
+   "dandanmian",
+   "disanxian",
+   "fengweiqiezi",
+   "ganbiansijidou",
+   "gongbaojiding",
+   "home_A_ganguotudou",
+   "home_A_guihuayutou",
+   "home_A_haoyouxilanhua",
+   "home_B_baizhuo",
+   "home_B_baizhuozhi",
+   "home_B_rice",
+   "home_B_xiansunpaigutang",
+   "home_C_qingchaohelandou",
+   "home_C_suanlatudousi",
+   "home_C_yutouzhengpaigu",
+   "hongshaorou",
+   "huangmenji",
+   "jiangyouchaofan",
+   "jiaoliuroduan",
+   "jiaoyanpaigu",
+   "jingjiangrousi",
+   "jiucaichaodan",
+   "kelejichi",
+   "laziji",
+   "mapodoufu",
+   "mayishangshu",
+   "naohuadoufu",
+   "paihuanggua",
+   "qiezhilizhi",
+   "qingchao_qiangchao",
+   "qingjiaorousi",
+   "shousibaocai",
+   "suancaiyu",
+   "suanlatang",
+   "tangcupaigu",
+   "tudousi",
+   "xiaochaoqiezi",
+   "xiaochaorou",
+   "xihongshichaodan",
+   "xilanhua",
+   "yutoudoufutang",
+   "yuxiangqiezi",
+   "yuxiangrousi"
+  ],
+  "n_dishes_fully_covered": 45,
+  "dishes_all_calls_demo_or_demo_ready": [
+   "jiucaichaodan",
+   "xihongshichaodan"
+  ],
+  "covered_definition": "A phase is covered when every routine call mapped to it has covered=true: a library routine runs it with one arm as written or with a stated workaround that keeps the dish. covered=false = one arm cannot do it as written (two_hands) or mid-cook knife work with no tool (cooked meat slicing, mincing). Covered does not mean executable today: see phase_worst_status.",
+  "phase_worst_status": {
+   "demo": 41,
+   "demo_ready": 76,
+   "sim_motion_checked": 15,
+   "needs_check": 132,
+   "needs_hardware": 34,
+   "two_hands": 9
+  },
+  "dishes_worst_status": {
+   "demo": 0,
+   "demo_ready": 2,
+   "sim_motion_checked": 0,
+   "needs_check": 22,
+   "needs_hardware": 26,
+   "two_hands": 9
+  },
+  "problems": []
+ }
+}
