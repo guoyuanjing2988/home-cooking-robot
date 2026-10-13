@@ -1,4 +1,5 @@
 """R19 prep layout (issue #4, steps 1-2): a layer on top of kitchen17 (new file; no shared file changed).
+See R19_PREP_LAYOUT.md for the chosen spots (LAYOUT below) and the evidence.
 
 The prep stations of R11/R12 are placed again in today's (R18b) kitchen. Their geometry is EXACTLY the
 R11 station geometry of scene.py: a donor scene is built once with the stations at the origin (presets
@@ -162,8 +163,9 @@ CANDIDATES={
  'tool_C90':dict(item='tool',st=('lever',-0.90,.095,0.),desc='left counter front by the sink (cooking corridor)'),
  'tool_PL':dict(item='tool',st=('lever',.30,.095,0.),desc='plating area (empty before cooking; prep-time only)'),
  'tool_PL90':dict(item='tool',st=('lever',.30,.13,90.),desc='plating area, turned 90 deg: front (slide-in side, knob grasp) toward +x'),
- 'tool_CB':dict(item='tool',st=('lever',-0.90,.20,0.),desc='CHOSEN: left counter by the sink, set back (blade plate y 0.20)'),
+ 'tool_CB':dict(item='tool',st=('lever',-0.90,.20,0.),desc='left counter by the sink, set back (blade plate y 0.20); the chosen spot is tool_CB_-0.86_0.21'),
  **{f'tool_CB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='set-back work spot variants') for x,y in ((-0.87,.20),(-0.85,.20),(-0.90,.22),(-0.88,.22),(-0.86,.22),(-0.88,.21),(-0.86,.21),(-0.87,.215),(-0.90,.21))},
+ **{f'cbox_CBX_{x:.2f}_{y:.2f}':dict(item='cold_box',st=('cold_box',x,y,90.),desc='cold box along x at the set-back work spot') for x,y in ((-0.86,.17),(-0.86,.19),(-0.86,.21),(-0.86,.15))},
  'cbox_CB':dict(item='cold_box',st=('cold_box',-0.90,.12,90.),desc='CHOSEN: cold box along x at the work spot (instead of the lever base)'),
  **{f'tool_CB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='left counter by the sink, set back (carry lane and shoulder pass in front of it)') for x in (-.90,-.95) for y in (.20,.24)},
  **{f'tool_PLB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='plating area, set back (knob further from the passing shoulder)') for x in (.10,.20,.30) for y in (.16,.20,.24)},
@@ -238,11 +240,11 @@ def _probes():
 #   under the cabinet; clear of every stored cooking path (replay) and reachable (drop probes);
 # - raw tray: unchanged (R18b), picks reachable;
 # - fetched-tool work spot (lever base AY-403 class; also the cold-box set-down and other fetched tools,
-#   one at a time): left counter by the sink, SET BACK so its blade plate is at y 0.20: the carry lane
-#   and the robot's own shoulder pass in front of it. Prep-time only: the wok sink trips and the spatula
-#   fetch pass over it (replay), so it is fetched / stowed around them;
-# - cold box: set down along x at the work spot, never at the same time as the lever base.
-LAYOUT=dict(slicer=(-1.69,.225,90.),lever=(-0.88,.22,0.),cold_box=(-0.90,.12,90.),tray_dxy=(0.,0.),drop_bowls=['tomato'])   # the R07 tomato staging bowl (x -0.96..-0.76, y .36-.56) would overlap the lever base plate: moved off this spot
+#   one at a time): left counter by the sink, SET BACK (origin (-0.86, 0.21)) so the carry lane and the
+#   robot's own upper arm pass in front of it; the 6 stored cooking chains do not hit it (replay screen),
+#   the hub edges are only partly replayed; the R07 tomato staging bowl is moved off this spot;
+# - cold box: set down along x at the work spot (-0.86, 0.17), never at the same time as the lever base.
+LAYOUT=dict(slicer=(-1.69,.225,90.),lever=(-0.86,.21,0.),cold_box=(-0.86,.17,90.),tray_dxy=(0.,0.),drop_bowls=['tomato'])   # the R07 tomato staging bowl (x -0.96..-0.76, y .36-.56) would overlap the lever base plate: moved off this spot
 FAUCET_OUT=np.array([K17.FX,.37,1.10])   # the R17 faucet outlet (spout front end)
 def layout_scene(*stations,**kw):
  """cfg['r19'] for the chosen layout with these stations out (the slicer is resident: always out)."""

@@ -8,19 +8,22 @@ all of that, so ur5e_enc is up to 50 mm outside the real surface (bloat(), per l
 forearm 51, wrists 9-11 mm). Profile bands along the axis (tried first) did not help: the excess is around the
 axis, not along it.
 
-ur5e_enc2: every link is covered by convex polytopes on its OWN body only (no coaxial cover, so nothing is revolved):
+ur5e_enc2: every link is covered by pieces on its OWN body only (no coaxial cover, so nothing is revolved):
  1. every point of the link's mesh (vertices + a <= 2 mm grid on every triangle) is given to the ur5e_enc primitive
     whose surface it lies nearest to among those that hold it (its own or the coaxial neighbour's): that splits
     the link into its housing / neck / tube / cap pieces, each inside one convex ur5e_enc primitive;
- 2. a piece longer than SEG (60 mm) along its main axis is cut into <= SEG long parts (a whole tube's hull
-    would bridge its flared ends: 15 mm bloat), neighbouring parts overlapping by 2 x OVL (4 mm); each part becomes a k-DOP: the intersection of NDIR (162) half-spaces n.x <= max over its points of n.x
-    + MARGIN (0.3 mm), n on a Fibonacci sphere: a convex polytope at most a fraction of a mm outside the hull of
-    the piece (and never outside the ur5e_enc primitive by more than MARGIN);
- 3. proof of enclosure as in r19ur5e_encfit.certify (every triangle held by one polytope at its 3 corners, or its
+ 2. a tube piece keeps its ur5e_enc capsule (same segment), radius = what its points need + MARGIN; every other
+    piece becomes a k-DOP: the intersection of 168 half-spaces n.x <= max over its points of n.x + MARGIN (0.3 mm),
+    n = the 6 axis directions and NDIR (162) Fibonacci directions: a convex polytope less than a mm outside the
+    convex hull of the piece (and never outside the ur5e_enc primitive by more than MARGIN);
+ 3. proof of enclosure as in r19ur5e_encfit.certify (every triangle held by one piece at its 3 corners, or its
     corners inside the union by its longest edge / sqrt(3), else split, to 1/2^10); points of parts that fail are
-    added to the polytope of the nearest piece point (its half-spaces move out) until all triangles are certified;
- 4. MuJoCo mesh geoms (convex) from the polytope vertices, names R_geom_enc2_<link>_<k>; the Menagerie geoms
-    R_geom_5..28 are removed (arms.enclose, 'remove').
+    added to the piece of the nearest piece point (its half-spaces move out / its radius grows) until all are certified;
+ 4. MuJoCo mesh geoms (convex) from the polytope vertices and the 2 capsules, names R_geom_enc2_<link>_<k>; the
+    Menagerie geoms R_geom_5..28 are removed (arms.enclose, 'remove').
+ Tried and dropped (bloat by bloat() below): profile bands along the joint axes (the excess is around the axis,
+ not along it: still 50 mm), cutting the pieces into 60 mm slices or k-means surface patches (hulls bridge concave
+ junctions: 13-20 mm, and 47-117 geoms).
 Polytopes give exact signed distances inside (max over the planes) and MuJoCo / distance.Bounds collide them as
 convex meshes (mesh-box distances are exact in MuJoCo 3.2.5, R11; cylinders are not, R19_ARM_SWAP.md 7).
 
@@ -32,7 +35,7 @@ from scipy.spatial import ConvexHull,HalfspaceIntersection,cKDTree
 import r19ur5e_encfit as F
 H=F.H;KV=F.KV
 SRC=KV.get('FROM','r19/arm_ur5e_enc.json');DST=KV.get('OUT','r19/arm_ur5e_enc2.json')
-AREA=float(KV.get('AREA',.005));WN=float(KV.get('WN',.02));OVL=float(KV.get('OVL',.004));NDIR=int(KV.get('NDIR',162));MARGIN=float(KV.get('MARGIN',.0003));STEP=float(KV.get('STEP',.002));DEPTH=int(KV.get('DEPTH',10))
+NDIR=int(KV.get('NDIR',162));MARGIN=float(KV.get('MARGIN',.0003));STEP=float(KV.get('STEP',.002));DEPTH=int(KV.get('DEPTH',10))
 SHORT={'shoulder_link':'sh','upper_arm_link':'ua','forearm_link':'fa','wrist_1_link':'w1','wrist_2_link':'w2','wrist_3_link':'w3'}
 def fib(n):
  k=np.arange(n)+.5;phi=np.arccos(1-2*k/n);t=math.pi*(1+5**.5)*k
@@ -190,7 +193,7 @@ def bloat(m,tris,solids):
 def main():
  m,tris,polys,report=fit()
  before=bloat(m,tris,solids_enc(SRC));after=bloat(m,tris,solids_poly(polys))
- out=dict(id='ur5e_enc2',name='UR5e, convex polytopes enclosing the Menagerie visual meshes, own body only',source=SRC,area_per_piece_m2=AREA,normal_weight_m=WN,overlap_m=OVL,ndir=len(DIRS),margin_m=MARGIN,step_m=STEP,depth=DEPTH,method=__doc__,
+ out=dict(id='ur5e_enc2',name='UR5e, convex pieces (16 k-DOP meshes + 2 tube capsules) enclosing the Menagerie visual meshes, own body only',source=SRC,ndir=len(DIRS),margin_m=MARGIN,step_m=STEP,depth=DEPTH,method=__doc__,
   labels=dict(M='Menagerie ur5e.xml, assets/*.obj',E='fitted here'),remove=[n for v in F.NAMES.values() for n in v],
   geoms=[dict(name=p['name'],body=F.BODY[p['body']],type='mesh',vertices=np.round(p['V'],7).tolist(),from_piece_of=p['src'],points=p['points'],label='E (convex k-DOP of a piece of the M mesh)') if 'V' in p else
    dict(name=p['name'],body=F.BODY[p['body']],**F.geom_xml(dict(p['cap'],r=p['cap']['r']+5e-5)),from_piece_of=p['src'],points=p['points'],label='E (the ur5e_enc tube capsule, radius from its piece of the M mesh)') for p in polys],

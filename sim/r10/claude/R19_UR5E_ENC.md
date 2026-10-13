@@ -257,3 +257,161 @@ How to read the results:
 - **The 4 spider self states** classed "artefact" (MuJoCo cylinder contact only) are still hits for the checker.
 - **Hub-edge states.** These are r19hub's checked states. Their spacing is ≤ 4 mm for the old bound; with the
   `ur5e_enc` bound it is still ≤ 3.98 mm, so no re-cut was needed (33,761 states, as stored).
+
+## 7. Second round: the tighter `ur5e_enc2` (2026-10-13, after the controller's `ur5e_enc` re-plans)
+
+### 7.0 Answer first
+- **`ur5e_enc2` encloses the real arm and hugs it.**
+  - Proof: every triangle of the Menagerie meshes is inside. Max protrusion is −0.3 mm on every link, in the fit and
+    again in the sim model.
+  - Bloat (how far the model sits outside the real surface): 6.1 / 8.7 / 6.0 / 4.7 / 4.7 / 6.6 mm for the shoulder /
+    upper arm / forearm / wrist 1 / wrist 2 / wrist 3. With `ur5e_enc` it was 19.7 / 20.0 / 50.7 / 8.7 / 9.7 / 11.3 mm.
+- **Lid, spider and 4 hub edges no longer fail on environment pairs.** Those failures were enclosure bloat.
+- **Two real 10 mm violations remain.** In both, the model gap is within 0.7 mm of the mesh gap:
+  - **Wok final / plate 2:** the elbow end of the upper arm is 7.5 mm above the front rim of the plate (dish at x .43).
+    This needs a layout change (§7.5).
+  - **4 `LEV_O` hub edges:** wrist 1 is 8.0 mm below the closed upper-cabinet door. A re-plan of these free moves is
+    enough; no layout change.
+- **New self pair:** wrist 1's wrist-2 housing vs the gripper's OEM envelope box. The real wrist-1 mesh comes within
+  0.9–1.3 mm of that box in wok (434 states), lid (695), spider (1,185) and 4 hub edges.
+  - Why it is new: the Menagerie geoms and `ur5e_enc` cover that housing with a geom on the wrist-2 body. That body is
+    adjacent to the gripper, so the checker never compared the two.
+  - What it means: a posture problem (wrist folded back), not a layout one; re-plan with `ur5e_enc2`.
+  - Open question: whether the real gripper housing (not its 75 × 75 × 138.5 mm OEM box) touches is undecided.
+
+### 7.1 The model (`r19ur5e_enc2fit.py` → `r19/arm_ur5e_enc2.json`; `ARM=ur5e_enc2`)
+
+**Why `ur5e_enc` was loose.** Its housings are cylinders on the joint axes, and they also cover the neighbouring
+link. The real housings are not bodies of revolution:
+- the forearm's elbow cap reaches r 68 mm toward ±x but only 21–48 mm toward the upper arm;
+- the tubes flare into the housings on one side only.
+
+Revolving all of that around the joint axis gave up to 50 mm of bloat.
+
+**How `ur5e_enc2` is built.** Every link is covered only by pieces on its own body, so nothing has to be revolved:
+- The link's mesh points are split by the `ur5e_enc` primitive they lie nearest to (housing, neck, tube, cap).
+- The two tubes keep their capsules: upper arm r 49.8 mm, forearm r 38.8 mm.
+- The 16 other pieces are convex k-DOPs: 168 half-spaces, 0.3 mm margin, MuJoCo mesh geoms with 332 vertices.
+- The proof of enclosure and the growth of failing parts work as in `r19ur5e_encfit.py`. Fit time: 45 s.
+
+**Tried and dropped** (measured with the same bloat test):
+- Profile bands along the joint axes: still 50 mm, because the excess is around the axis, not along it.
+- 60 mm slices or k-means surface patches: 13–20 mm, with 47–117 geoms. Their hulls bridge the concave junctions.
+
+**Bloat test** (`bloat()` in `r19ur5e_enc2fit.py`):
+- Model surface: sampled every 3 mm. A point counts only if no other piece of the arm holds it and it is not inside
+  the real arm.
+- Inside the real arm: a 1 mm voxel solid of the Menagerie meshes, parity fill with 2 of 3 ray directions. Its volume
+  matches the meshes' signed volume:
+  - exactly for the base, shoulder, wrist 1 and wrist 2;
+  - +6 % / +11 % for the upper arm / forearm;
+  - −31 % for wrist 3, whose mesh is not closed.
+- Distance: to the nearest point of the real surface (≤ 2 mm grid, so it can exceed the true distance by ≤ 1.7 mm).
+
+**Checks.**
+- In the sim model: max protrusion −0.3 mm on every link (`r19enc_check.py enclose NEW=ur5e_enc2 N=10`; own-body
+  pieces make this configuration-independent).
+- Default `ur5e`: the compiled scene md5 and the full checks are still identical to the original `arms.py`.
+- Random-pose self-contact: 45.1 % (UR5e 38.3 %). The new top pair is the wrist-1 piece vs the gripper OEM envelope
+  (314 of 2,000 poses).
+- Check time: about 0.15 s per state, the same as before.
+
+### 7.2 Re-check of the stored UR5e paths with `ur5e_enc2` (`results/r19/enc2/`, same method as §2)
+
+| Path | `ur5e_enc` | `ur5e_enc2` | Hit states | `ur5e_enc2` pairs | Arm–env min reserve: ur5e / enc / enc2 (mm) |
+|---|---|---|---|---|---|
+| wok final | fail | **fail** | 452 | wrist-1 piece – OEM envelope 434 (self); elbow piece – `r15_plate` 18 | 2.02 / −10.0 / **−3.23** |
+| wok plate 2 | fail | **fail** | 452 | same; elbow – `r17_plate2` 18 | 2.02 / −10.0 / **−3.23** |
+| lever | pass | pass | 0 | — | 19.46 / 10.62 / 16.32 |
+| lid | fail | **fail** | 695 | wrist-1 piece – OEM envelope (self) | 2.02 / −5.04 / 2.08 |
+| spider | fail | **fail** | 1,185 | wrist-1 piece – OEM envelope (self) | 2.03 / −10.0 / 1.12 |
+| spatula | pass | pass | 0 | — | 77.88 / 43.07 / 79.56 |
+| stir | pass | pass | 0 | — (plume 25.8 mm) | 22.69 / 22.10 / 21.64 |
+| hub, 22 edges | 12 pass | **14 pass** | | `LEV_O`×4: wrist-1 piece – door (23–25 states); `LID_RACK`×2 and `SPIDER`×2: wrist-1 piece – OEM envelope (250–302) | `LEV_O`: 2.03 / −8.07 / −2.72 |
+
+Self min reserve: 2.0 mm for every UR5e path; with `ur5e_enc2` 0.0 (intersecting) wherever the wrist-1/gripper pair
+hits, otherwise ≥ 2.0.
+
+Real-mesh check of every `ur5e_enc2` hit pair (`r19enc_check.py meshgap NEW=ur5e_enc2` →
+`results/r19/enc2/meshgap.json`):
+
+| Pair | Model gap | Real-mesh gap | Verdict |
+|---|---|---|---|
+| upper arm (elbow end) – plate / dish at x .43 (wok, plate 2) | 6.8 | **7.5** | violates 10 mm |
+| wrist 1 – `r07_closed_door_1_0` (4 `LEV_O` edges) | 7.3 | **8.0–8.1** | violates 10 mm |
+| wrist 1 – gripper OEM envelope (wok, plate 2, lid, spider, 4 hub edges) | 0 (intersect) | 0.9–1.3 | undecided: within the 1.7 mm sampling cover of 0 |
+
+### 7.3 Lever re-plan, run here (`ARM=ur5e_enc2`, 32 s)
+Command: `r17chain.py ACT=lever SIGN=1 SPX=1.52 SPY=.36 TRIES=8 TAG=final ARM=ur5e_enc2`.
+- **Result: fail**, as with `ur5e_enc`. The anchor is the same as the UR5e final (cart −0.736) and the play is ok.
+  The approach at kf 1 stops at step 4 on the forearm tube vs `upper_cabinet_1`.
+- **The stored UR5e lever passes with `ur5e_enc2`:**
+  - its play, at ≤ 4 mm, has 0 hits;
+  - its two stored approaches have 0 hits (arm–environment reserve 29.5 / 16.3 mm).
+- **So the arm model is not the problem:** the re-plan takes a different, worse approach than the stored path.
+- `results/r17/chain_lever_s+1_final_ur5e_enc2.json` (`ok: false`) is from this run.
+
+### 7.4 Re-check fix
+`r19enc_check.py recheck` now skips a chain with `"ok": false` or an empty `play`, and writes `{"skipped": ...}`.
+Tested on the failed `lever_ur5e_enc`. All commands take `NEW=ur5e_enc2` (outputs in `results/r19/enc2/`).
+
+### 7.5 Layout proposals for the real-mesh violations (not run)
+
+**Wok final and plate 2.**
+- Where:
+  - plate: `r15_plate` (and the waiting dish `r17_plate2` in plate 2), r 120 mm, centre (0.43, 0.13), top z 0.875,
+    front rim at y 0.014;
+  - arm: the elbow end of the upper arm at (0.462, 0.012, 0.882);
+  - when: the wok action's start / end pose, cart x 0.172 (the H_WOK station). The elbow passes 2 mm in front of the
+    rim and 7 mm above it.
+- **Smallest change:** move that plating spot 10 mm toward the wall (centre y 0.13 → 0.14). The rim moves to y 0.024
+  and the gap becomes about 13.9 mm (estimate).
+- Implementation: r17chain has `PX` but no `PY` option; this needs `K15.PLATE['c']` y = 0.14 or a small `PY` option.
+  The plate-2 dish uses the same y.
+- Alternative without a layout change: a wok start/end posture with the elbow higher, which the `ur5e_enc2` re-plan
+  may find on its own.
+
+**`LEV_O` hub edges.**
+- Where: wrist 1 is 8.0 mm below the bottom edge (z 1.35, front face y 0.212) of the closed upper-cabinet door
+  `r07_closed_door_1_0`, on the retreat via (0, −0.15, 0).
+- **No layout change:** these are free moves. Re-plan the 4 edges with `ARM=ur5e_enc2`; the via search or planner
+  takes another route.
+
+**Gripper vs wrist 1 (self).**
+- No layout change: re-plan with `ur5e_enc2`, so the planner sees the pair.
+- Also worth doing: check the gripper's real housing against its OEM envelope box (75 × 75 × 138.5 mm). If the real
+  housing is smaller near the flange, the pair is clear.
+
+### 7.6 Commands for the controller (`ARM=ur5e_enc2`; background lanes)
+```bash
+cd /c/Users/admin/Documents/YJGames/robot_rail/sim/r10/claude
+PY=C:/Users/admin/Documents/YJGames/robot_v5/board/work/t01/.venv/Scripts/python.exe
+A=ur5e_enc2
+# lane 1: wok, then plate 2 (UR5e finals' options). Expected to keep failing on the plate unless the elbow posture changes (7.5)
+$PY r17chain.py ACT=wok SIGN=-1 GTILT=25 L2X=-.25 SINKC=-1.06 SPX=1.52 SPY=.36 TRIES=8 TAG=final ARM=$A > results/r17/log_wok_final_$A.txt 2>&1
+$PY r17chain.py ACT=wok SIGN=-1 GTILT=25 L2X=-.25 SINKC=-1.06 SPX=1.52 SPY=.36 PX=.17 PLATE2=.43 TRIES=16 TAG=r18plate2b ARM=$A > results/r17/log_wok_plate2b_$A.txt 2>&1
+# lane 2: spider, then the lid
+$PY r17chain.py ACT=spider SIGN=1 SPX=1.52 SPY=.36 TRIES=12 TAG=final ARM=$A > results/r17/log_spider_final_$A.txt 2>&1
+$PY r17chain.py ACT=lid SIGN=-1 SPX=1.52 SPY=.36 TRIES=16 TAG=final ARM=$A > results/r17/log_lid_final_$A.txt 2>&1
+# lane 3: lever with more search (TRIES=8 failed at the kf 1 approach, 7.3), then the spatula (hub input; its UR5e path passes ur5e_enc2)
+$PY r17chain.py ACT=lever SIGN=1 SPX=1.52 SPY=.36 TRIES=16 SEEDS=3 TAG=final ARM=$A > results/r17/log_lever_final_$A.txt 2>&1
+$PY r17chain.py ACT=spatula SIGN=-1 SPATREST=-1.15,.30 SPATELEV=8 SPATROLL=180 SPX=1.52 SPY=.36 TRIES=16 TAG=r18roll-1.15_.30 ARM=$A > results/r17/log_spatula_$A.txt 2>&1
+# after the re-plans: the <= 4 mm re-check (failed chains are skipped), < 3 min each
+for S in wok wok_plate2b spider lid lever spatula; do $PY r19enc_check.py recheck SET=$S SUFFIX=_$A NEW=$A; done > results/r19/enc2/log_recheck_replans.txt 2>&1
+# hub: the block of section 4 with A=ur5e_enc2 (output results/r19/hub_ur5e_enc2/), only when all six chains are ok
+```
+
+**If a layout change is chosen for the plate** (§7.5): set the plating spot to y 0.14 first, then run lane 1 again.
+Every other UR5e result was checked in the current layout and stays as it is.
+
+### 7.7 Files (round 2)
+- **New:**
+  - `r19ur5e_enc2fit.py`, producing `r19/arm_ur5e_enc2.json` (geoms, proof, and the bloat before / after);
+  - `results/r19/enc2/*.json`;
+  - `results/r17/chain_lever_s+1_final_ur5e_enc2.json` and its log.
+- **Changed, with `.bak_r19enc2` backups of the round-1 versions** (`.bak_r19enc` still holds the originals):
+  - `arms.py`: the `ur5e_enc2` entry; `enclose()` now handles mesh pieces and a `remove` list;
+  - `r17chain.py`: the walk start for any enclosing UR5e option.
+- **Changed without a backup**, all my own files from round 1:
+  - `r19enc_check.py`: `NEW=`, the skip of failed chains, mesh pieces in `enclose`, cover in `meshgap`;
+  - `r19ur5e_encfit.py`: a `bloat` mode; the band attempt was removed.

@@ -257,8 +257,9 @@ def meshgap():
  from scipy.spatial.transform import Rotation
  _,_,tris,_,_,_=F.load();P={'R_arm_'+L:F.grid(T,.002) for L,T in tris.items() if L in F.NAMES}
  import arms;J=json.load(open(arms.ARMS[NEW]['enclose']));cover={}
- for link,ps in J['candidates'].items():
+ for link,ps in J.get('candidates',{}).items():
   for p_ in ps:cover.setdefault(p_,[]).append(link)
+ if 'candidates' not in J:cover={g['name']:[g['body']] for g in J['geoms']}   # ur5e_enc2: every piece covers its own link only
  def dist(m,d,g,X):
   R=d.geom_xmat[g].reshape(3,3);L=(X-d.geom_xpos[g])@R;t=m.geom_type[g]
   if t==mujoco.mjtGeom.mjGEOM_MESH:

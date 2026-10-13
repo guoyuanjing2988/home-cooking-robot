@@ -1,40 +1,41 @@
 """R19 prep movement sets in today's (R18b) kitchen, issue #4 step 2 (new file; method of r17chain.py,
-which is not changed). The layout is kitchen19.LAYOUT (step 1, R19_PREP_LAYOUT.md):
- raw tray as today; the 卓晋 slicer resident in the far-left column, turned 90 deg (chute at the front);
- the fetched lever base (AY-403 class, R11 AW geometry) at the work spot by the sink (-0.90, 0.095);
- washing under the R17 single-lever faucet outlet (-0.40, 0.37, 1.10), opened by the checked R17 lever
- action (results/r17/chain_lever_s+1_final.json) before the set and closed after it.
-Method (r17chain.py, unchanged in substance): object keyframes; between them the object moves in a
-straight line (rotation slerp) every <= 1 cm / 2 deg, the cart linearly or as an IK variable ('F'); the
-arm follows by IK continuation; the unchanged checker runs at every step (10 mm robot-environment, 5 mm
-gripper/held-environment, joint ranges; the full bound every 5th step and at every keyframe). Anchors are
-solved by 96-start collision-aware IK (solver.solve) and joined at MEET keyframes (DP over the anchor
-candidates; a meet join is a straight joint move, cart fixed, checked every <= 1 deg, after a cart shuffle
-under the held object if the carts differ). Grasp approach / release retreat: the empty gripper (jaws open
-25 mm per side) moves APPROACH_M = 50 mm along the approach axis with the object in the world; for food the
-contact window of the rules applies there and only there: finger / gripper geoms may come closer than
-5 mm to that food item, never into it (penetration is checked separately, mj_geomDistance >= 0), and the
-food item may touch its support (the 8 mm seat lift / set-down is inside the window). Nothing else gets a
-window.
-Scene ("union", so a set stays valid whichever way these are): the R18b kitchen of r17chain (spatula on
-its flipped rest at (-1.15, .30), spider on its rest, lid in the rack, pour drum swung away), the fridge
-(r14_fridge, door closed), the faucet lever closed AND open, the slicer and the lever base out, the
-raw-tray items that are not in the hand.
-Actions (ACT=):
- carrot  TRAY_PICK + CARRY + WASH_HELD + CARRY + CHUTE_DROP: front grasp of the carrot on its ribs, lift,
-         carry to the sink, held under the running outlet (rinse dwell, shifted +-5 cm along its axis so
-         the stream runs over both halves), carry back, turned upright on the way, lowered 80 mm into the
-         slicer chute (bottom 20 mm inside), released (it drops into the appliance), gripper retreats
- tomato  TRAY_PICK + CARRY + WASH_HELD + LEVER_PLACE: front grasp at the equator off the R11 pad (position
-         mode, D fingers), rinse under the outlet (rolled +-60 deg about the approach axis), carry to the
-         lever base, slid in 8 mm above the blade plate and set down, released, gripper retreats
- press   LEVER_PRESS: front grasp of the pusher knob (keyed), press 102 mm (the tomato is cut: appliance-
+which is not changed). Layout: kitchen19.LAYOUT (step 1, R19_PREP_LAYOUT.md):
+ raw tray as today; the slicer (Zhuojin 3-in-1) resident in the far-left column, turned 90 deg (chute at
+ the front); the fetched lever base (AY-403 class, R11 AW geometry) at the work spot by the sink, SET BACK
+ (origin (-0.86, 0.21)) so the carry lane and the robot's upper arm pass in front of it; washing under
+ the R17 single-lever faucet outlet (-0.40, 0.37, 1.10), opened by the checked R17 lever action before
+ the set and closed after it (the scene has the lever closed AND open).
+Method (r17chain.py): object keyframes; between them the object moves in a straight line (rotation slerp)
+every <= 1 cm / 2 deg, the cart linearly or as an IK variable ('F'); the arm follows by IK continuation;
+the unchanged checker runs at every step (full bound every 5th step and at every keyframe). Anchors:
+96-start collision-aware IK (solver.solve), DP over the anchor candidates; meet joins = a cart shuffle
+under the held object + a straight joint move (checked every <= 1 deg). The <= 4 mm state rule is met by
+the separate full re-check r19prep_verify.py (stored path unwrapped, subdivided by the point bound).
+Grasp approach / release retreat: the empty gripper (jaws open 25 mm per side) moves APPROACH_M = 50 mm
+along the approach axis with the object in the world; for food the contact window of the rules applies
+there and only there (fingers / gripper vs that food item closer than 5 mm allowed, never touching:
+distance.py upper bound > 0); food is grasped / set down 8 mm above its support (support window); after
+releasing an item on its support the gripper first lifts back those 8 mm (the R11 WD retreat).
+Actions (ACT=), defaults = the passing settings of R19_PREP_LAYOUT.md:
+ carrot  TRAY_PICK + CARRY + WASH_HELD + CARRY + CHUTE_DROP: front grasp off the ribs, lane (LANE),
+         under the outlet with the grasp pitched down PITCH=-30 deg (3 x RINSE s, +-5 cm along its axis),
+         turned upright, lowered 80 mm into the slicer chute, released (it drops into the appliance);
+         TOOL=lever (default: the lever base out at the work spot) | none
+ tomato  TRAY_PICK + CARRY + WASH_HELD + LEVER_PLACE: front grasp at the equator off the R11 pad; at the
+         tap pitched PITCH=-30 and turned TROLL=-90 deg about the approach axis (jaws vertical), rolled
+         +-ROLL=30 deg (3 x RINSE s); meets at L1 / L2 (L2R=level: turned back before the second meet);
+         slid onto the blade plate along a direction turned PYAW=-20 deg (diagonal; straight from the
+         front every candidate crossed a wrist singularity), set 8 mm above its seat, released
+ press   LEVER_PRESS: front grasp of the keyed pusher knob, press 102 mm (the tomato is cut: appliance-
          contained, as R11/WD), return, release; reports the arm's available push along the press
+ tap     exploration only: the held item OBJ= from LANE into the outlet and back (one anchor)
+Other knobs: SEEDS, TRIES, KEEP, PLAN=1 (RRT for blocked joins), LEVER=x,y[,yaw], LVC / TAPC (fixed anchor
+carts), CA2, L2C, W2 (waypoints), ANCH (anchors to keep), TROUTE=back, RZ (rinse height, default 0.98 m).
 Rinse dwell times are ESTIMATES (no sourced washing time); no process force is applied (the R10 9.19 N
-scrub force is not used: this is a rinse under the stream, no brush).
+scrub force is not used: a rinse under the stream, no brush).
 Held load: the object's mass (kitchen19.MASS) at its frame origin; PGC moment and joint torque ratios at
 every keyframe. Timing caps as r17chain: TCP <= 0.10 m/s, 45 deg/s, joints <= 60 deg/s, cart <= 0.25 m/s.
-python r19prepchain.py ACT=carrot|tomato|press [SEEDS=1|2] [TRIES=6] [KEEP=6] [RINSE=s] [TAG=..] [ARM=..]
+python r19prepchain.py ACT=carrot|tomato|press [SEEDS=1|2|3] [TRIES=6] [KEEP=6] [TAG=..] [ARM=..]
  -> results/r19/prep/chain_<ACT>[_TAG][_arm].json (pieces, joins, approaches, loads, time, playback q)"""
 import sys,os,json,time,numpy as np,mujoco
 from scipy.optimize import least_squares
@@ -221,8 +222,11 @@ def approach(k,world,inw,q):
  perm=c.permissions;c.permissions=lambda kind:set(perm(kind))|win
  try:
   pt0,Rt=K.tcp_pose(OBJ,R,p,SIGN);q=np.array(q,float);q[-2:]=JAW_OPEN;c0=q[0];out=[];n=int(round(APPROACH_M/.01));pen=[]
-  for s in range(n+1):
-   dp=-Rt[:,0]*APPROACH_M*s/n;q[0]=c0+dp[0];q,pe,re,dq=solve_to(c,q,pt0+dp,Rt);hits,rmin=state(c,q,s%3==0 or s==n)
+  lift=KF[k]['seat'] if (inw and k==len(KF)-1 and KF[k]['seat']>0) else 0.   # release of an item left on its support: open, lift back to the slide-in height (support window), then retreat along the slide-in axis
+  nl=int(np.ceil(lift/.002)) if lift else 0
+  steps=[np.array([0,0,lift*s/nl]) for s in range(nl)]+[np.array([0,0,lift])-Rt[:,0]*APPROACH_M*s/n for s in range(n+1)]
+  for s,dp in enumerate(steps):
+   q[0]=c0+dp[0];q,pe,re,dq=solve_to(c,q,pt0+dp,Rt);hits,rmin=state(c,q,s%3==0 or s==len(steps)-1)
    if win:   # inside the window: never into the food item (exact convex bounds of distance.py, as the checker; upper bound > 0 = certified apart)
     c.d.qpos[:]=q;mujoco.mj_kinematics(c.m,c.d)
     bs=[c.bounds.pair(a,b) for a in og for b in fg];dmin=min(v['lower_m'] for v in bs);pen.append(dmin)
@@ -230,8 +234,9 @@ def approach(k,world,inw,q):
    out.append(dict(step=s,pose_mm=round(pe*1000,2),step_deg=round(dq,2),reserve_mm=None if rmin is None else round(rmin,1),hits=[h['pair'] for h in hits][:3],q=q.tolist()))
    if pe>.005 or re>np.radians(3) or hits:return dict(ok=False,kf=k,stop=s,hits=out[-1]['hits'],pose_mm=out[-1]['pose_mm'],qs=[o['q'] for o in out])
  finally:c.permissions=perm
+ if lift:out=out   # (the lift states are the first nl entries)
  rm=[o['reserve_mm'] for o in out if o['reserve_mm'] is not None]
- return dict(ok=True,kf=k,object_in_world=inw,window=bool(win),min_food_gap_mm=round(min(pen)*1000,1) if pen else None,min_reserve_mm=min(rm) if rm else None,time_s=round(APPROACH_M/VW,1),qs=[o['q'] for o in out])
+ return dict(ok=True,kf=k,object_in_world=inw,window=bool(win),lift_mm=round(lift*1000,1),min_food_gap_mm=round(min(pen)*1000,1) if pen else None,min_reserve_mm=min(rm) if rm else None,time_s=round(APPROACH_M/VW,1),qs=[o['q'] for o in out])
 def load(q,k):
  mass=K19.MASS[OBJ];com=KF[k]['p']
  d.qpos[:]=q;d.qvel[:]=0;mujoco.mj_forward(m,d);bid=m.site_bodyid[sid];jp=np.zeros((3,m.nv));jr=jp.copy();mujoco.mj_jac(m,d,jp,jr,com,bid)
@@ -352,7 +357,7 @@ def summ(out):
  return dict(steps=len(out),time_s=round(sum(s_['dt'] for s_ in out),1),min_reserve_mm=min(rs) if rs else None,max_step_deg=max(s_['step_deg'] for s_ in out),cart=[out[0]['cart'],out[-1]['cart']])
 res=dict(act=ACT,obj=OBJ,arm=ARM,grasp_sense=SIGN,layout=J(L),argv=sys.argv[1:],scene=SCENE,ok=ok,time_s=round(tsum,1),elapsed_s=round(time.monotonic()-t0),rinse_dwell_s_est=RINSE,
  method='r17chain.py method (r19prepchain.py docstring); unchanged checker',
- keyframes=[dict(i=i,label=k_['label'],p=np.round(k_['p'],3).tolist(),R=np.round(k_['R'],4).tolist(),c=k_['c'],anchor=k_['anchor'],meet=k_['meet'],dwell_s=k_['dw']) for i,k_ in enumerate(KF)],
+ keyframes=[dict(i=i,label=k_['label'],p=k_['p'].tolist(),R=k_['R'].tolist(),c=k_['c'],anchor=k_['anchor'],meet=k_['meet'],dwell_s=k_['dw'],seat=k_['seat']) for i,k_ in enumerate(KF)],
  anchors={KF[a]['label']+f'#{a}':{k_:v for k_,v in an.items() if k_!='q'} for a,an in anchors.items()},
  pieces=[dict(frm=KF[a]['label']+f'#{a}',to=KF[b]['label']+f'#{b}',**summ(out)) for (a,b),out in pieces.items()],
  joins=[{k_:v for k_,v in j.items() if k_!='qs'} for j in joins.values()],approaches=[{k_:v for k_,v in p_.items() if k_!='qs'} for p_ in apps],

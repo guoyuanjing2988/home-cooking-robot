@@ -1,0 +1,514 @@
+{
+  "act": "press",
+  "obj": "pusher",
+  "arm": "ur5e_enc",
+  "grasp_sense": 1,
+  "layout": {
+    "slicer": [
+      -1.69,
+      0.225,
+      90.0
+    ],
+    "lever": [
+      -0.86,
+      0.21,
+      0.0
+    ],
+    "cold_box": [
+      -0.9,
+      0.12,
+      90.0
+    ],
+    "tray_dxy": [
+      0.0,
+      0.0
+    ],
+    "drop_bowls": [
+      "tomato"
+    ]
+  },
+  "argv": [
+    "ACT=press",
+    "SEEDS=1",
+    "TRIES=6",
+    "KEEP=1",
+    "TAG=smoke",
+    "ARM=ur5e_enc"
+  ],
+  "scene": {
+    "r19": {
+      "stations": {
+        "slicer": [
+          -1.69,
+          0.225,
+          90.0
+        ],
+        "lever": [
+          -0.86,
+          0.21,
+          0.0
+        ]
+      },
+      "tray_dxy": [
+        0.0,
+        0.0
+      ],
+      "drop_bowls": [
+        "tomato"
+      ],
+      "pusher": null,
+      "objs": [
+        [
+          "carrot",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.42,
+            0.12,
+            0.9305
+          ]
+        ]
+      ]
+    }
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 20,
+  "rinse_dwell_s_est": 3.0,
+  "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker",
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "knob at rest",
+      "p": [
+        -0.86,
+        0.21,
+        1.152
+      ],
+      "R": [
+        [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 1,
+      "label": "pressed 102 mm",
+      "p": [
+        -0.86,
+        0.21,
+        1.05
+      ],
+      "R": [
+        [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 2,
+      "label": "returned",
+      "p": [
+        -0.86,
+        0.21,
+        1.152
+      ],
+      "R": [
+        [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    }
+  ],
+  "anchors": {
+    "knob at rest#0": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "ok": 15,
+        "collision": 12,
+        "pose": 69
+      }
+    }
+  },
+  "pieces": [],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    },
+    {
+      "ok": false,
+      "kf": 2,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": null,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "push": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "knob at rest",
+      "cand": 0,
+      "start_reserve_mm": 9.0,
+      "cart": -0.664,
+      "ok": false,
+      "fail": {
+        "at": "knob at rest->pressed 102 mm",
+        "kf": 1,
+        "cart": -0.664,
+        "step_deg": 5.35,
+        "pose_mm": 0.0,
+        "reserve_mm": -5.0,
+        "dt": 0.09272727272727281,
+        "hits": [
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ],
+          [
+            "r07_closed_door_0_1",
+            "R_geom_16"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "knob at rest",
+      "cand": 1,
+      "start_reserve_mm": 9.0,
+      "cart": -0.464,
+      "ok": false,
+      "fail": {
+        "at": "knob at rest->pressed 102 mm",
+        "kf": null,
+        "cart": -0.464,
+        "step_deg": 4.98,
+        "pose_mm": 0.0,
+        "reserve_mm": -5.2,
+        "dt": 0.09272727272727281,
+        "hits": [
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ],
+          [
+            "upper_cabinet_0_piece3",
+            "R_geom_16"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "knob at rest",
+      "cand": 2,
+      "start_reserve_mm": 9.0,
+      "cart": -0.519,
+      "ok": false,
+      "fail": {
+        "at": "knob at rest->pressed 102 mm",
+        "kf": null,
+        "cart": -0.519,
+        "step_deg": 5.16,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09272727272727281,
+        "hits": [
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "knob at rest",
+      "cand": 3,
+      "start_reserve_mm": 9.0,
+      "cart": -0.587,
+      "ok": false,
+      "fail": {
+        "at": "knob at rest->pressed 102 mm",
+        "kf": null,
+        "cart": -0.587,
+        "step_deg": 5.27,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09272727272727281,
+        "hits": [
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "knob at rest",
+      "cand": 4,
+      "start_reserve_mm": 9.0,
+      "cart": -0.491,
+      "ok": false,
+      "fail": {
+        "at": "knob at rest->pressed 102 mm",
+        "kf": null,
+        "cart": -0.491,
+        "step_deg": 5.19,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09272727272727281,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "knob at rest",
+      "cand": 5,
+      "start_reserve_mm": 9.0,
+      "cart": -0.477,
+      "ok": false,
+      "fail": {
+        "at": "knob at rest->pressed 102 mm",
+        "kf": null,
+        "cart": -0.477,
+        "step_deg": 5.11,
+        "pose_mm": 0.0,
+        "reserve_mm": -10.0,
+        "dt": 0.09272727272727281,
+        "hits": [
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ],
+          [
+            "upper_cabinet_0_piece3",
+            "R_geom_16"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null,
+    null
+  ],
+  "grasps": [
+    {
+      "kf": 0,
+      "world": {
+        "stations": {
+          "slicer": [
+            -1.69,
+            0.225,
+            90.0
+          ],
+          "lever": [
+            -0.86,
+            0.21,
+            0.0
+          ]
+        },
+        "tray_dxy": [
+          0.0,
+          0.0
+        ],
+        "drop_bowls": [
+          "tomato"
+        ],
+        "objs": [
+          [
+            "carrot",
+            [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            [
+              -1.42,
+              0.12,
+              0.9305
+            ]
+          ],
+          [
+            "tomato",
+            [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            [
+              -0.86,
+              0.21,
+              0.974
+            ]
+          ]
+        ]
+      },
+      "object_in_world": false
+    },
+    {
+      "kf": 2,
+      "world": {
+        "stations": {
+          "slicer": [
+            -1.69,
+            0.225,
+            90.0
+          ],
+          "lever": [
+            -0.86,
+            0.21,
+            0.0
+          ]
+        },
+        "tray_dxy": [
+          0.0,
+          0.0
+        ],
+        "drop_bowls": [
+          "tomato"
+        ],
+        "objs": [
+          [
+            "carrot",
+            [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            [
+              -1.42,
+              0.12,
+              0.9305
+            ]
+          ]
+        ]
+      },
+      "object_in_world": false
+    }
+  ]
+}
