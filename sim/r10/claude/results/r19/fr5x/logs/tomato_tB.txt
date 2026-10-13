@@ -1,0 +1,21 @@
+pick start candidates 26 {'collision': 42, 'pose': 132, 'ok': 18, 'ur_seeds_ok': 12}
+ cand 0 cart -0.76 ok
+ cand 1 cart -0.83 ok
+ cand 2 cart -0.8 ok
+under the tap start candidates 28 {'pose': 130, 'collision': 18, 'ok': 44, 'ur_seeds_ok': 12}
+ cand 0 cart -0.06 ok
+ cand 1 cart -0.09 ok
+ cand 2 cart -0.05 ok
+in front of the blade plate start candidates 8 {'ok': 94, 'pose': 78, 'collision': 20, 'ur_seeds_ok': 1}
+ cand 0 cart -0.25 {'at': 'backed out, in front of the lever base->lane', 'kf': None, 'cart': np.float64(-0.25), 'step_deg': 3.4, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09805245822711232), 'hits': [['R_geom_fr5_j6_pgc_sp20_forearm_tube', 'R_geom_fr5_j6_pgc_sp20_wrist2_h_j6']]}
+ cand 1 cart -0.25 ok
+ cand 2 cart -0.25 {'at': 'backed out, in front of the lever base->lane', 'kf': None, 'cart': np.float64(-0.25), 'step_deg': 27.43, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': 0.4571830418075274, 'hits': []}
+ cand 3 cart -0.25 ok
+ cand 4 cart -0.25 {'at': 'backed out, in front of the lever base->lane', 'kf': None, 'cart': np.float64(-0.25), 'step_deg': 17.22, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': 0.28698390358371406, 'hits': []}
+ cand 5 cart -0.25 {'at': 'backed out, in front of the lever base->lane', 'kf': None, 'cart': np.float64(-0.25), 'step_deg': 27.43, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': 0.4571831829248205, 'hits': []}
+ cand 6 cart -0.25 {'at': 'backed out, in front of the lever base->lane', 'kf': None, 'cart': np.float64(-0.25), 'step_deg': 2.71, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09805245822711232), 'hits': [['R_geom_fr5_j6_pgc_sp20_upperarm_tube', 'R_base_plate']]}
+ cand 7 cart -0.25 {'at': 'backed out, in front of the lever base->lane', 'kf': None, 'cart': np.float64(-0.25), 'step_deg': 17.22, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': 0.28698365498000755, 'hits': []}
+joins at lane [(0, True), (0, True), (0, True), (0, True), (0, True), (0, True)]
+joins at lane [(180, True), (180, True), (180, True), (180, True), (180, True), (180, True)]
+results/r19/prep/chain_tomato_fr5x_tB_fr5_j6_pgc_sp20.json
+{"keyframe_source": "r19prepchain/r19prep3_actions keyframes overridden by r19fr5prep_actions.override (argv X..)", "start_dedup": true, "act": "tomato", "obj": "tomato", "arm": "fr5_j6_pgc_sp20", "grasp_sense": 1, "argv": ["ACT=tomato", "SEEDS=2", "TRIES=10", "KEEP=3", "ARM=fr5_j6_pgc_sp20", "SEEDUR=results/r19/prep/chain_tomato_r2_ur5e_enc2_pgc.json", "XL1=-0.65,.06,1.10", "XL1R=level", "TAG=fr5x_tB", "LVC=-0.25", "L2C=-0.25"], "ok": true, "time_s": 38.4, "elapsed_s": 115, "rinse_dwell_s_est": 3.0, "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker", "anchors": {"pick#0": {"ok": true, "cand": 0, "cart": -0.756, "start_reserve_mm": 3.0}, "under the tap#4": {"ok": true, "cand": 0, "cart": -0.064, "start_reserve_mm": 28.7}, "in front of the blade plate#10": {"ok": true, "cand": 0, "cart": -0.25, "start_reserve_mm": 3.0}}, "pieces": [{"frm": "pick#0", "to": "lane#3", "steps": 76, "time_s": 7.5, "min_reserve_mm": 39.1, "max_step_deg": 3.46, "cart": [-0.756, -0.227]}, {"frm": "under the tap#4", "to": "lane#3", "steps": 47, "time_s": 7.2, "min_reserve_mm": 17.8, "max_step_deg": 4.09, "cart": [-0.069, -0.226]}, {"frm": "under the tap#4", "to": "lane#8", "steps": 109, "time_s": 12.8, "min_reserve_mm": 6.6, "max_step_deg": 3.72, "cart": [-0.062, -0.25]}, {"frm": "in front of the blade plate#10", "to": "lane#8", "steps": 36, "time_s": 3.5, "min_reserve_mm": 16.7, "max_step_deg": 5.33, "cart": [-0.254, -0.25]}, {"frm": "in front of the blade plate#10", "to": "over its seat (8 mm)#11", "steps": 6, "time_s": 0.6, "min_reserve_mm": 3.0, "max_step_deg": 1.29, "cart": [-0.25, -0.25]}], "joins": [{"ok": true, "arm_deg": 0.2, "s": 0.64, "cart_m": 0.001, "shuffle_s": 0.0, "at": "lane", "best_pair_deg": 0.2}, {"ok": true, "arm_deg": 180.0, "s": 3.6, "at": "lane", "best_pair_deg": 180.0}], "approaches": [{"ok": true, "kf": 0, "object_in_world": true, "window": true, "lift_mm": 0.0, "min_food_gap_mm": 5.0, "min_reserve_mm": 11.2, "time_s": 0.5}, {"ok": true, "kf": 11, "object_in_world": true, "window": true, "lift_mm": 8.0, "min_food_gap_mm": 5.0, "min_reserve_mm": 1.0, "time_s": 0.5}], "min_reserve_mm": 3.0, "max_pgc_moment_Nm": 0.0, "max_joint_ratio": 0.496, "push": null}
