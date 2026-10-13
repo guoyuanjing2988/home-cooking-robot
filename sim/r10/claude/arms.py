@@ -49,6 +49,8 @@ ARMS={
 # the arm, its limits, speeds and torque envelope (env) are those of the base option
 for _b in ('fr5','fr5_j6','cs66'):
  ARMS[_b+'_pgc']=dict(ARMS[_b],name=ARMS[_b]['name']+' + PGC-140 housing from the DH drawing',env=_b,oem='pgc_drawing',oem_source=ARMS['ur5e_enc2_pgc']['oem_source'])
+for _b in ('fr5','fr5_j6'):   # R19 #2 design proposal (E): the same gripper on a flange adapter 20 mm longer along the flange axis (the wrist-1 housing / PGC pair)
+ ARMS[_b+'_pgc_sp20']=dict(ARMS[_b+'_pgc'],name=ARMS[_b+'_pgc']['name']+' on a 20 mm longer adapter',tool_spacer_m=.02)
 def _cli():
  for a in sys.argv[1:]:
   if a.startswith('ARM='):return a[4:]
@@ -118,6 +120,6 @@ def swap(tree,arm):
   parent=b
  fl=np.array(M['flange']['xyz'],float)
  E.SubElement(parent,'site',name='R_attachment_site',pos=fmt(fl),quat='1 0 0 0')
- X=T(fl,np.eye(3))@T(np.zeros(3),Rotation.from_euler('z',spec['clock_deg'],degrees=True).as_matrix())@site_tool
+ X=T(fl+[0,0,spec.get('tool_spacer_m',0.)],np.eye(3))@T(np.zeros(3),Rotation.from_euler('z',spec['clock_deg'],degrees=True).as_matrix())@site_tool   # R19 #2: optional adapter spacer along the flange axis
  tool.set('pos',fmt(X[:3,3]));tool.set('quat',fmt(quat(X[:3,:3])));parent.append(tool)
  return tree

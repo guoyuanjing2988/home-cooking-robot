@@ -1,0 +1,83 @@
+{
+ "scene": "play:spatula",
+ "part": "grasp-y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "spatula",
+  "obj": "spatula_b",
+  "src_n": 249
+ },
+ "states": 2642,
+ "stored_states": 249,
+ "nominal_s": 2.0,
+ "nominal_cached": true,
+ "held": true,
+ "jaw_axis_tool": [
+  -0.0,
+  1.0,
+  0.0
+ ],
+ "directions": [
+  {
+   "kind": "grasp",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 4.781,
+    "bounded": true,
+    "violation_at": 4.813,
+    "binding": {
+     "state": 21,
+     "value_mm": -0.013,
+     "pair": [
+      "R_gripper_r18_spat_blade4",
+      "raw_tomato"
+     ],
+     "label": "kf 0->1 (pick -> lifted)",
+     "src_index": 1.0
+    },
+    "evals": 5
+   },
+   "contact": {
+    "tol": 9.777,
+    "bounded": true,
+    "violation_at": 9.805,
+    "binding": {
+     "state": 21,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r18_spat_blade4",
+      "raw_tomato"
+     ],
+     "label": "kf 0->1 (pick -> lifted)",
+     "src_index": 1.0
+    },
+    "evals": 7
+   }
+  },
+  {
+   "kind": "grasp",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 289
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 180
+   }
+  }
+ ],
+ "elapsed_s": 3.5
+}

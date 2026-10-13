@@ -1,0 +1,83 @@
+{
+ "scene": "play:lever",
+ "part": "grasp-z",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lever_s+1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lever",
+  "obj": "lever",
+  "src_n": 16
+ },
+ "states": 128,
+ "stored_states": 16,
+ "nominal_s": 1.7,
+ "nominal_cached": true,
+ "held": true,
+ "jaw_axis_tool": [
+  0.0,
+  1.0,
+  0.0
+ ],
+ "directions": [
+  {
+   "kind": "grasp",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "grasp",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 8.602,
+    "bounded": true,
+    "violation_at": 8.629,
+    "binding": {
+     "state": 127,
+     "value_mm": -0.021,
+     "pair": [
+      "R_gripper_r17_lever_bar",
+      "r17_lever_hub"
+     ],
+     "label": "kf 0->1 (closed -> open)",
+     "src_index": 15.0
+    },
+    "evals": 6
+   },
+   "contact": {
+    "tol": 13.578,
+    "bounded": true,
+    "violation_at": 13.605,
+    "binding": {
+     "state": 127,
+     "value_mm": 0.002,
+     "pair": [
+      "R_gripper_r17_lever_bar",
+      "r17_lever_hub"
+     ],
+     "label": "kf 0->1 (closed -> open)",
+     "src_index": 15.0
+    },
+    "evals": 5
+   }
+  }
+ ],
+ "elapsed_s": 2.4
+}

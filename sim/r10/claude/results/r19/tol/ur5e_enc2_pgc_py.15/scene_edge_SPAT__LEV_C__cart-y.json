@@ -1,0 +1,120 @@
+{
+ "scene": "edge:SPAT__LEV_C",
+ "part": "cart-y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r19/hub_py.15_ur5e_enc2_pgc/edge_SPAT__LEV_C.json",
+  "kind": "edge",
+  "edge": "SPAT__LEV_C",
+  "method": "via: tuck at the mid cart",
+  "reported_min_reserve_mm": 2.3,
+  "src_n": 2864,
+  "densified": false
+ },
+ "states": 2864,
+ "stored_states": 2864,
+ "nominal_s": 1.7,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 7.781,
+    "bounded": true,
+    "violation_at": 7.812,
+    "binding": {
+     "state": 2664,
+     "value_mm": -0.007,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ],
+     "label": "SPAT->LEV_C 93.0%",
+     "src_index": 2664.0
+    },
+    "evals": 353
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 251
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 2664,
+   "value": 7.5476,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.144,
+   "checker_pair": [
+    "r07_closed_door_1_0",
+    "R_geom_enc2_w1_1"
+   ],
+   "evaluator_gate_mm": 0.144,
+   "evaluator_pair": [
+    "R_geom_enc2_w1_1",
+    "r07_closed_door_1_0"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 2664,
+   "value": 8.0464,
+   "checker_hits": [
+    [
+     "r07_closed_door_1_0",
+     "R_geom_enc2_w1_1"
+    ],
+    [
+     "r07_closed_door_1_0",
+     "R_geom_enc2_w1_1"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.136,
+   "checker_pair": [
+    "r07_closed_door_1_0",
+    "R_geom_enc2_w1_1"
+   ],
+   "evaluator_gate_mm": -0.136,
+   "evaluator_pair": [
+    "R_geom_enc2_w1_1",
+    "r07_closed_door_1_0"
+   ]
+  }
+ ],
+ "elapsed_s": 10.2
+}

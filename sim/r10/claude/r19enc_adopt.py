@@ -26,9 +26,9 @@ OPTS={   # the UR5e finals' r17chain options (R19_ARM_SWAP.md 8)
 def md5_play(r):return hashlib.md5(json.dumps(r['play']).encode()).hexdigest()
 def one(KV):
  import numpy as np
- key,arm=KV['SET'],KV['ARM'];src,opts=OPTS[key];py=KV.get('PY');r=json.load(open(src))
+ key,arm=KV['SET'],KV['ARM'];src,opts=OPTS[key];py=KV.get('PY');sfx=KV.get('SRCSFX','');ur_src=src;src=src[:-5]+sfx+'.json';r=json.load(open(src))   # R19 #2: SRCSFX=_<arm> adopts that arm's stored chain (e.g. _fr5_j6 -> fr5_j6_pgc)
  import arms
- rdir='results/r19/'+arm[len('ur5e_'):];rc_fn=f"{rdir}/{key}{'_py'+py if py else ''}.json"
+ rdir='results/r19/'+(arm[len('ur5e_'):] if arm.startswith('ur5e_') else arm);rc_fn=f"{rdir}/{key}{sfx}{'_py'+py if py else ''}.json"
  cert=dict(arm=arm,play_recheck=rc_fn)
  if not os.path.exists(rc_fn):return dict(ok=False,why='no re-check '+rc_fn+' (run r19enc_check.py recheck SET=%s NEW=%s%s)'%(key,arm,' PY='+py if py else ''))
  rc=json.load(open(rc_fn));p=rc['paths'][key][arm]
@@ -52,7 +52,7 @@ def one(KV):
   apps.append(dict(kf=k,states=len(QS),max_step_bound_mm=round(sp*1e3,3),hit_states=len(hit),hits=hit[:3],min_env_reserve_mm=round(min(res),2)))
   if hit:return dict(ok=False,why=f'approach kf {k}: {len(hit)} hit states {hit[:2]}',approaches=apps)
  cert.update(approaches=apps,source_md5_play=md5_play(r))
- base=src[:-5]+(f'_py{py}' if py else '');dst=base+arms.tag(arm)+'.json'
+ base=ur_src[:-5]+(f'_py{py}' if py else '');dst=base+arms.tag(arm)+'.json'
  out=dict(r,arm=arm,adopted_from=src,adopted=cert,**({'plate_y':float(py)} if py else {}))
  if os.path.exists(dst):
   n=1
@@ -65,8 +65,8 @@ if __name__=='__main__':
  else:
   KV=dict(a.split('=',1) for a in sys.argv[1:]);allres={}
   for key in KV['SETS'].split(','):
-   cmd=[sys.executable,'r19enc_adopt.py','one','SET='+key,'ARM='+KV['ARM']]+(['PY='+KV['PY']] if 'PY' in KV else [])
+   cmd=[sys.executable,'r19enc_adopt.py','one','SET='+key,'ARM='+KV['ARM']]+(['PY='+KV['PY']] if 'PY' in KV else [])+(['SRCSFX='+KV['SRCSFX']] if 'SRCSFX' in KV else [])
    o=subprocess.run(cmd,capture_output=True,text=True);line=[l for l in o.stdout.splitlines() if l.startswith('RESULT ')]
    allres[key]=json.loads(line[-1][7:]) if line else dict(ok=False,why='crashed: '+o.stderr[-400:])
    print(key,json.dumps({k:v for k,v in allres[key].items() if k!='certificate'}),flush=True)
-  fn=f"results/r19/{KV['ARM'][len('ur5e_'):]}/adopt{'_py'+KV['PY'] if 'PY' in KV else ''}.json";json.dump(allres,open(fn,'w'),indent=1,default=float);print(fn)
+  fn=f"results/r19/{KV['ARM'][len('ur5e_'):] if KV['ARM'].startswith('ur5e_') else KV['ARM']}/adopt{KV.get('SRCSFX','')}{'_py'+KV['PY'] if 'PY' in KV else ''}.json";json.dump(allres,open(fn,'w'),indent=1,default=float);print(fn)

@@ -1,0 +1,120 @@
+{
+ "scene": "edge:LEV_C__H_SPAT",
+ "part": "cart-y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r19/hub_py.15_ur5e_enc2_pgc/edge_LEV_C__H_SPAT.json",
+  "kind": "edge",
+  "edge": "LEV_C__H_SPAT",
+  "method": "straight",
+  "reported_min_reserve_mm": 2.4,
+  "src_n": 1763,
+  "densified": false
+ },
+ "states": 1763,
+ "stored_states": 1763,
+ "nominal_s": 0.9,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 7.781,
+    "bounded": true,
+    "violation_at": 7.812,
+    "binding": {
+     "state": 224,
+     "value_mm": -0.005,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_C->H_SPAT 12.7%",
+     "src_index": 224.0
+    },
+    "evals": 362
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 89
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 253
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 89
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 224,
+   "value": 7.5476,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.15,
+   "checker_pair": [
+    "r07_closed_door_1_0",
+    "R_geom_enc2_w1_1"
+   ],
+   "evaluator_gate_mm": 0.15,
+   "evaluator_pair": [
+    "R_geom_enc2_w1_1",
+    "r07_closed_door_1_0"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 224,
+   "value": 8.0464,
+   "checker_hits": [
+    [
+     "r07_closed_door_1_0",
+     "R_geom_enc2_w1_1"
+    ],
+    [
+     "r07_closed_door_1_0",
+     "R_geom_enc2_w1_1"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.137,
+   "checker_pair": [
+    "r07_closed_door_1_0",
+    "R_geom_enc2_w1_1"
+   ],
+   "evaluator_gate_mm": -0.137,
+   "evaluator_pair": [
+    "R_geom_enc2_w1_1",
+    "r07_closed_door_1_0"
+   ]
+  }
+ ],
+ "elapsed_s": 5.6
+}

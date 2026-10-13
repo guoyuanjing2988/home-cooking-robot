@@ -39,12 +39,12 @@ sys.path.insert(0,'.')
 import numpy as np
 KV=dict(a.split('=',1) for a in sys.argv[2:] if '=' in a)
 NEW=KV.get('NEW','ur5e_enc')   # the enclosing arm option compared with ur5e (ur5e_enc, or ur5e_enc2 -> results/r19/enc2)
-OUT='results/r19/'+NEW[len('ur5e_'):]
+OUT='results/r19/'+(NEW[len('ur5e_'):] if NEW.startswith('ur5e_') else NEW)   # R19 #2: another arm (fr5_pgc, ...) -> results/r19/<arm>
 CHAINS={'wok':('results/r17/chain_wok_s-1_final.json',False),'wok_plate2b':('results/r17/chain_wok_s-1_r18plate2b.json',True),
  'lever':('results/r17/chain_lever_s+1_final.json',False),'lid':('results/r17/chain_lid_s-1_final.json',False),
  'spider':('results/r17/chain_spider_s+1_final.json',False),'spatula':('results/r17/chain_spatula_s-1_r18roll-1.15_.30.json',False)}
-STIR='results/r19/stir/stirwalk2_h_scrape_dice_r17.json'
-ARMS_=('ur5e',NEW)
+STIR='results/r19/stir/stirwalk2_h_scrape_dice_r17'+KV.get('SUFFIX','')+'.json'   # R19 #2: SUFFIX=_<arm> -> that arm's stir (default: the UR5e stir, as before)
+ARMS_=('ur5e',NEW) if NEW.startswith('ur5e') else (NEW,)   # R19 #2: another arm's states are checked on that arm only (the UR5e column would be meaningless)
 def meshheld(tree):
  """r19smooth.py MESHHELD: tool-side boxes -> identical 8-vertex box meshes (geometry unchanged)."""
  import xml.etree.ElementTree as E

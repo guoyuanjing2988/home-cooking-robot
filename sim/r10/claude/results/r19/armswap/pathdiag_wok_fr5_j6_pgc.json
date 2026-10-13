@@ -1,0 +1,48 @@
+{
+ "set": "wok",
+ "ur_chain": "results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+ "arm": "fr5_j6_pgc",
+ "spacer_m": 0.0,
+ "plate_y": null,
+ "states": 470,
+ "pose_lost": null,
+ "first_hit": {
+  "state": 0,
+  "pairs": [
+   "R_geom_fr5_j6_pgc_upperarm_h_elbow | r15_plate"
+  ]
+ },
+ "hit_states": 90,
+ "hit_runs": [
+  [
+   0,
+   19
+  ],
+  [
+   85,
+   101
+  ],
+  [
+   201,
+   207
+  ],
+  [
+   282,
+   292
+  ],
+  [
+   354,
+   368
+  ],
+  [
+   450,
+   469
+  ]
+ ],
+ "pairs": {
+  "R_geom_fr5_j6_pgc_upperarm_h_elbow | r15_plate": 40,
+  "R_geom_fr5_j6_pgc_upperarm_h_elbow | sink_front_rim": 39,
+  "R_geom_fr5_j6_pgc_wrist1_h_j5 | R_gripper_oem_envelope": 22
+ },
+ "method": "R19 #2 diagnosis (not a check, not a plan): can another arm follow the UR5e's own checked path?\n\nThe stored UR5e chain (play, unwrapped) is replayed on the UR5e model to get the TCP pose of every state; the other\narm follows those poses by IK continuation (start: the UR5e state mapped through arms.py's mount yaw / gripper\nclocking, then each state from the previous one, joint windows on), in the same scene (r19enc_check.ctx). Every\nstate gets the fast checker, every 10th the full one. Reported: where the arm loses the pose (a joint window) and\nwhich pairs hit, with design variants: SPACER=<m> (a gripper adapter longer by that much along the flange axis),\nPY=<y> (plating spot y, wok sets).\npython r19arm_pathdiag.py SET=wok|wok_plate2b|lid UR=<suffix of the UR5e chain, e.g. _py.15_ur5e_enc2_pgc> ARM2=fr5_j6_pgc [SPACER=.02] [PY=.17]\n-> results/r19/armswap/pathdiag_<set>_<arm>[_sp<spacer>][_py<y>].json"
+}

@@ -1,0 +1,91 @@
+{
+ "scene": "edge:SPAT__H_SINK",
+ "part": "grid-tilt_y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r19/hub_py.15_ur5e_enc2_pgc/edge_SPAT__H_SINK.json",
+  "kind": "edge",
+  "edge": "SPAT__H_SINK",
+  "method": "straight",
+  "reported_min_reserve_mm": 23.4,
+  "src_n": 1390,
+  "densified": false
+ },
+ "states": 1390,
+ "stored_states": 1390,
+ "nominal_s": 1.3,
+ "nominal_cached": true,
+ "held": false,
+ "nominal": {
+  "min_gate_mm": 29.607,
+  "gate_state": 44,
+  "gate_label": "SPAT->H_SINK 3.2%",
+  "gate_pair": [
+   "R_finger_plus",
+   "r16_spatula_handle"
+  ],
+  "min_contact_mm": 34.607,
+  "contact_state": 44,
+  "contact_label": "SPAT->H_SINK 3.2%",
+  "contact_pair": [
+   "R_finger_plus",
+   "r16_spatula_handle"
+  ],
+  "at_least": false,
+  "rho_m": {
+   "yaw": 0.688,
+   "tilt_x": 1.845,
+   "tilt_y": 1.838
+  },
+  "note": "exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower"
+ },
+ "checker_reported": {
+  "min_reserve_mm": 23.4,
+  "note": "r19hub edge file"
+ },
+ "grid": [
+  {
+   "axis": "tilt_y",
+   "value": 0.1,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": 0.2,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": 0.5,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.1,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.2,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.5,
+   "unit": "deg",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  }
+ ],
+ "elapsed_s": 1.5
+}

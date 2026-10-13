@@ -1,0 +1,83 @@
+{
+ "scene": "play:lid",
+ "part": "grasp-rot",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lid",
+  "obj": "lid",
+  "src_n": 205
+ },
+ "states": 2410,
+ "stored_states": 205,
+ "nominal_s": 1.5,
+ "nominal_cached": true,
+ "held": true,
+ "jaw_axis_tool": [
+  0.0,
+  1.0,
+  0.0
+ ],
+ "directions": [
+  {
+   "kind": "grasp",
+   "axis": "rot",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 4.0,
+    "bounded": false,
+    "note": "no violation up to 4 deg",
+    "evals": 2906
+   },
+   "contact": {
+    "tol": 4.0,
+    "bounded": false,
+    "note": "no violation up to 4 deg",
+    "evals": 2659
+   }
+  },
+  {
+   "kind": "grasp",
+   "axis": "rot",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.491,
+    "bounded": true,
+    "violation_at": 0.494,
+    "binding": {
+     "state": 0,
+     "value_mm": -0.017,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall8"
+     ],
+     "label": "",
+     "src_index": 0.0
+    },
+    "evals": 1779
+   },
+   "contact": {
+    "tol": 1.306,
+    "bounded": true,
+    "violation_at": 1.309,
+    "binding": {
+     "state": 0,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_pot_wall7"
+     ],
+     "label": "",
+     "src_index": 0.0
+    },
+    "evals": 2110
+   }
+  }
+ ],
+ "elapsed_s": 183.0
+}

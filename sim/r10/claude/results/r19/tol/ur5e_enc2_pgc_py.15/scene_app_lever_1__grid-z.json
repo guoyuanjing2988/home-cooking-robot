@@ -1,0 +1,110 @@
+{
+ "scene": "app:lever:1",
+ "part": "grid-z",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lever_s+1_final_ur5e_enc2_pgc.json",
+  "kind": "approach",
+  "act": "lever",
+  "kf": 1,
+  "kf_label": "open",
+  "r17_min_reserve_mm": 7.4,
+  "src_n": 7
+ },
+ "states": 19,
+ "stored_states": 7,
+ "nominal_s": 0.8,
+ "nominal_cached": true,
+ "held": false,
+ "nominal": {
+  "min_gate_mm": 15.878,
+  "gate_state": 0,
+  "gate_label": "approach@open#1 step 0 (0 cm back)",
+  "gate_pair": [
+   "R_finger_minus",
+   "r17_faucet_column"
+  ],
+  "min_contact_mm": 20.878,
+  "contact_state": 0,
+  "contact_label": "approach@open#1 step 0 (0 cm back)",
+  "contact_pair": [
+   "R_finger_minus",
+   "r17_faucet_column"
+  ],
+  "at_least": false,
+  "rho_m": {
+   "yaw": 0.887,
+   "tilt_x": 1.498,
+   "tilt_y": 1.537
+  },
+  "note": "exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower"
+ },
+ "checker_reported": {
+  "min_reserve_mm": 7.4,
+  "note": "r17chain approach (every 3rd step full check)"
+ },
+ "grid": [
+  {
+   "axis": "z",
+   "value": 1,
+   "unit": "mm",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": 2,
+   "unit": "mm",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": 5,
+   "unit": "mm",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": 10,
+   "unit": "mm",
+   "gate_min_mm": 6.316,
+   "gate_pair": [
+    "R_geom_enc2_fa_3",
+    "upper_cabinet_1"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": -1,
+   "unit": "mm",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": -2,
+   "unit": "mm",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": -5,
+   "unit": "mm",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": -10,
+   "unit": "mm",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  }
+ ],
+ "elapsed_s": 0.9
+}

@@ -1,0 +1,83 @@
+{
+ "scene": "play:wok",
+ "part": "grasp-rot",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "wok",
+  "obj": "wok",
+  "src_n": 470
+ },
+ "states": 4588,
+ "stored_states": 470,
+ "nominal_s": 7.2,
+ "nominal_cached": true,
+ "held": true,
+ "jaw_axis_tool": [
+  0.0,
+  1.0,
+  -0.0
+ ],
+ "directions": [
+  {
+   "kind": "grasp",
+   "axis": "rot",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.938,
+    "bounded": true,
+    "violation_at": 0.941,
+    "binding": {
+     "state": 0,
+     "value_mm": -0.002,
+     "pair": [
+      "R_gripper_r15_wok_t0",
+      "r15_cooker"
+     ],
+     "label": "",
+     "src_index": 0.0
+    },
+    "evals": 40
+   },
+   "contact": {
+    "tol": 2.119,
+    "bounded": true,
+    "violation_at": 2.122,
+    "binding": {
+     "state": 0,
+     "value_mm": 0.007,
+     "pair": [
+      "R_gripper_r15_wok_t0",
+      "r15_cooker"
+     ],
+     "label": "",
+     "src_index": 0.0
+    },
+    "evals": 343
+   }
+  },
+  {
+   "kind": "grasp",
+   "axis": "rot",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 4.0,
+    "bounded": false,
+    "note": "no violation up to 4 deg",
+    "evals": 1194
+   },
+   "contact": {
+    "tol": 4.0,
+    "bounded": false,
+    "note": "no violation up to 4 deg",
+    "evals": 891
+   }
+  }
+ ],
+ "elapsed_s": 16.5
+}

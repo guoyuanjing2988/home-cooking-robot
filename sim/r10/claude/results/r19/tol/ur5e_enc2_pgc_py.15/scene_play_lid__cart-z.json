@@ -1,0 +1,79 @@
+{
+ "scene": "play:lid",
+ "part": "cart-z",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lid",
+  "obj": "lid",
+  "src_n": 205
+ },
+ "states": 2410,
+ "stored_states": 205,
+ "nominal_s": 2.4,
+ "nominal_cached": true,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 2729
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 2084
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 0.988,
+    "bounded": true,
+    "violation_at": 1.033,
+    "binding": {
+     "state": 2409,
+     "value_mm": -0.033,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_base"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 204.0
+    },
+    "evals": 4050
+   },
+   "contact": {
+    "tol": 5.981,
+    "bounded": true,
+    "violation_at": 6.006,
+    "binding": {
+     "state": 2409,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_base"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 204.0
+    },
+    "evals": 4740
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 324.0
+}

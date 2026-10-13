@@ -1,0 +1,54 @@
+{
+ "scene": "app:wok:1",
+ "part": "scen-touch_off",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+  "kind": "approach",
+  "act": "wok",
+  "kf": 16,
+  "kf_label": "set down",
+  "r17_min_reserve_mm": 2.4,
+  "src_n": 7
+ },
+ "states": 54,
+ "stored_states": 7,
+ "nominal_s": 3.0,
+ "nominal_cached": true,
+ "held": false,
+ "scenarios": {
+  "touch_off": {
+   "half_range_mm_deg": [
+    1.02,
+    0.3,
+    0.3,
+    0.036,
+    0.104,
+    0.03
+   ],
+   "gate": {
+    "min_mm": 2.78,
+    "state": 0,
+    "label": "approach@set down#16 step 0 (0 cm back)",
+    "pair": [
+     "R_geom_enc2_ua_4",
+     "r15_plate"
+    ],
+    "corner": [
+     -1.02,
+     0.3,
+     -0.3,
+     0.036,
+     -0.104,
+     0.03
+    ],
+    "evals": 3328
+   },
+   "contact": {
+    "min_mm": ">=10",
+    "evals": 2880
+   }
+  }
+ },
+ "elapsed_s": 87.2
+}

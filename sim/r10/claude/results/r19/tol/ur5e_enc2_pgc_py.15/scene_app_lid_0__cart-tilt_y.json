@@ -1,0 +1,101 @@
+{
+ "scene": "app:lid:0",
+ "part": "cart-tilt_y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+  "kind": "approach",
+  "act": "lid",
+  "kf": 0,
+  "kf_label": "lift off",
+  "r17_min_reserve_mm": 10.0,
+  "src_n": 7
+ },
+ "states": 55,
+ "stored_states": 7,
+ "nominal_s": 0.8,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "tilt_y",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.084,
+    "bounded": true,
+    "violation_at": 1.087,
+    "binding": {
+     "state": 1,
+     "value_mm": -0.002,
+     "pair": [
+      "R_finger_minus",
+      "r16_lid_tab"
+     ],
+     "label": "approach@lift off#0 step 0 (0 cm back)",
+     "src_index": 0.111
+    },
+    "evals": 179
+   },
+   "contact": {
+    "tol": 1.355,
+    "bounded": true,
+    "violation_at": 1.358,
+    "binding": {
+     "state": 0,
+     "value_mm": 0.009,
+     "pair": [
+      "R_finger_minus",
+      "r16_lid_tab"
+     ],
+     "label": "approach@lift off#0 step 0 (0 cm back)",
+     "src_index": 0.0
+    },
+    "evals": 210
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_y",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.095,
+    "bounded": true,
+    "violation_at": 1.098,
+    "binding": {
+     "state": 0,
+     "value_mm": -0.044,
+     "pair": [
+      "R_finger_plus",
+      "r16_lid_tab"
+     ],
+     "label": "approach@lift off#0 step 0 (0 cm back)",
+     "src_index": 0.0
+    },
+    "evals": 206
+   },
+   "contact": {
+    "tol": 1.369,
+    "bounded": true,
+    "violation_at": 1.371,
+    "binding": {
+     "state": 0,
+     "value_mm": 0.0,
+     "pair": [
+      "R_finger_plus",
+      "r16_lid_tab"
+     ],
+     "label": "approach@lift off#0 step 0 (0 cm back)",
+     "src_index": 0.0
+    },
+    "evals": 154
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 2.0
+}

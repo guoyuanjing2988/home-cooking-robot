@@ -1,0 +1,99 @@
+{
+ "scene": "play:lid",
+ "part": "cart-tilt_y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lid",
+  "obj": "lid",
+  "src_n": 205
+ },
+ "states": 2410,
+ "stored_states": 205,
+ "nominal_s": 1.9,
+ "nominal_cached": true,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "tilt_y",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.137,
+    "bounded": true,
+    "violation_at": 0.141,
+    "binding": {
+     "state": 2409,
+     "value_mm": -0.007,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_base"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 204.0
+    },
+    "evals": 5130
+   },
+   "contact": {
+    "tol": 0.824,
+    "bounded": true,
+    "violation_at": 0.827,
+    "binding": {
+     "state": 2409,
+     "value_mm": 0.002,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_base"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 204.0
+    },
+    "evals": 14608
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_y",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.874,
+    "bounded": true,
+    "violation_at": 0.877,
+    "binding": {
+     "state": 2408,
+     "value_mm": -0.025,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_fin0"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 203.955
+    },
+    "evals": 6164
+   },
+   "contact": {
+    "tol": 1.186,
+    "bounded": true,
+    "violation_at": 1.188,
+    "binding": {
+     "state": 2408,
+     "value_mm": 0.008,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_fin0"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "src_index": 203.955
+    },
+    "evals": 5739
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 433.5
+}
