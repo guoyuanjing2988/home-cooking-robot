@@ -84,13 +84,15 @@ def combine(Ms):
     if cur is None or x['tol']<cur['tol']:T[k][meas]=dict(x,scene=name)
  return T
 def axis_tol(T,ax,meas):
- if ax=='any':return min((axis_tol(T,a,meas) for a in ('x','y','z')),key=lambda x:x['tol'])
+ if ax=='any':
+  c=[t for t in (axis_tol(T,a,meas) for a in ('x','y','z')) if t]
+  return min(c,key=lambda x:x['tol']) if c else None
  if ax=='grasp_t':
   c=[T[k][meas] for k in T if k[0]=='grasp' and k[1] in ('x','y','z')]
   return min(c,key=lambda x:x['tol']) if c else None
  if ax=='grasp_rot':
   c=[T[k][meas] for k in T if k[0]=='grasp' and k[1]=='rot'];return c[0] if c else None
- return T[('cart',ax,None)][meas]
+ return (T.get(('cart',ax,None)) or {}).get(meas)   # None while that axis is not run yet (partial results)
 def utilization(T,si,meas,groups):
  terms=[]
  for name,ax,unit,*vals,lbl,basis in BUDGET:
@@ -146,10 +148,13 @@ def main():
    if not rec:continue
    T=rec['tolerance'];cells=[]
    for ax in axes:
+    if f'cart:{ax}' not in T:cells.append('not run');continue
     g=T[f'cart:{ax}']['gate'];c=T[f'cart:{ax}']['contact']
     f=lambda x:(f"{x['tol']:.3g}{'-' if x['sign']<0 else '+'}" if x['bounded'] else f">{x['tol']:.3g}")
     cells.append(f"{f(g)} / {f(c)}")
-   first=min(axes,key=lambda ax:T[f'cart:{ax}']['gate']['tol']/(1. if ax in 'xyz' else 10.))   # rank: 1 deg ~ 10 mm at ~0.6 m lever
+   av=[ax for ax in axes if f'cart:{ax}' in T]
+   if not av:L.append(f"| {a} | "+' | '.join(cells)+' | - |');continue
+   first=min(av,key=lambda ax:T[f'cart:{ax}']['gate']['tol']/(1. if ax in 'xyz' else 10.))   # rank: 1 deg ~ 10 mm at ~0.6 m lever
    b=T[f'cart:{first}']['gate'];L.append(f"| {a} | "+' | '.join(cells)+f" | {first}: {' / '.join(b['pair'] or [])}, {b['label']} ({b.get('scene','')}) |")
  L.append('\n### Grid (measured): min gate reserve over all states, worst sign, at each cart offset (mm; "≥10" = above 10 mm; negative = below the 10/5 mm gate, the gap is that + 10 or + 5)\n')
  gv=[('x',2),('x',5),('x',10),('y',2),('y',5),('y',10),('z',2),('z',5),('yaw',.2),('yaw',.5),('yaw',1.),('tilt_x',.1),('tilt_x',.2),('tilt_x',.5),('tilt_y',.2),('tilt_y',.5)]

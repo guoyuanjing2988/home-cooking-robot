@@ -19,14 +19,19 @@ Two thresholds per state: 'gate' = distance - the checker's gap (10 mm robot / 5
 the planning gate) and 'contact' = distance (real contact in the model).
 The MuJoCo-contact part of the checker (box-box artefacts, DECISIONS R11) is not used; r19tol_replay.py
 re-runs Checker.check(full=True) at the binding states as a cross-check.
-Arm option: ARM=<id> as everywhere (arms.current()); outputs go to results/r19/tol/<arm> (UR5e: results/r19/tol); stored
+Arm option: ARM=<id> as everywhere (arms.current()), layout PY=<y> (plating spot); outputs go to results/r19/tol/<arm>[_py<y>]
+(UR5e default: results/r19/tol); stored
 paths are taken from the tagged files if they exist (r17chain.py / r19hub.py ... ARM=<id>), else the
 UR5e files (same kinematics for an enclosing-geometry model such as ARM=ur5e_enc)."""
 import sys,os,json,math
 sys.path.insert(0,'.')
 import numpy as np,mujoco
 import arms
-ARM=arms.current();TAG=arms.tag(ARM);OUT='results/r19/tol'+('/'+ARM if TAG else '')   # another arm option: results/r19/tol/<arm>
+ARM=arms.current();TAG=arms.tag(ARM)
+PYARG=next((a[3:] for a in sys.argv[1:] if a.startswith('PY=')),None)   # PY=<y>: the plating spot (and the waiting dish) at this y,
+   # as r17chain.py / r19hub.py PY= (R19 #12 standard: ARM=ur5e_enc2_pgc PY=.15); default unchanged
+_SUB=(ARM if TAG else '')+(('_' if TAG else '')+'py'+PYARG if PYARG else '')
+OUT='results/r19/tol'+('/'+_SUB if _SUB else '')   # another arm option / layout: results/r19/tol/<arm>[_py<y>]
 MM,DEG=1e-3,math.pi/180
 CHAINS=dict(   # action -> stored chain (as r19smooth.CHAINS) and the world of each grasp approach (r17chain.action() GR)
  wok=dict(file='results/r17/chain_wok_s-1_final.json',label='wok_plate_rinse',worlds={0:{},16:{}}),
@@ -36,13 +41,16 @@ CHAINS=dict(   # action -> stored chain (as r19smooth.CHAINS) and the world of e
  spider=dict(file='results/r17/chain_spider_s+1_final.json',label='spider_pot_to_plate',worlds={0:{},18:{}}))
 HUBDIR='results/r19/hub'
 def hubdir():
- return HUBDIR+TAG if TAG and PATHS!='base' and os.path.isdir(HUBDIR+TAG) else HUBDIR
+ """r19hub.py's folder for this arm and layout (results/r19/hub[_py<y>][_<arm>]) if it exists, else the UR5e hub."""
+ d=HUBDIR+('_py'+PYARG if PYARG else '')+TAG
+ return d if d!=HUBDIR and PATHS!='base' and os.path.isdir(d) else HUBDIR
 PATHS=next((a[6:] for a in sys.argv[1:] if a.startswith('PATHS=')),'auto')   # PATHS=base: always the stored UR5e paths
 def tagged(f):
- """The arm option's own stored path (r17chain.py ... ARM=<id> -> *_<id>.json) if it exists and holds states,
- else the stored UR5e path (same kinematics for ARM=ur5e_enc: the #12 re-check of the stored paths)."""
- t=f[:-5]+TAG+'.json'
- if TAG and PATHS!='base' and os.path.exists(t):
+ """The arm option's own stored path if it exists and holds states: r17chain.py / r19enc_adopt.py ... ARM=<id>
+ -> *_<id>.json; with PY=<y> the wok chains of that layout, *_py<y>_<id>.json (as r19hub.py). Else the stored
+ UR5e path (PATHS=base forces it)."""
+ t=f[:-5]+(('_py'+PYARG) if PYARG and 'chain_wok' in f else '')+TAG+'.json'
+ if t!=f and PATHS!='base' and os.path.exists(t):
   r=J(t)
   if r.get('play') or r.get('qs'):return t
  return f
@@ -73,7 +81,9 @@ GROUPS=dict(
  wall=lambda n,p:n.startswith(('north_wall','outlet','appliance_power','faucet_v3','r15_camera')))
 # ---------------------------------------------------------------- scenes
 def _kitchen(r):
- import kitchen16 as K,kitchen17 as K17
+ import kitchen15 as K15,kitchen16 as K,kitchen17 as K17
+ py=PYARG if PYARG else r.get('plate_y')   # the plating spot y: PY= for every scene, else the chain's own plate_y (py chains)
+ if py is not None:K15.PLATE['c'][1]=float(py)
  K.set_design(pot_h=.12,rack=.04,lid_a=0.,car_a=45.,rack_ry=90.)
  K17.set_wok_tilt(float(r.get('wok_tilt') or 0.))
  for k,v in r.get('tool_xy',{}).items():K.TOOL_XY[k]=tuple(v)
@@ -111,7 +121,7 @@ def build_scene(key):
   return ch,Q,dict(file=f,kind='approach',act=act,kf=kfi,kf_label=r['keyframes'][kfi]['label'],r17_min_reserve_mm=ap.get('min_reserve_mm'),
    labels=[f"approach@{r['keyframes'][kfi]['label']}#{kfi} step {i} ({i} cm back)" for i in range(len(Q))],src_n=len(Q))
  if kind[0]=='edge':
-  sys.argv=[sys.argv[0],'commands']+[a for a in sys.argv[1:] if a.startswith('ARM=')]   # r19hub parses argv at import
+  sys.argv=[sys.argv[0],'commands']+[a for a in sys.argv[1:] if a.startswith(('ARM=','PY='))]   # r19hub parses argv at import (PY= moves its plate + dish)
   import r19hub
   tree,meta=r19hub.union_tree();ch=Checker(tree,meta)
   f=f'{hubdir()}/edge_{kind[1]}.json';e=J(f)
@@ -153,7 +163,7 @@ class Ev:
   m=ch.m;s.ch=ch;s.m=m;s.d=ch.d;B=ch.bounds;s.B=B;G=m.ngeom;nm=ch.gnames
   robot=np.array([bool(ch.robot[g]) for g in range(G)]);s.robot=robot
   tool=m.body('R_tool').id
-  s.held=np.array([robot[g] and m.geom_bodyid[g]==tool and nm[g] not in ('R_gripper_palm','R_gripper_oem_envelope') for g in range(G)])
+  s.held=np.array([robot[g] and m.geom_bodyid[g]==tool and nm[g]!='R_gripper_palm' and not nm[g].startswith('R_gripper_oem') for g in range(G)])   # gripper housing (box, or the pgc drawing's 3 parts) is not held
   s.rob=np.flatnonzero(robot);s.hg=np.flatnonzero(s.held)
   P=B.pairs;a=np.array([p[0] for p in P]);b=np.array([p[1] for p in P]);need=np.array([p[2] for p in P],float)
   ra,rb=robot[a],robot[b];env=ra^rb

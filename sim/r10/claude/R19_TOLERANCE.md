@@ -1,5 +1,9 @@
 # R19 tolerance budget (GitHub #13): cart docking and registration error vs the stored-path reserves (2026-10-13)
 
+> **Checking standard since #12 (DECISIONS 2026-10-13): `ARM=ur5e_enc2_pgc PY=.15`.** Sections 1–8 below are the
+> first pass on the old UR5e capsules. §9 has the re-run on the new standard: nominal, the reduced grid, a checker
+> cross-check, and the controller lanes for the rest.
+
 **Question (#13).** The stored paths are checked offline and replayed exactly. Do the 10 / 5 mm planning gates plus a realistic pose-error budget still leave positive real clearance? If not, which gates or which registration are needed?
 
 **Labels:**
@@ -380,3 +384,116 @@ The ur5e_enc outputs go to `results/r19/tol/ur5e_enc/`. The demonstration files 
 - [Abbas et al. 2019, AprilTag state estimation](https://pmc.ncbi.nlm.nih.gov/articles/PMC6960891/): 4.4 → 0.8 cm (x) at 70 cm; 1.6–3.4 cm at 2 m.
 - GB 50209-2010 (building floor acceptance): the 2 mm / 2 m tile flatness figure is commonly cited, not verified in the text.
 - ROEQ docking ±1 mm and kinematic-coupling repeatability: from the search summaries; general.
+
+## 9. The new checking standard: `ARM=ur5e_enc2_pgc PY=.15` (2026-10-13, after #12)
+
+**The standard** (DECISIONS 2026-10-13, "True arm geometry is the checking standard"; R19_UR5E_ENC.md §7–8):
+- **Arm geometry:** certified-enclosing k-DOP hulls on the UR5e, plus the PGC-140 housing from DH's drawing (a Ø75 body).
+- **Layout:** the plating spot (and the waiting dish) at y 0.15.
+- **Paths:** the six stored chains adopted by `r19enc_adopt.py` (`results/r17/chain_*_ur5e_enc2_pgc*.json`; the wok files are `_py.15_` and carry `plate_y` 0.15).
+- **Hub:** `results/r19/hub_py.15_ur5e_enc2_pgc/` (22 / 22 edges).
+
+### 9.1 Code changes (`r19tol_*` only; the defaults are unchanged)
+
+- **`PY=<y>` is followed, as `r17chain.py` / `r19hub.py` do.**
+  - Every scene's plating spot (`kitchen15.PLATE['c'][1]`) is set to that y. The edges pass `PY=` to `r19hub.union_tree()`, so the waiting dish moves too.
+  - Without `PY=`, a chain's own `plate_y` is used for that chain's scenes.
+- **Paths.**
+  - Chains: with `ARM=<arm>` the arm's own chain `*_<arm>.json` is used, and with `PY=` the wok's `*_py<y>_<arm>.json`. Each is used only if it holds states; else the stored UR5e chain. `PATHS=base` forces the UR5e chains.
+  - Edges: from `results/r19/hub[_py<y>][_<arm>]/` if that folder exists.
+- **Outputs:** `results/r19/tol/<arm>[_py<y>]/`, here `results/r19/tol/ur5e_enc2_pgc_py.15/`.
+- **Fix:** the held part is now every tool geom except the palm and all `R_gripper_oem*` geoms. Before, the pgc housing's `oem_upper` / `oem_jaws` would have been taken for held parts; the UR5e results are unaffected, because their only housing geom was `oem_envelope`.
+- **Report:** `r19tol_report.py` tolerates partial runs (an axis not run yet shows "not run").
+- **Checks:**
+  - Plates verified at y 0.15 in a play, an approach and the union scene.
+  - Default lever result unchanged: exact minimum 8.608 mm.
+
+### 9.2 Run here (under 5 min each)
+
+1. **Nominal, all 36 scenes:** 50 s.
+2. **Reduced grid, y and tilt_x (exact nominal minimum included):** 114 s.
+3. **Cart y / yaw / tilt_x with the `Checker.check(full=True)` cross-check on 6 scenes:** 15 s.
+   - 20 checks, |checker − evaluator| = 0.000 mm.
+   - 3 % below the tolerance: GJK hits 0 of 10. 3 % above: 10 of 10.
+   - So the evaluator is exact on the k-DOP hulls too.
+
+### 9.3 Exact nominal minimum: gate reserve (gap), mm
+
+| Scene | `ur5e_enc2_pgc`, `PY=.15` | UR5e capsules (§3.1) | Binding pair now |
+|---|---|---|---|
+| spider play | **1.12** (10.37) | 5.37 | upper-arm hull `R_geom_enc2_ua_4` / `r14_upper_over_hood`, kf 16→17 (back to the rest) |
+| spider approaches | **2.17** (12.17) | 5.43 | the same pair |
+| lid play | 1.00 (6.00) | 1.00 | lid rim / rack base (a seat) |
+| wok play | 4.00 (9.00) | 4.00 | wok bottom / cooker (a seat) |
+| wok approaches | 4.84 (14.84) | 9.98 | `R_geom_enc2_ua_4` / plate at y 0.15 |
+| spatula play | 4.80 (9.80) | 4.80 | blade / raw tomato |
+| lever play | 8.61 (13.61) | 8.61 | lever bar / hub |
+| LEV_C → hubs, SPAT → LEV_C (4 edges) | 4.34 (14.34) | 8.57 | wrist-1 hull `R_geom_enc2_w1_1` / closed door `r07_closed_door_1_0` |
+| SPIDER edges | 7.37 (17.37) | 17.64 | `R_geom_enc2_ua_0` / hood |
+| LEV_O edges (re-planned in the new hub) | **16.03** (22.0) | 2.03 | forearm hull / the same door |
+| lid approach at the pot | 13.31 | 14.64 | `R_geom_enc2_ua_0` / hood |
+| LID_POT edges | 20.3 | 23.4 | upper arm / hood |
+| LID_RACK, WOK, SPAT edges | 22.3–31.2 | 25.3–57.0 | finger / grip, handle, camera |
+| corridors | ≥ 80 | ≥ 80 | — |
+
+The adoption certificates' 2.0–2.1 mm values for the approaches and edges are again AABB bounds (Answer first, item 1). The two exact values that agree are the spider's 1.12 / 2.17 mm and the lid's 1.0 mm.
+
+### 9.4 Tolerances measured so far (gate / contact)
+
+| Scene | tilt_x− | yaw+ | y+ |
+|---|---|---|---|
+| spider approach | **0.075° / 0.434°** | 0.60° / >1.5° | 2.16 / 12.2 mm |
+| wok approach | 0.372° / 1.20° | 1.46° | 7.59 / >15 mm |
+| lid approach at the pot | 0.616° / 1.11° | >1.5° | 13.3 mm |
+| LEV_C → H_SINK | 0.613° / >1.5° | 0.609° | 7.78 mm |
+| SPIDER → H_POT | 0.337° / 0.833° | >1.5° | 7.34 mm |
+| lever play | 0.381° / 0.603° (unchanged) | 1.35° | 9.91 mm |
+
+Reduced grid, min gate reserve (mm):
+
+| Scene | tilt_x ±0.1° | tilt_x ±0.2° | tilt_x ±0.5° | y ±2 | y ±5 | y ±10 |
+|---|---|---|---|---|---|---|
+| spider play | **−1.67** | −4.47 | −10.0 | −0.88 | −3.88 | −8.88 |
+| wok (with approaches) | 3.27 | 2.24 | −1.61 | 3.55 | 1.65 | −1.51 |
+| lid | 0.20 | −0.61 | −3.05 | 1.00 | 1.00 | −0.01 |
+| spatula | 4.14 | 2.48 | −2.52 | 3.81 | 0.81 | −4.19 |
+| lever | 6.36 | 4.11 | −2.63 | 6.88 | 4.28 | −0.07 |
+| LEV_C edges | 3.64 | 2.94 | 0.81 | 3.23 | 1.55 | −1.22 |
+| SPIDER edges | 5.19 | 3.03 | −3.41 | 5.37 | 2.37 | −2.63 |
+| LEV_O edges | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 | ≥10 |
+
+### 9.5 Interim verdict on the new standard (full lanes pending)
+
+- **The §5 conclusions hold, and the binding place moves to the spider.**
+  - Its upper arm passes 10.4 mm from the cabinet over the hood when returning to the rest (12.2 mm at the grasp approach).
+  - It loses the 10 mm gate at a 0.075° lean toward the counter and touches at 0.43°.
+  - Against the docking-stop budget (tilt_x 0.11° RSS), it keeps real clearance but not the gate. Against the as-designed budget (0.29°), the gate goes.
+- **LEV_O is solved by the new hub** (16 mm, nothing binds up to 10 mm / 0.5°).
+- **LEV_C and SPAT→LEV_C now bind at 4.3 mm,** wrist-1 vs the closed door: tilt_x 0.61°, yaw 0.61°.
+- **Against the §5 rule** (each tolerance ≥ 2× the C budget: tilt_x ≥ 0.3°, y ≥ 3.5 mm, yaw ≥ 0.15°), so far:
+  - **Fail:** the spider (play and approaches), and the lid's rack seat (force-guided, #26).
+  - **Pass:** the wok approach (0.37°), the SPIDER edges (0.34°), LEV_C (0.61°).
+- **Recommendation:** re-plan the spider's return / pick with the upper arm ≥ 15 mm farther from `r14_upper_over_hood`, or move the spider rest. Then confirm with the lanes below.
+
+### 9.6 Controller lanes (background; the three lanes can run in parallel)
+
+The nominal cache in `$D/cache` is reused. Every command has an internal `DEADLINE` that terminates its pool and lists the unfinished tasks.
+
+```bash
+cd /c/Users/admin/Documents/YJGames/robot_rail/sim/r10/claude
+PY=C:/Users/admin/Documents/YJGames/robot_v5/board/work/t01/.venv/Scripts/python.exe
+L="ARM=ur5e_enc2_pgc PY=.15"; D=results/r19/tol/ur5e_enc2_pgc_py.15
+# lane 1: the 12 cart directions per scene + the checker cross-check (est. 20-30 min)
+$PY r19tol_replay.py $L SET=all PARTS=cart-x,cart-y,cart-z,cart-yaw,cart-tilt_x,cart-tilt_y WORKERS=10 DEADLINE=5400 > $D/log_lane1.txt 2>&1
+# lane 2: the rest of the grid, the fixtures, the grasp (est. 20-30 min)
+$PY r19tol_replay.py $L SET=all PARTS=grid-x,grid-z,grid-yaw,grid-tilt_y,fix WORKERS=10 DEADLINE=5400 > $D/log_lane2.txt 2>&1
+$PY r19tol_replay.py $L SET=actions PARTS=grasp-x,grasp-y,grasp-z,grasp-rot ROTMAX=4 WORKERS=10 DEADLINE=3600 >> $D/log_lane2.txt 2>&1
+# lane 3: the four budget-box corner replays (est. 30-60 min; play:lid and play:spider are the long ones)
+$PY r19tol_replay.py $L SET=all PARTS=scen-R09_requirement,scen-as_designed,scen-dock_stops,scen-touch_off WORKERS=10 DEADLINE=7200 > $D/log_lane3.txt 2>&1
+# after all three lanes:
+$PY r19tol_report.py $L        # -> $D/summary.json, $D/tables.md (the section 1 budget against the new tolerances)
+```
+
+`SET=all` covers 5 plays, 9 approaches and 22 edges; `SET=actions` covers plays and approaches. Lane 1 overwrites the 18 cart files run here, which is harmless.
+
+The two UR5e-capsule corner runs listed in §7 are now optional: the old standard is kept only for reproducing old results.

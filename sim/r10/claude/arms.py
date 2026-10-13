@@ -2,7 +2,8 @@
 
 Choose it with cfg['arm'], or ARM=<id> on the command line (the KEY=VALUE style of every script
 here), or the environment variable ARM. Ids: ur5e (default), fr5 (Fairino FR5, stock J6 +-175 deg),
-fr5_j6 (FR5 with the optional J6 +-360 deg), ur5e_enc (R19 #12: the UR5e, with collision geoms that enclose the Menagerie
+fr5_j6 (FR5 with the optional J6 +-360 deg), fr5_pgc / fr5_j6_pgc / cs66_pgc (the same arms with the PGC-140 housing
+from DH's drawing, as ur5e_enc2_pgc), ur5e_enc (R19 #12: the UR5e, with collision geoms that enclose the Menagerie
 visual meshes, r19/arm_ur5e_enc.json from r19ur5e_encfit.py; everything else is the UR5e's), ur5e_enc2 (the same, tighter:
 convex pieces, r19/arm_ur5e_enc2.json from r19ur5e_enc2fit.py). For ur5e nothing in the model is touched.
 
@@ -44,6 +45,10 @@ ARMS={
  'ur5e_enc2_pgc':dict(name='ur5e_enc2 with the PGC-140-50 housing as drawn by DH (round body, R19 #12) instead of the 75 mm box',speeds_degps=[180.]*6,payload_kg=5.,com_radius_m=.35,
   speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc2.json',oem='pgc_drawing',
   oem_source='M: DH PGC-140 Short Manual v2.1, Fig. 1.3(a) (Dimension drawing): Ø75 body, 98 mm body height, 53 mm across the jaw plane over the top 46 mm, 73 mm finger span, 36.4 mm, 138.5 mm overall; https://uploads.unchainedrobotics.de/media/file_upload/PGC-140-Short-Manual_v2.1_e46a3c6b.pdf')}
+# R19 #2 (like-for-like with ur5e_enc2_pgc): the vendor-mesh arms with the PGC-140 housing from DH's drawing instead of the box;
+# the arm, its limits, speeds and torque envelope (env) are those of the base option
+for _b in ('fr5','fr5_j6','cs66'):
+ ARMS[_b+'_pgc']=dict(ARMS[_b],name=ARMS[_b]['name']+' + PGC-140 housing from the DH drawing',env=_b,oem='pgc_drawing',oem_source=ARMS['ur5e_enc2_pgc']['oem_source'])
 def _cli():
  for a in sys.argv[1:]:
   if a.startswith('ARM='):return a[4:]
@@ -58,7 +63,7 @@ def tag(arm=None):
  arm=arm or current();return '' if arm=='ur5e' else '_'+arm
 def speeds(arm=None):return list(ARMS[arm or current()]['speeds_degps'])
 def envelope_file(tilt,arm=None):
- arm=arm or current();return f'assets/envelope_{int(tilt)}.json' if arm=='ur5e' or ARMS[arm].get('enclose') else f'assets/envelope_{arm}_{int(tilt)}.json'   # ur5e_enc: the UR5e envelope (same arm)
+ arm=arm or current();return f'assets/envelope_{int(tilt)}.json' if arm=='ur5e' or ARMS[arm].get('enclose') else f"assets/envelope_{ARMS[arm].get('env',arm)}_{int(tilt)}.json"   # ur5e_enc: the UR5e envelope (same arm)
 def fmt(v):return ' '.join(f'{float(x):.12g}' for x in v)
 def quat(R):return Rotation.from_matrix(R).as_quat()[[3,0,1,2]]
 def T(p,R):X=np.eye(4);X[:3,:3]=R;X[:3,3]=p;return X

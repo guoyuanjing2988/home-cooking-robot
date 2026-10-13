@@ -271,6 +271,29 @@ def sides(a):
   if a<len(KF)-1:t.append(len(KF)-1)
  else:assert after and after[0]<next_a,('no meet between anchors',a,next_a);t.append(after[0])
  return t
+SEEDUR=KV.get('SEEDUR')   # R19 #2: extra IK starts = the states of a checked UR5e chain of this action (json path), mapped to this arm through
+# arms.py's mount yaw / gripper clocking (q1 - yaw, q6 - clock); each is re-solved exactly at the anchor (<= 0.5 mm / 0.2 deg) and fully checked like a solver candidate
+_seedP=None
+def ur_seeds(k,pt_,Rt_):
+ global _seedP
+ if _seedP is None:
+  P=np.array(json.load(open(SEEDUR))['play'],float);P[:,3]-=np.radians(arms.ARMS[ARM].get('mount_yaw_deg',0.));P[:,8]-=np.radians(arms.ARMS[ARM].get('clock_deg',0.));_seedP=P
+ sol=[]
+ for q0 in _seedP[::2]:
+  q=q0.copy();q[-2:]=JAW_HELD
+  for j in range(6):
+   c_=[q[3+j]+i*2*np.pi for i in (-2,-1,0,1,2) if lo[j]-1e-9<=q[3+j]+i*2*np.pi<=hi_[j]+1e-9]
+   if c_:q[3+j]=min(c_,key=abs)
+  if isinstance(KF[k]['c'],float):q[0]=KF[k]['c']
+  qs=q.copy();q,pe,re,_=solve_to(ch,q,pt_,Rt_)
+  if pe<=.0005 and re<=np.radians(.2):sol.append((float(np.max(abs(q[3:9]-qs[3:9]))+abs(q[0]-qs[0])),q))
+ got=[];seen=[]
+ for d_,q in sorted(sol,key=lambda x:x[0]):   # the UR5e states nearest the anchor first; distinct solutions only; at most 12 full checks
+  if any(np.max(abs(q[3:9]-s_))<np.radians(2) and abs(q[0]-c0)<.01 for s_,c0 in seen):continue
+  seen.append((q[3:9].copy(),q[0]));r=ch.check(q,full=True,mass=0.)
+  if r['ok']:got.append(dict(q=q.tolist(),reserve_mm=min(v['reserve_mm'] for cat,v in r['clearance'].items() if cat!='self')))
+  if len(seen)>=12:break
+ return sorted(got,key=lambda c_:-c_['reserve_mm'])
 _cands={}
 def candidates(k):
  key=(tuple(np.round(KF[k]['p'],4)),tuple(np.round(KF[k]['R'].ravel(),4)))
@@ -283,6 +306,7 @@ def candidates(k):
   for k_,v in r['status_counts'].items():stat[k_]=stat.get(k_,0)+v
   out+=[dict(q=c_['q'],reserve_mm=c_['reserve_mm']) for c_ in r['candidates']]
  out=sorted(out,key=lambda c_:-c_['reserve_mm'])
+ if SEEDUR:sd=ur_seeds(k,pt_,Rt_);stat['ur_seeds_ok']=len(sd);out=sd+out   # R19 #2: the mapped UR5e states first (as the R16 walk below)
  if KF[k].get('walk') and (ARM=='ur5e' or arms.ARMS[ARM].get('enclose')):   # a checked R16 walk state (UR5e joint values; not for another arm; ur5e_enc / ur5e_enc2 = same arm, re-checked here) of the same pose and grasp sense goes first
   w=json.load(open(f"results/r16/walk_{KF[k]['walk'][0]}.json"))
   if w['jaw_sign']==SIGN:out=[dict(q=w['path'][KF[k]['walk'][1]]['q'],reserve_mm=-1.)]+out
@@ -369,7 +393,7 @@ if ok:
 def summ(out):
  rs=[s_['reserve_mm'] for s_ in out if s_['reserve_mm'] is not None]
  return dict(steps=len(out),time_s=round(sum(s_['dt'] for s_ in out),1),min_reserve_mm=min(rs) if rs else None,max_step_deg=max(s_['step_deg'] for s_ in out),cart=[out[0]['cart'],out[-1]['cart']])
-res=dict(act=ACT,obj=OBJ,**({} if ARM=='ur5e' else dict(arm=ARM)),**({'plate_y':float(KV['PY'])} if 'PY' in KV else {}),grasp_sense=SIGN,design=DESIGN,scene=SCENE,wok_tilt=float(KV.get('GTILT',0)),wok_grasp=KV.get('GRASP','top'),tool_xy={k_:list(v) for k_,v in K.TOOL_XY.items()},ok=ok,time_s=round(tsum,1),elapsed_s=round(time.monotonic()-t0),
+res=dict(act=ACT,obj=OBJ,**({} if ARM=='ur5e' else dict(arm=ARM)),**({'plate_y':float(KV['PY'])} if 'PY' in KV else {}),**({'seed_ur':SEEDUR} if SEEDUR else {}),grasp_sense=SIGN,design=DESIGN,scene=SCENE,wok_tilt=float(KV.get('GTILT',0)),wok_grasp=KV.get('GRASP','top'),tool_xy={k_:list(v) for k_,v in K.TOOL_XY.items()},ok=ok,time_s=round(tsum,1),elapsed_s=round(time.monotonic()-t0),
  keyframes=[dict(i=i,label=k_['label'],p=np.round(k_['p'],3).tolist(),c=k_['c'],anchor=k_['anchor'],meet=k_['meet']) for i,k_ in enumerate(KF)],
  anchors={KF[a]['label']+f'#{a}':{k_:v for k_,v in an.items() if k_!='q'} for a,an in anchors.items()},
  pieces=[dict(frm=KF[a]['label']+f'#{a}',to=KF[b]['label']+f'#{b}',**summ(out)) for (a,b),out in pieces.items()],

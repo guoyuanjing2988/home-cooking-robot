@@ -1,0 +1,4368 @@
+{
+ "arm": "ur5e_enc2_pgc",
+ "actions": {
+  "wok": {
+   "scenes": [
+    "play:wok",
+    "app:wok:0",
+    "app:wok:1"
+   ],
+   "nominal": {
+    "play:wok": {
+     "exact_min_gate_mm": 4.0,
+     "exact_min_contact_mm": 9.0,
+     "pair": [
+      "R_gripper_r15_wok_t0",
+      "r15_cooker"
+     ],
+     "label": "",
+     "checker_reported_mm": 2.02,
+     "checker_reported_exact_there_mm": 56.188
+    },
+    "app:wok:0": {
+     "exact_min_gate_mm": 4.838,
+     "exact_min_contact_mm": 14.838,
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r15_plate"
+     ],
+     "label": "approach@pick#0 step 0 (0 cm back)",
+     "checker_reported_mm": 2.4,
+     "checker_reported_exact_there_mm": null
+    },
+    "app:wok:1": {
+     "exact_min_gate_mm": 4.838,
+     "exact_min_contact_mm": 14.838,
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r15_plate"
+     ],
+     "label": "approach@set down#16 step 0 (0 cm back)",
+     "checker_reported_mm": 2.4,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {
+    "cart:tilt_x": {
+     "gate": {
+      "tol": 0.372,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r15_plate"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:wok:0"
+     },
+     "contact": {
+      "tol": 1.196,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r15_plate"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:wok:0"
+     }
+    },
+    "cart:y": {
+     "gate": {
+      "tol": 7.594,
+      "bounded": true,
+      "sign": 1,
+      "unit": "mm",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r15_plate"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:wok:0"
+     },
+     "contact": {
+      "tol": 15.0,
+      "bounded": false,
+      "sign": 1,
+      "unit": "mm",
+      "pair": null,
+      "label": "",
+      "scene": "app:wok:0"
+     }
+    },
+    "cart:yaw": {
+     "gate": {
+      "tol": 1.456,
+      "bounded": true,
+      "sign": 1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r15_plate"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:wok:0"
+     },
+     "contact": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "app:wok:0"
+     }
+    }
+   },
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 2.19,
+      "rss": 0.91,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        0.372,
+        0.67
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        0.372,
+        0.4
+       ],
+       [
+        "arm_accuracy",
+        2.0,
+        7.594,
+        0.26
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 1.06,
+      "rss": 0.4,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        1.196,
+        0.21
+       ],
+       [
+        "dock_yaw",
+        0.3,
+        1.5,
+        0.2
+       ],
+       [
+        "mount_yaw",
+        0.2,
+        1.5,
+        0.13
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0.57,
+      "rss": 0.31,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        7.594,
+        0.26
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.456,
+        0.14
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        7.594,
+        0.07
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.36,
+      "rss": 0.19,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.5,
+        0.13
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0.67,
+      "rss": 0.32,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.372,
+        0.27
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.372,
+        0.13
+       ],
+       [
+        "dock_y",
+        0.5,
+        7.594,
+        0.07
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.28,
+      "rss": 0.11,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        1.196,
+        0.08
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        1.196,
+        0.04
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0.58,
+      "rss": 0.3,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.372,
+        0.27
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        0.372,
+        0.08
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        7.594,
+        0.07
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.24,
+      "rss": 0.1,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        1.196,
+        0.08
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        1.196,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 0,
+     "value": 7.3662,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.155,
+     "checker_pair": [
+      "r15_plate",
+      "R_geom_enc2_ua_4"
+     ],
+     "evaluator_gate_mm": 0.155,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_4",
+      "r15_plate"
+     ]
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 0,
+     "value": 7.8537,
+     "checker_hits": [
+      [
+       "r15_plate",
+       "R_geom_enc2_ua_4"
+      ],
+      [
+       "r15_plate",
+       "R_geom_enc2_ua_4"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.153,
+     "checker_pair": [
+      "r15_plate",
+      "R_geom_enc2_ua_4"
+     ],
+     "evaluator_gate_mm": -0.153,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_4",
+      "r15_plate"
+     ]
+    },
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "state": 0,
+     "value": 1.4123,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.151,
+     "checker_pair": [
+      "r15_plate",
+      "R_geom_enc2_ua_4"
+     ],
+     "evaluator_gate_mm": 0.151,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_4",
+      "r15_plate"
+     ]
+    },
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "state": 0,
+     "value": 1.5028,
+     "checker_hits": [
+      [
+       "r15_plate",
+       "R_geom_enc2_ua_4"
+      ],
+      [
+       "r15_plate",
+       "R_geom_enc2_ua_4"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.151,
+     "checker_pair": [
+      "r15_plate",
+      "R_geom_enc2_ua_4"
+     ],
+     "evaluator_gate_mm": -0.151,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_4",
+      "r15_plate"
+     ]
+    }
+   ]
+  },
+  "spatula": {
+   "scenes": [
+    "play:spatula",
+    "app:spatula:0"
+   ],
+   "nominal": {
+    "play:spatula": {
+     "exact_min_gate_mm": 4.8,
+     "exact_min_contact_mm": 9.8,
+     "pair": [
+      "R_gripper_r18_spat_blade4",
+      "raw_tomato"
+     ],
+     "label": "kf 0->1 (pick -> lifted)",
+     "checker_reported_mm": 2.04,
+     "checker_reported_exact_there_mm": 17.127
+    },
+    "app:spatula:0": {
+     "exact_min_gate_mm": 27.03,
+     "exact_min_contact_mm": 32.03,
+     "pair": [
+      "R_finger_plus",
+      "r16_spatula_handle"
+     ],
+     "label": "approach@pick#0 step 0 (0 cm back)",
+     "checker_reported_mm": 27.0,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "lever": {
+   "scenes": [
+    "play:lever",
+    "app:lever:0",
+    "app:lever:1"
+   ],
+   "nominal": {
+    "play:lever": {
+     "exact_min_gate_mm": 8.608,
+     "exact_min_contact_mm": 13.608,
+     "pair": [
+      "R_gripper_r17_lever_bar",
+      "r17_lever_hub"
+     ],
+     "label": "kf 0->1 (closed -> open)",
+     "checker_reported_mm": 5.98,
+     "checker_reported_exact_there_mm": 8.608
+    },
+    "app:lever:0": {
+     "exact_min_gate_mm": 20.0,
+     "exact_min_contact_mm": 25.0,
+     "pair": [
+      "R_finger_minus",
+      "r17_lever_tip"
+     ],
+     "label": "approach@closed#0 step 2 (2 cm back)",
+     "checker_reported_mm": 20.0,
+     "checker_reported_exact_there_mm": null
+    },
+    "app:lever:1": {
+     "exact_min_gate_mm": 15.878,
+     "exact_min_contact_mm": 20.878,
+     "pair": [
+      "R_finger_minus",
+      "r17_faucet_column"
+     ],
+     "label": "approach@open#1 step 0 (0 cm back)",
+     "checker_reported_mm": 7.4,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {
+    "cart:tilt_x": {
+     "gate": {
+      "tol": 0.381,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_gripper_r17_lever_bar",
+       "r17_lever_hub"
+      ],
+      "label": "kf 0->1 (closed -> open)",
+      "scene": "play:lever"
+     },
+     "contact": {
+      "tol": 0.603,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_gripper_r17_lever_bar",
+       "r17_lever_hub"
+      ],
+      "label": "kf 0->1 (closed -> open)",
+      "scene": "play:lever"
+     }
+    },
+    "cart:y": {
+     "gate": {
+      "tol": 9.914,
+      "bounded": true,
+      "sign": 1,
+      "unit": "mm",
+      "pair": [
+       "R_gripper_r17_lever_bar",
+       "r17_lever_hub"
+      ],
+      "label": "kf 0->1 (closed -> open)",
+      "scene": "play:lever"
+     },
+     "contact": {
+      "tol": 15.0,
+      "bounded": false,
+      "sign": 1,
+      "unit": "mm",
+      "pair": null,
+      "label": "",
+      "scene": "play:lever"
+     }
+    },
+    "cart:yaw": {
+     "gate": {
+      "tol": 1.352,
+      "bounded": true,
+      "sign": 1,
+      "unit": "deg",
+      "pair": [
+       "R_finger_minus",
+       "r17_faucet_column"
+      ],
+      "label": "kf 0->1 (closed -> open)",
+      "scene": "play:lever"
+     },
+     "contact": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "play:lever"
+     }
+    }
+   },
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 2.01,
+      "rss": 0.86,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        0.381,
+        0.66
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        0.381,
+        0.39
+       ],
+       [
+        "dock_yaw",
+        0.3,
+        1.352,
+        0.22
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 1.39,
+      "rss": 0.58,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        0.603,
+        0.41
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        0.603,
+        0.25
+       ],
+       [
+        "dock_yaw",
+        0.3,
+        1.5,
+        0.2
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0.48,
+      "rss": 0.26,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        9.914,
+        0.2
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.352,
+        0.15
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        9.914,
+        0.05
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.36,
+      "rss": 0.19,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.5,
+        0.13
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0.61,
+      "rss": 0.31,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.381,
+        0.26
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.381,
+        0.13
+       ],
+       [
+        "dock_y",
+        0.5,
+        9.914,
+        0.05
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.41,
+      "rss": 0.2,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.603,
+        0.17
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.603,
+        0.08
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0.53,
+      "rss": 0.28,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.381,
+        0.26
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        0.381,
+        0.08
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        9.914,
+        0.05
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.35,
+      "rss": 0.18,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.603,
+        0.17
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        0.603,
+        0.05
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 127,
+     "value": 9.6166,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.279,
+     "checker_pair": [
+      "r17_lever_hub",
+      "R_gripper_r17_lever_bar"
+     ],
+     "evaluator_gate_mm": 0.279,
+     "evaluator_pair": [
+      "R_gripper_r17_lever_bar",
+      "r17_lever_hub"
+     ]
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 127,
+     "value": 10.2392,
+     "checker_hits": [
+      [
+       "r17_lever_hub",
+       "R_gripper_r17_lever_bar"
+      ],
+      [
+       "r17_lever_hub",
+       "R_gripper_r17_lever_bar"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.26,
+     "checker_pair": [
+      "r17_lever_hub",
+      "R_gripper_r17_lever_bar"
+     ],
+     "evaluator_gate_mm": -0.26,
+     "evaluator_pair": [
+      "R_gripper_r17_lever_bar",
+      "r17_lever_hub"
+     ]
+    },
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "state": 127,
+     "value": 1.3114,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.542,
+     "checker_pair": [
+      "r17_faucet_column",
+      "R_finger_minus"
+     ],
+     "evaluator_gate_mm": 0.542,
+     "evaluator_pair": [
+      "R_finger_minus",
+      "r17_faucet_column"
+     ]
+    },
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "state": 127,
+     "value": 1.3957,
+     "checker_hits": [
+      [
+       "r17_faucet_column",
+       "R_gripper_r17_lever_bar"
+      ],
+      [
+       "r17_faucet_column",
+       "R_finger_minus"
+      ],
+      [
+       "r17_faucet_column",
+       "R_gripper_r17_lever_bar"
+      ],
+      [
+       "r17_faucet_column",
+       "R_finger_minus"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.566,
+     "checker_pair": [
+      "r17_faucet_column",
+      "R_finger_minus"
+     ],
+     "evaluator_gate_mm": -0.566,
+     "evaluator_pair": [
+      "R_finger_minus",
+      "r17_faucet_column"
+     ]
+    }
+   ]
+  },
+  "lid": {
+   "scenes": [
+    "play:lid",
+    "app:lid:0",
+    "app:lid:1"
+   ],
+   "nominal": {
+    "play:lid": {
+     "exact_min_gate_mm": 1.0,
+     "exact_min_contact_mm": 6.0,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r16_rack_base"
+     ],
+     "label": "kf 7->8 (over the rack -> in the rack)",
+     "checker_reported_mm": 1.0,
+     "checker_reported_exact_there_mm": 1.0
+    },
+    "app:lid:0": {
+     "exact_min_gate_mm": 13.309,
+     "exact_min_contact_mm": 19.642,
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ],
+     "label": "approach@lift off#0 step 0 (0 cm back)",
+     "checker_reported_mm": 10.0,
+     "checker_reported_exact_there_mm": null
+    },
+    "app:lid:1": {
+     "exact_min_gate_mm": 14.642,
+     "exact_min_contact_mm": 19.642,
+     "pair": [
+      "R_finger_plus",
+      "r16_lid_rim"
+     ],
+     "label": "approach@in the rack#8 step 0 (0 cm back)",
+     "checker_reported_mm": 7.2,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {
+    "cart:tilt_x": {
+     "gate": {
+      "tol": 0.616,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_0",
+       "r14_hood"
+      ],
+      "label": "approach@lift off#0 step 0 (0 cm back)",
+      "scene": "app:lid:0"
+     },
+     "contact": {
+      "tol": 1.112,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_finger_plus",
+       "r16_lid_rim"
+      ],
+      "label": "approach@lift off#0 step 0 (0 cm back)",
+      "scene": "app:lid:0"
+     }
+    },
+    "cart:y": {
+     "gate": {
+      "tol": 13.305,
+      "bounded": true,
+      "sign": 1,
+      "unit": "mm",
+      "pair": [
+       "R_geom_enc2_ua_0",
+       "r14_hood"
+      ],
+      "label": "approach@lift off#0 step 0 (0 cm back)",
+      "scene": "app:lid:0"
+     },
+     "contact": {
+      "tol": 15.0,
+      "bounded": false,
+      "sign": 1,
+      "unit": "mm",
+      "pair": null,
+      "label": "",
+      "scene": "app:lid:0"
+     }
+    },
+    "cart:yaw": {
+     "gate": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "app:lid:0"
+     },
+     "contact": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "app:lid:0"
+     }
+    }
+   },
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 1.42,
+      "rss": 0.58,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        0.616,
+        0.41
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        0.616,
+        0.24
+       ],
+       [
+        "dock_yaw",
+        0.3,
+        1.5,
+        0.2
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 1.08,
+      "rss": 0.41,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        1.112,
+        0.22
+       ],
+       [
+        "dock_yaw",
+        0.3,
+        1.5,
+        0.2
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        1.112,
+        0.13
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0.39,
+      "rss": 0.21,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        13.305,
+        0.15
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.5,
+        0.13
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        13.305,
+        0.04
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.36,
+      "rss": 0.19,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.5,
+        0.13
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0.42,
+      "rss": 0.2,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.616,
+        0.16
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.616,
+        0.08
+       ],
+       [
+        "dock_y",
+        0.5,
+        13.305,
+        0.04
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.29,
+      "rss": 0.12,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        1.112,
+        0.09
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        1.112,
+        0.04
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0.36,
+      "rss": 0.18,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.616,
+        0.16
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        0.616,
+        0.05
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        13.305,
+        0.04
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.25,
+      "rss": 0.11,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        1.112,
+        0.09
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        1.112,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 0,
+     "value": 12.9058,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.403,
+     "checker_pair": [
+      "r14_hood",
+      "R_geom_enc2_ua_0"
+     ],
+     "evaluator_gate_mm": 0.403,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 0,
+     "value": 13.732,
+     "checker_hits": [
+      [
+       "r14_hood",
+       "R_geom_enc2_ua_0"
+      ],
+      [
+       "r14_hood",
+       "R_geom_enc2_ua_0"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.423,
+     "checker_pair": [
+      "r14_hood",
+      "R_geom_enc2_ua_0"
+     ],
+     "evaluator_gate_mm": -0.423,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "spider": {
+   "scenes": [
+    "play:spider",
+    "app:spider:0",
+    "app:spider:1"
+   ],
+   "nominal": {
+    "play:spider": {
+     "exact_min_gate_mm": 1.125,
+     "exact_min_contact_mm": 10.369,
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ],
+     "label": "kf 16->17 (out and up -> -)",
+     "checker_reported_mm": 2.03,
+     "checker_reported_exact_there_mm": 19.135
+    },
+    "app:spider:0": {
+     "exact_min_gate_mm": 2.167,
+     "exact_min_contact_mm": 12.167,
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ],
+     "label": "approach@pick#0 step 0 (0 cm back)",
+     "checker_reported_mm": 4.2,
+     "checker_reported_exact_there_mm": null
+    },
+    "app:spider:1": {
+     "exact_min_gate_mm": 2.167,
+     "exact_min_contact_mm": 12.167,
+     "pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ],
+     "label": "approach@on the rest#18 step 0 (0 cm back)",
+     "checker_reported_mm": 4.2,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {
+    "cart:tilt_x": {
+     "gate": {
+      "tol": 0.075,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r14_upper_over_hood"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:spider:0"
+     },
+     "contact": {
+      "tol": 0.434,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r14_upper_over_hood"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:spider:0"
+     }
+    },
+    "cart:y": {
+     "gate": {
+      "tol": 2.156,
+      "bounded": true,
+      "sign": 1,
+      "unit": "mm",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r14_upper_over_hood"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:spider:0"
+     },
+     "contact": {
+      "tol": 12.156,
+      "bounded": true,
+      "sign": 1,
+      "unit": "mm",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r14_upper_over_hood"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:spider:0"
+     }
+    },
+    "cart:yaw": {
+     "gate": {
+      "tol": 0.603,
+      "bounded": true,
+      "sign": 1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_4",
+       "r14_upper_over_hood"
+      ],
+      "label": "approach@pick#0 step 0 (0 cm back)",
+      "scene": "app:spider:0"
+     },
+     "contact": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "app:spider:0"
+     }
+    }
+   },
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 8.87,
+      "rss": 4.17,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        0.075,
+        3.33
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        0.075,
+        2.0
+       ],
+       [
+        "arm_accuracy",
+        2.0,
+        2.156,
+        0.93
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 1.73,
+      "rss": 0.75,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        0.434,
+        0.58
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        0.434,
+        0.35
+       ],
+       [
+        "dock_yaw",
+        0.3,
+        1.5,
+        0.2
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 1.84,
+      "rss": 1.03,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        2.156,
+        0.93
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        0.603,
+        0.33
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        2.156,
+        0.23
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.41,
+      "rss": 0.22,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        12.156,
+        0.16
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.5,
+        0.13
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        12.156,
+        0.04
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 2.9,
+      "rss": 1.54,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.075,
+        1.33
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.075,
+        0.67
+       ],
+       [
+        "dock_y",
+        0.5,
+        2.156,
+        0.23
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.53,
+      "rss": 0.27,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.434,
+        0.23
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.434,
+        0.12
+       ],
+       [
+        "dock_y",
+        0.5,
+        12.156,
+        0.04
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 2.5,
+      "rss": 1.43,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.075,
+        1.33
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        0.075,
+        0.4
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        2.156,
+        0.23
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.45,
+      "rss": 0.25,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.434,
+        0.23
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        0.434,
+        0.07
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        12.156,
+        0.04
+       ]
+      ],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 0,
+     "value": 2.0913,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.075,
+     "checker_pair": [
+      "r14_upper_over_hood",
+      "R_geom_enc2_ua_4"
+     ],
+     "evaluator_gate_mm": 0.075,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 0,
+     "value": 2.2536,
+     "checker_hits": [
+      [
+       "r14_upper_over_hood",
+       "R_geom_enc2_ua_4"
+      ],
+      [
+       "r14_upper_over_hood",
+       "R_geom_enc2_ua_4"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.087,
+     "checker_pair": [
+      "r14_upper_over_hood",
+      "R_geom_enc2_ua_4"
+     ],
+     "evaluator_gate_mm": -0.087,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    },
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "state": 0,
+     "value": 0.5849,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.073,
+     "checker_pair": [
+      "r14_upper_over_hood",
+      "R_geom_enc2_ua_4"
+     ],
+     "evaluator_gate_mm": 0.073,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    },
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "state": 0,
+     "value": 0.6242,
+     "checker_hits": [
+      [
+       "r14_upper_over_hood",
+       "R_geom_enc2_ua_4"
+      ],
+      [
+       "r14_upper_over_hood",
+       "R_geom_enc2_ua_4"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.067,
+     "checker_pair": [
+      "r14_upper_over_hood",
+      "R_geom_enc2_ua_4"
+     ],
+     "evaluator_gate_mm": -0.067,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_4",
+      "r14_upper_over_hood"
+     ]
+    }
+   ]
+  }
+ },
+ "edges": {
+  "H_SINK__H_WOK": {
+   "scenes": [
+    "edge:H_SINK__H_WOK"
+   ],
+   "nominal": {
+    "edge:H_SINK__H_WOK": {
+     "exact_min_gate_mm": 80.0,
+     "exact_min_contact_mm": 80.0,
+     "pair": null,
+     "label": "H_SINK->H_WOK 0.0%",
+     "checker_reported_mm": 58.4,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "H_SPAT__H_SINK": {
+   "scenes": [
+    "edge:H_SPAT__H_SINK"
+   ],
+   "nominal": {
+    "edge:H_SPAT__H_SINK": {
+     "exact_min_gate_mm": 80.0,
+     "exact_min_contact_mm": 80.0,
+     "pair": null,
+     "label": "H_SPAT->H_SINK 0.0%",
+     "checker_reported_mm": 58.4,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "H_WOK__H_POT": {
+   "scenes": [
+    "edge:H_WOK__H_POT"
+   ],
+   "nominal": {
+    "edge:H_WOK__H_POT": {
+     "exact_min_gate_mm": 80.0,
+     "exact_min_contact_mm": 80.0,
+     "pair": null,
+     "label": "H_WOK->H_POT 0.0%",
+     "checker_reported_mm": 58.4,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LEV_C__H_SINK": {
+   "scenes": [
+    "edge:LEV_C__H_SINK"
+   ],
+   "nominal": {
+    "edge:LEV_C__H_SINK": {
+     "exact_min_gate_mm": 4.346,
+     "exact_min_contact_mm": 14.346,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_C->H_SINK 12.5%",
+     "checker_reported_mm": 2.3,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {
+    "cart:tilt_x": {
+     "gate": {
+      "tol": 0.613,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_w1_1",
+       "r07_closed_door_1_0"
+      ],
+      "label": "LEV_C->H_SINK 13.1%",
+      "scene": "edge:LEV_C__H_SINK"
+     },
+     "contact": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "edge:LEV_C__H_SINK"
+     }
+    },
+    "cart:y": {
+     "gate": {
+      "tol": 7.781,
+      "bounded": true,
+      "sign": 1,
+      "unit": "mm",
+      "pair": [
+       "R_geom_enc2_w1_1",
+       "r07_closed_door_1_0"
+      ],
+      "label": "LEV_C->H_SINK 12.7%",
+      "scene": "edge:LEV_C__H_SINK"
+     },
+     "contact": {
+      "tol": 15.0,
+      "bounded": false,
+      "sign": 1,
+      "unit": "mm",
+      "pair": null,
+      "label": "",
+      "scene": "edge:LEV_C__H_SINK"
+     }
+    },
+    "cart:yaw": {
+     "gate": {
+      "tol": 0.609,
+      "bounded": true,
+      "sign": 1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_w1_1",
+       "r07_closed_door_1_0"
+      ],
+      "label": "LEV_C->H_SINK 12.7%",
+      "scene": "edge:LEV_C__H_SINK"
+     },
+     "contact": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "edge:LEV_C__H_SINK"
+     }
+    }
+   },
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 2.22,
+      "rss": 0.85,
+      "top": [
+       [
+        "dock_yaw",
+        0.3,
+        0.609,
+        0.49
+       ],
+       [
+        "load_tilt_x",
+        0.25,
+        0.613,
+        0.41
+       ],
+       [
+        "mount_yaw",
+        0.2,
+        0.609,
+        0.33
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.99,
+      "rss": 0.37,
+      "top": [
+       [
+        "dock_yaw",
+        0.3,
+        1.5,
+        0.2
+       ],
+       [
+        "load_tilt_x",
+        0.25,
+        1.5,
+        0.17
+       ],
+       [
+        "mount_yaw",
+        0.2,
+        1.5,
+        0.13
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0.77,
+      "rss": 0.43,
+      "top": [
+       [
+        "dock_yaw",
+        0.2,
+        0.609,
+        0.33
+       ],
+       [
+        "dock_y",
+        2.0,
+        7.781,
+        0.26
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        7.781,
+        0.06
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.36,
+      "rss": 0.19,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.5,
+        0.13
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0.58,
+      "rss": 0.23,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.613,
+        0.16
+       ],
+       [
+        "dock_yaw",
+        0.05,
+        0.609,
+        0.08
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.613,
+        0.08
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.26,
+      "rss": 0.1,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
+        0.07
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
+       ],
+       [
+        "dock_yaw",
+        0.05,
+        1.5,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0.48,
+      "rss": 0.2,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.613,
+        0.16
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        7.781,
+        0.06
+       ],
+       [
+        "dock_yaw",
+        0.03,
+        0.609,
+        0.05
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.22,
+      "rss": 0.09,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        1.5,
+        0.07
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ],
+       [
+        "dock_y",
+        0.3,
+        15.0,
+        0.02
+       ]
+      ],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 199,
+     "value": 7.5476,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.144,
+     "checker_pair": [
+      "r07_closed_door_1_0",
+      "R_geom_enc2_w1_1"
+     ],
+     "evaluator_gate_mm": 0.144,
+     "evaluator_pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ]
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 199,
+     "value": 8.0464,
+     "checker_hits": [
+      [
+       "r07_closed_door_1_0",
+       "R_geom_enc2_w1_1"
+      ],
+      [
+       "r07_closed_door_1_0",
+       "R_geom_enc2_w1_1"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.136,
+     "checker_pair": [
+      "r07_closed_door_1_0",
+      "R_geom_enc2_w1_1"
+     ],
+     "evaluator_gate_mm": -0.136,
+     "evaluator_pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ]
+    },
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "state": 199,
+     "value": 0.5907,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.139,
+     "checker_pair": [
+      "r07_closed_door_1_0",
+      "R_geom_enc2_w1_1"
+     ],
+     "evaluator_gate_mm": 0.139,
+     "evaluator_pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ]
+    },
+    {
+     "axis": "yaw",
+     "sign": 1,
+     "state": 199,
+     "value": 0.6314,
+     "checker_hits": [
+      [
+       "r07_closed_door_1_0",
+       "R_geom_enc2_w1_1"
+      ],
+      [
+       "r07_closed_door_1_0",
+       "R_geom_enc2_w1_1"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.151,
+     "checker_pair": [
+      "r07_closed_door_1_0",
+      "R_geom_enc2_w1_1"
+     ],
+     "evaluator_gate_mm": -0.151,
+     "evaluator_pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ]
+    }
+   ]
+  },
+  "LEV_C__H_SPAT": {
+   "scenes": [
+    "edge:LEV_C__H_SPAT"
+   ],
+   "nominal": {
+    "edge:LEV_C__H_SPAT": {
+     "exact_min_gate_mm": 4.336,
+     "exact_min_contact_mm": 14.336,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_C->H_SPAT 12.4%",
+     "checker_reported_mm": 2.4,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LEV_C__H_WOK": {
+   "scenes": [
+    "edge:LEV_C__H_WOK"
+   ],
+   "nominal": {
+    "edge:LEV_C__H_WOK": {
+     "exact_min_gate_mm": 4.336,
+     "exact_min_contact_mm": 14.336,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_C->H_WOK 12.4%",
+     "checker_reported_mm": 2.4,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LEV_O__H_SINK": {
+   "scenes": [
+    "edge:LEV_O__H_SINK"
+   ],
+   "nominal": {
+    "edge:LEV_O__H_SINK": {
+     "exact_min_gate_mm": 16.034,
+     "exact_min_contact_mm": 22.0,
+     "pair": [
+      "R_geom_enc2_fa_3",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->H_SINK 4.2%",
+     "checker_reported_mm": 2.8,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LEV_O__H_SPAT": {
+   "scenes": [
+    "edge:LEV_O__H_SPAT"
+   ],
+   "nominal": {
+    "edge:LEV_O__H_SPAT": {
+     "exact_min_gate_mm": 16.034,
+     "exact_min_contact_mm": 22.0,
+     "pair": [
+      "R_geom_enc2_fa_3",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->H_SPAT 3.7%",
+     "checker_reported_mm": 2.8,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LEV_O__H_WOK": {
+   "scenes": [
+    "edge:LEV_O__H_WOK"
+   ],
+   "nominal": {
+    "edge:LEV_O__H_WOK": {
+     "exact_min_gate_mm": 16.034,
+     "exact_min_contact_mm": 22.0,
+     "pair": [
+      "R_geom_enc2_fa_3",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->H_WOK 3.6%",
+     "checker_reported_mm": 2.8,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LEV_O__WOK": {
+   "scenes": [
+    "edge:LEV_O__WOK"
+   ],
+   "nominal": {
+    "edge:LEV_O__WOK": {
+     "exact_min_gate_mm": 16.034,
+     "exact_min_contact_mm": 22.0,
+     "pair": [
+      "R_geom_enc2_fa_3",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_O->WOK 2.4%",
+     "checker_reported_mm": 2.1,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LID_POT__H_POT": {
+   "scenes": [
+    "edge:LID_POT__H_POT"
+   ],
+   "nominal": {
+    "edge:LID_POT__H_POT": {
+     "exact_min_gate_mm": 20.341,
+     "exact_min_contact_mm": 30.341,
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ],
+     "label": "LID_POT->H_POT 0.0%",
+     "checker_reported_mm": 19.5,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LID_POT__H_WOK": {
+   "scenes": [
+    "edge:LID_POT__H_WOK"
+   ],
+   "nominal": {
+    "edge:LID_POT__H_WOK": {
+     "exact_min_gate_mm": 20.341,
+     "exact_min_contact_mm": 30.341,
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ],
+     "label": "LID_POT->H_WOK 0.0%",
+     "checker_reported_mm": 19.5,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LID_RACK__H_POT": {
+   "scenes": [
+    "edge:LID_RACK__H_POT"
+   ],
+   "nominal": {
+    "edge:LID_RACK__H_POT": {
+     "exact_min_gate_mm": 22.3,
+     "exact_min_contact_mm": 30.806,
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r16_spider_block"
+     ],
+     "label": "LID_RACK->H_POT 0.0%",
+     "checker_reported_mm": 2.0,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "LID_RACK__H_WOK": {
+   "scenes": [
+    "edge:LID_RACK__H_WOK"
+   ],
+   "nominal": {
+    "edge:LID_RACK__H_WOK": {
+     "exact_min_gate_mm": 22.3,
+     "exact_min_contact_mm": 30.806,
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r16_spider_block"
+     ],
+     "label": "LID_RACK->H_WOK 0.0%",
+     "checker_reported_mm": 2.1,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "SPAT__H_SINK": {
+   "scenes": [
+    "edge:SPAT__H_SINK"
+   ],
+   "nominal": {
+    "edge:SPAT__H_SINK": {
+     "exact_min_gate_mm": 29.607,
+     "exact_min_contact_mm": 34.607,
+     "pair": [
+      "R_finger_plus",
+      "r16_spatula_handle"
+     ],
+     "label": "SPAT->H_SINK 3.2%",
+     "checker_reported_mm": 23.4,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "SPAT__H_SPAT": {
+   "scenes": [
+    "edge:SPAT__H_SPAT"
+   ],
+   "nominal": {
+    "edge:SPAT__H_SPAT": {
+     "exact_min_gate_mm": 31.216,
+     "exact_min_contact_mm": 36.216,
+     "pair": [
+      "R_finger_plus",
+      "r16_spatula_handle"
+     ],
+     "label": "SPAT->H_SPAT 3.5%",
+     "checker_reported_mm": 23.7,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "SPAT__LEV_C": {
+   "scenes": [
+    "edge:SPAT__LEV_C"
+   ],
+   "nominal": {
+    "edge:SPAT__LEV_C": {
+     "exact_min_gate_mm": 4.346,
+     "exact_min_contact_mm": 14.346,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ],
+     "label": "SPAT->LEV_C 93.2%",
+     "checker_reported_mm": 2.3,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "SPIDER__H_POT": {
+   "scenes": [
+    "edge:SPIDER__H_POT"
+   ],
+   "nominal": {
+    "edge:SPIDER__H_POT": {
+     "exact_min_gate_mm": 7.369,
+     "exact_min_contact_mm": 17.369,
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ],
+     "label": "SPIDER->H_POT 0.0%",
+     "checker_reported_mm": 2.1,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {
+    "cart:tilt_x": {
+     "gate": {
+      "tol": 0.337,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_0",
+       "r14_hood"
+      ],
+      "label": "SPIDER->H_POT 0.0%",
+      "scene": "edge:SPIDER__H_POT"
+     },
+     "contact": {
+      "tol": 0.833,
+      "bounded": true,
+      "sign": -1,
+      "unit": "deg",
+      "pair": [
+       "R_geom_enc2_ua_0",
+       "r14_hood"
+      ],
+      "label": "SPIDER->H_POT 0.0%",
+      "scene": "edge:SPIDER__H_POT"
+     }
+    },
+    "cart:y": {
+     "gate": {
+      "tol": 7.344,
+      "bounded": true,
+      "sign": 1,
+      "unit": "mm",
+      "pair": [
+       "R_geom_enc2_ua_0",
+       "r14_hood"
+      ],
+      "label": "SPIDER->H_POT 0.0%",
+      "scene": "edge:SPIDER__H_POT"
+     },
+     "contact": {
+      "tol": 15.0,
+      "bounded": false,
+      "sign": 1,
+      "unit": "mm",
+      "pair": null,
+      "label": "",
+      "scene": "edge:SPIDER__H_POT"
+     }
+    },
+    "cart:yaw": {
+     "gate": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "edge:SPIDER__H_POT"
+     },
+     "contact": {
+      "tol": 1.5,
+      "bounded": false,
+      "sign": 1,
+      "unit": "deg",
+      "pair": null,
+      "label": "",
+      "scene": "edge:SPIDER__H_POT"
+     }
+    }
+   },
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 2.31,
+      "rss": 0.98,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        0.337,
+        0.74
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        0.337,
+        0.45
+       ],
+       [
+        "arm_accuracy",
+        2.0,
+        7.344,
+        0.27
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 1.2,
+      "rss": 0.47,
+      "top": [
+       [
+        "load_tilt_x",
+        0.25,
+        0.833,
+        0.3
+       ],
+       [
+        "dock_yaw",
+        0.3,
+        1.5,
+        0.2
+       ],
+       [
+        "floor_tilt_x",
+        0.15,
+        0.833,
+        0.18
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0.58,
+      "rss": 0.32,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        7.344,
+        0.27
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.5,
+        0.13
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        7.344,
+        0.07
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.36,
+      "rss": 0.19,
+      "top": [
+       [
+        "dock_y",
+        2.0,
+        15.0,
+        0.13
+       ],
+       [
+        "dock_yaw",
+        0.2,
+        1.5,
+        0.13
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0.72,
+      "rss": 0.35,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.337,
+        0.3
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.337,
+        0.15
+       ],
+       [
+        "dock_y",
+        0.5,
+        7.344,
+        0.07
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.34,
+      "rss": 0.15,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.833,
+        0.12
+       ],
+       [
+        "floor_tilt_x",
+        0.05,
+        0.833,
+        0.06
+       ],
+       [
+        "dock_y",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0.62,
+      "rss": 0.33,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.337,
+        0.3
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        0.337,
+        0.09
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        7.344,
+        0.07
+       ]
+      ],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0.29,
+      "rss": 0.14,
+      "top": [
+       [
+        "load_tilt_x",
+        0.1,
+        0.833,
+        0.12
+       ],
+       [
+        "floor_tilt_x",
+        0.03,
+        0.833,
+        0.04
+       ],
+       [
+        "tracking_sync",
+        0.5,
+        15.0,
+        0.03
+       ]
+      ],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": [
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 0,
+     "value": 7.1237,
+     "checker_hits": [],
+     "checker_hit_reasons": [],
+     "checker_min_reserve_mm": 0.245,
+     "checker_pair": [
+      "r14_hood",
+      "R_geom_enc2_ua_0"
+     ],
+     "evaluator_gate_mm": 0.245,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    },
+    {
+     "axis": "y",
+     "sign": 1,
+     "state": 0,
+     "value": 7.5963,
+     "checker_hits": [
+      [
+       "r14_hood",
+       "R_geom_enc2_ua_0"
+      ],
+      [
+       "r14_hood",
+       "R_geom_enc2_ua_0"
+      ]
+     ],
+     "checker_hit_reasons": [
+      "independent convex upper witness violates gap",
+      "mujoco contact"
+     ],
+     "checker_min_reserve_mm": -0.228,
+     "checker_pair": [
+      "r14_hood",
+      "R_geom_enc2_ua_0"
+     ],
+     "evaluator_gate_mm": -0.228,
+     "evaluator_pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ]
+    }
+   ]
+  },
+  "SPIDER__H_WOK": {
+   "scenes": [
+    "edge:SPIDER__H_WOK"
+   ],
+   "nominal": {
+    "edge:SPIDER__H_WOK": {
+     "exact_min_gate_mm": 7.369,
+     "exact_min_contact_mm": 17.369,
+     "pair": [
+      "R_geom_enc2_ua_0",
+      "r14_hood"
+     ],
+     "label": "SPIDER->H_WOK 0.0%",
+     "checker_reported_mm": 2.0,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "WOK__H_POT": {
+   "scenes": [
+    "edge:WOK__H_POT"
+   ],
+   "nominal": {
+    "edge:WOK__H_POT": {
+     "exact_min_gate_mm": 22.297,
+     "exact_min_contact_mm": 27.297,
+     "pair": [
+      "R_finger_plus",
+      "r15_camera"
+     ],
+     "label": "WOK->H_POT 13.2%",
+     "checker_reported_mm": 2.0,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "WOK__H_SINK": {
+   "scenes": [
+    "edge:WOK__H_SINK"
+   ],
+   "nominal": {
+    "edge:WOK__H_SINK": {
+     "exact_min_gate_mm": 25.331,
+     "exact_min_contact_mm": 30.331,
+     "pair": [
+      "R_finger_plus",
+      "r15_wok_grip"
+     ],
+     "label": "WOK->H_SINK 0.0%",
+     "checker_reported_mm": 2.0,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  },
+  "WOK__H_WOK": {
+   "scenes": [
+    "edge:WOK__H_WOK"
+   ],
+   "nominal": {
+    "edge:WOK__H_WOK": {
+     "exact_min_gate_mm": 25.331,
+     "exact_min_contact_mm": 30.331,
+     "pair": [
+      "R_finger_plus",
+      "r15_wok_grip"
+     ],
+     "label": "WOK->H_WOK 0.0%",
+     "checker_reported_mm": 2.1,
+     "checker_reported_exact_there_mm": null
+    }
+   },
+   "tolerance": {},
+   "utilization": {
+    "as_designed": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "R09_requirement": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "dock_stops": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    },
+    "touch_off": {
+     "gate": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     },
+     "contact": {
+      "lin": 0,
+      "rss": 0.0,
+      "top": [],
+      "fixture_term": null
+     }
+    }
+   },
+   "corners": {},
+   "validation": []
+  }
+ },
+ "budget": {
+  "items": [
+   {
+    "name": "dock_x",
+    "axis": "x",
+    "unit": "mm",
+    "as_designed": 2.0,
+    "R09_requirement": 2.0,
+    "dock_stops": 0.3,
+    "touch_off": 0.2,
+    "label": "E",
+    "basis": "x registration at set start. As designed there is no x datum (mobile.py: the bumper fixes y only): homing at the counter-end stop + encoder counts. Indexed stop / pin per station; touch-off."
+   },
+   {
+    "name": "odometry_x",
+    "axis": "x",
+    "unit": "mm",
+    "as_designed": 5.0,
+    "R09_requirement": 0.0,
+    "dock_stops": 1.0,
+    "touch_off": 1.0,
+    "label": "E",
+    "basis": "in-set cart travel up to ~1 m (the wok carry 0.66 m, spatula 1.05 m, hub edges up to 1.15 m): 0.5 % (effective tyre radius not calibrated, slip) / 0.1 % calibrated. Encoder: ZLTECH ZLLG65ASM500 4096 lines (S), resolution 0.03-0.13 mm, not the limit. R09 counts it inside its +-2 mm."
+   },
+   {
+    "name": "dock_y",
+    "axis": "y",
+    "unit": "mm",
+    "as_designed": 1.5,
+    "R09_requirement": 2.0,
+    "dock_stops": 0.5,
+    "touch_off": 0.3,
+    "label": "E",
+    "basis": "bumper on the cabinet fronts: door flushness +-1 mm + bumper compression +-0.5 mm; datum rail / stop on the plinth; touch-off."
+   },
+   {
+    "name": "dock_yaw",
+    "axis": "yaw",
+    "unit": "deg",
+    "as_designed": 0.3,
+    "R09_requirement": 0.2,
+    "dock_stops": 0.05,
+    "touch_off": 0.03,
+    "label": "E",
+    "basis": "bumper over 0.56 m on fronts that are flush to +-1.5 mm -> +-0.3 deg; V-block + flat; touch-off. Pivot: the arm J1 axis."
+   },
+   {
+    "name": "floor_z",
+    "axis": "z",
+    "unit": "mm",
+    "as_designed": 1.0,
+    "R09_requirement": 1.0,
+    "dock_stops": 0.5,
+    "touch_off": 0.3,
+    "label": "E",
+    "basis": "floor height under the 4 contacts + tyre radius (R09 requirement +-1 mm height)."
+   },
+   {
+    "name": "floor_tilt_x",
+    "axis": "tilt_x",
+    "unit": "deg",
+    "as_designed": 0.15,
+    "R09_requirement": 0.0,
+    "dock_stops": 0.05,
+    "touch_off": 0.03,
+    "label": "E",
+    "basis": "tile floor unevenness ~0.5 mm across the 0.21 m caster-to-drive-wheel base (flatness spec of tiled floors is commonly 2 mm / 2 m; not verified in the standard text). Toward the counter = tilt_x -. Static per station: measured at commissioning (3-point touch-off / inclinometer) and compensated in dock_stops / touch_off."
+   },
+   {
+    "name": "floor_tilt_y",
+    "axis": "tilt_y",
+    "unit": "deg",
+    "as_designed": 0.07,
+    "R09_requirement": 0.0,
+    "dock_stops": 0.03,
+    "touch_off": 0.03,
+    "label": "E",
+    "basis": "as above across the 0.44 m track."
+   },
+   {
+    "name": "load_tilt_x",
+    "axis": "tilt_x",
+    "unit": "deg",
+    "as_designed": 0.25,
+    "R09_requirement": 0.0,
+    "dock_stops": 0.1,
+    "touch_off": 0.1,
+    "label": "E",
+    "basis": "tyre / caster / bumper / cabinet-front compliance under the arm moment (~60 N m with the wok at reach, #13): lean toward the counter. Posture-dependent, so a set-start touch-off does not remove it; stiffer bumper datum + measured pre-compensation. Mast bending: 0.003 deg (120x120x4 steel tube est.), negligible."
+   },
+   {
+    "name": "mount_xy",
+    "axis": "any",
+    "unit": "mm",
+    "as_designed": 0.5,
+    "R09_requirement": 0.05,
+    "dock_stops": 0.05,
+    "touch_off": 0.05,
+    "label": "E",
+    "basis": "arm base on the mast plate: four M8 bolts (S, UR manual) in clearance holes; dowel-pinned + calibrated plate."
+   },
+   {
+    "name": "mount_yaw",
+    "axis": "yaw",
+    "unit": "deg",
+    "as_designed": 0.2,
+    "R09_requirement": 0.02,
+    "dock_stops": 0.02,
+    "touch_off": 0.02,
+    "label": "E",
+    "basis": "base rotation in the bolt clearance; pinned."
+   },
+   {
+    "name": "arm_accuracy",
+    "axis": "any",
+    "unit": "mm",
+    "as_designed": 2.0,
+    "R09_requirement": 0.3,
+    "dock_stops": 0.3,
+    "touch_off": 0.3,
+    "label": "S/E",
+    "basis": "UR5e absolute accuracy with the sim's nominal kinematics: >= 2 mm (S, ROS answers 324883); with the robot's own factory calibration exported into the checker: ~0.3 mm (E)."
+   },
+   {
+    "name": "arm_repeatability",
+    "axis": "any",
+    "unit": "mm",
+    "as_designed": 0.03,
+    "R09_requirement": 0.03,
+    "dock_stops": 0.03,
+    "touch_off": 0.03,
+    "label": "S",
+    "basis": "UR5e pose repeatability +-0.03 mm, ISO 9283 (S, datasheet)."
+   },
+   {
+    "name": "tracking_sync",
+    "axis": "any",
+    "unit": "mm",
+    "as_designed": 1.5,
+    "R09_requirement": 0.5,
+    "dock_stops": 0.5,
+    "touch_off": 0.5,
+    "label": "E",
+    "basis": "servoj path following + cart / arm clock skew (4-10 ms x 0.25 m/s); #6. Hardware-synchronized cart axis / slower near tight spots."
+   },
+   {
+    "name": "thermal",
+    "axis": "any",
+    "unit": "mm",
+    "as_designed": 0.3,
+    "R09_requirement": 0.3,
+    "dock_stops": 0.3,
+    "touch_off": 0.3,
+    "label": "E",
+    "basis": "aluminium arm 0.85 m x 23e-6/K x 15 K = 0.3 mm; steel cart 0.2 mm; hot wok rim +0.4 mm radius."
+   },
+   {
+    "name": "grasp_offset",
+    "axis": "grasp_t",
+    "unit": "mm",
+    "as_designed": 1.0,
+    "R09_requirement": 0.5,
+    "dock_stops": 0.5,
+    "touch_off": 0.5,
+    "label": "E",
+    "basis": "held part in the jaws: keyed block, form-fit pads (R11) +-0.5 mm; +-1 mm with wear / debris."
+   },
+   {
+    "name": "grasp_turn",
+    "axis": "grasp_rot",
+    "unit": "deg",
+    "as_designed": 2.0,
+    "R09_requirement": 1.0,
+    "dock_stops": 1.0,
+    "touch_off": 1.0,
+    "label": "E",
+    "basis": "turn about the jaw axis under the moment (wok 6.47 of 7 N m PGC limit)."
+   }
+  ],
+  "fixture": {
+   "cooker": [
+    5,
+    1,
+    1,
+    0.5
+   ],
+   "drum": [
+    2,
+    1,
+    1,
+    0.5
+   ],
+   "faucet_body": [
+    2,
+    0.5,
+    0.5,
+    0.3
+   ],
+   "lever_clip": [
+    2,
+    0.5,
+    0.5,
+    0.3
+   ],
+   "plate1": [
+    10,
+    2,
+    2,
+    2
+   ],
+   "plate2": [
+    10,
+    2,
+    2,
+    2
+   ],
+   "spatula_pad": [
+    3,
+    1,
+    1,
+    0.5
+   ],
+   "lid_rack": [
+    2,
+    0.5,
+    0.5,
+    0.3
+   ],
+   "pot": [
+    3,
+    1,
+    1,
+    0.5
+   ],
+   "spider_rest": [
+    3,
+    1,
+    1,
+    0.5
+   ],
+   "sink": [
+    2,
+    0.5,
+    0.5,
+    0.3
+   ],
+   "raw": [
+    15,
+    15,
+    15,
+    15
+   ],
+   "bowls": [
+    5,
+    2,
+    2,
+    2
+   ],
+   "cups": [
+    3,
+    1,
+    1,
+    1
+   ],
+   "upper": [
+    3,
+    1,
+    1,
+    0.5
+   ],
+   "counter": [
+    2,
+    0.5,
+    0.5,
+    0.3
+   ],
+   "wall": [
+    2,
+    0.5,
+    0.5,
+    0.3
+   ]
+  },
+  "fixture_basis": "cooker: freestanding induction cooker (moved for cleaning) vs a counter-fixed locator; lid rack / spider rest / spatula pad: screwed to the counter, positions from a tape survey vs robot touch-off; faucet body / sink / upper cabinets / hood / counter: kitchen survey (tape +-2-3 mm vs touch-off +-0.3-0.5 mm); lever clip: hand-fitted clip vs keyed clip; plates: by hand vs a guarded stand; raw food on the prep tray: not a fixture (+-15 mm whatever the registration); all E.",
+  "scenarios": [
+   "as_designed",
+   "R09_requirement",
+   "dock_stops",
+   "touch_off"
+  ]
+ }
+}

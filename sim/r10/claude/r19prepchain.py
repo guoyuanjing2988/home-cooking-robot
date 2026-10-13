@@ -102,7 +102,7 @@ def action():
   c2='A' if KV.get('CA2') else 'F'
   Ry=K.Rz(L['lever'][2]+float(KV.get('PYAW',-20.)))   # the lever base's front (slide-in side) direction: the tomato and its grasp turned with the station (+PYAW: a diagonal slide-in)
   KF=head+[kf(Rp,S,float(KV['TAPC']) if 'TAPC' in KV else 'F',RINSE,'under the tap',anchor=True),kf(roll(Rp,RL),S,c2,RINSE,f'rolled +{RL:g}'),kf(roll(Rp,-RL),S,c2,RINSE,f'rolled -{RL:g}'),kf(Rp,S,c2,0,'level')]+tail+[
-   kf(Ry,seat+Ry@[0,-.135,.03],c2,0,'backed out, in front of the lever base'),kf(Ry,seat+Ry@[0,-.06,.008],float(KV['LVC']) if 'LVC' in KV else -0.35,0,'in front of the blade plate',anchor=True),kf(Ry,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
+   kf(Ry,seat+Ry@[0,-.135,.03],c2,0,'backed out, in front of the lever base'),kf(Ry,seat+Ry@[0,-.06,.008],(('F' if KV['LVC']=='F' else float(KV['LVC'])) if 'LVC' in KV else -0.35),0,'in front of the blade plate',anchor=True),kf(Ry,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
   w0=scene_with('lever',objs=[car]);w1=scene_with('lever',objs=[car])
   return 'tomato',dict(r19=w0),KF,[(0,w0,True),(len(KF)-1,w1,True)]
  if ACT=='tap':   # exploration: the held item from a front lane point into the outlet and back out (one anchor at the tap)

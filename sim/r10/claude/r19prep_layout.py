@@ -31,6 +31,8 @@ import kitchen15 as K15,kitchen16 as K,kitchen17 as K17,kitchen19 as K19
 import arms
 KV=dict(a.split('=',1) for a in sys.argv[2:]);MODE=sys.argv[1] if len(sys.argv)>1 else 'map'
 OUT='results/r19/prep';os.makedirs(OUT,exist_ok=True)
+HUBDIR=KV.get('HUBDIR','results/r19/hub').rstrip('/')   # the hub roadmap whose edges are screened / replayed (round 2: a re-planned hub, e.g. results/r19/hub_py.15_ur5e_enc2_pgc)
+SCREEN=f"{OUT}/layout_screen.json" if HUBDIR=='results/r19/hub' else f"{OUT}/layout_screen_{os.path.basename(HUBDIR)}.json"
 VOX=.02;LO=np.array([-2.6,-1.2,-.2]);DIM=np.array([270,130,130])   # as r19prim_swept.py
 def lin(ix):return (ix[:,0]*DIM[1]+ix[:,1])*DIM[2]+ix[:,2]
 def unlin(L):return np.stack([L//(DIM[1]*DIM[2]),(L//DIM[2])%DIM[1],L%DIM[2]],1)
@@ -54,7 +56,7 @@ def swept_all():
  cfg=chain.chain_cfg('SD',**{**BASE,'r16_tools':{'ladle':None}});tree,meta=build(cfg,None);ch=Checker(tree,meta);m,d=ch.m,ch.d
  rob=[g for g in range(m.ngeom) if m.geom(g).name.startswith('R_') and m.geom_type[g]!=mujoco.mjtGeom.mjGEOM_PLANE]
  cache={g:box_pts_local(m.geom_aabb[g,3:])+m.geom_aabb[g,:3] for g in rob}
- for f in sorted(glob.glob('results/r19/hub/edge_*.json')):
+ for f in sorted(glob.glob(f'{HUBDIR}/edge_*.json')):
   e=json.load(open(f))
   if not e.get('ok') or not e.get('qs'):continue
   acc=[]
@@ -120,10 +122,10 @@ if MODE=='screen':
   rows.append(dict(name=name,item=C['item'],desc=C['desc'],boxes=[dict(name=b,center=np.round(c,3).tolist(),size=list(s)) for b,c,s in boxes],
    static_overlaps=static,off_counter=off,flagged=len(flag),of=len(SW),by_action=dict(by),flagged_segments=sorted(flag)))
   print(f"{name:26s} {C['item']:9s} static {len(static):2d} {sorted({s['fixture'] for s in static})[:4]} off {off}  flagged {len(flag):3d}/{len(SW)} {dict(by)}",flush=True)
- save(f'{OUT}/layout_screen.json',dict(method=__doc__,swept_build_s=round(t_sw,1),segments=len(SW),rows=rows))
+ save(SCREEN,dict(hub_dir=HUBDIR,method=__doc__,swept_build_s=round(t_sw,1),segments=len(SW),rows=rows))
 # ---------------------------------------------------------------------------------------------------
 def replay_one(name):
- C=K19.CANDIDATES[name];boxes=K19.boxes(C);scr=json.load(open(f'{OUT}/layout_screen.json'))
+ C=K19.CANDIDATES[name];boxes=K19.boxes(C);scr=json.load(open(SCREEN))
  row=next((r for r in scr['rows'] if r['name']==name),None) or next(r for r in scr['rows'] if r['name']==KV.get('HUBFROM',''))   # HUBFROM: reuse a nearby screened candidate's flagged hub edges
  seglab=json.load(open('results/r19/prim/segments.json'))['labels']
  def with_boxes(tree):
@@ -151,7 +153,7 @@ def replay_one(name):
  r18b();cfg=chain.chain_cfg('SD',**{**BASE,'r16_tools':{'ladle':None},'r17_lever':0.,'r16_lid':'on','r17_plate2':[.17,K15.PLATE['c'][1],K15.PLATE['c'][2]]})
  tree,meta=build(cfg,None);ch=Checker(with_boxes(tree),meta)
  for k in hub:
-  e=json.load(open(f"results/r19/hub/edge_{k[10:]}.json"));h=0;g=None
+  e=json.load(open(f"{HUBDIR}/edge_{k[10:]}.json"));h=0;g=None
   for q in e['qs']:
    c=ch.check(np.array(q),full=False,mass=0.);n_states+=1;hs=[x for x in c['hits'] if any(gg.startswith('cand_') for gg in x['pair'])]
    if hs:
@@ -163,12 +165,12 @@ def replay_one(name):
   results=res,any_hit=any((v.get('hit_segments') or v.get('hit_states')) for v in res.values()))
  save(f"{OUT}/layout_replay_{name}{'__'+KV['ONLYEDGE'] if KV.get('ONLYEDGE') else ''}{'_chains' if KV.get('CHAINSONLY') else ''}{arms.tag()}.json",out);print(name,'any hit',out['any_hit'],'states',n_states,'elapsed',out['elapsed_s'],flush=True)
 if MODE=='replayedges':   # every flagged hub edge of NAMES (one candidate) in its own process, every state
- nm=KV['NAMES'];scr=json.load(open(f'{OUT}/layout_screen.json'))
+ nm=KV['NAMES'];scr=json.load(open(SCREEN))
  row=next((r for r in scr['rows'] if r['name']==nm),None) or next(r for r in scr['rows'] if r['name']==KV.get('HUBFROM',''))
  edges=[k for k in row['flagged_segments'] if k.startswith('hub_edge__')];print(nm,'flagged hub edges',edges,flush=True)
  from concurrent.futures import ThreadPoolExecutor
  def one(e):
-  r=subprocess.run([sys.executable,__file__,'replay',f'NAMES={nm}',f'ONLYEDGE={e}']+[a for a in sys.argv[2:] if a.startswith(('ARM=','HUBFROM='))],capture_output=True,text=True)
+  r=subprocess.run([sys.executable,__file__,'replay',f'NAMES={nm}',f'ONLYEDGE={e}']+[a for a in sys.argv[2:] if a.startswith(('ARM=','HUBFROM=','HUBDIR='))],capture_output=True,text=True)
   return e,(r.stdout.strip().splitlines() or [r.stderr[-300:]])
  with ThreadPoolExecutor(int(KV.get('NPAR',12))) as ex:
   for e,o in ex.map(one,edges):print(o[-2] if len(o)>1 else o[-1],flush=True)
@@ -177,7 +179,7 @@ if MODE=='replay':
  if len(names)==1 or npar==1:
   for nm in names:replay_one(nm)
  else:
-  procs=[subprocess.Popen([sys.executable,__file__,'replay',f'NAMES={nm}']+[a for a in sys.argv[2:] if a.startswith(('ARM=','HUBFROM=','CHAINSONLY='))]) for nm in names]
+  procs=[subprocess.Popen([sys.executable,__file__,'replay',f'NAMES={nm}']+[a for a in sys.argv[2:] if a.startswith(('ARM=','HUBFROM=','CHAINSONLY=','HUBDIR='))]) for nm in names]
   for p in procs:p.wait()
 # ---------------------------------------------------------------------------------------------------
 def reach_one(probe):

@@ -36,4 +36,4 @@ for a in ('carrot','tomato','press'):
  ax.plot(P[:,0],P[:,1],'-o',color=cols[a],ms=3,lw=1.2,label=f"{a} set ({r['time_s']} s, {'pass' if r['ok'] else 'fail'})",zorder=5)
 ax.set_xlim(-2.5,1.1);ax.set_ylim(-.12,.62);ax.set_aspect('equal');ax.set_xlabel('x along the counter (m)');ax.set_ylabel('y toward the wall (m)')
 ax.set_title('R19 prep layout in the R18b sim kitchen (top view, estimated sizes); lines = held-object keyframe paths')
-ax.legend(loc='upper right',fontsize=6,ncol=2);fig.tight_layout();os.makedirs('renders/r19',exist_ok=True);fig.savefig('renders/r19/prep_layout_r19.png',dpi=120);print('renders/r19/prep_layout_r19.png')
+ax.legend(loc='upper right',fontsize=6,ncol=2);fig.tight_layout();os.makedirs('renders/r19',exist_ok=True);o=KV.get('OUT','renders/r19/prep_layout_r19.png');fig.savefig(o,dpi=120);print(o)

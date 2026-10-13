@@ -1,0 +1,71 @@
+{
+ "scene": "edge:LEV_C__H_SINK",
+ "part": "cart-tilt_x",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r19/hub_py.15_ur5e_enc2_pgc/edge_LEV_C__H_SINK.json",
+  "kind": "edge",
+  "edge": "LEV_C__H_SINK",
+  "method": "straight",
+  "reported_min_reserve_mm": 2.3,
+  "src_n": 1563,
+  "densified": false
+ },
+ "states": 1563,
+ "stored_states": 1563,
+ "nominal_s": 1.1,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 361
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 209
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "tilt_x",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 0.613,
+    "bounded": true,
+    "violation_at": 0.616,
+    "binding": {
+     "state": 204,
+     "value_mm": -0.007,
+     "pair": [
+      "R_geom_enc2_w1_1",
+      "r07_closed_door_1_0"
+     ],
+     "label": "LEV_C->H_SINK 13.1%",
+     "src_index": 204.0
+    },
+    "evals": 264
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 209
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 5.9
+}
