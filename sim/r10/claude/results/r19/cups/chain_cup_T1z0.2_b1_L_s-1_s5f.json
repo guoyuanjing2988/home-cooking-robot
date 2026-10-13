@@ -1,0 +1,803 @@
+{
+  "act": "cup",
+  "obj": "cupL",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {
+    "r19seas": {
+      "site": "T1",
+      "cups": "L",
+      "taken": "b1",
+      "z": 0.2
+    }
+  },
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      -1.15,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.52,
+      0.36
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 52,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        0.315,
+        0.435,
+        1.137
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.315,
+        0.435,
+        1.159
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out",
+      "p": [
+        0.315,
+        0.395,
+        1.279
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        0.56,
+        0.07,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.07,
+        1.316
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "tipped 135 (poured)",
+      "p": [
+        0.83,
+        0.115,
+        1.425
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 6,
+      "label": "level",
+      "p": [
+        0.83,
+        0.07,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 7,
+      "label": "lane",
+      "p": [
+        0.56,
+        0.07,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 8,
+      "label": "out",
+      "p": [
+        0.315,
+        0.395,
+        1.279
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 9,
+      "label": "lowered",
+      "p": [
+        0.315,
+        0.435,
+        1.159
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 10,
+      "label": "set down",
+      "p": [
+        0.315,
+        0.435,
+        1.137
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "lifted#1": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "collision": 40,
+        "pose": 34,
+        "ok": 22,
+        "plume": 0
+      }
+    },
+    "lowered#9": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "collision": 40,
+        "pose": 34,
+        "ok": 22,
+        "plume": 0
+      }
+    },
+    "over the wok#4": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.35,
+      "start_reserve_mm": 6.3
+    }
+  },
+  "pieces": [
+    {
+      "frm": "over the wok#4",
+      "to": "lane#3",
+      "steps": 27,
+      "time_s": 2.7,
+      "min_reserve_mm": 4.7,
+      "min_plume_mm": 40.8,
+      "max_step_deg": 0.01,
+      "cart": [
+        0.34,
+        0.081
+      ]
+    },
+    {
+      "frm": "over the wok#4",
+      "to": "lane#7",
+      "steps": 163,
+      "time_s": 10.7,
+      "min_reserve_mm": 2.1,
+      "min_plume_mm": 15.3,
+      "max_step_deg": 2.04,
+      "cart": [
+        0.348,
+        0.08
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    },
+    {
+      "ok": false,
+      "kf": 10,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": 2.1,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "lifted",
+      "cand": 0,
+      "start_reserve_mm": 9.5,
+      "cart": 0.184,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.179,
+        "step_deg": 2.36,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 263.8,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 1,
+      "start_reserve_mm": 9.5,
+      "cart": 0.332,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.34,
+        "step_deg": 3.35,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "plume_mm": 211.7,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 2,
+      "start_reserve_mm": 9.5,
+      "cart": 0.189,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.184,
+        "step_deg": 2.4,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 263.8,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 3,
+      "start_reserve_mm": 9.5,
+      "cart": 0.181,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.18,
+        "step_deg": 2.2,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 268.6,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 4,
+      "start_reserve_mm": 9.5,
+      "cart": 0.199,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.194,
+        "step_deg": 2.48,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 263.8,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 5,
+      "start_reserve_mm": 9.5,
+      "cart": 0.473,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.474,
+        "step_deg": 2.08,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 109.7,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 0,
+      "start_reserve_mm": 33.0,
+      "cart": 0.675,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.671,
+        "step_deg": 0.83,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 27.3,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 1,
+      "start_reserve_mm": 31.9,
+      "cart": 0.671,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.671,
+        "step_deg": 1.59,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 27.3,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 2,
+      "start_reserve_mm": 28.7,
+      "cart": 0.454,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.406,
+        "step_deg": 2.11,
+        "pose_mm": 0.0,
+        "reserve_mm": 40.6,
+        "plume_mm": 28.3,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 3,
+      "start_reserve_mm": 6.3,
+      "cart": 0.35,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 0,
+      "start_reserve_mm": 9.5,
+      "cart": 0.184,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.179,
+        "step_deg": 2.36,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 263.8,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 1,
+      "start_reserve_mm": 9.5,
+      "cart": 0.332,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.34,
+        "step_deg": 3.35,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "plume_mm": 211.7,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 2,
+      "start_reserve_mm": 9.5,
+      "cart": 0.189,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.184,
+        "step_deg": 2.4,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 263.8,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 3,
+      "start_reserve_mm": 9.5,
+      "cart": 0.181,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.18,
+        "step_deg": 2.2,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 268.6,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 4,
+      "start_reserve_mm": 9.5,
+      "cart": 0.199,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.194,
+        "step_deg": 2.48,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 263.8,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 5,
+      "start_reserve_mm": 9.5,
+      "cart": 0.473,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.474,
+        "step_deg": 2.08,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 109.7,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_gripper_oem_envelope"
+          ],
+          [
+            "r07_closed_door_1_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null,
+    null
+  ],
+  "r19": {
+    "site": "T1",
+    "slot": "b1",
+    "size": "L",
+    "z": 0.2,
+    "approach_pitch_deg": 30.0,
+    "approach_m": 0.05,
+    "plume_m": 0.2,
+    "tip_deg": 135.0,
+    "out": {
+      "dy": -0.04,
+      "dz": 0.15
+    },
+    "pour": {
+      "cup_x": 0.83,
+      "cup_y": 0.07,
+      "yaw": -90.0,
+      "grip_z": 1.38,
+      "meet_x": 0.56
+    },
+    "min_plume_mm": 15.3,
+    "k_state": {
+      "tool_xy": {
+        "spatula": [
+          -1.15,
+          0.3
+        ],
+        "ladle": [
+          1.62,
+          0.24
+        ],
+        "spider": [
+          1.52,
+          0.36
+        ]
+      },
+      "spat_elev": 8.0,
+      "spat_yaw": 0.0,
+      "spat_roll": 180.0,
+      "design": {
+        "pot_h": 0.12,
+        "rack": 0.04,
+        "lid_a": 0.0,
+        "car_a": 45.0,
+        "rack_ry": 90.0
+      }
+    },
+    "cfg_held": {
+      "r14": true,
+      "present": [],
+      "r15": true,
+      "r16": true,
+      "r17": true,
+      "r16_lid": "rack",
+      "r15_drum_taken": true,
+      "r16_tools": {
+        "ladle": null
+      },
+      "r19seas": {
+        "site": "T1",
+        "cups": "L",
+        "taken": "b1",
+        "z": 0.2
+      },
+      "r16_held": {
+        "obj": "cupL",
+        "T_tool_obj": [
+          [
+            0.0,
+            0.8660254037844387,
+            -0.49999999999999994,
+            0.09045671475544961
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -0.49999999999999994,
+            -0.8660254037844387,
+            0.021675625842204095
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    "cfg_approach": [
+      {
+        "r14": true,
+        "present": [],
+        "r15": true,
+        "r16": true,
+        "r17": true,
+        "r16_lid": "rack",
+        "r15_drum_taken": true,
+        "r16_tools": {
+          "ladle": null
+        },
+        "r19seas": {
+          "site": "T1",
+          "cups": "L",
+          "taken": null,
+          "z": 0.2
+        }
+      },
+      {
+        "r14": true,
+        "present": [],
+        "r15": true,
+        "r16": true,
+        "r17": true,
+        "r16_lid": "rack",
+        "r15_drum_taken": true,
+        "r16_tools": {
+          "ladle": null
+        },
+        "r19seas": {
+          "site": "T1",
+          "cups": "L",
+          "taken": null,
+          "z": 0.2
+        }
+      }
+    ],
+    "argv": [
+      "ACT=cup",
+      "SIZE=L",
+      "SEEDS=1",
+      "TRIES=6",
+      "KEEP=3",
+      "WORKERS=6",
+      "CUP_Y=.07",
+      "SITE=T1",
+      "SLOT=b1",
+      "Z=.20",
+      "APITCH=30",
+      "SIGN=-1",
+      "POUR_YAW=-90",
+      "TAG=s5f"
+    ]
+  }
+}

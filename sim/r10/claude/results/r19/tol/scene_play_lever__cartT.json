@@ -1,0 +1,194 @@
+{
+ "scene": "play:lever",
+ "part": "cartT",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_lever_s+1_final.json",
+  "kind": "play",
+  "act": "lever",
+  "obj": "lever",
+  "src_n": 16
+ },
+ "states": 128,
+ "stored_states": 16,
+ "nominal_s": 4.3,
+ "nominal_cached": true,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "x",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "x",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 9.914,
+    "bounded": true,
+    "violation_at": 9.941,
+    "binding": {
+     "state": 127,
+     "value_mm": -0.002,
+     "pair": [
+      "R_gripper_r17_lever_bar",
+      "r17_lever_hub"
+     ],
+     "label": "kf 0->1 (closed -> open)",
+     "src_index": 15.0
+    },
+    "evals": 136
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 127,
+   "value": 9.6166,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.279,
+   "checker_pair": [
+    "r17_lever_hub",
+    "R_gripper_r17_lever_bar"
+   ],
+   "evaluator_gate_mm": 0.279,
+   "evaluator_pair": [
+    "R_gripper_r17_lever_bar",
+    "r17_lever_hub"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 127,
+   "value": 10.2392,
+   "checker_hits": [
+    [
+     "r17_lever_hub",
+     "R_gripper_r17_lever_bar"
+    ],
+    [
+     "r17_lever_hub",
+     "R_gripper_r17_lever_bar"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.26,
+   "checker_pair": [
+    "r17_lever_hub",
+    "R_gripper_r17_lever_bar"
+   ],
+   "evaluator_gate_mm": -0.26,
+   "evaluator_pair": [
+    "R_gripper_r17_lever_bar",
+    "r17_lever_hub"
+   ]
+  }
+ ],
+ "elapsed_s": 12.7
+}

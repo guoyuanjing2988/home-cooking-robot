@@ -312,7 +312,7 @@ class Ev:
   def cands(pa,pb,nd):
    dl=np.maximum(np.maximum(s.LO[pa]-s.HI[pb],s.LO[pb]-s.HI[pa]),0.);ab=np.sqrt(np.einsum('ij,ij->i',dl,dl))
    i=np.flatnonzero(ab-nd<LIM);ab[i]=np.maximum(ab[i],s.sat(pa[i],pb[i]));kg=ab-nd
-   i=i[kg[i]<LIM];i=i[np.argsort(kg[i],kind='stable')];return ab,(i.astype(np.int32),kg[i])
+   i=i[kg[i]<LIM];i=i[np.argsort(kg[i],kind='stable')];return ab,(i.astype(np.int32),(kg[i]-1e-7).astype(np.float32))   # float32, rounded down
   ab,ce=cands(s.pr,s.pe,s.pn);sel=ce[0]
   g,gi,c,ci=s.minpairs(s.pr[sel],s.pe[sel],s.pn[sel],budget=budget)
   out=dict(gate=min(g,LIM),contact=min(c,LIM),ce=ce)

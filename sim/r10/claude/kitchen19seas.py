@@ -189,6 +189,7 @@ def plume_model(tree,radius=PLUME_R):
  t=copy.deepcopy(tree);E.SubElement(t.find('worldbody'),'geom',name='r15_plume',type='cylinder',pos=fmt([K15.WOK0[0],K15.WOK0[1],(K15.RIM_Z+HOOD_Z)/2]),size=fmt([radius,(HOOD_Z-K15.RIM_Z)/2]),contype='0',conaffinity='0')
  pm=mujoco.MjModel.from_xml_string(E.tostring(t.getroot(),encoding='unicode'));pd=mujoco.MjData(pm);pl=pm.geom('r15_plume').id
  rob=[g for g in range(pm.ngeom) if pm.geom(g).name.startswith('R_') and not pm.geom(g).name.startswith(PLUME_SKIP)]
- def f(q):
-  pd.qpos[:]=q;mujoco.mj_kinematics(pm,pd);ft=np.zeros(6);return 1000*min(mujoco.mj_geomDistance(pm,pd,g,pl,1.,ft) for g in rob)
+ def f(q,which=False):
+  pd.qpos[:]=q;mujoco.mj_kinematics(pm,pd);ft=np.zeros(6);v=min((mujoco.mj_geomDistance(pm,pd,g,pl,1.,ft),g) for g in rob)
+  return (1000*v[0],pm.geom(v[1]).name) if which else 1000*v[0]
  return f

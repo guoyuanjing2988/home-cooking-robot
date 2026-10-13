@@ -1,0 +1,196 @@
+{
+ "scene": "app:spider:0",
+ "part": "cartT",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_spider_s+1_final.json",
+  "kind": "approach",
+  "act": "spider",
+  "kf": 0,
+  "kf_label": "pick",
+  "r17_min_reserve_mm": 4.2,
+  "src_n": 7
+ },
+ "states": 52,
+ "stored_states": 7,
+ "nominal_s": 1.0,
+ "nominal_cached": true,
+ "held": false,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "x",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 213
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 101
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "x",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 213
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 101
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 5.562,
+    "bounded": true,
+    "violation_at": 5.594,
+    "binding": {
+     "state": 0,
+     "value_mm": -0.008,
+     "pair": [
+      "R_geom_11",
+      "r14_hood"
+     ],
+     "label": "approach@pick#0 step 0 (0 cm back)",
+     "src_index": 0.0
+    },
+    "evals": 246
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 101
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 213
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 101
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 213
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 101
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 213
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 101
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 0,
+   "value": 5.3951,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.185,
+   "checker_pair": [
+    "r14_hood",
+    "R_geom_11"
+   ],
+   "evaluator_gate_mm": 0.185,
+   "evaluator_pair": [
+    "R_geom_11",
+    "r14_hood"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 0,
+   "value": 5.7618,
+   "checker_hits": [
+    [
+     "R_geom_11",
+     "r14_hood"
+    ],
+    [
+     "r14_hood",
+     "R_geom_11"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.171,
+   "checker_pair": [
+    "r14_hood",
+    "R_geom_11"
+   ],
+   "evaluator_gate_mm": -0.171,
+   "evaluator_pair": [
+    "R_geom_11",
+    "r14_hood"
+   ]
+  }
+ ],
+ "elapsed_s": 18.7
+}

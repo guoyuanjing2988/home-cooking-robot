@@ -9,11 +9,14 @@ Commands (each < 5 min with 24 workers, except as noted in R19_UR5E_ENC.md):
  python r19enc_check.py enclose              r19ur5e_enclose.py-style protrusion, measured in the SIM model (both arms)
  python r19enc_check.py self [N=2000]        random-pose self-collision rate (both arms)
  python r19enc_check.py recheck SET=<set> [WORKERS=24] [EDGES=A__B,C__D]
-   SET = wok | wok_plate2b | lever | lid | spider | spatula   (results/r17/chain_*.json)
+   SET = wok | wok_plate2b | lever | lid | spider | spatula   (results/r17/chain_*.json; SUFFIX=_ur5e_enc re-checks the
+         re-planned chain_*_ur5e_enc.json instead, -> <set>_ur5e_enc.json)
          stir                                                (results/r19/stir/stirwalk2_h_scrape_dice_r17.json)
          hub                                                 (results/r19/hub/edge_*.json; EDGES= a subset -> hub_<i>.json lanes)
    -> results/r19/enc/<set>.json
  python r19enc_check.py summary              -> results/r19/enc/summary.json (+ the table printed)
+ python r19enc_check.py meshgap              -> results/r19/enc/meshgap.json: for every ur5e_enc hit pair, at its worst state,
+                                                the gap of the REAL arm surface (Menagerie visual meshes, 2 mm grid) to the fixture
 
 Re-check (the r19smooth.py baseline re-check, run for BOTH arms on the same states):
  - stored states unwrapped (2pi label jumps in the arm joints removed), joint-linear between them, cut so that
@@ -61,7 +64,7 @@ def ctx(key,arm):
  c=dict(arm=arm,plume=None)
  if key in CHAINS:   # r19smooth.setup, plus the plate-2 dish for the plate-2 chain
   K.set_design(pot_h=.12,rack=.04,lid_a=0.,car_a=45.,rack_ry=90.)
-  f,plate2=CHAINS[key];r=json.load(open(f))
+  f,plate2=CHAINS[key];f=f[:-5]+KV.get('SUFFIX','')+'.json';r=json.load(open(f))
   if r.get('wok_tilt'):K17.set_wok_tilt(r['wok_tilt'])
   for k,v in r.get('tool_xy',{}).items():K.TOOL_XY[k]=tuple(v)
   K.TOOL_XY['spatula']=(-1.15,.30);K.SPAT_ELEV=8.;K.SPAT_YAW=0.;K.SPAT_ROLL=180.
@@ -94,7 +97,7 @@ def ctx(key,arm):
 def states(key):
  """{path name: stored states (unwrapped)} of a set."""
  from r19smooth import unwrap
- if key in CHAINS:return {key:unwrap(json.load(open(CHAINS[key][0]))['play'])}
+ if key in CHAINS:return {key:unwrap(json.load(open(CHAINS[key][0][:-5]+KV.get('SUFFIX','')+'.json'))['play'])}
  if key=='stir':return {'stir':np.array(json.load(open(STIR))['states']['q'],float)}
  E_=[e for e in KV.get('EDGES','').split(',') if e] or sorted(f[len('results/r19/hub/edge_'):-5] for f in glob.glob('results/r19/hub/edge_*.json'))
  return {e:unwrap(json.load(open(f'results/r19/hub/edge_{e}.json'))['qs']) for e in E_}
@@ -126,7 +129,7 @@ def _work(a):
 def recheck():
  import multiprocessing as mp
  key=KV['SET'];WK=int(KV.get('WORKERS',24));t0=time.monotonic();os.makedirs(OUT,exist_ok=True)
- lane=KV.get('LANE');fn=f"{OUT}/{key}{'_'+lane if lane else ''}.json"
+ lane=KV.get('LANE');fn=f"{OUT}/{key}{KV.get('SUFFIX','')}{'_'+lane if lane else ''}.json"
  enc=ctx(key,'ur5e_enc');P=states(key);jobs=[];meta={}
  for name,Q in P.items():
   QS,src,sp=sample(enc['ch'],Q);meta[name]=dict(stored_states=len(Q),states=len(QS),max_step_bound_mm=round(sp*1e3,3),src=src.tolist())
@@ -136,7 +139,7 @@ def recheck():
  pool=mp.Pool(WK);res=pool.map(_work,[(key,arm,Q) for name,arm,i,Q in jobs],chunksize=1);pool.close()
  per={n:{a:[] for a in ARMS_} for n in P}
  for (name,arm,i,Q),r in zip(jobs,res):per[name][arm]+=r
- out=dict(set=key,method=__doc__,paths={})
+ out=dict(set=key+KV.get('SUFFIX',''),method=__doc__,paths={})
  for name in P:
   out['paths'][name]=dict(**{k:v for k,v in meta[name].items() if k!='src'},**{arm:summarize(per[name][arm],meta[name]['src']) for arm in ARMS_},
    per_state={arm:[dict(env=min([v[0] for k,v in s['cl'].items() if k!='self'],default=None),self=s['cl'].get('self',[None])[0],hits=s['hits'],**({'plume':s['plume'][0]} if 'plume' in s else {})) for s in per[name][arm]] for arm in ARMS_})
@@ -157,8 +160,8 @@ def summarize(rs,src):
  for i in hit:
   if runs and i==runs[-1][1]+1:runs[-1][1]=i
   else:runs.append([i,i])
- d=dict(ok=not hit,hit_states=len(hit),certified_hit_states=sum(1 for r in rs if any(v[0]=='certified' for v in r['hits'].values())),
-  contact_only_hit_states=sum(1 for r in rs if r['hits'] and all(v[0]=='contact' for v in r['hits'].values())),out_of_range_states=sum(1 for r in rs if not r['ranges']),
+ d=dict(ok=not hit,hit_states=len(hit),real_hit_states=sum(1 for r in rs if any(v[0]=='real' for v in r['hits'].values())),
+  artefact_only_hit_states=sum(1 for r in rs if r['hits'] and all(v[0]=='artefact' for v in r['hits'].values())),out_of_range_states=sum(1 for r in rs if not r['ranges']),
   hit_pairs=dict(sorted(pairs.items(),key=lambda kv:-kv[1]['states'])),
   min_env_reserve_mm=None if e is None else round(e[0],2),min_env_category=None if e is None else e[1],min_env_pair=None if e is None else e[2],
   min_self_reserve_mm=None if s is None else round(s[0],2),min_self_pair=None if s is None else s[1],
@@ -229,6 +232,52 @@ def selfrate():
   out[arm]=dict(poses=N,poses_with_self_contact=n_hit,share=round(n_hit/N,3),pairs=dict(sorted(pairs.items(),key=lambda kv:-kv[1])))
   print(arm,out[arm]['share'],list(out[arm]['pairs'].items())[:8],flush=True)
  os.makedirs(OUT,exist_ok=True);json.dump(dict(method=selfrate.__doc__,**out),open(f'{OUT}/self_random.json','w'),indent=1)
+COVER_MM=1.7   # grid(step 2 mm): every surface point lies within (2*sqrt(2))/sqrt(3) = 1.63 mm of a sample
+def meshgap():
+ """Diagnosis of the ur5e_enc hits: at the state where the hit pair's exact lower bound is smallest, the
+ distance from the Menagerie visual mesh (every vertex + a <= 2 mm grid on every triangle, r19ur5e_encfit.grid;
+ the true surface lies within 1.7 mm of these points) of the link(s) the arm primitive covers to the other
+ geom (box / cylinder / box-shaped mesh, exact point distance), minimum over EVERY hit state of the pair.
+ real_arm: 'violates' (sampled gap < required: the true gap is smaller still), 'clear' (sampled gap - 1.7 mm
+ >= required), else 'undecided'. Tells which link and how close the real arm (the Menagerie mesh) comes."""
+ import mujoco,r19ur5e_encfit as F
+ from scipy.spatial.transform import Rotation
+ _,_,tris,_,_,_=F.load();P={'R_arm_'+L:F.grid(T,.002) for L,T in tris.items() if L in F.NAMES}
+ J=json.load(open('r19/arm_ur5e_enc.json'));cover={}
+ for link,ps in J['candidates'].items():
+  for p_ in ps:cover.setdefault(p_,[]).append(link)
+ def dist(m,d,g,X):
+  R=d.geom_xmat[g].reshape(3,3);L=(X-d.geom_xpos[g])@R;t=m.geom_type[g]
+  if t==mujoco.mjtGeom.mjGEOM_MESH:
+   a,n=m.mesh_vertadr[m.geom_dataid[g]],m.mesh_vertnum[m.geom_dataid[g]];V=m.mesh_vert[a:a+n];assert n==8,'only box-shaped meshes'
+   c=(V.max(0)+V.min(0))/2;h=(V.max(0)-V.min(0))/2;L=L-c;t=mujoco.mjtGeom.mjGEOM_BOX;sz=h
+  else:sz=m.geom_size[g]
+  if t==mujoco.mjtGeom.mjGEOM_BOX:q=np.abs(L)-sz;return np.linalg.norm(np.maximum(q,0),axis=1)+np.minimum(q.max(1),0)
+  if t==mujoco.mjtGeom.mjGEOM_CYLINDER:rad=np.linalg.norm(L[:,:2],axis=1)-sz[0];ax=np.abs(L[:,2])-sz[1];return np.where((rad>0)&(ax>0),np.hypot(rad,ax),np.maximum(rad,ax))
+  raise ValueError(t)
+ out=[]
+ for f in sorted(glob.glob(f'{OUT}/*.json')):
+  if os.path.basename(f) in ('summary.json','enclose.json','self_random.json','meshgap.json'):continue
+  r=json.load(open(f));key=r['set'].replace('_ur5e_enc','') if r['set'] in CHAINS or r['set'].replace('_ur5e_enc','') in CHAINS else r['set']
+  for name,v in r['paths'].items():
+   if not v['ur5e_enc']['hit_pairs']:continue
+   KV['EDGES']=name;c=ctx('hub' if key.startswith('hub') else key,'ur5e_enc');ch=c['ch'];m,d=ch.m,ch.d
+   Q=list(states('hub' if key.startswith('hub') else key).values())[0];QS,src,sp=sample(ch,Q);ps=v['per_state']['ur5e_enc']
+   for pair in v['ur5e_enc']['hit_pairs']:
+    js=[j for j,s_ in enumerate(ps) if pair in s_['hits']];i=min(js,key=lambda j:ps[j]['hits'][pair][1]);a_,b_=pair.split(' | ')
+    arm_g,other=(a_,b_) if a_.startswith('R_geom') else (b_,a_);g=m.geom(other).id
+    best=(1e9,None,None)
+    for j in js:   # every hit state of this pair
+     d.qpos[:]=QS[j];mujoco.mj_kinematics(m,d)
+     for link in cover.get(arm_g,[]):
+      b=m.body(link).id;X=d.xpos[b]+P[link]@d.xmat[b].reshape(3,3).T;dd=float(dist(m,d,g,X).min())
+      if dd<best[0]:best=(dd,link,j)
+    hp=ps[i]['hits'][pair];need=hp[3];rg=best[0]*1e3
+    out.append(dict(set=r['set'],path=name,pair=pair,hit_states=len(js),stored_range=[round(float(src[min(js)]),2),round(float(src[max(js)]),2)],
+     enc_min_gap_lower_mm=hp[1],enc_worst_state=i,required_mm=need,real_mesh_min_gap_mm=round(rg,1),real_mesh_state=best[2],real_mesh_stored_index=round(float(src[best[2]]),2),real_mesh_link=best[1],covered_links=cover.get(arm_g,[]),
+     real_arm='violates' if rg<need else 'clear' if rg-COVER_MM>=need else 'undecided'))
+    print(json.dumps(out[-1]),flush=True)
+ json.dump(dict(method=meshgap.__doc__,rows=out),open(f'{OUT}/meshgap.json','w'),indent=1)
 def summary():
  rows=[]
  for f in sorted(glob.glob(f'{OUT}/*.json')):
@@ -241,4 +290,4 @@ def summary():
  json.dump(rows,open(f'{OUT}/summary.json','w'),indent=1)
  for r in rows:print(f"{r['set']:12s} {r['path']:16s} {r['states']:5d}  ur5e ok={r['ur5e_ok']!s:5s} hits={r['ur5e_hit_states']:4d} env {r['ur5e_min_env_reserve_mm']} self {r['ur5e_min_self_reserve_mm']} | enc ok={r['ur5e_enc_ok']!s:5s} hits={r['ur5e_enc_hit_states']:4d} (real {r['ur5e_enc_real_hit_states']}, artefact-only {r['ur5e_enc_artefact_only_hit_states']}) env {r['ur5e_enc_min_env_reserve_mm']} self {r['ur5e_enc_min_self_reserve_mm']} pairs {list(r['enc_hit_pairs'])[:3]}")
 if __name__=='__main__':
- {'recheck':recheck,'enclose':enclose,'self':selfrate,'summary':summary}[sys.argv[1]]()
+ {'recheck':recheck,'enclose':enclose,'self':selfrate,'summary':summary,'meshgap':meshgap}[sys.argv[1]]()

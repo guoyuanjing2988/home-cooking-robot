@@ -1,0 +1,651 @@
+{
+ "scene": "app:lever:1",
+ "part": "grid",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_lever_s+1_final.json",
+  "kind": "approach",
+  "act": "lever",
+  "kf": 1,
+  "kf_label": "open",
+  "r17_min_reserve_mm": 7.4,
+  "src_n": 7
+ },
+ "states": 19,
+ "stored_states": 7,
+ "nominal_s": 0.8,
+ "nominal_cached": true,
+ "held": false,
+ "nominal": {
+  "min_gate_mm": 15.878,
+  "gate_state": 0,
+  "gate_label": "approach@open#1 step 0 (0 cm back)",
+  "gate_pair": [
+   "R_finger_minus",
+   "r17_faucet_column"
+  ],
+  "min_contact_mm": 20.878,
+  "contact_state": 0,
+  "contact_label": "approach@open#1 step 0 (0 cm back)",
+  "contact_pair": [
+   "R_finger_minus",
+   "r17_faucet_column"
+  ],
+  "rho_m": {
+   "yaw": 0.902,
+   "tilt_x": 1.498,
+   "tilt_y": 1.536
+  },
+  "note": "exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower"
+ },
+ "checker_reported": {
+  "min_reserve_mm": 7.4,
+  "note": "r17chain approach (every 3rd step full check)"
+ },
+ "grid": [
+  {
+   "axis": "x",
+   "value": 1,
+   "unit": "mm",
+   "gate_min_mm": 16.838,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "x",
+   "value": 2,
+   "unit": "mm",
+   "gate_min_mm": 17.802,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "x",
+   "value": 5,
+   "unit": "mm",
+   "gate_min_mm": 19.463,
+   "gate_pair": [
+    "R_geom_21",
+    "upper_cabinet_1"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "x",
+   "value": 10,
+   "unit": "mm",
+   "gate_min_mm": 19.463,
+   "gate_pair": [
+    "R_geom_21",
+    "upper_cabinet_1"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "x",
+   "value": -1,
+   "unit": "mm",
+   "gate_min_mm": 14.923,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 19.923,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "x",
+   "value": -2,
+   "unit": "mm",
+   "gate_min_mm": 13.971,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 18.971,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "x",
+   "value": -5,
+   "unit": "mm",
+   "gate_min_mm": 11.153,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 16.153,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "x",
+   "value": -10,
+   "unit": "mm",
+   "gate_min_mm": 6.658,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 11.658,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "y",
+   "value": 1,
+   "unit": "mm",
+   "gate_min_mm": 15.614,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "y",
+   "value": 2,
+   "unit": "mm",
+   "gate_min_mm": 15.395,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "y",
+   "value": 5,
+   "unit": "mm",
+   "gate_min_mm": 15.025,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "y",
+   "value": 10,
+   "unit": "mm",
+   "gate_min_mm": 15.0,
+   "gate_pair": [
+    "R_finger_plus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 2 (2 cm back)",
+   "contact_min_mm": 20.0,
+   "contact_pair": [
+    "R_finger_plus",
+    "r17_lever_tip"
+   ],
+   "contact_label": "approach@open#1 step 2 (2 cm back)"
+  },
+  {
+   "axis": "y",
+   "value": -1,
+   "unit": "mm",
+   "gate_min_mm": 16.187,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "y",
+   "value": -2,
+   "unit": "mm",
+   "gate_min_mm": 16.538,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "y",
+   "value": -5,
+   "unit": "mm",
+   "gate_min_mm": 17.5,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "y",
+   "value": -10,
+   "unit": "mm",
+   "gate_min_mm": 15.0,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 20.0,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "z",
+   "value": 1,
+   "unit": "mm",
+   "gate_min_mm": 15.878,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "z",
+   "value": 2,
+   "unit": "mm",
+   "gate_min_mm": 15.878,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "z",
+   "value": 5,
+   "unit": "mm",
+   "gate_min_mm": 14.463,
+   "gate_pair": [
+    "R_geom_21",
+    "upper_cabinet_1"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "z",
+   "value": 10,
+   "unit": "mm",
+   "gate_min_mm": 9.463,
+   "gate_pair": [
+    "R_geom_21",
+    "upper_cabinet_1"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 16.34,
+   "contact_pair": [
+    "R_finger_plus",
+    "r17_lever_tip"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "z",
+   "value": -1,
+   "unit": "mm",
+   "gate_min_mm": 15.878,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "z",
+   "value": -2,
+   "unit": "mm",
+   "gate_min_mm": 15.878,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "z",
+   "value": -5,
+   "unit": "mm",
+   "gate_min_mm": 15.67,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "z",
+   "value": -10,
+   "unit": "mm",
+   "gate_min_mm": 11.34,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 16.34,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "yaw",
+   "value": 0.1,
+   "unit": "deg",
+   "gate_min_mm": 14.592,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 19.592,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "yaw",
+   "value": 0.2,
+   "unit": "deg",
+   "gate_min_mm": 13.31,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 18.31,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "yaw",
+   "value": 0.5,
+   "unit": "deg",
+   "gate_min_mm": 9.506,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 14.506,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "yaw",
+   "value": 1.0,
+   "unit": "deg",
+   "gate_min_mm": 3.484,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 8.484,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "yaw",
+   "value": -0.1,
+   "unit": "deg",
+   "gate_min_mm": 17.17,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "yaw",
+   "value": -0.2,
+   "unit": "deg",
+   "gate_min_mm": 18.464,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "yaw",
+   "value": -0.5,
+   "unit": "deg",
+   "gate_min_mm": 18.178,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "yaw",
+   "value": -1.0,
+   "unit": "deg",
+   "gate_min_mm": 16.378,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_x",
+   "value": 0.1,
+   "unit": "deg",
+   "gate_min_mm": 16.52,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_x",
+   "value": 0.2,
+   "unit": "deg",
+   "gate_min_mm": 17.315,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_x",
+   "value": 0.5,
+   "unit": "deg",
+   "gate_min_mm": 15.181,
+   "gate_pair": [
+    "R_geom_21",
+    "upper_cabinet_1"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_x",
+   "value": -0.1,
+   "unit": "deg",
+   "gate_min_mm": 15.405,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_x",
+   "value": -0.2,
+   "unit": "deg",
+   "gate_min_mm": 15.11,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_x",
+   "value": -0.5,
+   "unit": "deg",
+   "gate_min_mm": 15.0,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_y",
+   "value": 0.1,
+   "unit": "deg",
+   "gate_min_mm": 17.753,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_y",
+   "value": 0.2,
+   "unit": "deg",
+   "gate_min_mm": 18.735,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_y",
+   "value": 0.5,
+   "unit": "deg",
+   "gate_min_mm": 16.86,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_lever_tip"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": ">=20"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.1,
+   "unit": "deg",
+   "gate_min_mm": 14.018,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 19.018,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.2,
+   "unit": "deg",
+   "gate_min_mm": 12.176,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 17.176,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  },
+  {
+   "axis": "tilt_y",
+   "value": -0.5,
+   "unit": "deg",
+   "gate_min_mm": 6.858,
+   "gate_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "gate_label": "approach@open#1 step 0 (0 cm back)",
+   "contact_min_mm": 11.858,
+   "contact_pair": [
+    "R_finger_minus",
+    "r17_faucet_column"
+   ],
+   "contact_label": "approach@open#1 step 0 (0 cm back)"
+  }
+ ],
+ "elapsed_s": 2.2
+}

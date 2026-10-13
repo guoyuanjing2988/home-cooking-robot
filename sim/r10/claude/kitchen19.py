@@ -226,7 +226,10 @@ def _probes():
    P[f'{nm}:set']=dict(desc='bridge bar pinched from above, box set down (bar 1.06 m)',p=box_bar(x,y,yaw),a=(0,0,-1),j=tuple((Rz(yaw)@[0,1.,0]).round(6)),scene=sc,jaw_q=0.)
  return P
 # ---------------- the chosen layout (see R19_PREP_LAYOUT.md) ----------------
-LAYOUT=dict(slicer=(-1.36,.225,90.),lever=(-1.665,.095,0.),cold_box=(-1.665,.15,0.),tray_dxy=(-.2825,.24),drop_bowls=['potato'])
+# slicer resident in the far-left column turned 90 deg (chute at the front); the raw tray unchanged; the
+# fetched-tool work spot (lever base) at the left counter front by the sink, prep-time only (the wok sink
+# trips and the spatula fetch pass over it); the cold box set-down: see the probes (shared spot).
+LAYOUT=dict(slicer=(-1.69,.225,90.),lever=(-0.90,.095,0.),cold_box=(-0.90,.15,0.),tray_dxy=(0.,0.),drop_bowls=[])
 FAUCET_OUT=np.array([K17.FX,.37,1.10])   # the R17 faucet outlet (spout front end)
 def layout_scene(*stations,**kw):
  """cfg['r19'] for the chosen layout with these stations out (the slicer is resident: always out)."""
@@ -235,24 +238,25 @@ def layout_scene(*stations,**kw):
 def _layout_probes():
  P={};L=LAYOUT;dxy=L['tray_dxy'];I=np.eye(3).tolist()
  tom=('tomato',I,tray('tomato',dxy).tolist());car=('carrot',I,tray('carrot',dxy).tolist())
- P['L:pick_carrot']=dict(desc='carrot held 8 mm over its ribs (raw tray back-left), tool spot empty',p=tray('carrot',dxy)+[0,0,.008],a=(0,1,0),j=(0,0,1),held='carrot',scene=layout_scene(objs=[tom]),jaw_q=JAW['carrot'])
- P['L:pick_tomato']=dict(desc='tomato held 8 mm over its pad, tool spot empty',p=tray('tomato',dxy)+[0,0,.008],a=(0,1,0),j=(1,0,0),held='tomato',scene=layout_scene(objs=[car]),jaw_q=JAW['tomato'])
- P['L:pick_tomato_lever']=dict(desc='tomato held 8 mm over its pad, lever base out at the tool spot',p=tray('tomato',dxy)+[0,0,.008],a=(0,1,0),j=(1,0,0),held='tomato',scene=layout_scene('lever',objs=[car]),jaw_q=JAW['tomato'])
- P['L:pick_carrot_lever']=dict(desc='carrot held 8 mm over its ribs, lever base out (expected blocked)',p=tray('carrot',dxy)+[0,0,.008],a=(0,1,0),j=(0,0,1),held='carrot',scene=layout_scene('lever',objs=[tom]),jaw_q=JAW['carrot'])
- for k,(z,lab) in enumerate(((1.00,'z1.00'),(.97,'z0.97'))):
-  P[f'L:rinse_carrot_{lab}']=dict(desc=f'carrot (along x) under the faucet outlet, centre at z {z}, faucet open',p=np.array([FAUCET_OUT[0],FAUCET_OUT[1],z]),a=(0,1,0),j=(0,0,1),held='carrot',scene=layout_scene(objs=[tom]),lever=K17.LEVER_OPEN,jaw_q=JAW['carrot'])
-  P[f'L:rinse_tomato_{lab}']=dict(desc=f'tomato under the faucet outlet, centre at z {z}, faucet open',p=np.array([FAUCET_OUT[0],FAUCET_OUT[1],z]),a=(0,1,0),j=(1,0,0),held='tomato',scene=layout_scene(objs=[car]),lever=K17.LEVER_OPEN,jaw_q=JAW['tomato'])
+ P['Q:pick_carrot']=dict(desc='carrot held 8 mm over its ribs (raw tray as today), tool spot empty',p=tray('carrot',dxy)+[0,0,.008],a=(0,1,0),j=(0,0,1),held='carrot',scene=layout_scene(objs=[tom]),jaw_q=JAW['carrot'])
+ P['Q:pick_tomato']=dict(desc='tomato held 8 mm over its pad, tool spot empty',p=tray('tomato',dxy)+[0,0,.008],a=(0,1,0),j=(1,0,0),held='tomato',scene=layout_scene(objs=[car]),jaw_q=JAW['tomato'])
+ P['Q:pick_tomato_lever']=dict(desc='tomato held 8 mm over its pad, lever base out',p=tray('tomato',dxy)+[0,0,.008],a=(0,1,0),j=(1,0,0),held='tomato',scene=layout_scene('lever',objs=[car]),jaw_q=JAW['tomato'])
+ for z in (1.00,.97):
+  P[f'Q:rinse_carrot_z{z:.2f}']=dict(desc=f'carrot (along x) under the faucet outlet, centre at z {z}, faucet open',p=np.array([FAUCET_OUT[0],FAUCET_OUT[1],z]),a=(0,1,0),j=(0,0,1),held='carrot',scene=layout_scene(objs=[tom]),lever=K17.LEVER_OPEN,jaw_q=JAW['carrot'])
+  P[f'Q:rinse_tomato_z{z:.2f}']=dict(desc=f'tomato under the faucet outlet, centre at z {z}, faucet open, lever base out',p=np.array([FAUCET_OUT[0],FAUCET_OUT[1],z]),a=(0,1,0),j=(1,0,0),held='tomato',scene=layout_scene('lever',objs=[car]),lever=K17.LEVER_OPEN,jaw_q=JAW['tomato'])
  x,y,yaw=L['lever']
- P['L:lever_place']=dict(desc='tomato 8 mm over its seat on the blade plate',p=lever_seat(x,y,yaw,.008),a=(0,1,0),j=(1,0,0),held='tomato',scene=layout_scene('lever',objs=[car]),jaw_q=JAW['tomato'])
- P['L:lever_knob']=dict(desc='knob between the open jaws, tomato on the plate',p=knob(x,y,yaw),a=(0,1,0),j=(1,0,0),scene=layout_scene('lever',objs=[car,('tomato',I,lever_seat(x,y,yaw).tolist())]),jaw_q=.025)
- P['L:lever_pressed']=dict(desc='pusher held, pressed 102 mm',p=knob(x,y,yaw)-[0,0,LEVER_PRESS],a=(0,1,0),j=(1,0,0),held='pusher',scene=layout_scene('lever',pusher=None,objs=[car]),jaw_q=JAW['pusher'])
+ P['Q:lever_place']=dict(desc='tomato 8 mm over its seat on the blade plate',p=lever_seat(x,y,yaw,.008),a=(0,1,0),j=(1,0,0),held='tomato',scene=layout_scene('lever',objs=[car]),jaw_q=JAW['tomato'])
+ P['Q:lever_knob']=dict(desc='knob between the open jaws, tomato on the plate',p=knob(x,y,yaw),a=(0,1,0),j=(1,0,0),scene=layout_scene('lever',objs=[car,('tomato',I,lever_seat(x,y,yaw).tolist())]),jaw_q=.025)
+ P['Q:lever_pressed']=dict(desc='pusher held, pressed 102 mm',p=knob(x,y,yaw)-[0,0,LEVER_PRESS],a=(0,1,0),j=(1,0,0),held='pusher',scene=layout_scene('lever',pusher=None,objs=[car]),jaw_q=JAW['pusher'])
  c=chute_top(*L['slicer'])
- for tag,a,j in (('front',(0,1,0),(1,0,0)),('left',(-1,0,0),(0,1,0)),('right',(1,0,0),(0,1,0))):
-  P[f'L:drop_{tag}']=dict(desc=f'carrot vertical, bottom 20 mm inside the chute, gripper from the {tag}',p=c+[0,0,.06],a=a,j=j,held='carrot',scene=layout_scene(objs=[tom]),jaw_q=JAW['carrot'])
-  P[f'L:drop_{tag}_lever']=dict(desc=f'as drop_{tag}, lever base out',p=c+[0,0,.06],a=a,j=j,held='carrot',scene=layout_scene('lever',objs=[tom]),jaw_q=JAW['carrot'])
- for nm in ('cbox_T1','cbox_T2','cbox_T3','cbox_T4','cbox_R14'):
-  st,bx,by,byaw=CANDIDATES[nm]['st'];sc=layout_scene(objs=[tom,car]);sc['stations']['cold_box']=(bx,by,byaw)
-  P[f'L:{nm}_set']=dict(desc='bridge bar between the jaws (set-down / pick moment), box along y at the tool spot',p=box_bar(bx,by,byaw),a=(0,0,-1),j=tuple((Rz(byaw)@[0,1.,0]).round(6)),scene=sc,jaw_q=0.)
+ for tag,a,j in (('front',(0,1,0),(1,0,0)),('left',(-1,0,0),(0,1,0))):
+  P[f'Q:drop_{tag}']=dict(desc=f'carrot vertical, bottom 20 mm inside the chute, gripper from the {tag}',p=c+[0,0,.06],a=a,j=j,held='carrot',scene=layout_scene(objs=[tom]),jaw_q=JAW['carrot'])
+  P[f'Q:over_{tag}']=dict(desc=f'carrot vertical 80 mm higher, over the chute, gripper from the {tag}',p=c+[0,0,.14],a=a,j=j,held='carrot',scene=layout_scene(objs=[tom]),jaw_q=JAW['carrot'])
+ for bx,by in ((-0.90,.15),(-0.95,.15),(-0.90,.12),(-0.85,.13),(-1.00,.13)):
+  sc=layout_scene(objs=[tom,car]);sc['stations']['cold_box']=(bx,by,0.)
+  P[f'Q:cbox_{bx:.2f}_{by:.2f}']=dict(desc='bridge bar between the jaws (set-down / pick moment), box along y',p=box_bar(bx,by,0.),a=(0,0,-1),j=(0,1.,0),scene=sc,jaw_q=0.)
+  sc=layout_scene(objs=[tom,car]);sc['stations']['cold_box']=(bx,by,90.)
+  P[f'Q:cbox_{bx:.2f}_{by:.2f}_x']=dict(desc='as above, box along x',p=box_bar(bx,by,90.),a=(0,0,-1),j=(-1.,0,0),scene=sc,jaw_q=0.)
  return P
 def _tray_probes():
  """Raw-tray picks for alternative tray places, with the slicer at the far left (turned) and the lever
@@ -269,4 +273,4 @@ def _tray_probes():
    P[f'T{tag}:pick_carrot{lt}']=dict(desc=f'carrot held 8 mm over its ribs, tray moved {dxy}',p=tray('carrot',dxy)+[0,0,.008],a=(0,1,0),j=(0,0,1),held='carrot',scene=sc(tom),jaw_q=JAW['carrot'])
    P[f'T{tag}:pick_tomato{lt}']=dict(desc=f'tomato held 8 mm over its pad, tray moved {dxy}',p=tray('tomato',dxy)+[0,0,.008],a=(0,1,0),j=(1,0,0),held='tomato',scene=sc(car),jaw_q=JAW['tomato'])
  return P
-REACH_PROBES=_probes();REACH_PROBES.update(_layout_probes());REACH_PROBES.update(_tray_probes())
+REACH_PROBES=_probes();REACH_PROBES.update(_tray_probes());REACH_PROBES.update(_layout_probes())

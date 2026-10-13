@@ -1,0 +1,379 @@
+{
+  "act": "tap",
+  "obj": "tomato",
+  "arm": "ur5e",
+  "grasp_sense": 1,
+  "layout": {
+    "slicer": [
+      -1.69,
+      0.225,
+      90.0
+    ],
+    "lever": [
+      -0.9,
+      0.095,
+      0.0
+    ],
+    "cold_box": [
+      -0.9,
+      0.15,
+      0.0
+    ],
+    "tray_dxy": [
+      0.0,
+      0.0
+    ],
+    "drop_bowls": []
+  },
+  "scene": {
+    "r19": {
+      "stations": {
+        "slicer": [
+          -1.69,
+          0.225,
+          90.0
+        ]
+      },
+      "tray_dxy": [
+        0.0,
+        0.0
+      ],
+      "drop_bowls": [],
+      "objs": [
+        [
+          "carrot",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.42,
+            0.12,
+            0.9305
+          ]
+        ]
+      ]
+    }
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 39,
+  "rinse_dwell_s_est": 3.0,
+  "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker",
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "lane in",
+      "p": [
+        -0.8,
+        0.1,
+        1.15
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 1,
+      "label": "under the tap",
+      "p": [
+        -0.4,
+        0.37,
+        0.98
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 3.0
+    },
+    {
+      "i": 2,
+      "label": "lane out",
+      "p": [
+        -0.8,
+        0.1,
+        1.15
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    }
+  ],
+  "anchors": {
+    "under the tap#1": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "pose": 48,
+        "ok": 38,
+        "collision": 10
+      }
+    }
+  },
+  "pieces": [],
+  "joins": [],
+  "approaches": [],
+  "min_reserve_mm": null,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "push": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "under the tap",
+      "cand": 0,
+      "start_reserve_mm": 55.0,
+      "cart": -0.71,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.818,
+        "step_deg": 16.59,
+        "pose_mm": 0.8,
+        "reserve_mm": null,
+        "dt": 0.2764711810252531,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 1,
+      "start_reserve_mm": 55.0,
+      "cart": -0.144,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.318,
+        "step_deg": 1.92,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 2,
+      "start_reserve_mm": 55.0,
+      "cart": -0.671,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.736,
+        "step_deg": 0.7,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 3,
+      "start_reserve_mm": 55.0,
+      "cart": -0.214,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.558,
+        "step_deg": 1.73,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_geom_26"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 4,
+      "start_reserve_mm": 55.0,
+      "cart": -0.678,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.762,
+        "step_deg": 6.87,
+        "pose_mm": 0.11,
+        "reserve_mm": null,
+        "dt": 0.11454604822210791,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_geom_base_source1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 5,
+      "start_reserve_mm": 55.0,
+      "cart": -0.143,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.317,
+        "step_deg": 1.92,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "upper_cabinet_0_piece3"
+          ],
+          [
+            "R_geom_16",
+            "r07_closed_door_0_1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 6,
+      "start_reserve_mm": 55.0,
+      "cart": -0.526,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.903,
+        "step_deg": 1.73,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_geom_26"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 7,
+      "start_reserve_mm": 55.0,
+      "cart": -0.44,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.903,
+        "step_deg": 1.73,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.09839691388820024,
+        "hits": [
+          [
+            "R_geom_10",
+            "R_geom_26"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [],
+  "grasps": []
+}

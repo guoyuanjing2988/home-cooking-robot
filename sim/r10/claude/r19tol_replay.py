@@ -38,8 +38,8 @@ def scene_list():
   E=['edge:'+os.path.basename(f)[5:-5] for f in sorted(glob.glob(f'{d}/edge_*.json')) if C.J(f).get('ok')]
   a,b=map(int,KV.get('EDGES',f'0:{len(E)}').split(':'));out+=E[a:b]
  return out
-TR=dict(s0=.5*C.MM,smax=20*C.MM,res=.05*C.MM,unit=C.MM,u='mm')
-AN=dict(s0=.05*C.DEG,smax=2*C.DEG,res=.005*C.DEG,unit=C.DEG,u='deg')
+TR=dict(s0=.5*C.MM,smax=15*C.MM,res=.05*C.MM,unit=C.MM,u='mm')
+AN=dict(s0=.05*C.DEG,smax=1.5*C.DEG,res=.005*C.DEG,unit=C.DEG,u='deg')
 GRID_TR=[1,2,5,10];GRID_YAW=[.1,.2,.5,1.];GRID_TILT=[.1,.2,.5];GRID_CAP=20.   # mm: grid minima above this are reported as '>= 20'
 # cart budget scenarios for SCEN=1 (half-ranges: m, m, m, rad, rad, rad); R19_TOLERANCE.md section 1 gives the sources
 SCENARIOS={
@@ -110,14 +110,30 @@ def directions(ev,Q,noms,info,src,dirs,key,t0):
   out.append(rec)
   print(key,kind,ax,sg,gn,'gate',rec['gate']['tol'],'contact',rec['contact']['tol'],st['u'],(rec['gate'].get('binding') or {}).get('pair'),f'{time.monotonic()-t0:.0f}s',flush=True)
  return out
+def load_nominal(key,ch,Q,ev):
+ """Per-state nominal records, cached in results/r19/tol*/cache (keyed by the scene, its states and the model)."""
+ import pickle,hashlib
+ h=hashlib.sha1(np.ascontiguousarray(Q).tobytes()+ch.xml.encode()).hexdigest()[:16]
+ d=f'{C.OUT}/cache';os.makedirs(d,exist_ok=True);f=f"{d}/nom_{key.replace(':','_')}_{h}.pkl"
+ if os.path.exists(f):
+  try:return pickle.load(open(f,'rb')),True
+  except Exception:pass
+ noms=[ev.nominal(q) for q in Q];tmp=f+f'.{os.getpid()}';pickle.dump(noms,open(tmp,'wb'),protocol=4);os.replace(tmp,f);return noms,False
+CART_PARTS={'cartT':('x','y','z'),'cartR':('yaw','tilt_x','tilt_y')}
 def run(task):
  key,part=task;t0=time.monotonic()
  ch,Q0,info=C.build_scene(key)
  if info['kind']=='edge':Q,src=Q0,np.arange(len(Q0),dtype=float)
  else:Q,src=C.densify(ch,Q0)
- ev=C.Ev(ch);noms=[ev.nominal(q) for q in Q];tn=time.monotonic()-t0
- out=dict(scene=key,part=part,arm=C.ARM,info={k:v for k,v in info.items() if k!='labels'},states=len(Q),stored_states=len(Q0),nominal_s=round(tn,1),held=bool(len(ev.hg)))
- if part=='cart':
+ ev=C.Ev(ch);noms,cached=load_nominal(key,ch,Q,ev);tn=time.monotonic()-t0
+ out=dict(scene=key,part=part,arm=C.ARM,info={k:v for k,v in info.items() if k!='labels'},states=len(Q),stored_states=len(Q0),nominal_s=round(tn,1),nominal_cached=cached,held=bool(len(ev.hg)))
+ if part=='nom':print('nominal',key,len(Q),'states',f'{tn:.0f}s',flush=True);return None
+ if part in CART_PARTS or part.startswith('cart-'):
+  axes=CART_PARTS[part] if part in CART_PARTS else tuple(part[5:].split('+'))   # cart-x, cart-yaw+tilt_x, ... (one task per axis set)
+  dirs=[('cart',ax,sg,None,TR if ax in ('x','y','z') else AN) for ax in axes for sg in (1,-1)]
+  out['directions']=directions(ev,Q,noms,info,src,dirs,key,t0)
+  out['validation']=validate(ch,ev,Q,out['directions'])
+ elif part=='grid':
   g0,ga,_=minimum(ev,Q,noms,NONE,'gate');c0,ca,_=minimum(ev,Q,noms,NONE,'contact')
   out['nominal']=dict(min_gate_mm=round(g0,3),gate_state=ga['state'],gate_label=label(info,src,ga['state']),gate_pair=ga['pair'],
    min_contact_mm=round(c0,3),contact_state=ca['state'],contact_label=label(info,src,ca['state']),contact_pair=ca['pair'],
@@ -136,8 +152,6 @@ def run(task):
       note='r19smooth baseline: Checker.check(full=True), min over non-self categories')
   elif info['kind']=='edge':out['checker_reported']=dict(min_reserve_mm=info.get('reported_min_reserve_mm'),note='r19hub edge file')
   else:out['checker_reported']=dict(min_reserve_mm=info.get('r17_min_reserve_mm'),note='r17chain approach (every 3rd step full check)')
-  dirs=[('cart',ax,sg,None,TR if ax in ('x','y','z') else AN) for ax in C.CART_AXES for sg in (1,-1)]
-  out['directions']=directions(ev,Q,noms,info,src,dirs,key,t0)
   grid=[]
   for ax in C.CART_AXES:
    vals=GRID_TR if ax in ('x','y','z') else GRID_YAW if ax=='yaw' else GRID_TILT;unit=C.MM if ax in ('x','y','z') else C.DEG
@@ -149,8 +163,7 @@ def run(task):
       if a_:row[meas+'_pair']=a_['pair'];row[meas+'_label']=label(info,src,a_['state'])
      grid.append(row)
   out['grid']=grid
-  out['validation']=validate(ch,ev,Q,out['directions'])
-  if KV.get('SCEN','0')=='1':out['scenarios']=scenarios(ev,Q,noms,info,src,key)
+ elif part=='scen':out['scenarios']=scenarios(ev,Q,noms,info,src,key)
  elif part=='fix':
   dirs=[];out['groups']={}
   for gn in ev.groups:
@@ -212,14 +225,23 @@ def validate(ch,ev,Q,dirs):
  return rows
 def main():
  import multiprocessing as mp
- parts=KV.get('PARTS','cart,fix,grasp').split(',')
+ parts=KV.get('PARTS','cartT,cartR,grid,fix,grasp').split(',')
  tasks=[(k,p) for k in scene_list() for p in parts if not (p=='grasp' and not k.startswith('play:'))]
- W=int(KV.get('WORKERS',16));t0=time.monotonic()
- print('tasks',len(tasks),flush=True)
- if W<=1 or len(tasks)==1:
+ W=int(KV.get('WORKERS',16));DL=float(KV.get('DEADLINE',270));t0=time.monotonic()
+ print('tasks',len(tasks),'deadline',DL,'s',flush=True)
+ if W<=1:
   for t in tasks:run(t)
  else:
-  with mp.Pool(min(W,len(tasks)),maxtasksperchild=1) as pool:
-   for fn in pool.imap_unordered(run,tasks):print('done',fn,f'{time.monotonic()-t0:.0f}s',flush=True)
+  pool=mp.Pool(min(W,len(tasks)),maxtasksperchild=1);it=pool.imap_unordered(run,tasks);n=0
+  try:
+   while n<len(tasks):
+    left=DL-(time.monotonic()-t0)
+    if left<=0:raise mp.TimeoutError
+    fn=it.next(timeout=left);n+=1;print('done',fn,f'{time.monotonic()-t0:.0f}s',flush=True)
+   pool.close()
+  except mp.TimeoutError:
+   print(f'DEADLINE {DL:.0f}s: {len(tasks)-n} of {len(tasks)} tasks unfinished (no output written for them); re-run them as separate commands',flush=True)
+   pool.terminate()
+  pool.join()
  print('all done',f'{time.monotonic()-t0:.0f}s')
 if __name__=='__main__':main()

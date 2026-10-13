@@ -19,6 +19,7 @@ MODE=ik      pickability of every slot: 96-start collision-aware IK (solver.solv
              T2 (cart-mounted): the cart is fixed at CARTS (default 0.172 = hub station H_WOK).
 Design options: Z=<m> riser under the T1 caddy / T3 rack (0 = on the counter, the plan); APITCH=<deg> grasp
 approach pitched down from horizontal (kitchen19seas.set_approach).
+[WORKERS=12] replay paths in parallel processes.
 python r19cup_screen.py SITE=T1|T2R|T2L|T2RC|T2LC|T3 MODE=replay|ik [Z=0] [APITCH=0] [SIZE=L|S] [SEED=14] [SLOTS=f0,b1] [SENSES=-1,1] [CARTS=.172]
  -> results/r19/cups/screen_<SITE>_<MODE>[_<SIZE>].json"""
 import sys,os,json,glob,time,collections
@@ -52,37 +53,50 @@ def replay_states(ch,qs,labels=None):
     dist=mujoco.mj_geomDistance(m,d,a,b,.10,ft)
     if dist<best[0]:best=(dist,ch.gnames[a],ch.gnames[b],i)
  return dict(states=len(qs),hit_states=sum(hits.values()),hit_by_label=dict(hits),first_hit=first,min_dist_mm=round(best[0]*1000,1) if best[0]<1e8 else '>100',min_pair=best[1:3] if best[0]<1e8 else None,min_state=best[3] if best[0]<1e8 else None)
-def run_replay():
- res={};t0=time.monotonic();seglab=json.load(open('results/r19/prim/segments.json'))['labels'] if os.path.exists('results/r19/prim/segments.json') else {}
- for n,f in CHAINS.items():
-  r=json.load(open(f'results/r17/chain_{f}.json'));S.setup_kitchen()
-  for k,v in r.get('tool_xy',{}).items():
-   if k!='spatula':K.TOOL_XY[k]=tuple(v)
-  if r['obj']=='wok':K17.set_wok_tilt(r.get('wok_tilt',0.))
-  ex={'r17_plate2':[.43,K15.PLATE['c'][1],K15.PLATE['c'][2]]} if 'plate2' in n else {}
+def _chain_scene(n,r):
+ S.setup_kitchen()
+ for k,v in r.get('tool_xy',{}).items():
+  if k!='spatula':K.TOOL_XY[k]=tuple(v)
+ if r['obj']=='wok':K17.set_wok_tilt(r.get('wok_tilt',0.))
+ return {'r17_plate2':[.43,K15.PLATE['c'][1],K15.PLATE['c'][2]]} if 'plate2' in n else {}
+def replay_task(task):
+ """one stored path (run in a worker process): (kind, name, file)"""
+ kind,n,f=task
+ if kind=='chain':
+  r=json.load(open(f));ex=_chain_scene(n,r);seglab=json.load(open('results/r19/prim/segments.json'))['labels'] if os.path.exists('results/r19/prim/segments.json') else {}
   ch,_=S.checker({**r.get('scene',{}),**ex,'r16_tools':{'ladle':None},**K17.held_cfg(r['obj'],r['grasp_sense']),**LAYER})
   lab=seglab.get(n);labels=[(lab[i] if lab and lab[i] else 'play') for i in range(len(r['play']))] if lab else None
-  res[n]=replay_states(ch,r['play'],labels)
-  # grasp approaches: empty gripper, object in the world (the scene of each approach's keyframe)
-  aq=[q for a in r.get('approach_qs') or [] if a for q in a]
+  out={n:replay_states(ch,r['play'],labels)}
+  aq=[q for a_ in r.get('approach_qs') or [] if a_ for q in a_]   # grasp approaches: empty gripper, object in the world
   if aq:
    world=dict(r.get('scene',{}));world.update(ex)
-   if r['obj']=='lever':world['r17_lever']=0.   # both lever approaches are near the closed / open lever; the staging geoms are far from it
-   che,_=S.checker({**world,'r16_tools':{'ladle':None},**LAYER});res[n+'__approaches']=replay_states(che,aq)
-  print(n,res[n],flush=True)
- S.setup_kitchen()
- ch,_=S.checker({'r16_tools':{'ladle':None},'r17_lever':0.,'r16_lid':'on','r17_plate2':[.17,K15.PLATE['c'][1],K15.PLATE['c'][2]],**LAYER})   # the hub union scene of r19prep_spotreplay.py
+   if r['obj']=='lever':world['r17_lever']=0.   # both lever approaches replayed with the lever closed (the staging geoms are far from it)
+   che,_=S.checker({**world,'r16_tools':{'ladle':None},**LAYER});out[n+'__approaches']=replay_states(che,aq)
+  return out
+ if kind=='hub':
+  S.setup_kitchen();e=json.load(open(f))
+  ch,_=S.checker({'r16_tools':{'ladle':None},'r17_lever':0.,'r16_lid':'on','r17_plate2':[.17,K15.PLATE['c'][1],K15.PLATE['c'][2]],**LAYER})   # the hub union scene of r19prep_spotreplay.py
+  return {n:replay_states(ch,e['qs'])}
+ if kind=='stir':
+  st=json.load(open(f));sign=next((a_['jaw_sign'] for a_ in st['attempts'] if a_.get('ok')),-1);S.setup_kitchen()
+  ch,_=S.checker({'r15_spatula':st['grip_m'],'r15_spatula_jaw':sign,'r16_tools':{'ladle':None,'spatula':None},**LAYER})
+  return {n:replay_states(ch,st['states']['q'],st['states']['kinds'])}
+def run_replay():
+ from multiprocessing import Pool
+ t0=time.monotonic();tasks=[('chain',n,f'results/r17/chain_{f}.json') for n,f in CHAINS.items()]
  for f in sorted(glob.glob('results/r19/hub/edge_*.json')):
   e=json.load(open(f))
-  if not e.get('ok') or not e.get('qs'):continue
-  k='hub_'+os.path.basename(f)[5:-5];res[k]=replay_states(ch,e['qs']);print(k,res[k],flush=True)
- st=json.load(open('results/r19/stir/stirwalk2_h_scrape_dice_r17.json'));sign=next((a['jaw_sign'] for a in st['attempts'] if a.get('ok')),-1)
- S.setup_kitchen();K.TOOL_XY['spatula']=(-1.15,.30)
- ch,_=S.checker({'r15_spatula':st['grip_m'],'r15_spatula_jaw':sign,'r16_tools':{'ladle':None,'spatula':None},**LAYER})
- res['stir_cycle']=replay_states(ch,st['states']['q'],st['states']['kinds']);print('stir_cycle',res['stir_cycle'],flush=True)
- tot=dict(paths=len(res),states=sum(v['states'] for v in res.values()),paths_hit=[k for k,v in res.items() if v['hit_states']],
-  min_dist_mm=min((v['min_dist_mm'] for v in res.values() if isinstance(v['min_dist_mm'],float)),default='>100'))
- return dict(results=res,total=tot,elapsed_s=round(time.monotonic()-t0,1))
+  if e.get('ok') and e.get('qs'):tasks.append(('hub','hub_'+os.path.basename(f)[5:-5],f))
+ tasks.append(('stir','stir_cycle','results/r19/stir/stirwalk2_h_scrape_dice_r17.json'))
+ res={}
+ with Pool(int(KV.get('WORKERS',12))) as pool:
+  for out in pool.imap_unordered(replay_task,tasks):
+   res.update(out)
+   for k,v in out.items():print(k,v,flush=True)
+ tot=dict(paths=len(res),states=sum(v['states'] for v in res.values()),paths_hit=sorted(k for k,v in res.items() if v['hit_states']),
+  min_dist_mm=min((v['min_dist_mm'] for v in res.values() if isinstance(v['min_dist_mm'],float)),default='>100'),
+  closest=sorted(((v['min_dist_mm'],k,v['min_pair']) for k,v in res.items() if isinstance(v['min_dist_mm'],float)))[:6])
+ return dict(results=dict(sorted(res.items())),total=tot,elapsed_s=round(time.monotonic()-t0,1))
 def run_ik():
  from solver import solve
  import chain
@@ -110,8 +124,9 @@ def run_ik():
      blockers=sorted({tuple(h['pair']) for row in r['rows'] if row.get('check') for h in row['check'].get('hits',[])},key=str)[:8] if not r['candidates'] else None)
    print(name,size,'sense',s,{k:v for k,v in out[name][s].items() if k!='by_cart'},flush=True)
  return dict(slots={k:dict(size=S.slot_size(SITE,SIZE,k),**{str(s):v for s,v in d.items()}) for k,d in out.items()},lift_m=lift,seed=seed,elapsed_s=round(time.monotonic()-t0,1))
-r=run_replay() if MODE=='replay' else run_ik()
-fn=f'{OUT}/screen_{SITE}'+(f'_z{Z:g}' if Z else '')+f'_{MODE}'+(f'_{SIZE}' if MODE=='ik' else '')+(f"_p{S.APITCH:g}" if MODE=='ik' and S.APITCH else '')+('_'+KV['TAG'] if 'TAG' in KV else '')+'.json'
-import arms;fn=fn[:-5]+arms.tag()+'.json'
-save(fn,dict(site=SITE,mode=MODE,size=SIZE,z=Z,approach_pitch_deg=S.APITCH,doc=__doc__,**r));print(fn,'elapsed',r['elapsed_s'])
-if MODE=='replay':print('TOTAL',r['total'])
+if __name__=='__main__':
+ r=run_replay() if MODE=='replay' else run_ik()
+ fn=f'{OUT}/screen_{SITE}'+(f'_z{Z:g}' if Z else '')+f'_{MODE}'+(f'_{SIZE}' if MODE=='ik' else '')+(f"_p{S.APITCH:g}" if MODE=='ik' and S.APITCH else '')+('_'+KV['TAG'] if 'TAG' in KV else '')+'.json'
+ import arms;fn=fn[:-5]+arms.tag()+'.json'
+ save(fn,dict(site=SITE,mode=MODE,size=SIZE,z=Z,approach_pitch_deg=S.APITCH,doc=__doc__,**r));print(fn,'elapsed',r['elapsed_s'])
+ if MODE=='replay':print('TOTAL',r['total'])

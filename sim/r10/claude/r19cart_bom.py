@@ -21,7 +21,7 @@ SRC=dict(
 STEEL,AL=7850.,2700.
 def rhs(b,h,t,rho):return (b*h-(b-2*t)*(h-2*t))*rho   # kg/m of a rectangular hollow section
 MAST=os.environ.get('MAST','steel')
-def items(mast=None,chassis_scale=1.):
+def items(mast=None,chassis_scale=1.,ballast_kg=0.,ballast_pos=(0,-.05,.10)):
  """(name, qty, unit kg, COM in the cart frame, box size for the inertia (None = point), label, note)."""
  mast=mast or MAST
  mm=rhs(.1,.1,.004,STEEL if mast=='steel' else AL)*.865
@@ -46,6 +46,7 @@ def items(mast=None,chassis_scale=1.):
   ('tether inlet, strain relief, connector',1,.4,(0,.15,.10),None,'E',''),
   ('fasteners, misc',1,1.0,(0,-.10,.30),None,'E',''),
   ('dock pads / fiducials',1,.3,(0,.20,.20),None,'E','')]
+ if ballast_kg>0:L.append(('OPTION: steel ballast plate under the deck',1,ballast_kg,ballast_pos,(.50,.40,ballast_kg/(.5*.4*STEEL)),'D','design option'))
  return L
 # UR5e (UR_DH, sourced): link masses and CoMs in the DH frames; base = datasheet total - links (D)
 UR_A=[0,-.425,-.3922,0,0,0];UR_D=[.1625,0,0,.1333,.0997,.0996];UR_AL=[np.pi/2,0,0,np.pi/2,-np.pi/2,0]
@@ -106,13 +107,13 @@ def ur_map(m,d):
   if trial==0:out=rel
   else:err=max(err,max(float(np.linalg.norm((r1@np.r_[UR_C[i],1])[:3]-(r0@np.r_[UR_C[i],1])[:3])) for i,(r0,r1) in enumerate(zip(out,rel))))
  return out,err
-def patch(m,d,variant='bom',mast=None,chassis_scale=1.):
+def patch(m,d,variant='bom',mast=None,chassis_scale=1.,ballast_kg=0.):
  """In-memory: cart (rail_structure + R_mount) from the BOM, UR5e links from the UR DH table, tool from TOOL.
  variant 'sim' leaves the model as built. Returns a description."""
  import mujoco
  if variant=='sim':return dict(variant='sim')
  rid=m.body('rail_structure').id;mid=m.body('R_mount').id
- L=items(mast,chassis_scale);rows,M,c,I=summarize(L)
+ L=items(mast,chassis_scale,ballast_kg);rows,M,c,I=summarize(L)
  _set_inertial(m,rid,M,c,I)   # the adapter is in the BOM, so R_mount carries nothing extra
  m.body_mass[mid]=1e-6;m.body_inertia[mid]=1e-9
  rel,err=ur_map(m,d)
@@ -123,7 +124,7 @@ def patch(m,d,variant='bom',mast=None,chassis_scale=1.):
  tid=m.body('R_tool').id;mt,ct,It=body_I(m,tid);mt_new=TOOL['gripper'][0]+TOOL['flange_adapter'][0];_set_inertial(m,tid,mt_new,ct,It*mt_new/mt)
  for jn in ('R_jaw_minus','R_jaw_plus'):m.body_mass[m.body(jn).id]=TOOL['fingers'][0]/2
  mujoco.mj_setConst(m,d)
- return dict(variant=variant,mast=mast or MAST,chassis_scale=chassis_scale,cart_kg=M,cart_com=c.tolist(),ur_map_err_m=err)
+ return dict(variant=variant,mast=mast or MAST,chassis_scale=chassis_scale,ballast_kg=ballast_kg,cart_kg=M,cart_com=c.tolist(),ur_map_err_m=err)
 def tool_payload(m,d,base,T,M,c,I):
  """R_tool inertial = tool `base` (mass, com, I in the tool frame) + held payload (M, CoM c and inertia I in the
  object frame; object frame = tool frame x T)."""

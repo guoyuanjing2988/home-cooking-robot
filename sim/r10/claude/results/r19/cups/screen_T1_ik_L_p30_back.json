@@ -1,0 +1,131 @@
+{
+  "site": "T1",
+  "mode": "ik",
+  "size": "L",
+  "z": 0.0,
+  "approach_pitch_deg": 30.0,
+  "doc": "R19 seasoning cups (#5): screen the staging candidates (kitchen19seas.py sites T1, T2R/T2L/T2RC/T2LC, T3).\nNew file; nothing else is changed.\n\nMODE=replay  every stored state of every saved checked path is replayed in today's (R18b) kitchen with the\n             staged cups (all slots filled; L cups unless the site takes S only) and their caddy / rack /\n             bracket added, as r18spatreplay.py / r19prep_spotreplay.py do (fast checker, full=False: MuJoCo\n             contacts with the 10 / 5 mm gaps). Reported per path: states, states with a hit on a staging\n             geom (first one named), and the least distance (mujoco.mj_geomDistance) from any robot / held\n             geom to any staging geom over all its states. Paths:\n               - the 6 checked whole actions (results/r17/chain_*: wok plate + sink rinse at plating spot 1\n                 and 2, faucet lever, lid, spider, spatula fetch) with their grasp approaches,\n               - the 22 checked hub-roadmap edges (results/r19/hub/edge_*.json, every state),\n               - the checked R15 stir cycle in the R17 kitchen (results/r19/stir/stirwalk2_h_scrape_dice_r17.json).\n             A SCREEN of stored states (not a <= 4 mm re-check of the paths between them).\nMODE=ik      pickability of every slot: 96-start collision-aware IK (solver.solve, SEED) for the cup held at\n             its slot, lifted 8 mm (r18spatscan.py convention; T2: 12 mm, since the cart-mounted caddy is a\n             robot part and needs 10 mm), every other slot filled; both grasp senses (-1: gripper body above\n             the lug, +1: below). Counts of collision-free starts and the best reserve.\n             T2 (cart-mounted): the cart is fixed at CARTS (default 0.172 = hub station H_WOK).\nDesign options: Z=<m> riser under the T1 caddy / T3 rack (0 = on the counter, the plan); APITCH=<deg> grasp\napproach pitched down from horizontal (kitchen19seas.set_approach).\n[WORKERS=12] replay paths in parallel processes.\npython r19cup_screen.py SITE=T1|T2R|T2L|T2RC|T2LC|T3 MODE=replay|ik [Z=0] [APITCH=0] [SIZE=L|S] [SEED=14] [SLOTS=f0,b1] [SENSES=-1,1] [CARTS=.172]\n -> results/r19/cups/screen_<SITE>_<MODE>[_<SIZE>].json",
+  "slots": {
+    "b0": {
+      "size": "L",
+      "-1": {
+        "n": 5,
+        "best": 3.0000108597025887,
+        "status": {
+          "pose": 42,
+          "collision": 49,
+          "ok": 5
+        },
+        "carts": [
+          -0.07,
+          -0.04,
+          0.09,
+          0.36,
+          0.37
+        ],
+        "blockers": null
+      },
+      "1": {
+        "n": 8,
+        "best": 3.4486280641632483,
+        "status": {
+          "pose": 37,
+          "collision": 48,
+          "ok": 11
+        },
+        "carts": [
+          -0.21,
+          -0.2,
+          -0.14,
+          -0.12,
+          -0.07,
+          -0.07,
+          0.44,
+          0.64
+        ],
+        "blockers": null
+      }
+    },
+    "b1": {
+      "size": "L",
+      "-1": {
+        "n": 5,
+        "best": 3.0000108593171193,
+        "status": {
+          "collision": 59,
+          "pose": 32,
+          "ok": 5
+        },
+        "carts": [
+          0.03,
+          0.06,
+          0.19,
+          0.46,
+          0.47
+        ],
+        "blockers": null
+      },
+      "1": {
+        "n": 8,
+        "best": 3.2868298568353524,
+        "status": {
+          "pose": 29,
+          "collision": 56,
+          "ok": 11
+        },
+        "carts": [
+          -0.11,
+          -0.1,
+          -0.04,
+          -0.02,
+          0.03,
+          0.03,
+          0.59,
+          0.74
+        ],
+        "blockers": null
+      }
+    },
+    "b2": {
+      "size": "L",
+      "-1": {
+        "n": 5,
+        "best": 3.000010864731011,
+        "status": {
+          "collision": 58,
+          "pose": 33,
+          "ok": 5
+        },
+        "carts": [
+          0.13,
+          0.16,
+          0.29,
+          0.56,
+          0.57
+        ],
+        "blockers": null
+      },
+      "1": {
+        "n": 6,
+        "best": 2.9999981907815654,
+        "status": {
+          "collision": 62,
+          "pose": 28,
+          "ok": 6
+        },
+        "carts": [
+          -0.01,
+          0.0,
+          0.06,
+          0.08,
+          0.28,
+          0.57
+        ],
+        "blockers": null
+      }
+    }
+  },
+  "lift_m": 0.008,
+  "seed": 14,
+  "elapsed_s": 153.4
+}

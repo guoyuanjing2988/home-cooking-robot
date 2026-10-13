@@ -41,10 +41,10 @@ OUT='results/r19/cart';G=9.81;H=S.H
 XW,YD,YC,ZB=.22,-.22,.11,.30   # contact lines and bumper height (scene.py dock+deep_cart; mobile.dock_stability)
 BASE=dict(mu=.5,Fb_max=250.,trail=.035,casters='swivel',slope_deg=0.,tether_N=20.,tether_z=.10,proc_N=0.)
 # UR5e stop deceleration, rad/s^2 = pi / t_stop at 100 % speed (180 deg/s) and 100 % extension (UR manual 2.3):
-# max payload: J0 .164 s, J1 .288 s, J2 .162 s; 66 % payload: J0 .140, J1 .210, J2 (graph not extracted) .110 (E,
-# between its 33 % .070 and max .162). Wrists: no data, as J2 (E). The graphs are linear in speed through ~0,
-# i.e. constant deceleration (J0: 19 m/s^2 at the TCP from both the 33 % and the 100 % speed points).
-ALPHA={'max':np.pi/np.array([.164,.288,.162,.162,.162,.162]),'66':np.pi/np.array([.140,.210,.110,.110,.110,.110])}
+# max payload (5 kg): J0 .164 s, J1 .288 s, J2 .162 s; 66 % of 5 kg: J0 .140, J1 .210, J2 .102 (manual p.19-23).
+# Wrists: no data, as J2 (E). The graphs are linear in speed through ~0, i.e. constant deceleration (J0: 19 m/s^2
+# at the TCP from both the 33 % and the 100 % speed points; v0 = 2 d / t is the same at all payloads).
+ALPHA={'max':np.pi/np.array([.164,.288,.162,.162,.162,.162]),'66':np.pi/np.array([.140,.210,.102,.102,.102,.102])}
 PEAK_T,R_WHEEL=30.,.0825   # ZLLG65ASM500 V2.0 peak torque 30 N.m, 165 mm wheel (WHEEL datasheet)
 EDGES=['back','right(+x)','front','left(-x)']
 KV=dict(a.split('=',1) for a in sys.argv[1:]) if __name__=='__main__' else {}

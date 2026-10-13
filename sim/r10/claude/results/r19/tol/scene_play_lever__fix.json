@@ -1,0 +1,320 @@
+{
+ "scene": "play:lever",
+ "part": "fix",
+ "arm": "ur5e",
+ "info": {
+  "file": "results/r17/chain_lever_s+1_final.json",
+  "kind": "play",
+  "act": "lever",
+  "obj": "lever",
+  "src_n": 16
+ },
+ "states": 128,
+ "stored_states": 16,
+ "nominal_s": 0.6,
+ "nominal_cached": true,
+ "held": true,
+ "groups": {
+  "cooker": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "drum": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "faucet_body": {
+   "min_gate_lb_mm": 8.61,
+   "searched": true
+  },
+  "plate1": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "spatula_pad": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "lid_rack": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "pot": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "spider_rest": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "sink": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "raw": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "bowls": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "cups": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "upper": {
+   "min_gate_lb_mm": 19.46,
+   "searched": true
+  },
+  "counter": {
+   "min_gate_lb_mm": 80.0,
+   "searched": false
+  },
+  "wall": {
+   "min_gate_lb_mm": 62.98,
+   "searched": false
+  }
+ },
+ "directions": [
+  {
+   "kind": "fix",
+   "axis": "x",
+   "sign": 1,
+   "group": "faucet_body",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "x",
+   "sign": -1,
+   "group": "faucet_body",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "y",
+   "sign": 1,
+   "group": "faucet_body",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "y",
+   "sign": -1,
+   "group": "faucet_body",
+   "unit": "mm",
+   "gate": {
+    "tol": 9.914,
+    "bounded": true,
+    "violation_at": 9.941,
+    "binding": {
+     "state": 127,
+     "value_mm": -0.002,
+     "pair": [
+      "R_gripper_r17_lever_bar",
+      "r17_lever_hub"
+     ],
+     "label": "kf 0->1 (closed -> open)",
+     "src_index": 15.0
+    },
+    "evals": 136
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "z",
+   "sign": 1,
+   "group": "faucet_body",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "z",
+   "sign": -1,
+   "group": "faucet_body",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 175
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 81
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "x",
+   "sign": 1,
+   "group": "upper",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "x",
+   "sign": -1,
+   "group": "upper",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "y",
+   "sign": 1,
+   "group": "upper",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "y",
+   "sign": -1,
+   "group": "upper",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "z",
+   "sign": 1,
+   "group": "upper",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   }
+  },
+  {
+   "kind": "fix",
+   "axis": "z",
+   "sign": -1,
+   "group": "upper",
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 0
+   }
+  }
+ ],
+ "elapsed_s": 2.0
+}
