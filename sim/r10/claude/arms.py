@@ -3,8 +3,8 @@
 Choose it with cfg['arm'], or ARM=<id> on the command line (the KEY=VALUE style of every script
 here), or the environment variable ARM. Ids: ur5e (default), fr5 (Fairino FR5, stock J6 +-175 deg),
 fr5_j6 (FR5 with the optional J6 +-360 deg), ur5e_enc (R19 #12: the UR5e, with collision geoms that enclose the Menagerie
-visual meshes, r19/arm_ur5e_enc.json from r19ur5e_encfit.py; everything else is the UR5e's). For ur5e nothing in the model
-is touched.
+visual meshes, r19/arm_ur5e_enc.json from r19ur5e_encfit.py; everything else is the UR5e's), ur5e_enc2 (the same, tighter:
+convex pieces, r19/arm_ur5e_enc2.json from r19ur5e_enc2fit.py). For ur5e nothing in the model is touched.
 
 For another arm, scene.build calls swap(): the UR5e bodies under R_mount are replaced by the arm
 built from r19/arm_<model>.json (r19arm_fit.py: vendor URDF frames, DH masses/CoMs, capsules
@@ -38,7 +38,9 @@ ARMS={
   payload_source='E: 6 kg rated (M, CS66 datasheet); the allowed CoG offset is ND (no CS66 payload diagram found); 0.15 m assumed, below the FR5 published 0.30 m and the UR5e file 0.35 m, so the wrist envelopes are on the strict side',
   mount_yaw_deg=0.,clock_deg=0.),
  'ur5e_enc':dict(name='Universal Robots UR5e, collision geoms enclosing the Menagerie visual meshes (R19 #12)',speeds_degps=[180.]*6,payload_kg=5.,com_radius_m=.35,
-  speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc.json')}
+  speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc.json'),
+ 'ur5e_enc2':dict(name='Universal Robots UR5e, convex collision pieces enclosing the Menagerie visual meshes (R19 #12, tighter)',speeds_degps=[180.]*6,payload_kg=5.,com_radius_m=.35,
+  speeds_source='as ur5e',payload_source=UR_ENV_SOURCE,enclose='r19/arm_ur5e_enc2.json')}
 def _cli():
  for a in sys.argv[1:]:
   if a.startswith('ARM='):return a[4:]
@@ -65,10 +67,16 @@ BODIES=['R_arm_shoulder_link','R_arm_upper_arm_link','R_arm_forearm_link','R_arm
 def enclose(tree,arm):
  """ur5e_enc: the UR5e bodies, joints, inertials and site stay; its collision geoms R_geom_5..28 get the fitted
  type / pos / quat / size, and the added ones (R_geom_enc_*) are put on their bodies with the same contact settings."""
- G=json.loads((H/ARMS[arm]['enclose']).read_text(encoding='utf-8'))['geoms']
+ J=json.loads((H/ARMS[arm]['enclose']).read_text(encoding='utf-8'));G=J['geoms']
+ for nm in J.get('remove',[]):   # ur5e_enc2: the Menagerie geoms go, the convex pieces replace them
+  for b in tree.iter('body'):
+   for g in list(b):
+    if g.tag=='geom' and g.get('name')==nm:b.remove(g)
  for g in G:
   el=tree.find(f".//geom[@name='{g['name']}']")
   if el is None:el=E.SubElement(tree.find(f".//body[@name='{g['body']}']"),'geom',name=g['name'],contype='2',conaffinity='3',margin='.01',group='3')
+  if g['type']=='mesh':   # a convex piece (MuJoCo collides meshes as their convex hull, which these are)
+   E.SubElement(tree.getroot().find('asset'),'mesh',name='M_'+g['name'],vertex=' '.join(fmt(v) for v in g['vertices']));el.set('type','mesh');el.set('mesh','M_'+g['name']);continue
   el.set('type',g['type']);el.set('pos',fmt(g['pos']));el.set('quat',fmt(g['quat']));el.set('size',fmt(g['size']))
  return tree
 def swap(tree,arm):

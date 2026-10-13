@@ -123,7 +123,8 @@ if MODE=='screen':
  save(f'{OUT}/layout_screen.json',dict(method=__doc__,swept_build_s=round(t_sw,1),segments=len(SW),rows=rows))
 # ---------------------------------------------------------------------------------------------------
 def replay_one(name):
- C=K19.CANDIDATES[name];boxes=K19.boxes(C);scr=json.load(open(f'{OUT}/layout_screen.json'));row=next(r for r in scr['rows'] if r['name']==name)
+ C=K19.CANDIDATES[name];boxes=K19.boxes(C);scr=json.load(open(f'{OUT}/layout_screen.json'))
+ row=next((r for r in scr['rows'] if r['name']==name),None) or next(r for r in scr['rows'] if r['name']==KV.get('HUBFROM',''))   # HUBFROM: reuse a nearby screened candidate's flagged hub edges
  seglab=json.load(open('results/r19/prim/segments.json'))['labels']
  def with_boxes(tree):
   for bn,c,s in boxes:box(tree.find('worldbody'),'cand_'+bn,c,s,(.9,.6,.1,1))
@@ -145,7 +146,7 @@ def replay_one(name):
     hit[lab]+=1
     if first is None:first=dict(segment=lab,pair=hs[0]['pair'],gap_mm=hs[0].get('real_gap_mm'))
   res[n]=dict(states=len(qs),hit_segments=dict(hit),first=first);print(name,n,len(qs),'states; hit',dict(hit),first,flush=True)
- hub=[k for k in row['flagged_segments'] if k.startswith('hub_edge__')]
+ hub=[k for k in row['flagged_segments'] if k.startswith('hub_edge__')] if not KV.get('CHAINSONLY') else []
  r18b();cfg=chain.chain_cfg('SD',**{**BASE,'r16_tools':{'ladle':None},'r17_lever':0.,'r16_lid':'on','r17_plate2':[.17,K15.PLATE['c'][1],K15.PLATE['c'][2]]})
  tree,meta=build(cfg,None);ch=Checker(with_boxes(tree),meta)
  for k in hub:
@@ -165,7 +166,7 @@ if MODE=='replay':
  if len(names)==1 or npar==1:
   for nm in names:replay_one(nm)
  else:
-  procs=[subprocess.Popen([sys.executable,__file__,'replay',f'NAMES={nm}']+[a for a in sys.argv[2:] if a.startswith('ARM=')]) for nm in names]
+  procs=[subprocess.Popen([sys.executable,__file__,'replay',f'NAMES={nm}']+[a for a in sys.argv[2:] if a.startswith(('ARM=','HUBFROM=','CHAINSONLY='))]) for nm in names]
   for p in procs:p.wait()
 # ---------------------------------------------------------------------------------------------------
 def reach_one(probe):
@@ -191,7 +192,7 @@ def reach_one(probe):
  out=dict(probe=probe,desc=P['desc'],point=list(P['p']),approach=list(P['a']),jaw=list(P['j']),held=held,scene=P['scene'],ok=bool(cands),status_counts=dict(stat),
   n_ok=len(cands),best_reserve_mm=round(cands[0]['reserve_mm'],1) if cands else None,carts=sorted({round(c['q'][0],2) for c in cands}),best_q=cands[0]['q'] if cands else None,
   blockers=blockers.most_common(8),arm=arms.current())
- save(f"{OUT}/layout_reach_{probe}{arms.tag()}.json",out)
+ save(f"{OUT}/layout_reach_{probe.replace(':','__')}{arms.tag()}.json",out)
  print(f"{probe:28s} ok {out['ok']} n_ok {out['n_ok']} reserve {out['best_reserve_mm']} carts {out['carts'][:6]} {dict(stat)} {out['blockers'][:3]}",flush=True)
 if MODE=='reach':
  names=KV['PROBES'].split(',') if 'PROBES' in KV else list(K19.REACH_PROBES)

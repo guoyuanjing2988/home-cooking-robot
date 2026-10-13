@@ -277,6 +277,10 @@ def main():
   else:print(f"{g['name']:22s} {g['body']:22s} added   ->{g['type']:8s} r {g['start']['radius_m']*1e3:5.1f}->{g['size'][0]*1e3:6.2f} mm  extent {g['start']['extent_m']} -> {g['extent_m']}")
  for L in NAMES:print(f'{L:15s} Menagerie geoms: max protrusion {before[L]["max_protrusion_mm"]:6.2f} mm | fitted: {after[L]["max_protrusion_mm"]:6.2f} mm, certificate {cert[L]}')
 INV_BODY={v:k for k,v in BODY.items()}
+def from_json_geom(g):
+ R=Rq(np.array(g['quat'],float));h=g['size'][1]
+ return dict(name=g['name'],parent=g.get('parent',g['name']),body=INV_BODY[g['body']],type=g['type'],c=np.array(g['pos'],float),u=R[:,2].copy(),quat=list(g['quat']),
+  s0=-h,s1=h,r=float(g['size'][0]),menagerie=g.get('menagerie'),start=g.get('start'))
 def from_json(fn):
  """primitives of an arm_*.json (the fitted geoms) in the fit's form (centre c, axis u, extent [s0, s1], r)."""
  out=[]

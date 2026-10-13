@@ -162,6 +162,9 @@ CANDIDATES={
  'tool_C90':dict(item='tool',st=('lever',-0.90,.095,0.),desc='left counter front by the sink (cooking corridor)'),
  'tool_PL':dict(item='tool',st=('lever',.30,.095,0.),desc='plating area (empty before cooking; prep-time only)'),
  'tool_PL90':dict(item='tool',st=('lever',.30,.13,90.),desc='plating area, turned 90 deg: front (slide-in side, knob grasp) toward +x'),
+ 'tool_CB':dict(item='tool',st=('lever',-0.90,.20,0.),desc='CHOSEN: left counter by the sink, set back (blade plate y 0.20)'),
+ **{f'tool_CB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='set-back work spot variants') for x,y in ((-0.87,.20),(-0.85,.20),(-0.90,.22),(-0.88,.22),(-0.86,.22),(-0.88,.21),(-0.86,.21),(-0.87,.215),(-0.90,.21))},
+ 'cbox_CB':dict(item='cold_box',st=('cold_box',-0.90,.12,90.),desc='CHOSEN: cold box along x at the work spot (instead of the lever base)'),
  **{f'tool_CB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='left counter by the sink, set back (carry lane and shoulder pass in front of it)') for x in (-.90,-.95) for y in (.20,.24)},
  **{f'tool_PLB_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,0.),desc='plating area, set back (knob further from the passing shoulder)') for x in (.10,.20,.30) for y in (.16,.20,.24)},
  **{f'tool_PL90_{x:.2f}_{y:.2f}':dict(item='tool',st=('lever',x,y,90.),desc='plating area, turned 90 deg (grid)') for x in (.10,.20,.30,.40) for y in (.10,.16,.20)},
@@ -231,10 +234,15 @@ def _probes():
    P[f'{nm}:set']=dict(desc='bridge bar pinched from above, box set down (bar 1.06 m)',p=box_bar(x,y,yaw),a=(0,0,-1),j=tuple((Rz(yaw)@[0,1.,0]).round(6)),scene=sc,jaw_q=0.)
  return P
 # ---------------- the chosen layout (see R19_PREP_LAYOUT.md) ----------------
-# slicer resident in the far-left column turned 90 deg (chute at the front); the raw tray unchanged; the
-# fetched-tool work spot (lever base) at the left counter front by the sink, prep-time only (the wok sink
-# trips and the spatula fetch pass over it); the cold box set-down: see the probes (shared spot).
-LAYOUT=dict(slicer=(-1.69,.225,90.),lever=(-0.90,.095,0.),cold_box=(-0.90,.15,0.),tray_dxy=(0.,0.),drop_bowls=[])
+# - slicer (卓晋, 6.8 kg, resident): far-left column, turned 90 deg, chute at the front (open strip), out bowl
+#   under the cabinet; clear of every stored cooking path (replay) and reachable (drop probes);
+# - raw tray: unchanged (R18b), picks reachable;
+# - fetched-tool work spot (lever base AY-403 class; also the cold-box set-down and other fetched tools,
+#   one at a time): left counter by the sink, SET BACK so its blade plate is at y 0.20: the carry lane
+#   and the robot's own shoulder pass in front of it. Prep-time only: the wok sink trips and the spatula
+#   fetch pass over it (replay), so it is fetched / stowed around them;
+# - cold box: set down along x at the work spot, never at the same time as the lever base.
+LAYOUT=dict(slicer=(-1.69,.225,90.),lever=(-0.88,.22,0.),cold_box=(-0.90,.12,90.),tray_dxy=(0.,0.),drop_bowls=['tomato'])   # the R07 tomato staging bowl (x -0.96..-0.76, y .36-.56) would overlap the lever base plate: moved off this spot
 FAUCET_OUT=np.array([K17.FX,.37,1.10])   # the R17 faucet outlet (spout front end)
 def layout_scene(*stations,**kw):
  """cfg['r19'] for the chosen layout with these stations out (the slicer is resident: always out)."""

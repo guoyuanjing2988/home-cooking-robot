@@ -182,7 +182,8 @@ def summarize(rs,src):
 def enclose():
  """r19ur5e_enclose.py's measurement, but on the SIM model as scene.build makes it (models/base.xml + arms.swap):
  the Menagerie visual meshes placed in the sim's R_arm_* bodies (same frames, asserted), max protrusion of any
- vertex outside the union of all the arm's capsule / cylinder geoms, over random arm configurations."""
+ vertex outside the union of all the arm's capsule / cylinder geoms (and the convex pieces R_geom_enc*), over random
+ arm configurations."""
  import mujoco,xml.etree.ElementTree as E,arms
  from scipy.spatial.transform import Rotation
  from scene import H
@@ -194,11 +195,14 @@ def enclose():
   m=mujoco.MjModel.from_xml_string(E.tostring(tree.getroot(),encoding='unicode'));d=mujoco.MjData(m)
   B={b:m.body('R_arm_'+mujoco.mj_id2name(mm,mujoco.mjtObj.mjOBJ_BODY,b)).id for b in range(1,mm.nbody)}
   for b,sb in B.items():assert np.allclose(mm.body_pos[b],m.body_pos[sb]) and np.allclose(mm.body_quat[b],m.body_quat[sb]),b
-  col=[g for g in range(m.ngeom) if (m.geom(g).name or '').startswith('R_geom_') and m.geom_type[g] in (mujoco.mjtGeom.mjGEOM_CAPSULE,mujoco.mjtGeom.mjGEOM_CYLINDER)]
+  col=[g for g in range(m.ngeom) if (m.geom(g).name or '').startswith('R_geom_') and (m.geom_type[g] in (mujoco.mjtGeom.mjGEOM_CAPSULE,mujoco.mjtGeom.mjGEOM_CYLINDER) or (m.geom(g).name.startswith('R_geom_enc') and m.geom_type[g]==mujoco.mjtGeom.mjGEOM_MESH))]
+  from scipy.spatial import ConvexHull
+  EQ={g:ConvexHull(m.mesh_vert[m.mesh_vertadr[m.geom_dataid[g]]:m.mesh_vertadr[m.geom_dataid[g]]+m.mesh_vertnum[m.geom_dataid[g]]].astype(float)).equations for g in col if m.geom_type[g]==mujoco.mjtGeom.mjGEOM_MESH}
   vis=[g for g in range(mm.ngeom) if mm.geom_type[g]==mujoco.mjtGeom.mjGEOM_MESH and mm.geom_bodyid[g]>1]
   arm_q=[m.jnt_qposadr[m.joint(n).id] for n in arms.JOINTS]
   def sdf(P,g):
    R=d.geom_xmat[g].reshape(3,3);L=(P-d.geom_xpos[g])@R;r,h=m.geom_size[g][:2]
+   if g in EQ:return (L@EQ[g][:,:3].T+EQ[g][:,3]).max(1)   # convex piece: exact inside, a lower bound outside (the sign is exact)
    if m.geom_type[g]==mujoco.mjtGeom.mjGEOM_CAPSULE:z=np.clip(L[:,2],-h,h);return np.linalg.norm(L-np.c_[0*z,0*z,z],axis=1)-r
    rad=np.linalg.norm(L[:,:2],axis=1)-r;ax=np.abs(L[:,2])-h
    return np.where((rad>0)&(ax>0),np.hypot(rad,ax),np.maximum(rad,ax))

@@ -283,7 +283,7 @@ def candidates(k):
   for k_,v in r['status_counts'].items():stat[k_]=stat.get(k_,0)+v
   out+=[dict(q=c_['q'],reserve_mm=c_['reserve_mm']) for c_ in r['candidates']]
  out=sorted(out,key=lambda c_:-c_['reserve_mm'])
- if KF[k].get('walk') and ARM in ('ur5e','ur5e_enc'):   # a checked R16 walk state (UR5e joint values; not for another arm; ur5e_enc = same arm, re-checked here) of the same pose and grasp sense goes first
+ if KF[k].get('walk') and (ARM=='ur5e' or arms.ARMS[ARM].get('enclose')):   # a checked R16 walk state (UR5e joint values; not for another arm; ur5e_enc / ur5e_enc2 = same arm, re-checked here) of the same pose and grasp sense goes first
   w=json.load(open(f"results/r16/walk_{KF[k]['walk'][0]}.json"))
   if w['jaw_sign']==SIGN:out=[dict(q=w['path'][KF[k]['walk'][1]]['q'],reserve_mm=-1.)]+out
  _cands[key]=(out,stat);return _cands[key]
