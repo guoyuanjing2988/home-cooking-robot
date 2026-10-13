@@ -1,0 +1,29 @@
+lifted start candidates 8 {'collision': 37, 'ok': 34, 'pose': 25, 'plume': 0}
+ cand 0 cart 1.21 ok
+ cand 1 cart 1.21 ok
+ cand 2 cart 1.21 ok
+over the wok start candidates 8 {'ok': 49, 'pose': 29, 'collision': 18, 'plume': 0}
+ cand 0 cart 1.21 ok
+ cand 1 cart 1.21 {'at': 'over the wok->tipped -135 (poured)', 'kf': None, 'cart': np.float64(1.21), 'step_deg': 1.1, 'pose_mm': 0.9, 'reserve_mm': None, 'plume_mm': 28.5, 'dt': np.float64(0.04411764705882353), 'hits': []}
+ cand 2 cart 1.21 ok
+ cand 3 cart 1.21 ok
+lowered start candidates 8 {'collision': 37, 'ok': 34, 'pose': 25, 'plume': 0}
+ cand 0 cart 1.21 ok
+ cand 1 cart 1.21 ok
+ cand 2 cart 1.21 ok
+joins at lane [(0, True), (0, True), (0, True), (222, False), (222, False), (222, False)]
+  join (0, 0) cart gap None object moves 51 mm / 0 deg in the join
+  join (0, 1) cart gap None object moves 51 mm / 0 deg in the join
+  join (1, 0) cart gap None object moves 51 mm / 0 deg in the join
+  join (1, 1) cart gap None object moves 51 mm / 0 deg in the join
+  join (2, 0) cart gap None object moves 51 mm / 0 deg in the join
+  join (2, 1) cart gap None object moves 51 mm / 0 deg in the join
+joins at lane [(0, True), (0, True), (0, True), (222, False), (222, False), (222, False)]
+  join (0, 0) cart gap None object moves 51 mm / 0 deg in the join
+  join (0, 1) cart gap None object moves 51 mm / 0 deg in the join
+  join (0, 2) cart gap None object moves 51 mm / 0 deg in the join
+  join (1, 0) cart gap None object moves 51 mm / 0 deg in the join
+  join (1, 1) cart gap None object moves 51 mm / 0 deg in the join
+  join (1, 2) cart gap None object moves 51 mm / 0 deg in the join
+results/r19/prep4/chain_stgwok_m2_ur5e_enc2_pgc.json
+{"act": "stgwok", "obj": "stg", "arm": "ur5e_enc2_pgc", "grasp_sense": 1, "argv": ["ACT=stgwok", "C0=1.21", "POURC=1.21", "TIP=-135", "SW=-.32,.05,1.11,0", "SLANE=-.36,.19,1.26", "SEEDS=1", "TRIES=6", "KEEP=3", "TAG=m2", "ARM=ur5e_enc2_pgc"], "ok": false, "time_s": 0.0, "elapsed_s": 111, "rinse_dwell_s_est": 3.0, "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker", "anchors": {"lifted#1": {"ok": true, "cand": 0, "cart": 1.21, "start_reserve_mm": 20.0}, "over the wok#4": {"ok": true, "cand": 2, "cart": 1.21, "start_reserve_mm": 5.0}, "lowered#9": {"ok": true, "cand": 0, "cart": 1.21, "start_reserve_mm": 20.0}}, "pieces": [{"frm": "lifted#1", "to": "pick (12 mm over the cradle)#0", "steps": 2, "time_s": 0.2, "min_reserve_mm": 2.0, "min_plume_mm": 29.9, "max_step_deg": 1.2, "cart": [1.21, 1.21]}, {"frm": "lifted#1", "to": "lane#3", "steps": 37, "time_s": 3.6, "min_reserve_mm": 34.5, "min_plume_mm": 29.2, "max_step_deg": 1.36, "cart": [1.21, 1.21]}, {"frm": "over the wok#4", "to": "lane#3", "steps": 11, "time_s": 1.0, "min_reserve_mm": 27.7, "min_plume_mm": 28.2, "max_step_deg": 0.84, "cart": [1.21, 1.21]}, {"frm": "over the wok#4", "to": "lane#7", "steps": 147, "time_s": 9.0, "min_reserve_mm": 4.5, "min_plume_mm": 28.2, "max_step_deg": 1.79, "cart": [1.21, 1.21]}, {"frm": "lowered#9", "to": "lane#7", "steps": 37, "time_s": 3.6, "min_reserve_mm": 34.5, "min_plume_mm": 29.2, "max_step_deg": 1.36, "cart": [1.21, 1.21]}, {"frm": "lowered#9", "to": "set down (12 mm)#10", "steps": 2, "time_s": 0.2, "min_reserve_mm": 2.0, "min_plume_mm": 29.9, "max_step_deg": 1.2, "cart": [1.21, 1.21]}], "joins": [{"ok": true, "arm_deg": 0.0, "s": 0.6, "at": "lane", "best_pair_deg": 0.0}, {"ok": true, "arm_deg": 0.0, "s": 0.6, "at": "lane", "best_pair_deg": 0.0}], "approaches": [{"ok": false, "kf": 0, "stop": 0, "hits": [["R_cart_p4_stg_body", "R_finger_minus"], ["R_cart_p4_stg_body", "R_finger_plus"], ["R_cart_p4_stg_body", "R_finger_minus"]], "pose_mm": 0.0}, {"ok": false, "kf": 10, "stop": 0, "hits": [["R_cart_p4_stg_body", "R_finger_minus"], ["R_cart_p4_stg_body", "R_finger_plus"], ["R_cart_p4_stg_body", "R_finger_minus"]], "pose_mm": 0.0}], "min_reserve_mm": 2.0, "plume_m": 0.2, "min_plume_mm": 28.2, "p4_info": {"obj": "stg", "pick_cart": 1.21, "pour_cart": 1.21, "pour_axis": [0.83, 0.07], "grip_z": 1.38, "tip_deg": -135.0, "food_kg_est": 0.4, "pan": {"r": 0.07, "h": 0.085}, "t2l": {"cx": -0.32, "cy": 0.05, "zb": 0.93, "yaw": 0.0}, "waypoints_cart_frame": {"swing": [[-0.32, 0.05, 1.11, 0.0]], "lane": [-0.36, 0.19, 1.26], "lane_cart": 1.21}}, "max_pgc_moment_Nm": null, "max_joint_ratio": null, "push": null}

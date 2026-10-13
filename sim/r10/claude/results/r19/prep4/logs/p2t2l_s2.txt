@@ -1,0 +1,8 @@
+pick (plating spot 2, 8 mm) start candidates 0 {'collision': 47, 'pose': 49}
+over the T2L cradle start candidates 8 {'pose': 29, 'ok': 33, 'collision': 34}
+ cand 0 cart 0.45 ok
+ cand 1 cart 0.45 ok
+ cand 2 cart 0.45 ok
+joins at lane []
+results/r19/prep4/chain_p2t2l_s2_ur5e_enc2_pgc.json
+{"act": "p2t2l", "obj": "stg", "arm": "ur5e_enc2_pgc", "grasp_sense": 1, "argv": ["ACT=p2t2l", "CB=.45", "TRIES=8", "KEEP=3", "TAG=s2", "ARM=ur5e_enc2_pgc", "SEEDS=1", "PLUME=0"], "ok": false, "time_s": 0.0, "elapsed_s": 34, "rinse_dwell_s_est": 3.0, "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker", "anchors": {"pick (plating spot 2, 8 mm)#0": {"ok": false, "n_candidates": 0, "start_status": {"collision": 47, "pose": 49}}, "over the T2L cradle#3": {"ok": true, "cand": 0, "cart": 0.45, "start_reserve_mm": 90.0}}, "pieces": [{"frm": "over the T2L cradle#3", "to": "lane#2", "steps": 16, "time_s": 1.6, "min_reserve_mm": 96.2, "min_plume_mm": null, "max_step_deg": 2.4, "cart": [0.45, 0.45]}, {"frm": "over the T2L cradle#3", "to": "set down (12 mm)#5", "steps": 9, "time_s": 0.9, "min_reserve_mm": 2.0, "min_plume_mm": null, "max_step_deg": 1.49, "cart": [0.45, 0.45]}], "joins": [], "approaches": [{"ok": false, "kf": 0, "reason": "no arm state at this keyframe"}, {"ok": true, "kf": 5, "object_in_world": "cart", "window": false, "lift_mm": 0.0, "min_food_gap_mm": null, "min_reserve_mm": 9.2, "time_s": 0.5}], "min_reserve_mm": 2.0, "plume_m": 0.0, "min_plume_mm": null, "p4_info": {"cart": 0.45, "pan_spot": [0.17, 0.15, 0.85], "food_kg_est": 0.4, "lane": [0.15, -0.005, 1.05], "note": "prep time (cooker off): run with PLUME=0"}, "max_pgc_moment_Nm": null, "max_joint_ratio": null, "push": null}

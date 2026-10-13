@@ -1,0 +1,1158 @@
+{
+  "act": "drawer",
+  "obj": "dbh_0.17_0.195_0.237_p0",
+  "arm": "ur5e_enc2_pgc",
+  "grasp_sense": 1,
+  "layout": {
+    "slicer": [
+      -1.69,
+      0.225,
+      90.0
+    ],
+    "lever": [
+      -0.86,
+      0.21,
+      0.0
+    ],
+    "cold_box": [
+      -0.86,
+      0.17,
+      90.0
+    ],
+    "tray_dxy": [
+      0.0,
+      0.0
+    ],
+    "drop_bowls": [
+      "tomato"
+    ]
+  },
+  "argv": [
+    "ACT=drawer",
+    "DYAW=90",
+    "DEG=-130",
+    "TAG=pc1",
+    "ARM=ur5e_enc2_pgc",
+    "SEEDS=1",
+    "PLUME=0",
+    "TRIES=6",
+    "KEEP=2",
+    "DTGT=FS",
+    "MOUTHZ=.14",
+    "DPC=1",
+    "SLC=-1.28",
+    "LIFTC=-1.20",
+    "OUTC=-1.05",
+    "DOUT=-1.45,.33,1.03",
+    "PLAN_N=1",
+    "PLAN_S=60"
+  ],
+  "scene": {
+    "r19": {
+      "stations": {
+        "slicer": [
+          -1.69,
+          0.225,
+          90.0
+        ]
+      },
+      "tray_dxy": [
+        0.0,
+        0.0
+      ],
+      "drop_bowls": [
+        "tomato"
+      ],
+      "objs": [
+        [
+          "carrot",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.42,
+            0.12,
+            0.9305
+          ]
+        ],
+        [
+          "tomato",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.245,
+            0.12,
+            0.9430000000000001
+          ]
+        ],
+        [
+          "bowl",
+          [
+            [
+              -1.0,
+              -1.2246467991473532e-16,
+              0.0
+            ],
+            [
+              1.2246467991473532e-16,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -0.86,
+            0.15,
+            0.85
+          ]
+        ]
+      ]
+    },
+    "r19p4": {
+      "drawer": {
+        "xo": -1.49
+      },
+      "drop_potato": true
+    }
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 84,
+  "rinse_dwell_s_est": 3.0,
+  "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker",
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick (under the spout, 8 mm)",
+      "p": [
+        -1.69,
+        0.495,
+        0.863
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.008
+    },
+    {
+      "i": 1,
+      "label": "slid out (8 mm over the plate)",
+      "p": [
+        -1.49,
+        0.495,
+        0.863
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.28,
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 2,
+      "label": "lifted",
+      "p": [
+        -1.49,
+        0.495,
+        0.955
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.2,
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 3,
+      "label": "out from under the cabinet (carry start)",
+      "p": [
+        -1.45,
+        0.33,
+        1.03
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.05,
+      "anchor": false,
+      "meet": true,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 4,
+      "label": "pre-pour (carry end)",
+      "p": [
+        -0.86,
+        -0.253,
+        0.929
+      ],
+      "R": [
+        [
+          6.123233995736766e-17,
+          -1.0,
+          0.0
+        ],
+        [
+          1.0,
+          6.123233995736766e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.05,
+      "anchor": false,
+      "meet": true,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 5,
+      "label": "over the FS target",
+      "p": [
+        -0.86,
+        -0.2533730934319861,
+        0.869095962561007
+      ],
+      "R": [
+        [
+          6.123233995736766e-17,
+          -1.0,
+          0.0
+        ],
+        [
+          1.0,
+          6.123233995736766e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.05,
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 6,
+      "label": "rolled -130 (poured)",
+      "p": [
+        -0.86,
+        0.20745333323392337,
+        1.1282090707264905
+      ],
+      "R": [
+        [
+          -3.935938943670991e-17,
+          -1.0,
+          -4.6906693763513654e-17
+        ],
+        [
+          -0.6427876096865393,
+          6.123233995736765e-17,
+          -0.766044443118978
+        ],
+        [
+          0.766044443118978,
+          1.3875745609341699e-33,
+          -0.6427876096865393
+        ]
+      ],
+      "c": -1.05,
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 3.0,
+      "seat": 0.0
+    },
+    {
+      "i": 7,
+      "label": "level again",
+      "p": [
+        -0.86,
+        -0.2533730934319861,
+        0.869095962561007
+      ],
+      "R": [
+        [
+          6.123233995736766e-17,
+          -1.0,
+          0.0
+        ],
+        [
+          1.0,
+          6.123233995736766e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.05,
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 8,
+      "label": "pre-pour (return carry start)",
+      "p": [
+        -0.86,
+        -0.253,
+        0.929
+      ],
+      "R": [
+        [
+          6.123233995736766e-17,
+          -1.0,
+          0.0
+        ],
+        [
+          1.0,
+          6.123233995736766e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.05,
+      "anchor": false,
+      "meet": true,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 9,
+      "label": "out from under the cabinet (return carry end)",
+      "p": [
+        -1.45,
+        0.33,
+        1.03
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.05,
+      "anchor": false,
+      "meet": true,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 10,
+      "label": "over the drawer",
+      "p": [
+        -1.49,
+        0.495,
+        0.955
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.2,
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 11,
+      "label": "lowered (8 mm over the plate)",
+      "p": [
+        -1.49,
+        0.495,
+        0.863
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": -1.28,
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 12,
+      "label": "slid in, set down (8 mm)",
+      "p": [
+        -1.69,
+        0.495,
+        0.863
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.008
+    }
+  ],
+  "anchors": {
+    "over the FS target#5": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "ok": 35,
+        "pose": 54,
+        "collision": 7
+      }
+    },
+    "pick (under the spout, 8 mm)#0": {
+      "ok": true,
+      "cand": 0,
+      "cart": -1.48,
+      "start_reserve_mm": 3.0
+    },
+    "slid in, set down (8 mm)#12": {
+      "ok": true,
+      "cand": 0,
+      "cart": -1.48,
+      "start_reserve_mm": 3.0
+    }
+  },
+  "pieces": [
+    {
+      "frm": "pick (under the spout, 8 mm)#0",
+      "to": "out from under the cabinet (carry start)#3",
+      "steps": 49,
+      "time_s": 4.8,
+      "min_reserve_mm": 0.3,
+      "min_plume_mm": null,
+      "max_step_deg": 4.15,
+      "cart": [
+        -1.47,
+        -1.05
+      ]
+    },
+    {
+      "frm": "slid in, set down (8 mm)#12",
+      "to": "out from under the cabinet (return carry end)#9",
+      "steps": 49,
+      "time_s": 4.8,
+      "min_reserve_mm": 0.3,
+      "min_plume_mm": null,
+      "max_step_deg": 4.15,
+      "cart": [
+        -1.47,
+        -1.05
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "stop": 2,
+      "hits": [
+        [
+          "R_geom_enc2_ua_0",
+          "R_geom_enc2_w2_1"
+        ],
+        [
+          "R_geom_enc2_ua_1",
+          "R_geom_enc2_w2_1"
+        ]
+      ],
+      "pose_mm": 0.0
+    },
+    {
+      "ok": false,
+      "kf": 12,
+      "stop": 5,
+      "hits": [
+        [
+          "R_geom_enc2_ua_0",
+          "R_geom_enc2_w2_1"
+        ]
+      ],
+      "pose_mm": 0.0
+    }
+  ],
+  "min_reserve_mm": 0.3,
+  "plume_m": 0.0,
+  "min_plume_mm": null,
+  "p4_info": {
+    "obj": "dbh_0.17_0.195_0.237_p0",
+    "target": "FS",
+    "xo": -1.49,
+    "pour_cart": "F",
+    "pour_deg": -130.0,
+    "pour_yaw": 90.0,
+    "mouth_over_pan_rim_m": 0.14,
+    "food_kg_est": 0.3,
+    "lane": [
+      -1.175,
+      0.121,
+      0.962
+    ]
+  },
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "push": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick (under the spout, 8 mm)",
+      "cand": 0,
+      "start_reserve_mm": 3.0,
+      "cart": -1.48,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "pick (under the spout, 8 mm)",
+      "cand": 1,
+      "start_reserve_mm": 3.0,
+      "cart": -1.48,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "over the FS target",
+      "cand": 0,
+      "start_reserve_mm": 51.4,
+      "cart": -1.05,
+      "ok": false,
+      "fail": {
+        "at": "over the FS target->rolled -130 (poured)",
+        "kf": null,
+        "cart": -1.05,
+        "step_deg": 2.31,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.0813351017532007,
+        "hits": [
+          [
+            "R_geom_enc2_fa_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the FS target",
+      "cand": 1,
+      "start_reserve_mm": 51.4,
+      "cart": -1.05,
+      "ok": false,
+      "fail": {
+        "at": "over the FS target->rolled -130 (poured)",
+        "kf": null,
+        "cart": -1.05,
+        "step_deg": 2.31,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.0813351017532007,
+        "hits": [
+          [
+            "R_geom_enc2_fa_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the FS target",
+      "cand": 2,
+      "start_reserve_mm": 51.4,
+      "cart": -1.05,
+      "ok": false,
+      "fail": {
+        "at": "over the FS target->rolled -130 (poured)",
+        "kf": null,
+        "cart": -1.05,
+        "step_deg": 0.62,
+        "pose_mm": 0.04,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.0813351017532007,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the FS target",
+      "cand": 3,
+      "start_reserve_mm": 51.4,
+      "cart": -1.05,
+      "ok": false,
+      "fail": {
+        "at": "over the FS target->rolled -130 (poured)",
+        "kf": null,
+        "cart": -1.05,
+        "step_deg": 0.62,
+        "pose_mm": 0.04,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.0813351017532007,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the FS target",
+      "cand": 4,
+      "start_reserve_mm": 51.4,
+      "cart": -1.05,
+      "ok": false,
+      "fail": {
+        "at": "over the FS target->rolled -130 (poured)",
+        "kf": null,
+        "cart": -1.05,
+        "step_deg": 2.31,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.0813351017532007,
+        "hits": [
+          [
+            "R_geom_enc2_fa_1",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the FS target",
+      "cand": 5,
+      "start_reserve_mm": 51.4,
+      "cart": -1.05,
+      "ok": false,
+      "fail": {
+        "at": "over the FS target->rolled -130 (poured)",
+        "kf": null,
+        "cart": -1.05,
+        "step_deg": 0.62,
+        "pose_mm": 0.04,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.0813351017532007,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "slid in, set down (8 mm)",
+      "cand": 0,
+      "start_reserve_mm": 3.0,
+      "cart": -1.48,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "slid in, set down (8 mm)",
+      "cand": 1,
+      "start_reserve_mm": 3.0,
+      "cart": -1.48,
+      "ok": true,
+      "fail": null
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    [
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.1294849628516457,
+        -1.7361926788762714,
+        2.703614140278699,
+        -0.8313950229237268,
+        -5.266914861273466,
+        -1.642740391016149,
+        0.025,
+        0.025
+      ],
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.168280480501087,
+        -1.7610300449015557,
+        2.7356846293863124,
+        -0.8351850190940214,
+        -5.305343045333692,
+        -1.6490827443473417,
+        0.025,
+        0.025
+      ],
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.214225484597616,
+        -1.7894274020932988,
+        2.768801323334474,
+        -0.8353111439601516,
+        -5.350827408538265,
+        -1.6570339008119686,
+        0.025,
+        0.025
+      ]
+    ],
+    [
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.1294849628516457,
+        -1.7361926788762714,
+        2.703614140278699,
+        -0.8313950229237268,
+        -5.266914861273466,
+        -1.642740391016149,
+        0.025,
+        0.025
+      ],
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.1321097670908062,
+        -1.747608943684252,
+        2.702985440696472,
+        -0.8191287857956898,
+        -5.2695153799522005,
+        -1.643159749563215,
+        0.025,
+        0.025
+      ],
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.134763492432391,
+        -1.7589943130972754,
+        2.7023016352086167,
+        -0.806834226028189,
+        -5.2721444716483585,
+        -1.6435851122958087,
+        0.025,
+        0.025
+      ],
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.137446696685086,
+        -1.7703462789908753,
+        2.701562977282541,
+        -0.7945139906917658,
+        -5.274802685565371,
+        -1.6440166274864045,
+        0.025,
+        0.025
+      ],
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.14015995403725,
+        -1.7816623738488329,
+        2.700769738347384,
+        -0.7821706998299155,
+        -5.277490586976072,
+        -1.6444544487481707,
+        0.025,
+        0.025
+      ],
+      [
+        -1.48,
+        -0.21,
+        0.0,
+        -2.180822417771295,
+        -1.8104302826475065,
+        2.732661165343042,
+        -0.7815655412667657,
+        -5.31776215955363,
+        -1.6512030537246518,
+        0.025,
+        0.025
+      ]
+    ]
+  ],
+  "grasps": [
+    {
+      "kf": 0,
+      "world": {
+        "r19": {
+          "stations": {
+            "slicer": [
+              -1.69,
+              0.225,
+              90.0
+            ]
+          },
+          "tray_dxy": [
+            0.0,
+            0.0
+          ],
+          "drop_bowls": [
+            "tomato"
+          ],
+          "objs": [
+            [
+              "carrot",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.42,
+                0.12,
+                0.9305
+              ]
+            ],
+            [
+              "tomato",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.245,
+                0.12,
+                0.9430000000000001
+              ]
+            ],
+            [
+              "bowl",
+              [
+                [
+                  -1.0,
+                  -1.2246467991473532e-16,
+                  0.0
+                ],
+                [
+                  1.2246467991473532e-16,
+                  -1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -0.86,
+                0.15,
+                0.85
+              ]
+            ]
+          ]
+        },
+        "r19p4": {
+          "drawer": {
+            "xo": -1.49
+          },
+          "drop_potato": true
+        }
+      },
+      "object_in_world": true
+    },
+    {
+      "kf": 12,
+      "world": {
+        "r19": {
+          "stations": {
+            "slicer": [
+              -1.69,
+              0.225,
+              90.0
+            ]
+          },
+          "tray_dxy": [
+            0.0,
+            0.0
+          ],
+          "drop_bowls": [
+            "tomato"
+          ],
+          "objs": [
+            [
+              "carrot",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.42,
+                0.12,
+                0.9305
+              ]
+            ],
+            [
+              "tomato",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.245,
+                0.12,
+                0.9430000000000001
+              ]
+            ],
+            [
+              "bowl",
+              [
+                [
+                  -1.0,
+                  -1.2246467991473532e-16,
+                  0.0
+                ],
+                [
+                  1.2246467991473532e-16,
+                  -1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -0.86,
+                0.15,
+                0.85
+              ]
+            ]
+          ]
+        },
+        "r19p4": {
+          "drawer": {
+            "xo": -1.49
+          },
+          "drop_potato": true
+        }
+      },
+      "object_in_world": true
+    }
+  ]
+}

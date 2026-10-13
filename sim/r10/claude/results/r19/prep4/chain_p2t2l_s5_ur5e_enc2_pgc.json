@@ -1,0 +1,885 @@
+{
+  "act": "p2t2l",
+  "obj": "stg",
+  "arm": "ur5e_enc2_pgc",
+  "grasp_sense": 1,
+  "layout": {
+    "slicer": [
+      -1.69,
+      0.225,
+      90.0
+    ],
+    "lever": [
+      -0.86,
+      0.21,
+      0.0
+    ],
+    "cold_box": [
+      -0.86,
+      0.17,
+      90.0
+    ],
+    "tray_dxy": [
+      0.0,
+      0.0
+    ],
+    "drop_bowls": [
+      "tomato"
+    ]
+  },
+  "argv": [
+    "ACT=p2t2l",
+    "CB=.49",
+    "PANYAW=-90",
+    "TAG=s5",
+    "ARM=ur5e_enc2_pgc",
+    "SEEDS=1",
+    "PLUME=0",
+    "TRIES=8",
+    "KEEP=3"
+  ],
+  "scene": {
+    "r19": {
+      "stations": {
+        "slicer": [
+          -1.69,
+          0.225,
+          90.0
+        ]
+      },
+      "tray_dxy": [
+        0.0,
+        0.0
+      ],
+      "drop_bowls": [
+        "tomato"
+      ],
+      "objs": [
+        [
+          "carrot",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.42,
+            0.12,
+            0.9305
+          ]
+        ],
+        [
+          "tomato",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.245,
+            0.12,
+            0.9430000000000001
+          ]
+        ]
+      ]
+    },
+    "r19p4": {
+      "t2l": {
+        "cx": -0.32,
+        "cy": 0.05,
+        "zb": 0.93,
+        "yaw": 0.0,
+        "present": false
+      }
+    }
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 82,
+  "rinse_dwell_s_est": 3.0,
+  "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker",
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick (plating spot 2, 8 mm)",
+      "p": [
+        0.17,
+        0.15,
+        0.858
+      ],
+      "R": [
+        [
+          6.123233995736766e-17,
+          1.0,
+          0.0
+        ],
+        [
+          -1.0,
+          6.123233995736766e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.008
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.17,
+        0.15,
+        0.95
+      ],
+      "R": [
+        [
+          6.123233995736766e-17,
+          1.0,
+          0.0
+        ],
+        [
+          -1.0,
+          6.123233995736766e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 2,
+      "label": "lane",
+      "p": [
+        0.17,
+        -0.005,
+        1.05
+      ],
+      "R": [
+        [
+          6.123233995736766e-17,
+          1.0,
+          0.0
+        ],
+        [
+          -1.0,
+          6.123233995736766e-17,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 3,
+      "label": "over the T2L cradle",
+      "p": [
+        0.16999999999999998,
+        -0.15999999999999998,
+        1.03
+      ],
+      "R": [
+        [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": 0.49,
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 4,
+      "label": "lowered",
+      "p": [
+        0.16999999999999998,
+        -0.15999999999999998,
+        0.9600000000000001
+      ],
+      "R": [
+        [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": 0.49,
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.0
+    },
+    {
+      "i": 5,
+      "label": "set down (12 mm)",
+      "p": [
+        0.16999999999999998,
+        -0.15999999999999998,
+        0.9420000000000001
+      ],
+      "R": [
+        [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "c": 0.49,
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0,
+      "seat": 0.012
+    }
+  ],
+  "anchors": {
+    "pick (plating spot 2, 8 mm)#0": {
+      "ok": false,
+      "n_candidates": 4,
+      "start_status": {
+        "collision": 55,
+        "pose": 37,
+        "ok": 4
+      }
+    },
+    "over the T2L cradle#3": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.49,
+      "start_reserve_mm": 90.0
+    }
+  },
+  "pieces": [
+    {
+      "frm": "over the T2L cradle#3",
+      "to": "lane#2",
+      "steps": 45,
+      "time_s": 2.0,
+      "min_reserve_mm": 20.6,
+      "min_plume_mm": null,
+      "max_step_deg": 1.37,
+      "cart": [
+        0.484,
+        0.394
+      ]
+    },
+    {
+      "frm": "over the T2L cradle#3",
+      "to": "set down (12 mm)#5",
+      "steps": 9,
+      "time_s": 0.9,
+      "min_reserve_mm": 2.0,
+      "min_plume_mm": null,
+      "max_step_deg": 1.49,
+      "cart": [
+        0.49,
+        0.49
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    },
+    {
+      "ok": true,
+      "kf": 5,
+      "object_in_world": "cart",
+      "window": false,
+      "lift_mm": 0.0,
+      "min_food_gap_mm": null,
+      "min_reserve_mm": 9.2,
+      "time_s": 0.5
+    }
+  ],
+  "min_reserve_mm": 2.0,
+  "plume_m": 0.0,
+  "min_plume_mm": null,
+  "p4_info": {
+    "cart": 0.49,
+    "pan_spot": [
+      0.17,
+      0.15,
+      0.85
+    ],
+    "food_kg_est": 0.4,
+    "lane": [
+      0.17,
+      -0.005,
+      1.05
+    ],
+    "note": "prep time (cooker off): run with PLUME=0"
+  },
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "push": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick (plating spot 2, 8 mm)",
+      "cand": 0,
+      "start_reserve_mm": 3.5,
+      "cart": -0.251,
+      "ok": false,
+      "fail": {
+        "at": "pick (plating spot 2, 8 mm)->lifted",
+        "kf": null,
+        "cart": -0.251,
+        "step_deg": 2.78,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.09199999999999996,
+        "hits": [
+          [
+            "upper_cabinet_1",
+            "R_geom_enc2_ua_4"
+          ],
+          [
+            "upper_cabinet_1",
+            "R_geom_enc2_fa_0"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_geom_enc2_fa_0"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick (plating spot 2, 8 mm)",
+      "cand": 1,
+      "start_reserve_mm": 3.0,
+      "cart": -0.218,
+      "ok": false,
+      "fail": {
+        "at": "pick (plating spot 2, 8 mm)->lifted",
+        "kf": null,
+        "cart": -0.218,
+        "step_deg": 1.25,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.09199999999999996,
+        "hits": [
+          [
+            "upper_cabinet_1",
+            "R_geom_enc2_fa_0"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick (plating spot 2, 8 mm)",
+      "cand": 2,
+      "start_reserve_mm": 3.0,
+      "cart": -0.069,
+      "ok": false,
+      "fail": {
+        "at": "pick (plating spot 2, 8 mm)->lifted",
+        "kf": null,
+        "cart": -0.069,
+        "step_deg": 1.22,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.09199999999999996,
+        "hits": [
+          [
+            "upper_cabinet_1",
+            "R_geom_enc2_fa_0"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick (plating spot 2, 8 mm)",
+      "cand": 3,
+      "start_reserve_mm": 3.0,
+      "cart": 0.431,
+      "ok": false,
+      "fail": {
+        "at": "pick (plating spot 2, 8 mm)->lifted",
+        "kf": null,
+        "cart": 0.431,
+        "step_deg": 1.14,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.09199999999999996,
+        "hits": [
+          [
+            "upper_cabinet_1",
+            "R_geom_enc2_ua_4"
+          ],
+          [
+            "r07_closed_door_1_0",
+            "R_geom_enc2_ua_4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the T2L cradle",
+      "cand": 0,
+      "start_reserve_mm": 90.0,
+      "cart": 0.49,
+      "ok": false,
+      "fail": {
+        "at": "over the T2L cradle->lane",
+        "kf": null,
+        "cart": 0.398,
+        "step_deg": 1.03,
+        "pose_mm": 4.43,
+        "reserve_mm": 102.4,
+        "plume_mm": null,
+        "dt": 0.04444444444444444,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the T2L cradle",
+      "cand": 1,
+      "start_reserve_mm": 90.0,
+      "cart": 0.49,
+      "ok": false,
+      "fail": {
+        "at": "over the T2L cradle->lane",
+        "kf": null,
+        "cart": 0.36,
+        "step_deg": 1.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.04444444444444444,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_geom_enc2_ua_4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the T2L cradle",
+      "cand": 2,
+      "start_reserve_mm": 90.0,
+      "cart": 0.49,
+      "ok": false,
+      "fail": {
+        "at": "over the T2L cradle->lane",
+        "kf": null,
+        "cart": 0.398,
+        "step_deg": 1.03,
+        "pose_mm": 4.43,
+        "reserve_mm": 102.4,
+        "plume_mm": null,
+        "dt": 0.04444444444444444,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the T2L cradle",
+      "cand": 3,
+      "start_reserve_mm": 90.0,
+      "cart": 0.49,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "over the T2L cradle",
+      "cand": 4,
+      "start_reserve_mm": 90.0,
+      "cart": 0.49,
+      "ok": false,
+      "fail": {
+        "at": "over the T2L cradle->lane",
+        "kf": null,
+        "cart": 0.36,
+        "step_deg": 1.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.04444444444444444,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_geom_enc2_ua_4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the T2L cradle",
+      "cand": 5,
+      "start_reserve_mm": 90.0,
+      "cart": 0.49,
+      "ok": false,
+      "fail": {
+        "at": "over the T2L cradle->lane",
+        "kf": null,
+        "cart": 0.36,
+        "step_deg": 1.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": null,
+        "dt": 0.04444444444444444,
+        "hits": [
+          [
+            "r07_closed_door_1_0",
+            "R_geom_enc2_ua_4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the T2L cradle",
+      "cand": 6,
+      "start_reserve_mm": 90.0,
+      "cart": 0.49,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "over the T2L cradle",
+      "cand": 7,
+      "start_reserve_mm": 90.0,
+      "cart": 0.49,
+      "ok": true,
+      "fail": null
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null,
+    [
+      [
+        0.49,
+        -0.21,
+        0.0,
+        0.4815692133784799,
+        5.762210736829138,
+        1.9942441140458569,
+        4.564392913916379,
+        -2.647416569763495,
+        -1.7879179458232402,
+        0.025,
+        0.025
+      ],
+      [
+        0.49,
+        -0.21,
+        0.0,
+        0.5006366534805278,
+        5.77252721925031,
+        1.9694915653282823,
+        4.587104999699981,
+        -2.628901744935058,
+        -1.7784701150286195,
+        0.025,
+        0.025
+      ],
+      [
+        0.49,
+        -0.21,
+        0.0,
+        0.5192083295767604,
+        5.783073559127495,
+        1.9444728351119627,
+        4.6090531670333235,
+        -2.6108339418897435,
+        -1.769847510776503,
+        0.025,
+        0.025
+      ],
+      [
+        0.49,
+        -0.21,
+        0.0,
+        0.5372949943974412,
+        5.793841721418446,
+        1.919166850909341,
+        4.630370215666958,
+        -2.593208633428404,
+        -1.7619459777364894,
+        0.025,
+        0.025
+      ],
+      [
+        0.49,
+        -0.21,
+        0.0,
+        0.5549077587368808,
+        5.804826933835387,
+        1.89355410937091,
+        4.6511673878836515,
+        -2.576019921344792,
+        -1.754678071775223,
+        0.025,
+        0.025
+      ],
+      [
+        0.49,
+        -0.21,
+        0.0,
+        0.5720579959350399,
+        5.816026998677267,
+        1.8676161609197715,
+        4.671538768538025,
+        -2.5592608286527936,
+        -1.7479698669160433,
+        0.025,
+        0.025
+      ]
+    ]
+  ],
+  "grasps": [
+    {
+      "kf": 0,
+      "world": {
+        "r19": {
+          "stations": {
+            "slicer": [
+              -1.69,
+              0.225,
+              90.0
+            ]
+          },
+          "tray_dxy": [
+            0.0,
+            0.0
+          ],
+          "drop_bowls": [
+            "tomato"
+          ],
+          "objs": [
+            [
+              "carrot",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.42,
+                0.12,
+                0.9305
+              ]
+            ],
+            [
+              "tomato",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.245,
+                0.12,
+                0.9430000000000001
+              ]
+            ]
+          ]
+        },
+        "r19p4": {
+          "t2l": {
+            "cx": -0.32,
+            "cy": 0.05,
+            "zb": 0.93,
+            "yaw": 0.0,
+            "present": false
+          }
+        }
+      },
+      "object_in_world": true
+    },
+    {
+      "kf": 5,
+      "world": {
+        "r19": {
+          "stations": {
+            "slicer": [
+              -1.69,
+              0.225,
+              90.0
+            ]
+          },
+          "tray_dxy": [
+            0.0,
+            0.0
+          ],
+          "drop_bowls": [
+            "tomato"
+          ],
+          "objs": [
+            [
+              "carrot",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.42,
+                0.12,
+                0.9305
+              ]
+            ],
+            [
+              "tomato",
+              [
+                [
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              [
+                -1.245,
+                0.12,
+                0.9430000000000001
+              ]
+            ]
+          ]
+        },
+        "r19p4": {
+          "t2l": {
+            "cx": -0.32,
+            "cy": 0.05,
+            "zb": 0.93,
+            "yaw": 0.0,
+            "present": true
+          }
+        }
+      },
+      "object_in_world": "cart"
+    }
+  ]
+}

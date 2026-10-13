@@ -1,0 +1,13 @@
+pick (plating spot 2, 8 mm) start candidates 8 {'ok': 28, 'collision': 42, 'pose': 26}
+ cand 0 cart -0.19 ok
+ cand 1 cart -0.19 ok
+over the T2L cradle start candidates 8 {'pose': 31, 'ok': 34, 'collision': 31}
+ cand 0 cart -0.19 ok
+ cand 1 cart -0.19 ok
+joins at up (planned carry start) [(1000, False), (1000, False), (1000, False), (1000, False)]
+  join (0, 0) cart gap None finite_search_budget_exhausted
+  join (0, 1) cart gap None not planned (PLAN_N)
+  join (1, 0) cart gap None not planned (PLAN_N)
+  join (1, 1) cart gap None not planned (PLAN_N)
+results/r19/prep4/chain_p2t2l_pc4_ur5e_enc2_pgc.json
+{"act": "p2t2l", "obj": "stg", "arm": "ur5e_enc2_pgc", "grasp_sense": 1, "argv": ["ACT=p2t2l", "CB=-.19", "PHI=0,0,.25", "PUP2=0,0,.25", "TAG=pc4", "ARM=ur5e_enc2_pgc", "SEEDS=1", "PLUME=0", "TRIES=6", "KEEP=2", "PCARRY=1", "PLAN_N=1", "PLAN_S=100"], "ok": false, "time_s": 0.0, "elapsed_s": 129, "rinse_dwell_s_est": 3.0, "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker", "anchors": {"pick (plating spot 2, 8 mm)#0": {"ok": true, "cand": 0, "cart": -0.19, "start_reserve_mm": 3.0}, "over the T2L cradle#4": {"ok": true, "cand": 0, "cart": -0.19, "start_reserve_mm": 50.0}}, "pieces": [{"frm": "pick (plating spot 2, 8 mm)#0", "to": "up (planned carry start)#2", "steps": 26, "time_s": 2.4, "min_reserve_mm": 3.8, "min_plume_mm": null, "max_step_deg": 1.89, "cart": [-0.19, -0.19]}, {"frm": "over the T2L cradle#4", "to": "high over the T2L cradle (planned carry end)#3", "steps": 20, "time_s": 1.9, "min_reserve_mm": 92.2, "min_plume_mm": null, "max_step_deg": 1.37, "cart": [-0.19, -0.19]}, {"frm": "over the T2L cradle#4", "to": "set down (12 mm)#6", "steps": 5, "time_s": 0.5, "min_reserve_mm": 2.0, "min_plume_mm": null, "max_step_deg": 1.28, "cart": [-0.19, -0.19]}], "joins": [{"ok": false, "method": "planned carry failed", "arm_deg": 1000.0, "reason": "finite_search_budget_exhausted", "at": "up (planned carry start) -> high over the T2L cradle (planned carry end)", "best_pair_deg": 1000.0}], "approaches": [{"ok": true, "kf": 0, "object_in_world": true, "window": false, "lift_mm": 0.0, "min_food_gap_mm": null, "min_reserve_mm": 5.0, "time_s": 0.5}, {"ok": true, "kf": 6, "object_in_world": "cart", "window": false, "lift_mm": 0.0, "min_food_gap_mm": null, "min_reserve_mm": 9.2, "time_s": 0.5}], "min_reserve_mm": 2.0, "plume_m": 0.0, "min_plume_mm": null, "p4_info": {"cart": -0.19, "pan_spot": [0.17, 0.15, 0.85], "food_kg_est": 0.4, "planned_carry": true, "note": "prep time (cooker off): run with PLUME=0"}, "max_pgc_moment_Nm": null, "max_joint_ratio": null, "push": null}

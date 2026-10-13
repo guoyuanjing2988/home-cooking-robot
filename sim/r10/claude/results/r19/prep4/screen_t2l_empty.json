@@ -1,0 +1,1179 @@
+{
+ "summary": {
+  "mode": "t2l",
+  "paths": 59,
+  "errors": 0,
+  "states": 52577,
+  "hit_paths": [
+   "bascarrot_bc1_ur5e_enc2_pgc",
+   "bascarrot_bc1_ur5e_enc2_pgc@app0",
+   "ctray_cq1_ur5e_enc2_pgc",
+   "ctray_cq1_ur5e_enc2_pgc@app0",
+   "ctray_cq1_ur5e_enc2_pgc@app1",
+   "ct2p_s1_ur5e_enc2_pgc",
+   "ct2p_s1_ur5e_enc2_pgc@app0",
+   "ct2p_s1_ur5e_enc2_pgc@app1",
+   "bascarrot_full_ur5e_enc2_pgc@app0",
+   "carrot_full_ur5e_enc2_pgc",
+   "carrot_full_ur5e_enc2_pgc@app0",
+   "carrot_full_ur5e_enc2_pgc@app1",
+   "carrot_r2_ur5e_enc2_pgc",
+   "carrot_r2_ur5e_enc2_pgc@app0",
+   "carrot_r2_ur5e_enc2_pgc@app1",
+   "ctray_full_ur5e_enc2_pgc",
+   "ctray_full_ur5e_enc2_pgc@app0",
+   "ctray_full_ur5e_enc2_pgc@app1",
+   "tomato_full_ur5e_enc2_pgc@app0",
+   "tomato_r2_ur5e_enc2_pgc@app0"
+  ],
+  "worst": {
+   "kind": "prep",
+   "name": "bascarrot_bc1_ur5e_enc2_pgc",
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_w2_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame"
+  },
+  "by_kind": {
+   "play": null,
+   "app": null,
+   "edge": null,
+   "other": null,
+   "prep": -10.0
+  },
+  "potzone": {
+   "RACK": "keyed",
+   "SPX": "1.56",
+   "SPY": ".20"
+  },
+  "arm": "ur5e_enc2_pgc",
+  "empty_cradle": true
+ },
+ "method": "R19 prep step 4 (#38): screen the NEW step-4 parts against every stored path. New file; r19pot_screen.py is imported\nfor its helpers (stored-path list, <= 4 mm sampling, scene builders) and is not changed; nothing is written outside\nresults/r19/prep4/.\nSame method as r19pot_screen.py: a new part only adds pairs, so each stored state is replayed with the part in the\nscene and ONLY the pairs that involve the part are measured, exactly: enclosing-AABB separation, refined by the\nchecker's own GJK lower bound (distance.Bounds.pair) wherever it is within 30 mm of the gap; gate = distance - the\nchecker's required gap for that pair (ch.required: 10 mm robot-environment, 5 mm gripper / held-environment, 10 mm\narm vs a CART part; pairs the checker does not check are skipped, as it does). Stored states 2pi-unwrapped,\njoint-linear between them, cut to <= 4 mm point bound (r19smooth.sample_poly); hub edges as stored (<= 4 mm).\nThe current cooking layout (kitchen19pot: RACK=keyed, spider rest at SPX, SPY = 1.56, 0.20) is installed in every\nscene, and the adopted spider chain is the re-planned one of R19_POTZONE.md.\nMODE=t2l     the T2L cradle + bracket and the parked staging pan (kitchen19p4, CART geoms R_cart_p4_*): they move\n             with the cart, so their bounds are recomputed at every state.\nMODE=drawer  the slicer drawer (guide plate, rails, stop: p4_drawer_*) with the cranked-handle bowl parked under the\n             spout (p4_dbh_*). The R07 potato staging bowl and the plain R11 out bowl are removed by the design; a\n             removed obstacle cannot create a hit, so they are left in the replayed scenes.\nPaths: the adopted cooking chains (results/r17/chain_*_ur5e_enc2_pgc.json, wok + plate 2 at py.15, lever, lid,\nspatula; spider = results/r19/pot/chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json) + their approaches; the 22 hub\nedges (hub_py.15_ur5e_enc2_pgc); the checked cup chains (union scene, held cup bounded by a 0.20 m sphere about the\nTCP as r19pot_screen); the stored prep sets (results/r19/prep/chain_*_{full,r2}_ur5e_enc2_pgc.json + the step-3 smoke\npasses) and the step-4 passes (results/r19/prep4/chain_{ct2p_s1,stgwok_m5}_ur5e_enc2_pgc.json), replayed EXACTLY in\ntheir own scenes (held object, stations, union faucet) with their approaches.\npython r19prep4_screen.py MODE=t2l|drawer [WORKERS=16] [KINDS=play,app,edge,other,prep] -> results/r19/prep4/screen_<MODE>.json",
+ "rows": [
+  {
+   "kind": "prep",
+   "name": "bascarrot_bc1_ur5e_enc2_pgc",
+   "states": 1883,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 3,
+   "pairs": 69,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_w2_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 36,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 6.7
+  },
+  {
+   "kind": "prep",
+   "name": "bascarrot_bc1_ur5e_enc2_pgc@app0",
+   "states": 61,
+   "max_step_bound_mm": 3.977,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_w2_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 61,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.8
+  },
+  {
+   "kind": "prep",
+   "name": "bascarrot_bc1_ur5e_enc2_pgc@app1",
+   "states": 98,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 38.71,
+   "min_dist_mm": 48.71,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 10,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.3
+  },
+  {
+   "kind": "prep",
+   "name": "basket_y20p30_ur5e_enc2_pgc",
+   "states": 3535,
+   "max_step_bound_mm": 3.997,
+   "new_geoms": 3,
+   "pairs": 111,
+   "min_gate_mm": 212.57,
+   "min_dist_mm": 222.57,
+   "pair": [
+    "R_geom_enc2_ua_0",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 1499,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 7.0
+  },
+  {
+   "kind": "prep",
+   "name": "basket_y20p30_ur5e_enc2_pgc@app0",
+   "states": 41,
+   "max_step_bound_mm": 3.603,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 236.97,
+   "min_dist_mm": 246.97,
+   "pair": [
+    "R_geom_enc2_ua_0",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 40,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.2
+  },
+  {
+   "kind": "prep",
+   "name": "basket_y20p30_ur5e_enc2_pgc@app1",
+   "states": 44,
+   "max_step_bound_mm": 3.982,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 239.09,
+   "min_dist_mm": 249.09,
+   "pair": [
+    "R_geom_enc2_ua_0",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 43,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 4.7
+  },
+  {
+   "kind": "prep",
+   "name": "ctray_cq1_ur5e_enc2_pgc",
+   "states": 3506,
+   "max_step_bound_mm": 3.997,
+   "new_geoms": 3,
+   "pairs": 84,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 26,
+   "hit_states": 611,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 10.8
+  },
+  {
+   "kind": "prep",
+   "name": "ctray_cq1_ur5e_enc2_pgc@app0",
+   "states": 87,
+   "max_step_bound_mm": 3.896,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 3,
+   "hit_states": 87,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.4
+  },
+  {
+   "kind": "prep",
+   "name": "ctray_cq1_ur5e_enc2_pgc@app1",
+   "states": 95,
+   "max_step_bound_mm": 3.977,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 15,
+   "hit_states": 95,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.3
+  },
+  {
+   "kind": "prep",
+   "name": "soak_so1_ur5e_enc2_pgc",
+   "states": 2138,
+   "max_step_bound_mm": 3.997,
+   "new_geoms": 3,
+   "pairs": 111,
+   "min_gate_mm": 92.48,
+   "min_dist_mm": 102.48,
+   "pair": [
+    "R_gripper_p3_basket_floor",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 1956,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 6.7
+  },
+  {
+   "kind": "prep",
+   "name": "soak_so1_ur5e_enc2_pgc@app0",
+   "states": 52,
+   "max_step_bound_mm": 3.968,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 75.62,
+   "min_dist_mm": 85.62,
+   "pair": [
+    "R_finger_plus",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 51,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.0
+  },
+  {
+   "kind": "prep",
+   "name": "soak_so1_ur5e_enc2_pgc@app1",
+   "states": 46,
+   "max_step_bound_mm": 3.919,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 205.97,
+   "min_dist_mm": 215.97,
+   "pair": [
+    "R_geom_enc2_fa_3",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 4.7
+  },
+  {
+   "kind": "prep",
+   "name": "soak_so1_ur5e_enc2_pgc@app2",
+   "states": 65,
+   "max_step_bound_mm": 3.973,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 78.22,
+   "min_dist_mm": 88.22,
+   "pair": [
+    "R_finger_plus",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 64,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.1
+  },
+  {
+   "kind": "prep",
+   "name": "tubempty_ex2_ur5e_enc2_pgc",
+   "states": 3977,
+   "max_step_bound_mm": 4.0,
+   "new_geoms": 3,
+   "pairs": 108,
+   "min_gate_mm": 174.39,
+   "min_dist_mm": 184.39,
+   "pair": [
+    "R_gripper_p3_tub_floor",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 2747,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 8.2
+  },
+  {
+   "kind": "prep",
+   "name": "tubempty_ex2_ur5e_enc2_pgc@app0",
+   "states": 41,
+   "max_step_bound_mm": 3.684,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 219.69,
+   "min_dist_mm": 229.69,
+   "pair": [
+    "R_geom_enc2_ua_0",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 40,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.1
+  },
+  {
+   "kind": "prep",
+   "name": "tubempty_ex2_ur5e_enc2_pgc@app1",
+   "states": 44,
+   "max_step_bound_mm": 3.845,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 213.99,
+   "min_dist_mm": 223.99,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 43,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.1
+  },
+  {
+   "kind": "prep",
+   "name": "tubfill_t15fin_ur5e_enc2_pgc",
+   "states": 2813,
+   "max_step_bound_mm": 3.999,
+   "new_geoms": 3,
+   "pairs": 108,
+   "min_gate_mm": 175.59,
+   "min_dist_mm": 185.59,
+   "pair": [
+    "R_gripper_p3_tub_floor",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 1131,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 7.0
+  },
+  {
+   "kind": "prep",
+   "name": "tubfill_t15fin_ur5e_enc2_pgc@app0",
+   "states": 41,
+   "max_step_bound_mm": 3.684,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 219.69,
+   "min_dist_mm": 229.69,
+   "pair": [
+    "R_geom_enc2_ua_0",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 40,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.0
+  },
+  {
+   "kind": "prep",
+   "name": "tubfill_t15fin_ur5e_enc2_pgc@app1",
+   "states": 44,
+   "max_step_bound_mm": 3.845,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 213.99,
+   "min_dist_mm": 223.99,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 43,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 5.0
+  },
+  {
+   "kind": "prep",
+   "name": "ct2p_s1_ur5e_enc2_pgc",
+   "states": 3470,
+   "max_step_bound_mm": 3.999,
+   "new_geoms": 3,
+   "pairs": 84,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 26,
+   "hit_states": 611,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 13.1
+  },
+  {
+   "kind": "prep",
+   "name": "ct2p_s1_ur5e_enc2_pgc@app0",
+   "states": 87,
+   "max_step_bound_mm": 3.896,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 3,
+   "hit_states": 87,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.8
+  },
+  {
+   "kind": "prep",
+   "name": "ct2p_s1_ur5e_enc2_pgc@app1",
+   "states": 95,
+   "max_step_bound_mm": 3.977,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 15,
+   "hit_states": 95,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.9
+  },
+  {
+   "kind": "prep",
+   "name": "stgwok_m5_ur5e_enc2_pgc",
+   "states": 1795,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 3,
+   "pairs": 72,
+   "min_gate_mm": 2.0,
+   "min_dist_mm": 12.0,
+   "pair": [
+    "R_gripper_p4_stg_body",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.5
+  },
+  {
+   "kind": "prep",
+   "name": "stgwok_m5_ur5e_enc2_pgc@app0",
+   "states": 51,
+   "max_step_bound_mm": 3.727,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 45.0,
+   "min_dist_mm": 55.0,
+   "pair": [
+    "R_finger_plus",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.5
+  },
+  {
+   "kind": "prep",
+   "name": "stgwok_m5_ur5e_enc2_pgc@app1",
+   "states": 51,
+   "max_step_bound_mm": 3.727,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 45.0,
+   "min_dist_mm": 55.0,
+   "pair": [
+    "R_finger_plus",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.0
+  },
+  {
+   "kind": "prep",
+   "name": "bascarrot_full_ur5e_enc2_pgc",
+   "states": 1739,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 3,
+   "pairs": 69,
+   "min_gate_mm": 6.5,
+   "min_dist_mm": 16.5,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.9
+  },
+  {
+   "kind": "prep",
+   "name": "bascarrot_full_ur5e_enc2_pgc@app0",
+   "states": 50,
+   "max_step_bound_mm": 3.983,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 17,
+   "hit_states": 43,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.0
+  },
+  {
+   "kind": "prep",
+   "name": "bascarrot_full_ur5e_enc2_pgc@app1",
+   "states": 98,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 38.71,
+   "min_dist_mm": 48.71,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 10,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.8
+  },
+  {
+   "kind": "prep",
+   "name": "carrot_full_ur5e_enc2_pgc",
+   "states": 3183,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 3,
+   "pairs": 69,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_fa_3",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 281,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 14.3
+  },
+  {
+   "kind": "prep",
+   "name": "carrot_full_ur5e_enc2_pgc@app0",
+   "states": 60,
+   "max_step_bound_mm": 3.993,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_fa_3",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 60,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.5
+  },
+  {
+   "kind": "prep",
+   "name": "carrot_full_ur5e_enc2_pgc@app1",
+   "states": 172,
+   "max_step_bound_mm": 3.988,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_ua_4",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 9,
+   "hit_states": 172,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 7.6
+  },
+  {
+   "kind": "prep",
+   "name": "carrot_r2_ur5e_enc2_pgc",
+   "states": 4022,
+   "max_step_bound_mm": 4.0,
+   "new_geoms": 3,
+   "pairs": 69,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_w2_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 150,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 13.5
+  },
+  {
+   "kind": "prep",
+   "name": "carrot_r2_ur5e_enc2_pgc@app0",
+   "states": 61,
+   "max_step_bound_mm": 3.977,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_w2_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 61,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.6
+  },
+  {
+   "kind": "prep",
+   "name": "carrot_r2_ur5e_enc2_pgc@app1",
+   "states": 172,
+   "max_step_bound_mm": 3.988,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_geom_enc2_ua_4",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 9,
+   "hit_states": 172,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 7.0
+  },
+  {
+   "kind": "prep",
+   "name": "ctray_full_ur5e_enc2_pgc",
+   "states": 3211,
+   "max_step_bound_mm": 4.0,
+   "new_geoms": 3,
+   "pairs": 84,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 24,
+   "hit_states": 591,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 10.3
+  },
+  {
+   "kind": "prep",
+   "name": "ctray_full_ur5e_enc2_pgc@app0",
+   "states": 84,
+   "max_step_bound_mm": 3.977,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 3,
+   "hit_states": 84,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.6
+  },
+  {
+   "kind": "prep",
+   "name": "ctray_full_ur5e_enc2_pgc@app1",
+   "states": 96,
+   "max_step_bound_mm": 3.959,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 15,
+   "hit_states": 96,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.9
+  },
+  {
+   "kind": "prep",
+   "name": "press_full_ur5e_enc2_pgc",
+   "states": 155,
+   "max_step_bound_mm": 3.754,
+   "new_geoms": 3,
+   "pairs": 72,
+   "min_gate_mm": 146.67,
+   "min_dist_mm": 156.67,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 77,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.5
+  },
+  {
+   "kind": "prep",
+   "name": "press_full_ur5e_enc2_pgc@app0",
+   "states": 36,
+   "max_step_bound_mm": 3.961,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 161.23,
+   "min_dist_mm": 171.23,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "press_full_ur5e_enc2_pgc@app1",
+   "states": 36,
+   "max_step_bound_mm": 3.961,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 161.23,
+   "min_dist_mm": 171.23,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "press_r2_ur5e_enc2_pgc",
+   "states": 155,
+   "max_step_bound_mm": 3.754,
+   "new_geoms": 3,
+   "pairs": 72,
+   "min_gate_mm": 146.67,
+   "min_dist_mm": 156.67,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 77,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "press_r2_ur5e_enc2_pgc@app0",
+   "states": 36,
+   "max_step_bound_mm": 3.961,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 161.23,
+   "min_dist_mm": 171.23,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "press_r2_ur5e_enc2_pgc@app1",
+   "states": 36,
+   "max_step_bound_mm": 3.961,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 161.23,
+   "min_dist_mm": 171.23,
+   "pair": [
+    "R_geom_enc2_ua_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "soak_full_ur5e_enc2_pgc",
+   "states": 1573,
+   "max_step_bound_mm": 3.998,
+   "new_geoms": 3,
+   "pairs": 111,
+   "min_gate_mm": 94.31,
+   "min_dist_mm": 104.31,
+   "pair": [
+    "R_gripper_p3_basket_floor",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 133,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.8
+  },
+  {
+   "kind": "prep",
+   "name": "soak_full_ur5e_enc2_pgc@app0",
+   "states": 41,
+   "max_step_bound_mm": 3.849,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 75.62,
+   "min_dist_mm": 85.62,
+   "pair": [
+    "R_finger_plus",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 40,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.5
+  },
+  {
+   "kind": "prep",
+   "name": "soak_full_ur5e_enc2_pgc@app1",
+   "states": 41,
+   "max_step_bound_mm": 3.627,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 240.71,
+   "min_dist_mm": 250.71,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "soak_full_ur5e_enc2_pgc@app2",
+   "states": 49,
+   "max_step_bound_mm": 3.916,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 78.22,
+   "min_dist_mm": 88.22,
+   "pair": [
+    "R_finger_plus",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 48,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "tomato_full_ur5e_enc2_pgc",
+   "states": 2680,
+   "max_step_bound_mm": 3.994,
+   "new_geoms": 3,
+   "pairs": 69,
+   "min_gate_mm": 4.69,
+   "min_dist_mm": 14.69,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 4.3
+  },
+  {
+   "kind": "prep",
+   "name": "tomato_full_ur5e_enc2_pgc@app0",
+   "states": 77,
+   "max_step_bound_mm": 3.971,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 30,
+   "hit_states": 71,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.5
+  },
+  {
+   "kind": "prep",
+   "name": "tomato_full_ur5e_enc2_pgc@app1",
+   "states": 53,
+   "max_step_bound_mm": 3.947,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 44.73,
+   "min_dist_mm": 54.73,
+   "pair": [
+    "R_geom_enc2_fa_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "tomato_r2_ur5e_enc2_pgc",
+   "states": 2680,
+   "max_step_bound_mm": 3.994,
+   "new_geoms": 3,
+   "pairs": 69,
+   "min_gate_mm": 4.69,
+   "min_dist_mm": 14.69,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 4.3
+  },
+  {
+   "kind": "prep",
+   "name": "tomato_r2_ur5e_enc2_pgc@app0",
+   "states": 77,
+   "max_step_bound_mm": 3.971,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": -10.0,
+   "min_dist_mm": 0.0,
+   "pair": [
+    "R_gripper_oem_envelope",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame",
+   "state": 30,
+   "hit_states": 71,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 3.4
+  },
+  {
+   "kind": "prep",
+   "name": "tomato_r2_ur5e_enc2_pgc@app1",
+   "states": 53,
+   "max_step_bound_mm": 3.947,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 44.73,
+   "min_dist_mm": 54.73,
+   "pair": [
+    "R_geom_enc2_fa_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 0,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.3
+  },
+  {
+   "kind": "prep",
+   "name": "tubempty_full_ur5e_enc2_pgc",
+   "states": 4663,
+   "max_step_bound_mm": 4.0,
+   "new_geoms": 3,
+   "pairs": 108,
+   "min_gate_mm": 174.43,
+   "min_dist_mm": 184.43,
+   "pair": [
+    "R_gripper_p3_tub_floor",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 3153,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 4.9
+  },
+  {
+   "kind": "prep",
+   "name": "tubempty_full_ur5e_enc2_pgc@app0",
+   "states": 31,
+   "max_step_bound_mm": 3.686,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 170.7,
+   "min_dist_mm": 180.7,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 30,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.5
+  },
+  {
+   "kind": "prep",
+   "name": "tubempty_full_ur5e_enc2_pgc@app1",
+   "states": 39,
+   "max_step_bound_mm": 3.687,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 172.06,
+   "min_dist_mm": 182.06,
+   "pair": [
+    "R_geom_enc2_w1_1",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 38,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.5
+  },
+  {
+   "kind": "prep",
+   "name": "tubfill_full_ur5e_enc2_pgc",
+   "states": 2883,
+   "max_step_bound_mm": 3.997,
+   "new_geoms": 3,
+   "pairs": 108,
+   "min_gate_mm": 130.46,
+   "min_dist_mm": 140.46,
+   "pair": [
+    "R_geom_enc2_fa_3",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 2882,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 4.1
+  },
+  {
+   "kind": "prep",
+   "name": "tubfill_full_ur5e_enc2_pgc@app0",
+   "states": 31,
+   "max_step_bound_mm": 3.599,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 207.01,
+   "min_dist_mm": 217.01,
+   "pair": [
+    "R_geom_enc2_fa_3",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 30,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.4
+  },
+  {
+   "kind": "prep",
+   "name": "tubfill_full_ur5e_enc2_pgc@app1",
+   "states": 44,
+   "max_step_bound_mm": 3.868,
+   "new_geoms": 3,
+   "pairs": 66,
+   "min_gate_mm": 115.14,
+   "min_dist_mm": 125.14,
+   "pair": [
+    "R_geom_enc2_fa_3",
+    "R_cart_p4_cradle"
+   ],
+   "category": "arm_arm_or_frame (AABB lower bound, >= 30 mm)",
+   "state": 43,
+   "hit_states": 0,
+   "bounded_by_held_sphere": false,
+   "elapsed_s": 2.3
+  }
+ ]
+}
