@@ -98,7 +98,7 @@ def enclose(tree,arm):
  return tree
 def swap(tree,arm):
  """Replace the UR5e under R_mount by `arm` (in place). R_tool keeps its pose relative to the flange."""
- if ARMS[arm].get('cable'):_cab.add(tree,ARMS[arm]['cable'])   # R19 #36: cable shapes on R_tool (they move with it below)
+ if ARMS[arm].get('cable'):_cab.add(tree,ARMS[arm]['cable'],arm)   # R19 #36: cable shapes on R_tool (they move with it below); arm: the tool connector of the '_tc' routings
  if ARMS[arm].get('enclose'):return enclose(tree,arm)
  spec=ARMS[arm];M=json.loads((H/'r19'/f"arm_{spec['model']}.json").read_text(encoding='utf-8'))
  mount=tree.find(".//body[@name='R_mount']");old=mount.find("body[@name='R_arm_base']")

@@ -28,6 +28,12 @@ sys.path.insert(0,'.')
 import numpy as np,mujoco
 import arms
 ARM=arms.current();TAG=arms.tag(ARM)
+def _path_arm(a):
+ """R19 #36: an arm option with the PGC cable (<base>c, <base>c_<routing>; r19cable.py) has no stored paths of its own:
+ the cable does not change the kinematics, its paths are those of the base option. Every other option: itself."""
+ if not arms.ARMS[a].get('cable'):return a
+ return next(b for b in arms.ARMS if not arms.ARMS[b].get('cable') and (a==b+'c' or a.startswith(b+'c_')))
+PTAG=arms.tag(_path_arm(ARM))   # tag of the stored paths (= TAG except for the cable options)
 PYARG=next((a[3:] for a in sys.argv[1:] if a.startswith('PY=')),None)   # PY=<y>: the plating spot (and the waiting dish) at this y,
    # as r17chain.py / r19hub.py PY= (R19 #12 standard: ARM=ur5e_enc2_pgc PY=.15); default unchanged
 _SUB=(ARM if TAG else '')+(('_' if TAG else '')+'py'+PYARG if PYARG else '')
@@ -42,14 +48,14 @@ CHAINS=dict(   # action -> stored chain (as r19smooth.CHAINS) and the world of e
 HUBDIR='results/r19/hub'
 def hubdir():
  """r19hub.py's folder for this arm and layout (results/r19/hub[_py<y>][_<arm>]) if it exists, else the UR5e hub."""
- d=HUBDIR+('_py'+PYARG if PYARG else '')+TAG
+ d=HUBDIR+('_py'+PYARG if PYARG else '')+PTAG
  return d if d!=HUBDIR and PATHS!='base' and os.path.isdir(d) else HUBDIR
 PATHS=next((a[6:] for a in sys.argv[1:] if a.startswith('PATHS=')),'auto')   # PATHS=base: always the stored UR5e paths
 def tagged(f):
  """The arm option's own stored path if it exists and holds states: r17chain.py / r19enc_adopt.py ... ARM=<id>
  -> *_<id>.json; with PY=<y> the wok chains of that layout, *_py<y>_<id>.json (as r19hub.py). Else the stored
  UR5e path (PATHS=base forces it)."""
- t=f[:-5]+(('_py'+PYARG) if PYARG and 'chain_wok' in f else '')+TAG+'.json'
+ t=f[:-5]+(('_py'+PYARG) if PYARG and 'chain_wok' in f else '')+PTAG+'.json'
  if t!=f and PATHS!='base' and os.path.exists(t):
   r=J(t)
   if r.get('play') or r.get('qs'):return t
@@ -163,7 +169,7 @@ class Ev:
   m=ch.m;s.ch=ch;s.m=m;s.d=ch.d;B=ch.bounds;s.B=B;G=m.ngeom;nm=ch.gnames
   robot=np.array([bool(ch.robot[g]) for g in range(G)]);s.robot=robot
   tool=m.body('R_tool').id
-  s.held=np.array([robot[g] and m.geom_bodyid[g]==tool and nm[g]!='R_gripper_palm' and not nm[g].startswith('R_gripper_oem') for g in range(G)])   # gripper housing (box, or the pgc drawing's 3 parts) is not held
+  s.held=np.array([robot[g] and m.geom_bodyid[g]==tool and nm[g]!='R_gripper_palm' and not nm[g].startswith(('R_gripper_oem','R_pgc_cable')) for g in range(G)])   # gripper housing (box, or the pgc drawing's 3 parts) is not held; nor is the PGC cable (R19 #36, r19cable.py: R_pgc_cable*, part of the robot)
   s.rob=np.flatnonzero(robot);s.hg=np.flatnonzero(s.held)
   P=B.pairs;a=np.array([p[0] for p in P]);b=np.array([p[1] for p in P]);need=np.array([p[2] for p in P],float)
   ra,rb=robot[a],robot[b];env=ra^rb

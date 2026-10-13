@@ -612,3 +612,19 @@ Nothing bought.
   - the deployed stop must repeat to about 1–2 mm (`stgwok` keeps 2.0 mm reserve).
   - Hinge sourcing is open.
 - **Report:** `sim/r10/claude/R19_PREP_T2L.md`.
+
+## 2026-10-14 — Gripper mount pose must be made buildable; cable run to the tool connector is provisional (orchestrator, GitHub #42, #36)
+- **Finding [M, measured twice independently]:** the R10 tool pose cannot be built.
+  - The gripper axis is 26.6° off J6, and the housing base sits beside wrist 3, behind the flange plane.
+  - The PGC housing lies **16.9 mm inside the wrist-3 shapes** on the UR5e, and 16.3 mm on the FR5 `sp20`.
+  - The checker never tests that adjacent pair, and no adapter is modelled.
+  - Every certificate so far uses this pose.
+- **Decision:** fix the mount before building more certificates (#42).
+  - A design study picks a buildable mount: a modelled bracket, clearance ≥ the 5 mm gate, and the smallest TCP change.
+  - Then all adopted sets are re-planned and re-certified on both arms. The adjacent wrist-3 pair is added to the checker.
+- **Cable (#36):**
+  - **UR5e `yp_a-45_tcf`:** one ≈ 455 mm DH pigtail ending in a right-angle M8 on the tool connector, with no M12 junction at the wrist. It passes every adopted set. It is **provisional**, because the run depends on the gripper pose; it gets redone after #42.
+  - **DH's standard 200 mm pigtail + M12–M8 adapter:** fails, because the 90 mm rigid M12 junction has nowhere to hang.
+  - **FR5:** no run passes. On the spatula chain, the plug on the RS485 5-pin connector meets the forearm. Revisit after #42, with the 5-pin's type confirmed.
+  - **The custom pigtail needs DH's confirmation.** Contacting DH is the user's decision; no one has been contacted.
+- **Tolerance tool:** `r19tol_core.py` now treats the cable as part of the robot, not as held. Cable options reuse their base option's paths. 8 of 8 stored results reproduce.

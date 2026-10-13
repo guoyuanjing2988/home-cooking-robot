@@ -1,0 +1,152 @@
+{
+ "scene": "play:lever",
+ "part": "grid-z",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lever_s+1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lever",
+  "obj": "lever",
+  "src_n": 16
+ },
+ "states": 128,
+ "stored_states": 16,
+ "nominal_s": 0.5,
+ "nominal_cached": true,
+ "held": true,
+ "nominal": {
+  "min_gate_mm": 8.608,
+  "gate_state": 127,
+  "gate_label": "kf 0->1 (closed -> open)",
+  "gate_pair": [
+   "R_gripper_r17_lever_bar",
+   "r17_lever_hub"
+  ],
+  "min_contact_mm": 13.608,
+  "contact_state": 127,
+  "contact_label": "kf 0->1 (closed -> open)",
+  "contact_pair": [
+   "R_gripper_r17_lever_bar",
+   "r17_lever_hub"
+  ],
+  "at_least": false,
+  "rho_m": {
+   "yaw": 0.905,
+   "tilt_x": 1.498,
+   "tilt_y": 1.537,
+   "held": 0.067
+  },
+  "note": "exact minimum of the GJK certificate over robot-environment pairs; Checker.check reports an AABB bound for pairs > 2 mm past the gate, so its reserve can be lower",
+  "min_held_gate_mm": 8.608,
+  "held_pair": [
+   "R_gripper_r17_lever_bar",
+   "r17_lever_hub"
+  ]
+ },
+ "checker_reported": {
+  "file": "results/r19/smooth/lever_baseline.json",
+  "min_reserve_mm": 5.98,
+  "state": 127,
+  "label": "kf 0->1 (closed -> open)",
+  "exact_gate_there_mm": 8.608,
+  "exact_pair_there": [
+   "R_gripper_r17_lever_bar",
+   "r17_lever_hub"
+  ],
+  "note": "r19smooth baseline: Checker.check(full=True), min over non-self categories"
+ },
+ "grid": [
+  {
+   "axis": "z",
+   "value": 1,
+   "unit": "mm",
+   "gate_min_mm": 9.108,
+   "gate_pair": [
+    "R_gripper_r17_lever_bar",
+    "r17_lever_hub"
+   ],
+   "gate_label": "kf 0->1 (closed -> open)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": 2,
+   "unit": "mm",
+   "gate_min_mm": 9.608,
+   "gate_pair": [
+    "R_gripper_r17_lever_bar",
+    "r17_lever_hub"
+   ],
+   "gate_label": "kf 0->1 (closed -> open)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": 5,
+   "unit": "mm",
+   "gate_min_mm": ">=10",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": 10,
+   "unit": "mm",
+   "gate_min_mm": 6.316,
+   "gate_pair": [
+    "R_geom_enc2_fa_3",
+    "upper_cabinet_1"
+   ],
+   "gate_label": "kf 0->1 (closed -> open)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": -1,
+   "unit": "mm",
+   "gate_min_mm": 8.108,
+   "gate_pair": [
+    "R_gripper_r17_lever_bar",
+    "r17_lever_hub"
+   ],
+   "gate_label": "kf 0->1 (closed -> open)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": -2,
+   "unit": "mm",
+   "gate_min_mm": 7.608,
+   "gate_pair": [
+    "R_gripper_r17_lever_bar",
+    "r17_lever_hub"
+   ],
+   "gate_label": "kf 0->1 (closed -> open)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": -5,
+   "unit": "mm",
+   "gate_min_mm": 6.436,
+   "gate_pair": [
+    "R_gripper_r17_lever_bar",
+    "r17_lever_hub"
+   ],
+   "gate_label": "kf 0->1 (closed -> open)",
+   "contact_min_mm": ">=10"
+  },
+  {
+   "axis": "z",
+   "value": -10,
+   "unit": "mm",
+   "gate_min_mm": 5.981,
+   "gate_pair": [
+    "R_gripper_r17_lever_bar",
+    "r17_lever_hub"
+   ],
+   "gate_label": "kf 0->1 (closed -> open)",
+   "contact_min_mm": ">=10"
+  }
+ ],
+ "elapsed_s": 2.0
+}

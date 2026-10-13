@@ -42,12 +42,12 @@ X0=-.1735;R0=.0375
 NSEG=24   # polygon sides of the circumscribed circles
 DIMS=dict(h_lo=.019,h_hi=.025,boot_r=.008,boot_l=.012,embed=.003,cable_r=.0032,bend_R=.050+.0032,run=.020,keepout=.100)
 DIMS_SRC=dict(
- h_lo='E: exit height band low end (cable axis above the bottom face); 21.1 mm measured on DH drawings, 22-24 mm on a photo',
+ h_lo='E: exit height band low end (cable axis above the bottom face); 21.1 mm measured on DH drawings, 22-24 mm on a photo. S (R19_CABLE2.md): DH STEP v4.0 gives 21.00 mm, in the jaw plane (0.00 mm off): inside the band, band kept',
  h_hi='E: band high end',
- boot_r='E: boot about Ø11.7-15.8 measured on the DH drawing, rounded up to Ø16',
- boot_l='S: "12" (boot protrusion) dimensioned on the PGC-140-50 drawing, DH PGC parameter sheet CN.2405 p.6 / Electric Gripper Brochure 2024 p.17',
+ boot_r='E: boot about Ø11.7-15.8 measured on the DH drawing, rounded up to Ø16. S (R19_CABLE2.md): DH STEP v4.0, collar Ø15.50, boot Ø13.4 tapering to Ø11.3: Ø16 kept (encloses it)',
+ boot_l='S: "12" (boot protrusion) dimensioned on the PGC-140-50 drawing, DH PGC parameter sheet CN.2405 p.6 / Electric Gripper Brochure 2024 p.17. S (R19_CABLE2.md): DH STEP v4.0, boot tip 10.50 mm out of the Ø75 surface: 12 kept (the boot hull also encloses the first 1.5 mm of cable; the bend starts 1.5 mm past the tip)',
  embed='E: modelling only (the boot shape starts inside the housing shape)',
- cable_r='S: cable Ø6.4, same drawings',
+ cable_r='S: cable Ø6.4, same drawings (STEP v4.0: Ø6.4; 153.0 mm of cable + a 47.0 mm M12 plug = 200 mm from the boot tip)',
  bend_R='S: "Cable allowable bending radius R50mm", same drawings; read as the inside radius -> centreline 53.2 mm (E, the reading that reaches further out)',
  run='E: 20 mm of straight cable after the bend for the first tie',
  keepout='S: "Secure at least 100mm", same drawings')
@@ -64,6 +64,12 @@ for _s in ('yp','ym'):
 # screening models (several routings at once, each its own group of geoms; never a certificate): ALL = every single-side routing,
 # SEL = the short list after the lid / wok screens (R19_CABLE.md 4)
 SCREENS={'ALL':[r for r in ROUTINGS if len(ROUTINGS[r]['sides'])==1],'SEL':['yp_dn','ym_dn','yp_fl','yp_fl_r0','yp_a-45','yp_a-45_r0','ym_fl_r0','ym_a-45_r0']}
+# R19 #36 part 2 (R19_CABLE2.md): '<routing>_tc' = the routing's first section + the rest of the pigtail, the M12 junction and the
+# adapter cable to the arm's tool connector (r19cable2_tc.py; ROUTINGS[..]['tc'] = its ROUTES key). Added after SCREENS, so the
+# screening sets above are unchanged; 'TC' = the run candidates (a screening model only)
+import r19cable2_tc as _tc
+for _k in _tc.ROUTES:ROUTINGS[_k]=dict(ROUTINGS[_tc.ROUTES[_k]['_base']],tc=_k)
+SCREENS['TC']=[k for k in _tc.ROUTES if _tc.ROUTES[k].get('_screen')]
 def fmt(v):return ' '.join(f'{float(x):.9g}' for x in v)
 def circle(c,n1,n2,r,n=NSEG):
  """polygon circumscribed about the circle of radius r, centre c, in the plane spanned by unit n1, n2."""
@@ -110,13 +116,16 @@ def shapes(routing):
  for s in R['sides']:
   for k,V in side_shapes(s,R['dress'],run=R.get('run')).items():S[f'{s}_{k}']=V
  return S
-def add(tree,routing):
+def add(tree,routing,arm=None):
  """Put the shapes on R_tool (same pos as R_gripper_oem_envelope, i.e. the finger-design shift). routing: a ROUTINGS key,
- or 'ALL' (every single-side routing at once, named R_pgc_cable.<routing>.<piece>: a SCREENING model, never a certificate)."""
+ or 'ALL' (every single-side routing at once, named R_pgc_cable.<routing>.<piece>: a SCREENING model, never a certificate).
+ arm: the arm option (arms.swap passes it); only the '_tc' routings use it (the tool connector is the arm's, r19cable2_tc)."""
  tool=tree.find(".//body[@name='R_tool']");asset=tree.getroot().find('asset');env=tool.find("geom[@name='R_gripper_oem_envelope']")
  pos=env.get('pos','0 0 0') if env is not None else '0 0 0'
  for rt in (SCREENS[routing] if routing in SCREENS else [routing]):
-  for pc,V in shapes(rt).items():
+  P=shapes(rt)
+  if ROUTINGS[rt].get('tc'):P.update({'tc_'+k:V for k,V in _tc.build(ROUTINGS[rt]['tc'],arm,tree)[0].items()})   # R19 #36 part 2
+  for pc,V in P.items():
    nm=f'R_pgc_cable.{rt}.{pc}' if routing in SCREENS else f'R_pgc_cable_{pc}'
    E.SubElement(asset,'mesh',name='M_'+nm,vertex=' '.join(fmt(v) for v in V))
    E.SubElement(tool,'geom',name=nm,type='mesh',mesh='M_'+nm,pos=pos,rgba='.95 .55 .1 1',contype='2',conaffinity='3',mass='.000001')
@@ -125,6 +134,7 @@ def summary():
  """extents of each routing (tool frame before the shift), for the report."""
  out={}
  for r in ROUTINGS:
+  if ROUTINGS[r].get('tc'):continue   # the run to the tool connector depends on the arm: r19cable2_tc.build
   V=np.vstack(list(shapes(r).values()));rad=np.hypot(V[:,1],V[:,2])
   out[r]=dict(pieces=list(shapes(r)),max_radius_from_gripper_axis_mm=round(float(rad.max())*1e3,1),max_out_from_body_surface_mm=round(float(rad.max()-R0)*1e3,1),
    x_range_above_bottom_face_mm=[round(float(V[:,0].min()-X0)*1e3,1),round(float(V[:,0].max()-X0)*1e3,1)],z_range_mm=[round(float(V[:,2].min())*1e3,1),round(float(V[:,2].max())*1e3,1)])
