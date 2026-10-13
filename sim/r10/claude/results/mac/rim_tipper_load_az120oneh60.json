@@ -1,0 +1,217 @@
+{
+  "act": "cuphold",
+  "obj": "cup",
+  "grasp_sense": 1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {
+    "r19_port": [
+      0.45,
+      0.3,
+      1.085
+    ],
+    "r34_holder": [
+      120.0,
+      0.035,
+      0.03
+    ]
+  },
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      1.52,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.52,
+      0.36
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 7,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick at the port",
+      "p": [
+        0.45,
+        0.3,
+        1.093
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.45,
+        0.3,
+        1.115
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "meet",
+      "p": [
+        0.58,
+        0.1,
+        1.08
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "via",
+      "p": [
+        0.62,
+        0.2,
+        1.09
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 4,
+      "label": "via",
+      "p": [
+        0.609,
+        0.314,
+        1.07
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "over the holder",
+      "p": [
+        0.712,
+        0.374,
+        1.07
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 6,
+      "label": "in the holder",
+      "p": [
+        0.712,
+        0.374,
+        1.058
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "in the holder#6": {
+      "ok": false,
+      "n_candidates": 2,
+      "start_status": {
+        "collision": 210,
+        "pose": 77,
+        "ok": 1
+      }
+    }
+  },
+  "pieces": [],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    },
+    {
+      "ok": false,
+      "kf": 6,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": null,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "in the holder",
+      "cand": 0,
+      "start_reserve_mm": -1.0,
+      "cart": -0.071,
+      "ok": false,
+      "fail": {
+        "at": "over the holder->via",
+        "kf": null,
+        "cart": -0.149,
+        "step_deg": 0.42,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.09999046399243314,
+        "hits": [
+          [
+            "r19_scale_pad",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "in the holder",
+      "cand": 1,
+      "start_reserve_mm": 0.0,
+      "cart": 0.419,
+      "ok": false,
+      "fail": {
+        "at": "in the holder->over the holder",
+        "kf": null,
+        "cart": 0.403,
+        "step_deg": 6.02,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.10037370225326168,
+        "hits": [
+          [
+            "R_geom_16",
+            "north_cabinet_right_piece1"
+          ],
+          [
+            "R_geom_16",
+            "north_cabinet_right_piece1"
+          ],
+          [
+            "R_geom_16",
+            "counter_right_piece1"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null,
+    null
+  ]
+}

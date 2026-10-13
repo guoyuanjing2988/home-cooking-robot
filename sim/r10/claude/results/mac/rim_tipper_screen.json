@@ -1,0 +1,7981 @@
+{
+  "geometry": {
+    "gap_m": 0.015,
+    "cup_axis_radius_m": 0.215,
+    "rim_z": 1.0196434624714728,
+    "tip_deg": 120.0,
+    "parts": "cup 60x70, seat plate, servo 40x50x60, post 20x20 to z .92"
+  },
+  "passing": [],
+  "candidates": {
+    "0": {
+      "az": 0.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        1.045,
+        0.17,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -26.8,
+            "state": 837,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -4.9,
+            "state": 99,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -43.3,
+            "state": 4,
+            "pair": [
+              "R_gripper_r15_wok_t3_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -43.3,
+            "state": 4,
+            "pair": [
+              "R_gripper_r15_wok_t3_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_0"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_0"
+        },
+        "servo": {
+          "min_mm": -2.7,
+          "nearest": "r16_pot_ear-1"
+        },
+        "post": {
+          "min_mm": 5.0,
+          "nearest": "r16_pot_ear-1"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_0"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "1": {
+      "az": 15.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        1.038,
+        0.226,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -30.7,
+            "state": 832,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 2.5,
+            "state": 167,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -71.1,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -71.1,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": -24.2,
+          "nearest": "r15_drum_servo"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_0"
+        },
+        "servo": {
+          "min_mm": -2.7,
+          "nearest": "r16_pot_ear-1"
+        },
+        "post": {
+          "min_mm": -221.8,
+          "nearest": "r16_ind2"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_0"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "2": {
+      "az": 30.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        1.016,
+        0.277,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -19.5,
+            "state": 837,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 9.8,
+            "state": 103,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -49.6,
+            "state": 6,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -49.6,
+            "state": 6,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": -20.5,
+          "nearest": "r15_drum_servo"
+        },
+        "seat": {
+          "min_mm": -19.4,
+          "nearest": "r15_drum_post"
+        },
+        "servo": {
+          "min_mm": -16.1,
+          "nearest": "r15_drum_post"
+        },
+        "post": {
+          "min_mm": -9.3,
+          "nearest": "r15_drum_post"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_1"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "3": {
+      "az": 45.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.982,
+        0.322,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -31.8,
+            "state": 837,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 16.7,
+            "state": 108,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -78.3,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -78.3,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_1"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_1"
+        },
+        "servo": {
+          "min_mm": 21.8,
+          "nearest": "r15_drum_post"
+        },
+        "post": {
+          "min_mm": 39.4,
+          "nearest": "r15_drum_post"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_1"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "4": {
+      "az": 60.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.938,
+        0.356,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -27.8,
+            "state": 798,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 21.0,
+            "state": 79,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.3,
+            "state": 6,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.3,
+            "state": 6,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_2"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_2"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_2"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "5": {
+      "az": 75.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.886,
+        0.378,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -25.1,
+            "state": 787,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -68.1,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -68.1,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_2"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_2"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_2"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "6": {
+      "az": 90.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.83,
+        0.385,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -5.4,
+            "state": 787,
+            "pair": [
+              "R_gripper_spatula_blade1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_3",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.8,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_3",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.8,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_3"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_3"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_3"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "7": {
+      "az": 105.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.774,
+        0.378,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 13.7,
+            "state": 787,
+            "pair": [
+              "R_gripper_spatula_blade2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -11.6,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_3",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -71.8,
+            "state": 10,
+            "pair": [
+              "R_gripper_r15_wok_t3_2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -11.6,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_3",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -71.8,
+            "state": 10,
+            "pair": [
+              "R_gripper_r15_wok_t3_2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_3"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_3"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_3"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": true,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "8": {
+      "az": 120.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.723,
+        0.356,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -1.1,
+            "state": 563,
+            "pair": [
+              "R_gripper_spatula_blade3",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 17.0,
+            "state": 77,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -108.0,
+            "state": 19,
+            "pair": [
+              "R_gripper_r15_wok_t4_3",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.1,
+            "state": 16,
+            "pair": [
+              "R_gripper_r15_wok_t3_2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -108.0,
+            "state": 19,
+            "pair": [
+              "R_gripper_r15_wok_t4_3",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.1,
+            "state": 16,
+            "pair": [
+              "R_gripper_r15_wok_t3_2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_4"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_4"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_4"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "9": {
+      "az": 135.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.678,
+        0.322,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -16.7,
+            "state": 566,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 0.0,
+            "state": 73,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -95.2,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_3",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.7,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -95.2,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_3",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.7,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_4"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_4"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_4"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "10": {
+      "az": 150.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.644,
+        0.277,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -21.7,
+            "state": 620,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -17.0,
+            "state": 196,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -109.7,
+            "state": 61,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -53.1,
+            "state": 30,
+            "pair": [
+              "R_gripper_r15_wok_t3_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -101.7,
+            "state": 42,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -53.5,
+            "state": 30,
+            "pair": [
+              "R_gripper_r15_wok_t3_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_5"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_5"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_5"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "11": {
+      "az": 165.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.622,
+        0.226,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -24.0,
+            "state": 613,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": 21.6,
+            "state": 17,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -10.7,
+            "state": 57,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -33.3,
+            "state": 196,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -137.2,
+            "state": 37,
+            "pair": [
+              "R_gripper_r15_wok_t3_3",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -53.1,
+            "state": 439,
+            "pair": [
+              "R_gripper_r15_wok_t3_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -120.2,
+            "state": 46,
+            "pair": [
+              "R_gripper_r15_wok_t3_1",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -55.1,
+            "state": 33,
+            "pair": [
+              "R_gripper_r15_wok_t3_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_5"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_5"
+        },
+        "servo": {
+          "min_mm": 25.6,
+          "nearest": "r15_wok_grip"
+        },
+        "post": {
+          "min_mm": 42.7,
+          "nearest": "r15_wok_grip"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_5"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "12": {
+      "az": 180.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.615,
+        0.17,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -11.2,
+            "state": 612,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.8,
+            "state": 24,
+            "pair": [
+              "R_finger_minus",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -63.5,
+            "state": 60,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -47.2,
+            "state": 201,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -154.9,
+            "state": 143,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -48.3,
+            "state": 38,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -126.9,
+            "state": 431,
+            "pair": [
+              "R_gripper_r15_wok_t3_10",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -47.0,
+            "state": 434,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": -32.4,
+          "nearest": "r15_wok_grip"
+        },
+        "seat": {
+          "min_mm": -43.7,
+          "nearest": "r15_wok_handle"
+        },
+        "servo": {
+          "min_mm": -3.5,
+          "nearest": "r15_wok_grip"
+        },
+        "post": {
+          "min_mm": 6.4,
+          "nearest": "r15_wok_grip"
+        },
+        "cupT": {
+          "min_mm": -18.5,
+          "nearest": "r15_wok_handle"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "13": {
+      "az": 195.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.622,
+        0.114,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -21.7,
+            "state": 609,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -24.6,
+            "state": 36,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 1.3,
+            "state": 39,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -79.3,
+            "state": 63,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -51.6,
+            "state": 194,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -138.0,
+            "state": 52,
+            "pair": [
+              "R_gripper_r15_wok_t2_11",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.9,
+            "state": 33,
+            "pair": [
+              "R_gripper_r15_wok_t3_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -133.7,
+            "state": 421,
+            "pair": [
+              "R_gripper_r15_wok_t3_11",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.4,
+            "state": 33,
+            "pair": [
+              "R_gripper_r15_wok_t3_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_6"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_6"
+        },
+        "servo": {
+          "min_mm": 25.6,
+          "nearest": "r15_wok_grip"
+        },
+        "post": {
+          "min_mm": 43.6,
+          "nearest": "r15_wok_grip"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_6"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "14": {
+      "az": 210.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.644,
+        0.062,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -14.4,
+            "state": 598,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -25.4,
+            "state": 183,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -1.8,
+            "state": 38,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -77.4,
+            "state": 206,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -56.5,
+            "state": 74,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -108.6,
+            "state": 431,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -55.8,
+            "state": 31,
+            "pair": [
+              "R_gripper_r15_wok_t3_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -108.6,
+            "state": 431,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -54.6,
+            "state": 30,
+            "pair": [
+              "R_gripper_r15_wok_t3_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_7"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_7"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_7"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "15": {
+      "az": 225.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.678,
+        0.018,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -36.2,
+            "state": 439,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -20.0,
+            "state": 44,
+            "pair": [
+              "R_finger_plus",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -1.0,
+            "state": 42,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -44.2,
+            "state": 207,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -57.0,
+            "state": 194,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -95.2,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_8",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.7,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -95.2,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_8",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.7,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_7"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_7"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_7"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "16": {
+      "az": 240.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.722,
+        -0.016,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": 1.7,
+            "state": 447,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -61.0,
+            "state": 443,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -17.1,
+            "state": 172,
+            "pair": [
+              "R_finger_plus",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -1.5,
+            "state": 110,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -131.3,
+            "state": 74,
+            "pair": [
+              "R_gripper_r19_bowl_tab",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -53.2,
+            "state": 194,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -36.6,
+            "state": 13,
+            "pair": [
+              "R_gripper_r15_wok_t4_8",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.1,
+            "state": 16,
+            "pair": [
+              "R_gripper_r15_wok_t3_9",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -36.6,
+            "state": 13,
+            "pair": [
+              "R_gripper_r15_wok_t4_8",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.1,
+            "state": 16,
+            "pair": [
+              "R_gripper_r15_wok_t3_9",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_8"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_8"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_8"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "17": {
+      "az": 255.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.774,
+        -0.038,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -12.8,
+            "state": 447,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -113.4,
+            "state": 494,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -36.3,
+            "state": 110,
+            "pair": [
+              "R_gripper_palm",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -28.2,
+            "state": 110,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -47.0,
+            "state": 190,
+            "pair": [
+              "R_finger_plus",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -46.1,
+            "state": 193,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -11.6,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -71.7,
+            "state": 10,
+            "pair": [
+              "R_gripper_r15_wok_t3_9",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -11.6,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -71.7,
+            "state": 10,
+            "pair": [
+              "R_gripper_r15_wok_t3_9",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_8"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_8"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_8"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "18": {
+      "az": 270.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.83,
+        -0.045,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -79.1,
+            "state": 2,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -123.7,
+            "state": 47,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -64.1,
+            "state": 110,
+            "pair": [
+              "R_geom_28",
+              "cup"
+            ],
+            "rule": "robot_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -34.6,
+            "state": 110,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -79.2,
+            "state": 142,
+            "pair": [
+              "R_finger_minus",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -42.9,
+            "state": 134,
+            "pair": [
+              "R_finger_minus",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.8,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.8,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_9"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_9"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_9"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "19": {
+      "az": 285.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.886,
+        -0.038,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -11.5,
+            "state": 895,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -113.4,
+            "state": 943,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -64.6,
+            "state": 113,
+            "pair": [
+              "R_geom_28",
+              "cup"
+            ],
+            "rule": "robot_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -13.5,
+            "state": 102,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -51.8,
+            "state": 107,
+            "pair": [
+              "R_finger_minus",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -40.4,
+            "state": 127,
+            "pair": [
+              "R_finger_minus",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -68.0,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -68.0,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_9"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_9"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_9"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "20": {
+      "az": 300.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.938,
+        -0.016,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -79.0,
+            "state": 671,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -123.7,
+            "state": 271,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -11.9,
+            "state": 100,
+            "pair": [
+              "R_geom_28",
+              "cup"
+            ],
+            "rule": "robot_environment"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 12.5,
+            "state": 109,
+            "pair": [
+              "R_geom_28",
+              "cupT"
+            ],
+            "rule": "robot_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -5.0,
+            "state": 125,
+            "pair": [
+              "R_geom_28",
+              "servo"
+            ],
+            "rule": "robot_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -32.7,
+            "state": 189,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.3,
+            "state": 6,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.3,
+            "state": 6,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_10"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_10"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 27.5,
+          "nearest": "r15_knob_servo"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_10"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "21": {
+      "az": 315.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        0.982,
+        0.018,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -11.4,
+            "state": 671,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -119.0,
+            "state": 722,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -26.9,
+            "state": 79,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -78.3,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -78.3,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_10"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_10"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 11.0,
+          "nearest": "r15_knob_servo"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_10"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "22": {
+      "az": 330.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        1.016,
+        0.062,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": 2.1,
+            "state": 672,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.8,
+            "state": 737,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -18.6,
+            "state": 167,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -49.6,
+            "state": 6,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.1,
+            "state": 0,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -49.6,
+            "state": 6,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 3.9,
+          "nearest": "r15_wok_t4_11"
+        },
+        "seat": {
+          "min_mm": -6.2,
+          "nearest": "r15_wok_t4_11"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": -6.9,
+          "nearest": "r15_wok_t4_11"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "23": {
+      "az": 345.0,
+      "dz": 0.0,
+      "cup_bottom": [
+        1.038,
+        0.114,
+        1.02
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -42.7,
+            "state": 692,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -12.1,
+            "state": 100,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -71.3,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -0.5,
+            "state": 1,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -71.3,
+            "state": 5,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 9.2,
+          "nearest": "r15_wok_t4_11"
+        },
+        "seat": {
+          "min_mm": 0.9,
+          "nearest": "r15_wok_t4_11"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": -302.6,
+          "nearest": "r16_ind2"
+        },
+        "cupT": {
+          "min_mm": -3.8,
+          "nearest": "r15_wok_t4_11"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "24": {
+      "az": 0.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        1.045,
+        0.17,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -36.7,
+            "state": 838,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -11.8,
+            "state": 91,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -44.8,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -44.8,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_0"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_11"
+        },
+        "servo": {
+          "min_mm": 24.6,
+          "nearest": "r16_pot_ear-1"
+        },
+        "post": {
+          "min_mm": 5.0,
+          "nearest": "r16_pot_ear-1"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_0"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 28,
+        "tried": [
+          {
+            "q": [
+              0.3756,
+              -0.21,
+              0.0,
+              -3.2432,
+              -5.5809,
+              -1.5498,
+              -0.005,
+              -0.1537,
+              -0.7243,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ],
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.4096,
+              -0.21,
+              0.0,
+              -3.2487,
+              -5.62,
+              -1.0486,
+              2.7008,
+              0.1574,
+              -3.8924,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ],
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.3529,
+              -0.21,
+              0.0,
+              -3.2398,
+              -5.7997,
+              -0.7061,
+              2.4951,
+              0.1515,
+              -3.849,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_16",
+                "r15_wok_t4_7"
+              ],
+              [
+                "R_geom_16",
+                "r15_wok_t4_8"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.4285,
+              -0.21,
+              0.0,
+              -3.2523,
+              -5.5631,
+              -1.1458,
+              2.787,
+              0.1596,
+              -3.9385,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_gripper_r19_cup_body",
+                "tip24_servo"
+              ],
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.4416,
+              -0.21,
+              0.0,
+              -3.2545,
+              -5.5363,
+              -1.2027,
+              2.7972,
+              0.1614,
+              -3.9188,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ],
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.4452,
+              -0.21,
+              0.0,
+              -3.2552,
+              -5.5272,
+              -1.2192,
+              2.8077,
+              0.1619,
+              -3.9219,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ],
+              [
+                "tip24_servo",
+                "R_finger_minus"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "25": {
+      "az": 15.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        1.038,
+        0.226,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -22.3,
+            "state": 839,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -4.3,
+            "state": 92,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -54.3,
+            "state": 7,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -54.3,
+            "state": 7,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": -14.6,
+          "nearest": "r15_drum_servo"
+        },
+        "seat": {
+          "min_mm": 7.3,
+          "nearest": "r15_drum_post"
+        },
+        "servo": {
+          "min_mm": -9.3,
+          "nearest": "r15_drum_servo"
+        },
+        "post": {
+          "min_mm": -221.8,
+          "nearest": "r16_ind2"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_0"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "26": {
+      "az": 30.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        1.016,
+        0.277,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -8.2,
+            "state": 837,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 2.6,
+            "state": 95,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.2,
+            "state": 7,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.2,
+            "state": 7,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": -13.3,
+          "nearest": "r15_drum_post"
+        },
+        "seat": {
+          "min_mm": -19.4,
+          "nearest": "r15_drum_post"
+        },
+        "servo": {
+          "min_mm": -16.1,
+          "nearest": "r15_drum_post"
+        },
+        "post": {
+          "min_mm": -9.3,
+          "nearest": "r15_drum_post"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_1"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "27": {
+      "az": 45.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.982,
+        0.322,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -7.8,
+            "state": 838,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 8.7,
+            "state": 100,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -58.9,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -58.9,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 24.0,
+          "nearest": "r15_drum_post"
+        },
+        "seat": {
+          "min_mm": 18.0,
+          "nearest": "r15_drum_post"
+        },
+        "servo": {
+          "min_mm": 21.8,
+          "nearest": "r15_drum_post"
+        },
+        "post": {
+          "min_mm": 39.4,
+          "nearest": "r15_drum_post"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_1"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 37,
+        "tried": [
+          {
+            "q": [
+              0.5438,
+              -0.21,
+              0.0,
+              -2.9756,
+              -5.6319,
+              -1.727,
+              1.6881,
+              0.202,
+              -2.1735,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t2_8"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t2_9"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.4698,
+              -0.21,
+              0.0,
+              -2.9983,
+              -5.7209,
+              -1.4731,
+              1.5932,
+              0.1838,
+              -2.245,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t3_7"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t3_7"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.3717,
+              -0.21,
+              0.0,
+              -3.0204,
+              -5.8862,
+              -1.0621,
+              1.4303,
+              0.1672,
+              -2.329,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t4_7"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t4_7"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.2232,
+              -0.21,
+              0.0,
+              -3.0435,
+              -5.6849,
+              -1.0765,
+              4.4899,
+              -0.1514,
+              -5.5768,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip27_servo",
+                "R_finger_minus"
+              ],
+              [
+                "tip27_servo",
+                "R_finger_minus"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.2386,
+              -0.21,
+              0.0,
+              -3.0416,
+              -5.6506,
+              -1.1431,
+              4.5123,
+              -0.1527,
+              -5.5669,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip27_servo",
+                "R_finger_minus"
+              ],
+              [
+                "tip27_servo",
+                "R_finger_minus"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.2076,
+              -0.21,
+              0.0,
+              -3.0455,
+              -5.7217,
+              -1.0046,
+              4.4646,
+              -0.1502,
+              -5.5867,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip27_servo",
+                "R_finger_minus"
+              ],
+              [
+                "tip27_servo",
+                "R_finger_minus"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "28": {
+      "az": 60.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.938,
+        0.356,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -19.6,
+            "state": 845,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 14.6,
+            "state": 108,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.6,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.6,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_2"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_1"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_2"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 32,
+        "tried": [
+          {
+            "q": [
+              0.503,
+              -0.21,
+              0.0,
+              -2.9074,
+              -5.6717,
+              -1.7185,
+              1.5708,
+              0.2606,
+              -2.021,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t2_7"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t2_7"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.4565,
+              -0.21,
+              0.0,
+              -2.9281,
+              -5.7214,
+              -1.5685,
+              1.5078,
+              0.2423,
+              -2.0595,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t2_7"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t2_7"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1541,
+              -0.21,
+              0.0,
+              -3.0069,
+              -5.8013,
+              -0.843,
+              4.2153,
+              -0.1772,
+              -5.4173,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.2253,
+              -0.21,
+              0.0,
+              -2.994,
+              -5.6335,
+              -1.1725,
+              4.3324,
+              -0.1872,
+              -5.3718,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.234,
+              -0.21,
+              0.0,
+              -2.9922,
+              -5.6157,
+              -1.207,
+              4.3434,
+              -0.1886,
+              -5.366,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.2313,
+              -0.21,
+              0.0,
+              -2.9927,
+              -5.6211,
+              -1.1966,
+              4.3402,
+              -0.1882,
+              -5.3678,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "29": {
+      "az": 75.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.886,
+        0.378,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -0.9,
+            "state": 845,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.5,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -72.2,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.5,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -72.2,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 33.9,
+          "nearest": "r15_wok_t4_2"
+        },
+        "seat": {
+          "min_mm": 18.6,
+          "nearest": "r15_wok_t4_2"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_2"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 35,
+        "tried": [
+          {
+            "q": [
+              0.4505,
+              -0.21,
+              0.0,
+              -2.8674,
+              -5.7018,
+              -1.6861,
+              1.5278,
+              0.2968,
+              -1.978,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t2_7"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t2_7"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.3835,
+              -0.21,
+              0.0,
+              -2.9003,
+              -5.7721,
+              -1.4766,
+              1.4175,
+              0.2671,
+              -2.0089,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t3_6"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t3_6"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.138,
+              -0.21,
+              0.0,
+              -2.975,
+              -5.747,
+              -0.9558,
+              4.172,
+              -0.2024,
+              -5.3135,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.2064,
+              -0.21,
+              0.0,
+              -2.9592,
+              -5.6001,
+              -1.2441,
+              4.2717,
+              -0.2156,
+              -5.2709,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1794,
+              -0.21,
+              0.0,
+              -2.9658,
+              -5.6541,
+              -1.1387,
+              4.237,
+              -0.2101,
+              -5.288,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1936,
+              -0.21,
+              0.0,
+              -2.9623,
+              -5.6251,
+              -1.1953,
+              4.2559,
+              -0.2129,
+              -5.279,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "30": {
+      "az": 90.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.83,
+        0.385,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 17.6,
+            "state": 791,
+            "pair": [
+              "R_gripper_spatula_blade1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -9.5,
+            "state": 4,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.1,
+            "state": 14,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -9.5,
+            "state": 4,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.1,
+            "state": 14,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_3"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_2"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_3"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": true,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 36,
+        "tried": [
+          {
+            "q": [
+              0.4032,
+              -0.21,
+              0.0,
+              -2.849,
+              -5.7032,
+              -1.7019,
+              1.5228,
+              0.3138,
+              -1.9547,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t3_6"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t3_6"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.3576,
+              -0.21,
+              0.0,
+              -2.874,
+              -5.7457,
+              -1.5679,
+              1.4441,
+              0.2909,
+              -1.9688,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_wok_t3_6"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t3_6"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0789,
+              -0.21,
+              0.0,
+              -2.9671,
+              -5.7683,
+              -0.9163,
+              4.1324,
+              -0.2089,
+              -5.2916,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1491,
+              -0.21,
+              0.0,
+              -2.9501,
+              -5.6144,
+              -1.2197,
+              4.2401,
+              -0.2232,
+              -5.249,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1273,
+              -0.21,
+              0.0,
+              -2.9558,
+              -5.6583,
+              -1.1338,
+              4.2113,
+              -0.2185,
+              -5.2625,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1345,
+              -0.21,
+              0.0,
+              -2.9539,
+              -5.6434,
+              -1.163,
+              4.2213,
+              -0.22,
+              -5.258,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "31": {
+      "az": 105.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.774,
+        0.378,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 35.0,
+            "state": 790,
+            "pair": [
+              "R_gripper_spatula_blade2",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -17.6,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.3,
+            "state": 17,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -17.6,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_2",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.3,
+            "state": 17,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 33.9,
+          "nearest": "r15_wok_t4_3"
+        },
+        "seat": {
+          "min_mm": 18.6,
+          "nearest": "r15_wok_t4_3"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_3"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": true,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 36,
+        "tried": [
+          {
+            "q": [
+              0.4161,
+              -0.21,
+              0.0,
+              -2.8178,
+              -5.6382,
+              -1.9114,
+              1.6161,
+              0.3431,
+              -1.9017,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_cooker"
+              ],
+              [
+                "R_geom_11",
+                "r15_wok_t3_6"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.257,
+              -0.21,
+              0.0,
+              -2.9067,
+              -5.7919,
+              -1.4225,
+              1.3939,
+              0.2613,
+              -2.0198,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_17",
+                "r14_hood"
+              ],
+              [
+                "R_geom_21",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0091,
+              -0.21,
+              0.0,
+              -2.9787,
+              -5.7917,
+              -0.8669,
+              4.1382,
+              -0.1994,
+              -5.3241,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1107,
+              -0.21,
+              0.0,
+              -2.9551,
+              -5.5705,
+              -1.3013,
+              4.2895,
+              -0.219,
+              -5.2609,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0679,
+              -0.21,
+              0.0,
+              -2.9658,
+              -5.6546,
+              -1.1378,
+              4.2367,
+              -0.21,
+              -5.2881,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0556,
+              -0.21,
+              0.0,
+              -2.9687,
+              -5.6807,
+              -1.0867,
+              4.2192,
+              -0.2077,
+              -5.2958,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r15_camera"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "32": {
+      "az": 120.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.723,
+        0.356,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 21.4,
+            "state": 567,
+            "pair": [
+              "R_gripper_spatula_blade3",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 10.0,
+            "state": 134,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -113.8,
+            "state": 19,
+            "pair": [
+              "R_gripper_r15_wok_t4_3",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -80.3,
+            "state": 22,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -113.8,
+            "state": 19,
+            "pair": [
+              "R_gripper_r15_wok_t4_3",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -80.3,
+            "state": 22,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_4"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_3"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_4"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": true,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 35,
+        "tried": [
+          {
+            "q": [
+              0.2607,
+              -0.21,
+              0.0,
+              -2.92,
+              -5.6997,
+              -1.6319,
+              1.5343,
+              0.2495,
+              -2.0438,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_21",
+                "r14_hood"
+              ],
+              [
+                "R_geom_21",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.2441,
+              -0.21,
+              0.0,
+              -2.927,
+              -5.7184,
+              -1.5772,
+              1.5114,
+              0.2433,
+              -2.0574,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_21",
+                "r14_hood"
+              ],
+              [
+                "R_geom_21",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              -0.0698,
+              -0.21,
+              0.0,
+              -3.0084,
+              -5.8266,
+              -0.7925,
+              4.1956,
+              -0.1761,
+              -5.4227,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_26",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0029,
+              -0.21,
+              0.0,
+              -2.9954,
+              -5.649,
+              -1.1425,
+              4.3227,
+              -0.1861,
+              -5.3767,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_26",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0015,
+              -0.21,
+              0.0,
+              -2.9957,
+              -5.6519,
+              -1.1368,
+              4.3208,
+              -0.1859,
+              -5.3776,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_26",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0051,
+              -0.21,
+              0.0,
+              -2.995,
+              -5.6444,
+              -1.1514,
+              4.3256,
+              -0.1864,
+              -5.3753,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_26",
+                "r14_hood"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "33": {
+      "az": 135.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.678,
+        0.322,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 2.2,
+            "state": 622,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -1.5,
+            "state": 71,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -102.7,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_2",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -74.1,
+            "state": 30,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -102.7,
+            "state": 23,
+            "pair": [
+              "R_gripper_r15_wok_t3_2",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -74.3,
+            "state": 30,
+            "pair": [
+              "R_gripper_r15_wok_t4_1",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 33.9,
+          "nearest": "r15_wok_t4_4"
+        },
+        "seat": {
+          "min_mm": 18.6,
+          "nearest": "r15_wok_t4_4"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_4"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": true,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 37,
+        "tried": [
+          {
+            "q": [
+              0.253,
+              -0.21,
+              0.0,
+              -2.9708,
+              -5.6187,
+              -1.769,
+              1.7036,
+              0.2059,
+              -2.16,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_21",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.4085,
+              -0.21,
+              0.0,
+              -2.8849,
+              -5.5234,
+              -2.2097,
+              1.8787,
+              0.281,
+              -1.9846,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_11",
+                "r15_cooker"
+              ],
+              [
+                "R_geom_11",
+                "r15_cooker"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0827,
+              -0.21,
+              0.0,
+              -3.0175,
+              -5.856,
+              -1.1337,
+              1.4598,
+              0.1694,
+              -2.3168,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_21",
+                "r14_hood"
+              ],
+              [
+                "R_geom_21",
+                "r15_camera"
+              ]
+            ]
+          },
+          {
+            "q": [
+              -0.134,
+              -0.21,
+              0.0,
+              -3.0498,
+              -5.8214,
+              -0.8076,
+              4.3899,
+              -0.1474,
+              -5.6096,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip33_servo",
+                "R_finger_plus"
+              ],
+              [
+                "tip33_servo",
+                "R_finger_plus"
+              ]
+            ]
+          },
+          {
+            "q": [
+              -0.1066,
+              -0.21,
+              0.0,
+              -3.0467,
+              -5.7468,
+              -0.9552,
+              4.4465,
+              -0.1494,
+              -5.593,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip33_servo",
+                "R_finger_plus"
+              ],
+              [
+                "tip33_servo",
+                "R_finger_plus"
+              ]
+            ]
+          },
+          {
+            "q": [
+              -0.0598,
+              -0.21,
+              0.0,
+              -3.0408,
+              -5.6385,
+              -1.1664,
+              4.52,
+              -0.1532,
+              -5.5632,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip33_servo",
+                "R_finger_plus"
+              ],
+              [
+                "tip33_servo",
+                "R_finger_plus"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "34": {
+      "az": 150.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.644,
+        0.277,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -11.5,
+            "state": 618,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -25.5,
+            "state": 69,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -110.4,
+            "state": 426,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -68.0,
+            "state": 438,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -110.4,
+            "state": 426,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -68.1,
+            "state": 34,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_5"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_4"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_5"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 28,
+        "tried": [
+          {
+            "q": [
+              0.2077,
+              -0.21,
+              0.0,
+              -3.0659,
+              -5.5536,
+              -1.7213,
+              1.9853,
+              0.138,
+              -2.56,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1975,
+              -0.21,
+              0.0,
+              -3.0676,
+              -5.5658,
+              -1.6875,
+              1.9738,
+              0.1371,
+              -2.5702,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1661,
+              -0.21,
+              0.0,
+              -3.0724,
+              -5.6061,
+              -1.5799,
+              1.9361,
+              0.1346,
+              -2.6001,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.1649,
+              -0.21,
+              0.0,
+              -3.0725,
+              -5.6077,
+              -1.5757,
+              1.9346,
+              0.1345,
+              -2.6012,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0825,
+              -0.21,
+              0.0,
+              -3.0825,
+              -5.7363,
+              -1.2607,
+              1.8138,
+              0.1297,
+              -2.6674,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r14_hood"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.0687,
+              -0.21,
+              0.0,
+              -3.0839,
+              -5.7618,
+              -1.2011,
+              1.7894,
+              0.1291,
+              -2.6771,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "R_geom_25",
+                "r14_hood"
+              ],
+              [
+                "R_geom_25",
+                "r14_hood"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "35": {
+      "az": 165.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.622,
+        0.226,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -1.3,
+            "state": 615,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -5.8,
+            "state": 15,
+            "pair": [
+              "R_finger_minus",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.6,
+            "state": 59,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -52.5,
+            "state": 69,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -121.4,
+            "state": 69,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -79.6,
+            "state": 37,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -71.3,
+            "state": 429,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -76.4,
+            "state": 37,
+            "pair": [
+              "R_gripper_r15_wok_t4_0",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 14.0,
+          "nearest": "r15_wok_grip"
+        },
+        "seat": {
+          "min_mm": 3.2,
+          "nearest": "r15_wok_grip"
+        },
+        "servo": {
+          "min_mm": 25.6,
+          "nearest": "r15_wok_grip"
+        },
+        "post": {
+          "min_mm": 42.6,
+          "nearest": "r15_wok_grip"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_5"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "36": {
+      "az": 180.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.615,
+        0.17,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -0.9,
+            "state": 616,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -33.1,
+            "state": 23,
+            "pair": [
+              "R_finger_minus",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -61.9,
+            "state": 57,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -78.8,
+            "state": 199,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -126.9,
+            "state": 431,
+            "pair": [
+              "R_gripper_r15_wok_t3_10",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -48.6,
+            "state": 39,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -136.2,
+            "state": 48,
+            "pair": [
+              "R_gripper_r15_wok_t3_10",
+              "post"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -45.0,
+            "state": 39,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 8.0,
+          "nearest": "r15_wok_grip"
+        },
+        "seat": {
+          "min_mm": -23.1,
+          "nearest": "r15_wok_grip"
+        },
+        "servo": {
+          "min_mm": -0.2,
+          "nearest": "r15_wok_grip"
+        },
+        "post": {
+          "min_mm": 3.0,
+          "nearest": "r15_wok_grip"
+        },
+        "cupT": {
+          "min_mm": 16.6,
+          "nearest": "r15_wok_handle"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "37": {
+      "az": 195.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.622,
+        0.114,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -8.4,
+            "state": 603,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -60.1,
+            "state": 33,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -25.7,
+            "state": 39,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -116.0,
+            "state": 209,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -96.6,
+            "state": 199,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -124.0,
+            "state": 142,
+            "pair": [
+              "R_gripper_r15_wok_t3_11",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -61.7,
+            "state": 436,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -121.2,
+            "state": 52,
+            "pair": [
+              "R_gripper_r15_wok_t3_11",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -68.9,
+            "state": 36,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 14.1,
+          "nearest": "r15_wok_grip"
+        },
+        "seat": {
+          "min_mm": 3.2,
+          "nearest": "r15_wok_grip"
+        },
+        "servo": {
+          "min_mm": 25.6,
+          "nearest": "r15_wok_grip"
+        },
+        "post": {
+          "min_mm": 42.6,
+          "nearest": "r15_wok_grip"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_6"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "38": {
+      "az": 210.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.644,
+        0.062,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -15.9,
+            "state": 612,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -52.8,
+            "state": 185,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -34.5,
+            "state": 39,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -112.6,
+            "state": 60,
+            "pair": [
+              "R_gripper_r19_bowl_tab",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -103.0,
+            "state": 70,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -94.7,
+            "state": 430,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.8,
+            "state": 438,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -94.7,
+            "state": 430,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.8,
+            "state": 438,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_7"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_6"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_7"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "39": {
+      "az": 225.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.678,
+        0.018,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": 27.1,
+            "state": 447,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -50.7,
+            "state": 612,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -59.5,
+            "state": 179,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -31.9,
+            "state": 178,
+            "pair": [
+              "R_gripper_r19_cup_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -108.7,
+            "state": 219,
+            "pair": [
+              "R_gripper_r19_bowl_tab",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -92.3,
+            "state": 198,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -68.9,
+            "state": 22,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -75.9,
+            "state": 30,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -68.9,
+            "state": 22,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -75.0,
+            "state": 30,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 33.9,
+          "nearest": "r15_wok_t4_7"
+        },
+        "seat": {
+          "min_mm": 18.6,
+          "nearest": "r15_wok_t4_7"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_7"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "40": {
+      "az": 240.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.722,
+        -0.016,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": 6.1,
+            "state": 447,
+            "pair": [
+              "R_gripper_spatula_blade4",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.4,
+            "state": 613,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -44.1,
+            "state": 174,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -27.1,
+            "state": 111,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -128.4,
+            "state": 74,
+            "pair": [
+              "R_gripper_r19_bowl_tab",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -70.5,
+            "state": 197,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -39.5,
+            "state": 13,
+            "pair": [
+              "R_gripper_r15_wok_t4_8",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -80.3,
+            "state": 22,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -39.5,
+            "state": 13,
+            "pair": [
+              "R_gripper_r15_wok_t4_8",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -80.3,
+            "state": 22,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_8"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_7"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_8"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "41": {
+      "az": 255.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.774,
+        -0.038,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -40.1,
+            "state": 447,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -132.5,
+            "state": 499,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -61.8,
+            "state": 110,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -58.1,
+            "state": 107,
+            "pair": [
+              "R_finger_minus",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -107.8,
+            "state": 77,
+            "pair": [
+              "R_finger_plus",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -51.0,
+            "state": 191,
+            "pair": [
+              "R_gripper_r19_bowl_tab",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -17.6,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.3,
+            "state": 17,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -17.6,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.3,
+            "state": 17,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 33.9,
+          "nearest": "r15_wok_t4_8"
+        },
+        "seat": {
+          "min_mm": 18.6,
+          "nearest": "r15_wok_t4_8"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_8"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "42": {
+      "az": 270.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.83,
+        -0.045,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -116.6,
+            "state": 895,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -171.8,
+            "state": 64,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -77.8,
+            "state": 103,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -52.4,
+            "state": 110,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -92.1,
+            "state": 134,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -62.1,
+            "state": 134,
+            "pair": [
+              "R_gripper_r19_bowl_tab",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -9.6,
+            "state": 4,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.1,
+            "state": 14,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -9.6,
+            "state": 4,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -67.1,
+            "state": 14,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_9"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_8"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_9"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "43": {
+      "az": 285.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.886,
+        -0.038,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -37.4,
+            "state": 895,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -135.8,
+            "state": 652,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -77.7,
+            "state": 119,
+            "pair": [
+              "R_geom_28",
+              "cup"
+            ],
+            "rule": "robot_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -37.6,
+            "state": 98,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -65.3,
+            "state": 153,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "servo"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -43.9,
+            "state": 150,
+            "pair": [
+              "R_gripper_r19_bowl_tab",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -72.2,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_9",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -72.2,
+            "state": 11,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 33.9,
+          "nearest": "r15_wok_t4_9"
+        },
+        "seat": {
+          "min_mm": 18.6,
+          "nearest": "r15_wok_t4_9"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_9"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "44": {
+      "az": 300.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.938,
+        -0.016,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -119.9,
+            "state": 671,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cup"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -171.7,
+            "state": 288,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -19.0,
+            "state": 126,
+            "pair": [
+              "R_geom_28",
+              "cup"
+            ],
+            "rule": "robot_environment"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 4.9,
+            "state": 106,
+            "pair": [
+              "R_geom_28",
+              "cupT"
+            ],
+            "rule": "robot_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.6,
+            "state": 149,
+            "pair": [
+              "R_geom_28",
+              "servo"
+            ],
+            "rule": "robot_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -38.4,
+            "state": 166,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.5,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -73.5,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_10"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_9"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 27.5,
+          "nearest": "r15_knob_servo"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_10"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": false,
+      "wok_paths_ok": false
+    },
+    "45": {
+      "az": 315.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        0.982,
+        0.018,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -38.4,
+            "state": 673,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -144.3,
+            "state": 730,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": 42.7,
+            "state": 90,
+            "pair": [
+              "R_gripper_oem_envelope",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -34.0,
+            "state": 95,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -58.9,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -58.9,
+            "state": 8,
+            "pair": [
+              "R_gripper_r15_wok_t4_10",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 33.9,
+          "nearest": "r15_wok_t4_10"
+        },
+        "seat": {
+          "min_mm": 18.6,
+          "nearest": "r15_wok_t4_10"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 11.0,
+          "nearest": "r15_knob_servo"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_10"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": false,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    },
+    "46": {
+      "az": 330.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        1.016,
+        0.062,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": 2.5,
+            "state": 672,
+            "pair": [
+              "R_gripper_spatula_blade0",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -122.9,
+            "state": 836,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -27.3,
+            "state": 92,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.2,
+            "state": 7,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -8.5,
+            "state": 2,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -66.2,
+            "state": 7,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 30.9,
+          "nearest": "r15_wok_t4_11"
+        },
+        "seat": {
+          "min_mm": 12.3,
+          "nearest": "r15_wok_t4_10"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "cupT": {
+          "min_mm": 22.0,
+          "nearest": "r15_wok_t4_11"
+        }
+      },
+      "fit_ok": true,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false,
+      "load": {
+        "ok": false,
+        "ik_solutions": 21,
+        "tried": [
+          {
+            "q": [
+              0.3894,
+              -0.21,
+              0.0,
+              -3.4118,
+              -5.4523,
+              -1.193,
+              3.0936,
+              0.2934,
+              -4.318,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip46_servo",
+                "R_gripper_palm"
+              ],
+              [
+                "tip46_servo",
+                "R_gripper_oem_envelope"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.4073,
+              -0.21,
+              0.0,
+              -3.4199,
+              -5.4074,
+              -1.2713,
+              3.1373,
+              0.3007,
+              -4.3288,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip46_servo",
+                "R_gripper_palm"
+              ],
+              [
+                "tip46_servo",
+                "R_gripper_oem_envelope"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.3237,
+              -0.21,
+              0.0,
+              -3.386,
+              -5.6493,
+              -1.3543,
+              0.2732,
+              -0.2698,
+              -1.1378,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip46_servo",
+                "R_gripper_palm"
+              ],
+              [
+                "tip46_servo",
+                "R_gripper_oem_envelope"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.3003,
+              -0.21,
+              0.0,
+              -3.3779,
+              -5.7231,
+              -0.6955,
+              2.8168,
+              0.2626,
+              -4.266,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip46_servo",
+                "R_gripper_palm"
+              ],
+              [
+                "tip46_servo",
+                "R_gripper_oem_envelope"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.3562,
+              -0.21,
+              0.0,
+              -3.398,
+              -5.5454,
+              -1.0306,
+              2.9903,
+              0.2807,
+              -4.2829,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip46_servo",
+                "R_gripper_palm"
+              ],
+              [
+                "tip46_servo",
+                "R_gripper_oem_envelope"
+              ]
+            ]
+          },
+          {
+            "q": [
+              0.3566,
+              -0.21,
+              0.0,
+              -3.3982,
+              -5.5435,
+              -1.0333,
+              2.9943,
+              0.2809,
+              -4.2862,
+              0.014,
+              0.014
+            ],
+            "held_ok": false,
+            "hits": [
+              [
+                "tip46_servo",
+                "R_gripper_palm"
+              ],
+              [
+                "tip46_servo",
+                "R_gripper_oem_envelope"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "47": {
+      "az": 345.0,
+      "dz": 0.03,
+      "cup_bottom": [
+        1.038,
+        0.114,
+        1.05
+      ],
+      "scenes": {
+        "stir": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -70.5,
+            "state": 838,
+            "pair": [
+              "R_gripper_spatula_handle",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "cup_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          }
+        },
+        "bowl_pour": {
+          "up": {
+            "ok": true,
+            "min_slack_mm": ">40"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -19.7,
+            "state": 91,
+            "pair": [
+              "R_gripper_r19_bowl_body",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot1": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -56.3,
+            "state": 7,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        },
+        "wok_spot2": {
+          "up": {
+            "ok": false,
+            "min_slack_mm": -1.4,
+            "state": 3,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "seat"
+            ],
+            "rule": "held_gripper_environment"
+          },
+          "tip": {
+            "ok": false,
+            "min_slack_mm": -56.3,
+            "state": 7,
+            "pair": [
+              "R_gripper_r15_wok_t4_11",
+              "cupT"
+            ],
+            "rule": "held_gripper_environment"
+          }
+        }
+      },
+      "fit": {
+        "cup": {
+          "min_mm": 33.9,
+          "nearest": "r15_wok_t4_11"
+        },
+        "seat": {
+          "min_mm": 18.6,
+          "nearest": "r15_wok_t4_11"
+        },
+        "servo": {
+          "min_mm": 50.0,
+          "nearest": "floor"
+        },
+        "post": {
+          "min_mm": -302.6,
+          "nearest": "r16_ind2"
+        },
+        "cupT": {
+          "min_mm": 22.2,
+          "nearest": "r15_wok_t4_11"
+        }
+      },
+      "fit_ok": false,
+      "stir_up_ok": true,
+      "stir_tip_ok": false,
+      "pour_paths_ok": true,
+      "wok_paths_ok": false
+    }
+  },
+  "elapsed_s": 24
+}
