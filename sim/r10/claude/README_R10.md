@@ -1003,3 +1003,15 @@ The user asked for several subagents to explore cheaper robot designs and a bett
   - tolerance: `R19_TOLERANCE.md`, which says docking stops are needed;
   - prep methods: `research/r19_prep_methods.md`;
   - seasoning cups: `research/r19_seasoning_cups.md`, `R19_CUPS.md`.
+
+## R19, continued: pot zone and stir (2026-10-13; GitHub #37, #8, #3)
+- **Pot zone (`R19_POTZONE.md`).**
+  - The spider rest moves to (1.56, 0.20). The upper arm now keeps ≥ 19.4 mm from the cabinet, against 10.4 mm before.
+  - The lid rack becomes a keyed V-saddle (`kitchen19pot.py`, `RACK=keyed`) with a declared 50 mm insertion window.
+  - The stored lid path is kept.
+  - With this layout, the FR5 `sp20` lid passes.
+- **Stir (`R19_STIR.md`).** The stir cycle is now velocity-continuous (q, q̇ and q̈ matched at every hand-off), certified at ≤ 4 mm, and stored as library entries in `results/r19/stir/lib_stir_cycle_*.json`.
+  - Period: 2.32 s per stroke for `ur5e_enc2_pgc` and 2.29 s for `fr5_j6_pgc_sp20`, at 800 °/s².
+  - Margins: min reserve 2.0 mm; plume margin 25.8 mm.
+  - Stopping at each hand-off would cost +0.8–0.9 s per stroke.
+  - The old 2.63 s cycle also exceeded the joint acceleration limits.

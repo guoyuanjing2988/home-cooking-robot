@@ -1,0 +1,18 @@
+chain [1, 1, 1, 0, 1] [[0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, -1], [-1, 1, 0, -1, -1, 0], [-1, 0, 0, 0, -1, -1], [-1, 1, 0, -1, -1, 0]] proxy A 11.3 B 11.717
+work splines [{'kind': 'interp', 'pinned_joints': [], 'pose_mm': 0.0, 'rot_deg': 0.0}, {'kind': 'interp', 'pinned_joints': [], 'pose_mm': 0.0, 'rot_deg': 0.0}, {'kind': 'interp', 'pinned_joints': [], 'pose_mm': 0.0, 'rot_deg': 0.0}, {'kind': 'interp', 'pinned_joints': [], 'pose_mm': 0.0, 'rot_deg': 0.0}, {'kind': 'smoothing', 'lam': 5.623413251903491e-05, 'pinned_joints': [2], 'sq': {'2': (-2.792526803190927, 1.0)}, 'pose_mm': 2.952, 'rot_deg': 2.487, 'max_dev_from_ik_deg': 1.13}]
+works [True, True, True, True, True] 3 s
+A 0:1[0, 0, 0, 0, 0, 0]>1:1[0, 1, 0, 0, 0, -1] option 0 0.3 none 0.0 certified 74.24 3 s
+A 1:1[0, 1, 0, 0, 0, -1]>2:1[-1, 1, 0, -1, -1, 0] option 0 0.3 none 0.0 certified 74.69 3 s
+A 2:1[-1, 1, 0, -1, -1, 0]>3:0[-1, 0, 0, 0, -1, -1] option 0 0.4 none 0.0 certified 74.96 3 s
+A 3:0[-1, 0, 0, 0, -1, -1]>4:1[-1, 1, 0, -1, -1, 0] option 0 0.3 none 0.0 certified 73.5 3 s
+A 4:1[-1, 1, 0, -1, -1, 0]>0:1[0, 0, 0, 0, 0, 0] option 0 0.3 none 0.0 certified 73.07 3 s
+B 0:1[0, 0, 0, 0, 0, 0]>1:1[0, 1, 0, 0, 0, -1] option 0 None none 0.0 certified 75.37 3 s
+B 1:1[0, 1, 0, 0, 0, -1]>2:1[-1, 1, 0, -1, -1, 0] option 0 None none 0.0 certified 75.24 3 s
+B 2:1[-1, 1, 0, -1, -1, 0]>3:0[-1, 0, 0, 0, -1, -1] option 0 None none 0.0 certified 77.65 3 s
+B 3:0[-1, 0, 0, 0, -1, -1]>4:1[-1, 1, 0, -1, -1, 0] option 0 None none 0.0 certified 68.18 3 s
+B 4:1[-1, 1, 0, -1, -1, 0]>0:1[0, 0, 0, 0, 0, 0] option 0 None none 0.0 certified 77.63 3 s
+A A_UR {"cycle_s": 11.606, "period_per_stroke_s": 2.321, "peak_v_degps": [85.8, 176.4, 115.8, 140.3, 112.0, 145.1], "peak_a_degps2": [730.0, 784.0, 784.0, 784.0, 744.0, 784.0], "peak_j_degps3": [38750.0, 47736.0, 30176.0, 57764.0, 31660.0, 46112.0], "worst_ratio": {"v": 0.9802, "a": 0.9802, "cap": 0.9908}, "converged": true, "iters": 2, "kappa_min": 0.8844, "sdot_at_cycle_ends": [0.7489, 0.7489], "three_cycles_from_rest_s": 35.124} 4 s
+A A_R15 {"cycle_s": 13.823, "period_per_stroke_s": 2.765, "peak_v_degps": [59.7, 129.6, 81.7, 95.5, 78.0, 103.8], "peak_a_degps2": [333.0, 354.0, 353.0, 353.0, 338.0, 358.0], "peak_j_degps3": [14853.0, 18117.0, 9155.0, 17512.0, 11354.0, 17664.0], "worst_ratio": {"v": 0.7199, "a": 0.9944, "cap": 0.9912}, "converged": true, "iters": 3, "kappa_min": 0.7962, "sdot_at_cycle_ends": [0.5341, 0.5341], "three_cycles_from_rest_s": 41.802} 7 s
+B A_UR {"cycle_s": 15.778, "period_per_stroke_s": 3.156, "peak_v_degps": [61.6, 146.5, 77.1, 111.1, 86.7, 125.2], "peak_a_degps2": [325.0, 648.0, 496.0, 784.0, 406.0, 556.0], "peak_j_degps3": [13530.0, 11276.0, 8725.0, 11342.0, 8706.0, 14751.0], "worst_ratio": {"v": 0.8142, "a": 0.9805, "cap": 1.0}, "converged": true} 8 s
+B A_R15 {"cycle_s": 18.48, "period_per_stroke_s": 3.696, "peak_v_degps": [49.1, 110.5, 61.5, 85.7, 67.6, 94.5], "peak_a_degps2": [235.0, 352.0, 283.0, 353.0, 276.0, 309.0], "peak_j_degps3": [9281.0, 5821.0, 6115.0, 7030.0, 5820.0, 10133.0], "worst_ratio": {"v": 0.6141, "a": 0.9802, "cap": 1.0}, "converged": true} 9 s
+saved results/r19/stir/cycle_ur5e_enc2_pgc/cycle.json results/r19/stir/lib_stir_cycle_ur5e_enc2_pgc.json 9 s
