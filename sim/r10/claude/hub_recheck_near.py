@@ -12,7 +12,7 @@ import r19hub_cup as H
 import kitchen16 as K
 from scene import save
 KV=H.KV;OUT='results/mac/hub_recheck';MARGIN=float(KV.get('MARGIN',.10))
-SRC='/Users/yg736648/Documents/gyj_work/kitchen_robot/home-cooking-robot/sim/r10/claude/results/r19/hub'
+SRC='sim/r10/claude/results/r19/hub'
 _ut=H.union_tree
 def union_tree_bowl():
  tree,meta=_ut();K._add(tree.find('worldbody'),'',K.OBJ['bowl']['parts'],np.eye(3),bowlobj.SPOT2,rgba='.78 .8 .83 1');return tree,meta

@@ -16,7 +16,7 @@ import r19hub_cup as H
 import kitchen16 as K
 from scene import save
 KV=H.KV;OUT='results/mac/hub_recheck';os.makedirs(OUT,exist_ok=True)
-SRC='/Users/yg736648/Documents/gyj_work/kitchen_robot/home-cooking-robot/sim/r10/claude/results/r19/hub'   # read only
+SRC='sim/r10/claude/results/r19/hub'   # read only
 LANES=[('SPAT','LEV_C'),('SPAT','H_SPAT'),('LID_RACK','H_WOK'),('WOK','H_SINK'),('SPAT','H_SINK'),
  ('LEV_O','WOK'),('LEV_O','H_SINK'),('SPIDER','H_WOK'),('WOK','H_POT'),('LEV_O','H_SPAT'),
  ('LID_RACK','H_POT'),('LEV_C','H_SINK'),('LID_POT','H_WOK'),('LEV_C','H_SPAT'),
