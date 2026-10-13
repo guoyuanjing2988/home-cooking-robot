@@ -99,7 +99,7 @@ The UR5e on its cart running a stored path; every state was checked (10 mm robot
 | <img src="docs/motions/spatula_rest.gif" width="420" alt="Spatula: counter rest to the first stroke (R18b)"><br>**Spatula: counter rest to the first stroke (R18b)**<br>26.9 s, one continuous checked path, 6.0 mm reserve. 1.3× | <img src="docs/motions/wok_plate_rinse.gif" width="420" alt="Wok: plate, rinse at the sink, back (R17)"><br>**Wok: plate, rinse at the sink, back (R17)**<br>One continuous path, 48.9 s, 2.0 mm min clearance (R19 re-check). 2.7× |
 | <img src="docs/motions/faucet_lever.gif" width="420" alt="Faucet lever lifted 30° (R17)"><br>**Faucet lever lifted 30° (R17)**<br>3.5 s; clip-on block on the single-lever faucet. Slowed 3×. | <img src="docs/motions/lid_rack.gif" width="420" alt="Lid off the pot, upright into the rack (R17)"><br>**Lid off the pot, upright into the rack (R17)**<br>20.2 s, 1.0 mm clearance: needs a keyed tab (#8). 1.2× |
 | <img src="docs/motions/spider.gif" width="420" alt="Spider: scoop, drain, tip onto the plate (R17)"><br>**Spider: scoop, drain, tip onto the plate (R17)**<br>52.6 s, 2.1 mm clearance. 3.1× |   |
-| <img src="docs/motions/cup_pour.gif" width="420" alt="Seasoning cup: station to wok, pour, back (R19 Mac)"><br>**Seasoning cup: station → wok → pour → back (R19, Mac)**<br>One continuous checked path, 20.6 s, 2.2 mm reserve, 0 hits on a full re-check. The station pad moves 10 cm left. | |
+| <img src="docs/motions/cup_pour.gif" width="420" alt="Seasoning cup: station to wok, pour, back (R19 Mac)"><br>**Seasoning cup: station → wok → pour → back (R19, Mac)**<br>One continuous checked path, 20.6 s, 2.2 mm reserve, 0 hits on a full re-check. The station pad moves 10 cm left. | <img src="docs/motions/stir_arm.gif" width="420" alt="The arm stirring the wok"><br>**Stir cycle with the arm (R15/R18, states stored on the Mac)**<br>5 scrape strokes, cart parked at x 0.55, 2.0 mm reserve, 25.8 mm plume clearance (#3). |
 
 ### Physics benches, no arm
 
@@ -111,7 +111,7 @@ What the food, the door or the drum does, tested without the arm.
 | <img src="docs/motions/pour_drum.gif" width="420" alt="Pour drum release (R14)"><br>**Pour drum release (R14)**<br>No arm by design: a servo turns the drum. Granules 100 % in order; liquids not simulated. | <img src="docs/motions/fridge_door.gif" width="420" alt="Fridge door force (R14)"><br>**Fridge door force (R14)**<br>100 N seal, 14 kg door: the pull the arm must make. |
 | <img src="docs/motions/foods_bench.gif" width="420" alt="About 40 foods (R13)"><br>**About 40 foods (R13)**<br>702 rigid + 53 non-rigid runs, free-floating gripper; one grasp method per food. 1.4× |   |
 
-Not rendered yet: the arm stirring in the kitchen (its states were never stored, #3) and the R19 hub roadmap.
+Not rendered yet: the R19 hub roadmap.
 
 ## Open items
 - **No real-food tests yet:**

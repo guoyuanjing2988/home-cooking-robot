@@ -21,6 +21,8 @@ HEAT_DT = 0.25                       # model step while a skill runs (s)
 SMOKE_C, CUTOFF_C = 210.0, 250.0     # smoke detector; stove guard cuts power (R15 safety, robot limit 250 °C)
 HALF_POWER_PAUSE_S = 6.0             # R15 policy: drop to about half power whenever the spatula stops
 MAX_FOOD_G = 1150.0                  # heaviest dish checked for the wok tip (R15 evidence 6; R17 chain: PGC 6.47 of 7 N·m)
+PARK_S = 6.0                         # spatula in/out of a wok-side park: ESTIMATE until the Mac SPATULA_PARK_CUP_POUR chain is checked
+CUP_S = 20.6                         # seasoning cup pad -> wok -> 120° pour -> pad, checked chain (results/mac/chain_cup_final.json)
 SPAT_S = 27.4                        # spatula rest (counter left of the sink) <-> stir stroke start, one way (R18b, results/r18/arm18.json)
 PLATE_S = 79.5                       # faucet open, R17 wok chain (plate, rinse under the tap, back on the cooker), faucet closed, free moves (arm18.json minus the spatula)
 SPOT2_S = 27.0                       # tip onto the second plating spot and back to the cooker without the sink (R18 tip checked; return = lift path reversed, estimate)
@@ -132,6 +134,11 @@ ROUTINES = [
     Skill('take_out', 'Heat off, tip everything in the wok into `into` (holding_bowl, oil_cup or plate).',
           {'into': ('enum', ['plate', 'holding_bowl', 'oil_cup'], REQ)}, 'as tip_wok', 'set_heat + tip_wok',
           'as the steps'),
+    Skill('pour_cup_mid_stir', 'One movement set: heat off, the spatula goes onto the park at the wok (not the far rest), '
+          f'the arm pours cup `cup` ({CUP_S:g} s), takes the spatula back, heat back to `level`, stirs `seconds`.',
+          {'cup': ('string', None, REQ), 'level': ('number', [0, 1], REQ), 'seconds': ('number', [3.6, 90], REQ)},
+          f'~{2 * PARK_S + CUP_S + 2:g} s + seconds', 'park + cup chain (R19 Mac) + stir',
+          'as the steps', unverified=f'the wok-side spatula park ({PARK_S:g} s each way) is an estimate'),
     Skill('return_and_toss', 'Heat off, pour the holding bowl back in, heat at `level` and stir for `seconds`.',
           {'level': ('number', [0, 1], REQ), 'seconds': ('number', [3.6, 60], REQ)}, '~10 s + seconds',
           'set_heat + pour_into_wok + set_heat + stir', 'as the steps'),
@@ -221,7 +228,11 @@ class Kitchen:
             self.note = f'spatula put back on its rest first ({SPAT_S:g} s)'
 
     def take_spatula(self):
-        if self.hand != 'spatula':
+        if self.hand == 'parked':                # it is on the wok-side park
+            self.advance(PARK_S)
+            self.hand = 'spatula'
+            self.note = f'spatula taken from the wok-side park ({PARK_S:g} s)'
+        elif self.hand != 'spatula':
             self.advance(SPAT_S)
             self.hand = 'spatula'
             self.note = f'spatula taken from its rest first ({SPAT_S:g} s)'
@@ -331,6 +342,13 @@ class Kitchen:
                     yield 'pour_into_wok', {'source': c}
                 yield 'set_heat', {'level': a['level']}
                 yield 'stir', {'seconds': a['seconds']}
+            elif name == 'pour_cup_mid_stir':
+                yield 'set_heat', {'level': 0}
+                yield '_park', {}
+                yield 'pour_into_wok', {'source': a['cup']}
+                yield '_unpark', {}
+                yield 'set_heat', {'level': a['level']}
+                yield 'stir', {'seconds': a['seconds']}
             elif name == 'return_and_toss':
                 yield 'set_heat', {'level': 0}
                 yield 'pour_into_wok', {'source': 'holding_bowl'}
@@ -341,6 +359,13 @@ class Kitchen:
             if name == 'heat_to' and act == 'wait' and self.wok_has_food() and self.wok.heat > 0.5:
                 ar = {'seconds': min(3, ar['seconds'])}
             self.note = ''
+            if act in ('_park', '_unpark'):            # spatula to / from the wok-side park, no trip to the far rest
+                if act == '_park' and self.hand == 'spatula':
+                    self.advance(PARK_S); self.hand = 'parked'
+                elif act == '_unpark' and self.hand == 'parked':
+                    self.advance(PARK_S); self.hand = 'spatula'
+                done.append(act)
+                continue
             r = self._call(act, ar)
             if self.note and r.get('code') == 'OK':
                 r['message'] = self.note + '; ' + r['message']
@@ -429,7 +454,7 @@ class Kitchen:
         else:
             del self.counter[source]
         self.park_spatula()
-        self.advance(8)
+        self.advance(CUP_S if source in self.cups else 8)
         for n, g, st in items:
             self.wok.add(n, g, st)
         return dict(code='OK', message='poured ' + ', '.join(f'{n} {g:.0f} g' for n, g, _ in items))

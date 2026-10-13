@@ -51,8 +51,8 @@ def tdraw(dr, xy, text, font, fill):
         x += dr.textlength(c, font=f)
 
 
-BG, PANEL, INK, DIM = (14, 16, 20), (30, 33, 40), (238, 238, 240), (150, 155, 165)
-CLAUDE, OK_C, BAD_C, WARN = (217, 119, 87), (90, 190, 120), (230, 90, 80), (240, 190, 80)
+BG, PANEL, INK, DIM = (243, 245, 247), (255, 255, 255), (22, 26, 32), (88, 98, 112)
+CLAUDE, OK_C, BAD_C, WARN = (196, 98, 52), (43, 133, 81), (191, 67, 46), (176, 110, 12)
 
 # (source, crop box in px or None, time a, time b) for clips; stills are (path, crop box)
 CLIPS = {
@@ -63,6 +63,9 @@ CLIPS = {
     'flip_egg': (REN / 'r15/stir_plate.mp4', (0, 60, 640, 510), 3, 8),
     'tip_wok': (REN / 'r17/wok_sink.mp4', (0, 40, 960, 540), 0, 32),        # plate + sink rinse + back (R17)
     'tip_wok_spot2': (REN / 'r17/wok_sink.mp4', (0, 40, 960, 540), 0, 8),   # lift and tip only
+    'cup_pour': (REN / 'mac/cup_pour.mp4', (0, 40, 960, 540), 0, 9.4),      # station -> wok -> pour -> back (R19 Mac)
+    'stir_arm': (REN / 'mac/stir_cycle.mp4', (0, 40, 960, 540), 0, 13.5),   # the checked 5-stroke cycle with the arm (R15/R18, Mac re-run)
+    'spatula_fetch': (REN / 'mac/spatula_r18b.mp4', (0, 40, 960, 540), 0, 16.2),   # rest -> stroke start (R18b)
 }
 STILLS = {
     'dose_cup': (REN / 'r14/overview.png', (0, 36, 900, 600)),
@@ -83,6 +86,9 @@ LABEL = {
     'flip_egg': 'Spatula stroke (single-piece flip not simulated)',
     'tip_wok': 'Heat off: plate, rinse the wok under the running tap, set it back (R17 path, re-checked at ≤ 4 mm in R19, sped up)',
     'tip_wok_spot2': 'Heat off: tip at the second plating spot and set the wok back (R18 checked spot; replay shows the R17 tip)',
+    'cup_pour': 'Seasoning cup: station → wok → pour → back, one checked path (R19)',
+    'stir_arm': 'Arm stirring: the checked 5-stroke scrape cycle (2.0 mm reserve; R19: about 3.6 s per stroke)',
+    'spatula_fetch': 'The arm takes the spatula from its rest to the wok, one checked path (R18b)',
 }
 
 
@@ -100,7 +106,7 @@ def clip_frames(src, crop, a, b, n, w, h):
     vf = (f'crop={crop[2] - crop[0]}:{crop[3] - crop[1]}:{crop[0]}:{crop[1]},' if crop else '')
     fps = max(n / max(b - a, 0.1), 0.5)
     cmd = ['ffmpeg', '-v', 'error', '-ss', str(a), '-t', str(b - a), '-i', str(src), '-vf',
-           vf + f'fps={fps:.4f},scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2:color=0x0e1014',
+           vf + f'fps={fps:.4f},scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2:color=0xe8ecf0',
            '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-']
     raw = subprocess.run(cmd, capture_output=True, check=True).stdout
     k = len(raw) // (w * h * 3)
@@ -151,16 +157,16 @@ def panel(d, k, n_total, t_frac=1.0):
     # header
     dr.text((30, 18), 'Claude cooks', font=F['h1'], fill=INK)
     x = 30 + dr.textlength('Claude cooks ', font=F['h1'])
-    dr.text((x, 16), '西红柿炒蛋', font=FZ, fill=CLAUDE)
-    x += dr.textlength('西红柿炒蛋', font=FZ) + 14
-    dr.text((x, 26), "· Wang Gang's tomato & egg, one-arm kitchen robot (MuJoCo)", font=F['b'], fill=DIM)
+    dr.text((x, 18), 'tomato & egg', font=F['h1'], fill=CLAUDE)
+    x += dr.textlength('tomato & egg', font=F['h1']) + 14
+    dr.text((x, 26), "· Wang Gang's recipe, one-arm kitchen robot (MuJoCo)", font=F['b'], fill=DIM)
     dr.text((W - 330, 22), f'kitchen clock {mmss(s["t_s"])}', font=F['h2'], fill=WARN)
     dr.text((W - 330, 56), f'decision {k + 1} of {n_total}', font=F['s'], fill=DIM)
     # bottom-left: wok camera Claude saw + gauges
     dr.rounded_rectangle((20, 760, 1160, 1060), 14, fill=PANEL)
     if d.get('seen_image') and Path(d['seen_image']).exists():
         im.paste(fit(Image.open(d['seen_image']), 384, 288), (34, 766))
-        tdraw(dr, (40, 770), 'wok camera → Claude', F['xs'], INK)
+        tdraw(dr, (40, 770), 'wok camera → Claude', F['xs'], (255, 255, 255))
     else:
         dr.text((60, 900), 'no wok image yet (cold, empty wok)', font=F['s'], fill=DIM)
     gx = 440
@@ -210,7 +216,7 @@ def panel(d, k, n_total, t_frac=1.0):
     y = wrap(dr, (X0 + 24, y), dec['why'], F['b'], INK, cw, 33, 9) + 16
     call = fmt_call(dec['action'], dec.get('args') or {})
     box_h = 20 + 32 * len(textwrap.wrap(call, 44))
-    dr.rounded_rectangle((X0 + 20, y, W - 40, y + box_h), 10, fill=(18, 20, 24), outline=CLAUDE, width=2)
+    dr.rounded_rectangle((X0 + 20, y, W - 40, y + box_h), 10, fill=(246, 241, 237), outline=CLAUDE, width=2)
     yy = y + 10
     for ln in textwrap.wrap(call, 44):
         tdraw(dr, (X0 + 36, yy), ln, F['mono'], INK); yy += 32
@@ -237,8 +243,18 @@ def robot_view(d, n):
     w, h = 1140, 640
     routine, res = d['decision']['action'], d['result']
     act = ROUTINE_VIEW.get(routine, routine)
+    args = d['decision'].get('args') or {}
+    src_ = str(args.get('source') or args.get('cup') or '')
+    if routine in ('season_and_toss', 'egg_into_hot_oil', 'pour_cup_mid_stir') or (act == 'pour_into_wok' and src_.startswith('cup')):
+        act = 'cup_pour'
+    elif act in ('stir', 'flip_egg') and 'spatula taken' in res.get('message', ''):
+        act = 'spatula_fetch'
+    elif routine == 'season_wok':
+        act = 'tip_wok_spot2'
+    elif act in ('stir', 'drum_release'):
+        act = 'stir_arm'
     if not res['ok']:
-        img = Image.new('RGB', (w, h), (40, 22, 22))
+        img = Image.new('RGB', (w, h), (251, 234, 230))
         dr = ImageDraw.Draw(img)
         dr.text((60, 270), 'Refused before anything moved', font=F['h1'], fill=BAD_C)
         dr.text((60, 330), 'Claude reads the reason and plans again', font=F['h2'], fill=INK)
@@ -246,7 +262,11 @@ def robot_view(d, n):
     wok_p = res.get('image') or d.get('seen_image')
     wok = fit(Image.open(wok_p), w, h) if wok_p and Path(wok_p).exists() else None
     inset = None
-    if act in ('stir', 'flip_egg', 'drum_release') and wok is not None:
+    if act in ('cup_pour', 'spatula_fetch', 'stir_arm') and wok is not None:
+        src, crop, a, b = CLIPS[act]
+        frames = clip_frames(src, crop, a, b, n, w, h)
+        inset = [fit(Image.open(wok_p), 420, 315)] * n
+    elif act in ('stir', 'flip_egg', 'drum_release') and wok is not None:
         frames = [wok] * n                  # the wok itself is the story; the checked motion goes in the inset
         src, crop, a, b = CLIPS[act]
         inset = clip_frames(src, crop, a, b, n, 420, 296)
@@ -265,12 +285,14 @@ def robot_view(d, n):
     if inset:
         frames = [f.copy() for f in frames]
         for f, s in zip(frames, inset):
-            ImageDraw.Draw(f).rectangle((w - 446, 14, w - 14, 26 + s.height), fill=(255, 255, 255))
+            ImageDraw.Draw(f).rectangle((w - 446, 14, w - 14, 26 + s.height), fill=(22, 26, 32))
             f.paste(s, (w - 440, 20))
     lab = LABEL.get(act, {'set_heat': 'Induction cooker (knob servo)', 'wait': 'Waiting, cooker running',
                           'look': 'Hood camera + IR thermometer', 'done': 'Done'}.get(act, act))
     if routine in ROUTINE_VIEW and res.get('steps'):
-        lab = f"Routine, {len(res['steps'])} steps without a pause: {' → '.join(dict.fromkeys(res['steps']))} · " + lab
+        ns = len(res['steps'])
+        if ns > 1:
+            lab = f"Routine, {ns} steps without a pause: {' → '.join(dict.fromkeys(res['steps']))} · " + lab
     if res['message'].startswith('spatula'):
         lab += ' · ' + res['message'].split(';')[0] + ', R18b checked path'
     tmp = ImageDraw.Draw(Image.new('RGB', (1, 1)))
@@ -285,7 +307,7 @@ def robot_view(d, n):
     for f in frames:
         f = f.copy()
         dr = ImageDraw.Draw(f)
-        dr.rectangle((0, h - bar, w, h), fill=(0, 0, 0))
+        dr.rectangle((0, h - bar, w, h), fill=(255, 255, 255))
         for i, ln in enumerate(lines):
             tdraw(dr, (14, h - bar + 6 + 26 * i), ln, F['s'], INK)
         out.append(f)
@@ -324,13 +346,13 @@ REALTIME_RUN = False
 
 
 def intro():
-    return card([('Claude cooks Wang Gang\u2019s', 'h1', INK), ('西红柿炒蛋 · tomato & egg', 'zh', CLAUDE)], sub=[
+    return card([('Claude cooks Wang Gang\u2019s', 'h1', INK), ('tomato & egg stir-fry', 'h1', CLAUDE)], sub=[
         'Opus 5.5 runs a one-arm kitchen robot, one skill call at a time. It works only from the recipe in Wang Gang\u2019s '
         'own words, a thermometer and a wok camera.',
         'A deterministic safety gate checks every call before anything moves.',
         *(['Real time: the kitchen does not wait while Claude thinks. The cooker keeps running during every decision.']
           if REALTIME_RUN else []),
-        'Every robot motion is a replay of a motion checked in MuJoCo (collision, reach, physics) during six days of design rounds.'])
+        'Robot motions are replays of paths checked in MuJoCo; each clip says what was checked.'])
 
 
 OVERVIEW = REN / 'r17/r17_overview.png'
@@ -412,8 +434,7 @@ def main():
             p.stdin.write(img.tobytes())
         total += int(sec * FPS)
     if a.cards:
-        hold(intro(), 9)
-        hold(kitchen_card(), 9)
+        hold(intro(), 5)
     for k in sel:
         d = D[k]
         n = int((step_seconds(d, a.pace, a.hl, a.routine) if a.highlights else step_seconds(d, a.pace)) * FPS)
