@@ -1,0 +1,150 @@
+{
+ "name": "chain_bascarrot_full_ur5e_enc2_pgc",
+ "geometry_md5": "825fb6d480f3ab66cb3ef26371ea6fd8",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 1762,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 3.0,
+ "min_self_reserve_mm": 1.55,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [
+  [
+   2,
+   "seat lift"
+  ]
+ ],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_bascarrot_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": [
+     "app",
+     0
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "1b605d781f0af6d813f08588b244a580"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_bascarrot_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": "play",
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "930c5dd949e144f413a04b71738b91cb"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_bascarrot_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": [
+     "app",
+     1
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "36db717cfd7511bf9f784887f763b57c"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "prep:['app', 0]",
+   "states": 47,
+   "max_step_bound_mm": 3.998,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 4.5,
+   "min_self_reserve_mm": 10.06,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "seat lift",
+   "checked": false,
+   "rule": "support contact window at the grasp (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 3,
+   "name": "pick -> lifted",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 34,
+   "max_step_bound_mm": 3.959,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 3.0,
+   "min_self_reserve_mm": 10.36,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "lifted -> over the basket",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1473,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 34.33,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 5,
+   "name": "over the basket -> in the basket (bottom 20 mm under the rim)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 117,
+   "max_step_bound_mm": 3.923,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 18.24,
+   "min_self_reserve_mm": 1.55,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 7,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "prep:['app', 1]",
+   "states": 91,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 10.49,
+   "min_self_reserve_mm": 1.55,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 124.3,
+ "date": "2026-10-14"
+}

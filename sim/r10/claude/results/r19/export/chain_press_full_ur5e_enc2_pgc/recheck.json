@@ -1,0 +1,119 @@
+{
+ "name": "chain_press_full_ur5e_enc2_pgc",
+ "geometry_md5": "b007c217a127b3e71c849b4ce5642fb1",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 216,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 1.0,
+ "min_self_reserve_mm": 2.93,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_press_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": [
+     "app",
+     0
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "373db2ea508afb7a5b3dbdd33ce16db3"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_press_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": "play",
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "540343ac47e2c71994ee2bd27c9b1791"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_press_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": [
+     "app",
+     1
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "260c977dff41702eb5ce4cb19ab1d88d"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "prep:['app', 0]",
+   "states": 35,
+   "max_step_bound_mm": 3.998,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.19,
+   "min_self_reserve_mm": 2.98,
+   "min_plume_mm": null,
+   "cart_travel_ok": true
+  },
+  {
+   "element": 2,
+   "name": "knob at rest -> pressed 102 mm",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 73,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 1.0,
+   "min_self_reserve_mm": 14.68,
+   "min_plume_mm": null,
+   "cart_travel_ok": true
+  },
+  {
+   "element": 3,
+   "name": "pressed 102 mm -> returned",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 73,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 1.0,
+   "min_self_reserve_mm": 14.68,
+   "min_plume_mm": null,
+   "cart_travel_ok": true
+  },
+  {
+   "element": 5,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "prep:['app', 1]",
+   "states": 35,
+   "max_step_bound_mm": 3.997,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.24,
+   "min_self_reserve_mm": 2.93,
+   "min_plume_mm": null,
+   "cart_travel_ok": true
+  }
+ ],
+ "elapsed_s_command": 131.4,
+ "date": "2026-10-14"
+}

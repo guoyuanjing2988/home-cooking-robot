@@ -1,0 +1,151 @@
+{
+ "name": "chain_lid_s-1_final_ur5e_enc2_pgc__reversed",
+ "geometry_md5": "c891e951930cf6b56d1c7f659226bad3",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 2464,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 1.0,
+ "min_self_reserve_mm": 1.11,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [
+  [
+   2,
+   "set down (reversed)"
+  ],
+  [
+   6,
+   "seat lift (reversed)"
+  ]
+ ],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "key": "lid",
+    "kf": 8,
+    "py": null,
+    "type": "chain_app"
+   },
+   "model_md5": "f75d13350aa2dcc6eae80423ba4318d7"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "key": "lid",
+    "py": null,
+    "suffix": "",
+    "type": "chain_play"
+   },
+   "model_md5": "5af57936b1e76fe91161b77fcf9ff70f"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "key": "lid",
+    "kf": 0,
+    "py": null,
+    "type": "chain_app"
+   },
+   "model_md5": "bf0f1189c56865c92ad747a364b7f76a"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "release retreat (reversed)",
+   "checked": true,
+   "scene": "chain_app:8",
+   "states": 149,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.05,
+   "min_self_reserve_mm": 1.42,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "set down (reversed)",
+   "checked": false,
+   "rule": "support contact window at the release (4.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 3,
+   "name": "over the rack -> in the rack (reversed)",
+   "checked": true,
+   "scene": "chain_play",
+   "states": 160,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 1.0,
+   "min_self_reserve_mm": 1.47,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "#1 -> over the rack (reversed)",
+   "checked": true,
+   "scene": "chain_play",
+   "states": 2088,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.03,
+   "min_self_reserve_mm": 1.11,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 5,
+   "name": "lift off -> #1 (reversed)",
+   "checked": true,
+   "scene": "chain_play",
+   "states": 15,
+   "max_step_bound_mm": 3.994,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 3.0,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 6,
+   "name": "seat lift (reversed)",
+   "checked": false,
+   "rule": "support contact window at the grasp (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 8,
+   "name": "grasp approach (reversed)",
+   "checked": true,
+   "scene": "chain_app:0",
+   "states": 52,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 10.0,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 109.8,
+ "date": "2026-10-14"
+}

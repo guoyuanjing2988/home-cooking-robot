@@ -1,0 +1,98 @@
+{
+ "name": "chain_lever_s+1_final_ur5e_enc2_pgc__reversed",
+ "geometry_md5": "01c8d025a0756eaa4f49968f4b577dab",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 152,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 2.12,
+ "min_self_reserve_mm": 2.0,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "key": "lever",
+    "kf": 1,
+    "py": null,
+    "type": "chain_app"
+   },
+   "model_md5": "8726cbc2576dc03e6fafde5a476dc46f"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "key": "lever",
+    "py": null,
+    "suffix": "",
+    "type": "chain_play"
+   },
+   "model_md5": "d20f23006649b4294028722c6f4c2ff6"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "key": "lever",
+    "kf": 0,
+    "py": null,
+    "type": "chain_app"
+   },
+   "model_md5": "f75d13350aa2dcc6eae80423ba4318d7"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "release retreat (reversed)",
+   "checked": true,
+   "scene": "chain_app:1",
+   "states": 17,
+   "max_step_bound_mm": 3.989,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.12,
+   "min_self_reserve_mm": 5.4,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "closed -> open (reversed)",
+   "checked": true,
+   "scene": "chain_play",
+   "states": 118,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 5.98,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "grasp approach (reversed)",
+   "checked": true,
+   "scene": "chain_app:0",
+   "states": 17,
+   "max_step_bound_mm": 3.989,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 20.0,
+   "min_self_reserve_mm": 4.16,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 100.1,
+ "date": "2026-10-14"
+}

@@ -1,0 +1,208 @@
+{
+ "name": "chain_tubempty_full_ur5e_enc2_pgc",
+ "geometry_md5": "964fe8c29dba44a9159d8d9dfe01e642",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 4553,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 2.05,
+ "min_self_reserve_mm": 2.0,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [
+  [
+   2,
+   "seat lift"
+  ],
+  [
+   10,
+   "set down"
+  ]
+ ],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_tubempty_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": [
+     "app",
+     0
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "55877fb8193dcb0fb378fd5be6f34ce2"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_tubempty_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": "play",
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "5a3599b51d2c1e7b33e013250368a719"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_tubempty_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": [
+     "app",
+     1
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "55877fb8193dcb0fb378fd5be6f34ce2"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "prep:['app', 0]",
+   "states": 29,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.05,
+   "min_self_reserve_mm": 2.69,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "seat lift",
+   "checked": false,
+   "rule": "support contact window at the grasp (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 3,
+   "name": "pick (full) -> lifted",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 40,
+   "max_step_bound_mm": 3.893,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 3.0,
+   "min_self_reserve_mm": 2.74,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "lifted -> in front of the outlet",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1420,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.05,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 5,
+   "name": "in front of the outlet -> rolled (emptied into the sink)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 784,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.1,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 7,
+   "name": "rolled (emptied into the sink) -> in front of the outlet",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 784,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.14,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 8,
+   "name": "in front of the outlet -> over its spot",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1420,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.05,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 9,
+   "name": "over its spot -> set down (8 mm)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 40,
+   "max_step_bound_mm": 3.893,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 3.0,
+   "min_self_reserve_mm": 2.74,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 10,
+   "name": "set down",
+   "checked": false,
+   "rule": "support contact window at the release (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 12,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "prep:['app', 1]",
+   "states": 36,
+   "max_step_bound_mm": 3.998,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.05,
+   "min_self_reserve_mm": 2.67,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 192.4,
+ "date": "2026-10-14"
+}

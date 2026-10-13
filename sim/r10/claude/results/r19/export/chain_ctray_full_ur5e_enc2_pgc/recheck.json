@@ -1,0 +1,176 @@
+{
+ "name": "chain_ctray_full_ur5e_enc2_pgc",
+ "geometry_md5": "4193f7a715698cace2fdc644e5c2dce4",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 3149,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 2.0,
+ "min_self_reserve_mm": 2.01,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [
+  [
+   2,
+   "seat lift"
+  ],
+  [
+   8,
+   "set down"
+  ]
+ ],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_ctray_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": [
+     "app",
+     0
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "30b610cfdd208c53b0ef83a226b5e324"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_ctray_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": "play",
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "8ae8f8fe62a178756cec9a1060bb6411"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc",
+    "file": "results/r19/prep/chain_ctray_full_ur5e_enc2_pgc.json",
+    "kv": {},
+    "part": [
+     "app",
+     1
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "30b610cfdd208c53b0ef83a226b5e324"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "prep:['app', 0]",
+   "states": 79,
+   "max_step_bound_mm": 3.996,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 5.0,
+   "min_self_reserve_mm": 5.54,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "seat lift",
+   "checked": false,
+   "rule": "support contact window at the grasp (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 3,
+   "name": "pick (seated under the blade plate) -> raised 18 mm",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 20,
+   "max_step_bound_mm": 3.926,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.0,
+   "min_self_reserve_mm": 4.11,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "raised 18 mm -> rolled (pour)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1427,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.0,
+   "min_self_reserve_mm": 2.01,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 6,
+   "name": "rolled (pour) -> slid in (18 mm)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1512,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.0,
+   "min_self_reserve_mm": 2.01,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 7,
+   "name": "slid in (18 mm) -> set down (8 mm)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 19,
+   "max_step_bound_mm": 3.983,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.0,
+   "min_self_reserve_mm": 3.44,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 8,
+   "name": "set down",
+   "checked": false,
+   "rule": "support contact window at the release (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 10,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "prep:['app', 1]",
+   "states": 92,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 4.96,
+   "min_self_reserve_mm": 2.61,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 100.8,
+ "date": "2026-10-14"
+}

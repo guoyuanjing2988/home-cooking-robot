@@ -1,0 +1,98 @@
+{
+ "name": "chain_lever_s+1_final_fr5_j6_pgc_sp20",
+ "geometry_md5": "e5e38fabdea617650dc496c3e9fcec2f",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 168,
+ "hit_states": 0,
+ "max_step_bound_mm": 3.999,
+ "min_env_reserve_mm": 4.88,
+ "min_self_reserve_mm": 2.05,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_sp20",
+    "key": "lever",
+    "kf": 0,
+    "py": null,
+    "type": "chain_app"
+   },
+   "model_md5": "f481d17706ab62deb1d2208fbdf4ed9f"
+  },
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_sp20",
+    "key": "lever",
+    "py": null,
+    "suffix": "_fr5_j6_pgc_sp20",
+    "type": "chain_play"
+   },
+   "model_md5": "6798ab8ecab33b3842bd315aa264efaf"
+  },
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_sp20",
+    "key": "lever",
+    "kf": 1,
+    "py": null,
+    "type": "chain_app"
+   },
+   "model_md5": "0c7a4d71ef0681c8fdc869aa05dd2743"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "chain_app:0",
+   "states": 17,
+   "max_step_bound_mm": 3.989,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 20.0,
+   "min_self_reserve_mm": 2.07,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "closed -> open",
+   "checked": true,
+   "scene": "chain_play",
+   "states": 134,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 5.98,
+   "min_self_reserve_mm": 2.05,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "chain_app:1",
+   "states": 17,
+   "max_step_bound_mm": 3.989,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 4.88,
+   "min_self_reserve_mm": 2.09,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 111.9,
+ "date": "2026-10-14"
+}
