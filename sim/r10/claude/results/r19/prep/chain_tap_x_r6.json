@@ -1,0 +1,377 @@
+{
+  "act": "tap",
+  "obj": "tomato",
+  "arm": "ur5e",
+  "grasp_sense": 1,
+  "layout": {
+    "slicer": [
+      -1.69,
+      0.225,
+      90.0
+    ],
+    "lever": [
+      -0.9,
+      0.095,
+      0.0
+    ],
+    "cold_box": [
+      -0.9,
+      0.15,
+      0.0
+    ],
+    "tray_dxy": [
+      0.0,
+      0.0
+    ],
+    "drop_bowls": []
+  },
+  "argv": [
+    "ACT=tap",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=3",
+    "TAG=x_r6",
+    "PITCH=-40",
+    "LANE=-0.05,.10,1.15"
+  ],
+  "scene": {
+    "r19": {
+      "stations": {
+        "slicer": [
+          -1.69,
+          0.225,
+          90.0
+        ]
+      },
+      "tray_dxy": [
+        0.0,
+        0.0
+      ],
+      "drop_bowls": [],
+      "objs": [
+        [
+          "carrot",
+          [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            -1.42,
+            0.12,
+            0.9305
+          ]
+        ]
+      ]
+    }
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 29,
+  "rinse_dwell_s_est": 3.0,
+  "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker",
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "lane in",
+      "p": [
+        -0.05,
+        0.1,
+        1.15
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.766,
+          0.6428
+        ],
+        [
+          0.0,
+          -0.6428,
+          0.766
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    },
+    {
+      "i": 1,
+      "label": "under the tap",
+      "p": [
+        -0.4,
+        0.37,
+        0.98
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.766,
+          0.6428
+        ],
+        [
+          0.0,
+          -0.6428,
+          0.766
+        ]
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false,
+      "dwell_s": 3.0
+    },
+    {
+      "i": 2,
+      "label": "lane out",
+      "p": [
+        -0.05,
+        0.1,
+        1.15
+      ],
+      "R": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.766,
+          0.6428
+        ],
+        [
+          0.0,
+          -0.6428,
+          0.766
+        ]
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false,
+      "dwell_s": 0
+    }
+  ],
+  "anchors": {
+    "under the tap#1": {
+      "ok": false,
+      "n_candidates": 8,
+      "start_status": {
+        "ok": 12,
+        "pose": 68,
+        "collision": 16
+      }
+    }
+  },
+  "pieces": [],
+  "joins": [],
+  "approaches": [],
+  "min_reserve_mm": null,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "push": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "under the tap",
+      "cand": 0,
+      "start_reserve_mm": 0.0,
+      "cart": -0.689,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.68,
+        "step_deg": 2.76,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 3.0986673353017884,
+        "hits": [
+          [
+            "R_geom_28",
+            "r17_faucet_spout"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 1,
+      "start_reserve_mm": 0.0,
+      "cart": -0.113,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.105,
+        "step_deg": 2.64,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 3.0986673353017884,
+        "hits": [
+          [
+            "R_geom_28",
+            "r17_faucet_spout"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 2,
+      "start_reserve_mm": 0.0,
+      "cart": -0.685,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.681,
+        "step_deg": 2.74,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 3.0986673353017884,
+        "hits": [
+          [
+            "R_geom_28",
+            "r17_faucet_spout"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 3,
+      "start_reserve_mm": 0.0,
+      "cart": -0.025,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.034,
+        "step_deg": 2.94,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 3.0986673353017884,
+        "hits": [
+          [
+            "R_geom_28",
+            "r17_faucet_spout"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 4,
+      "start_reserve_mm": 0.0,
+      "cart": -0.825,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.816,
+        "step_deg": 2.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 3.0986673353017884,
+        "hits": [
+          [
+            "R_geom_28",
+            "r17_faucet_spout"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 5,
+      "start_reserve_mm": 0.0,
+      "cart": -0.71,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.708,
+        "step_deg": 2.44,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 3.0986673353017884,
+        "hits": [
+          [
+            "R_geom_28",
+            "r17_faucet_spout"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 6,
+      "start_reserve_mm": 0.0,
+      "cart": -0.732,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.726,
+        "step_deg": 2.51,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 3.0986673353017884,
+        "hits": [
+          [
+            "R_geom_28",
+            "r17_faucet_spout"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 7,
+      "start_reserve_mm": 0.0,
+      "cart": -0.063,
+      "ok": false,
+      "fail": {
+        "at": "under the tap->lane in",
+        "kf": null,
+        "cart": -0.073,
+        "step_deg": 3.01,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 3.0986673353017884,
+        "hits": [
+          [
+            "R_geom_28",
+            "r17_faucet_spout"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [],
+  "grasps": []
+}

@@ -1,0 +1,903 @@
+{
+  "act": "cup",
+  "obj": "cupL",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {
+    "r19seas": {
+      "site": "T1",
+      "cups": "L",
+      "taken": "b1",
+      "z": 0.1
+    }
+  },
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      -1.15,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.52,
+      0.36
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 118,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        0.315,
+        0.435,
+        1.037
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.315,
+        0.435,
+        1.059
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out",
+      "p": [
+        0.315,
+        0.395,
+        1.179
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        0.56,
+        0.07,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.07,
+        1.316
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "tipped 135 (poured)",
+      "p": [
+        0.83,
+        0.115,
+        1.425
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 6,
+      "label": "level",
+      "p": [
+        0.83,
+        0.07,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 7,
+      "label": "lane",
+      "p": [
+        0.56,
+        0.07,
+        1.316
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 8,
+      "label": "out",
+      "p": [
+        0.315,
+        0.395,
+        1.179
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 9,
+      "label": "lowered",
+      "p": [
+        0.315,
+        0.435,
+        1.059
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 10,
+      "label": "set down",
+      "p": [
+        0.315,
+        0.435,
+        1.037
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "lifted#1": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.021,
+      "start_reserve_mm": 9.5
+    },
+    "over the wok#4": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.35,
+      "start_reserve_mm": 6.3
+    },
+    "lowered#9": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.021,
+      "start_reserve_mm": 9.5
+    }
+  },
+  "pieces": [
+    {
+      "frm": "lifted#1",
+      "to": "pick#0",
+      "steps": 3,
+      "time_s": 0.2,
+      "min_reserve_mm": 3.0,
+      "min_plume_mm": 257.9,
+      "max_step_deg": 1.13,
+      "cart": [
+        0.021,
+        0.021
+      ]
+    },
+    {
+      "frm": "lifted#1",
+      "to": "lane#3",
+      "steps": 58,
+      "time_s": 5.6,
+      "min_reserve_mm": 1.0,
+      "min_plume_mm": 158.8,
+      "max_step_deg": 1.78,
+      "cart": [
+        0.02,
+        -0.214
+      ]
+    },
+    {
+      "frm": "over the wok#4",
+      "to": "lane#3",
+      "steps": 27,
+      "time_s": 2.7,
+      "min_reserve_mm": 4.7,
+      "min_plume_mm": 40.8,
+      "max_step_deg": 0.01,
+      "cart": [
+        0.34,
+        0.081
+      ]
+    },
+    {
+      "frm": "over the wok#4",
+      "to": "lane#7",
+      "steps": 163,
+      "time_s": 10.7,
+      "min_reserve_mm": 2.1,
+      "min_plume_mm": 15.3,
+      "max_step_deg": 2.04,
+      "cart": [
+        0.348,
+        0.08
+      ]
+    },
+    {
+      "frm": "lowered#9",
+      "to": "lane#7",
+      "steps": 58,
+      "time_s": 5.6,
+      "min_reserve_mm": 1.0,
+      "min_plume_mm": 158.8,
+      "max_step_deg": 1.78,
+      "cart": [
+        0.02,
+        -0.214
+      ]
+    },
+    {
+      "frm": "lowered#9",
+      "to": "set down#10",
+      "steps": 3,
+      "time_s": 0.2,
+      "min_reserve_mm": 3.0,
+      "min_plume_mm": 257.9,
+      "max_step_deg": 1.13,
+      "cart": [
+        0.021,
+        0.021
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "ok": false,
+      "arm_deg": 1000.0,
+      "cart_m": 0.295,
+      "reason": "shuffle or join blocked from both sides",
+      "at": "lane",
+      "best_pair_deg": 1000.0
+    },
+    {
+      "ok": false,
+      "arm_deg": 1000.0,
+      "cart_m": 0.294,
+      "reason": "shuffle or join blocked from both sides",
+      "at": "lane",
+      "best_pair_deg": 1000.0
+    }
+  ],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "stop": 2,
+      "hits": [
+        [
+          "R_geom_11",
+          "R_base_plate"
+        ]
+      ],
+      "pose_mm": 0.0
+    },
+    {
+      "ok": false,
+      "kf": 10,
+      "stop": 2,
+      "hits": [
+        [
+          "R_geom_11",
+          "R_base_plate"
+        ]
+      ],
+      "pose_mm": 0.0
+    }
+  ],
+  "min_reserve_mm": 1.0,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "lifted",
+      "cand": 0,
+      "start_reserve_mm": 9.5,
+      "cart": 0.181,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.125,
+        "step_deg": 1.05,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 247.8,
+        "dt": 0.0954311852127548,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 1,
+      "start_reserve_mm": 9.5,
+      "cart": 0.021,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 2,
+      "start_reserve_mm": 9.1,
+      "cart": 0.473,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.431,
+        "step_deg": 1.42,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 161.4,
+        "dt": 0.0954311852127548,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 3,
+      "start_reserve_mm": 6.2,
+      "cart": 0.228,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out",
+        "kf": null,
+        "cart": 0.213,
+        "step_deg": 2.37,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 246.7,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_base_plate"
+          ],
+          [
+            "R_geom_11",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 4,
+      "start_reserve_mm": 4.6,
+      "cart": 0.594,
+      "ok": false,
+      "fail": {
+        "at": "lifted->pick",
+        "kf": 0,
+        "cart": 0.594,
+        "step_deg": 1.14,
+        "pose_mm": 0.0,
+        "reserve_mm": -2.3,
+        "plume_mm": 66.6,
+        "dt": 0.0733333333333334,
+        "hits": [
+          [
+            "R_geom_17",
+            "r15_plate"
+          ],
+          [
+            "r15_plate",
+            "R_geom_17"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lifted",
+      "cand": 5,
+      "start_reserve_mm": 3.2,
+      "cart": 0.602,
+      "ok": false,
+      "fail": {
+        "at": "lifted->pick",
+        "kf": null,
+        "cart": 0.602,
+        "step_deg": 1.14,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 61.9,
+        "dt": 0.0733333333333334,
+        "hits": [
+          [
+            "R_geom_17",
+            "r15_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 0,
+      "start_reserve_mm": 33.0,
+      "cart": 0.675,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.671,
+        "step_deg": 0.83,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 27.3,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 1,
+      "start_reserve_mm": 31.9,
+      "cart": 0.671,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.671,
+        "step_deg": 1.59,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 27.3,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_21",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 2,
+      "start_reserve_mm": 28.7,
+      "cart": 0.454,
+      "ok": false,
+      "fail": {
+        "at": "over the wok->tipped 135 (poured)",
+        "kf": null,
+        "cart": 0.406,
+        "step_deg": 2.11,
+        "pose_mm": 0.0,
+        "reserve_mm": 40.6,
+        "plume_mm": 28.3,
+        "dt": 0.04411764705882353,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_gripper_oem_envelope"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "over the wok",
+      "cand": 3,
+      "start_reserve_mm": 6.3,
+      "cart": 0.35,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 0,
+      "start_reserve_mm": 9.5,
+      "cart": 0.181,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.125,
+        "step_deg": 1.05,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 247.8,
+        "dt": 0.0954311852127548,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 1,
+      "start_reserve_mm": 9.5,
+      "cart": 0.021,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 2,
+      "start_reserve_mm": 9.1,
+      "cart": 0.473,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.431,
+        "step_deg": 1.42,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 161.4,
+        "dt": 0.0954311852127548,
+        "hits": [
+          [
+            "R_geom_17",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 3,
+      "start_reserve_mm": 6.2,
+      "cart": 0.228,
+      "ok": false,
+      "fail": {
+        "at": "lowered->out",
+        "kf": null,
+        "cart": 0.213,
+        "step_deg": 2.37,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "plume_mm": 246.7,
+        "dt": 0.09730085108210387,
+        "hits": [
+          [
+            "R_geom_11",
+            "R_base_plate"
+          ],
+          [
+            "R_geom_11",
+            "R_base_plate"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 4,
+      "start_reserve_mm": 4.6,
+      "cart": 0.594,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.395,
+        "step_deg": 1.27,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 182.8,
+        "dt": 0.0954311852127548,
+        "hits": [
+          [
+            "R_geom_16",
+            "counter_right_piece1"
+          ],
+          [
+            "R_geom_17",
+            "counter_right_piece1"
+          ],
+          [
+            "R_geom_17",
+            "counter_right_piece1"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 5,
+      "start_reserve_mm": 3.2,
+      "cart": 0.602,
+      "ok": false,
+      "fail": {
+        "at": "out->lane",
+        "kf": null,
+        "cart": 0.399,
+        "step_deg": 1.22,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "plume_mm": 184.0,
+        "dt": 0.0954311852127548,
+        "hits": [
+          [
+            "R_geom_16",
+            "counter_right_piece1"
+          ]
+        ]
+      }
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    [
+      [
+        0.0210862659246408,
+        -0.21,
+        0.0,
+        -5.207629862870647,
+        1.765481495155971,
+        1.990683338480492,
+        5.9956847886935645,
+        2.043605297999048,
+        4.865670644394917,
+        0.025,
+        0.025
+      ],
+      [
+        0.0210862659246408,
+        -0.21,
+        0.0,
+        -5.2205378528011375,
+        1.754065865311153,
+        2.010609607524112,
+        5.9893342929380875,
+        2.0558245377598365,
+        4.870358161015576,
+        0.025,
+        0.025
+      ],
+      [
+        0.0210862659246408,
+        -0.21,
+        0.0,
+        -5.234005996166421,
+        1.7429998012863845,
+        2.0300059213531254,
+        5.983342500231644,
+        2.0685642494096927,
+        4.875313891424951,
+        0.025,
+        0.025
+      ]
+    ],
+    [
+      [
+        0.0210862659246408,
+        -0.21,
+        0.0,
+        -5.207629862870647,
+        1.765481495155971,
+        1.990683338480492,
+        5.9956847886935645,
+        2.043605297999048,
+        4.865670644394917,
+        0.025,
+        0.025
+      ],
+      [
+        0.0210862659246408,
+        -0.21,
+        0.0,
+        -5.2205378528011375,
+        1.754065865311153,
+        2.010609607524112,
+        5.9893342929380875,
+        2.0558245377598365,
+        4.870358161015576,
+        0.025,
+        0.025
+      ],
+      [
+        0.0210862659246408,
+        -0.21,
+        0.0,
+        -5.234005996166421,
+        1.7429998012863845,
+        2.0300059213531254,
+        5.983342500231644,
+        2.0685642494096927,
+        4.875313891424951,
+        0.025,
+        0.025
+      ]
+    ]
+  ],
+  "r19": {
+    "site": "T1",
+    "slot": "b1",
+    "size": "L",
+    "z": 0.1,
+    "approach_pitch_deg": 30.0,
+    "approach_m": 0.05,
+    "plume_m": 0.2,
+    "tip_deg": 135.0,
+    "out": {
+      "dy": -0.04,
+      "dz": 0.15
+    },
+    "pour": {
+      "cup_x": 0.83,
+      "cup_y": 0.07,
+      "yaw": -90.0,
+      "grip_z": 1.38,
+      "meet_x": 0.56
+    },
+    "min_plume_mm": 15.3,
+    "k_state": {
+      "tool_xy": {
+        "spatula": [
+          -1.15,
+          0.3
+        ],
+        "ladle": [
+          1.62,
+          0.24
+        ],
+        "spider": [
+          1.52,
+          0.36
+        ]
+      },
+      "spat_elev": 8.0,
+      "spat_yaw": 0.0,
+      "spat_roll": 180.0,
+      "design": {
+        "pot_h": 0.12,
+        "rack": 0.04,
+        "lid_a": 0.0,
+        "car_a": 45.0,
+        "rack_ry": 90.0
+      }
+    },
+    "cfg_held": {
+      "r14": true,
+      "present": [],
+      "r15": true,
+      "r16": true,
+      "r17": true,
+      "r16_lid": "rack",
+      "r15_drum_taken": true,
+      "r16_tools": {
+        "ladle": null
+      },
+      "r19seas": {
+        "site": "T1",
+        "cups": "L",
+        "taken": "b1",
+        "z": 0.1
+      },
+      "r16_held": {
+        "obj": "cupL",
+        "T_tool_obj": [
+          [
+            0.0,
+            0.8660254037844387,
+            -0.49999999999999994,
+            0.09045671475544961
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -0.49999999999999994,
+            -0.8660254037844387,
+            0.021675625842204095
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    "cfg_approach": [
+      {
+        "r14": true,
+        "present": [],
+        "r15": true,
+        "r16": true,
+        "r17": true,
+        "r16_lid": "rack",
+        "r15_drum_taken": true,
+        "r16_tools": {
+          "ladle": null
+        },
+        "r19seas": {
+          "site": "T1",
+          "cups": "L",
+          "taken": null,
+          "z": 0.1
+        }
+      },
+      {
+        "r14": true,
+        "present": [],
+        "r15": true,
+        "r16": true,
+        "r17": true,
+        "r16_lid": "rack",
+        "r15_drum_taken": true,
+        "r16_tools": {
+          "ladle": null
+        },
+        "r19seas": {
+          "site": "T1",
+          "cups": "L",
+          "taken": null,
+          "z": 0.1
+        }
+      }
+    ],
+    "argv": [
+      "ACT=cup",
+      "SIZE=L",
+      "SEEDS=1",
+      "KEEP=4",
+      "WORKERS=6",
+      "CUP_Y=.07",
+      "POUR_YAW=-90",
+      "TRIES=6",
+      "SITE=T1",
+      "SLOT=b1",
+      "Z=.10",
+      "APITCH=30",
+      "SIGN=-1",
+      "PLAN=1",
+      "PLAN_S=60",
+      "PLAN_N=2",
+      "TAG=s6a"
+    ]
+  }
+}

@@ -94,7 +94,7 @@ How it was fitted (details in the script docstring):
   3. runs a volume-reducing local search.
 - **Enclosure is proven, not sampled.** A triangle is certified when one convex primitive holds its 3 corners, or when
   every corner is inside the union by more than (longest edge)/√3. Otherwise it is split, down to 1/2^10 of its edges.
-  All 117,945 triangles of the 6 links are certified. Radii and cylinder ends get +0.05 mm.
+  All 116,945 triangles of the 6 links are certified. Radii and cylinder ends get +0.05 mm.
 - Run time: 3.7 min (`python r19ur5e_encfit.py`).
 
 ### 1.3 Enclosure verification (the `r19ur5e_enclose.py` measurement, in the sim model)
@@ -113,7 +113,8 @@ The `ur5e` row reproduces `r19ur5e_enclose.py` exactly.
 ### 1.4 Tightness (how far the model is outside the real arm)
 - Radii are within 0–1.2 mm of the profile radii read off the mesh, except:
   - elbow housing R_geom_16: +4.6 mm;
-  - wrist 3 R_geom_28: +3.6 mm (a 10 mm wide bump on the wrist-3 cover).
+  - wrist 3 R_geom_28: +3.6 mm (a 10 mm wide bump on the wrist-3 cover);
+  - the upper-arm tube capsule: 49.5 mm over a 46 mm tube (it also holds the flared tube ends).
 - The housing ends are worse. The real ends are domed: J2 housing r 60.6 → 53.3 mm over the last 10 mm. The cylinders
   are not, so near a housing face the model can be well outside the mesh. Measured in §4: 6–20 mm at the worst spots
   found (J2 housing face, elbow housing faces, wrist-2 housing).
@@ -177,7 +178,7 @@ All `ur5e_enc` hits are real for the geoms except 4 spider self states.
 - R11 mesh rule: the tool-side boxes are 8-vertex box meshes in every scene (`r19smooth.py` MESHHELD), for both arms
   alike. The original hub and stir checks used the stock boxes, which gives more conservative contact distances.
 
-Run times (24 workers): wok 128 s, plate 2 130 s, spider 77–102 s, stir 128 s, lid 59 s, spatula 53 s, lever 12 s, the
+Run times (24 workers): wok 128 s, plate 2 130 s, spider 77 s, stir 128 s, lid 59 s, spatula 53 s, lever 12 s, the
 4 hub lanes 145–153 s each.
 
 ## 3. Failing paths: link and fixture
@@ -246,6 +247,8 @@ How to read the results:
 - **Changed, with `.bak_r19enc` backups:**
   - `arms.py`: the `ur5e_enc` entry, `enclose()`, and the envelope file for `ur5e_enc`;
   - `r17chain.py`: one line, the walk start for `ur5e_enc`.
+  - `envelope.py`: one line; it refuses `ARM=ur5e_enc`, which would otherwise overwrite the UR5e's
+    `assets/envelope_-20.json`.
 
 ## 6. Limits
 - **Reference geometry.** The "real arm" is the Menagerie visual mesh: Menagerie's OBJ files, derived from UR's
@@ -253,4 +256,4 @@ How to read the results:
 - **Stir scene.** The stir is re-checked in its own R17 scene (as stored), not in the R18b layout.
 - **The 4 spider self states** classed "artefact" (MuJoCo cylinder contact only) are still hits for the checker.
 - **Hub-edge states.** These are r19hub's checked states. Their spacing is ≤ 4 mm for the old bound; with the
-  `ur5e_enc` bound it is ≤ 3.94 mm, so no re-cut was needed.
+  `ur5e_enc` bound it is still ≤ 3.98 mm, so no re-cut was needed (33,761 states, as stored).

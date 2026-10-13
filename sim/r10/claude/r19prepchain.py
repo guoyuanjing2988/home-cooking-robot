@@ -52,6 +52,7 @@ VW,WW,QW,CW,CART_OFF=.10,45.,60.,.25,.30
 import arms;ARM=arms.current();QW=min(QW,min(arms.speeds(ARM)))
 APPROACH_M=.05;JAW_OPEN=.025
 RINSE=float(KV.get('RINSE',3.))   # s per rinse keyframe dwell [est]
+RL=float(KV.get('ROLL',30.))   # tomato rinse: rolled +-RL deg about the grasp approach axis
 I=np.eye(3);L=dict(K19.LAYOUT)
 if 'LEVER' in KV:L['lever']=tuple([float(v) for v in KV['LEVER'].split(',')]+[0.])   # tool spot override (x, y)
 def kf(R,p,c=None,dw=0.,label='',anchor=False,meet=False,seat=0.):
@@ -86,7 +87,7 @@ def action():
   else:         # lever base between the tray and the tap: carry behind it (y .30, under the cabinet), out in front right of it
    head+=[kf(I,t0+[0,.18,.10],'F',0,'back, behind the tray front'),kf(Rp,[-0.80,.30,1.05],'F',0,'back lane behind the lever base',meet=True),kf(Rp,[-0.50,.36,1.00],'F',0,'to the tap')]
    tail=[kf(Rp,[-0.60,.10,1.15],'F',0,'lane right of the lever base',meet=True)]
-  KF=head+[kf(Rp,S,'F',RINSE,'under the tap',anchor=True),kf(roll(Rp,60),S,'F',RINSE,'rolled +60'),kf(roll(Rp,-60),S,'F',RINSE,'rolled -60'),kf(Rp,S,'F',0,'level')]+tail+[
+  KF=head+[kf(Rp,S,'F',RINSE,'under the tap',anchor=True),kf(roll(Rp,RL),S,'F',RINSE,f'rolled +{RL:g}'),kf(roll(Rp,-RL),S,'F',RINSE,f'rolled -{RL:g}'),kf(Rp,S,'F',0,'level')]+tail+[
    kf(I,seat+[0,-.135,.03],'F',0,'backed out, in front of the lever base'),kf(I,seat+[0,-.06,.008],'F',0,'in front of the blade plate',anchor=True),kf(I,seat+[0,0,.008],'A',0,'over its seat (8 mm)',seat=.008)]
   w0=scene_with('lever',objs=[car]);w1=scene_with('lever',objs=[car])
   return 'tomato',dict(r19=w0),KF,[(0,w0,True),(len(KF)-1,w1,True)]

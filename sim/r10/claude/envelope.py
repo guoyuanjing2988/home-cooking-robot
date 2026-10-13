@@ -13,6 +13,7 @@ import arms   # R19: ARM=<id> (default ur5e: 5 kg at 0.35 m, assets/envelope_<ti
 def main(tilt):
  cfg=variants()[1];cfg['mount_tilt_deg']=tilt;t,_=build(cfg)
  arm=arms.current(cfg);PAY,RAD=arms.ARMS[arm]['payload_kg'],arms.ARMS[arm]['com_radius_m']
+ if arms.ARMS[arm].get('enclose'):raise SystemExit('ur5e_enc uses the UR5e envelope (assets/envelope_<tilt>.json); not re-run here, it would overwrite that file')   # R19 #12
  tool=t.find(".//body[@name='R_tool']")
  for p in t.iter('body'):
   if tool in list(p):p.remove(tool);break
