@@ -100,6 +100,7 @@ The UR5e on its cart running a stored path; every state was checked (10 mm robot
 | <img src="docs/motions/faucet_lever.gif" width="420" alt="Faucet lever lifted 30° (R17)"><br>**Faucet lever lifted 30° (R17)**<br>3.5 s; clip-on block on the single-lever faucet. Slowed 3×. | <img src="docs/motions/lid_rack.gif" width="420" alt="Lid off the pot, upright into the rack (R17)"><br>**Lid off the pot, upright into the rack (R17)**<br>20.2 s, 1.0 mm clearance: needs a keyed tab (#8). 1.2× |
 | <img src="docs/motions/spider.gif" width="420" alt="Spider: scoop, drain, tip onto the plate (R17)"><br>**Spider: scoop, drain, tip onto the plate (R17)**<br>52.6 s, 2.1 mm clearance. 3.1× |   |
 | <img src="docs/motions/cup_pour.gif" width="420" alt="Seasoning cup: station to wok, pour, back (R19 Mac)"><br>**Seasoning cup: station → wok → pour → back (R19, Mac)**<br>One continuous checked path, 20.6 s, 2.2 mm reserve, 0 hits on a full re-check. The station pad moves 10 cm left. | <img src="docs/motions/stir_arm.gif" width="420" alt="The arm stirring the wok"><br>**Stir cycle with the arm (R15/R18, states stored on the Mac)**<br>5 scrape strokes, cart parked at x 0.55, 2.0 mm reserve, 25.8 mm plume clearance (#3). |
+| <img src="docs/motions/bowl_pour.gif" width="420" alt="Bowl from the counter to the wok, pour, back"><br>**Bowl pour: counter → wok → pour → back (R19, Mac)**<br>25.8 s, 1.9 mm reserve, 300 g of tomato or the holding bowl; 272 states re-checked, 0 hits. | |
 
 ### Physics benches, no arm
 

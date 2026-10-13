@@ -28,7 +28,7 @@ ARM = {
     'mise_en_place': (ROOT / 'clips/tomato_AW_en.mp4', None, 0, 31, 'arm: tomato chain (R11, checked path)', 'path'),
     'heat_to': (None, None, 0, 0, 'no arm: knob servo + IR thermometer', 'none'),
     'fry_still': (None, None, 0, 0, 'no arm: the egg fries undisturbed', 'none'),
-    'add_off_heat': (CUP, '960:500:0:40', 0, 30, 'arm: cup pour, checked path (R19 Mac)', 'path'),
+    'add_off_heat': (REN / 'mac/bowl_pour.mp4', '960:500:0:40', 0, 9.36, 'arm: bowl / cup pour, checked paths (R19 Mac)', 'path'),
     'season_and_toss': (CUP, '960:500:0:40', 0, 30, 'arm: cup pour (checked path), then stir', 'path'),
     'egg_into_hot_oil': (CUP, '960:500:0:40', 0, 30, 'arm: cup pour, checked path (R19 Mac)', 'path'),
     'flip_and_fry': (REN / 'mac/spatula_r18b.mp4', '960:500:0:40', 0, 16.2, 'arm: spatula fetch (R18b path); flip stroke not simulated', 'path'),
@@ -36,7 +36,7 @@ ARM = {
     'drum_add_stir': (REN / 'mac/stir_cycle.mp4', '960:500:0:40', 0, 13.5, 'servo drum releases; arm: checked stir cycle', 'path'),
     'take_out': (REN / 'r17/wok_sink.mp4', '960:500:0:40', 0, 32, 'arm: wok plate + rinse (R17, checked path)', 'path'),
     'season_wok': (REN / 'r17/wok_sink.mp4', '960:500:0:40', 0, 9, 'arm: wok lift + tip (R17 path); tip into the oil cup', 'path'),
-    'return_and_toss': (CUP, '960:500:0:40', 0, 30, 'arm: bowl pour = cup pour pattern (not checked for the bowl)', 'pose'),
+    'return_and_toss': (REN / 'mac/bowl_pour.mp4', '960:500:0:40', 0, 9.36, 'arm: holding bowl pour, checked path (R19 Mac)', 'path'),
 }
 # a fallback for the cup routines while no cup chain exists
 CUP_FALLBACK = (REN / 'r14/overview.png', 'pose')

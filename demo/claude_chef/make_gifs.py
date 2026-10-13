@@ -36,6 +36,8 @@ GIFS = [
      '81–91 % of rigid dice on the plate (98 % at half load).'),
     ('stir_arm', REN / 'mac/stir_cycle.mp4', '960:500:0:40', 0, 13.5, 'Arm stirring: the 5-stroke scrape cycle (R15, Mac re-run)',
      'Checked path at cart x 0.55: 2.0 mm reserve, 25.8 mm plume clearance; R19: about 3.6 s per stroke.'),
+    ('bowl_pour', REN / 'mac/bowl_pour.mp4', '960:500:0:40', 0, 9.36, 'Bowl: counter -> wok -> pour -> back (R19 Mac)',
+     'One continuous checked path, 25.8 s, 1.9 mm reserve, 300 g load; 272 states re-checked, 0 hits.'),
     ('cup_pour', REN / 'mac/cup_pour.mp4', '960:500:0:40', 0, 9.4, 'Seasoning cup: station -> wok -> pour -> station (R19 Mac)',
      'One continuous checked path, 20.6 s, 2.2 mm reserve; the station pad moved 10 cm left.'),
     ('wok_plate_rinse', REN / 'r17/wok_sink.mp4', '960:500:0:40', 0, 32, 'Wok: plate, rinse at the sink, back on the cooker (R17)',

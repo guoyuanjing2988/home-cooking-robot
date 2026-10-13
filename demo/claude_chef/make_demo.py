@@ -65,6 +65,10 @@ CLIPS = {
     'tip_wok_spot2': (REN / 'r17/wok_sink.mp4', (0, 40, 960, 540), 0, 8),   # lift and tip only
     'cup_pour': (REN / 'mac/cup_pour.mp4', (0, 40, 960, 540), 0, 9.4),      # station -> wok -> pour -> back (R19 Mac)
     'stir_arm': (REN / 'mac/stir_cycle.mp4', (0, 40, 960, 540), 0, 13.5),   # the checked 5-stroke cycle with the arm (R15/R18, Mac re-run)
+    'fridge_arm': (REN / 'mac/fridge_arc.mp4', (0, 40, 960, 540), 0, 6.9),   # the checked fridge door arc (R14)
+    'egg_pour': (REN / 'mac/cup_pour.mp4', (0, 40, 960, 540), 0, 9.4),
+    'bowl_pour': (REN / 'mac/bowl_pour.mp4', (0, 40, 960, 540), 0, 9.36),
+    'flip_arm': (REN / 'mac/stir_cycle.mp4', (0, 40, 960, 540), 0, 3),
     'spatula_fetch': (REN / 'mac/spatula_r18b.mp4', (0, 40, 960, 540), 0, 16.2),   # rest -> stroke start (R18b)
 }
 STILLS = {
@@ -79,15 +83,19 @@ LABEL = {
     'prep_tomato': 'Tomato chain replay, 6,653 collision-checked states (R11). Starts with the tomato already in the gripper; '
                    'the rinse water and the cutting are not physically simulated',
     'dose_cup': 'Robot cup at the seasoning station port (R14, checked pose)',
-    'pour_into_wok': 'Arm over the wok, heat off (R14 checked pose)',
+    'pour_into_wok': 'Bowl over the wok, heat off: checked pose only; the bowl path is being planned (issue #9)',
     'load_drum': 'Pour drum into the holder behind the wok (R15, zero reserve)',
-    'drum_release': '4-compartment pour drum, released in order (R14 physics)',
+    'drum_release': 'Servo pour drum releases the next compartment; no arm needed (R14 physics)',
+    'flip_arm': 'Flip: the arm uses its checked scrape stroke; a single-piece flip is not simulated',
     'stir': 'Scrape stroke, physics bench (R15). Executable at about 3.6 s per stroke (R19 smooth-motion check)',
     'flip_egg': 'Spatula stroke (single-piece flip not simulated)',
     'tip_wok': 'Heat off: plate, rinse the wok under the running tap, set it back (R17 path, re-checked at ≤ 4 mm in R19, sped up)',
     'tip_wok_spot2': 'Heat off: tip at the second plating spot and set the wok back (R18 checked spot; replay shows the R17 tip)',
     'cup_pour': 'Seasoning cup: station → wok → pour → back, one checked path (R19)',
+    'egg_pour': 'Egg cup on the pour pad, then the cup path to the wok: checked with the 150 g egg load (20.6 s, 2.2 mm)',
+    'bowl_pour': 'Bowl from the counter → wok → pour → back, one checked path (R19 Mac): 25.8 s, 1.9 mm, 300 g load',
     'stir_arm': 'Arm stirring: the checked 5-stroke scrape cycle (2.0 mm reserve; R19: about 3.6 s per stroke)',
+    'fridge_arm': 'The arm opens the fridge by the handle, 0–55° (R14 checked keyframes). The eggs were beaten by the user beforehand',
     'spatula_fetch': 'The arm takes the spatula from its rest to the wok, one checked path (R18b)',
 }
 
@@ -245,14 +253,22 @@ def robot_view(d, n):
     act = ROUTINE_VIEW.get(routine, routine)
     args = d['decision'].get('args') or {}
     src_ = str(args.get('source') or args.get('cup') or '')
-    if routine in ('season_and_toss', 'egg_into_hot_oil', 'pour_cup_mid_stir') or (act == 'pour_into_wok' and src_.startswith('cup')):
+    if routine in ('season_and_toss', 'pour_cup_mid_stir') or (act == 'pour_into_wok' and src_.startswith('cup')):
         act = 'cup_pour'
+    elif routine == 'egg_into_hot_oil' or (act == 'pour_into_wok' and src_.startswith('egg')):
+        act = 'egg_pour'
+    elif routine == 'return_and_toss' or (act == 'pour_into_wok' and src_.split()[0] in ('tomato', 'holding_bowl')):
+        act = 'bowl_pour'
     elif act in ('stir', 'flip_egg') and 'spatula taken' in res.get('message', ''):
         act = 'spatula_fetch'
     elif routine == 'season_wok':
         act = 'tip_wok_spot2'
-    elif act in ('stir', 'drum_release'):
+    elif act == 'stir' or (act == 'drum_release' and 'stirred' in res.get('message', '')):
         act = 'stir_arm'
+    elif act == 'flip_egg':
+        act = 'flip_arm'                     # the flip uses the scrape stroke; a single-piece flip is not simulated
+    elif act == 'fridge_fetch':
+        act = 'fridge_arm'
     if not res['ok']:
         img = Image.new('RGB', (w, h), (251, 234, 230))
         dr = ImageDraw.Draw(img)
@@ -262,7 +278,10 @@ def robot_view(d, n):
     wok_p = res.get('image') or d.get('seen_image')
     wok = fit(Image.open(wok_p), w, h) if wok_p and Path(wok_p).exists() else None
     inset = None
-    if act in ('cup_pour', 'spatula_fetch', 'stir_arm') and wok is not None:
+    if act == 'fridge_arm':
+        src, crop, a, b = CLIPS[act]
+        frames = clip_frames(src, crop, a, b, n, w, h)
+    elif act in ('cup_pour', 'egg_pour', 'bowl_pour', 'spatula_fetch', 'stir_arm', 'flip_arm') and wok is not None:
         src, crop, a, b = CLIPS[act]
         frames = clip_frames(src, crop, a, b, n, w, h)
         inset = [fit(Image.open(wok_p), 420, 315)] * n
