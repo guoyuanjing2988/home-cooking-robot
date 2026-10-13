@@ -1,0 +1,8575 @@
+{
+ "method": "R19 #42: the tables of R19_MOUNT.md from the stored results (new file; reads only).\nresults/r19/mount/: design_mounts.json (r19mount_design.py PART=mounts), static.json, payload.json, every pilot chain\nchain_<set>_..._<TAG>_<arm>.json (r19mount_retarget.py TAG rt*, r19mount_run.py TAG mnt*) and its <= 4 mm re-check\n(check_<chain>_rack_sp1.56_.20[_t8].json from r19mount_check.py, <chain>_verify4mm[_pot].json from r19prep_verify.py /\nr19prep4_verify.py / r19prep5_verify.py).\nCertificates of ur5e_enc2_pgc_m2 / fr5_j6_pgc_m2 made before the m2 boss became 8 mm (r19mount.py t1) are marked\nsuperseded; only the _t8 ones and those made after that change count for m2 (by file time).\npython r19mount_table.py -> results/r19/mount/summary.json",
+ "made": "2026-10-14 05:31",
+ "design": {
+  "m1": {
+   "arms": {
+    "ur5e_enc2_pgc": {
+     "gate_mm": 5.76,
+     "pieces": {
+      "R_gripper_palm": {
+       "mm": 85.43,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 85.43,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_envelope": {
+       "mm": 21.2,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 21.2,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_upper": {
+       "mm": 67.77,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 67.77,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_jaws": {
+       "mm": 112.61,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 112.61,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_mount_base": {
+       "mm": 0.76,
+       "mj_signed_mm": 0.76,
+       "gjk_lower_mm": 0.76,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_mount_arm": {
+       "mm": 5.76,
+       "mj_signed_mm": 5.76,
+       "gjk_lower_mm": 5.76,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_mount_drop": {
+       "mm": 13.76,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 13.76,
+       "vs": "R_geom_enc2_w3_0"
+      }
+     }
+    },
+    "fr5_j6_pgc": {
+     "gate_mm": 6.0,
+     "pieces": {
+      "R_gripper_palm": {
+       "mm": 85.67,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 85.67,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_envelope": {
+       "mm": 17.07,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 17.07,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_upper": {
+       "mm": 68.01,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 68.01,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_jaws": {
+       "mm": 112.85,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 112.85,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_mount_base": {
+       "mm": 1.0,
+       "mj_signed_mm": 1.0,
+       "gjk_lower_mm": 1.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_mount_arm": {
+       "mm": 6.0,
+       "mj_signed_mm": 6.0,
+       "gjk_lower_mm": 6.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_mount_drop": {
+       "mm": 7.1,
+       "mj_signed_mm": 6.9,
+       "gjk_lower_mm": 7.1,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      }
+     }
+    }
+   },
+   "body_vs_housing_mm": 0.0,
+   "gate_mm": 5.76,
+   "tcp_change_mm": [
+    -0.0,
+    0.0,
+    77.5
+   ],
+   "tcp_change_norm_mm": 77.5,
+   "rot_deg": 0.0,
+   "face_centre_mm": [
+    77.7,
+    0.0,
+    32.4
+   ],
+   "gripper_axis": [
+    -0.4481,
+    0.0,
+    0.894
+   ],
+   "bracket_kg": 0.327,
+   "bracket_cog_F_mm": [
+    39.8,
+    -0.0,
+    16.3
+   ],
+   "bracket_rows": [
+    {
+     "piece": "R_gripper_oem_mount_base",
+     "solid_cm3": 15.6,
+     "cm3": 15.6,
+     "kg": 0.0422,
+     "cog_mm": [
+      -0.0,
+      0.0,
+      2.5
+     ]
+    },
+    {
+     "piece": "R_gripper_oem_mount_arm",
+     "solid_cm3": 47.6,
+     "cm3": 47.6,
+     "kg": 0.1284,
+     "cog_mm": [
+      6.2,
+      0.0,
+      10.0
+     ]
+    },
+    {
+     "piece": "R_gripper_oem_mount_drop",
+     "solid_cm3": 59.8,
+     "cm3": 59.8,
+     "kg": 0.1615,
+     "cog_mm": [
+      75.6,
+      -0.0,
+      24.5
+     ]
+    }
+   ],
+   "ok": true
+  },
+  "m2": {
+   "arms": {
+    "ur5e_enc2_pgc": {
+     "gate_mm": 8.76,
+     "pieces": {
+      "R_gripper_palm": {
+       "mm": 91.79,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 91.79,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_envelope": {
+       "mm": 22.71,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 22.71,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_upper": {
+       "mm": 74.13,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 74.13,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_jaws": {
+       "mm": 118.97,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 118.97,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_mount_base": {
+       "mm": 0.76,
+       "mj_signed_mm": 0.76,
+       "gjk_lower_mm": 0.76,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_mount_body": {
+       "mm": 8.76,
+       "mj_signed_mm": 8.76,
+       "gjk_lower_mm": 8.76,
+       "vs": "R_geom_enc2_w3_0"
+      }
+     }
+    },
+    "fr5_j6_pgc": {
+     "gate_mm": 9.0,
+     "pieces": {
+      "R_gripper_palm": {
+       "mm": 92.03,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 92.03,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_envelope": {
+       "mm": 22.95,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 22.95,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_upper": {
+       "mm": 74.36,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 74.36,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_jaws": {
+       "mm": 119.21,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 119.21,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_mount_base": {
+       "mm": 1.0,
+       "mj_signed_mm": 1.0,
+       "gjk_lower_mm": 1.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_mount_body": {
+       "mm": 9.0,
+       "mj_signed_mm": 9.0,
+       "gjk_lower_mm": 9.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      }
+     }
+    }
+   },
+   "body_vs_housing_mm": 0.0,
+   "gate_mm": 8.76,
+   "tcp_change_mm": [
+    -42.7,
+    -0.0,
+    83.9
+   ],
+   "tcp_change_norm_mm": 94.1,
+   "rot_deg": 0.0,
+   "face_centre_mm": [
+    35.0,
+    0.0,
+    38.8
+   ],
+   "gripper_axis": [
+    -0.4481,
+    0.0,
+    0.894
+   ],
+   "bracket_kg": 0.268,
+   "bracket_cog_F_mm": [
+    17.3,
+    -0.0,
+    19.1
+   ],
+   "bracket_rows": [
+    {
+     "piece": "R_gripper_oem_mount_base",
+     "solid_cm3": 25.0,
+     "cm3": 25.0,
+     "kg": 0.0675,
+     "cog_mm": [
+      -0.0,
+      -0.0,
+      4.0
+     ]
+    },
+    {
+     "piece": "R_gripper_oem_mount_body",
+     "solid_cm3": 76.1,
+     "cm3": 76.1,
+     "kg": 0.2056,
+     "cog_mm": [
+      22.5,
+      -0.0,
+      23.7
+     ]
+    }
+   ],
+   "ok": true
+  },
+  "m3": {
+   "arms": {
+    "ur5e_enc2_pgc": {
+     "gate_mm": 5.76,
+     "pieces": {
+      "R_gripper_palm": {
+       "mm": 77.26,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 77.26,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_envelope": {
+       "mm": 8.76,
+       "mj_signed_mm": 8.76,
+       "gjk_lower_mm": 8.76,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_upper": {
+       "mm": 60.76,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 60.76,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_jaws": {
+       "mm": 106.76,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 106.76,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_mount_base": {
+       "mm": 0.76,
+       "mj_signed_mm": 0.76,
+       "gjk_lower_mm": 0.76,
+       "vs": "R_geom_enc2_w3_0"
+      },
+      "R_gripper_oem_mount_body": {
+       "mm": 5.76,
+       "mj_signed_mm": 5.76,
+       "gjk_lower_mm": 5.76,
+       "vs": "R_geom_enc2_w3_0"
+      }
+     }
+    },
+    "fr5_j6_pgc": {
+     "gate_mm": 6.0,
+     "pieces": {
+      "R_gripper_palm": {
+       "mm": 77.5,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 77.5,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_envelope": {
+       "mm": 9.0,
+       "mj_signed_mm": 9.0,
+       "gjk_lower_mm": 9.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_upper": {
+       "mm": 61.0,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 61.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_jaws": {
+       "mm": 107.0,
+       "mj_signed_mm": 10.0,
+       "gjk_lower_mm": 107.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_mount_base": {
+       "mm": 1.0,
+       "mj_signed_mm": 1.0,
+       "gjk_lower_mm": 1.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      },
+      "R_gripper_oem_mount_body": {
+       "mm": 6.0,
+       "mj_signed_mm": 6.0,
+       "gjk_lower_mm": 6.0,
+       "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+      }
+     }
+    }
+   },
+   "body_vs_housing_mm": -0.0,
+   "gate_mm": 5.76,
+   "tcp_change_mm": [
+    6.6,
+    -0.0,
+    63.6
+   ],
+   "tcp_change_norm_mm": 63.9,
+   "rot_deg": 26.62,
+   "face_centre_mm": [
+    0.0,
+    0.0,
+    8.0
+   ],
+   "gripper_axis": [
+    -0.0001,
+    0.0,
+    1.0
+   ],
+   "bracket_kg": 0.062,
+   "bracket_cog_F_mm": [
+    -0.0,
+    0.0,
+    4.1
+   ],
+   "bracket_rows": [
+    {
+     "piece": "R_gripper_oem_mount_base",
+     "solid_cm3": 15.6,
+     "cm3": 15.6,
+     "kg": 0.0422,
+     "cog_mm": [
+      -0.0,
+      0.0,
+      2.5
+     ]
+    },
+    {
+     "piece": "R_gripper_oem_mount_body",
+     "solid_cm3": 9.4,
+     "cm3": 9.4,
+     "kg": 0.0253,
+     "cog_mm": [
+      -0.0,
+      0.0,
+      6.5
+     ]
+    }
+   ],
+   "ok": true
+  }
+ },
+ "static": {
+  "ur5e_enc2_pgc": {
+   "arm": "ur5e_enc2_pgc",
+   "mount": null,
+   "wrist3": {
+    "R_gripper_palm": {
+     "group": "housing",
+     "mm": 7.93,
+     "mj_mm": 7.91,
+     "gjk_lower_mm": 7.93,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_envelope": {
+     "group": "housing",
+     "mm": -16.87,
+     "mj_mm": -16.87,
+     "gjk_lower_mm": 0.0,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_upper": {
+     "group": "housing",
+     "mm": -6.3,
+     "mj_mm": -6.3,
+     "gjk_lower_mm": 0.0,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_jaws": {
+     "group": "housing",
+     "mm": 35.11,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 35.11,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_finger_minus": {
+     "group": "fingers",
+     "mm": 41.47,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 41.47,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_finger_plus": {
+     "group": "fingers",
+     "mm": 41.47,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 41.47,
+     "vs": "R_geom_enc2_w3_0"
+    }
+   },
+   "wrist3_gate_mm": -16.87,
+   "wrist3_gate_ok": false,
+   "wrist2_J6_turn": {
+    "grid": 360,
+    "groups": {
+     "housing": {
+      "min_mm": -1.57,
+      "at_deg": {
+       "R_wrist_3_joint": 78.0
+      },
+      "contact_share": 1.0,
+      "within5mm_share": 1.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    }
+   },
+   "wrist1_J5xJ6": {
+    "grid": 10440,
+    "groups": {
+     "housing": {
+      "min_mm": -33.88,
+      "at_deg": {
+       "R_wrist_2_joint": 177.5,
+       "R_wrist_3_joint": 70.0
+      },
+      "contact_share": 0.0955,
+      "within5mm_share": 0.2496
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    },
+    "J5_free_for_all_J6_deg": [
+     -112.5,
+     -110.0,
+     -107.5,
+     -105.0,
+     -102.5,
+     -100.0,
+     -97.5,
+     -95.0,
+     -92.5,
+     -90.0,
+     -87.5,
+     -85.0,
+     -82.5,
+     -80.0,
+     -77.5,
+     -75.0,
+     -72.5,
+     -70.0,
+     -67.5,
+     -65.0,
+     -62.5,
+     -60.0,
+     -57.5,
+     -55.0,
+     -52.5,
+     -50.0,
+     -47.5,
+     -45.0,
+     -42.5,
+     -40.0,
+     -37.5,
+     -35.0,
+     -32.5,
+     -30.0,
+     -27.5,
+     -25.0,
+     -22.5,
+     -20.0,
+     -17.5,
+     -15.0,
+     -12.5,
+     -10.0,
+     -7.5,
+     -5.0,
+     -2.5,
+     0.0,
+     2.5,
+     5.0,
+     7.5,
+     10.0,
+     12.5,
+     15.0,
+     17.5,
+     20.0,
+     22.5,
+     25.0,
+     27.5,
+     30.0,
+     32.5,
+     35.0,
+     37.5,
+     40.0,
+     42.5,
+     45.0,
+     47.5,
+     50.0,
+     52.5,
+     55.0,
+     57.5,
+     60.0,
+     62.5,
+     65.0,
+     67.5,
+     70.0,
+     72.5,
+     75.0,
+     77.5,
+     80.0,
+     82.5,
+     85.0,
+     87.5,
+     90.0,
+     92.5,
+     95.0,
+     97.5,
+     100.0,
+     102.5,
+     105.0,
+     107.5,
+     110.0,
+     112.5
+    ]
+   },
+   "forearm_J4xJ5xJ6": {
+    "grid": 42048,
+    "groups": {
+     "housing": {
+      "min_mm": -226.41,
+      "at_deg": {
+       "R_wrist_1_joint": 135.0,
+       "R_wrist_2_joint": 130.0,
+       "R_wrist_3_joint": -165.0
+      },
+      "contact_share": 0.1628,
+      "within5mm_share": 0.1787
+     },
+     "fingers": {
+      "min_mm": -263.74,
+      "at_deg": {
+       "R_wrist_1_joint": 150.0,
+       "R_wrist_2_joint": 120.0,
+       "R_wrist_3_joint": 120.0
+      },
+      "contact_share": 0.0908,
+      "within5mm_share": 0.1031
+     }
+    }
+   },
+   "J5_range_deg": [
+    -360.0,
+    360.0
+   ]
+  },
+  "ur5e_enc2_pgc_m1": {
+   "arm": "ur5e_enc2_pgc_m1",
+   "mount": "m1",
+   "wrist3": {
+    "R_gripper_palm": {
+     "group": "housing",
+     "mm": 85.43,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 85.43,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_envelope": {
+     "group": "housing",
+     "mm": 21.2,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 21.2,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_upper": {
+     "group": "housing",
+     "mm": 67.77,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 67.77,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_jaws": {
+     "group": "housing",
+     "mm": 112.61,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 112.61,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_mount_base": {
+     "group": "bracket_mating_boss",
+     "mm": 0.76,
+     "mj_mm": 0.76,
+     "gjk_lower_mm": 0.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_mount_arm": {
+     "group": "bracket",
+     "mm": 5.76,
+     "mj_mm": 5.76,
+     "gjk_lower_mm": 5.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_mount_drop": {
+     "group": "bracket",
+     "mm": 13.76,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 13.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_finger_minus": {
+     "group": "fingers",
+     "mm": 118.97,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 118.97,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_finger_plus": {
+     "group": "fingers",
+     "mm": 118.97,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 118.97,
+     "vs": "R_geom_enc2_w3_0"
+    }
+   },
+   "wrist3_gate_mm": 5.76,
+   "wrist3_gate_ok": true,
+   "wrist2_J6_turn": {
+    "grid": 360,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    }
+   },
+   "wrist1_J5xJ6": {
+    "grid": 10440,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    },
+    "J5_free_for_all_J6_deg": [
+     -180.0,
+     -177.5,
+     -175.0,
+     -172.5,
+     -170.0,
+     -167.5,
+     -165.0,
+     -162.5,
+     -160.0,
+     -157.5,
+     -155.0,
+     -152.5,
+     -150.0,
+     -147.5,
+     -145.0,
+     -142.5,
+     -140.0,
+     -137.5,
+     -135.0,
+     -132.5,
+     -130.0,
+     -127.5,
+     -125.0,
+     -122.5,
+     -120.0,
+     -117.5,
+     -115.0,
+     -112.5,
+     -110.0,
+     -107.5,
+     -105.0,
+     -102.5,
+     -100.0,
+     -97.5,
+     -95.0,
+     -92.5,
+     -90.0,
+     -87.5,
+     -85.0,
+     -82.5,
+     -80.0,
+     -77.5,
+     -75.0,
+     -72.5,
+     -70.0,
+     -67.5,
+     -65.0,
+     -62.5,
+     -60.0,
+     -57.5,
+     -55.0,
+     -52.5,
+     -50.0,
+     -47.5,
+     -45.0,
+     -42.5,
+     -40.0,
+     -37.5,
+     -35.0,
+     -32.5,
+     -30.0,
+     -27.5,
+     -25.0,
+     -22.5,
+     -20.0,
+     -17.5,
+     -15.0,
+     -12.5,
+     -10.0,
+     -7.5,
+     -5.0,
+     -2.5,
+     0.0,
+     2.5,
+     5.0,
+     7.5,
+     10.0,
+     12.5,
+     15.0,
+     17.5,
+     20.0,
+     22.5,
+     25.0,
+     27.5,
+     30.0,
+     32.5,
+     35.0,
+     37.5,
+     40.0,
+     42.5,
+     45.0,
+     47.5,
+     50.0,
+     52.5,
+     55.0,
+     57.5,
+     60.0,
+     62.5,
+     65.0,
+     67.5,
+     70.0,
+     72.5,
+     75.0,
+     77.5,
+     80.0,
+     82.5,
+     85.0,
+     87.5,
+     90.0,
+     92.5,
+     95.0,
+     97.5,
+     100.0,
+     102.5,
+     105.0,
+     107.5,
+     110.0,
+     112.5,
+     115.0,
+     117.5,
+     120.0,
+     122.5,
+     125.0,
+     127.5,
+     130.0,
+     132.5,
+     135.0,
+     137.5,
+     140.0,
+     142.5,
+     145.0,
+     147.5,
+     150.0,
+     152.5,
+     155.0,
+     157.5,
+     160.0,
+     162.5,
+     165.0,
+     167.5,
+     170.0,
+     172.5,
+     175.0,
+     177.5,
+     180.0
+    ]
+   },
+   "forearm_J4xJ5xJ6": {
+    "grid": 42048,
+    "groups": {
+     "housing": {
+      "min_mm": -242.79,
+      "at_deg": {
+       "R_wrist_1_joint": 150.0,
+       "R_wrist_2_joint": 115.0,
+       "R_wrist_3_joint": -165.0
+      },
+      "contact_share": 0.1219,
+      "within5mm_share": 0.1342
+     },
+     "bracket_mating_boss": {
+      "min_mm": -101.58,
+      "at_deg": {
+       "R_wrist_1_joint": 90.0,
+       "R_wrist_2_joint": 170.0,
+       "R_wrist_3_joint": -120.0
+      },
+      "contact_share": 0.0479,
+      "within5mm_share": 0.0548
+     },
+     "bracket": {
+      "min_mm": -246.72,
+      "at_deg": {
+       "R_wrist_1_joint": 90.0,
+       "R_wrist_2_joint": 180.0,
+       "R_wrist_3_joint": -90.0
+      },
+      "contact_share": 0.1359,
+      "within5mm_share": 0.1503
+     },
+     "fingers": {
+      "min_mm": -216.81,
+      "at_deg": {
+       "R_wrist_1_joint": 165.0,
+       "R_wrist_2_joint": 115.0,
+       "R_wrist_3_joint": 150.0
+      },
+      "contact_share": 0.0232,
+      "within5mm_share": 0.0254
+     }
+    }
+   },
+   "J5_range_deg": [
+    -360.0,
+    360.0
+   ]
+  },
+  "ur5e_enc2_pgc_m2": {
+   "arm": "ur5e_enc2_pgc_m2",
+   "mount": "m2",
+   "wrist3": {
+    "R_gripper_palm": {
+     "group": "housing",
+     "mm": 91.79,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 91.79,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_envelope": {
+     "group": "housing",
+     "mm": 22.71,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 22.71,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_upper": {
+     "group": "housing",
+     "mm": 74.13,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 74.13,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_jaws": {
+     "group": "housing",
+     "mm": 118.97,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 118.97,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_mount_base": {
+     "group": "bracket_mating_boss",
+     "mm": 0.76,
+     "mj_mm": 0.76,
+     "gjk_lower_mm": 0.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_mount_body": {
+     "group": "bracket",
+     "mm": 8.76,
+     "mj_mm": 8.76,
+     "gjk_lower_mm": 8.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_finger_minus": {
+     "group": "fingers",
+     "mm": 125.33,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 125.33,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_finger_plus": {
+     "group": "fingers",
+     "mm": 125.33,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 125.33,
+     "vs": "R_geom_enc2_w3_0"
+    }
+   },
+   "wrist3_gate_mm": 8.76,
+   "wrist3_gate_ok": true,
+   "wrist2_J6_turn": {
+    "grid": 360,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    }
+   },
+   "wrist1_J5xJ6": {
+    "grid": 10440,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    },
+    "J5_free_for_all_J6_deg": [
+     -180.0,
+     -177.5,
+     -175.0,
+     -172.5,
+     -170.0,
+     -167.5,
+     -165.0,
+     -162.5,
+     -160.0,
+     -157.5,
+     -155.0,
+     -152.5,
+     -150.0,
+     -147.5,
+     -145.0,
+     -142.5,
+     -140.0,
+     -137.5,
+     -135.0,
+     -132.5,
+     -130.0,
+     -127.5,
+     -125.0,
+     -122.5,
+     -120.0,
+     -117.5,
+     -115.0,
+     -112.5,
+     -110.0,
+     -107.5,
+     -105.0,
+     -102.5,
+     -100.0,
+     -97.5,
+     -95.0,
+     -92.5,
+     -90.0,
+     -87.5,
+     -85.0,
+     -82.5,
+     -80.0,
+     -77.5,
+     -75.0,
+     -72.5,
+     -70.0,
+     -67.5,
+     -65.0,
+     -62.5,
+     -60.0,
+     -57.5,
+     -55.0,
+     -52.5,
+     -50.0,
+     -47.5,
+     -45.0,
+     -42.5,
+     -40.0,
+     -37.5,
+     -35.0,
+     -32.5,
+     -30.0,
+     -27.5,
+     -25.0,
+     -22.5,
+     -20.0,
+     -17.5,
+     -15.0,
+     -12.5,
+     -10.0,
+     -7.5,
+     -5.0,
+     -2.5,
+     0.0,
+     2.5,
+     5.0,
+     7.5,
+     10.0,
+     12.5,
+     15.0,
+     17.5,
+     20.0,
+     22.5,
+     25.0,
+     27.5,
+     30.0,
+     32.5,
+     35.0,
+     37.5,
+     40.0,
+     42.5,
+     45.0,
+     47.5,
+     50.0,
+     52.5,
+     55.0,
+     57.5,
+     60.0,
+     62.5,
+     65.0,
+     67.5,
+     70.0,
+     72.5,
+     75.0,
+     77.5,
+     80.0,
+     82.5,
+     85.0,
+     87.5,
+     90.0,
+     92.5,
+     95.0,
+     97.5,
+     100.0,
+     102.5,
+     105.0,
+     107.5,
+     110.0,
+     112.5,
+     115.0,
+     117.5,
+     120.0,
+     122.5,
+     125.0,
+     127.5,
+     130.0,
+     132.5,
+     135.0,
+     137.5,
+     140.0,
+     142.5,
+     145.0,
+     147.5,
+     150.0,
+     152.5,
+     155.0,
+     157.5,
+     160.0,
+     162.5,
+     165.0,
+     167.5,
+     170.0,
+     172.5,
+     175.0,
+     177.5,
+     180.0
+    ]
+   },
+   "forearm_J4xJ5xJ6": {
+    "grid": 42048,
+    "groups": {
+     "housing": {
+      "min_mm": -232.97,
+      "at_deg": {
+       "R_wrist_1_joint": 30.0,
+       "R_wrist_2_joint": -125.0,
+       "R_wrist_3_joint": 30.0
+      },
+      "contact_share": 0.0961,
+      "within5mm_share": 0.1092
+     },
+     "bracket_mating_boss": {
+      "min_mm": -117.24,
+      "at_deg": {
+       "R_wrist_1_joint": 90.0,
+       "R_wrist_2_joint": 175.0,
+       "R_wrist_3_joint": 60.0
+      },
+      "contact_share": 0.0514,
+      "within5mm_share": 0.0582
+     },
+     "bracket": {
+      "min_mm": -212.35,
+      "at_deg": {
+       "R_wrist_1_joint": 75.0,
+       "R_wrist_2_joint": -165.0,
+       "R_wrist_3_joint": -90.0
+      },
+      "contact_share": 0.087,
+      "within5mm_share": 0.1006
+     },
+     "fingers": {
+      "min_mm": -207.7,
+      "at_deg": {
+       "R_wrist_1_joint": 15.0,
+       "R_wrist_2_joint": -120.0,
+       "R_wrist_3_joint": -30.0
+      },
+      "contact_share": 0.021,
+      "within5mm_share": 0.0239
+     }
+    }
+   },
+   "J5_range_deg": [
+    -360.0,
+    360.0
+   ]
+  },
+  "ur5e_enc2_pgc_m3": {
+   "arm": "ur5e_enc2_pgc_m3",
+   "mount": "m3",
+   "wrist3": {
+    "R_gripper_palm": {
+     "group": "housing",
+     "mm": 77.26,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 77.26,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_envelope": {
+     "group": "housing",
+     "mm": 8.76,
+     "mj_mm": 8.76,
+     "gjk_lower_mm": 8.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_upper": {
+     "group": "housing",
+     "mm": 60.76,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 60.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_jaws": {
+     "group": "housing",
+     "mm": 106.76,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 106.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_mount_base": {
+     "group": "bracket_mating_boss",
+     "mm": 0.76,
+     "mj_mm": 0.76,
+     "gjk_lower_mm": 0.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_gripper_oem_mount_body": {
+     "group": "bracket",
+     "mm": 5.76,
+     "mj_mm": 5.76,
+     "gjk_lower_mm": 5.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_finger_minus": {
+     "group": "fingers",
+     "mm": 109.76,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 109.76,
+     "vs": "R_geom_enc2_w3_0"
+    },
+    "R_finger_plus": {
+     "group": "fingers",
+     "mm": 109.76,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 109.76,
+     "vs": "R_geom_enc2_w3_0"
+    }
+   },
+   "wrist3_gate_mm": 5.76,
+   "wrist3_gate_ok": true,
+   "wrist2_J6_turn": {
+    "grid": 360,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    }
+   },
+   "wrist1_J5xJ6": {
+    "grid": 10440,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    },
+    "J5_free_for_all_J6_deg": [
+     -180.0,
+     -177.5,
+     -175.0,
+     -172.5,
+     -170.0,
+     -167.5,
+     -165.0,
+     -162.5,
+     -160.0,
+     -157.5,
+     -155.0,
+     -152.5,
+     -150.0,
+     -147.5,
+     -145.0,
+     -142.5,
+     -140.0,
+     -137.5,
+     -135.0,
+     -132.5,
+     -130.0,
+     -127.5,
+     -125.0,
+     -122.5,
+     -120.0,
+     -117.5,
+     -115.0,
+     -112.5,
+     -110.0,
+     -107.5,
+     -105.0,
+     -102.5,
+     -100.0,
+     -97.5,
+     -95.0,
+     -92.5,
+     -90.0,
+     -87.5,
+     -85.0,
+     -82.5,
+     -80.0,
+     -77.5,
+     -75.0,
+     -72.5,
+     -70.0,
+     -67.5,
+     -65.0,
+     -62.5,
+     -60.0,
+     -57.5,
+     -55.0,
+     -52.5,
+     -50.0,
+     -47.5,
+     -45.0,
+     -42.5,
+     -40.0,
+     -37.5,
+     -35.0,
+     -32.5,
+     -30.0,
+     -27.5,
+     -25.0,
+     -22.5,
+     -20.0,
+     -17.5,
+     -15.0,
+     -12.5,
+     -10.0,
+     -7.5,
+     -5.0,
+     -2.5,
+     0.0,
+     2.5,
+     5.0,
+     7.5,
+     10.0,
+     12.5,
+     15.0,
+     17.5,
+     20.0,
+     22.5,
+     25.0,
+     27.5,
+     30.0,
+     32.5,
+     35.0,
+     37.5,
+     40.0,
+     42.5,
+     45.0,
+     47.5,
+     50.0,
+     52.5,
+     55.0,
+     57.5,
+     60.0,
+     62.5,
+     65.0,
+     67.5,
+     70.0,
+     72.5,
+     75.0,
+     77.5,
+     80.0,
+     82.5,
+     85.0,
+     87.5,
+     90.0,
+     92.5,
+     95.0,
+     97.5,
+     100.0,
+     102.5,
+     105.0,
+     107.5,
+     110.0,
+     112.5,
+     115.0,
+     117.5,
+     120.0,
+     122.5,
+     125.0,
+     127.5,
+     130.0,
+     132.5,
+     135.0,
+     137.5,
+     140.0,
+     142.5,
+     145.0,
+     147.5,
+     150.0,
+     152.5,
+     155.0,
+     157.5,
+     160.0,
+     162.5,
+     165.0,
+     167.5,
+     170.0,
+     172.5,
+     175.0,
+     177.5,
+     180.0
+    ]
+   },
+   "forearm_J4xJ5xJ6": {
+    "grid": 42048,
+    "groups": {
+     "housing": {
+      "min_mm": -202.67,
+      "at_deg": {
+       "R_wrist_1_joint": 150.0,
+       "R_wrist_2_joint": 125.0,
+       "R_wrist_3_joint": -165.0
+      },
+      "contact_share": 0.0883,
+      "within5mm_share": 0.0965
+     },
+     "bracket_mating_boss": {
+      "min_mm": -101.58,
+      "at_deg": {
+       "R_wrist_1_joint": 90.0,
+       "R_wrist_2_joint": 170.0,
+       "R_wrist_3_joint": 15.0
+      },
+      "contact_share": 0.0479,
+      "within5mm_share": 0.0548
+     },
+     "bracket": {
+      "min_mm": -126.35,
+      "at_deg": {
+       "R_wrist_1_joint": 90.0,
+       "R_wrist_2_joint": -180.0,
+       "R_wrist_3_joint": 0.0
+      },
+      "contact_share": 0.0516,
+      "within5mm_share": 0.0582
+     },
+     "fingers": {
+      "min_mm": -216.7,
+      "at_deg": {
+       "R_wrist_1_joint": 30.0,
+       "R_wrist_2_joint": -120.0,
+       "R_wrist_3_joint": -135.0
+      },
+      "contact_share": 0.027,
+      "within5mm_share": 0.0303
+     }
+    }
+   },
+   "J5_range_deg": [
+    -360.0,
+    360.0
+   ]
+  },
+  "fr5_j6_pgc_sp20": {
+   "arm": "fr5_j6_pgc_sp20",
+   "mount": null,
+   "wrist3": {
+    "R_gripper_palm": {
+     "group": "housing",
+     "mm": 28.17,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 28.17,
+     "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+    },
+    "R_gripper_oem_envelope": {
+     "group": "housing",
+     "mm": -14.74,
+     "mj_mm": -14.74,
+     "gjk_lower_mm": 0.0,
+     "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+    },
+    "R_gripper_oem_upper": {
+     "group": "housing",
+     "mm": 10.51,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 10.51,
+     "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+    },
+    "R_gripper_oem_jaws": {
+     "group": "housing",
+     "mm": 55.35,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 55.35,
+     "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+    },
+    "R_finger_minus": {
+     "group": "fingers",
+     "mm": 61.7,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 61.7,
+     "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+    },
+    "R_finger_plus": {
+     "group": "fingers",
+     "mm": 61.7,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 61.7,
+     "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+    }
+   },
+   "wrist3_gate_mm": -14.74,
+   "wrist3_gate_ok": false,
+   "wrist2_J6_turn": {
+    "grid": 360,
+    "groups": {
+     "housing": {
+      "min_mm": 2.14,
+      "at_deg": {
+       "R_wrist_3_joint": 133.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 1.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    }
+   },
+   "wrist1_J5xJ6": {
+    "grid": 10152,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    },
+    "J5_free_for_all_J6_deg": [
+     -175.0,
+     -172.5,
+     -170.0,
+     -167.5,
+     -165.0,
+     -162.5,
+     -160.0,
+     -157.5,
+     -155.0,
+     -152.5,
+     -150.0,
+     -147.5,
+     -145.0,
+     -142.5,
+     -140.0,
+     -137.5,
+     -135.0,
+     -132.5,
+     -130.0,
+     -127.5,
+     -125.0,
+     -122.5,
+     -120.0,
+     -117.5,
+     -115.0,
+     -112.5,
+     -110.0,
+     -107.5,
+     -105.0,
+     -102.5,
+     -100.0,
+     -97.5,
+     -95.0,
+     -92.5,
+     -90.0,
+     -87.5,
+     -85.0,
+     -82.5,
+     -80.0,
+     -77.5,
+     -75.0,
+     -72.5,
+     -70.0,
+     -67.5,
+     -65.0,
+     -62.5,
+     -60.0,
+     -57.5,
+     -55.0,
+     -52.5,
+     -50.0,
+     -47.5,
+     -45.0,
+     -42.5,
+     -40.0,
+     -37.5,
+     -35.0,
+     -32.5,
+     -30.0,
+     -27.5,
+     -25.0,
+     -22.5,
+     -20.0,
+     -17.5,
+     -15.0,
+     -12.5,
+     -10.0,
+     -7.5,
+     -5.0,
+     -2.5,
+     0.0,
+     2.5,
+     5.0,
+     7.5,
+     10.0,
+     12.5,
+     15.0,
+     17.5,
+     20.0,
+     22.5,
+     25.0,
+     27.5,
+     30.0,
+     32.5,
+     35.0,
+     37.5,
+     40.0,
+     42.5,
+     45.0,
+     47.5,
+     50.0,
+     52.5,
+     55.0,
+     57.5,
+     60.0,
+     62.5,
+     65.0,
+     67.5,
+     70.0,
+     72.5,
+     75.0,
+     77.5,
+     80.0,
+     82.5,
+     85.0,
+     87.5,
+     90.0,
+     92.5,
+     95.0,
+     97.5,
+     100.0,
+     102.5,
+     105.0,
+     107.5,
+     110.0,
+     112.5,
+     115.0,
+     117.5,
+     120.0,
+     122.5,
+     125.0,
+     127.5,
+     130.0,
+     132.5,
+     135.0,
+     137.5,
+     140.0,
+     142.5,
+     145.0,
+     147.5,
+     150.0,
+     152.5,
+     155.0,
+     157.5,
+     160.0,
+     162.5,
+     165.0,
+     167.5,
+     170.0,
+     172.5,
+     175.0
+    ]
+   },
+   "forearm_J4xJ5xJ6": {
+    "grid": 40896,
+    "groups": {
+     "housing": {
+      "min_mm": -207.77,
+      "at_deg": {
+       "R_wrist_1_joint": 30.0,
+       "R_wrist_2_joint": -135.0,
+       "R_wrist_3_joint": 45.0
+      },
+      "contact_share": 0.1711,
+      "within5mm_share": 0.1886
+     },
+     "fingers": {
+      "min_mm": -191.03,
+      "at_deg": {
+       "R_wrist_1_joint": 150.0,
+       "R_wrist_2_joint": 110.0,
+       "R_wrist_3_joint": 60.0
+      },
+      "contact_share": 0.0456,
+      "within5mm_share": 0.0525
+     }
+    }
+   },
+   "J5_range_deg": [
+    -175.0,
+    175.0
+   ]
+  },
+  "fr5_j6_pgc_m1": {
+   "arm": "fr5_j6_pgc_m1",
+   "mount": "m1",
+   "wrist3": {
+    "R_gripper_palm": {
+     "group": "housing",
+     "mm": 85.67,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 85.67,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    },
+    "R_gripper_oem_envelope": {
+     "group": "housing",
+     "mm": 17.07,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 17.07,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    },
+    "R_gripper_oem_upper": {
+     "group": "housing",
+     "mm": 68.01,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 68.01,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    },
+    "R_gripper_oem_jaws": {
+     "group": "housing",
+     "mm": 112.85,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 112.85,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    },
+    "R_gripper_oem_mount_base": {
+     "group": "bracket_mating_boss",
+     "mm": 1.0,
+     "mj_mm": 1.0,
+     "gjk_lower_mm": 1.0,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    },
+    "R_gripper_oem_mount_arm": {
+     "group": "bracket",
+     "mm": 6.0,
+     "mj_mm": 6.0,
+     "gjk_lower_mm": 6.0,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    },
+    "R_gripper_oem_mount_drop": {
+     "group": "bracket",
+     "mm": 7.1,
+     "mj_mm": 6.9,
+     "gjk_lower_mm": 7.1,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    },
+    "R_finger_minus": {
+     "group": "fingers",
+     "mm": 119.2,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 119.2,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    },
+    "R_finger_plus": {
+     "group": "fingers",
+     "mm": 119.2,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 119.2,
+     "vs": "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+    }
+   },
+   "wrist3_gate_mm": 6.0,
+   "wrist3_gate_ok": true,
+   "wrist2_J6_turn": {
+    "grid": 360,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    }
+   },
+   "wrist1_J5xJ6": {
+    "grid": 10152,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    },
+    "J5_free_for_all_J6_deg": [
+     -175.0,
+     -172.5,
+     -170.0,
+     -167.5,
+     -165.0,
+     -162.5,
+     -160.0,
+     -157.5,
+     -155.0,
+     -152.5,
+     -150.0,
+     -147.5,
+     -145.0,
+     -142.5,
+     -140.0,
+     -137.5,
+     -135.0,
+     -132.5,
+     -130.0,
+     -127.5,
+     -125.0,
+     -122.5,
+     -120.0,
+     -117.5,
+     -115.0,
+     -112.5,
+     -110.0,
+     -107.5,
+     -105.0,
+     -102.5,
+     -100.0,
+     -97.5,
+     -95.0,
+     -92.5,
+     -90.0,
+     -87.5,
+     -85.0,
+     -82.5,
+     -80.0,
+     -77.5,
+     -75.0,
+     -72.5,
+     -70.0,
+     -67.5,
+     -65.0,
+     -62.5,
+     -60.0,
+     -57.5,
+     -55.0,
+     -52.5,
+     -50.0,
+     -47.5,
+     -45.0,
+     -42.5,
+     -40.0,
+     -37.5,
+     -35.0,
+     -32.5,
+     -30.0,
+     -27.5,
+     -25.0,
+     -22.5,
+     -20.0,
+     -17.5,
+     -15.0,
+     -12.5,
+     -10.0,
+     -7.5,
+     -5.0,
+     -2.5,
+     0.0,
+     2.5,
+     5.0,
+     7.5,
+     10.0,
+     12.5,
+     15.0,
+     17.5,
+     20.0,
+     22.5,
+     25.0,
+     27.5,
+     30.0,
+     32.5,
+     35.0,
+     37.5,
+     40.0,
+     42.5,
+     45.0,
+     47.5,
+     50.0,
+     52.5,
+     55.0,
+     57.5,
+     60.0,
+     62.5,
+     65.0,
+     67.5,
+     70.0,
+     72.5,
+     75.0,
+     77.5,
+     80.0,
+     82.5,
+     85.0,
+     87.5,
+     90.0,
+     92.5,
+     95.0,
+     97.5,
+     100.0,
+     102.5,
+     105.0,
+     107.5,
+     110.0,
+     112.5,
+     115.0,
+     117.5,
+     120.0,
+     122.5,
+     125.0,
+     127.5,
+     130.0,
+     132.5,
+     135.0,
+     137.5,
+     140.0,
+     142.5,
+     145.0,
+     147.5,
+     150.0,
+     152.5,
+     155.0,
+     157.5,
+     160.0,
+     162.5,
+     165.0,
+     167.5,
+     170.0,
+     172.5,
+     175.0
+    ]
+   },
+   "forearm_J4xJ5xJ6": {
+    "grid": 40896,
+    "groups": {
+     "housing": {
+      "min_mm": -185.06,
+      "at_deg": {
+       "R_wrist_1_joint": 30.0,
+       "R_wrist_2_joint": -110.0,
+       "R_wrist_3_joint": -120.0
+      },
+      "contact_share": 0.1261,
+      "within5mm_share": 0.1366
+     },
+     "bracket_mating_boss": {
+      "min_mm": -135.92,
+      "at_deg": {
+       "R_wrist_1_joint": 105.0,
+       "R_wrist_2_joint": 165.0,
+       "R_wrist_3_joint": 165.0
+      },
+      "contact_share": 0.0775,
+      "within5mm_share": 0.0869
+     },
+     "bracket": {
+      "min_mm": -185.25,
+      "at_deg": {
+       "R_wrist_1_joint": 135.0,
+       "R_wrist_2_joint": 165.0,
+       "R_wrist_3_joint": -90.0
+      },
+      "contact_share": 0.1571,
+      "within5mm_share": 0.1715
+     },
+     "fingers": {
+      "min_mm": -151.18,
+      "at_deg": {
+       "R_wrist_1_joint": 165.0,
+       "R_wrist_2_joint": 115.0,
+       "R_wrist_3_joint": -45.0
+      },
+      "contact_share": 0.0244,
+      "within5mm_share": 0.027
+     }
+    }
+   },
+   "J5_range_deg": [
+    -175.0,
+    175.0
+   ]
+  },
+  "fr5_j6_pgc_m2": {
+   "arm": "fr5_j6_pgc_m2",
+   "mount": "m2",
+   "wrist3": {
+    "R_gripper_palm": {
+     "group": "housing",
+     "mm": 92.03,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 92.03,
+     "vs": "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+    },
+    "R_gripper_oem_envelope": {
+     "group": "housing",
+     "mm": 22.95,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 22.95,
+     "vs": "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+    },
+    "R_gripper_oem_upper": {
+     "group": "housing",
+     "mm": 74.36,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 74.36,
+     "vs": "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+    },
+    "R_gripper_oem_jaws": {
+     "group": "housing",
+     "mm": 119.21,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 119.21,
+     "vs": "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+    },
+    "R_gripper_oem_mount_base": {
+     "group": "bracket_mating_boss",
+     "mm": 1.0,
+     "mj_mm": 1.0,
+     "gjk_lower_mm": 1.0,
+     "vs": "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+    },
+    "R_gripper_oem_mount_body": {
+     "group": "bracket",
+     "mm": 9.0,
+     "mj_mm": 9.0,
+     "gjk_lower_mm": 9.0,
+     "vs": "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+    },
+    "R_finger_minus": {
+     "group": "fingers",
+     "mm": 125.56,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 125.56,
+     "vs": "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+    },
+    "R_finger_plus": {
+     "group": "fingers",
+     "mm": 125.56,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 125.56,
+     "vs": "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+    }
+   },
+   "wrist3_gate_mm": 9.0,
+   "wrist3_gate_ok": true,
+   "wrist2_J6_turn": {
+    "grid": 360,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    }
+   },
+   "wrist1_J5xJ6": {
+    "grid": 10152,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    },
+    "J5_free_for_all_J6_deg": [
+     -175.0,
+     -172.5,
+     -170.0,
+     -167.5,
+     -165.0,
+     -162.5,
+     -160.0,
+     -157.5,
+     -155.0,
+     -152.5,
+     -150.0,
+     -147.5,
+     -145.0,
+     -142.5,
+     -140.0,
+     -137.5,
+     -135.0,
+     -132.5,
+     -130.0,
+     -127.5,
+     -125.0,
+     -122.5,
+     -120.0,
+     -117.5,
+     -115.0,
+     -112.5,
+     -110.0,
+     -107.5,
+     -105.0,
+     -102.5,
+     -100.0,
+     -97.5,
+     -95.0,
+     -92.5,
+     -90.0,
+     -87.5,
+     -85.0,
+     -82.5,
+     -80.0,
+     -77.5,
+     -75.0,
+     -72.5,
+     -70.0,
+     -67.5,
+     -65.0,
+     -62.5,
+     -60.0,
+     -57.5,
+     -55.0,
+     -52.5,
+     -50.0,
+     -47.5,
+     -45.0,
+     -42.5,
+     -40.0,
+     -37.5,
+     -35.0,
+     -32.5,
+     -30.0,
+     -27.5,
+     -25.0,
+     -22.5,
+     -20.0,
+     -17.5,
+     -15.0,
+     -12.5,
+     -10.0,
+     -7.5,
+     -5.0,
+     -2.5,
+     0.0,
+     2.5,
+     5.0,
+     7.5,
+     10.0,
+     12.5,
+     15.0,
+     17.5,
+     20.0,
+     22.5,
+     25.0,
+     27.5,
+     30.0,
+     32.5,
+     35.0,
+     37.5,
+     40.0,
+     42.5,
+     45.0,
+     47.5,
+     50.0,
+     52.5,
+     55.0,
+     57.5,
+     60.0,
+     62.5,
+     65.0,
+     67.5,
+     70.0,
+     72.5,
+     75.0,
+     77.5,
+     80.0,
+     82.5,
+     85.0,
+     87.5,
+     90.0,
+     92.5,
+     95.0,
+     97.5,
+     100.0,
+     102.5,
+     105.0,
+     107.5,
+     110.0,
+     112.5,
+     115.0,
+     117.5,
+     120.0,
+     122.5,
+     125.0,
+     127.5,
+     130.0,
+     132.5,
+     135.0,
+     137.5,
+     140.0,
+     142.5,
+     145.0,
+     147.5,
+     150.0,
+     152.5,
+     155.0,
+     157.5,
+     160.0,
+     162.5,
+     165.0,
+     167.5,
+     170.0,
+     172.5,
+     175.0
+    ]
+   },
+   "forearm_J4xJ5xJ6": {
+    "grid": 40896,
+    "groups": {
+     "housing": {
+      "min_mm": -200.13,
+      "at_deg": {
+       "R_wrist_1_joint": 150.0,
+       "R_wrist_2_joint": 120.0,
+       "R_wrist_3_joint": 135.0
+      },
+      "contact_share": 0.0973,
+      "within5mm_share": 0.1145
+     },
+     "bracket_mating_boss": {
+      "min_mm": -136.66,
+      "at_deg": {
+       "R_wrist_1_joint": 75.0,
+       "R_wrist_2_joint": -165.0,
+       "R_wrist_3_joint": -30.0
+      },
+      "contact_share": 0.0786,
+      "within5mm_share": 0.0869
+     },
+     "bracket": {
+      "min_mm": -194.34,
+      "at_deg": {
+       "R_wrist_1_joint": 120.0,
+       "R_wrist_2_joint": 145.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.1052,
+      "within5mm_share": 0.1186
+     },
+     "fingers": {
+      "min_mm": -145.33,
+      "at_deg": {
+       "R_wrist_1_joint": 15.0,
+       "R_wrist_2_joint": -115.0,
+       "R_wrist_3_joint": -120.0
+      },
+      "contact_share": 0.0218,
+      "within5mm_share": 0.0245
+     }
+    }
+   },
+   "J5_range_deg": [
+    -175.0,
+    175.0
+   ]
+  },
+  "fr5_j6_pgc_m3": {
+   "arm": "fr5_j6_pgc_m3",
+   "mount": "m3",
+   "wrist3": {
+    "R_gripper_palm": {
+     "group": "housing",
+     "mm": 77.5,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 77.5,
+     "vs": "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+    },
+    "R_gripper_oem_envelope": {
+     "group": "housing",
+     "mm": 9.0,
+     "mj_mm": 9.0,
+     "gjk_lower_mm": 9.0,
+     "vs": "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+    },
+    "R_gripper_oem_upper": {
+     "group": "housing",
+     "mm": 61.0,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 61.0,
+     "vs": "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+    },
+    "R_gripper_oem_jaws": {
+     "group": "housing",
+     "mm": 107.0,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 107.0,
+     "vs": "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+    },
+    "R_gripper_oem_mount_base": {
+     "group": "bracket_mating_boss",
+     "mm": 1.0,
+     "mj_mm": 1.0,
+     "gjk_lower_mm": 1.0,
+     "vs": "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+    },
+    "R_gripper_oem_mount_body": {
+     "group": "bracket",
+     "mm": 6.0,
+     "mj_mm": 6.0,
+     "gjk_lower_mm": 6.0,
+     "vs": "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+    },
+    "R_finger_minus": {
+     "group": "fingers",
+     "mm": 110.0,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 110.0,
+     "vs": "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+    },
+    "R_finger_plus": {
+     "group": "fingers",
+     "mm": 110.0,
+     "mj_mm": 10.0,
+     "gjk_lower_mm": 110.0,
+     "vs": "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+    }
+   },
+   "wrist3_gate_mm": 6.0,
+   "wrist3_gate_ok": true,
+   "wrist2_J6_turn": {
+    "grid": 360,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    }
+   },
+   "wrist1_J5xJ6": {
+    "grid": 10152,
+    "groups": {
+     "housing": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket_mating_boss": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "bracket": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     },
+     "fingers": {
+      "min_mm": 10.0,
+      "at_deg": {
+       "R_wrist_2_joint": -175.0,
+       "R_wrist_3_joint": -180.0
+      },
+      "contact_share": 0.0,
+      "within5mm_share": 0.0
+     }
+    },
+    "J5_free_for_all_J6_deg": [
+     -175.0,
+     -172.5,
+     -170.0,
+     -167.5,
+     -165.0,
+     -162.5,
+     -160.0,
+     -157.5,
+     -155.0,
+     -152.5,
+     -150.0,
+     -147.5,
+     -145.0,
+     -142.5,
+     -140.0,
+     -137.5,
+     -135.0,
+     -132.5,
+     -130.0,
+     -127.5,
+     -125.0,
+     -122.5,
+     -120.0,
+     -117.5,
+     -115.0,
+     -112.5,
+     -110.0,
+     -107.5,
+     -105.0,
+     -102.5,
+     -100.0,
+     -97.5,
+     -95.0,
+     -92.5,
+     -90.0,
+     -87.5,
+     -85.0,
+     -82.5,
+     -80.0,
+     -77.5,
+     -75.0,
+     -72.5,
+     -70.0,
+     -67.5,
+     -65.0,
+     -62.5,
+     -60.0,
+     -57.5,
+     -55.0,
+     -52.5,
+     -50.0,
+     -47.5,
+     -45.0,
+     -42.5,
+     -40.0,
+     -37.5,
+     -35.0,
+     -32.5,
+     -30.0,
+     -27.5,
+     -25.0,
+     -22.5,
+     -20.0,
+     -17.5,
+     -15.0,
+     -12.5,
+     -10.0,
+     -7.5,
+     -5.0,
+     -2.5,
+     0.0,
+     2.5,
+     5.0,
+     7.5,
+     10.0,
+     12.5,
+     15.0,
+     17.5,
+     20.0,
+     22.5,
+     25.0,
+     27.5,
+     30.0,
+     32.5,
+     35.0,
+     37.5,
+     40.0,
+     42.5,
+     45.0,
+     47.5,
+     50.0,
+     52.5,
+     55.0,
+     57.5,
+     60.0,
+     62.5,
+     65.0,
+     67.5,
+     70.0,
+     72.5,
+     75.0,
+     77.5,
+     80.0,
+     82.5,
+     85.0,
+     87.5,
+     90.0,
+     92.5,
+     95.0,
+     97.5,
+     100.0,
+     102.5,
+     105.0,
+     107.5,
+     110.0,
+     112.5,
+     115.0,
+     117.5,
+     120.0,
+     122.5,
+     125.0,
+     127.5,
+     130.0,
+     132.5,
+     135.0,
+     137.5,
+     140.0,
+     142.5,
+     145.0,
+     147.5,
+     150.0,
+     152.5,
+     155.0,
+     157.5,
+     160.0,
+     162.5,
+     165.0,
+     167.5,
+     170.0,
+     172.5,
+     175.0
+    ]
+   },
+   "forearm_J4xJ5xJ6": {
+    "grid": 40896,
+    "groups": {
+     "housing": {
+      "min_mm": -186.63,
+      "at_deg": {
+       "R_wrist_1_joint": 30.0,
+       "R_wrist_2_joint": -120.0,
+       "R_wrist_3_joint": -45.0
+      },
+      "contact_share": 0.1001,
+      "within5mm_share": 0.1094
+     },
+     "bracket_mating_boss": {
+      "min_mm": -135.92,
+      "at_deg": {
+       "R_wrist_1_joint": 105.0,
+       "R_wrist_2_joint": 165.0,
+       "R_wrist_3_joint": 120.0
+      },
+      "contact_share": 0.0775,
+      "within5mm_share": 0.0869
+     },
+     "bracket": {
+      "min_mm": -136.69,
+      "at_deg": {
+       "R_wrist_1_joint": 75.0,
+       "R_wrist_2_joint": -165.0,
+       "R_wrist_3_joint": -30.0
+      },
+      "contact_share": 0.0786,
+      "within5mm_share": 0.0845
+     },
+     "fingers": {
+      "min_mm": -166.04,
+      "at_deg": {
+       "R_wrist_1_joint": 15.0,
+       "R_wrist_2_joint": -115.0,
+       "R_wrist_3_joint": -45.0
+      },
+      "contact_share": 0.0279,
+      "within5mm_share": 0.0315
+     }
+    }
+   },
+   "J5_range_deg": [
+    -175.0,
+    175.0
+   ]
+  }
+ },
+ "payload": {
+  "method": "R19 #42: payload and CoG offset of the mount options (new file; reads only). The method of r19fr5_payload.py (R19_FR5.md\n4.2), whose held-load models are used unchanged (copied here because that script computes at import):\n - wok with the heaviest dish: r17chain.py MASS['wok'] (wok 1.5 kg, CoG 45 mm above its origin; handle + grip block 0.3 kg\n   at the handle middle) + food 1.15 kg at 20 mm, grasp of the stored FR5 wok chain (GTILT, sign);\n - full soak tub: r19prep3_actions.py tub 0.50 kg + 2.28 kg water, CoG COM_T in the tub frame, grasp of the stored\n   UR5e tub-fill chain.\nThe held load is rigid in the TCP frame (same grasp on every mount), so its CoG relative to the TCP is the same for every\noption; it is composed with each option's flange -> TCP transform (built model). The EOAT is R_tool + both jaws of the\nbuilt model: for the mount options R_tool's inertial already holds the bracket and DH's standard flange (r19mount.py);\nfor fr5_j6_pgc_sp20 the 0.25 kg sp20 plate at 10 mm (R19_FR5.md 4.1, not in its model) is added as r19fr5_payload.py did;\nthe current UR5e pose has no adapter at all (it cannot be built).\nReported per load and option: payload, combined CoG offset from the flange centre (axial / radial), the static moment at\nthe flange (worst orientation, g M |CoG|), the rated-payload margin, the full-performance check, and the PGC jaw moment\n(gravity moment of the held load about the TCP: level carry as at the grasp keyframe, and worst orientation). The jaw\nmoment does not depend on the mount (same grasp).\nLimits: FR5 5 kg at <= 300 mm CoG offset [S: Fairino Cobots manual 3.4.5.2.5, Fig. 3.4-19]; UR5e 5 kg [S: UR5e datasheet]\nwith the 0.35 m CoG radius the repo's UR5e envelope uses (arms.py com_radius_m, R19_ARM_SWAP.md 5; the UR5e payload\ndiagram was not re-read here); PGC 7 N.m static Mx/My/Mz [S: DH PGC-140 manual Table 1.2].\npython r19mount_payload.py [ARMS=..] -> results/r19/mount/payload.json",
+  "sp20_plate": {
+   "kg": 0.25,
+   "z": 0.01,
+   "src": "E: R19_FR5.md 4.1, 6061 disc \u00d875 x 20 mm, CoG on the flange axis 10 mm out; not in the fr5_j6_pgc_sp20 model"
+  },
+  "arms": {
+   "ur5e_enc2_pgc": {
+    "tcp_in_flange_mm": [
+     13.4,
+     -0.0,
+     127.9
+    ],
+    "eoat_kg": 1.2,
+    "eoat_com_flange_mm": [
+     25.0,
+     -0.0,
+     60.1
+    ]
+   },
+   "ur5e_enc2_pgc_m1": {
+    "tcp_in_flange_mm": [
+     13.4,
+     0.0,
+     205.4
+    ],
+    "eoat_kg": 1.588,
+    "eoat_com_flange_mm": [
+     30.1,
+     -0.0,
+     108.7
+    ]
+   },
+   "ur5e_enc2_pgc_m2": {
+    "tcp_in_flange_mm": [
+     -29.3,
+     0.0,
+     211.8
+    ],
+    "eoat_kg": 1.529,
+    "eoat_com_flange_mm": [
+     -9.5,
+     -0.0,
+     118.0
+    ]
+   },
+   "ur5e_enc2_pgc_m3": {
+    "tcp_in_flange_mm": [
+     20.0,
+     0.0,
+     191.5
+    ],
+    "eoat_kg": 1.323,
+    "eoat_com_flange_mm": [
+     -0.0,
+     -0.0,
+     114.7
+    ]
+   },
+   "fr5_j6_pgc_sp20": {
+    "tcp_in_flange_mm": [
+     0.0,
+     13.4,
+     147.9
+    ],
+    "eoat_kg": 1.2,
+    "eoat_com_flange_mm": [
+     0.0,
+     25.0,
+     80.1
+    ]
+   },
+   "fr5_j6_pgc_m1": {
+    "tcp_in_flange_mm": [
+     0.0,
+     13.4,
+     205.4
+    ],
+    "eoat_kg": 1.588,
+    "eoat_com_flange_mm": [
+     0.0,
+     30.1,
+     108.7
+    ]
+   },
+   "fr5_j6_pgc_m2": {
+    "tcp_in_flange_mm": [
+     0.0,
+     -29.3,
+     211.8
+    ],
+    "eoat_kg": 1.529,
+    "eoat_com_flange_mm": [
+     0.0,
+     -9.5,
+     118.0
+    ]
+   },
+   "fr5_j6_pgc_m3": {
+    "tcp_in_flange_mm": [
+     0.0,
+     20.0,
+     191.5
+    ],
+    "eoat_kg": 1.323,
+    "eoat_com_flange_mm": [
+     0.0,
+     -0.0,
+     114.7
+    ]
+   }
+  },
+  "loads": {
+   "wok": {
+    "held_kg": 2.95,
+    "held_com_tcp_mm": [
+     54.3,
+     -25.3,
+     215.3
+    ],
+    "pgc_jaw_moment_level_Nm": 6.23,
+    "pgc_jaw_moment_worst_Nm": 6.47,
+    "per_arm": {
+     "ur5e_enc2_pgc": {
+      "payload_kg": 4.15,
+      "cog_offset_from_flange_mm": 157.2,
+      "cog_axial_mm": 74.3,
+      "cog_radial_mm": 138.5,
+      "held_cog_offset_mm": 220.0,
+      "flange_static_moment_max_Nm": 6.4,
+      "rated_margin_kg": 0.85,
+      "cog_limit_mm": 350.0,
+      "within_rated": true
+     },
+     "ur5e_enc2_pgc_m1": {
+      "payload_kg": 4.538,
+      "cog_offset_from_flange_mm": 186.6,
+      "cog_axial_mm": 140.4,
+      "cog_radial_mm": 122.8,
+      "held_cog_offset_mm": 258.5,
+      "flange_static_moment_max_Nm": 8.31,
+      "rated_margin_kg": 0.462,
+      "cog_limit_mm": 350.0,
+      "within_rated": true
+     },
+     "ur5e_enc2_pgc_m2": {
+      "payload_kg": 4.479,
+      "cog_offset_from_flange_mm": 222.7,
+      "cog_axial_mm": 148.2,
+      "cog_radial_mm": 166.2,
+      "held_cog_offset_mm": 296.8,
+      "flange_static_moment_max_Nm": 9.78,
+      "rated_margin_kg": 0.521,
+      "cog_limit_mm": 350.0,
+      "within_rated": true
+     },
+     "ur5e_enc2_pgc_m3": {
+      "payload_kg": 4.273,
+      "cog_offset_from_flange_mm": 246.2,
+      "cog_axial_mm": 205.2,
+      "cog_radial_mm": 136.0,
+      "held_cog_offset_mm": 315.0,
+      "flange_static_moment_max_Nm": 10.32,
+      "rated_margin_kg": 0.727,
+      "cog_limit_mm": 350.0,
+      "within_rated": true
+     },
+     "fr5_j6_pgc_sp20": {
+      "payload_kg": 4.4,
+      "cog_offset_from_flange_mm": 158.4,
+      "cog_axial_mm": 89.5,
+      "cog_radial_mm": 130.7,
+      "held_cog_offset_mm": 228.1,
+      "flange_static_moment_max_Nm": 6.84,
+      "rated_margin_kg": 0.6,
+      "cog_limit_mm": 300.0,
+      "within_rated": true
+     },
+     "fr5_j6_pgc_m1": {
+      "payload_kg": 4.538,
+      "cog_offset_from_flange_mm": 186.6,
+      "cog_axial_mm": 140.4,
+      "cog_radial_mm": 122.8,
+      "held_cog_offset_mm": 258.5,
+      "flange_static_moment_max_Nm": 8.31,
+      "rated_margin_kg": 0.462,
+      "cog_limit_mm": 300.0,
+      "within_rated": true
+     },
+     "fr5_j6_pgc_m2": {
+      "payload_kg": 4.479,
+      "cog_offset_from_flange_mm": 222.7,
+      "cog_axial_mm": 148.2,
+      "cog_radial_mm": 166.2,
+      "held_cog_offset_mm": 296.8,
+      "flange_static_moment_max_Nm": 9.78,
+      "rated_margin_kg": 0.521,
+      "cog_limit_mm": 300.0,
+      "within_rated": true
+     },
+     "fr5_j6_pgc_m3": {
+      "payload_kg": 4.273,
+      "cog_offset_from_flange_mm": 246.2,
+      "cog_axial_mm": 205.2,
+      "cog_radial_mm": 136.0,
+      "held_cog_offset_mm": 315.0,
+      "flange_static_moment_max_Nm": 10.32,
+      "rated_margin_kg": 0.727,
+      "cog_limit_mm": 300.0,
+      "within_rated": true
+     }
+    }
+   },
+   "tub": {
+    "held_kg": 2.781,
+    "held_com_tcp_mm": [
+     173.6,
+     0.0,
+     36.2
+    ],
+    "pgc_jaw_moment_level_Nm": 4.83,
+    "pgc_jaw_moment_worst_Nm": 4.84,
+    "per_arm": {
+     "ur5e_enc2_pgc": {
+      "payload_kg": 3.981,
+      "cog_offset_from_flange_mm": 213.1,
+      "cog_axial_mm": 204.5,
+      "cog_radial_mm": 60.0,
+      "held_cog_offset_mm": 283.8,
+      "flange_static_moment_max_Nm": 8.32,
+      "rated_margin_kg": 1.019,
+      "cog_limit_mm": 350.0,
+      "within_rated": true
+     },
+     "ur5e_enc2_pgc_m1": {
+      "payload_kg": 4.368,
+      "cog_offset_from_flange_mm": 263.6,
+      "cog_axial_mm": 258.7,
+      "cog_radial_mm": 50.6,
+      "held_cog_offset_mm": 357.7,
+      "flange_static_moment_max_Nm": 11.3,
+      "rated_margin_kg": 0.632,
+      "cog_limit_mm": 350.0,
+      "within_rated": true
+     },
+     "ur5e_enc2_pgc_m2": {
+      "payload_kg": 4.309,
+      "cog_offset_from_flange_mm": 283.9,
+      "cog_axial_mm": 268.2,
+      "cog_radial_mm": 93.3,
+      "held_cog_offset_mm": 377.4,
+      "flange_static_moment_max_Nm": 12.0,
+      "rated_margin_kg": 0.691,
+      "cog_limit_mm": 350.0,
+      "within_rated": true
+     },
+     "ur5e_enc2_pgc_m3": {
+      "payload_kg": 4.104,
+      "cog_offset_from_flange_mm": 284.5,
+      "cog_axial_mm": 284.3,
+      "cog_radial_mm": 11.0,
+      "held_cog_offset_mm": 365.4,
+      "flange_static_moment_max_Nm": 11.45,
+      "rated_margin_kg": 0.896,
+      "cog_limit_mm": 350.0,
+      "within_rated": true
+     },
+     "fr5_j6_pgc_sp20": {
+      "payload_kg": 4.231,
+      "cog_offset_from_flange_mm": 219.2,
+      "cog_axial_mm": 211.8,
+      "cog_radial_mm": 56.5,
+      "held_cog_offset_mm": 302.7,
+      "flange_static_moment_max_Nm": 9.1,
+      "rated_margin_kg": 0.769,
+      "cog_limit_mm": 300.0,
+      "within_rated": true
+     },
+     "fr5_j6_pgc_m1": {
+      "payload_kg": 4.368,
+      "cog_offset_from_flange_mm": 263.6,
+      "cog_axial_mm": 258.7,
+      "cog_radial_mm": 50.6,
+      "held_cog_offset_mm": 357.7,
+      "flange_static_moment_max_Nm": 11.3,
+      "rated_margin_kg": 0.632,
+      "cog_limit_mm": 300.0,
+      "within_rated": true
+     },
+     "fr5_j6_pgc_m2": {
+      "payload_kg": 4.309,
+      "cog_offset_from_flange_mm": 283.9,
+      "cog_axial_mm": 268.2,
+      "cog_radial_mm": 93.3,
+      "held_cog_offset_mm": 377.4,
+      "flange_static_moment_max_Nm": 12.0,
+      "rated_margin_kg": 0.691,
+      "cog_limit_mm": 300.0,
+      "within_rated": true
+     },
+     "fr5_j6_pgc_m3": {
+      "payload_kg": 4.104,
+      "cog_offset_from_flange_mm": 284.5,
+      "cog_axial_mm": 284.3,
+      "cog_radial_mm": 11.0,
+      "held_cog_offset_mm": 365.4,
+      "flange_static_moment_max_Nm": 11.45,
+      "rated_margin_kg": 0.896,
+      "cog_limit_mm": 300.0,
+      "within_rated": true
+     }
+    }
+   }
+  }
+ },
+ "attempts": [
+  {
+   "set": "bascarrot",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_bascarrot_mnt_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 14.4,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 50,
+   "bad_states": null,
+   "settings": [
+    "ACT=bascarrot",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_bascarrot_full_ur5e_enc2_pgc.json",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_bascarrot_mnt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_bascarrot_mnt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 1959,
+     "hit_states": 0,
+     "min_reserve_mm": 3.0,
+     "elapsed_s": 126,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "bascarrot",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_bascarrot_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 63,
+   "bad_states": null,
+   "settings": [
+    "ACT=bascarrot",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_bascarrot_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_bascarrot_mnt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "bascarrot",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_bascarrot_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 14.6,
+   "act_time_upper_E_s": 16.1,
+   "elapsed_s": 83,
+   "bad_states": 18,
+   "settings": [
+    "ACT=bascarrot",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_bascarrot_rt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "bascarrot",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_bascarrot_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 14.4,
+   "act_time_upper_E_s": 14.7,
+   "elapsed_s": 90,
+   "bad_states": 1,
+   "settings": [
+    "ACT=bascarrot",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_bascarrot_rt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "basket",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_basket_mnt_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 62,
+   "bad_states": null,
+   "settings": [
+    "ACT=basket",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=8",
+    "BYAW=-20",
+    "BPITCH=30",
+    "XTAPC=-0.25",
+    "XD=0,-.06,.02",
+    "XCART=pick:-0.55;over the tub:-0.55",
+    "SEEDUR=results/r19/prep/chain_basket_y20p30_ur5e_enc2_pgc.json",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_basket_mnt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#5"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "basket",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_basket_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 83,
+   "bad_states": null,
+   "settings": [
+    "ACT=basket",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "BYAW=-20",
+    "BPITCH=30",
+    "SEEDUR=results/r19/prep/chain_basket_y20p30_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_basket_mnt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#5"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "basket",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_basket_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 32.9,
+   "act_time_upper_E_s": 33.2,
+   "elapsed_s": 110,
+   "bad_states": 39,
+   "settings": [
+    "ACT=basket",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "BYAW=-20",
+    "BPITCH=30",
+    "XD=0,-.06,.02",
+    "XTAPC=-0.25",
+    "XCART=pick:-0.55;over the tub:-0.55",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_basket_rt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "basket",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_basket_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 34.6,
+   "act_time_upper_E_s": 35.6,
+   "elapsed_s": 143,
+   "bad_states": 41,
+   "settings": [
+    "ACT=basket",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "BYAW=-20",
+    "BPITCH=30",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_basket_rt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt2",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_mnt2_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 229,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=10",
+    "KEEP=1",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt2_fr5_j6_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 2,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt2",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt2_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 205,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=10",
+    "KEEP=1",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt2_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt2",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_mnt2_ur5e_enc2_pgc_m1",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 45.9,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 176,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m1",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt2_ur5e_enc2_pgc_m1.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt2_ur5e_enc2_pgc_m1_verify4mm.json",
+     "ok": true,
+     "states": 2998,
+     "hit_states": 0,
+     "min_reserve_mm": 2.19,
+     "elapsed_s": 136,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt2",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt2_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 47.1,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 183,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt2_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt2_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3558,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 151,
+     "superseded_by_m2_t8": true
+    }
+   ],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt2t8",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt2t8_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 47.1,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 183,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt2t8_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt2t8_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3558,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 84,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt3",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_mnt3_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 162,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/mount/seed_chain_carrot_fr5xfull_fr5_j6_pgc_sp20.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt3"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt3_fr5_j6_pgc_m1.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt3",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt3_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 162,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/mount/seed_chain_carrot_fr5xfull_fr5_j6_pgc_sp20.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt3"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt3_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt4rz100",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt4rz100_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 106,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "RZ=1.00",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt4rz100"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt4rz100_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt4rz96",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt4rz96_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 105,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "RZ=.96",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt4rz96"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt4rz96_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt5v1",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt5v1_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 188,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "XTAPC=-0.056",
+    "TAG=mnt5v1"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt5v1_fr5_j6_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 2,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt5v2",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt5v2_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 190,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "XTAPC=0.0",
+    "TAG=mnt5v2"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt5v2_fr5_j6_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 2,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt5v3",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt5v3_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 46.8,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 182,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "XTAPC=-0.15",
+    "TAG=mnt5v3"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt5v3_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt5v3_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3741,
+     "hit_states": 0,
+     "min_reserve_mm": 2.19,
+     "elapsed_s": 102,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt5v4",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt5v4_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 156,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=y30p-15",
+    "XL2R=y30p-15",
+    "TAG=mnt5v4"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt5v4_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt5v5",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt5v5_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 152,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=level",
+    "XL2R=level",
+    "TAG=mnt5v5"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt5v5_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt5v6",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt5v6_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 50.9,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 191,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=y45p-30",
+    "XL2R=y45p-30",
+    "TAG=mnt5v6"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt5v6_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt5v6_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 4953,
+     "hit_states": 0,
+     "min_reserve_mm": 2.11,
+     "elapsed_s": 126,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt5v7",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt5v7_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 49.8,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 190,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "XTAPC=0.10",
+    "TAG=mnt5v7"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt5v7_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt5v7_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 4206,
+     "hit_states": 0,
+     "min_reserve_mm": 3.0,
+     "elapsed_s": 118,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt5v8",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt5v8_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 146,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=p-30",
+    "XL2R=p-30",
+    "TAG=mnt5v8"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt5v8_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt6t10",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_mnt6t10_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 48.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 175,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m1",
+    "XTAPC=0.10",
+    "TAG=mnt6t10"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt6t10_fr5_j6_pgc_m1.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt6t15",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_mnt6t15_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 47.7,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 170,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m1",
+    "XTAPC=-0.15",
+    "TAG=mnt6t15"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt6t15_fr5_j6_pgc_m1.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt6t15_fr5_j6_pgc_m1_verify4mm.json",
+     "ok": true,
+     "states": 4188,
+     "hit_states": 0,
+     "min_reserve_mm": 2.31,
+     "elapsed_s": 56,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_mnt_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 208,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt_fr5_j6_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 2,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 171,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_carrot_mnt_fr5_j6_pgc_m3",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 52.5,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 226,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt_fr5_j6_pgc_m3.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt_fr5_j6_pgc_m3_verify4mm.json",
+     "ok": true,
+     "states": 6300,
+     "hit_states": 0,
+     "min_reserve_mm": 2.37,
+     "elapsed_s": 258,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_mnt_ur5e_enc2_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 152,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=1",
+    "ARM=ur5e_enc2_pgc_m1",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt_ur5e_enc2_pgc_m1.json",
+   "failed_anchors": [
+    "over the chute#10"
+   ],
+   "failed_joins": 1,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 202,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=1",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [
+    "over the chute#10"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_carrot_mnt_ur5e_enc2_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 186,
+   "bad_states": null,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=1",
+    "ARM=ur5e_enc2_pgc_m3",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_carrot_mnt_ur5e_enc2_pgc_m3.json",
+   "failed_anchors": [
+    "under the tap#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_rt_fr5_j6_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 52.7,
+   "act_time_upper_E_s": 52.9,
+   "elapsed_s": 203,
+   "bad_states": 5,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m1"
+   ],
+   "file": "results/r19/mount\\chain_carrot_rt_fr5_j6_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 52.7,
+   "act_time_upper_E_s": 52.8,
+   "elapsed_s": 205,
+   "bad_states": 3,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_carrot_rt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_carrot_rt_fr5_j6_pgc_m3",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 52.7,
+   "act_time_upper_E_s": 55.6,
+   "elapsed_s": 211,
+   "bad_states": 1,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m3"
+   ],
+   "file": "results/r19/mount\\chain_carrot_rt_fr5_j6_pgc_m3.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_carrot_rt_ur5e_enc2_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 47.0,
+   "act_time_upper_E_s": 48.2,
+   "elapsed_s": 198,
+   "bad_states": 15,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m1"
+   ],
+   "file": "results/r19/mount\\chain_carrot_rt_ur5e_enc2_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_carrot_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 47.0,
+   "act_time_upper_E_s": 47.6,
+   "elapsed_s": 199,
+   "bad_states": 11,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_carrot_rt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "carrot",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_carrot_rt_ur5e_enc2_pgc_m3",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 47.0,
+   "act_time_upper_E_s": 53.2,
+   "elapsed_s": 186,
+   "bad_states": 0,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m3"
+   ],
+   "file": "results/r19/mount\\chain_carrot_rt_ur5e_enc2_pgc_m3.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_carrot_rt_ur5e_enc2_pgc_m3_verify4mm.json",
+     "ok": true,
+     "states": 5030,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 203,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "ct2s",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_ct2s_mnt_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 124,
+   "bad_states": null,
+   "settings": [
+    "ACT=ct2s",
+    "CP=-.52",
+    "PLUME=0",
+    "MOUTHZ=.12",
+    "CLANE=-0.954,-.16,1.12",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_ct2s_mnt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [
+    "over the pan on the folded cradle#5"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "ct2s",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_ct2s_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 72,
+   "bad_states": null,
+   "settings": [
+    "ACT=ct2s",
+    "CP=-.52",
+    "LANEC=-.52",
+    "PLUME=0",
+    "MOUTHZ=.12",
+    "CLANE=-0.954,-.16,1.12",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_ct2s_mnt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [
+    "over the pan on the folded cradle#5"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "ct2s",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_ct2s_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 29.7,
+   "act_time_upper_E_s": 31.0,
+   "elapsed_s": 178,
+   "bad_states": 49,
+   "settings": [
+    "ACT=ct2s",
+    "CP=-.52",
+    "PLUME=0",
+    "MOUTHZ=.12",
+    "CLANE=-0.954,-.16,1.12",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_ct2s_rt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "ct2s",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_ct2s_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 26.8,
+   "act_time_upper_E_s": 28.7,
+   "elapsed_s": 170,
+   "bad_states": 40,
+   "settings": [
+    "ACT=ct2s",
+    "CP=-.52",
+    "LANEC=-.52",
+    "PLUME=0",
+    "MOUTHZ=.12",
+    "CLANE=-0.954,-.16,1.12",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_ct2s_rt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "ctray",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_ctray_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 38.2,
+   "act_time_upper_E_s": 38.6,
+   "elapsed_s": 179,
+   "bad_states": 0,
+   "settings": [
+    "ACT=ctray",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_ctray_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_ctray_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3456,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 203,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "ctray",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_ctray_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 38.1,
+   "act_time_upper_E_s": 38.5,
+   "elapsed_s": 201,
+   "bad_states": 0,
+   "settings": [
+    "ACT=ctray",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_ctray_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_ctray_rt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3320,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 196,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "fold",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_fold_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 4.6,
+   "act_time_upper_E_s": 4.6,
+   "elapsed_s": 33,
+   "bad_states": 0,
+   "settings": [
+    "ACT=fold",
+    "PAN=1",
+    "FC=.172",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_fold_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_fold_rt_fr5_j6_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 490,
+     "hit_states": 0,
+     "min_reserve_mm": 1.99,
+     "elapsed_s": 26,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "fold",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_fold_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 4.6,
+   "act_time_upper_E_s": 4.6,
+   "elapsed_s": 42,
+   "bad_states": 0,
+   "settings": [
+    "ACT=fold",
+    "PAN=1",
+    "FC=.172",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_fold_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_fold_rt_ur5e_enc2_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 511,
+     "hit_states": 0,
+     "min_reserve_mm": 1.99,
+     "elapsed_s": 30,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "lever",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_lever_s+1_mnt_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 3.6,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 25,
+   "bad_states": null,
+   "settings": [
+    "ACT=lever",
+    "SIGN=1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lever_s+1_final_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_lever_s+1_mnt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_lever_s+1_mnt_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 190,
+     "hit_states": 0,
+     "min_reserve_mm": 2.04,
+     "elapsed_s": 27,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "lever",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_lever_s+1_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 3.6,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 33,
+   "bad_states": null,
+   "settings": [
+    "ACT=lever",
+    "SIGN=1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lever_s+1_final_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_lever_s+1_mnt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_lever_s+1_mnt_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 180,
+     "hit_states": 0,
+     "min_reserve_mm": 2.67,
+     "elapsed_s": 26,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "lever",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_lever_s+1_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 3.6,
+   "act_time_upper_E_s": 3.6,
+   "elapsed_s": 19,
+   "bad_states": 30,
+   "settings": [
+    "ACT=lever",
+    "SIGN=1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lever_s+1_rt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lever",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_lever_s+1_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 3.5,
+   "act_time_upper_E_s": 3.5,
+   "elapsed_s": 16,
+   "bad_states": 30,
+   "settings": [
+    "ACT=lever",
+    "SIGN=1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lever_s+1_rt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lever",
+   "tag": "rttest",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_lever_s+1_rttest_ur5e_enc2_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 3.5,
+   "act_time_upper_E_s": 6.7,
+   "elapsed_s": 14,
+   "bad_states": 8,
+   "settings": [
+    "ACT=lever",
+    "SIGN=1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lever_s+1_rttest_ur5e_enc2_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lid",
+   "tag": "mnt2",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_lid_s-1_mnt2_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 126,
+   "bad_states": null,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SEEDS=2",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+    "TOOLS_OFF=spider,ladle,spatula",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_mnt2_fr5_j6_pgc_m1.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_mnt2_fr5_j6_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2601,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 77,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "lid",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_lid_s-1_mnt_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 71,
+   "bad_states": null,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+    "TOOLS_OFF=spider,ladle,spatula",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_mnt_fr5_j6_pgc_m1.json",
+   "failed_anchors": [
+    "lift off#0"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lid",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_lid_s-1_mnt_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 83,
+   "bad_states": null,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+    "TOOLS_OFF=spider,ladle,spatula",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_mnt_fr5_j6_pgc_m2.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lid",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_lid_s-1_mnt_fr5_j6_pgc_m3",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 75,
+   "bad_states": null,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+    "TOOLS_OFF=spider,ladle,spatula",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_mnt_fr5_j6_pgc_m3.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lid",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_lid_s-1_mnt_ur5e_enc2_pgc_m1",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 115,
+   "bad_states": null,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+    "TOOLS_OFF=spider,ladle,spatula",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m1",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_mnt_ur5e_enc2_pgc_m1.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lid",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_lid_s-1_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 90,
+   "bad_states": null,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+    "TOOLS_OFF=spider,ladle,spatula",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_mnt_ur5e_enc2_pgc_m2.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lid",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_lid_s-1_mnt_ur5e_enc2_pgc_m3",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 89,
+   "bad_states": null,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+    "TOOLS_OFF=spider,ladle,spatula",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m3",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_mnt_ur5e_enc2_pgc_m3.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lid",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_lid_s-1_rt_fr5_j6_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": 20.4,
+   "elapsed_s": 44,
+   "bad_states": 6,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_rt_fr5_j6_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "lid",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_lid_s-1_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": 20.3,
+   "elapsed_s": 55,
+   "bad_states": 0,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2269,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 46,
+     "superseded_by_m2_t8": true
+    },
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_fr5_j6_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 2269,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 128,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "lid",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_lid_s-1_rt_fr5_j6_pgc_m3",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": 20.3,
+   "elapsed_s": 43,
+   "bad_states": 0,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_rt_fr5_j6_pgc_m3.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_fr5_j6_pgc_m3_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 1836,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 39,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "lid",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_lid_s-1_rt_ur5e_enc2_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": 20.3,
+   "elapsed_s": 54,
+   "bad_states": 0,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_rt_ur5e_enc2_pgc_m1.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_ur5e_enc2_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2410,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 102,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "lid",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_lid_s-1_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": 20.3,
+   "elapsed_s": 70,
+   "bad_states": 0,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2299,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 106,
+     "superseded_by_m2_t8": true
+    },
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 2299,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 131,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "lid",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_lid_s-1_rt_ur5e_enc2_pgc_m3",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": 20.3,
+   "elapsed_s": 45,
+   "bad_states": 0,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_lid_s-1_rt_ur5e_enc2_pgc_m3.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_ur5e_enc2_pgc_m3_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 1799,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 77,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "press",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_press_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 4.6,
+   "act_time_upper_E_s": 4.6,
+   "elapsed_s": 25,
+   "bad_states": 0,
+   "settings": [
+    "ACT=press",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_press_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_press_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 223,
+     "hit_states": 0,
+     "min_reserve_mm": 1.0,
+     "elapsed_s": 30,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "press",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_press_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 4.6,
+   "act_time_upper_E_s": 4.6,
+   "elapsed_s": 33,
+   "bad_states": 0,
+   "settings": [
+    "ACT=press",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_press_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_press_rt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 221,
+     "hit_states": 0,
+     "min_reserve_mm": 1.0,
+     "elapsed_s": 32,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "soak",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_soak_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 26.9,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 40,
+   "bad_states": null,
+   "settings": [
+    "ACT=soak",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=1",
+    "SEEDUR=results/r19/prep/chain_soak_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_soak_mnt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_soak_mnt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 2151,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 193,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "soak",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_soak_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 26.9,
+   "act_time_upper_E_s": 27.3,
+   "elapsed_s": 86,
+   "bad_states": 0,
+   "settings": [
+    "ACT=soak",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=1",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_soak_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_soak_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 2265,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 174,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "soak",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_soak_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 26.9,
+   "act_time_upper_E_s": 27.6,
+   "elapsed_s": 99,
+   "bad_states": 19,
+   "settings": [
+    "ACT=soak",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=1",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_soak_rt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt2",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_spatula_s-1_mnt2_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 134,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=2",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt2_fr5_j6_pgc_m1.json",
+   "failed_anchors": [
+    "pick#0"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt3",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_spatula_s-1_mnt3_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 125,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=1",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r19/mount/seed_chain_spatula_s-1_r18roll-1.15_.30_fr5_j6_pgc_sp20.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt3"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt3_fr5_j6_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 1,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt6",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_spatula_s-1_mnt6_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 112,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt6"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt6_fr5_j6_pgc_m1.json",
+   "failed_anchors": [
+    "pick#0"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_spatula_s-1_mnt_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 81,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt_fr5_j6_pgc_m1.json",
+   "failed_anchors": [
+    "pick#0"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_spatula_s-1_mnt_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 26.6,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 105,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_mnt_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2237,
+     "hit_states": 0,
+     "min_reserve_mm": 2.03,
+     "elapsed_s": 84,
+     "superseded_by_m2_t8": true
+    },
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_mnt_fr5_j6_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 2237,
+     "hit_states": 0,
+     "min_reserve_mm": 2.03,
+     "elapsed_s": 65,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_spatula_s-1_mnt_fr5_j6_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 190,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt_fr5_j6_pgc_m3.json",
+   "failed_anchors": [],
+   "failed_joins": 1,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_spatula_s-1_mnt_ur5e_enc2_pgc_m1",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 26.6,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 127,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m1",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt_ur5e_enc2_pgc_m1.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_spatula_s-1_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 26.6,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 133,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt_ur5e_enc2_pgc_m2.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_spatula_s-1_mnt_ur5e_enc2_pgc_m3",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 26.7,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 144,
+   "bad_states": null,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m3",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_mnt_ur5e_enc2_pgc_m3.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_spatula_s-1_rt_fr5_j6_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 26.6,
+   "act_time_upper_E_s": 26.7,
+   "elapsed_s": 110,
+   "bad_states": 1,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_rt_fr5_j6_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_spatula_s-1_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 26.6,
+   "act_time_upper_E_s": 26.7,
+   "elapsed_s": 104,
+   "bad_states": 1,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_rt_fr5_j6_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "spatula",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_spatula_s-1_rt_fr5_j6_pgc_m3",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 26.6,
+   "act_time_upper_E_s": 26.9,
+   "elapsed_s": 61,
+   "bad_states": 0,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_rt_fr5_j6_pgc_m3.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_fr5_j6_pgc_m3_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2157,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 93,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "spatula",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_spatula_s-1_rt_ur5e_enc2_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 26.9,
+   "act_time_upper_E_s": 27.1,
+   "elapsed_s": 73,
+   "bad_states": 0,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_rt_ur5e_enc2_pgc_m1.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_ur5e_enc2_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2021,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 84,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "spatula",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_spatula_s-1_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 26.9,
+   "act_time_upper_E_s": 27.0,
+   "elapsed_s": 60,
+   "bad_states": 0,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2457,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 90,
+     "superseded_by_m2_t8": true
+    },
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 2457,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 63,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "spatula",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_spatula_s-1_rt_ur5e_enc2_pgc_m3",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 26.9,
+   "act_time_upper_E_s": 27.2,
+   "elapsed_s": 74,
+   "bad_states": 0,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_spatula_s-1_rt_ur5e_enc2_pgc_m3.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_ur5e_enc2_pgc_m3_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2488,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 97,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "spider",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_spider_s+1_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 50.7,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 182,
+   "bad_states": null,
+   "settings": [
+    "ACT=spider",
+    "SIGN=1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r19/pot/chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_spider_s+1_mnt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_spider_s+1_mnt_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 4375,
+     "hit_states": 0,
+     "min_reserve_mm": 2.12,
+     "elapsed_s": 83,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "spider",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_spider_s+1_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 51.4,
+   "act_time_upper_E_s": 51.5,
+   "elapsed_s": 85,
+   "bad_states": 0,
+   "settings": [
+    "ACT=spider",
+    "SIGN=1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_spider_s+1_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_spider_s+1_rt_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 5841,
+     "hit_states": 0,
+     "min_reserve_mm": 2.03,
+     "elapsed_s": 107,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "spider",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_spider_s+1_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 50.7,
+   "act_time_upper_E_s": 51.0,
+   "elapsed_s": 148,
+   "bad_states": 20,
+   "settings": [
+    "ACT=spider",
+    "SIGN=1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_spider_s+1_rt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "stgwok",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_stgwok_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 20.2,
+   "act_time_upper_E_s": 20.4,
+   "elapsed_s": 131,
+   "bad_states": 0,
+   "settings": [
+    "ACT=stgwok",
+    "C0=1.21",
+    "POURC=1.21",
+    "SW=-.32,.05,1.11,0",
+    "SLANE=-.36,.19,1.26",
+    "TIP=-135",
+    "ANCH=lifted",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=1",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_stgwok_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_stgwok_rt_ur5e_enc2_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 1974,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 43,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "tomato",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_tomato_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 36.5,
+   "act_time_upper_E_s": 37.2,
+   "elapsed_s": 134,
+   "bad_states": 0,
+   "settings": [
+    "ACT=tomato",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_tomato_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_tomato_rt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3090,
+     "hit_states": 0,
+     "min_reserve_mm": 1.0,
+     "elapsed_s": 114,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "tubempty",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_tubempty_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 115,
+   "bad_states": null,
+   "settings": [
+    "ACT=tubempty",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=3",
+    "SEEDUR=results/r19/prep/chain_tubempty_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_tubempty_mnt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [
+    "pick (full)#0",
+    "over the sink#4",
+    "over its spot#9"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "tubempty",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_tubempty_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 22.7,
+   "act_time_upper_E_s": 23.1,
+   "elapsed_s": 137,
+   "bad_states": 0,
+   "settings": [
+    "ACT=tubempty",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_tubempty_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_tubempty_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3671,
+     "hit_states": 0,
+     "min_reserve_mm": 2.05,
+     "elapsed_s": 233,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "tubempty",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_tubempty_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 23.9,
+   "act_time_upper_E_s": 27.1,
+   "elapsed_s": 169,
+   "bad_states": 63,
+   "settings": [
+    "ACT=tubempty",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_tubempty_rt_ur5e_enc2_pgc_m2.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "tubfill",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_tubfill_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 45.6,
+   "act_time_upper_E_s": 46.0,
+   "elapsed_s": 113,
+   "bad_states": 0,
+   "settings": [
+    "ACT=tubfill",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_tubfill_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_tubfill_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 2975,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 204,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "tubfill",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_tubfill_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 45.3,
+   "act_time_upper_E_s": 45.7,
+   "elapsed_s": 122,
+   "bad_states": 0,
+   "settings": [
+    "ACT=tubfill",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=3",
+    "TPITCH=15",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_tubfill_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_tubfill_rt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 2932,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 188,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "unfold",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_unfold_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 4.6,
+   "act_time_upper_E_s": 4.6,
+   "elapsed_s": 35,
+   "bad_states": 0,
+   "settings": [
+    "ACT=unfold",
+    "PAN=1",
+    "FC=.172",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_unfold_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_unfold_rt_fr5_j6_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 490,
+     "hit_states": 0,
+     "min_reserve_mm": 1.99,
+     "elapsed_s": 25,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "unfold",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_unfold_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 4.6,
+   "act_time_upper_E_s": 4.6,
+   "elapsed_s": 41,
+   "bad_states": 0,
+   "settings": [
+    "ACT=unfold",
+    "PAN=1",
+    "FC=.172",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "file": "results/r19/mount\\chain_unfold_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\chain_unfold_rt_ur5e_enc2_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 512,
+     "hit_states": 0,
+     "min_reserve_mm": 1.99,
+     "elapsed_s": 31,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "wok",
+   "tag": "mnt2",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_mnt2_fr5_j6_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 238,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=2",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt2_fr5_j6_pgc_m3.json",
+   "failed_anchors": [
+    "over the plate#4",
+    "under the tap#8"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt2",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_mnt2_ur5e_enc2_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 281,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=2",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m3",
+    "TAG=mnt2"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt2_ur5e_enc2_pgc_m3.json",
+   "failed_anchors": [
+    "over the plate#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt6g0",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_mnt6g0_fr5_j6_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 92,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "GTILT=0",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt6g0"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt6g0_fr5_j6_pgc_m3.json",
+   "failed_anchors": [
+    "lifted#1",
+    "over the plate#4",
+    "under the tap#8",
+    "lowered#15"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt6g0",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_mnt6g0_ur5e_enc2_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 114,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "GTILT=0",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m3",
+    "TAG=mnt6g0"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt6g0_ur5e_enc2_pgc_m3.json",
+   "failed_anchors": [
+    "lifted#1",
+    "over the plate#4",
+    "under the tap#8",
+    "lowered#15"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt6g40",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_mnt6g40_fr5_j6_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 138,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "GTILT=40",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt6g40"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt6g40_fr5_j6_pgc_m3.json",
+   "failed_anchors": [
+    "over the plate#4",
+    "under the tap#8"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt6g40",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_mnt6g40_ur5e_enc2_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 179,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "GTILT=40",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m3",
+    "TAG=mnt6g40"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt6g40_ur5e_enc2_pgc_m3.json",
+   "failed_anchors": [
+    "over the plate#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_wok_s-1_mnt_fr5_j6_pgc_m1",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 48.3,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 207,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt_fr5_j6_pgc_m1.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_mnt_fr5_j6_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 4594,
+     "hit_states": 0,
+     "min_reserve_mm": 2.57,
+     "elapsed_s": 209,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "wok",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_wok_s-1_mnt_fr5_j6_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 48.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 207,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt_fr5_j6_pgc_m2.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_mnt_fr5_j6_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 150,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt_fr5_j6_pgc_m3.json",
+   "failed_anchors": [
+    "over the plate#4",
+    "under the tap#8"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_wok_s-1_mnt_ur5e_enc2_pgc_m1",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 47.9,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 213,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m1",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt_ur5e_enc2_pgc_m1.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_mnt_ur5e_enc2_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 4496,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 217,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "wok",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_wok_s-1_mnt_ur5e_enc2_pgc_m2",
+   "kind": "re-plan",
+   "ok": true,
+   "act_time_s": 47.7,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 224,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt_ur5e_enc2_pgc_m2.json",
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "mnt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_mnt_ur5e_enc2_pgc_m3",
+   "kind": "re-plan",
+   "ok": false,
+   "act_time_s": 0.0,
+   "act_time_upper_E_s": null,
+   "elapsed_s": 203,
+   "bad_states": null,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m3",
+    "TAG=mnt"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_mnt_ur5e_enc2_pgc_m3.json",
+   "failed_anchors": [
+    "over the plate#4"
+   ],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m1",
+   "base": "chain_wok_s-1_rt_fr5_j6_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 49.1,
+   "act_time_upper_E_s": 49.5,
+   "elapsed_s": 154,
+   "bad_states": 18,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_rt_fr5_j6_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_wok_s-1_rt_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 49.1,
+   "act_time_upper_E_s": 49.2,
+   "elapsed_s": 116,
+   "bad_states": 0,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_rt_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rt_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 5205,
+     "hit_states": 0,
+     "min_reserve_mm": 2.57,
+     "elapsed_s": 232,
+     "superseded_by_m2_t8": true
+    },
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rt_fr5_j6_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 5205,
+     "hit_states": 0,
+     "min_reserve_mm": 2.57,
+     "elapsed_s": 178,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "wok",
+   "tag": "rt",
+   "arm": "fr5_j6_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_rt_fr5_j6_pgc_m3",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 49.1,
+   "act_time_upper_E_s": 53.8,
+   "elapsed_s": 153,
+   "bad_states": 56,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_rt_fr5_j6_pgc_m3.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m1",
+   "base": "chain_wok_s-1_rt_ur5e_enc2_pgc_m1",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 48.9,
+   "act_time_upper_E_s": 49.2,
+   "elapsed_s": 161,
+   "bad_states": 17,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_rt_ur5e_enc2_pgc_m1.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "wok",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_wok_s-1_rt_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 48.9,
+   "act_time_upper_E_s": 49.0,
+   "elapsed_s": 125,
+   "bad_states": 0,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_rt_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 5115,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 229,
+     "superseded_by_m2_t8": true
+    },
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 5115,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 183,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "wok",
+   "tag": "rt",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m3",
+   "base": "chain_wok_s-1_rt_ur5e_enc2_pgc_m3",
+   "kind": "re-target (stored path kept)",
+   "ok": false,
+   "act_time_s": 48.9,
+   "act_time_upper_E_s": 52.0,
+   "elapsed_s": 164,
+   "bad_states": 81,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_rt_ur5e_enc2_pgc_m3.json",
+   "failed_anchors": [],
+   "failed_joins": 0,
+   "checks": [],
+   "certified": false
+  },
+  {
+   "set": "plate2",
+   "tag": "rtplate2",
+   "arm": "fr5_j6_pgc",
+   "mount": "m2",
+   "base": "chain_wok_s-1_rtplate2_fr5_j6_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 49.1,
+   "act_time_upper_E_s": 49.2,
+   "elapsed_s": 90,
+   "bad_states": 0,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "PX=.17",
+    "PLATE2=.43",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_rtplate2_fr5_j6_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rtplate2_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 5185,
+     "hit_states": 0,
+     "min_reserve_mm": 2.57,
+     "elapsed_s": 146,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  },
+  {
+   "set": "plate2",
+   "tag": "rtplate2",
+   "arm": "ur5e_enc2_pgc",
+   "mount": "m2",
+   "base": "chain_wok_s-1_rtplate2_ur5e_enc2_pgc_m2",
+   "kind": "re-target (stored path kept)",
+   "ok": true,
+   "act_time_s": 48.9,
+   "act_time_upper_E_s": 49.0,
+   "elapsed_s": 101,
+   "bad_states": 0,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "PX=.17",
+    "PLATE2=.43",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "file": "results/r19/mount\\chain_wok_s-1_rtplate2_ur5e_enc2_pgc_m2.json",
+   "checks": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rtplate2_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 5089,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 149,
+     "superseded_by_m2_t8": false
+    }
+   ],
+   "certified": true
+  }
+ ],
+ "best": {
+  "bascarrot/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 14.4,
+   "elapsed_s": 50,
+   "settings": [
+    "ACT=bascarrot",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_bascarrot_full_ur5e_enc2_pgc.json",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_bascarrot_mnt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 1959,
+     "hit_states": 0,
+     "min_reserve_mm": 3.0,
+     "elapsed_s": 126,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "bascarrot/ur5e_enc2_pgc/m2": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 0.0,
+   "elapsed_s": 63,
+   "settings": [
+    "ACT=bascarrot",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_bascarrot_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": []
+  },
+  "basket/fr5_j6_pgc/m2": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 0.0,
+   "elapsed_s": 62,
+   "settings": [
+    "ACT=basket",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=8",
+    "BYAW=-20",
+    "BPITCH=30",
+    "XTAPC=-0.25",
+    "XD=0,-.06,.02",
+    "XCART=pick:-0.55;over the tub:-0.55",
+    "SEEDUR=results/r19/prep/chain_basket_y20p30_ur5e_enc2_pgc.json",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": []
+  },
+  "basket/ur5e_enc2_pgc/m2": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 0.0,
+   "elapsed_s": 83,
+   "settings": [
+    "ACT=basket",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "BYAW=-20",
+    "BPITCH=30",
+    "SEEDUR=results/r19/prep/chain_basket_y20p30_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": []
+  },
+  "carrot/fr5_j6_pgc/m1": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt6t15",
+   "act_time_s": 47.7,
+   "elapsed_s": 170,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m1",
+    "XTAPC=-0.15",
+    "TAG=mnt6t15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt6t15_fr5_j6_pgc_m1_verify4mm.json",
+     "ok": true,
+     "states": 4188,
+     "hit_states": 0,
+     "min_reserve_mm": 2.31,
+     "elapsed_s": 56,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "carrot/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt5v3",
+   "act_time_s": 46.8,
+   "elapsed_s": 182,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "ARM=fr5_j6_pgc_m2",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "XTAPC=-0.15",
+    "TAG=mnt5v3"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt5v3_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3741,
+     "hit_states": 0,
+     "min_reserve_mm": 2.19,
+     "elapsed_s": 102,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "carrot/fr5_j6_pgc/m3": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 52.5,
+   "elapsed_s": 226,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_r2_ur5e_enc2_pgc.json",
+    "CHAPP=0",
+    "CHUP=0,-.10,.18",
+    "XL1R=y30p-30",
+    "XL2R=y30p-30",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt_fr5_j6_pgc_m3_verify4mm.json",
+     "ok": true,
+     "states": 6300,
+     "hit_states": 0,
+     "min_reserve_mm": 2.37,
+     "elapsed_s": 258,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "carrot/ur5e_enc2_pgc/m1": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt2",
+   "act_time_s": 45.9,
+   "elapsed_s": 176,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m1",
+    "TAG=mnt2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt2_ur5e_enc2_pgc_m1_verify4mm.json",
+     "ok": true,
+     "states": 2998,
+     "hit_states": 0,
+     "min_reserve_mm": 2.19,
+     "elapsed_s": 136,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "carrot/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt2t8",
+   "act_time_s": 47.1,
+   "elapsed_s": 183,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=2",
+    "SEEDUR=results/r19/prep/chain_carrot_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_carrot_mnt2t8_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3558,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 84,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "carrot/ur5e_enc2_pgc/m3": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 47.0,
+   "elapsed_s": 186,
+   "settings": [
+    "ACT=carrot",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m3"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_carrot_rt_ur5e_enc2_pgc_m3_verify4mm.json",
+     "ok": true,
+     "states": 5030,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 203,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "ct2s/fr5_j6_pgc/m2": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 0.0,
+   "elapsed_s": 124,
+   "settings": [
+    "ACT=ct2s",
+    "CP=-.52",
+    "PLUME=0",
+    "MOUTHZ=.12",
+    "CLANE=-0.954,-.16,1.12",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": []
+  },
+  "ct2s/ur5e_enc2_pgc/m2": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 0.0,
+   "elapsed_s": 72,
+   "settings": [
+    "ACT=ct2s",
+    "CP=-.52",
+    "LANEC=-.52",
+    "PLUME=0",
+    "MOUTHZ=.12",
+    "CLANE=-0.954,-.16,1.12",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=2",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": []
+  },
+  "ctray/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 38.2,
+   "elapsed_s": 179,
+   "settings": [
+    "ACT=ctray",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_ctray_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3456,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 203,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "ctray/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 38.1,
+   "elapsed_s": 201,
+   "settings": [
+    "ACT=ctray",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_ctray_rt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3320,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 196,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "fold/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 4.6,
+   "elapsed_s": 33,
+   "settings": [
+    "ACT=fold",
+    "PAN=1",
+    "FC=.172",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_fold_rt_fr5_j6_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 490,
+     "hit_states": 0,
+     "min_reserve_mm": 1.99,
+     "elapsed_s": 26,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "fold/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 4.6,
+   "elapsed_s": 42,
+   "settings": [
+    "ACT=fold",
+    "PAN=1",
+    "FC=.172",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_fold_rt_ur5e_enc2_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 511,
+     "hit_states": 0,
+     "min_reserve_mm": 1.99,
+     "elapsed_s": 30,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "lever/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 3.6,
+   "elapsed_s": 25,
+   "settings": [
+    "ACT=lever",
+    "SIGN=1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lever_s+1_final_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_lever_s+1_mnt_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 190,
+     "hit_states": 0,
+     "min_reserve_mm": 2.04,
+     "elapsed_s": 27,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "lever/ur5e_enc2_pgc/m1": {
+   "certified": false,
+   "kind": "re-target (stored path kept)",
+   "tag": "rttest",
+   "act_time_s": 3.5,
+   "elapsed_s": 14,
+   "settings": [
+    "ACT=lever",
+    "SIGN=1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": []
+  },
+  "lever/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 3.6,
+   "elapsed_s": 33,
+   "settings": [
+    "ACT=lever",
+    "SIGN=1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lever_s+1_final_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_lever_s+1_mnt_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 180,
+     "hit_states": 0,
+     "min_reserve_mm": 2.67,
+     "elapsed_s": 26,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "lid/fr5_j6_pgc/m1": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt2",
+   "act_time_s": 20.2,
+   "elapsed_s": 126,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SEEDS=2",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+    "TOOLS_OFF=spider,ladle,spatula",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_mnt2_fr5_j6_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2601,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 77,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "lid/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 20.2,
+   "elapsed_s": 55,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_fr5_j6_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 2269,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 128,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "lid/fr5_j6_pgc/m3": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 20.2,
+   "elapsed_s": 43,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_fr5_j6_pgc_m3_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 1836,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 39,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "lid/ur5e_enc2_pgc/m1": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 20.2,
+   "elapsed_s": 54,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_ur5e_enc2_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2410,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 102,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "lid/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 20.2,
+   "elapsed_s": 70,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 2299,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 131,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "lid/ur5e_enc2_pgc/m3": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 20.2,
+   "elapsed_s": 45,
+   "settings": [
+    "ACT=lid",
+    "SIGN=-1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_lid_s-1_rt_ur5e_enc2_pgc_m3_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 1799,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 77,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "plate2/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rtplate2",
+   "act_time_s": 49.1,
+   "elapsed_s": 90,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "PX=.17",
+    "PLATE2=.43",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rtplate2_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 5185,
+     "hit_states": 0,
+     "min_reserve_mm": 2.57,
+     "elapsed_s": 146,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "plate2/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rtplate2",
+   "act_time_s": 48.9,
+   "elapsed_s": 101,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "PX=.17",
+    "PLATE2=.43",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rtplate2_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 5089,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 149,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "press/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 4.6,
+   "elapsed_s": 25,
+   "settings": [
+    "ACT=press",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_press_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 223,
+     "hit_states": 0,
+     "min_reserve_mm": 1.0,
+     "elapsed_s": 30,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "press/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 4.6,
+   "elapsed_s": 33,
+   "settings": [
+    "ACT=press",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_press_rt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 221,
+     "hit_states": 0,
+     "min_reserve_mm": 1.0,
+     "elapsed_s": 32,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "soak/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 26.9,
+   "elapsed_s": 86,
+   "settings": [
+    "ACT=soak",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=1",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_soak_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 2265,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 174,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "soak/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 26.9,
+   "elapsed_s": 40,
+   "settings": [
+    "ACT=soak",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=1",
+    "SEEDUR=results/r19/prep/chain_soak_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_soak_mnt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 2151,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 193,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "spatula/fr5_j6_pgc/m1": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt2",
+   "act_time_s": 0.0,
+   "elapsed_s": 134,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=2",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt2"
+   ],
+   "check": []
+  },
+  "spatula/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 26.6,
+   "elapsed_s": 105,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_mnt_fr5_j6_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 2237,
+     "hit_states": 0,
+     "min_reserve_mm": 2.03,
+     "elapsed_s": 65,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "spatula/fr5_j6_pgc/m3": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 26.6,
+   "elapsed_s": 61,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_fr5_j6_pgc_m3_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2157,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 93,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "spatula/ur5e_enc2_pgc/m1": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 26.9,
+   "elapsed_s": 73,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_ur5e_enc2_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2021,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 84,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "spatula/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 26.9,
+   "elapsed_s": 60,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 2457,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 63,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "spatula/ur5e_enc2_pgc/m3": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 26.9,
+   "elapsed_s": 74,
+   "settings": [
+    "ACT=spatula",
+    "SIGN=-1",
+    "SPATREST=-1.15,.30",
+    "SPATELEV=8",
+    "SPATROLL=180",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_spatula_s-1_rt_ur5e_enc2_pgc_m3_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 2488,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 97,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "spider/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 51.4,
+   "elapsed_s": 85,
+   "settings": [
+    "ACT=spider",
+    "SIGN=1",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_spider_s+1_rt_fr5_j6_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 5841,
+     "hit_states": 0,
+     "min_reserve_mm": 2.03,
+     "elapsed_s": 107,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "spider/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 50.7,
+   "elapsed_s": 182,
+   "settings": [
+    "ACT=spider",
+    "SIGN=1",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r19/pot/chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_spider_s+1_mnt_ur5e_enc2_pgc_m2_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 4375,
+     "hit_states": 0,
+     "min_reserve_mm": 2.12,
+     "elapsed_s": 83,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "stgwok/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 20.2,
+   "elapsed_s": 131,
+   "settings": [
+    "ACT=stgwok",
+    "C0=1.21",
+    "POURC=1.21",
+    "SW=-.32,.05,1.11,0",
+    "SLANE=-.36,.19,1.26",
+    "TIP=-135",
+    "ANCH=lifted",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=1",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_stgwok_rt_ur5e_enc2_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 1974,
+     "hit_states": 0,
+     "min_reserve_mm": 2.0,
+     "elapsed_s": 43,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "tomato/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 36.5,
+   "elapsed_s": 134,
+   "settings": [
+    "ACT=tomato",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_tomato_rt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3090,
+     "hit_states": 0,
+     "min_reserve_mm": 1.0,
+     "elapsed_s": 114,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "tubempty/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 22.7,
+   "elapsed_s": 137,
+   "settings": [
+    "ACT=tubempty",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_tubempty_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 3671,
+     "hit_states": 0,
+     "min_reserve_mm": 2.05,
+     "elapsed_s": 233,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "tubempty/ur5e_enc2_pgc/m2": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 0.0,
+   "elapsed_s": 115,
+   "settings": [
+    "ACT=tubempty",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=3",
+    "SEEDUR=results/r19/prep/chain_tubempty_full_ur5e_enc2_pgc.json",
+    "ARM=ur5e_enc2_pgc_m2",
+    "TAG=mnt"
+   ],
+   "check": []
+  },
+  "tubfill/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 45.6,
+   "elapsed_s": 113,
+   "settings": [
+    "ACT=tubfill",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_tubfill_rt_fr5_j6_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 2975,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 204,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "tubfill/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 45.3,
+   "elapsed_s": 122,
+   "settings": [
+    "ACT=tubfill",
+    "SEEDS=1",
+    "TRIES=10",
+    "KEEP=3",
+    "TPITCH=15",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_tubfill_rt_ur5e_enc2_pgc_m2_verify4mm.json",
+     "ok": true,
+     "states": 2932,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 188,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "unfold/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 4.6,
+   "elapsed_s": 35,
+   "settings": [
+    "ACT=unfold",
+    "PAN=1",
+    "FC=.172",
+    "SEEDS=2",
+    "TRIES=10",
+    "KEEP=2",
+    "ARM=fr5_j6_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_unfold_rt_fr5_j6_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 490,
+     "hit_states": 0,
+     "min_reserve_mm": 1.99,
+     "elapsed_s": 25,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "unfold/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 4.6,
+   "elapsed_s": 41,
+   "settings": [
+    "ACT=unfold",
+    "PAN=1",
+    "FC=.172",
+    "SEEDS=3",
+    "TRIES=12",
+    "KEEP=4",
+    "ARM=ur5e_enc2_pgc_m2"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\chain_unfold_rt_ur5e_enc2_pgc_m2_verify4mm_pot.json",
+     "ok": true,
+     "states": 512,
+     "hit_states": 0,
+     "min_reserve_mm": 1.99,
+     "elapsed_s": 31,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "wok/fr5_j6_pgc/m1": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 48.3,
+   "elapsed_s": 207,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m1",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_mnt_fr5_j6_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 4594,
+     "hit_states": 0,
+     "min_reserve_mm": 2.57,
+     "elapsed_s": 209,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "wok/fr5_j6_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 49.1,
+   "elapsed_s": 116,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rt_fr5_j6_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 5205,
+     "hit_states": 0,
+     "min_reserve_mm": 2.57,
+     "elapsed_s": 178,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "wok/fr5_j6_pgc/m3": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt2",
+   "act_time_s": 0.0,
+   "elapsed_s": 238,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=2",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=fr5_j6_pgc_m3",
+    "TAG=mnt2"
+   ],
+   "check": []
+  },
+  "wok/ur5e_enc2_pgc/m1": {
+   "certified": true,
+   "kind": "re-plan",
+   "tag": "mnt",
+   "act_time_s": 47.9,
+   "elapsed_s": 213,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=1",
+    "TRIES=8",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m1",
+    "TAG=mnt"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_mnt_ur5e_enc2_pgc_m1_rack_sp1.56_.20.json",
+     "ok": true,
+     "states": 4496,
+     "hit_states": 0,
+     "min_reserve_mm": 2.01,
+     "elapsed_s": 217,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "wok/ur5e_enc2_pgc/m2": {
+   "certified": true,
+   "kind": "re-target (stored path kept)",
+   "tag": "rt",
+   "act_time_s": 48.9,
+   "elapsed_s": 125,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15"
+   ],
+   "check": [
+    {
+     "file": "results/r19/mount\\check_chain_wok_s-1_rt_ur5e_enc2_pgc_m2_rack_sp1.56_.20_t8.json",
+     "ok": true,
+     "states": 5115,
+     "hit_states": 0,
+     "min_reserve_mm": 2.02,
+     "elapsed_s": 183,
+     "superseded_by_m2_t8": false
+    }
+   ]
+  },
+  "wok/ur5e_enc2_pgc/m3": {
+   "certified": false,
+   "kind": "re-plan",
+   "tag": "mnt2",
+   "act_time_s": 0.0,
+   "elapsed_s": 281,
+   "settings": [
+    "ACT=wok",
+    "SIGN=-1",
+    "GTILT=25",
+    "L2X=-.25",
+    "SINKC=-1.06",
+    "SEEDS=2",
+    "TRIES=12",
+    "KEEP=4",
+    "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+    "SPX=1.56",
+    "SPY=.20",
+    "PY=.15",
+    "ARM=ur5e_enc2_pgc_m3",
+    "TAG=mnt2"
+   ],
+   "check": []
+  }
+ }
+}

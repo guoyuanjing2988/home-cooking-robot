@@ -1,0 +1,107 @@
+{
+ "file": "results/r19/mount/chain_spatula_s-1_rt_fr5_j6_pgc_m3.json",
+ "ok": true,
+ "spider_rest": [
+  1.56,
+  0.2
+ ],
+ "arm": "fr5_j6_pgc_m3",
+ "rack": "keyed",
+ "tool_xy": {
+  "spatula": [
+   -1.15,
+   0.3
+  ],
+  "ladle": [
+   1.62,
+   0.24
+  ],
+  "spider": [
+   1.52,
+   0.36
+  ]
+ },
+ "windows": [],
+ "parts": {
+  "play": {
+   "states": 2091,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "hit_pairs": [],
+   "out_of_range": 0,
+   "window_states": 0,
+   "min_reserve_by_category": {
+    "robot_environment": {
+     "reserve_mm": 81.574,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_fr5_j6_pgc_m3_forearm_h_elbow"
+     ]
+    },
+    "held_gripper_environment": {
+     "reserve_mm": 2.004,
+     "pair": [
+      "r15_wok_t2_7",
+      "R_gripper_r18_spat_blade4"
+     ]
+    },
+    "arm_arm_or_frame": {
+     "reserve_mm": 101.46,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_m3_upperarm_h_shoulder"
+     ]
+    },
+    "self": {
+     "reserve_mm": 2.003,
+     "pair": [
+      "R_geom_fr5_j6_pgc_m3_wrist1_h_j5",
+      "R_geom_fr5_j6_pgc_m3_wrist3_flange"
+     ]
+    }
+   },
+   "min_env_reserve_mm": 2.004
+  },
+  "app0": {
+   "states": 66,
+   "max_step_bound_mm": 3.994,
+   "hit_states": 0,
+   "hit_pairs": [],
+   "out_of_range": 0,
+   "window_states": 0,
+   "min_reserve_by_category": {
+    "robot_environment": {
+     "reserve_mm": 127.649,
+     "pair": [
+      "r16_spatula_handle",
+      "R_geom_fr5_j6_pgc_m3_forearm_tube"
+     ]
+    },
+    "held_gripper_environment": {
+     "reserve_mm": 26.943,
+     "pair": [
+      "r16_spatula_handle",
+      "R_finger_plus"
+     ]
+    },
+    "arm_arm_or_frame": {
+     "reserve_mm": 108.39,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_m3_upperarm_h_shoulder"
+     ]
+    },
+    "self": {
+     "reserve_mm": 2.076,
+     "pair": [
+      "R_geom_fr5_j6_pgc_m3_forearm_h_wrist1",
+      "R_gripper_oem_upper"
+     ]
+    }
+   },
+   "min_env_reserve_mm": 26.943
+  }
+ },
+ "elapsed_s": 93,
+ "method": "R19 pot zone (GitHub #37, #8): the binding <= 4 mm re-check of a chain in the pot-zone layout. New file.\n\nAs r19enc_check.py recheck / r19enc_adopt.py: the stored play (2pi-unwrapped, joint-linear between stored states,\ncut so that the point bound between consecutive states is <= 4 mm, r19smooth.sample_poly) and each grasp approach /\nrelease retreat (approach_qs, empty gripper, the object in the world as r17chain's GR worlds) go state by state\nthrough Checker.check(full=True): MuJoCo contacts + the GJK lower-bound certificate, 10 mm robot-environment,\n5 mm gripper / held-environment, self, joint ranges. Unchanged checker and gates. Scene: the R18b layout of\nr19enc_check.py (plating spot PY, spatula on its rest left of the sink, ladle off) with the kitchen19pot layer:\nthe spider rest from the chain's own tool_xy, and RACK=keyed the keyed lid rack. For a lid chain with RACK=keyed the\ndeclared insertion window (kitchen19pot.window()) is attached to its checker: in window states the held lid parts\nvs the rack parts are the intended contact (Checker.permissions), nothing else changes; window states are counted.\npython r19pot_check.py <chain json>[,<chain json>...] [RACK=keyed] [POTWIN=1] [SPX= SPY=] ARM=ur5e_enc2_pgc PY=.15 [WORKERS=16]\n -> results/r19/mount/check_<chain name>[_rack].json"
+}

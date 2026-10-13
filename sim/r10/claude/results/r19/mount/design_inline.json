@@ -1,0 +1,385 @@
+{
+ "method": "R19 #42: design search for a buildable gripper mount (new file; reads only, writes results/r19/mount/design*.json).\n\nFor each arm (ur5e_enc2_pgc: the k-DOP wrist-3 hulls; fr5_j6_pgc: the FR5 wrist-3 cylinder) the wrist-3 collision geoms\nare taken from the built scene into the UR flange convention (r19mount.py: F, u = +x_F, the side the gripper base sits on;\nthe FR5 geoms are turned back by its clock_deg). A candidate mount (r19mount.MOUNTS format) moves the housing pieces\n(R_gripper_oem_*, R_gripper_palm, as built) rigidly and adds the bracket pieces. Gate: every housing piece and the bracket\nbody >= 5 mm from every wrist-3 geom (the gripper / held gate); the mating boss is reported, exempt (bolted mating face).\nDistances: mj_geomDistance (signed, distmax 0.2 m) in a small model holding only these geoms, and distance.Bounds.pair (the\nchecker's GJK lower bound, >= 0) as a cross-check.\nSearches (TCP change = the rigid motion applied to the current TCP; rotation = rot_deg):\n C1  same tilt and offset, move along the flange axis only: smallest dz that passes on both arms;\n C4  same tilt, move along the flange axis and radially (du, dz grid, 2.5 mm): smallest |TCP change| that passes;\n C2  wedge: same tilt, face centre (cu, h) on a wedge over the flange; buildability: face low edge >= WALL above the\n     flange face, robot-side M6 counterbores (PCD 50 at +-45 deg) under >= SCREW_H of material; smallest |TCP change|;\n C3  inline: gripper axis on J6 (turned 26.6 deg), DH flange on an ISO 50 spacer of thickness t (0 and 10 mm reported).\npython r19mount_design.py [STEP=.0025] [PART=all|L|hull|wedge|inline|mounts] [FRESH=1] -> results/r19/mount/design[_<PART>].json\n(the wrist-3 / housing geometry is cached in results/r19/mount/geo_cache.pkl; FRESH=1 rebuilds it)",
+ "gate_mm": 5.0,
+ "tilt0_deg": 26.616299624513847,
+ "current": {
+  "tcp_F_mm": [
+   13.4,
+   0.0,
+   127.9
+  ],
+  "face_centre_F_mm": [
+   77.7,
+   0.0,
+   -45.1
+  ],
+  "axis": [
+   -0.4481,
+   0.0,
+   0.894
+  ],
+  "clearance": {
+   "arms": {
+    "ur5e_enc2_pgc": {
+     "R_gripper_palm": {
+      "mm": 7.93,
+      "mj_signed_mm": 7.91,
+      "gjk_lower_mm": 7.93,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": -16.87,
+      "mj_signed_mm": -16.87,
+      "gjk_lower_mm": 0.0,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_upper": {
+      "mm": -6.3,
+      "mj_signed_mm": -6.3,
+      "gjk_lower_mm": 0.0,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 35.11,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 35.11,
+      "vs": "R_geom_enc2_w3_0"
+     }
+    },
+    "fr5_j6_pgc": {
+     "R_gripper_palm": {
+      "mm": 8.17,
+      "mj_signed_mm": 8.17,
+      "gjk_lower_mm": 8.17,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": -19.28,
+      "mj_signed_mm": -19.28,
+      "gjk_lower_mm": 0.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_upper": {
+      "mm": -13.39,
+      "mj_signed_mm": -13.39,
+      "gjk_lower_mm": 0.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 35.35,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 35.35,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     }
+    },
+    "fr5_j6_pgc_sp20": {
+     "R_gripper_palm": {
+      "mm": 28.17,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 28.17,
+      "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": -14.74,
+      "mj_signed_mm": -14.74,
+      "gjk_lower_mm": 0.0,
+      "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     },
+     "R_gripper_oem_upper": {
+      "mm": 10.51,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 10.51,
+      "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 55.35,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 55.35,
+      "vs": "R_geom_fr5_j6_pgc_sp20_wrist3_flange"
+     }
+    }
+   }
+  }
+ },
+ "C1_L": {},
+ "C4_L": {},
+ "C3": {
+  "t5mm": {
+   "gate_mm": 5.76,
+   "ok": true,
+   "tcp_change_mm": [
+    6.6,
+    -0.0,
+    60.7
+   ],
+   "tcp_change_norm_mm": 61.1,
+   "arms": {
+    "ur5e_enc2_pgc": 5.76,
+    "fr5_j6_pgc": 6.0
+   },
+   "pieces": {
+    "ur5e_enc2_pgc": {
+     "R_gripper_palm": {
+      "mm": 74.36,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 74.36,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": 5.86,
+      "mj_signed_mm": 5.86,
+      "gjk_lower_mm": 5.86,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_upper": {
+      "mm": 57.86,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 57.86,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 103.86,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 103.86,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_mount_base": {
+      "mm": 0.76,
+      "mj_signed_mm": 0.76,
+      "gjk_lower_mm": 0.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_mount_body": {
+      "mm": 5.76,
+      "mj_signed_mm": 5.76,
+      "gjk_lower_mm": 5.76,
+      "vs": "R_geom_enc2_w3_0"
+     }
+    },
+    "fr5_j6_pgc": {
+     "R_gripper_palm": {
+      "mm": 74.6,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 74.6,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": 6.1,
+      "mj_signed_mm": 6.1,
+      "gjk_lower_mm": 6.1,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_upper": {
+      "mm": 58.1,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 58.1,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 104.1,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 104.1,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_mount_base": {
+      "mm": 1.0,
+      "mj_signed_mm": 1.0,
+      "gjk_lower_mm": 1.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_mount_body": {
+      "mm": 6.0,
+      "mj_signed_mm": 6.0,
+      "gjk_lower_mm": 6.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     }
+    }
+   }
+  },
+  "t8mm": {
+   "gate_mm": 5.76,
+   "ok": true,
+   "tcp_change_mm": [
+    6.6,
+    -0.0,
+    63.6
+   ],
+   "tcp_change_norm_mm": 63.9,
+   "arms": {
+    "ur5e_enc2_pgc": 5.76,
+    "fr5_j6_pgc": 6.0
+   },
+   "pieces": {
+    "ur5e_enc2_pgc": {
+     "R_gripper_palm": {
+      "mm": 77.26,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 77.26,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": 8.76,
+      "mj_signed_mm": 8.76,
+      "gjk_lower_mm": 8.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_upper": {
+      "mm": 60.76,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 60.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 106.76,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 106.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_mount_base": {
+      "mm": 0.76,
+      "mj_signed_mm": 0.76,
+      "gjk_lower_mm": 0.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_mount_body": {
+      "mm": 5.76,
+      "mj_signed_mm": 5.76,
+      "gjk_lower_mm": 5.76,
+      "vs": "R_geom_enc2_w3_0"
+     }
+    },
+    "fr5_j6_pgc": {
+     "R_gripper_palm": {
+      "mm": 77.5,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 77.5,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": 9.0,
+      "mj_signed_mm": 9.0,
+      "gjk_lower_mm": 9.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_upper": {
+      "mm": 61.0,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 61.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 107.0,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 107.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_mount_base": {
+      "mm": 1.0,
+      "mj_signed_mm": 1.0,
+      "gjk_lower_mm": 1.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_mount_body": {
+      "mm": 6.0,
+      "mj_signed_mm": 6.0,
+      "gjk_lower_mm": 6.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     }
+    }
+   }
+  },
+  "t10mm": {
+   "gate_mm": 5.76,
+   "ok": true,
+   "tcp_change_mm": [
+    6.6,
+    -0.0,
+    65.6
+   ],
+   "tcp_change_norm_mm": 65.9,
+   "arms": {
+    "ur5e_enc2_pgc": 5.76,
+    "fr5_j6_pgc": 6.0
+   },
+   "pieces": {
+    "ur5e_enc2_pgc": {
+     "R_gripper_palm": {
+      "mm": 79.26,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 79.26,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": 10.76,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 10.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_upper": {
+      "mm": 62.76,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 62.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 108.76,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 108.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_mount_base": {
+      "mm": 0.76,
+      "mj_signed_mm": 0.76,
+      "gjk_lower_mm": 0.76,
+      "vs": "R_geom_enc2_w3_0"
+     },
+     "R_gripper_oem_mount_body": {
+      "mm": 5.76,
+      "mj_signed_mm": 5.76,
+      "gjk_lower_mm": 5.76,
+      "vs": "R_geom_enc2_w3_0"
+     }
+    },
+    "fr5_j6_pgc": {
+     "R_gripper_palm": {
+      "mm": 79.5,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 79.5,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_envelope": {
+      "mm": 11.0,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 11.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_upper": {
+      "mm": 63.0,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 63.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_jaws": {
+      "mm": 109.0,
+      "mj_signed_mm": 10.0,
+      "gjk_lower_mm": 109.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_mount_base": {
+      "mm": 1.0,
+      "mj_signed_mm": 1.0,
+      "gjk_lower_mm": 1.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     },
+     "R_gripper_oem_mount_body": {
+      "mm": 6.0,
+      "mj_signed_mm": 6.0,
+      "gjk_lower_mm": 6.0,
+      "vs": "R_geom_fr5_j6_pgc_wrist3_flange"
+     }
+    }
+   }
+  }
+ },
+ "MOUNTS": {}
+}

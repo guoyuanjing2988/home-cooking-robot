@@ -1,0 +1,146 @@
+{
+ "file": "results/r19/mount/chain_lever_s+1_mnt_fr5_j6_pgc_m2.json",
+ "ok": true,
+ "spider_rest": [
+  1.56,
+  0.2
+ ],
+ "arm": "fr5_j6_pgc_m2",
+ "rack": "keyed",
+ "tool_xy": {
+  "spatula": [
+   1.52,
+   0.3
+  ],
+  "ladle": [
+   1.62,
+   0.24
+  ],
+  "spider": [
+   1.56,
+   0.2
+  ]
+ },
+ "windows": [],
+ "parts": {
+  "play": {
+   "states": 152,
+   "max_step_bound_mm": 3.909,
+   "hit_states": 0,
+   "hit_pairs": [],
+   "out_of_range": 0,
+   "window_states": 0,
+   "min_reserve_by_category": {
+    "robot_environment": {
+     "reserve_mm": 26.071,
+     "pair": [
+      "r17_faucet_spout",
+      "R_geom_fr5_j6_pgc_m2_upperarm_h_elbow"
+     ]
+    },
+    "held_gripper_environment": {
+     "reserve_mm": 5.981,
+     "pair": [
+      "r17_lever_hub",
+      "R_gripper_r17_lever_bar"
+     ]
+    },
+    "arm_arm_or_frame": {
+     "reserve_mm": 104.692,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_m2_upperarm_h_shoulder"
+     ]
+    },
+    "self": {
+     "reserve_mm": 2.02,
+     "pair": [
+      "R_geom_fr5_j6_pgc_m2_wrist1_h_j5",
+      "R_gripper_oem_mount_base"
+     ]
+    }
+   },
+   "min_env_reserve_mm": 5.981
+  },
+  "app0": {
+   "states": 19,
+   "max_step_bound_mm": 3.333,
+   "hit_states": 0,
+   "hit_pairs": [],
+   "out_of_range": 0,
+   "window_states": 0,
+   "min_reserve_by_category": {
+    "robot_environment": {
+     "reserve_mm": 12.698,
+     "pair": [
+      "upper_cabinet_1",
+      "R_geom_fr5_j6_pgc_m2_forearm_h_elbow"
+     ]
+    },
+    "held_gripper_environment": {
+     "reserve_mm": 20.0,
+     "pair": [
+      "r17_lever_tip",
+      "R_finger_plus"
+     ]
+    },
+    "arm_arm_or_frame": {
+     "reserve_mm": 104.692,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_m2_upperarm_h_shoulder"
+     ]
+    },
+    "self": {
+     "reserve_mm": 8.13,
+     "pair": [
+      "R_geom_fr5_j6_pgc_m2_forearm_h_wrist1",
+      "R_geom_fr5_j6_pgc_m2_wrist2_neck"
+     ]
+    }
+   },
+   "min_env_reserve_mm": 12.698
+  },
+  "app1": {
+   "states": 19,
+   "max_step_bound_mm": 3.333,
+   "hit_states": 0,
+   "hit_pairs": [],
+   "out_of_range": 0,
+   "window_states": 0,
+   "min_reserve_by_category": {
+    "robot_environment": {
+     "reserve_mm": 2.045,
+     "pair": [
+      "upper_cabinet_1",
+      "R_geom_fr5_j6_pgc_m2_forearm_web"
+     ]
+    },
+    "held_gripper_environment": {
+     "reserve_mm": 2.667,
+     "pair": [
+      "r17_lever_bar",
+      "R_finger_plus"
+     ]
+    },
+    "arm_arm_or_frame": {
+     "reserve_mm": 104.842,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_fr5_j6_pgc_m2_upperarm_h_shoulder"
+     ]
+    },
+    "self": {
+     "reserve_mm": 7.164,
+     "pair": [
+      "R_geom_fr5_j6_pgc_m2_wrist1_neck",
+      "R_geom_fr5_j6_pgc_m2_wrist3_flange"
+     ]
+    }
+   },
+   "min_env_reserve_mm": 2.045
+  }
+ },
+ "elapsed_s": 27,
+ "method": "R19 pot zone (GitHub #37, #8): the binding <= 4 mm re-check of a chain in the pot-zone layout. New file.\n\nAs r19enc_check.py recheck / r19enc_adopt.py: the stored play (2pi-unwrapped, joint-linear between stored states,\ncut so that the point bound between consecutive states is <= 4 mm, r19smooth.sample_poly) and each grasp approach /\nrelease retreat (approach_qs, empty gripper, the object in the world as r17chain's GR worlds) go state by state\nthrough Checker.check(full=True): MuJoCo contacts + the GJK lower-bound certificate, 10 mm robot-environment,\n5 mm gripper / held-environment, self, joint ranges. Unchanged checker and gates. Scene: the R18b layout of\nr19enc_check.py (plating spot PY, spatula on its rest left of the sink, ladle off) with the kitchen19pot layer:\nthe spider rest from the chain's own tool_xy, and RACK=keyed the keyed lid rack. For a lid chain with RACK=keyed the\ndeclared insertion window (kitchen19pot.window()) is attached to its checker: in window states the held lid parts\nvs the rack parts are the intended contact (Checker.permissions), nothing else changes; window states are counted.\npython r19pot_check.py <chain json>[,<chain json>...] [RACK=keyed] [POTWIN=1] [SPX= SPY=] ARM=ur5e_enc2_pgc PY=.15 [WORKERS=16]\n -> results/r19/mount/check_<chain name>[_rack].json"
+}

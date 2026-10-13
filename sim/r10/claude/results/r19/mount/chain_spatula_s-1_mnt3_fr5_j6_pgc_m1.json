@@ -1,0 +1,686 @@
+{
+  "act": "spatula",
+  "obj": "spatula_b",
+  "arm": "fr5_j6_pgc_m1",
+  "plate_y": 0.15,
+  "seed_ur": "results/r19/mount/seed_chain_spatula_s-1_r18roll-1.15_.30_fr5_j6_pgc_sp20.json",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {},
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      -1.15,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.56,
+      0.2
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 125,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        -1.15,
+        0.345,
+        0.937
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        -1.15,
+        0.345,
+        0.989
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out and up",
+      "p": [
+        -1.15,
+        0.265,
+        1.109
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        -0.16,
+        -0.02,
+        1.15
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.047,
+        1.108
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "stroke start",
+      "p": [
+        0.83,
+        0.097,
+        0.958
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "pick#0": {
+      "ok": true,
+      "cand": 0,
+      "cart": -0.779,
+      "start_reserve_mm": 5.0
+    },
+    "stroke start#5": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.446,
+      "start_reserve_mm": 5.7
+    }
+  },
+  "pieces": [
+    {
+      "frm": "pick#0",
+      "to": "lane#3",
+      "steps": 125,
+      "time_s": 12.3,
+      "min_reserve_mm": 6.0,
+      "max_step_deg": 1.53,
+      "cart": [
+        -0.779,
+        0.15
+      ]
+    },
+    {
+      "frm": "stroke start#5",
+      "to": "lane#3",
+      "steps": 116,
+      "time_s": 11.5,
+      "min_reserve_mm": 15.4,
+      "max_step_deg": 1.56,
+      "cart": [
+        0.448,
+        -0.383
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "ok": false,
+      "arm_deg": 1000.0,
+      "cart_m": 0.533,
+      "reason": "shuffle or join blocked from both sides",
+      "at": "lane",
+      "best_pair_deg": 1000.0
+    }
+  ],
+  "approaches": [
+    {
+      "ok": true,
+      "kf": 0,
+      "min_reserve_mm": 27.0,
+      "time_s": 0.6
+    }
+  ],
+  "min_reserve_mm": 6.0,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick",
+      "cand": 0,
+      "start_reserve_mm": 4.8,
+      "cart": -1.38,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.38,
+        "step_deg": 2.47,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 1,
+      "start_reserve_mm": 4.8,
+      "cart": -1.456,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.456,
+        "step_deg": 2.27,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 2,
+      "start_reserve_mm": 4.8,
+      "cart": -1.397,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.397,
+        "step_deg": 2.43,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 3,
+      "start_reserve_mm": 4.8,
+      "cart": -1.415,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.415,
+        "step_deg": 2.38,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 4,
+      "start_reserve_mm": 4.8,
+      "cart": -1.431,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.431,
+        "step_deg": 2.34,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 5,
+      "start_reserve_mm": 4.8,
+      "cart": -1.445,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.445,
+        "step_deg": 2.3,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 6,
+      "start_reserve_mm": 4.8,
+      "cart": -1.472,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.472,
+        "step_deg": 2.23,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 7,
+      "start_reserve_mm": 4.8,
+      "cart": -1.353,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.353,
+        "step_deg": 2.54,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 8,
+      "start_reserve_mm": 4.8,
+      "cart": -1.334,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.334,
+        "step_deg": 2.58,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 9,
+      "start_reserve_mm": 5.0,
+      "cart": -1.273,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out and up",
+        "kf": null,
+        "cart": -1.266,
+        "step_deg": 2.18,
+        "pose_mm": 0.01,
+        "reserve_mm": 18.3,
+        "dt": 0.0961480340123731,
+        "hits": [
+          [
+            "R_base_plate",
+            "R_gripper_palm"
+          ],
+          [
+            "R_base_plate",
+            "R_finger_plus"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 10,
+      "start_reserve_mm": 5.0,
+      "cart": -1.421,
+      "ok": false,
+      "fail": {
+        "at": "lifted->out and up",
+        "kf": null,
+        "cart": -1.433,
+        "step_deg": 1.89,
+        "pose_mm": 0.01,
+        "reserve_mm": 26.2,
+        "dt": 0.0961480340123731,
+        "hits": [
+          [
+            "R_geom_fr5_j6_pgc_m1_forearm_tube",
+            "R_geom_fr5_j6_pgc_m1_wrist2_h_j6"
+          ],
+          [
+            "R_geom_fr5_j6_pgc_m1_forearm_tube",
+            "R_geom_fr5_j6_pgc_m1_wrist3_flange"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 11,
+      "start_reserve_mm": 5.0,
+      "cart": -0.779,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 0,
+      "start_reserve_mm": 5.7,
+      "cart": 0.446,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 1,
+      "start_reserve_mm": 5.7,
+      "cart": 0.419,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 2,
+      "start_reserve_mm": 5.7,
+      "cart": 0.305,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 3,
+      "start_reserve_mm": 5.7,
+      "cart": 0.247,
+      "ok": true,
+      "fail": null
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    [
+      [
+        -0.7785463084122171,
+        -0.21,
+        0.0,
+        2.5465261546068096,
+        -2.4210417666393047,
+        -2.1481656319224633,
+        -1.3480671587580666,
+        0.7830508821892881,
+        2.876419027888121,
+        0.025,
+        0.025
+      ],
+      [
+        -0.7785463084122171,
+        -0.21,
+        0.0,
+        2.5636646761756596,
+        -2.428462591711191,
+        -2.1318580602599257,
+        -1.3629694073930556,
+        0.7990733077606996,
+        2.8849747005314845,
+        0.025,
+        0.025
+      ],
+      [
+        -0.7785463084122171,
+        -0.21,
+        0.0,
+        2.5803238575780134,
+        -2.4360430912112703,
+        -2.1151189797453243,
+        -1.3777065168199398,
+        0.8146816152469112,
+        2.8930388961779894,
+        0.025,
+        0.025
+      ],
+      [
+        -0.7785463084122171,
+        -0.21,
+        0.0,
+        2.5965118966081877,
+        -2.443782893850702,
+        -2.097950000206029,
+        -1.3923158595388858,
+        0.8298787098065673,
+        2.900650534610115,
+        0.025,
+        0.025
+      ],
+      [
+        -0.7785463084122171,
+        -0.21,
+        0.0,
+        2.6122377622851785,
+        -2.451682410275544,
+        -2.080352797020597,
+        -1.4068299906242128,
+        0.8446688087368903,
+        2.907844682672236,
+        0.025,
+        0.025
+      ],
+      [
+        -0.7785463084122171,
+        -0.21,
+        0.0,
+        2.6275110660516123,
+        -2.459742696034765,
+        -2.062328997667549,
+        -1.4212773628090734,
+        0.8590572471660117,
+        2.914653006169049,
+        0.025,
+        0.025
+      ],
+      [
+        -0.7785463084122171,
+        -0.21,
+        0.0,
+        2.6423419431670907,
+        -2.4679653422053183,
+        -2.04388007939341,
+        -1.4356829413942782,
+        0.8730503024907318,
+        2.9211041611429085,
+        0.025,
+        0.025
+      ]
+    ]
+  ],
+  "r19pot": {
+    "layer": {
+      "rack": "keyed",
+      "spider": [
+        1.56,
+        0.2
+      ]
+    },
+    "windows": [],
+    "cabgate_extra_mm": 0.0,
+    "upper_fixtures": [
+      "r14_upper_over_hood",
+      "r14_hood",
+      "upper_cabinet_2",
+      "r07_closed_door_2_0",
+      "door_pause_sensor_2_0"
+    ],
+    "argv": [
+      "ACT=spatula",
+      "SIGN=-1",
+      "SPATREST=-1.15,.30",
+      "SPATELEV=8",
+      "SPATROLL=180",
+      "SEEDS=1",
+      "TRIES=12",
+      "KEEP=4",
+      "SEEDUR=results/r19/mount/seed_chain_spatula_s-1_r18roll-1.15_.30_fr5_j6_pgc_sp20.json",
+      "SPX=1.56",
+      "SPY=.20",
+      "PY=.15",
+      "ARM=fr5_j6_pgc_m1",
+      "TAG=mnt3",
+      "RACK=keyed"
+    ]
+  },
+  "r19mount_run": {
+    "runner": "r19pot_chain.py",
+    "argv": [
+      "ACT=spatula",
+      "SIGN=-1",
+      "SPATREST=-1.15,.30",
+      "SPATELEV=8",
+      "SPATROLL=180",
+      "SEEDS=1",
+      "TRIES=12",
+      "KEEP=4",
+      "SEEDUR=results/r19/mount/seed_chain_spatula_s-1_r18roll-1.15_.30_fr5_j6_pgc_sp20.json",
+      "SPX=1.56",
+      "SPY=.20",
+      "PY=.15",
+      "ARM=fr5_j6_pgc_m1",
+      "TAG=mnt3"
+    ],
+    "runner_path": "results/r19/pot/chain_spatula_s-1_mnt3_fr5_j6_pgc_m1.json"
+  }
+}

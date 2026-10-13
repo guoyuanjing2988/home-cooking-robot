@@ -1,0 +1,21 @@
+start source state bad 16 first bad 0 max step 2.6
+start solver start 0 (12.8 mm) bad 16 first bad 0 max step 3.3
+start solver start 1 (12.8 mm) bad 16 first bad 0 max step 3.3
+start solver start 2 (12.8 mm) bad 16 first bad 0 max step 3.3
+start solver start 3 (12.8 mm) bad 16 first bad 0 max step 3.3
+start solver start 4 (12.8 mm) bad 16 first bad 0 max step 3.3
+start solver start 5 (12.8 mm) bad 16 first bad 0 max step 3.3
+play 16 states; bad 16 start source state max pose 5.584 mm, step 2.86 deg, dev 38.7 deg, min reserve -1.05 mm
+  bad {'i': 0, 'pose_mm': 5.584, 'rot_deg': 9.656, 'step_deg': 0.0, 'dev_deg': 20.63, 'reserve_mm': 8.75, 'hits': []}
+  bad {'i': 1, 'pose_mm': 5.214, 'rot_deg': 9.028, 'step_deg': 2.56, 'dev_deg': 23.19, 'reserve_mm': 8.6, 'hits': []}
+  bad {'i': 2, 'pose_mm': 4.86, 'rot_deg': 8.427, 'step_deg': 2.59, 'dev_deg': 25.41, 'reserve_mm': 9.18, 'hits': []}
+  bad {'i': 3, 'pose_mm': 4.524, 'rot_deg': 7.857, 'step_deg': 2.62, 'dev_deg': 27.36, 'reserve_mm': 9.94, 'hits': []}
+  bad {'i': 4, 'pose_mm': 4.206, 'rot_deg': 7.317, 'step_deg': 2.65, 'dev_deg': 29.08, 'reserve_mm': 10.66, 'hits': []}
+  bad {'i': 5, 'pose_mm': 3.906, 'rot_deg': 6.809, 'step_deg': 2.67, 'dev_deg': 30.62, 'reserve_mm': 11.35, 'hits': []}
+  bad {'i': 6, 'pose_mm': 3.626, 'rot_deg': 6.333, 'step_deg': 2.7, 'dev_deg': 32.0, 'reserve_mm': 11.33, 'hits': []}
+  bad {'i': 7, 'pose_mm': 3.366, 'rot_deg': 5.891, 'step_deg': 2.72, 'dev_deg': 33.23, 'reserve_mm': 10.89, 'hits': []}
+  bad {'i': 8, 'pose_mm': 3.126, 'rot_deg': 5.482, 'step_deg': 2.75, 'dev_deg': 34.32, 'reserve_mm': 10.41, 'hits': []}
+  bad {'i': 9, 'pose_mm': 2.907, 'rot_deg': 5.108, 'step_deg': 2.77, 'dev_deg': 35.29, 'reserve_mm': 9.89, 'hits': []}
+approach kf 0 7 states; bad 7 min reserve 6.46
+approach kf 1 7 states; bad 7 min reserve -1.05
+results/r19/mount/chain_lever_s+1_rt_fr5_j6_pgc_m2.json ok False elapsed 19 s {"source": "results/r17/chain_lever_s+1_final_fr5_j6_pgc_sp20.json", "source_arm": "fr5_j6_pgc_sp20", "window": false, "argv": ["ACT=lever", "SIGN=1", "SPX=1.56", "SPY=.20", "PY=.15"], "tcp_change_in_tool_frame": {"dp_mm": [76.24, 0.0, 9.6], "rot_deg": 0.0}, "start": "source state", "play_states": 16, "play_bad": 16, "approach_bad": 14, "max_pose_mm": 5.584, "max_rot_deg": 9.656, "max_step_deg": 2.86, "max_dev_from_source_deg": 38.72, "min_planning_reserve_mm": -1.05, "approach_min_reserve_mm": [6.46, -1.05], "max_joint_step_ratio_vs_source": 0.938, "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / the joint cap)", "elapsed_s": 19}

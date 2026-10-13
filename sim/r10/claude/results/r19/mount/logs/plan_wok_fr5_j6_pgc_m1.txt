@@ -1,0 +1,27 @@
+lifted start candidates 12 {'pose': 74, 'collision': 22, 'ur_seeds_ok': 12}
+ cand 0 cart 0.13 ok
+ cand 1 cart 0.14 ok
+ cand 2 cart 0.07 ok
+ cand 3 cart 0.15 ok
+over the plate start candidates 17 {'pose': 74, 'ok': 5, 'collision': 17, 'ur_seeds_ok': 12}
+ cand 0 cart -0.21 {'at': 'over the plate->tipped 90 (plated)', 'kf': None, 'cart': np.float64(-0.437), 'step_deg': 2.34, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.04444444444444444), 'hits': [['R_geom_fr5_j6_pgc_m1_upperarm_h_elbow', 'sink_front_rim']]}
+ cand 1 cart -0.23 ok
+ cand 2 cart -0.24 ok
+ cand 3 cart -0.25 ok
+ cand 4 cart -0.26 ok
+under the tap start candidates 9 {'collision': 35, 'ok': 15, 'pose': 46, 'ur_seeds_ok': 1}
+ cand 0 cart -1.06 ok
+ cand 1 cart -1.06 ok
+ cand 2 cart -1.06 ok
+ cand 3 cart -1.06 ok
+lowered start candidates 12 {'pose': 74, 'collision': 22, 'ur_seeds_ok': 12}
+ cand 0 cart 0.13 ok
+ cand 1 cart 0.14 ok
+ cand 2 cart 0.07 ok
+ cand 3 cart 0.15 ok
+joins at lane [(0, True), (1, True), (1, True), (2, True), (2, True), (4, True)]
+joins at lane [(0, True), (0, True), (0, True), (0, True), (4, True), (4, True)]
+joins at lane [(0, True), (0, True), (0, True), (0, True), (2, True), (2, True)]
+r19mount_run: written results/r19/mount/chain_wok_s-1_mnt_fr5_j6_pgc_m1.json
+results/r17/chain_wok_s-1_mnt_fr5_j6_pgc_m1.json
+{"act": "wok", "obj": "wok", "arm": "fr5_j6_pgc_m1", "plate_y": 0.15, "seed_ur": "results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json", "grasp_sense": -1, "design": {"pot_h": 0.12, "rack": 0.04, "lid_a": 0.0, "car_a": 45.0, "rack_ry": 90.0}, "scene": {"r17_lever": 30.0, "r15_plate_c": [0.43, 0.15, 0.85]}, "wok_tilt": 25.0, "wok_grasp": "top", "tool_xy": {"spatula": [1.52, 0.3], "ladle": [1.62, 0.24], "spider": [1.56, 0.2]}, "ok": true, "time_s": 48.3, "elapsed_s": 207, "anchors": {"lifted#1": {"ok": true, "cand": 0, "cart": 0.127, "start_reserve_mm": 8.2}, "over the plate#4": {"ok": true, "cand": 3, "cart": -0.261, "start_reserve_mm": 54.9}, "under the tap#8": {"ok": true, "cand": 0, "cart": -1.06, "start_reserve_mm": 54.2}, "lowered#15": {"ok": true, "cand": 0, "cart": 0.127, "start_reserve_mm": 8.2}}, "pieces": [{"frm": "lifted#1", "to": "pick#0", "steps": 3, "time_s": 0.2, "min_reserve_mm": 4.0, "max_step_deg": 0.79, "cart": [0.127, 0.127]}, {"frm": "lifted#1", "to": "lane#3", "steps": 22, "time_s": 2.1, "min_reserve_mm": 8.2, "max_step_deg": 0.31, "cart": [0.119, -0.083]}, {"frm": "over the plate#4", "to": "lane#3", "steps": 20, "time_s": 1.9, "min_reserve_mm": 46.0, "max_step_deg": 0.14, "cart": [-0.252, -0.082]}, {"frm": "over the plate#4", "to": "lane#7", "steps": 159, "time_s": 13.5, "min_reserve_mm": 7.0, "max_step_deg": 3.73, "cart": [-0.267, -0.94]}, {"frm": "under the tap#8", "to": "lane#7", "steps": 17, "time_s": 6.7, "min_reserve_mm": 63.5, "max_step_deg": 0.51, "cart": [-1.053, -0.941]}, {"frm": "under the tap#8", "to": "lane#12", "steps": 116, "time_s": 8.1, "min_reserve_mm": 13.5, "max_step_deg": 3.58, "cart": [-1.064, -0.941]}, {"frm": "lowered#15", "to": "lane#12", "steps": 110, "time_s": 10.9, "min_reserve_mm": 8.2, "max_step_deg": 0.31, "cart": [0.119, -0.941]}, {"frm": "lowered#15", "to": "set down#16", "steps": 3, "time_s": 0.2, "min_reserve_mm": 4.0, "max_step_deg": 0.79, "cart": [0.127, 0.127]}], "joins": [{"ok": true, "arm_deg": 0.3, "s": 0.64, "cart_m": 0.001, "shuffle_s": 0.0, "at": "lane", "best_pair_deg": 0.3}, {"ok": true, "arm_deg": 0.3, "s": 0.64, "cart_m": 0.001, "shuffle_s": 0.0, "at": "lane", "best_pair_deg": 0.3}, {"ok": true, "arm_deg": 0.1, "s": 0.64, "cart_m": 0.0, "shuffle_s": 0.0, "at": "lane", "best_pair_deg": 0.1}], "approaches": [{"ok": true, "kf": 0, "min_reserve_mm": 3.6, "time_s": 0.6}, {"ok": true, "kf": 16, "min_reserve_mm": 3.6, "time_s": 0.6}], "min_reserve_mm": 4.0, "max_pgc_moment_Nm": 6.47, "max_joint_ratio": 0.71}

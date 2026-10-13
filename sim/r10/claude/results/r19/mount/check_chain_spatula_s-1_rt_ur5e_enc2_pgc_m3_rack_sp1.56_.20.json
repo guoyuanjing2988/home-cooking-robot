@@ -1,0 +1,107 @@
+{
+ "file": "results/r19/mount/chain_spatula_s-1_rt_ur5e_enc2_pgc_m3.json",
+ "ok": true,
+ "spider_rest": [
+  1.56,
+  0.2
+ ],
+ "arm": "ur5e_enc2_pgc_m3",
+ "rack": "keyed",
+ "tool_xy": {
+  "spatula": [
+   -1.15,
+   0.3
+  ],
+  "ladle": [
+   1.62,
+   0.24
+  ],
+  "spider": [
+   1.52,
+   0.36
+  ]
+ },
+ "windows": [],
+ "parts": {
+  "play": {
+   "states": 2397,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "hit_pairs": [],
+   "out_of_range": 0,
+   "window_states": 0,
+   "min_reserve_by_category": {
+    "robot_environment": {
+     "reserve_mm": 96.461,
+     "pair": [
+      "r07_closed_door_1_1",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "held_gripper_environment": {
+     "reserve_mm": 2.001,
+     "pair": [
+      "r15_wok_t4_8",
+      "R_gripper_r18_spat_blade1"
+     ]
+    },
+    "arm_arm_or_frame": {
+     "reserve_mm": 114.022,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "self": {
+     "reserve_mm": 2.001,
+     "pair": [
+      "R_geom_enc2_fa_1",
+      "R_geom_enc2_w2_0"
+     ]
+    }
+   },
+   "min_env_reserve_mm": 2.001
+  },
+  "app0": {
+   "states": 91,
+   "max_step_bound_mm": 3.945,
+   "hit_states": 0,
+   "hit_pairs": [],
+   "out_of_range": 0,
+   "window_states": 0,
+   "min_reserve_by_category": {
+    "robot_environment": {
+     "reserve_mm": 39.699,
+     "pair": [
+      "r16_spatula_handle",
+      "R_geom_enc2_fa_1"
+     ]
+    },
+    "held_gripper_environment": {
+     "reserve_mm": 26.94,
+     "pair": [
+      "r16_spatula_handle",
+      "R_finger_minus"
+     ]
+    },
+    "arm_arm_or_frame": {
+     "reserve_mm": 126.682,
+     "pair": [
+      "R_cart_beam",
+      "R_geom_enc2_ua_5"
+     ]
+    },
+    "self": {
+     "reserve_mm": 2.021,
+     "pair": [
+      "R_geom_enc2_fa_3",
+      "R_geom_enc2_w2_1"
+     ]
+    }
+   },
+   "min_env_reserve_mm": 26.94
+  }
+ },
+ "elapsed_s": 97,
+ "method": "R19 pot zone (GitHub #37, #8): the binding <= 4 mm re-check of a chain in the pot-zone layout. New file.\n\nAs r19enc_check.py recheck / r19enc_adopt.py: the stored play (2pi-unwrapped, joint-linear between stored states,\ncut so that the point bound between consecutive states is <= 4 mm, r19smooth.sample_poly) and each grasp approach /\nrelease retreat (approach_qs, empty gripper, the object in the world as r17chain's GR worlds) go state by state\nthrough Checker.check(full=True): MuJoCo contacts + the GJK lower-bound certificate, 10 mm robot-environment,\n5 mm gripper / held-environment, self, joint ranges. Unchanged checker and gates. Scene: the R18b layout of\nr19enc_check.py (plating spot PY, spatula on its rest left of the sink, ladle off) with the kitchen19pot layer:\nthe spider rest from the chain's own tool_xy, and RACK=keyed the keyed lid rack. For a lid chain with RACK=keyed the\ndeclared insertion window (kitchen19pot.window()) is attached to its checker: in window states the held lid parts\nvs the rack parts are the intended contact (Checker.permissions), nothing else changes; window states are counted.\npython r19pot_check.py <chain json>[,<chain json>...] [RACK=keyed] [POTWIN=1] [SPX= SPY=] ARM=ur5e_enc2_pgc PY=.15 [WORKERS=16]\n -> results/r19/mount/check_<chain name>[_rack].json"
+}

@@ -1,0 +1,21 @@
+start source state bad 18 first bad 92 max step 7.2
+start solver start 0 (5.1 mm) bad 18 first bad 92 max step 7.2
+start solver start 1 (4.0 mm) bad 37 first bad 35 max step 160.3
+start solver start 2 (4.0 mm) bad 37 first bad 35 max step 160.3
+start solver start 3 (4.0 mm) bad 20 first bad 76 max step 183.7
+start solver start 4 (4.0 mm) bad 37 first bad 35 max step 160.3
+start solver start 5 (4.0 mm) bad 18 first bad 92 max step 7.2
+play 464 states; bad 18 start source state max pose 0.792 mm, step 7.20 deg, dev 32.8 deg, min reserve 4.0 mm
+  bad {'i': 92, 'pose_mm': 0.148, 'rot_deg': 0.28, 'step_deg': 2.41, 'dev_deg': 31.59, 'reserve_mm': 8.79, 'hits': []}
+  bad {'i': 93, 'pose_mm': 0.245, 'rot_deg': 0.461, 'step_deg': 2.32, 'dev_deg': 31.14, 'reserve_mm': 16.13, 'hits': []}
+  bad {'i': 94, 'pose_mm': 0.339, 'rot_deg': 0.634, 'step_deg': 2.25, 'dev_deg': 30.72, 'reserve_mm': 14.67, 'hits': []}
+  bad {'i': 95, 'pose_mm': 0.246, 'rot_deg': 0.463, 'step_deg': 2.22, 'dev_deg': 31.13, 'reserve_mm': 16.12, 'hits': []}
+  bad {'i': 96, 'pose_mm': 0.149, 'rot_deg': 0.283, 'step_deg': 2.32, 'dev_deg': 31.58, 'reserve_mm': 8.76, 'hits': []}
+  bad {'i': 278, 'pose_mm': 0.133, 'rot_deg': 0.249, 'step_deg': 2.75, 'dev_deg': 32.22, 'reserve_mm': 67.4, 'hits': []}
+  bad {'i': 279, 'pose_mm': 0.256, 'rot_deg': 0.478, 'step_deg': 2.65, 'dev_deg': 31.63, 'reserve_mm': 60.82, 'hits': []}
+  bad {'i': 280, 'pose_mm': 0.372, 'rot_deg': 0.693, 'step_deg': 2.55, 'dev_deg': 31.08, 'reserve_mm': 54.24, 'hits': []}
+  bad {'i': 281, 'pose_mm': 0.483, 'rot_deg': 0.896, 'step_deg': 2.46, 'dev_deg': 30.56, 'reserve_mm': 47.7, 'hits': []}
+  bad {'i': 282, 'pose_mm': 0.59, 'rot_deg': 1.089, 'step_deg': 2.38, 'dev_deg': 30.08, 'reserve_mm': 41.29, 'hits': []}
+approach kf 0 7 states; bad 0 min reserve 3.57
+approach kf 16 7 states; bad 0 min reserve 3.57
+results/r19/mount/chain_wok_s-1_rt_fr5_j6_pgc_m1.json ok False elapsed 154 s {"source": "results/r17/chain_wok_s-1_final_py.17_fr5_j6_pgc_sp20.json", "source_arm": "fr5_j6_pgc_sp20", "window": false, "argv": ["ACT=wok", "SIGN=-1", "GTILT=25", "L2X=-.25", "SINKC=-1.06", "SPX=1.56", "SPY=.20", "PY=.15"], "tcp_change_in_tool_frame": {"dp_mm": [51.4, 0.0, -25.76], "rot_deg": 0.0}, "start": "source state", "play_states": 464, "play_bad": 18, "approach_bad": 0, "max_pose_mm": 0.792, "max_rot_deg": 1.449, "max_step_deg": 7.2, "max_dev_from_source_deg": 32.83, "min_planning_reserve_mm": 4.0, "approach_min_reserve_mm": [3.57, 3.57], "max_joint_step_ratio_vs_source": 2.71, "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / the joint cap)", "elapsed_s": 154}

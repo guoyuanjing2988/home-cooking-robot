@@ -1,0 +1,7 @@
+start source state bad 11 first bad 18 max step 3.1
+start solver start 0 (3.0 mm) bad 11 first bad 18 max step 3.1
+start solver start 1 (3.0 mm) bad 0 first bad None max step 3.1
+play 205 states; bad 0 start solver start 1 (3.0 mm) max pose 0.000 mm, step 3.10 deg, dev 179.5 deg, min reserve 2.2 mm
+approach kf 0 7 states; bad 0 min reserve 10.0
+approach kf 8 7 states; bad 0 min reserve 10.0
+results/r19/mount/chain_lid_s-1_rt_ur5e_enc2_pgc_m2.json ok True elapsed 70 s {"source": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json", "source_arm": "ur5e_enc2_pgc", "window": true, "argv": ["ACT=lid", "SIGN=-1", "SPX=1.56", "SPY=.20", "PY=.15"], "tcp_change_in_tool_frame": {"dp_mm": [94.12, -0.0, 0.64], "rot_deg": 0.0}, "start": "solver start 1 (3.0 mm)", "play_states": 205, "play_bad": 0, "approach_bad": 0, "max_pose_mm": 0.0, "max_rot_deg": 0.0, "max_step_deg": 3.1, "max_dev_from_source_deg": 179.47, "min_planning_reserve_mm": 2.2, "approach_min_reserve_mm": [10.0, 10.0], "max_joint_step_ratio_vs_source": 1.52, "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / the joint cap)", "elapsed_s": 70}

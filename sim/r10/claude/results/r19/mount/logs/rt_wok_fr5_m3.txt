@@ -1,0 +1,21 @@
+start source state bad 56 first bad 70 max step 16.1
+start solver start 0 (4.0 mm) bad 56 first bad 70 max step 358.9
+start solver start 1 (4.0 mm) bad 58 first bad 70 max step 358.9
+start solver start 2 (4.0 mm) bad 58 first bad 70 max step 358.9
+start solver start 3 (4.0 mm) bad 56 first bad 70 max step 358.9
+start solver start 4 (4.0 mm) bad 56 first bad 70 max step 16.1
+start solver start 5 (4.0 mm) bad 56 first bad 70 max step 16.1
+play 464 states; bad 56 start source state max pose 0.000 mm, step 16.06 deg, dev 64.3 deg, min reserve -10.0 mm
+  bad {'i': 70, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 11.84, 'dev_deg': 22.39, 'reserve_mm': 15.03, 'hits': []}
+  bad {'i': 71, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 14.19, 'dev_deg': 26.15, 'reserve_mm': 3.22, 'hits': []}
+  bad {'i': 72, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 16.01, 'dev_deg': 30.75, 'reserve_mm': 3.84, 'hits': []}
+  bad {'i': 73, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 15.97, 'dev_deg': 35.22, 'reserve_mm': 5.03, 'hits': []}
+  bad {'i': 74, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 13.88, 'dev_deg': 43.68, 'reserve_mm': 5.31, 'hits': []}
+  bad {'i': 75, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 10.98, 'dev_deg': 51.94, 'reserve_mm': 4.95, 'hits': [['R_geom_fr5_j6_pgc_m3_upperarm_tube', 'R_base_plate']]}
+  bad {'i': 76, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 8.27, 'dev_deg': 57.54, 'reserve_mm': 4.19, 'hits': [['R_geom_fr5_j6_pgc_m3_upperarm_tube', 'R_base_plate']]}
+  bad {'i': 77, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 6.28, 'dev_deg': 61.07, 'reserve_mm': 3.17, 'hits': [['R_geom_fr5_j6_pgc_m3_upperarm_tube', 'R_base_plate']]}
+  bad {'i': 91, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 2.0, 'dev_deg': 53.51, 'reserve_mm': -0.41, 'hits': [['R_geom_fr5_j6_pgc_m3_upperarm_h_elbow', 'sink_front_rim'], ['sink_front_rim', 'R_geom_fr5_j6_pgc_m3_upperarm_h_elbow']]}
+  bad {'i': 92, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 2.01, 'dev_deg': 52.47, 'reserve_mm': -3.88, 'hits': [['R_geom_fr5_j6_pgc_m3_upperarm_h_elbow', 'sink_front_rim'], ['sink_front_rim', 'R_geom_fr5_j6_pgc_m3_upperarm_h_elbow']]}
+approach kf 0 7 states; bad 0 min reserve 3.57
+approach kf 16 7 states; bad 0 min reserve 3.57
+results/r19/mount/chain_wok_s-1_rt_fr5_j6_pgc_m3.json ok False elapsed 153 s {"source": "results/r17/chain_wok_s-1_final_py.17_fr5_j6_pgc_sp20.json", "source_arm": "fr5_j6_pgc_sp20", "window": false, "argv": ["ACT=wok", "SIGN=-1", "GTILT=25", "L2X=-.25", "SINKC=-1.06", "SPX=1.56", "SPY=.20", "PY=.15"], "tcp_change_in_tool_frame": {"dp_mm": [36.03, 0.0, -25.43], "rot_deg": 26.62}, "start": "source state", "play_states": 464, "play_bad": 56, "approach_bad": 0, "max_pose_mm": 0.0, "max_rot_deg": 0.0, "max_step_deg": 16.06, "max_dev_from_source_deg": 64.3, "min_planning_reserve_mm": -10.0, "approach_min_reserve_mm": [3.57, 3.57], "max_joint_step_ratio_vs_source": 3.634, "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / the joint cap)", "elapsed_s": 153}

@@ -1,0 +1,859 @@
+{
+  "act": "wok",
+  "obj": "wok",
+  "arm": "ur5e_enc2_pgc_m3",
+  "plate_y": 0.15,
+  "seed_ur": "results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {
+    "r17_lever": 30.0,
+    "r15_plate_c": [
+      0.43,
+      0.15,
+      0.85
+    ]
+  },
+  "wok_tilt": 40.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      1.52,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.56,
+      0.2
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 179,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        0.83,
+        0.17,
+        0.933
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.83,
+        0.17,
+        0.955
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "up and left",
+      "p": [
+        0.78,
+        0.17,
+        0.975
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        0.62,
+        0.17,
+        0.975
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the plate",
+      "p": [
+        0.43,
+        0.2,
+        0.98
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "tipped 90 (plated)",
+      "p": [
+        0.43,
+        0.295,
+        1.075
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 6,
+      "label": "level",
+      "p": [
+        0.43,
+        0.2,
+        0.98
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 7,
+      "label": "lane",
+      "p": [
+        -0.25,
+        0.18,
+        0.93
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 8,
+      "label": "under the tap",
+      "p": [
+        -0.4,
+        0.25,
+        0.92
+      ],
+      "c": -1.06,
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 9,
+      "label": "forward",
+      "p": [
+        -0.4,
+        0.18,
+        0.98
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 10,
+      "label": "emptied",
+      "p": [
+        -0.4,
+        0.275,
+        1.075
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 11,
+      "label": "level",
+      "p": [
+        -0.4,
+        0.18,
+        0.98
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 12,
+      "label": "lane",
+      "p": [
+        -0.25,
+        0.18,
+        0.93
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 13,
+      "label": "lane",
+      "p": [
+        0.62,
+        0.17,
+        0.975
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 14,
+      "label": "",
+      "p": [
+        0.78,
+        0.17,
+        0.975
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 15,
+      "label": "lowered",
+      "p": [
+        0.83,
+        0.17,
+        0.955
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 16,
+      "label": "set down",
+      "p": [
+        0.83,
+        0.17,
+        0.933
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "over the plate#4": {
+      "ok": false,
+      "n_candidates": 20,
+      "start_status": {
+        "ok": 16,
+        "pose": 73,
+        "collision": 7,
+        "ur_seeds_ok": 12
+      }
+    },
+    "lifted#1": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.145,
+      "start_reserve_mm": 23.5
+    },
+    "under the tap#8": {
+      "ok": true,
+      "cand": 0,
+      "cart": -1.06,
+      "start_reserve_mm": 20.8
+    },
+    "lowered#15": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.145,
+      "start_reserve_mm": 23.5
+    }
+  },
+  "pieces": [
+    {
+      "frm": "lifted#1",
+      "to": "pick#0",
+      "steps": 3,
+      "time_s": 0.2,
+      "min_reserve_mm": 4.0,
+      "max_step_deg": 1.2,
+      "cart": [
+        0.145,
+        0.145
+      ]
+    },
+    {
+      "frm": "lifted#1",
+      "to": "lane#3",
+      "steps": 22,
+      "time_s": 2.1,
+      "min_reserve_mm": 40.2,
+      "max_step_deg": 0.4,
+      "cart": [
+        0.136,
+        -0.069
+      ]
+    },
+    {
+      "frm": "under the tap#8",
+      "to": "lane#7",
+      "steps": 17,
+      "time_s": 6.7,
+      "min_reserve_mm": 23.0,
+      "max_step_deg": 1.04,
+      "cart": [
+        -1.054,
+        -0.96
+      ]
+    },
+    {
+      "frm": "under the tap#8",
+      "to": "lane#12",
+      "steps": 116,
+      "time_s": 9.8,
+      "min_reserve_mm": 4.5,
+      "max_step_deg": 9.97,
+      "cart": [
+        -1.066,
+        -0.947
+      ]
+    },
+    {
+      "frm": "lowered#15",
+      "to": "lane#12",
+      "steps": 110,
+      "time_s": 10.9,
+      "min_reserve_mm": 9.6,
+      "max_step_deg": 0.4,
+      "cart": [
+        0.136,
+        -0.912
+      ]
+    },
+    {
+      "frm": "lowered#15",
+      "to": "set down#16",
+      "steps": 3,
+      "time_s": 0.2,
+      "min_reserve_mm": 4.0,
+      "max_step_deg": 1.2,
+      "cart": [
+        0.145,
+        0.145
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "ok": true,
+      "arm_deg": 7.0,
+      "s": 0.76,
+      "cart_m": 0.035,
+      "shuffle_s": 0.2,
+      "at": "lane",
+      "best_pair_deg": 0.8
+    }
+  ],
+  "approaches": [
+    {
+      "ok": true,
+      "kf": 0,
+      "min_reserve_mm": 5.7,
+      "time_s": 0.6
+    },
+    {
+      "ok": true,
+      "kf": 16,
+      "min_reserve_mm": 5.7,
+      "time_s": 0.6
+    }
+  ],
+  "min_reserve_mm": 4.0,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "lifted",
+      "cand": 0,
+      "start_reserve_mm": 23.5,
+      "cart": 0.145,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 1,
+      "start_reserve_mm": 23.5,
+      "cart": 0.163,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 2,
+      "start_reserve_mm": 23.5,
+      "cart": 0.127,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 3,
+      "start_reserve_mm": 23.5,
+      "cart": 0.109,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 0,
+      "start_reserve_mm": 96.4,
+      "cart": -0.369,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.548,
+        "step_deg": 11.12,
+        "pose_mm": 0.01,
+        "reserve_mm": 82.7,
+        "dt": 0.18538203307616297,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 1,
+      "start_reserve_mm": 96.4,
+      "cart": -0.382,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.555,
+        "step_deg": 11.23,
+        "pose_mm": 0.01,
+        "reserve_mm": 82.7,
+        "dt": 0.18711226908072306,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 2,
+      "start_reserve_mm": 96.4,
+      "cart": -0.349,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.537,
+        "step_deg": 10.96,
+        "pose_mm": 0.01,
+        "reserve_mm": 82.6,
+        "dt": 0.18273967415022468,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 3,
+      "start_reserve_mm": 83.2,
+      "cart": -0.324,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.523,
+        "step_deg": 10.75,
+        "pose_mm": 0.01,
+        "reserve_mm": 80.8,
+        "dt": 0.17911344874924076,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 4,
+      "start_reserve_mm": 72.8,
+      "cart": -0.305,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.511,
+        "step_deg": 10.58,
+        "pose_mm": 0.01,
+        "reserve_mm": 69.4,
+        "dt": 0.1762632245540082,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 5,
+      "start_reserve_mm": 63.0,
+      "cart": -0.285,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.499,
+        "step_deg": 10.4,
+        "pose_mm": 0.01,
+        "reserve_mm": 58.5,
+        "dt": 0.17332474665658545,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 6,
+      "start_reserve_mm": 57.2,
+      "cart": -0.274,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.491,
+        "step_deg": 10.29,
+        "pose_mm": 0.01,
+        "reserve_mm": 52.2,
+        "dt": 0.17148259453025322,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 7,
+      "start_reserve_mm": 53.7,
+      "cart": -0.266,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.486,
+        "step_deg": 10.22,
+        "pose_mm": 0.01,
+        "reserve_mm": 48.3,
+        "dt": 0.17029665273696526,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 0,
+      "start_reserve_mm": 20.8,
+      "cart": -1.06,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 1,
+      "start_reserve_mm": 20.8,
+      "cart": -1.06,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 2,
+      "start_reserve_mm": 20.8,
+      "cart": -1.06,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 3,
+      "start_reserve_mm": 20.8,
+      "cart": -1.06,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 0,
+      "start_reserve_mm": 23.5,
+      "cart": 0.145,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 1,
+      "start_reserve_mm": 23.5,
+      "cart": 0.163,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 2,
+      "start_reserve_mm": 23.5,
+      "cart": 0.127,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 3,
+      "start_reserve_mm": 23.5,
+      "cart": 0.109,
+      "ok": true,
+      "fail": null
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    [
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.29720118484946,
+        0.840137944970834,
+        -1.6603280277214996,
+        2.6533635201021863,
+        0.5441818777219034,
+        -1.8749289620007767,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.3160228781385683,
+        0.8395007272247541,
+        -1.6670445285340378,
+        2.690461799744535,
+        0.5493342949510097,
+        -1.9097488444257043,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.3348244465205736,
+        0.8385036234632481,
+        -1.6734023675903575,
+        2.726911974450908,
+        0.5550109590804756,
+        -1.9439217163386033,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.353592436757974,
+        0.8371217392506802,
+        -1.679371663912075,
+        2.7626518894635512,
+        0.5611893688629389,
+        -1.9773875924127,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.372313426753893,
+        0.8353328010947606,
+        -1.6849221170702136,
+        2.7976249602147503,
+        0.5678450225523372,
+        -2.010095078189593,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.3909740833092705,
+        0.833117466798903,
+        -1.6900236027560618,
+        2.8317804671204194,
+        0.5749517707311222,
+        -2.0420013899663036,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.4095612195376055,
+        0.8304595309903648,
+        -1.694646700666671,
+        2.8650736888620747,
+        0.5824821679466874,
+        -2.073072176214285,
+        0.025,
+        0.025
+      ]
+    ],
+    [
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.29720118484946,
+        0.840137944970834,
+        -1.6603280277214996,
+        2.6533635201021863,
+        0.5441818777219034,
+        -1.8749289620007767,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.3160228781385683,
+        0.8395007272247541,
+        -1.6670445285340378,
+        2.690461799744535,
+        0.5493342949510097,
+        -1.9097488444257043,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.3348244465205736,
+        0.8385036234632481,
+        -1.6734023675903575,
+        2.726911974450908,
+        0.5550109590804756,
+        -1.9439217163386033,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.353592436757974,
+        0.8371217392506802,
+        -1.679371663912075,
+        2.7626518894635512,
+        0.5611893688629389,
+        -1.9773875924127,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.372313426753893,
+        0.8353328010947606,
+        -1.6849221170702136,
+        2.7976249602147503,
+        0.5678450225523372,
+        -2.010095078189593,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.3909740833092705,
+        0.833117466798903,
+        -1.6900236027560618,
+        2.8317804671204194,
+        0.5749517707311222,
+        -2.0420013899663036,
+        0.025,
+        0.025
+      ],
+      [
+        0.1453037712394137,
+        -0.21,
+        0.0,
+        -3.4095612195376055,
+        0.8304595309903648,
+        -1.694646700666671,
+        2.8650736888620747,
+        0.5824821679466874,
+        -2.073072176214285,
+        0.025,
+        0.025
+      ]
+    ]
+  ],
+  "r19pot": {
+    "layer": {
+      "rack": "keyed",
+      "spider": [
+        1.56,
+        0.2
+      ]
+    },
+    "windows": [],
+    "cabgate_extra_mm": 0.0,
+    "upper_fixtures": [
+      "r14_upper_over_hood",
+      "r14_hood",
+      "upper_cabinet_2",
+      "r07_closed_door_2_0",
+      "door_pause_sensor_2_0"
+    ],
+    "argv": [
+      "ACT=wok",
+      "SIGN=-1",
+      "L2X=-.25",
+      "SINKC=-1.06",
+      "SEEDS=1",
+      "TRIES=8",
+      "KEEP=4",
+      "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+      "GTILT=40",
+      "SPX=1.56",
+      "SPY=.20",
+      "PY=.15",
+      "ARM=ur5e_enc2_pgc_m3",
+      "TAG=mnt6g40",
+      "RACK=keyed"
+    ]
+  },
+  "r19mount_run": {
+    "runner": "r19pot_chain.py",
+    "argv": [
+      "ACT=wok",
+      "SIGN=-1",
+      "L2X=-.25",
+      "SINKC=-1.06",
+      "SEEDS=1",
+      "TRIES=8",
+      "KEEP=4",
+      "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+      "GTILT=40",
+      "SPX=1.56",
+      "SPY=.20",
+      "PY=.15",
+      "ARM=ur5e_enc2_pgc_m3",
+      "TAG=mnt6g40"
+    ],
+    "runner_path": "results/r19/pot/chain_wok_s-1_mnt6g40_ur5e_enc2_pgc_m3.json"
+  }
+}

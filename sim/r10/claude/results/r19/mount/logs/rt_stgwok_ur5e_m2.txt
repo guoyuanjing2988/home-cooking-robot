@@ -1,0 +1,14 @@
+current code vs source: scene True grasp worlds True keyframes True arm ids [3, 4, 5, 6, 7, 8]
+start mapped source state bad 0 first bad None max step 1.8
+start solver start 0 (2.0 mm) bad 1 first bad 107 max step 217.4
+start solver start 1 (2.0 mm) bad 0 first bad None max step 1.8
+start solver start 2 (2.0 mm) bad 1 first bad 107 max step 217.4
+start solver start 3 (2.0 mm) bad 0 first bad None max step 1.4
+start solver start 4 (2.0 mm) bad 0 first bad None max step 1.8
+start solver start 5 (2.0 mm) bad 0 first bad None max step 1.8
+start solver start 6 (2.0 mm) bad 0 first bad None max step 1.8
+start solver start 7 (2.0 mm) bad 0 first bad None max step 1.8
+play 237 states; bad 0 start mapped source state
+approach 0 kf 0 6 states; bad 0 min reserve 5.0
+approach 1 kf 10 6 states; bad 0 min reserve 5.0
+results/r19/mount/chain_stgwok_rt_ur5e_enc2_pgc_m2.json ok True elapsed 131 s {"source": "results/r19/prep4/chain_stgwok_full_ur5e_enc2_pgc.json", "source_arm": "ur5e_enc2_pgc", "argv": ["ACT=stgwok", "C0=1.21", "POURC=1.21", "SW=-.32,.05,1.11,0", "SLANE=-.36,.19,1.26", "TIP=-135", "ANCH=lifted", "SEEDS=3", "TRIES=12", "KEEP=1", "ARM=ur5e_enc2_pgc_m2"], "scene_used": "src", "current_code_same": {"scene": true, "grasp_worlds": true, "keyframes": true}, "bad_runs_play": [], "bad_runs_approach": [], "start": "mapped source state", "play_states": 237, "play_bad": 0, "approach_bad": 0, "max_pose_mm": 0.0, "max_rot_deg": 0.0, "max_step_deg": 1.81, "min_planning_reserve_mm": 2.0, "min_self_mm": 2.05, "approach_min_reserve_mm": [5.0, 5.0], "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / 60 deg/s)", "elapsed_s": 131}

@@ -1,0 +1,5 @@
+start source state bad 0 first bad None max step 2.8
+play 205 states; bad 0 start source state max pose 0.000 mm, step 2.82 deg, dev 36.5 deg, min reserve 2.84 mm
+approach kf 0 7 states; bad 0 min reserve 10.0
+approach kf 8 7 states; bad 0 min reserve 6.04
+results/r19/mount/chain_lid_s-1_rt_fr5_j6_pgc_m2.json ok True elapsed 55 s {"source": "results/r19/pot/chain_lid_s-1_pot_keyed_nospider_fr5_j6_pgc_sp20.json", "source_arm": "fr5_j6_pgc_sp20", "window": true, "argv": ["ACT=lid", "SIGN=-1", "SPX=1.56", "SPY=.20", "PY=.15"], "tcp_change_in_tool_frame": {"dp_mm": [76.24, 0.0, 9.6], "rot_deg": 0.0}, "start": "source state", "play_states": 205, "play_bad": 0, "approach_bad": 0, "max_pose_mm": 0.0, "max_rot_deg": 0.0, "max_step_deg": 2.82, "max_dev_from_source_deg": 36.54, "min_planning_reserve_mm": 2.84, "approach_min_reserve_mm": [10.0, 6.04], "max_joint_step_ratio_vs_source": 1.402, "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / the joint cap)", "elapsed_s": 55}

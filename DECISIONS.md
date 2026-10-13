@@ -628,3 +628,29 @@ Nothing bought.
   - **FR5:** no run passes. On the spatula chain, the plug on the RS485 5-pin connector meets the forearm. Revisit after #42, with the 5-pin's type confirmed.
   - **The custom pigtail needs DH's confirmation.** Contacting DH is the user's decision; no one has been contacted.
 - **Tolerance tool:** `r19tol_core.py` now treats the cable as part of the robot, not as held. Cable options reuse their base option's paths. 8 of 8 stored results reproduce.
+
+## 2026-10-14 — Gripper mount: wedge adapter m2 (orchestrator decision under "其他你定", GitHub #42)
+- **Mount:** a one-piece 6061-T6 wedge, about 100 × 75 × 56 mm and 0.268 kg.
+  - It bolts to the ISO 9409-1-50-4-M6 flange: Ø63 × 8 mm boss, Ø31.5 g6 spigot, Ø6 pin.
+  - Its top face is inclined 26.6° (1:2). DH's standard flange and the PGC sit on that face, so the gripper keeps its tilt.
+  - Drawing-level detail is in `sim/r10/claude/R19_MOUNT.md` §3.
+  - Arm options: `ur5e_enc2_pgc_m2` and `fr5_j6_pgc_m2`.
+- **Why m2:**
+  - The TCP only moves along the gripper's own axis: +94.1 mm on the UR5e, +76.9 mm on the FR5 vs `sp20`, with no rotation. The task-space keyframes therefore carry over, and the wok, plate 2 and lid paths re-target exactly by IK.
+  - It is the only candidate whose pilots pass on all 4 hard sets × 2 arms (wok, lid, spatula, carrot), with 0 hits.
+  - Clearances: housing 22.7 mm and wedge 8.76 mm to wrist 3; ≥ 10 mm to wrist 2 over the whole J6 turn.
+  - Payload stays within both arms' ratings:
+    - wok 4.48 kg at 223 mm (FR5 margin 0.52 kg);
+    - full soak tub 4.31 kg at 284 mm, 16 mm under the FR5's 300 mm limit;
+    - PGC jaw moment unchanged at 6.23 N·m.
+- **Rejected:**
+  - **m3, inline on an 8 mm spacer:** the 26.6° TCP rotation makes the wok tip pass a wrist singularity on both arms.
+  - **m1, L bracket:** heavier, and the FR5 spatula pick is blocked by a checker false hit (#7).
+- **Before machining [E]:** the gripper-side M6 holes must sit at 0/90/180/270° from uphill, not ±135°, or they cross the robot-side screws. Confirm DH's flange hole clocking from its STEP first. If they do cross, a two-piece version adds 8 mm.
+- **Already certified on m2:** 15 of 19 UR5e sets and 15 of 17 FR5 sets, at the pilot or smoke level.
+- **Still to certify on m2 (controller lanes):**
+  - prep: UR5e bascarrot, basket, tubempty and ct2s; FR5 basket, ct2s and tomato;
+  - the stir library and its entry/exit;
+  - the hub on both arms;
+  - the cable route (#36).
+- **Checker gap:** the tool vs wrist 3 and tool vs wrist 2 pairs are never tested in paths. For mount options they are certified statically (`results/r19/mount/static.json`). Adding them to the checker is planned in the re-certification.

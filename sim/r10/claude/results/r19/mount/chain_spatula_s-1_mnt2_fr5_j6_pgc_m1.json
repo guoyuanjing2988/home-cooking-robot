@@ -1,0 +1,606 @@
+{
+  "act": "spatula",
+  "obj": "spatula_b",
+  "arm": "fr5_j6_pgc_m1",
+  "plate_y": 0.15,
+  "seed_ur": "results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {},
+  "wok_tilt": 0.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      -1.15,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.56,
+      0.2
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 134,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        -1.15,
+        0.345,
+        0.937
+      ],
+      "c": "A",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        -1.15,
+        0.345,
+        0.989
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "out and up",
+      "p": [
+        -1.15,
+        0.265,
+        1.109
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        -0.16,
+        -0.02,
+        1.15
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the wok",
+      "p": [
+        0.83,
+        0.047,
+        1.108
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "stroke start",
+      "p": [
+        0.83,
+        0.097,
+        0.958
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "pick#0": {
+      "ok": false,
+      "n_candidates": 28,
+      "start_status": {
+        "pose": 121,
+        "collision": 46,
+        "ok": 25,
+        "ur_seeds_ok": 12
+      }
+    },
+    "stroke start#5": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.289,
+      "start_reserve_mm": 5.7
+    }
+  },
+  "pieces": [
+    {
+      "frm": "stroke start#5",
+      "to": "lane#3",
+      "steps": 116,
+      "time_s": 11.5,
+      "min_reserve_mm": 15.4,
+      "max_step_deg": 1.52,
+      "cart": [
+        0.294,
+        -0.432
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": false,
+      "kf": 0,
+      "reason": "no arm state at this keyframe"
+    }
+  ],
+  "min_reserve_mm": 15.4,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "pick",
+      "cand": 0,
+      "start_reserve_mm": 4.8,
+      "cart": -1.447,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.447,
+        "step_deg": 2.3,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 1,
+      "start_reserve_mm": 4.8,
+      "cart": -1.417,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.417,
+        "step_deg": 2.37,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 2,
+      "start_reserve_mm": 4.8,
+      "cart": -1.432,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.432,
+        "step_deg": 2.34,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 3,
+      "start_reserve_mm": 4.8,
+      "cart": -1.399,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.399,
+        "step_deg": 2.42,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 4,
+      "start_reserve_mm": 4.8,
+      "cart": -1.38,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.38,
+        "step_deg": 2.47,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 5,
+      "start_reserve_mm": 4.8,
+      "cart": -1.362,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.362,
+        "step_deg": 2.52,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 6,
+      "start_reserve_mm": 4.8,
+      "cart": -1.343,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.343,
+        "step_deg": 2.56,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 7,
+      "start_reserve_mm": 4.8,
+      "cart": -1.324,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.324,
+        "step_deg": 2.61,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 8,
+      "start_reserve_mm": 4.8,
+      "cart": -1.305,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.305,
+        "step_deg": 2.65,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 9,
+      "start_reserve_mm": 4.8,
+      "cart": -1.475,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.475,
+        "step_deg": 2.22,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 10,
+      "start_reserve_mm": 4.8,
+      "cart": -1.462,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.462,
+        "step_deg": 2.26,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "pick",
+      "cand": 11,
+      "start_reserve_mm": 4.8,
+      "cart": -1.286,
+      "ok": false,
+      "fail": {
+        "at": "pick->lifted",
+        "kf": null,
+        "cart": -1.286,
+        "step_deg": 2.68,
+        "pose_mm": 0.0,
+        "reserve_mm": null,
+        "dt": 0.08666666666666656,
+        "hits": [
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ],
+          [
+            "raw_tomato",
+            "R_gripper_r18_spat_blade4"
+          ]
+        ]
+      }
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 0,
+      "start_reserve_mm": 5.7,
+      "cart": 0.289,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 1,
+      "start_reserve_mm": 5.7,
+      "cart": 0.479,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 2,
+      "start_reserve_mm": 5.7,
+      "cart": 0.348,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "stroke start",
+      "cand": 3,
+      "start_reserve_mm": 5.7,
+      "cart": 0.309,
+      "ok": true,
+      "fail": null
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    null
+  ],
+  "r19pot": {
+    "layer": {
+      "rack": "keyed",
+      "spider": [
+        1.56,
+        0.2
+      ]
+    },
+    "windows": [],
+    "cabgate_extra_mm": 0.0,
+    "upper_fixtures": [
+      "r14_upper_over_hood",
+      "r14_hood",
+      "upper_cabinet_2",
+      "r07_closed_door_2_0",
+      "door_pause_sensor_2_0"
+    ],
+    "argv": [
+      "ACT=spatula",
+      "SIGN=-1",
+      "SPATREST=-1.15,.30",
+      "SPATELEV=8",
+      "SPATROLL=180",
+      "SEEDS=2",
+      "TRIES=12",
+      "KEEP=4",
+      "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+      "SPX=1.56",
+      "SPY=.20",
+      "PY=.15",
+      "ARM=fr5_j6_pgc_m1",
+      "TAG=mnt2",
+      "RACK=keyed"
+    ]
+  },
+  "r19mount_run": {
+    "runner": "r19pot_chain.py",
+    "argv": [
+      "ACT=spatula",
+      "SIGN=-1",
+      "SPATREST=-1.15,.30",
+      "SPATELEV=8",
+      "SPATROLL=180",
+      "SEEDS=2",
+      "TRIES=12",
+      "KEEP=4",
+      "SEEDUR=results/r17/chain_spatula_s-1_r18roll-1.15_.30_ur5e_enc2_pgc.json",
+      "SPX=1.56",
+      "SPY=.20",
+      "PY=.15",
+      "ARM=fr5_j6_pgc_m1",
+      "TAG=mnt2"
+    ],
+    "runner_path": "results/r19/pot/chain_spatula_s-1_mnt2_fr5_j6_pgc_m1.json"
+  }
+}

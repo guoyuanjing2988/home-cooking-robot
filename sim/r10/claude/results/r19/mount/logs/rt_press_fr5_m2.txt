@@ -1,0 +1,14 @@
+current code vs source: scene True grasp worlds True keyframes True arm ids [3, 4, 5, 6, 7, 8]
+start mapped source state bad 0 first bad None max step 1.0
+start solver start 0 (9.0 mm) bad 3 first bad 10 max step 1.2
+start solver start 1 (9.0 mm) bad 17 first bad 3 max step 1.4
+start solver start 2 (9.0 mm) bad 3 first bad 10 max step 1.2
+start solver start 3 (9.0 mm) bad 0 first bad None max step 1.0
+start solver start 4 (9.0 mm) bad 0 first bad None max step 1.0
+start solver start 5 (9.0 mm) bad 3 first bad 10 max step 1.2
+start solver start 6 (9.0 mm) bad 0 first bad None max step 1.0
+start solver start 7 (9.0 mm) bad 17 first bad 3 max step 1.4
+play 23 states; bad 0 start mapped source state
+approach 0 kf 0 6 states; bad 0 min reserve 2.07
+approach 1 kf 2 6 states; bad 0 min reserve 2.07
+results/r19/mount/chain_press_rt_fr5_j6_pgc_m2.json ok True elapsed 25 s {"source": "results/r19/prep/chain_press_fr5full_fr5_j6_pgc_sp20.json", "source_arm": "fr5_j6_pgc_sp20", "argv": ["ACT=press", "SEEDS=3", "TRIES=12", "KEEP=4", "ARM=fr5_j6_pgc_m2"], "scene_used": "src", "current_code_same": {"scene": true, "grasp_worlds": true, "keyframes": true}, "bad_runs_play": [], "bad_runs_approach": [], "start": "mapped source state", "play_states": 23, "play_bad": 0, "approach_bad": 0, "max_pose_mm": 0.0, "max_rot_deg": 0.0, "max_step_deg": 0.96, "min_planning_reserve_mm": 1.0, "min_self_mm": 4.45, "approach_min_reserve_mm": [2.07, 2.07], "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / 60 deg/s)", "elapsed_s": 25}

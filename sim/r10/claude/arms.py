@@ -58,6 +58,12 @@ import r19cable as _cab
 for _b in ('ur5e_enc2_pgc','fr5_j6_pgc_sp20'):
  ARMS[_b+'c']=dict(ARMS[_b],name=ARMS[_b]['name']+' + cable outlet and first cable section (both jaw sides, R50 bend down)',cable='both_dn',cable_source='R19_CABLE.md section 1')
  for _r in list(_cab.ROUTINGS)+list(_cab.SCREENS):ARMS[_b+'c_'+_r]=dict(ARMS[_b],name=ARMS[_b]['name']+' + cable, routing '+_r,cable=_r,cable_source='R19_CABLE.md section 1')
+# R19 #42 (r19mount.py, R19_MOUNT.md): buildable gripper mounts. <base>_<k> = the base option with the gripper re-posed on the flange
+# as r19mount.MOUNTS[k] and the modelled bracket on R_tool (its mass in R_tool's inertial); the FR5 ones start from fr5_j6_pgc
+# (no spacer: the bracket replaces the sp20 plate). Everything else as the base option.
+import r19mount as _mnt
+for _k in _mnt.MOUNTS:
+ for _b in ('ur5e_enc2_pgc','fr5_j6_pgc'):ARMS[_b+'_'+_k]=dict(ARMS[_b],name=ARMS[_b]['name']+', mount '+_k+': '+_mnt.MOUNTS[_k]['label'],mount=_k,mount_source='r19mount.py, R19_MOUNT.md')
 def _cli():
  for a in sys.argv[1:]:
   if a.startswith('ARM='):return a[4:]
@@ -98,6 +104,7 @@ def enclose(tree,arm):
  return tree
 def swap(tree,arm):
  """Replace the UR5e under R_mount by `arm` (in place). R_tool keeps its pose relative to the flange."""
+ if ARMS[arm].get('mount'):_mnt.apply(tree,ARMS[arm]['mount'])   # R19 #42: re-pose R_tool on the UR5e flange + the bracket, before the swap below carries it over
  if ARMS[arm].get('cable'):_cab.add(tree,ARMS[arm]['cable'],arm)   # R19 #36: cable shapes on R_tool (they move with it below); arm: the tool connector of the '_tc' routings
  if ARMS[arm].get('enclose'):return enclose(tree,arm)
  spec=ARMS[arm];M=json.loads((H/'r19'/f"arm_{spec['model']}.json").read_text(encoding='utf-8'))

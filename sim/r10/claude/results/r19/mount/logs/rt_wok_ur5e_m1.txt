@@ -1,0 +1,21 @@
+start source state bad 17 first bad 279 max step 6.4
+start solver start 0 (4.0 mm) bad 19 first bad 79 max step 282.5
+start solver start 1 (4.0 mm) bad 18 first bad 71 max step 174.5
+start solver start 2 (4.0 mm) bad 18 first bad 71 max step 286.9
+start solver start 3 (4.0 mm) bad 17 first bad 279 max step 6.4
+start solver start 4 (4.0 mm) bad 17 first bad 279 max step 6.4
+start solver start 5 (4.0 mm) bad 19 first bad 79 max step 282.5
+play 470 states; bad 17 start source state max pose 1.388 mm, step 6.37 deg, dev 37.2 deg, min reserve 4.0 mm
+  bad {'i': 279, 'pose_mm': 0.263, 'rot_deg': 0.482, 'step_deg': 2.9, 'dev_deg': 36.48, 'reserve_mm': 65.52, 'hits': []}
+  bad {'i': 280, 'pose_mm': 0.43, 'rot_deg': 0.79, 'step_deg': 2.8, 'dev_deg': 35.84, 'reserve_mm': 66.5, 'hits': []}
+  bad {'i': 281, 'pose_mm': 0.586, 'rot_deg': 1.078, 'step_deg': 2.71, 'dev_deg': 35.24, 'reserve_mm': 68.31, 'hits': []}
+  bad {'i': 282, 'pose_mm': 0.734, 'rot_deg': 1.349, 'step_deg': 2.62, 'dev_deg': 34.67, 'reserve_mm': 66.58, 'hits': []}
+  bad {'i': 283, 'pose_mm': 0.874, 'rot_deg': 1.605, 'step_deg': 2.53, 'dev_deg': 34.13, 'reserve_mm': 60.11, 'hits': []}
+  bad {'i': 284, 'pose_mm': 1.008, 'rot_deg': 1.848, 'step_deg': 2.45, 'dev_deg': 33.62, 'reserve_mm': 53.64, 'hits': []}
+  bad {'i': 285, 'pose_mm': 1.138, 'rot_deg': 2.08, 'step_deg': 2.37, 'dev_deg': 33.14, 'reserve_mm': 47.21, 'hits': []}
+  bad {'i': 286, 'pose_mm': 1.265, 'rot_deg': 2.303, 'step_deg': 2.3, 'dev_deg': 32.69, 'reserve_mm': 40.92, 'hits': []}
+  bad {'i': 287, 'pose_mm': 1.388, 'rot_deg': 2.517, 'step_deg': 2.23, 'dev_deg': 32.26, 'reserve_mm': 34.93, 'hits': []}
+  bad {'i': 288, 'pose_mm': 1.266, 'rot_deg': 2.305, 'step_deg': 2.2, 'dev_deg': 32.68, 'reserve_mm': 40.9, 'hits': []}
+approach kf 0 7 states; bad 0 min reserve 3.57
+approach kf 16 7 states; bad 0 min reserve 3.57
+results/r19/mount/chain_wok_s-1_rt_ur5e_enc2_pgc_m1.json ok False elapsed 161 s {"source": "results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json", "source_arm": "ur5e_enc2_pgc", "window": false, "argv": ["ACT=wok", "SIGN=-1", "GTILT=25", "L2X=-.25", "SINKC=-1.06", "SPX=1.56", "SPY=.20", "PY=.15"], "tcp_change_in_tool_frame": {"dp_mm": [69.28, 0.0, -34.73], "rot_deg": 0.0}, "start": "source state", "play_states": 470, "play_bad": 17, "approach_bad": 0, "max_pose_mm": 1.388, "max_rot_deg": 2.517, "max_step_deg": 6.37, "max_dev_from_source_deg": 37.16, "min_planning_reserve_mm": 4.0, "approach_min_reserve_mm": [3.57, 3.57], "max_joint_step_ratio_vs_source": 2.248, "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / the joint cap)", "elapsed_s": 161}

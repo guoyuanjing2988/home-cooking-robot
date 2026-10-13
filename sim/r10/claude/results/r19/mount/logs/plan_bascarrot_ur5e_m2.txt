@@ -1,0 +1,10 @@
+pick start candidates 20 {'collision': 17, 'pose': 64, 'ok': 15, 'ur_seeds_ok': 12}
+ cand 0 cart -0.94 ok
+ cand 1 cart -0.86 ok
+over the basket start candidates 20 {'pose': 73, 'collision': 4, 'ok': 19, 'ur_seeds_ok': 12}
+ cand 0 cart -0.24 ok
+ cand 1 cart -0.43 ok
+joins at lane [(14, True), (35, True), (189, True), (193, True)]
+r19mount_run: written results/r19/mount/chain_bascarrot_mnt_ur5e_enc2_pgc_m2.json
+results/r19/prep/chain_bascarrot_mnt_ur5e_enc2_pgc_m2.json
+{"keyframe_source": "r19prepchain/r19prep3_actions keyframes overridden by r19fr5prep_actions.override (argv X..)", "start_dedup": true, "act": "bascarrot", "obj": "carrot", "arm": "ur5e_enc2_pgc_m2", "grasp_sense": 1, "argv": ["ACT=bascarrot", "SEEDS=1", "TRIES=8", "KEEP=2", "SEEDUR=results/r19/prep/chain_bascarrot_full_ur5e_enc2_pgc.json", "ARM=ur5e_enc2_pgc_m2", "TAG=mnt"], "ok": false, "time_s": 0.0, "elapsed_s": 63, "rinse_dwell_s_est": 3.0, "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker", "anchors": {"pick#0": {"ok": true, "cand": 0, "cart": -0.939, "start_reserve_mm": 3.0}, "over the basket#5": {"ok": true, "cand": 1, "cart": -0.431, "start_reserve_mm": 72.7}}, "pieces": [{"frm": "pick#0", "to": "lane#3", "steps": 54, "time_s": 5.2, "min_reserve_mm": 34.3, "max_step_deg": 1.01, "cart": [-0.939, -0.541]}, {"frm": "over the basket#5", "to": "lane#3", "steps": 59, "time_s": 4.7, "min_reserve_mm": 78.9, "max_step_deg": 8.27, "cart": [-0.409, -0.6]}, {"frm": "over the basket#5", "to": "in the basket (bottom 20 mm under the rim)#6", "steps": 9, "time_s": 0.9, "min_reserve_mm": 18.2, "max_step_deg": 8.09, "cart": [-0.431, -0.431]}], "joins": [{"ok": true, "arm_deg": 13.5, "s": 0.84, "cart_m": 0.059, "shuffle_s": 0.2, "at": "lane", "best_pair_deg": 13.5}], "approaches": [{"ok": true, "kf": 0, "object_in_world": true, "window": true, "lift_mm": 0.0, "min_food_gap_mm": 22.5, "min_reserve_mm": 4.5, "time_s": 0.5}, {"ok": false, "kf": 6, "stop": 2, "hits": [["R_base_plate", "R_geom_enc2_fa_3"]], "pose_mm": 0.0}], "min_reserve_mm": 18.2, "max_pgc_moment_Nm": null, "max_joint_ratio": null, "push": null}

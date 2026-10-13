@@ -1,0 +1,916 @@
+{
+  "act": "wok",
+  "obj": "wok",
+  "arm": "fr5_j6_pgc_m3",
+  "plate_y": 0.15,
+  "seed_ur": "results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+  "grasp_sense": -1,
+  "design": {
+    "pot_h": 0.12,
+    "rack": 0.04,
+    "lid_a": 0.0,
+    "car_a": 45.0,
+    "rack_ry": 90.0
+  },
+  "scene": {
+    "r17_lever": 30.0,
+    "r15_plate_c": [
+      0.43,
+      0.15,
+      0.85
+    ]
+  },
+  "wok_tilt": 40.0,
+  "wok_grasp": "top",
+  "tool_xy": {
+    "spatula": [
+      1.52,
+      0.3
+    ],
+    "ladle": [
+      1.62,
+      0.24
+    ],
+    "spider": [
+      1.56,
+      0.2
+    ]
+  },
+  "ok": false,
+  "time_s": 0.0,
+  "elapsed_s": 138,
+  "keyframes": [
+    {
+      "i": 0,
+      "label": "pick",
+      "p": [
+        0.83,
+        0.17,
+        0.933
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 1,
+      "label": "lifted",
+      "p": [
+        0.83,
+        0.17,
+        0.955
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 2,
+      "label": "up and left",
+      "p": [
+        0.78,
+        0.17,
+        0.975
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 3,
+      "label": "lane",
+      "p": [
+        0.62,
+        0.17,
+        0.975
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 4,
+      "label": "over the plate",
+      "p": [
+        0.43,
+        0.2,
+        0.98
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 5,
+      "label": "tipped 90 (plated)",
+      "p": [
+        0.43,
+        0.295,
+        1.075
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 6,
+      "label": "level",
+      "p": [
+        0.43,
+        0.2,
+        0.98
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 7,
+      "label": "lane",
+      "p": [
+        -0.25,
+        0.18,
+        0.93
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 8,
+      "label": "under the tap",
+      "p": [
+        -0.4,
+        0.25,
+        0.92
+      ],
+      "c": -1.06,
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 9,
+      "label": "forward",
+      "p": [
+        -0.4,
+        0.18,
+        0.98
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 10,
+      "label": "emptied",
+      "p": [
+        -0.4,
+        0.275,
+        1.075
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 11,
+      "label": "level",
+      "p": [
+        -0.4,
+        0.18,
+        0.98
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 12,
+      "label": "lane",
+      "p": [
+        -0.25,
+        0.18,
+        0.93
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": true
+    },
+    {
+      "i": 13,
+      "label": "lane",
+      "p": [
+        0.62,
+        0.17,
+        0.975
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 14,
+      "label": "",
+      "p": [
+        0.78,
+        0.17,
+        0.975
+      ],
+      "c": "F",
+      "anchor": false,
+      "meet": false
+    },
+    {
+      "i": 15,
+      "label": "lowered",
+      "p": [
+        0.83,
+        0.17,
+        0.955
+      ],
+      "c": "F",
+      "anchor": true,
+      "meet": false
+    },
+    {
+      "i": 16,
+      "label": "set down",
+      "p": [
+        0.83,
+        0.17,
+        0.933
+      ],
+      "c": "A",
+      "anchor": false,
+      "meet": false
+    }
+  ],
+  "anchors": {
+    "over the plate#4": {
+      "ok": false,
+      "n_candidates": 20,
+      "start_status": {
+        "pose": 79,
+        "ok": 10,
+        "collision": 7,
+        "ur_seeds_ok": 12
+      }
+    },
+    "under the tap#8": {
+      "ok": false,
+      "n_candidates": 7,
+      "start_status": {
+        "pose": 63,
+        "ok": 6,
+        "collision": 27,
+        "ur_seeds_ok": 1
+      }
+    },
+    "lifted#1": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.029,
+      "start_reserve_mm": 23.5
+    },
+    "lowered#15": {
+      "ok": true,
+      "cand": 0,
+      "cart": 0.029,
+      "start_reserve_mm": 23.5
+    }
+  },
+  "pieces": [
+    {
+      "frm": "lifted#1",
+      "to": "pick#0",
+      "steps": 3,
+      "time_s": 0.2,
+      "min_reserve_mm": 4.0,
+      "max_step_deg": 0.98,
+      "cart": [
+        0.029,
+        0.029
+      ]
+    },
+    {
+      "frm": "lifted#1",
+      "to": "lane#3",
+      "steps": 22,
+      "time_s": 2.1,
+      "min_reserve_mm": 42.7,
+      "max_step_deg": 0.37,
+      "cart": [
+        0.02,
+        -0.182
+      ]
+    },
+    {
+      "frm": "lowered#15",
+      "to": "lane#12",
+      "steps": 110,
+      "time_s": 10.9,
+      "min_reserve_mm": 42.7,
+      "max_step_deg": 0.37,
+      "cart": [
+        0.02,
+        -1.037
+      ]
+    },
+    {
+      "frm": "lowered#15",
+      "to": "set down#16",
+      "steps": 3,
+      "time_s": 0.2,
+      "min_reserve_mm": 4.0,
+      "max_step_deg": 0.98,
+      "cart": [
+        0.029,
+        0.029
+      ]
+    }
+  ],
+  "joins": [],
+  "approaches": [
+    {
+      "ok": true,
+      "kf": 0,
+      "min_reserve_mm": 5.7,
+      "time_s": 0.6
+    },
+    {
+      "ok": true,
+      "kf": 16,
+      "min_reserve_mm": 5.7,
+      "time_s": 0.6
+    }
+  ],
+  "min_reserve_mm": 4.0,
+  "max_pgc_moment_Nm": null,
+  "max_joint_ratio": null,
+  "loads": [],
+  "tries": [
+    {
+      "anchor": "lifted",
+      "cand": 0,
+      "start_reserve_mm": 23.5,
+      "cart": 0.029,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 1,
+      "start_reserve_mm": 23.5,
+      "cart": 0.039,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 2,
+      "start_reserve_mm": 23.5,
+      "cart": 0.049,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lifted",
+      "cand": 3,
+      "start_reserve_mm": 23.5,
+      "cart": 0.079,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 0,
+      "start_reserve_mm": 83.5,
+      "cart": -0.369,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.519,
+        "step_deg": 11.87,
+        "pose_mm": 0.03,
+        "reserve_mm": null,
+        "dt": 0.1978743529477955,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 1,
+      "start_reserve_mm": 83.5,
+      "cart": -0.349,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.509,
+        "step_deg": 11.74,
+        "pose_mm": 0.03,
+        "reserve_mm": null,
+        "dt": 0.19563107870425994,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 2,
+      "start_reserve_mm": 77.1,
+      "cart": -0.33,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.498,
+        "step_deg": 11.6,
+        "pose_mm": 0.03,
+        "reserve_mm": null,
+        "dt": 0.19333955739611383,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 3,
+      "start_reserve_mm": 66.1,
+      "cart": -0.311,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.487,
+        "step_deg": 11.46,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "dt": 0.19099853101299372,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 4,
+      "start_reserve_mm": 52.8,
+      "cart": -0.285,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.473,
+        "step_deg": 11.27,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "dt": 0.18784328908296866,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 5,
+      "start_reserve_mm": 43.5,
+      "cart": -0.266,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.462,
+        "step_deg": 11.12,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "dt": 0.18538640060254977,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 6,
+      "start_reserve_mm": 37.5,
+      "cart": -0.253,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.454,
+        "step_deg": 11.02,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "dt": 0.18366476224420814,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "over the plate",
+      "cand": 7,
+      "start_reserve_mm": 31.3,
+      "cart": -0.239,
+      "ok": false,
+      "fail": {
+        "at": "over the plate->tipped 90 (plated)",
+        "kf": null,
+        "cart": -0.445,
+        "step_deg": 10.91,
+        "pose_mm": 0.02,
+        "reserve_mm": null,
+        "dt": 0.18177098931208086,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 0,
+      "start_reserve_mm": 9.6,
+      "cart": -1.06,
+      "ok": false,
+      "fail": {
+        "at": "forward->emptied",
+        "kf": null,
+        "cart": -1.302,
+        "step_deg": 10.05,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.16749148758790197,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 1,
+      "start_reserve_mm": 9.6,
+      "cart": -1.06,
+      "ok": false,
+      "fail": {
+        "at": "forward->emptied",
+        "kf": null,
+        "cart": -1.302,
+        "step_deg": 10.05,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.1674914903636844,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 2,
+      "start_reserve_mm": 9.6,
+      "cart": -1.06,
+      "ok": false,
+      "fail": {
+        "at": "forward->emptied",
+        "kf": null,
+        "cart": -1.302,
+        "step_deg": 10.05,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.16749148923970864,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 3,
+      "start_reserve_mm": 9.6,
+      "cart": -1.06,
+      "ok": false,
+      "fail": {
+        "at": "forward->emptied",
+        "kf": null,
+        "cart": -1.302,
+        "step_deg": 10.05,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.1674914897239485,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 4,
+      "start_reserve_mm": 9.6,
+      "cart": -1.06,
+      "ok": false,
+      "fail": {
+        "at": "forward->emptied",
+        "kf": null,
+        "cart": -1.302,
+        "step_deg": 10.05,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.16749148859940635,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 5,
+      "start_reserve_mm": 9.6,
+      "cart": -1.06,
+      "ok": false,
+      "fail": {
+        "at": "forward->emptied",
+        "kf": null,
+        "cart": -1.302,
+        "step_deg": 10.05,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.16749148676401576,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "under the tap",
+      "cand": 6,
+      "start_reserve_mm": 9.6,
+      "cart": -1.06,
+      "ok": false,
+      "fail": {
+        "at": "forward->emptied",
+        "kf": null,
+        "cart": -1.302,
+        "step_deg": 10.05,
+        "pose_mm": 0.01,
+        "reserve_mm": null,
+        "dt": 0.16749147819718407,
+        "hits": []
+      }
+    },
+    {
+      "anchor": "lowered",
+      "cand": 0,
+      "start_reserve_mm": 23.5,
+      "cart": 0.029,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 1,
+      "start_reserve_mm": 23.5,
+      "cart": 0.039,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 2,
+      "start_reserve_mm": 23.5,
+      "cart": 0.049,
+      "ok": true,
+      "fail": null
+    },
+    {
+      "anchor": "lowered",
+      "cand": 3,
+      "start_reserve_mm": 23.5,
+      "cart": 0.079,
+      "ok": true,
+      "fail": null
+    }
+  ],
+  "play": [],
+  "approach_qs": [
+    [
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.728857843852461,
+        0.573011660444941,
+        -1.1803528816240791,
+        -3.9863471739111356,
+        0.5276912598311658,
+        3.0044618995010084,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.713963780887654,
+        0.5719464562923278,
+        -1.1856626099170395,
+        -3.954692785845117,
+        0.5296420086859999,
+        2.975186152257412,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6990678583623864,
+        0.5706557999227441,
+        -1.1906194376686223,
+        -3.923377893315991,
+        0.5319641279416015,
+        2.9461196381556487,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6841766905988338,
+        0.5691264758026859,
+        -1.1952115000979728,
+        -3.8924460740117217,
+        0.5346516070609516,
+        2.9173086475999175,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6692969051363704,
+        0.5673450791344492,
+        -1.199425061162928,
+        -3.8619401228908012,
+        0.5376971286409731,
+        2.888797014969389,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6544351253095126,
+        0.5652982497871197,
+        -1.203244798813303,
+        -3.831901661327779,
+        0.5410921540109342,
+        2.8606257754941167,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6395979525499569,
+        0.5629728900611624,
+        -1.2066540956252736,
+        -3.802370783467114,
+        0.5448270197707731,
+        2.8328328813775756,
+        0.025,
+        0.025
+      ]
+    ],
+    [
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.728857843852461,
+        0.573011660444941,
+        -1.1803528816240791,
+        -3.9863471739111356,
+        0.5276912598311658,
+        3.0044618995010084,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.713963780887654,
+        0.5719464562923278,
+        -1.1856626099170395,
+        -3.954692785845117,
+        0.5296420086859999,
+        2.975186152257412,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6990678583623864,
+        0.5706557999227441,
+        -1.1906194376686223,
+        -3.923377893315991,
+        0.5319641279416015,
+        2.9461196381556487,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6841766905988338,
+        0.5691264758026859,
+        -1.1952115000979728,
+        -3.8924460740117217,
+        0.5346516070609516,
+        2.9173086475999175,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6692969051363704,
+        0.5673450791344492,
+        -1.199425061162928,
+        -3.8619401228908012,
+        0.5376971286409731,
+        2.888797014969389,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6544351253095126,
+        0.5652982497871197,
+        -1.203244798813303,
+        -3.831901661327779,
+        0.5410921540109342,
+        2.8606257754941167,
+        0.025,
+        0.025
+      ],
+      [
+        0.029156057469634348,
+        -0.21,
+        0.0,
+        1.6395979525499569,
+        0.5629728900611624,
+        -1.2066540956252736,
+        -3.802370783467114,
+        0.5448270197707731,
+        2.8328328813775756,
+        0.025,
+        0.025
+      ]
+    ]
+  ],
+  "r19pot": {
+    "layer": {
+      "rack": "keyed",
+      "spider": [
+        1.56,
+        0.2
+      ]
+    },
+    "windows": [],
+    "cabgate_extra_mm": 0.0,
+    "upper_fixtures": [
+      "r14_upper_over_hood",
+      "r14_hood",
+      "upper_cabinet_2",
+      "r07_closed_door_2_0",
+      "door_pause_sensor_2_0"
+    ],
+    "argv": [
+      "ACT=wok",
+      "SIGN=-1",
+      "L2X=-.25",
+      "SINKC=-1.06",
+      "SEEDS=1",
+      "TRIES=8",
+      "KEEP=4",
+      "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+      "GTILT=40",
+      "SPX=1.56",
+      "SPY=.20",
+      "PY=.15",
+      "ARM=fr5_j6_pgc_m3",
+      "TAG=mnt6g40",
+      "RACK=keyed"
+    ]
+  },
+  "r19mount_run": {
+    "runner": "r19pot_chain.py",
+    "argv": [
+      "ACT=wok",
+      "SIGN=-1",
+      "L2X=-.25",
+      "SINKC=-1.06",
+      "SEEDS=1",
+      "TRIES=8",
+      "KEEP=4",
+      "SEEDUR=results/r17/chain_wok_s-1_final_py.15_ur5e_enc2_pgc.json",
+      "GTILT=40",
+      "SPX=1.56",
+      "SPY=.20",
+      "PY=.15",
+      "ARM=fr5_j6_pgc_m3",
+      "TAG=mnt6g40"
+    ],
+    "runner_path": "results/r19/pot/chain_wok_s-1_mnt6g40_fr5_j6_pgc_m3.json"
+  }
+}

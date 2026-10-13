@@ -1,0 +1,11 @@
+start source state bad 1 first bad 1 max step 3.1
+start solver start 0 (10.1 mm) bad 13 first bad 0 max step 221.8
+start solver start 1 (10.1 mm) bad 13 first bad 0 max step 221.8
+start solver start 2 (10.1 mm) bad 13 first bad 0 max step 221.8
+start solver start 3 (10.1 mm) bad 13 first bad 0 max step 221.8
+start solver start 4 (5.0 mm) bad 12 first bad 0 max step 283.3
+start solver start 5 (5.0 mm) bad 12 first bad 0 max step 283.3
+play 245 states; bad 1 start source state max pose 0.000 mm, step 3.10 deg, dev 36.7 deg, min reserve 3.46 mm
+  bad {'i': 1, 'pose_mm': 0.0, 'rot_deg': 0.0, 'step_deg': 2.0, 'dev_deg': 35.14, 'reserve_mm': 4.8, 'hits': [['raw_tomato', 'R_gripper_r18_spat_blade4'], ['raw_tomato', 'R_gripper_r18_spat_blade4'], ['raw_tomato', 'R_gripper_r18_spat_blade4']]}
+approach kf 0 7 states; bad 0 min reserve 27.0
+results/r19/mount/chain_spatula_s-1_rt_fr5_j6_pgc_m2.json ok False elapsed 104 s {"source": "results/r17/chain_spatula_s-1_r18roll-1.15_.30_fr5_j6_pgc_sp20.json", "source_arm": "fr5_j6_pgc_sp20", "window": false, "argv": ["ACT=spatula", "SIGN=-1", "SPATREST=-1.15,.30", "SPATELEV=8", "SPATROLL=180", "SPX=1.56", "SPY=.20", "PY=.15"], "tcp_change_in_tool_frame": {"dp_mm": [76.24, -0.0, 9.6], "rot_deg": 0.0}, "start": "source state", "play_states": 245, "play_bad": 1, "approach_bad": 0, "max_pose_mm": 0.0, "max_rot_deg": 0.0, "max_step_deg": 3.1, "max_dev_from_source_deg": 36.7, "min_planning_reserve_mm": 3.46, "approach_min_reserve_mm": [27.0], "max_joint_step_ratio_vs_source": 1.219, "timing": "time_s is the source chain's (same object path); time_s_upper_E adds every joint-bound step that is slower on the target (sum of max(0, dq_target - dq_source) / the joint cap)", "elapsed_s": 104}
