@@ -1,0 +1,118 @@
+{
+ "scene": "play:lid19",
+ "part": "cart-yaw",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lid19",
+  "obj": "lid",
+  "src_n": 205
+ },
+ "states": 2410,
+ "stored_states": 205,
+ "nominal_s": 0.9,
+ "nominal_cached": true,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "yaw",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.396,
+    "bounded": true,
+    "violation_at": 1.399,
+    "binding": {
+     "state": 836,
+     "value_mm": -0.0,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r14_hood"
+     ],
+     "label": "",
+     "src_index": 78.429
+    },
+    "evals": 4485
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 1695
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "yaw",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 2482
+   },
+   "contact": {
+    "tol": 1.5,
+    "bounded": false,
+    "note": "no violation up to 1.5 deg",
+    "evals": 1695
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "yaw",
+   "sign": 1,
+   "state": 836,
+   "value": 1.3541,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.317,
+   "checker_pair": [
+    "r14_hood",
+    "R_gripper_r16_lid_rim"
+   ],
+   "evaluator_gate_mm": 0.317,
+   "evaluator_pair": [
+    "R_gripper_r16_lid_rim",
+    "r14_hood"
+   ]
+  },
+  {
+   "axis": "yaw",
+   "sign": 1,
+   "state": 836,
+   "value": 1.441,
+   "checker_hits": [
+    [
+     "R_gripper_r16_lid_rim",
+     "r14_hood"
+    ],
+    [
+     "r14_hood",
+     "R_gripper_r16_lid_rim"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.299,
+   "checker_pair": [
+    "r14_hood",
+    "R_gripper_r16_lid_rim"
+   ],
+   "evaluator_gate_mm": -0.299,
+   "evaluator_pair": [
+    "R_gripper_r16_lid_rim",
+    "r14_hood"
+   ]
+  }
+ ],
+ "elapsed_s": 166.6
+}

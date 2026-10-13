@@ -1,0 +1,79 @@
+{
+ "scene": "play:spider19",
+ "part": "cart-z",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r19/pot/chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "spider19",
+  "obj": "spider",
+  "src_n": 496
+ },
+ "states": 4108,
+ "stored_states": 496,
+ "nominal_s": 41.9,
+ "nominal_cached": false,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 661
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 392
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "z",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 9.999,
+    "bounded": true,
+    "violation_at": 10.043,
+    "binding": {
+     "state": 890,
+     "value_mm": -0.043,
+     "pair": [
+      "R_gripper_r16_spider_bowl",
+      "r16_pot_rack"
+     ],
+     "label": "",
+     "src_index": 81.0
+    },
+    "evals": 3684
+   },
+   "contact": {
+    "tol": 14.971,
+    "bounded": true,
+    "violation_at": 15.0,
+    "binding": {
+     "state": 890,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r16_spider_bowl",
+      "r16_pot_rack"
+     ],
+     "label": "",
+     "src_index": 81.0
+    },
+    "evals": 2442
+   }
+  }
+ ],
+ "validation": [],
+ "elapsed_s": 65.0
+}

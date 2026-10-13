@@ -1,0 +1,83 @@
+{
+ "scene": "play:spider19",
+ "part": "grasp-rot",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r19/pot/chain_spider_s+1_pot_1.56_.20_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "spider19",
+  "obj": "spider",
+  "src_n": 496
+ },
+ "states": 4108,
+ "stored_states": 496,
+ "nominal_s": 1.5,
+ "nominal_cached": true,
+ "held": true,
+ "jaw_axis_tool": [
+  -0.0,
+  1.0,
+  0.0
+ ],
+ "directions": [
+  {
+   "kind": "grasp",
+   "axis": "rot",
+   "sign": 1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 1.641,
+    "bounded": true,
+    "violation_at": 1.645,
+    "binding": {
+     "state": 890,
+     "value_mm": -0.008,
+     "pair": [
+      "R_gripper_r16_spider_bowl",
+      "r16_pot_rack"
+     ],
+     "label": "",
+     "src_index": 81.0
+    },
+    "evals": 4306
+   },
+   "contact": {
+    "tol": 2.474,
+    "bounded": true,
+    "violation_at": 2.477,
+    "binding": {
+     "state": 890,
+     "value_mm": 0.008,
+     "pair": [
+      "R_gripper_r16_spider_bowl",
+      "r16_pot_rack"
+     ],
+     "label": "",
+     "src_index": 81.0
+    },
+    "evals": 4453
+   }
+  },
+  {
+   "kind": "grasp",
+   "axis": "rot",
+   "sign": -1,
+   "group": null,
+   "unit": "deg",
+   "gate": {
+    "tol": 4.0,
+    "bounded": false,
+    "note": "no violation up to 4 deg",
+    "evals": 1527
+   },
+   "contact": {
+    "tol": 4.0,
+    "bounded": false,
+    "note": "no violation up to 4 deg",
+    "evals": 1081
+   }
+  }
+ ],
+ "elapsed_s": 35.5
+}

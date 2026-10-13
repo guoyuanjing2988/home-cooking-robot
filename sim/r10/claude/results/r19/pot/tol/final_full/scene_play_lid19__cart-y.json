@@ -1,0 +1,128 @@
+{
+ "scene": "play:lid19",
+ "part": "cart-y",
+ "arm": "ur5e_enc2_pgc",
+ "info": {
+  "file": "results/r17/chain_lid_s-1_final_ur5e_enc2_pgc.json",
+  "kind": "play",
+  "act": "lid19",
+  "obj": "lid",
+  "src_n": 205
+ },
+ "states": 2410,
+ "stored_states": 205,
+ "nominal_s": 22.1,
+ "nominal_cached": false,
+ "held": true,
+ "directions": [
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": 1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 9.969,
+    "bounded": true,
+    "violation_at": 9.996,
+    "binding": {
+     "state": 948,
+     "value_mm": -0.005,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r14_hood"
+     ],
+     "label": "",
+     "src_index": 86.429
+    },
+    "evals": 2081
+   },
+   "contact": {
+    "tol": 14.973,
+    "bounded": true,
+    "violation_at": 15.0,
+    "binding": {
+     "state": 948,
+     "value_mm": 0.0,
+     "pair": [
+      "R_gripper_r16_lid_rim",
+      "r14_hood"
+     ],
+     "label": "",
+     "src_index": 86.429
+    },
+    "evals": 1565
+   }
+  },
+  {
+   "kind": "cart",
+   "axis": "y",
+   "sign": -1,
+   "group": null,
+   "unit": "mm",
+   "gate": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 1924
+   },
+   "contact": {
+    "tol": 15.0,
+    "bounded": false,
+    "note": "no violation up to 15 mm",
+    "evals": 1474
+   }
+  }
+ ],
+ "validation": [
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 948,
+   "value": 9.6699,
+   "checker_hits": [],
+   "checker_hit_reasons": [],
+   "checker_min_reserve_mm": 0.321,
+   "checker_pair": [
+    "r14_hood",
+    "R_gripper_r16_lid_rim"
+   ],
+   "evaluator_gate_mm": 0.321,
+   "evaluator_pair": [
+    "R_gripper_r16_lid_rim",
+    "r14_hood"
+   ]
+  },
+  {
+   "axis": "y",
+   "sign": 1,
+   "state": 948,
+   "value": 10.2959,
+   "checker_hits": [
+    [
+     "R_gripper_r16_lid_rim",
+     "r14_hood"
+    ],
+    [
+     "r14_hood",
+     "R_gripper_r16_lid_rim"
+    ]
+   ],
+   "checker_hit_reasons": [
+    "independent convex upper witness violates gap",
+    "mujoco contact"
+   ],
+   "checker_min_reserve_mm": -0.304,
+   "checker_pair": [
+    "r14_hood",
+    "R_gripper_r16_lid_rim"
+   ],
+   "evaluator_gate_mm": -0.304,
+   "evaluator_pair": [
+    "R_gripper_r16_lid_rim",
+    "r14_hood"
+   ]
+  }
+ ],
+ "elapsed_s": 211.0
+}
