@@ -1,0 +1,2205 @@
+{
+  "tuck": {
+    "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/tuck_neg.json",
+    "q": [
+      1.031469776431267,
+      0.5039711201342383,
+      -1.3320922422200643,
+      -2.049622008563162,
+      0.6042806366894111,
+      4.135951871205295
+    ]
+  },
+  "nodes": {
+    "WOK": {
+      "kind": "endpoint",
+      "action": "wok",
+      "cart": 0.17223478243170842,
+      "home": "H_WOK"
+    },
+    "LEV_C": {
+      "kind": "endpoint",
+      "action": "lever",
+      "cart": -0.5456140241253897,
+      "home": "H_SINK"
+    },
+    "LEV_O": {
+      "kind": "endpoint",
+      "action": "lever",
+      "cart": -0.5456140241253897,
+      "home": "H_SINK"
+    },
+    "LID_POT": {
+      "kind": "endpoint",
+      "action": "lid",
+      "cart": 0.8862859489800807,
+      "home": "H_POT"
+    },
+    "LID_RACK": {
+      "kind": "endpoint",
+      "action": "lid",
+      "cart": 1.3256343051719983,
+      "home": "H_POT"
+    },
+    "SPIDER": {
+      "kind": "endpoint",
+      "action": "spider",
+      "cart": 1.0775504606381787,
+      "home": "H_POT"
+    },
+    "SPAT": {
+      "kind": "endpoint",
+      "action": "spatula",
+      "cart": -1.48,
+      "home": "H_SPAT"
+    },
+    "H_SPAT": {
+      "kind": "hub",
+      "cart": -1.48,
+      "q": [
+        -1.48,
+        -0.21,
+        0.0,
+        1.031469776431267,
+        0.5039711201342383,
+        -1.3320922422200643,
+        -2.049622008563162,
+        0.6042806366894111,
+        4.135951871205295,
+        0.025,
+        0.025
+      ],
+      "carry_envelope": true
+    },
+    "H_SINK": {
+      "kind": "hub",
+      "cart": -0.68,
+      "q": [
+        -0.68,
+        -0.21,
+        0.0,
+        1.031469776431267,
+        0.5039711201342383,
+        -1.3320922422200643,
+        -2.049622008563162,
+        0.6042806366894111,
+        4.135951871205295,
+        0.025,
+        0.025
+      ],
+      "carry_envelope": true
+    },
+    "H_WOK": {
+      "kind": "hub",
+      "cart": 0.172,
+      "q": [
+        0.172,
+        -0.21,
+        0.0,
+        1.031469776431267,
+        0.5039711201342383,
+        -1.3320922422200643,
+        -2.049622008563162,
+        0.6042806366894111,
+        4.135951871205295,
+        0.025,
+        0.025
+      ],
+      "carry_envelope": true
+    },
+    "H_POT": {
+      "kind": "hub",
+      "cart": 1.093,
+      "q": [
+        1.093,
+        -0.21,
+        0.0,
+        1.031469776431267,
+        0.5039711201342383,
+        -1.3320922422200643,
+        -2.049622008563162,
+        0.6042806366894111,
+        4.135951871205295,
+        0.025,
+        0.025
+      ],
+      "carry_envelope": true
+    }
+  },
+  "edges": [
+    {
+      "frm": "H_SINK",
+      "to": "H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.01,
+      "estimate_s": 6.01,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 217,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_H_SINK__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "H_SINK",
+      "reverse_of": "H_SINK->H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.01,
+      "estimate_s": 6.01,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 217,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_H_SINK__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SPAT",
+      "to": "H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.8,
+      "estimate_s": 5.8,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 209,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_H_SPAT__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SINK",
+      "to": "H_SPAT",
+      "reverse_of": "H_SPAT->H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.8,
+      "estimate_s": 5.8,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 209,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_H_SPAT__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.28,
+      "estimate_s": 6.28,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 248,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_H_WOK__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "H_POT",
+      "to": "H_WOK",
+      "reverse_of": "H_WOK->H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.28,
+      "estimate_s": 6.28,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 248,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_H_WOK__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "LEV_C",
+      "to": "H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.21,
+      "estimate_s": 3.14,
+      "min_reserve_mm": 17.0,
+      "peak_tcp_mps": 0.97,
+      "max_height_m": 1.797,
+      "states_checked": 1487,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_C__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SINK",
+      "to": "LEV_C",
+      "reverse_of": "LEV_C->H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.21,
+      "estimate_s": 3.14,
+      "min_reserve_mm": 17.0,
+      "peak_tcp_mps": 0.97,
+      "max_height_m": 1.797,
+      "states_checked": 1487,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_C__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "LEV_C",
+      "to": "H_SPAT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.34,
+      "estimate_s": 6.34,
+      "min_reserve_mm": 17.0,
+      "peak_tcp_mps": 0.81,
+      "max_height_m": 1.797,
+      "states_checked": 1697,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_C__H_SPAT.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SPAT",
+      "to": "LEV_C",
+      "reverse_of": "LEV_C->H_SPAT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.34,
+      "estimate_s": 6.34,
+      "min_reserve_mm": 17.0,
+      "peak_tcp_mps": 0.81,
+      "max_height_m": 1.797,
+      "states_checked": 1697,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_C__H_SPAT.json",
+      "fail": null
+    },
+    {
+      "frm": "LEV_C",
+      "to": "H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.47,
+      "estimate_s": 5.47,
+      "min_reserve_mm": 17.0,
+      "peak_tcp_mps": 1.02,
+      "max_height_m": 1.797,
+      "states_checked": 1610,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_C__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "LEV_C",
+      "reverse_of": "LEV_C->H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.47,
+      "estimate_s": 5.47,
+      "min_reserve_mm": 17.0,
+      "peak_tcp_mps": 1.02,
+      "max_height_m": 1.797,
+      "states_checked": 1610,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_C__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "LEV_O",
+      "to": "H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: retreat (0, -0.15, 0)",
+      "time_s": 3.62,
+      "estimate_s": 3.14,
+      "min_reserve_mm": 3.7,
+      "peak_tcp_mps": 0.84,
+      "max_height_m": 1.79,
+      "states_checked": 1365,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_O__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SINK",
+      "to": "LEV_O",
+      "reverse_of": "LEV_O->H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: retreat (0, -0.15, 0)",
+      "time_s": 3.62,
+      "estimate_s": 3.14,
+      "min_reserve_mm": 3.7,
+      "peak_tcp_mps": 0.84,
+      "max_height_m": 1.79,
+      "states_checked": 1365,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_O__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "LEV_O",
+      "to": "H_SPAT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: retreat (0, -0.15, 0)",
+      "time_s": 4.71,
+      "estimate_s": 6.34,
+      "min_reserve_mm": 3.7,
+      "peak_tcp_mps": 0.74,
+      "max_height_m": 1.79,
+      "states_checked": 1566,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_O__H_SPAT.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SPAT",
+      "to": "LEV_O",
+      "reverse_of": "LEV_O->H_SPAT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: retreat (0, -0.15, 0)",
+      "time_s": 4.71,
+      "estimate_s": 6.34,
+      "min_reserve_mm": 3.7,
+      "peak_tcp_mps": 0.74,
+      "max_height_m": 1.79,
+      "states_checked": 1566,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_O__H_SPAT.json",
+      "fail": null
+    },
+    {
+      "frm": "LEV_O",
+      "to": "H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: retreat (0, -0.15, 0)",
+      "time_s": 3.85,
+      "estimate_s": 5.47,
+      "min_reserve_mm": 3.7,
+      "peak_tcp_mps": 0.91,
+      "max_height_m": 1.79,
+      "states_checked": 1516,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_O__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "LEV_O",
+      "reverse_of": "LEV_O->H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: retreat (0, -0.15, 0)",
+      "time_s": 3.85,
+      "estimate_s": 5.47,
+      "min_reserve_mm": 3.7,
+      "peak_tcp_mps": 0.91,
+      "max_height_m": 1.79,
+      "states_checked": 1516,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_O__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "LEV_O",
+      "to": "WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: retreat (0, -0.15, 0) + tuck at the mid cart",
+      "time_s": 5.51,
+      "estimate_s": 5.47,
+      "min_reserve_mm": 2.1,
+      "peak_tcp_mps": 0.93,
+      "max_height_m": 1.79,
+      "states_checked": 2124,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_O__WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "WOK",
+      "to": "LEV_O",
+      "reverse_of": "LEV_O->WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: retreat (0, -0.15, 0) + tuck at the mid cart",
+      "time_s": 5.51,
+      "estimate_s": 5.47,
+      "min_reserve_mm": 2.1,
+      "peak_tcp_mps": 0.93,
+      "max_height_m": 1.79,
+      "states_checked": 2124,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LEV_O__WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "LID_POT",
+      "to": "H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.41,
+      "estimate_s": 3.43,
+      "min_reserve_mm": 25.2,
+      "peak_tcp_mps": 0.55,
+      "max_height_m": 1.773,
+      "states_checked": 1164,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LID_POT__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "H_POT",
+      "to": "LID_POT",
+      "reverse_of": "LID_POT->H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.41,
+      "estimate_s": 3.43,
+      "min_reserve_mm": 25.2,
+      "peak_tcp_mps": 0.55,
+      "max_height_m": 1.773,
+      "states_checked": 1164,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LID_POT__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "LID_POT",
+      "to": "H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.46,
+      "estimate_s": 5.46,
+      "min_reserve_mm": 25.8,
+      "peak_tcp_mps": 0.66,
+      "max_height_m": 1.773,
+      "states_checked": 1302,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LID_POT__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "LID_POT",
+      "reverse_of": "LID_POT->H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.46,
+      "estimate_s": 5.46,
+      "min_reserve_mm": 25.8,
+      "peak_tcp_mps": 0.66,
+      "max_height_m": 1.773,
+      "states_checked": 1302,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LID_POT__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "LID_RACK",
+      "to": "H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.76,
+      "estimate_s": 3.53,
+      "min_reserve_mm": 2.0,
+      "peak_tcp_mps": 0.51,
+      "max_height_m": 1.773,
+      "states_checked": 1421,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LID_RACK__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "H_POT",
+      "to": "LID_RACK",
+      "reverse_of": "LID_RACK->H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.76,
+      "estimate_s": 3.53,
+      "min_reserve_mm": 2.0,
+      "peak_tcp_mps": 0.51,
+      "max_height_m": 1.773,
+      "states_checked": 1421,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LID_RACK__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "LID_RACK",
+      "to": "H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 5.21,
+      "estimate_s": 7.21,
+      "min_reserve_mm": 2.2,
+      "peak_tcp_mps": 0.5,
+      "max_height_m": 1.773,
+      "states_checked": 1669,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LID_RACK__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "LID_RACK",
+      "reverse_of": "LID_RACK->H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 5.21,
+      "estimate_s": 7.21,
+      "min_reserve_mm": 2.2,
+      "peak_tcp_mps": 0.5,
+      "max_height_m": 1.773,
+      "states_checked": 1669,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_LID_RACK__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "SPAT",
+      "to": "H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: joints [5, 6, 7, 8] first, cart in the first part",
+      "time_s": 6.8,
+      "estimate_s": 5.8,
+      "min_reserve_mm": 2.1,
+      "peak_tcp_mps": 0.7,
+      "max_height_m": 2.05,
+      "states_checked": 1710,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPAT__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SINK",
+      "to": "SPAT",
+      "reverse_of": "SPAT->H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "via: joints [5, 6, 7, 8] first, cart in the first part",
+      "time_s": 6.8,
+      "estimate_s": 5.8,
+      "min_reserve_mm": 2.1,
+      "peak_tcp_mps": 0.7,
+      "max_height_m": 2.05,
+      "states_checked": 1710,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPAT__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "SPAT",
+      "to": "H_SPAT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": false,
+      "method": null,
+      "time_s": null,
+      "estimate_s": 2.6,
+      "min_reserve_mm": null,
+      "peak_tcp_mps": null,
+      "max_height_m": null,
+      "states_checked": null,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPAT__H_SPAT.json",
+      "fail": [
+        {
+          "method": "straight",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.453,
+            "hits": [
+              [
+                "r07_closed_door_0_0",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.48,
+              -0.21,
+              0.0,
+              0.2864480223409388,
+              -1.140124328500385,
+              -1.7421457392402258,
+              -1.4642121128017727,
+              1.6891999925074936,
+              4.7244002488346934,
+              0.025,
+              0.025
+            ]
+          }
+        },
+        {
+          "method": "via: retreat (0, -0.15, 0)",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.471,
+            "hits": [
+              [
+                "r07_closed_door_0_0",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.48,
+              -0.21,
+              0.0,
+              0.16857085265512306,
+              -1.1709211846324608,
+              -1.5344705697703684,
+              -1.70777810284831,
+              1.5463943853297315,
+              4.593351317343452,
+              0.025,
+              0.025
+            ]
+          }
+        },
+        {
+          "method": "via: retreat (0, -0.3, 0)",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.492,
+            "hits": [
+              [
+                "r07_closed_door_0_0",
+                "R_geom_enc2_fa_3"
+              ],
+              [
+                "r07_closed_door_0_1",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.48,
+              -0.21,
+              0.0,
+              0.05197897968634191,
+              -1.3260498291557208,
+              -1.28141917217212,
+              -1.8803775191539809,
+              1.483182878530759,
+              4.556713547709817,
+              0.025,
+              0.025
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frm": "H_SPAT",
+      "to": "SPAT",
+      "reverse_of": "SPAT->H_SPAT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": false,
+      "method": null,
+      "time_s": null,
+      "estimate_s": 2.6,
+      "min_reserve_mm": null,
+      "peak_tcp_mps": null,
+      "max_height_m": null,
+      "states_checked": null,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPAT__H_SPAT.json",
+      "fail": [
+        {
+          "method": "straight",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.453,
+            "hits": [
+              [
+                "r07_closed_door_0_0",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.48,
+              -0.21,
+              0.0,
+              0.2864480223409388,
+              -1.140124328500385,
+              -1.7421457392402258,
+              -1.4642121128017727,
+              1.6891999925074936,
+              4.7244002488346934,
+              0.025,
+              0.025
+            ]
+          }
+        },
+        {
+          "method": "via: retreat (0, -0.15, 0)",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.471,
+            "hits": [
+              [
+                "r07_closed_door_0_0",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.48,
+              -0.21,
+              0.0,
+              0.16857085265512306,
+              -1.1709211846324608,
+              -1.5344705697703684,
+              -1.70777810284831,
+              1.5463943853297315,
+              4.593351317343452,
+              0.025,
+              0.025
+            ]
+          }
+        },
+        {
+          "method": "via: retreat (0, -0.3, 0)",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.492,
+            "hits": [
+              [
+                "r07_closed_door_0_0",
+                "R_geom_enc2_fa_3"
+              ],
+              [
+                "r07_closed_door_0_1",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.48,
+              -0.21,
+              0.0,
+              0.05197897968634191,
+              -1.3260498291557208,
+              -1.28141917217212,
+              -1.8803775191539809,
+              1.483182878530759,
+              4.556713547709817,
+              0.025,
+              0.025
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frm": "SPAT",
+      "to": "LEV_C",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": false,
+      "method": null,
+      "time_s": null,
+      "estimate_s": 6.34,
+      "min_reserve_mm": null,
+      "peak_tcp_mps": null,
+      "max_height_m": null,
+      "states_checked": null,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPAT__LEV_C.json",
+      "fail": [
+        {
+          "method": "straight",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.176,
+            "hits": [
+              [
+                "r07_closed_door_0_1",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.2880914957242147,
+              -0.21,
+              0.0,
+              0.4407885813268906,
+              -2.029035365467728,
+              -1.8342035681408526,
+              -0.5991751404317205,
+              1.998983145460667,
+              4.716167711051558,
+              0.025,
+              0.025
+            ]
+          }
+        },
+        {
+          "method": "via: tuck at the mid cart",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.463,
+            "hits": [
+              [
+                "r07_closed_door_0_1",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.257415912175584,
+              -0.21,
+              0.0,
+              0.28610906794872304,
+              -1.1408723246098638,
+              -1.7423322967911903,
+              -1.463945775269579,
+              1.6896935863909412,
+              4.724667968751722,
+              0.025,
+              0.025
+            ]
+          }
+        },
+        {
+          "method": "via: tuck at the A cart",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.453,
+            "hits": [
+              [
+                "r07_closed_door_0_0",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.48,
+              -0.21,
+              0.0,
+              0.2864480223409388,
+              -1.140124328500385,
+              -1.7421457392402258,
+              -1.4642121128017727,
+              1.6891999925074936,
+              4.7244002488346934,
+              0.025,
+              0.025
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frm": "LEV_C",
+      "to": "SPAT",
+      "reverse_of": "SPAT->LEV_C",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": false,
+      "method": null,
+      "time_s": null,
+      "estimate_s": 6.34,
+      "min_reserve_mm": null,
+      "peak_tcp_mps": null,
+      "max_height_m": null,
+      "states_checked": null,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPAT__LEV_C.json",
+      "fail": [
+        {
+          "method": "straight",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.176,
+            "hits": [
+              [
+                "r07_closed_door_0_1",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.2880914957242147,
+              -0.21,
+              0.0,
+              0.4407885813268906,
+              -2.029035365467728,
+              -1.8342035681408526,
+              -0.5991751404317205,
+              1.998983145460667,
+              4.716167711051558,
+              0.025,
+              0.025
+            ]
+          }
+        },
+        {
+          "method": "via: tuck at the mid cart",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.463,
+            "hits": [
+              [
+                "r07_closed_door_0_1",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.257415912175584,
+              -0.21,
+              0.0,
+              0.28610906794872304,
+              -1.1408723246098638,
+              -1.7423322967911903,
+              -1.463945775269579,
+              1.6896935863909412,
+              4.724667968751722,
+              0.025,
+              0.025
+            ]
+          }
+        },
+        {
+          "method": "via: tuck at the A cart",
+          "ok": false,
+          "fail": {
+            "ok": false,
+            "stage": "fast",
+            "at": 0.453,
+            "hits": [
+              [
+                "r07_closed_door_0_0",
+                "R_geom_enc2_fa_3"
+              ]
+            ],
+            "ranges": true,
+            "mobile": true,
+            "stability": true,
+            "q": [
+              -1.48,
+              -0.21,
+              0.0,
+              0.2864480223409388,
+              -1.140124328500385,
+              -1.7421457392402258,
+              -1.4642121128017727,
+              1.6891999925074936,
+              4.7244002488346934,
+              0.025,
+              0.025
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frm": "SPIDER",
+      "to": "H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.24,
+      "estimate_s": 2.66,
+      "min_reserve_mm": 3.0,
+      "peak_tcp_mps": 0.44,
+      "max_height_m": 1.82,
+      "states_checked": 1494,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPIDER__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "H_POT",
+      "to": "SPIDER",
+      "reverse_of": "SPIDER->H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 3.24,
+      "estimate_s": 2.66,
+      "min_reserve_mm": 3.0,
+      "peak_tcp_mps": 0.44,
+      "max_height_m": 1.82,
+      "states_checked": 1494,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPIDER__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "SPIDER",
+      "to": "H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.22,
+      "estimate_s": 6.22,
+      "min_reserve_mm": 2.1,
+      "peak_tcp_mps": 0.48,
+      "max_height_m": 1.82,
+      "states_checked": 1702,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPIDER__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "SPIDER",
+      "reverse_of": "SPIDER->H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.22,
+      "estimate_s": 6.22,
+      "min_reserve_mm": 2.1,
+      "peak_tcp_mps": 0.48,
+      "max_height_m": 1.82,
+      "states_checked": 1702,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_SPIDER__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "WOK",
+      "to": "H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.28,
+      "estimate_s": 6.28,
+      "min_reserve_mm": 2.1,
+      "peak_tcp_mps": 0.44,
+      "max_height_m": 1.773,
+      "states_checked": 848,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_WOK__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "H_POT",
+      "to": "WOK",
+      "reverse_of": "WOK->H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.28,
+      "estimate_s": 6.28,
+      "min_reserve_mm": 2.1,
+      "peak_tcp_mps": 0.44,
+      "max_height_m": 1.773,
+      "states_checked": 848,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_WOK__H_POT.json",
+      "fail": null
+    },
+    {
+      "frm": "WOK",
+      "to": "H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.01,
+      "estimate_s": 6.01,
+      "min_reserve_mm": 2.3,
+      "peak_tcp_mps": 0.66,
+      "max_height_m": 1.773,
+      "states_checked": 816,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_WOK__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SINK",
+      "to": "WOK",
+      "reverse_of": "WOK->H_SINK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 4.01,
+      "estimate_s": 6.01,
+      "min_reserve_mm": 2.3,
+      "peak_tcp_mps": 0.66,
+      "max_height_m": 1.773,
+      "states_checked": 816,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_WOK__H_SINK.json",
+      "fail": null
+    },
+    {
+      "frm": "WOK",
+      "to": "H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 2.49,
+      "estimate_s": 2.6,
+      "min_reserve_mm": 2.4,
+      "peak_tcp_mps": 0.75,
+      "max_height_m": 1.773,
+      "states_checked": 589,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_WOK__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "WOK",
+      "reverse_of": "WOK->H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "straight",
+      "time_s": 2.49,
+      "estimate_s": 2.6,
+      "min_reserve_mm": 2.4,
+      "peak_tcp_mps": 0.75,
+      "max_height_m": 1.773,
+      "states_checked": 589,
+      "file": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2\\edge_WOK__H_WOK.json",
+      "fail": null
+    },
+    {
+      "frm": "H_SPAT",
+      "to": "H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "derived: collinear checked corridor pieces H_SPAT-H_SINK, H_SINK-H_WOK",
+      "time_s": 7.21,
+      "estimate_s": 9.21,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 426,
+      "file": [
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SPAT__H_SINK.json",
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SINK__H_WOK.json"
+      ],
+      "fail": null
+    },
+    {
+      "frm": "H_WOK",
+      "to": "H_SPAT",
+      "reverse_of": "H_SPAT->H_WOK",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "derived: collinear checked corridor pieces H_SPAT-H_SINK, H_SINK-H_WOK",
+      "time_s": 7.21,
+      "estimate_s": 9.21,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 426,
+      "file": [
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SPAT__H_SINK.json",
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SINK__H_WOK.json"
+      ],
+      "fail": null
+    },
+    {
+      "frm": "H_SPAT",
+      "to": "H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "derived: collinear checked corridor pieces H_SPAT-H_SINK, H_SINK-H_WOK, H_WOK-H_POT",
+      "time_s": 10.89,
+      "estimate_s": 12.89,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 674,
+      "file": [
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SPAT__H_SINK.json",
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SINK__H_WOK.json",
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_WOK__H_POT.json"
+      ],
+      "fail": null
+    },
+    {
+      "frm": "H_POT",
+      "to": "H_SPAT",
+      "reverse_of": "H_SPAT->H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "derived: collinear checked corridor pieces H_SPAT-H_SINK, H_SINK-H_WOK, H_WOK-H_POT",
+      "time_s": 10.89,
+      "estimate_s": 12.89,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 674,
+      "file": [
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SPAT__H_SINK.json",
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SINK__H_WOK.json",
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_WOK__H_POT.json"
+      ],
+      "fail": null
+    },
+    {
+      "frm": "H_SINK",
+      "to": "H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "derived: collinear checked corridor pieces H_SINK-H_WOK, H_WOK-H_POT",
+      "time_s": 7.69,
+      "estimate_s": 9.69,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 465,
+      "file": [
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SINK__H_WOK.json",
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_WOK__H_POT.json"
+      ],
+      "fail": null
+    },
+    {
+      "frm": "H_POT",
+      "to": "H_SINK",
+      "reverse_of": "H_SINK->H_POT",
+      "held": "nothing: empty gripper, jaws open 25 mm each",
+      "ok": true,
+      "method": "derived: collinear checked corridor pieces H_SINK-H_WOK, H_WOK-H_POT",
+      "time_s": 7.69,
+      "estimate_s": 9.69,
+      "min_reserve_mm": 53.8,
+      "peak_tcp_mps": 0.25,
+      "max_height_m": 1.773,
+      "states_checked": 465,
+      "file": [
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_SINK__H_WOK.json",
+        "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/edge_H_WOK__H_POT.json"
+      ],
+      "fail": null
+    }
+  ],
+  "missing_edges": [],
+  "routes": {
+    "WOK->LEV_C": {
+      "estimate_s": 5.47,
+      "checked": {
+        "time_s": 5.96,
+        "path": [
+          "WOK",
+          "H_WOK",
+          "LEV_C"
+        ]
+      },
+      "ratio": 1.09,
+      "projected_with_screened": {
+        "time_s": 5.96,
+        "path": [
+          "WOK",
+          "H_WOK",
+          "LEV_C"
+        ]
+      },
+      "projected_ratio": 1.09
+    },
+    "WOK->LEV_O": {
+      "estimate_s": 5.47,
+      "checked": {
+        "time_s": 5.51,
+        "path": [
+          "WOK",
+          "LEV_O"
+        ]
+      },
+      "ratio": 1.01,
+      "projected_with_screened": {
+        "time_s": 5.51,
+        "path": [
+          "WOK",
+          "LEV_O"
+        ]
+      },
+      "projected_ratio": 1.01
+    },
+    "WOK->LID_POT": {
+      "estimate_s": 5.46,
+      "checked": {
+        "time_s": 5.95,
+        "path": [
+          "WOK",
+          "H_WOK",
+          "LID_POT"
+        ]
+      },
+      "ratio": 1.09,
+      "projected_with_screened": {
+        "time_s": 5.95,
+        "path": [
+          "WOK",
+          "H_WOK",
+          "LID_POT"
+        ]
+      },
+      "projected_ratio": 1.09
+    },
+    "WOK->LID_RACK": {
+      "estimate_s": 7.21,
+      "checked": {
+        "time_s": 7.7,
+        "path": [
+          "WOK",
+          "H_WOK",
+          "LID_RACK"
+        ]
+      },
+      "ratio": 1.07,
+      "projected_with_screened": {
+        "time_s": 7.7,
+        "path": [
+          "WOK",
+          "H_WOK",
+          "LID_RACK"
+        ]
+      },
+      "projected_ratio": 1.07
+    },
+    "WOK->SPIDER": {
+      "estimate_s": 6.22,
+      "checked": {
+        "time_s": 6.71,
+        "path": [
+          "WOK",
+          "H_WOK",
+          "SPIDER"
+        ]
+      },
+      "ratio": 1.08,
+      "projected_with_screened": {
+        "time_s": 6.71,
+        "path": [
+          "WOK",
+          "H_WOK",
+          "SPIDER"
+        ]
+      },
+      "projected_ratio": 1.08
+    },
+    "WOK->SPAT": {
+      "estimate_s": 9.21,
+      "checked": {
+        "time_s": 10.81,
+        "path": [
+          "WOK",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "ratio": 1.17,
+      "projected_with_screened": {
+        "time_s": 10.81,
+        "path": [
+          "WOK",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "projected_ratio": 1.17
+    },
+    "LEV_C->WOK": {
+      "estimate_s": 5.47,
+      "checked": {
+        "time_s": 5.96,
+        "path": [
+          "LEV_C",
+          "H_WOK",
+          "WOK"
+        ]
+      },
+      "ratio": 1.09,
+      "projected_with_screened": {
+        "time_s": 5.96,
+        "path": [
+          "LEV_C",
+          "H_WOK",
+          "WOK"
+        ]
+      },
+      "projected_ratio": 1.09
+    },
+    "LEV_C->LEV_O": {
+      "estimate_s": 2.6,
+      "checked": {
+        "time_s": 6.83,
+        "path": [
+          "LEV_C",
+          "H_SINK",
+          "LEV_O"
+        ]
+      },
+      "ratio": 2.63,
+      "projected_with_screened": {
+        "time_s": 6.83,
+        "path": [
+          "LEV_C",
+          "H_SINK",
+          "LEV_O"
+        ]
+      },
+      "projected_ratio": 2.63
+    },
+    "LEV_C->LID_POT": {
+      "estimate_s": 8.33,
+      "checked": {
+        "time_s": 6.93,
+        "path": [
+          "LEV_C",
+          "H_WOK",
+          "LID_POT"
+        ]
+      },
+      "ratio": 0.83,
+      "projected_with_screened": {
+        "time_s": 6.93,
+        "path": [
+          "LEV_C",
+          "H_WOK",
+          "LID_POT"
+        ]
+      },
+      "projected_ratio": 0.83
+    },
+    "LEV_C->LID_RACK": {
+      "estimate_s": 10.08,
+      "checked": {
+        "time_s": 8.68,
+        "path": [
+          "LEV_C",
+          "H_WOK",
+          "LID_RACK"
+        ]
+      },
+      "ratio": 0.86,
+      "projected_with_screened": {
+        "time_s": 8.68,
+        "path": [
+          "LEV_C",
+          "H_WOK",
+          "LID_RACK"
+        ]
+      },
+      "projected_ratio": 0.86
+    },
+    "LEV_C->SPIDER": {
+      "estimate_s": 9.09,
+      "checked": {
+        "time_s": 7.69,
+        "path": [
+          "LEV_C",
+          "H_WOK",
+          "SPIDER"
+        ]
+      },
+      "ratio": 0.85,
+      "projected_with_screened": {
+        "time_s": 7.69,
+        "path": [
+          "LEV_C",
+          "H_WOK",
+          "SPIDER"
+        ]
+      },
+      "projected_ratio": 0.85
+    },
+    "LEV_C->SPAT": {
+      "estimate_s": 6.34,
+      "checked": {
+        "time_s": 10.01,
+        "path": [
+          "LEV_C",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "ratio": 1.58,
+      "projected_with_screened": {
+        "time_s": 10.01,
+        "path": [
+          "LEV_C",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "projected_ratio": 1.58
+    },
+    "LEV_O->WOK": {
+      "estimate_s": 5.47,
+      "checked": {
+        "time_s": 5.51,
+        "path": [
+          "LEV_O",
+          "WOK"
+        ]
+      },
+      "ratio": 1.01,
+      "projected_with_screened": {
+        "time_s": 5.51,
+        "path": [
+          "LEV_O",
+          "WOK"
+        ]
+      },
+      "projected_ratio": 1.01
+    },
+    "LEV_O->LEV_C": {
+      "estimate_s": 2.6,
+      "checked": {
+        "time_s": 6.83,
+        "path": [
+          "LEV_O",
+          "H_SINK",
+          "LEV_C"
+        ]
+      },
+      "ratio": 2.63,
+      "projected_with_screened": {
+        "time_s": 6.83,
+        "path": [
+          "LEV_O",
+          "H_SINK",
+          "LEV_C"
+        ]
+      },
+      "projected_ratio": 2.63
+    },
+    "LEV_O->LID_POT": {
+      "estimate_s": 8.33,
+      "checked": {
+        "time_s": 7.31,
+        "path": [
+          "LEV_O",
+          "H_WOK",
+          "LID_POT"
+        ]
+      },
+      "ratio": 0.88,
+      "projected_with_screened": {
+        "time_s": 7.31,
+        "path": [
+          "LEV_O",
+          "H_WOK",
+          "LID_POT"
+        ]
+      },
+      "projected_ratio": 0.88
+    },
+    "LEV_O->LID_RACK": {
+      "estimate_s": 10.08,
+      "checked": {
+        "time_s": 9.06,
+        "path": [
+          "LEV_O",
+          "H_WOK",
+          "LID_RACK"
+        ]
+      },
+      "ratio": 0.9,
+      "projected_with_screened": {
+        "time_s": 9.06,
+        "path": [
+          "LEV_O",
+          "H_WOK",
+          "LID_RACK"
+        ]
+      },
+      "projected_ratio": 0.9
+    },
+    "LEV_O->SPIDER": {
+      "estimate_s": 9.09,
+      "checked": {
+        "time_s": 8.07,
+        "path": [
+          "LEV_O",
+          "H_WOK",
+          "SPIDER"
+        ]
+      },
+      "ratio": 0.89,
+      "projected_with_screened": {
+        "time_s": 8.07,
+        "path": [
+          "LEV_O",
+          "H_WOK",
+          "SPIDER"
+        ]
+      },
+      "projected_ratio": 0.89
+    },
+    "LEV_O->SPAT": {
+      "estimate_s": 6.34,
+      "checked": {
+        "time_s": 10.42,
+        "path": [
+          "LEV_O",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "ratio": 1.64,
+      "projected_with_screened": {
+        "time_s": 10.42,
+        "path": [
+          "LEV_O",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "projected_ratio": 1.64
+    },
+    "LID_POT->WOK": {
+      "estimate_s": 5.46,
+      "checked": {
+        "time_s": 5.95,
+        "path": [
+          "LID_POT",
+          "H_WOK",
+          "WOK"
+        ]
+      },
+      "ratio": 1.09,
+      "projected_with_screened": {
+        "time_s": 5.95,
+        "path": [
+          "LID_POT",
+          "H_WOK",
+          "WOK"
+        ]
+      },
+      "projected_ratio": 1.09
+    },
+    "LID_POT->LEV_C": {
+      "estimate_s": 8.33,
+      "checked": {
+        "time_s": 6.93,
+        "path": [
+          "LID_POT",
+          "H_WOK",
+          "LEV_C"
+        ]
+      },
+      "ratio": 0.83,
+      "projected_with_screened": {
+        "time_s": 6.93,
+        "path": [
+          "LID_POT",
+          "H_WOK",
+          "LEV_C"
+        ]
+      },
+      "projected_ratio": 0.83
+    },
+    "LID_POT->LEV_O": {
+      "estimate_s": 8.33,
+      "checked": {
+        "time_s": 7.31,
+        "path": [
+          "LID_POT",
+          "H_WOK",
+          "LEV_O"
+        ]
+      },
+      "ratio": 0.88,
+      "projected_with_screened": {
+        "time_s": 7.31,
+        "path": [
+          "LID_POT",
+          "H_WOK",
+          "LEV_O"
+        ]
+      },
+      "projected_ratio": 0.88
+    },
+    "LID_POT->LID_RACK": {
+      "estimate_s": 4.36,
+      "checked": {
+        "time_s": 7.17,
+        "path": [
+          "LID_POT",
+          "H_POT",
+          "LID_RACK"
+        ]
+      },
+      "ratio": 1.65,
+      "projected_with_screened": {
+        "time_s": 7.17,
+        "path": [
+          "LID_POT",
+          "H_POT",
+          "LID_RACK"
+        ]
+      },
+      "projected_ratio": 1.65
+    },
+    "LID_POT->SPIDER": {
+      "estimate_s": 3.37,
+      "checked": {
+        "time_s": 6.65,
+        "path": [
+          "LID_POT",
+          "H_POT",
+          "SPIDER"
+        ]
+      },
+      "ratio": 1.98,
+      "projected_with_screened": {
+        "time_s": 6.65,
+        "path": [
+          "LID_POT",
+          "H_POT",
+          "SPIDER"
+        ]
+      },
+      "projected_ratio": 1.98
+    },
+    "LID_POT->SPAT": {
+      "estimate_s": 12.07,
+      "checked": {
+        "time_s": 14.27,
+        "path": [
+          "LID_POT",
+          "H_WOK",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "ratio": 1.18,
+      "projected_with_screened": {
+        "time_s": 14.27,
+        "path": [
+          "LID_POT",
+          "H_WOK",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "projected_ratio": 1.18
+    },
+    "LID_RACK->WOK": {
+      "estimate_s": 7.21,
+      "checked": {
+        "time_s": 7.7,
+        "path": [
+          "LID_RACK",
+          "H_WOK",
+          "WOK"
+        ]
+      },
+      "ratio": 1.07,
+      "projected_with_screened": {
+        "time_s": 7.7,
+        "path": [
+          "LID_RACK",
+          "H_WOK",
+          "WOK"
+        ]
+      },
+      "projected_ratio": 1.07
+    },
+    "LID_RACK->LEV_C": {
+      "estimate_s": 10.08,
+      "checked": {
+        "time_s": 8.68,
+        "path": [
+          "LID_RACK",
+          "H_WOK",
+          "LEV_C"
+        ]
+      },
+      "ratio": 0.86,
+      "projected_with_screened": {
+        "time_s": 8.68,
+        "path": [
+          "LID_RACK",
+          "H_WOK",
+          "LEV_C"
+        ]
+      },
+      "projected_ratio": 0.86
+    },
+    "LID_RACK->LEV_O": {
+      "estimate_s": 10.08,
+      "checked": {
+        "time_s": 9.06,
+        "path": [
+          "LID_RACK",
+          "H_WOK",
+          "LEV_O"
+        ]
+      },
+      "ratio": 0.9,
+      "projected_with_screened": {
+        "time_s": 9.06,
+        "path": [
+          "LID_RACK",
+          "H_WOK",
+          "LEV_O"
+        ]
+      },
+      "projected_ratio": 0.9
+    },
+    "LID_RACK->LID_POT": {
+      "estimate_s": 4.36,
+      "checked": {
+        "time_s": 7.17,
+        "path": [
+          "LID_RACK",
+          "H_POT",
+          "LID_POT"
+        ]
+      },
+      "ratio": 1.65,
+      "projected_with_screened": {
+        "time_s": 7.17,
+        "path": [
+          "LID_RACK",
+          "H_POT",
+          "LID_POT"
+        ]
+      },
+      "projected_ratio": 1.65
+    },
+    "LID_RACK->SPIDER": {
+      "estimate_s": 3.59,
+      "checked": {
+        "time_s": 7.0,
+        "path": [
+          "LID_RACK",
+          "H_POT",
+          "SPIDER"
+        ]
+      },
+      "ratio": 1.95,
+      "projected_with_screened": {
+        "time_s": 7.0,
+        "path": [
+          "LID_RACK",
+          "H_POT",
+          "SPIDER"
+        ]
+      },
+      "projected_ratio": 1.95
+    },
+    "LID_RACK->SPAT": {
+      "estimate_s": 13.82,
+      "checked": {
+        "time_s": 16.02,
+        "path": [
+          "LID_RACK",
+          "H_WOK",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "ratio": 1.16,
+      "projected_with_screened": {
+        "time_s": 16.02,
+        "path": [
+          "LID_RACK",
+          "H_WOK",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "projected_ratio": 1.16
+    },
+    "SPIDER->WOK": {
+      "estimate_s": 6.22,
+      "checked": {
+        "time_s": 6.71,
+        "path": [
+          "SPIDER",
+          "H_WOK",
+          "WOK"
+        ]
+      },
+      "ratio": 1.08,
+      "projected_with_screened": {
+        "time_s": 6.71,
+        "path": [
+          "SPIDER",
+          "H_WOK",
+          "WOK"
+        ]
+      },
+      "projected_ratio": 1.08
+    },
+    "SPIDER->LEV_C": {
+      "estimate_s": 9.09,
+      "checked": {
+        "time_s": 7.69,
+        "path": [
+          "SPIDER",
+          "H_WOK",
+          "LEV_C"
+        ]
+      },
+      "ratio": 0.85,
+      "projected_with_screened": {
+        "time_s": 7.69,
+        "path": [
+          "SPIDER",
+          "H_WOK",
+          "LEV_C"
+        ]
+      },
+      "projected_ratio": 0.85
+    },
+    "SPIDER->LEV_O": {
+      "estimate_s": 9.09,
+      "checked": {
+        "time_s": 8.07,
+        "path": [
+          "SPIDER",
+          "H_WOK",
+          "LEV_O"
+        ]
+      },
+      "ratio": 0.89,
+      "projected_with_screened": {
+        "time_s": 8.07,
+        "path": [
+          "SPIDER",
+          "H_WOK",
+          "LEV_O"
+        ]
+      },
+      "projected_ratio": 0.89
+    },
+    "SPIDER->LID_POT": {
+      "estimate_s": 3.37,
+      "checked": {
+        "time_s": 6.65,
+        "path": [
+          "SPIDER",
+          "H_POT",
+          "LID_POT"
+        ]
+      },
+      "ratio": 1.98,
+      "projected_with_screened": {
+        "time_s": 6.65,
+        "path": [
+          "SPIDER",
+          "H_POT",
+          "LID_POT"
+        ]
+      },
+      "projected_ratio": 1.98
+    },
+    "SPIDER->LID_RACK": {
+      "estimate_s": 3.59,
+      "checked": {
+        "time_s": 7.0,
+        "path": [
+          "SPIDER",
+          "H_POT",
+          "LID_RACK"
+        ]
+      },
+      "ratio": 1.95,
+      "projected_with_screened": {
+        "time_s": 7.0,
+        "path": [
+          "SPIDER",
+          "H_POT",
+          "LID_RACK"
+        ]
+      },
+      "projected_ratio": 1.95
+    },
+    "SPIDER->SPAT": {
+      "estimate_s": 12.83,
+      "checked": {
+        "time_s": 15.03,
+        "path": [
+          "SPIDER",
+          "H_WOK",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "ratio": 1.17,
+      "projected_with_screened": {
+        "time_s": 15.03,
+        "path": [
+          "SPIDER",
+          "H_WOK",
+          "H_SINK",
+          "SPAT"
+        ]
+      },
+      "projected_ratio": 1.17
+    },
+    "SPAT->WOK": {
+      "estimate_s": 9.21,
+      "checked": {
+        "time_s": 10.81,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "WOK"
+        ]
+      },
+      "ratio": 1.17,
+      "projected_with_screened": {
+        "time_s": 10.81,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "WOK"
+        ]
+      },
+      "projected_ratio": 1.17
+    },
+    "SPAT->LEV_C": {
+      "estimate_s": 6.34,
+      "checked": {
+        "time_s": 10.01,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "LEV_C"
+        ]
+      },
+      "ratio": 1.58,
+      "projected_with_screened": {
+        "time_s": 10.01,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "LEV_C"
+        ]
+      },
+      "projected_ratio": 1.58
+    },
+    "SPAT->LEV_O": {
+      "estimate_s": 6.34,
+      "checked": {
+        "time_s": 10.42,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "LEV_O"
+        ]
+      },
+      "ratio": 1.64,
+      "projected_with_screened": {
+        "time_s": 10.42,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "LEV_O"
+        ]
+      },
+      "projected_ratio": 1.64
+    },
+    "SPAT->LID_POT": {
+      "estimate_s": 12.07,
+      "checked": {
+        "time_s": 14.27,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "H_WOK",
+          "LID_POT"
+        ]
+      },
+      "ratio": 1.18,
+      "projected_with_screened": {
+        "time_s": 14.27,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "H_WOK",
+          "LID_POT"
+        ]
+      },
+      "projected_ratio": 1.18
+    },
+    "SPAT->LID_RACK": {
+      "estimate_s": 13.82,
+      "checked": {
+        "time_s": 16.02,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "H_WOK",
+          "LID_RACK"
+        ]
+      },
+      "ratio": 1.16,
+      "projected_with_screened": {
+        "time_s": 16.02,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "H_WOK",
+          "LID_RACK"
+        ]
+      },
+      "projected_ratio": 1.16
+    },
+    "SPAT->SPIDER": {
+      "estimate_s": 12.83,
+      "checked": {
+        "time_s": 15.03,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "H_WOK",
+          "SPIDER"
+        ]
+      },
+      "ratio": 1.17,
+      "projected_with_screened": {
+        "time_s": 15.03,
+        "path": [
+          "SPAT",
+          "H_SINK",
+          "H_WOK",
+          "SPIDER"
+        ]
+      },
+      "projected_ratio": 1.17
+    }
+  },
+  "screened_not_checked": {},
+  "time_model": "joints <= 60 deg/s, cart <= 0.25 m/s (r17chain.py caps) + 0.6 s per edge; estimate = |dx|/0.25 + 2.6 s (r17seq.py)"
+}

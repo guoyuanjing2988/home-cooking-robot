@@ -1,0 +1,19 @@
+pick (nested in the tub) start candidates 20 {'collision': 42, 'ok': 30, 'pose': 24, 'ur_seeds_ok': 12}
+ cand 0 cart -0.41 ok
+ cand 1 cart -0.44 ok
+ cand 2 cart -0.27 {'at': 'out of the tub->lane', 'kf': None, 'cart': np.float64(-0.058), 'step_deg': 0.15, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09607023265832436), 'hits': [['R_geom_enc2_fa_1', 'r07_closed_door_1_0'], ['R_geom_enc2_fa_1', 'r07_closed_door_1_0']]}
+ cand 3 cart -0.39 ok
+ cand 4 cart -0.37 ok
+under the tap start candidates 0 {'collision': 41, 'pose': 55, 'ur_seeds_ok': 0}
+over the tub start candidates 20 {'ok': 35, 'pose': 49, 'collision': 12, 'ur_seeds_ok': 12}
+ cand 0 cart -0.4 ok
+ cand 1 cart -0.27 {'at': 'over the tub->lane', 'kf': None, 'cart': np.float64(-0.058), 'step_deg': 0.15, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09607023265832436), 'hits': [['R_geom_enc2_fa_1', 'r07_closed_door_1_0'], ['R_geom_enc2_fa_1', 'r07_closed_door_1_0']]}
+ cand 2 cart -0.29 {'at': 'over the tub->lane', 'kf': 16, 'cart': np.float64(-0.067), 'step_deg': 0.15, 'pose_mm': 0.0, 'reserve_mm': -4.2, 'dt': np.float64(0.09607023265832436), 'hits': [['R_geom_enc2_fa_1', 'r07_closed_door_1_0'], ['r07_closed_door_1_0', 'R_geom_enc2_fa_1']]}
+ cand 3 cart -0.34 ok
+ cand 4 cart -0.44 ok
+ cand 5 cart -0.33 ok
+joins at lane []
+joins at lane []
+r19mount_run: written results/r19/mount/chain_basket_fixs4_ur5e_enc2_pgc_m2.json
+results/r19/prep/chain_basket_fixs4_ur5e_enc2_pgc_m2.json
+{"keyframe_source": "r19prepchain/r19prep3_actions keyframes overridden by r19fr5prep_actions.override (argv X..)", "start_dedup": true, "act": "basket", "obj": "basket_p30", "arm": "ur5e_enc2_pgc_m2", "grasp_sense": 1, "argv": ["ACT=basket", "SEEDS=1", "TRIES=8", "KEEP=4", "BYAW=-20", "BPITCH=30", "XTAPC=0.10", "SEEDUR=results/r19/prep/chain_basket_y20p30_ur5e_enc2_pgc.json", "ARM=ur5e_enc2_pgc_m2", "TAG=fixs4"], "ok": false, "time_s": 0.0, "elapsed_s": 57, "rinse_dwell_s_est": 3.0, "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker", "anchors": {"under the tap#5": {"ok": false, "n_candidates": 0, "start_status": {"collision": 41, "pose": 55, "ur_seeds_ok": 0}}, "pick (nested in the tub)#0": {"ok": true, "cand": 0, "cart": -0.408, "start_reserve_mm": 3.0}, "over the tub#17": {"ok": true, "cand": 0, "cart": -0.399, "start_reserve_mm": 23.0}}, "pieces": [{"frm": "pick (nested in the tub)#0", "to": "lane#3", "steps": 34, "time_s": 3.2, "min_reserve_mm": 4.7, "max_step_deg": 2.67, "cart": [-0.408, -0.178]}, {"frm": "over the tub#17", "to": "lane#16", "steps": 23, "time_s": 2.2, "min_reserve_mm": 6.8, "max_step_deg": 0.18, "cart": [-0.389, -0.169]}, {"frm": "over the tub#17", "to": "in the tub (8 mm)#19", "steps": 11, "time_s": 1.0, "min_reserve_mm": 3.0, "max_step_deg": 2.6, "cart": [-0.399, -0.399]}], "joins": [], "approaches": [{"ok": true, "kf": 0, "object_in_world": true, "window": false, "lift_mm": 0.0, "min_food_gap_mm": null, "min_reserve_mm": 3.8, "time_s": 0.5}, {"ok": true, "kf": 19, "object_in_world": true, "window": false, "lift_mm": 8.0, "min_food_gap_mm": null, "min_reserve_mm": 2.1, "time_s": 0.5}], "min_reserve_mm": 3.0, "max_pgc_moment_Nm": null, "max_joint_ratio": null, "push": null}

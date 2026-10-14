@@ -1,0 +1,27 @@
+pick (nested in the tub) start candidates 20 {'collision': 42, 'ok': 30, 'pose': 24, 'ur_seeds_ok': 12}
+ cand 0 cart -0.41 ok
+ cand 1 cart -0.44 ok
+ cand 2 cart -0.27 {'at': 'out of the tub->lane', 'kf': None, 'cart': np.float64(-0.058), 'step_deg': 0.15, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09607023265832436), 'hits': [['R_geom_enc2_fa_1', 'r07_closed_door_1_0'], ['R_geom_enc2_fa_1', 'r07_closed_door_1_0']]}
+ cand 3 cart -0.39 ok
+ cand 4 cart -0.37 ok
+under the tap start candidates 20 {'collision': 22, 'pose': 45, 'ok': 29, 'ur_seeds_ok': 12}
+ cand 0 cart -0.26 {'at': 'in front of the stream->lane', 'kf': 3, 'cart': np.float64(-0.519), 'step_deg': 0.76, 'pose_mm': 0.0, 'reserve_mm': -0.2, 'dt': np.float64(0.09771041450572529), 'hits': [['r07_closed_door_0_1', 'R_geom_enc2_ua_4'], ['r07_closed_door_0_1', 'R_geom_enc2_ua_4']]}
+ cand 1 cart -0.29 {'at': 'in front of the stream->lane', 'kf': None, 'cart': np.float64(-0.52), 'step_deg': 0.72, 'pose_mm': 0.0, 'reserve_mm': -1.9, 'dt': np.float64(0.09771041450572529), 'hits': [['r07_closed_door_0_1', 'R_geom_enc2_ua_4'], ['r07_closed_door_0_1', 'R_geom_enc2_ua_4']]}
+ cand 2 cart -0.16 ok
+ cand 3 cart -0.31 {'at': 'in front of the stream->lane', 'kf': None, 'cart': np.float64(-0.52), 'step_deg': 0.71, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09771041450572529), 'hits': [['r07_closed_door_0_1', 'R_geom_enc2_ua_4']]}
+ cand 4 cart -0.34 {'at': 'in front of the stream->lane', 'kf': None, 'cart': np.float64(-0.53), 'step_deg': 0.72, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09771041450572529), 'hits': [['r07_closed_door_0_1', 'R_geom_enc2_ua_4']]}
+ cand 5 cart -0.18 ok
+ cand 6 cart -0.36 {'at': 'in front of the stream->lane', 'kf': None, 'cart': np.float64(-0.54), 'step_deg': 0.71, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09771041450572529), 'hits': [['r07_closed_door_0_1', 'R_geom_enc2_ua_4']]}
+ cand 7 cart -0.39 {'at': 'in front of the stream->lane', 'kf': None, 'cart': np.float64(-0.559), 'step_deg': 0.7, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09771041450572529), 'hits': [['upper_cabinet_0_piece3', 'R_geom_enc2_ua_4'], ['r07_closed_door_0_1', 'R_geom_enc2_ua_4']]}
+over the tub start candidates 20 {'ok': 35, 'pose': 49, 'collision': 12, 'ur_seeds_ok': 12}
+ cand 0 cart -0.4 ok
+ cand 1 cart -0.27 {'at': 'over the tub->lane', 'kf': None, 'cart': np.float64(-0.058), 'step_deg': 0.15, 'pose_mm': 0.0, 'reserve_mm': None, 'dt': np.float64(0.09607023265832436), 'hits': [['R_geom_enc2_fa_1', 'r07_closed_door_1_0'], ['R_geom_enc2_fa_1', 'r07_closed_door_1_0']]}
+ cand 2 cart -0.29 {'at': 'over the tub->lane', 'kf': 16, 'cart': np.float64(-0.067), 'step_deg': 0.15, 'pose_mm': 0.0, 'reserve_mm': -4.2, 'dt': np.float64(0.09607023265832436), 'hits': [['R_geom_enc2_fa_1', 'r07_closed_door_1_0'], ['r07_closed_door_1_0', 'R_geom_enc2_fa_1']]}
+ cand 3 cart -0.34 ok
+ cand 4 cart -0.44 ok
+ cand 5 cart -0.33 ok
+joins at lane [(58, True), (58, True), (65, True), (65, True), (69, True), (69, True)]
+joins at lane [(60, True), (60, True), (69, True), (69, True), (79, True), (79, True)]
+r19mount_run: written results/r19/mount/chain_basket_fixs1_ur5e_enc2_pgc_m2.json
+results/r19/prep/chain_basket_fixs1_ur5e_enc2_pgc_m2.json
+{"keyframe_source": "r19prepchain/r19prep3_actions keyframes overridden by r19fr5prep_actions.override (argv X..)", "start_dedup": true, "act": "basket", "obj": "basket_p30", "arm": "ur5e_enc2_pgc_m2", "grasp_sense": 1, "argv": ["ACT=basket", "SEEDS=1", "TRIES=8", "KEEP=4", "BYAW=-20", "BPITCH=30", "TAPY=.30", "TAPZ=.90", "SEEDUR=results/r19/prep/chain_basket_y20p30_ur5e_enc2_pgc.json", "ARM=ur5e_enc2_pgc_m2", "TAG=fixs1"], "ok": true, "time_s": 34.9, "elapsed_s": 126, "rinse_dwell_s_est": 3.0, "method": "r17chain.py method (r19prepchain.py docstring); unchanged checker", "anchors": {"pick (nested in the tub)#0": {"ok": true, "cand": 1, "cart": -0.438, "start_reserve_mm": 3.0}, "under the tap#5": {"ok": true, "cand": 0, "cart": -0.163, "start_reserve_mm": 14.7}, "over the tub#17": {"ok": true, "cand": 2, "cart": -0.438, "start_reserve_mm": 23.0}}, "pieces": [{"frm": "pick (nested in the tub)#0", "to": "lane#3", "steps": 34, "time_s": 3.2, "min_reserve_mm": 4.7, "max_step_deg": 2.87, "cart": [-0.438, -0.206]}, {"frm": "under the tap#5", "to": "lane#3", "steps": 35, "time_s": 6.4, "min_reserve_mm": 2.6, "max_step_deg": 6.13, "cart": [-0.152, -0.472]}, {"frm": "under the tap#5", "to": "lane#16", "steps": 63, "time_s": 15.9, "min_reserve_mm": 2.5, "max_step_deg": 6.13, "cart": [-0.163, -0.487]}, {"frm": "over the tub#17", "to": "lane#16", "steps": 23, "time_s": 2.2, "min_reserve_mm": 7.3, "max_step_deg": 0.19, "cart": [-0.428, -0.206]}, {"frm": "over the tub#17", "to": "in the tub (8 mm)#19", "steps": 11, "time_s": 1.0, "min_reserve_mm": 3.0, "max_step_deg": 2.87, "cart": [-0.438, -0.438]}], "joins": [{"ok": true, "arm_deg": 58.4, "s": 1.7, "cart_m": 0.265, "shuffle_s": 1.1, "at": "lane", "best_pair_deg": 58.4}, {"ok": true, "arm_deg": 60.4, "s": 1.77, "cart_m": 0.281, "shuffle_s": 1.2, "at": "lane", "best_pair_deg": 60.4}], "approaches": [{"ok": true, "kf": 0, "object_in_world": true, "window": false, "lift_mm": 0.0, "min_food_gap_mm": null, "min_reserve_mm": 3.8, "time_s": 0.5}, {"ok": true, "kf": 19, "object_in_world": true, "window": false, "lift_mm": 8.0, "min_food_gap_mm": null, "min_reserve_mm": 2.1, "time_s": 0.5}], "min_reserve_mm": 2.5, "max_pgc_moment_Nm": 1.81, "max_joint_ratio": 0.305, "push": null}
