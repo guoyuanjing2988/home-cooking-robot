@@ -143,7 +143,7 @@ Tools carry a colour on their keyed block, and the camera can check it [E].
 5. **Sink zoning.**
    - **No raw meat is washed at the sink.** SFA: "Avoid washing raw meat to prevent the spread of pathogens" [S: SFA advisory Dec 2024, p.3].
    - USDA found that 26 % of people who washed raw poultry transferred bacteria to salad lettuce. 60 % had bacteria in the sink afterwards, and 14 % still did after cleaning it [S, snip: USDA 2019 study press release].
-   - The audit's assumed rib "wash/rinse" [S: `R19_PREP_AUDIT.md` items; `r19_asbought.md:65` "a rinse is [assumed]"] becomes the scald he already does in meal B [S: `r19_asbought.md:83`]: kettle water over the ribs in the red basket in the tub, drained by lifting the insert.
+   - The audit's assumed rib "wash/rinse" [S: `R19_PREP_AUDIT.md` items; `r19_asbought.md:65` "a rinse is [assumed]"] becomes the scald the creator already does in meal B [S: `r19_asbought.md:83`]: kettle water over the ribs in the red basket in the tub, drained by lifting the insert.
    - **Clams** stay in the red soak-tub insert (purge and scrub).
    - Any RED water is poured **last** in the meal's sink sequence. After it, the robot rinses the basin with the remaining kettle water [E]. No produce or wok goes into the sink after a red drain until that rinse.
    - The wok rinse is not RED (the residue is cooked).
@@ -152,7 +152,7 @@ Tools carry a colour on their keyed block, and the camera can check it [E].
    - The pad becomes a removable rimmed tray (inventory #26), into the DW after every meal.
    - The spatula is rinsed under the tap on the existing wok-rinse trip [E: the extra time of a second item under the tap is ND].
 7. **RED to BLUE.**
-   - Serving vessels never hold raw food, except the steaming plates. The fish and the marinated ribs are steamed on the plate they are served on, as he does, so the heat covers the plate.
+   - Serving vessels never hold raw food, except the steaming plates. The fish and the marinated ribs are steamed on the plate they are served on, as the creator does, so the heat covers the plate.
    - The probe (§5) only enters food at the end of cooking. If a check fails, it is dipped in near-boiling kettle water before the next use [E].
    - **Blanched pork-belly cubes (B)** are only part-cooked when cut. They are a RED item on the lever base: cut them last, on a dedicated 30 mm grid plate.
 8. **Gripper hygiene.**
