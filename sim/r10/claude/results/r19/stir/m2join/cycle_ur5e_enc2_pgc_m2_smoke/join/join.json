@@ -1,0 +1,641 @@
+{
+ "arm": "ur5e_enc2_pgc_m2",
+ "spatula_chain": "results/r19/mount/chain_spatula_s-1_rt_ur5e_enc2_pgc_m2.json",
+ "cycle": "results/r19/stir/m2join/cycle_ur5e_enc2_pgc_m2_smoke/lib_stir_cycle_ur5e_enc2_pgc_m2_smoke.json",
+ "labels": {
+  "unwrap_net_2pi": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "roadmap_shift_2pi": [
+   -1,
+   0,
+   0,
+   0,
+   1,
+   1
+  ],
+  "roadmap": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2/hubs.json action_shifts['spatula']",
+  "cycle_relabel_2pi": [
+   0,
+   -1,
+   0,
+   0,
+   1,
+   1
+  ],
+  "certified_states_in_range": true,
+  "geometry_in_range_2000_per_segment": true,
+  "cycle_min_deg": [
+   -40.04,
+   -117.42,
+   -149.75,
+   -96.95,
+   107.44,
+   287.66
+  ],
+  "cycle_max_deg": [
+   -5.71,
+   -52.87,
+   -98.32,
+   -49.06,
+   141.73,
+   342.86
+  ],
+  "spatula_play_in_range": true,
+  "spatula_min_deg": [
+   -59.15,
+   -152.05,
+   -133.52,
+   -117.44,
+   109.0,
+   278.57
+  ],
+  "spatula_max_deg": [
+   -13.64,
+   -79.3,
+   -73.07,
+   -36.18,
+   159.51,
+   345.4
+  ]
+ },
+ "ends": {
+  "spatula_end": [
+   0.472381277260638,
+   -0.21,
+   0.0,
+   -0.23803712111190034,
+   -1.384069041856685,
+   -2.007348214915855,
+   -1.4130225202879634,
+   1.9329300976131574,
+   6.028284765068216,
+   0.015,
+   0.015
+  ],
+  "h_stir0": [
+   0.55,
+   -0.21,
+   0.0,
+   -0.29364183723313486,
+   -1.2070842456988782,
+   -2.1255508012688287,
+   -1.4925855497673914,
+   1.9272415467115582,
+   5.9691977850400315,
+   0.015,
+   0.015
+  ],
+  "h_stir0_stored": [
+   0.55,
+   -0.21,
+   0.0,
+   -0.29364183723313486,
+   5.076101061480708,
+   -2.1255508012688287,
+   -1.4925855497673914,
+   -4.355943760468028,
+   -0.31398752213955494,
+   0.015,
+   0.015
+  ],
+  "joint_diff_deg": [
+   -3.186,
+   10.14,
+   -6.773,
+   -4.559,
+   -0.326,
+   -3.385
+  ],
+  "cart_m": 0.07762
+ },
+ "spatula_chain_ends_at_rest": "yes: r17chain ends every action at rest; R19_SMOOTH times the spatula chain rest to rest per piece (results/r19/smooth/spatula.json); so the join is timed from rest",
+ "geometry": {
+  "kind": "tool-fixed self-motion (cart stepped 0.001 m, 6 joints solved for the unchanged tool pose)",
+  "ik_states": 79,
+  "ik_max_pose_err_m": 1.0956261691329053e-10,
+  "end_vs_h_stir0_deg": 3.463992498834733e-05,
+  "spline": "interpolating quintic over (cart, q1..q6), u = cart travel (m)",
+  "length_m": 0.07761872273936204,
+  "tool_dev_mm_deg": [
+   2.7e-05,
+   3.1e-05
+  ]
+ },
+ "certificate": {
+  "states": 112,
+  "max_step_bound_mm": 3.999,
+  "scenes": {
+   "stir": {
+    "ok": true,
+    "states": 112,
+    "hit_states": 0,
+    "out_of_range_states": 0,
+    "hit_pairs": {},
+    "min_env_reserve_mm": 5.71,
+    "min_env_pair": [
+     "r15_wok_t4_9",
+     "R_gripper_spatula_blade0"
+    ],
+    "min_self_reserve_mm": 2.01,
+    "min_self_pair": [
+     "R_geom_enc2_w1_0",
+     "R_geom_enc2_w3_0"
+    ],
+    "min_reserve_by_category": {
+     "arm_arm_or_frame": {
+      "mm": 127.08,
+      "pair": [
+       "R_cart_beam",
+       "R_geom_enc2_ua_5"
+      ]
+     },
+     "held_gripper_environment": {
+      "mm": 5.71,
+      "pair": [
+       "r15_wok_t4_9",
+       "R_gripper_spatula_blade0"
+      ]
+     },
+     "robot_environment": {
+      "mm": 70.09,
+      "pair": [
+       "r07_closed_door_1_1",
+       "R_geom_enc2_fa_1"
+      ]
+     },
+     "self": {
+      "mm": 2.01,
+      "pair": [
+       "R_geom_enc2_w1_0",
+       "R_geom_enc2_w3_0"
+      ]
+     }
+    },
+    "min_plume_mm": 94.03,
+    "min_plume_geom": "R_base_plate",
+    "plume_violations": 0
+   },
+   "std": {
+    "ok": true,
+    "states": 112,
+    "hit_states": 0,
+    "out_of_range_states": 0,
+    "hit_pairs": {},
+    "min_env_reserve_mm": 5.71,
+    "min_env_pair": [
+     "r15_wok_t4_9",
+     "R_gripper_r18_spat_blade0"
+    ],
+    "min_self_reserve_mm": 2.01,
+    "min_self_pair": [
+     "R_geom_enc2_w1_0",
+     "R_geom_enc2_w3_0"
+    ],
+    "min_reserve_by_category": {
+     "arm_arm_or_frame": {
+      "mm": 127.08,
+      "pair": [
+       "R_cart_beam",
+       "R_geom_enc2_ua_5"
+      ]
+     },
+     "held_gripper_environment": {
+      "mm": 5.71,
+      "pair": [
+       "r15_wok_t4_9",
+       "R_gripper_r18_spat_blade0"
+      ]
+     },
+     "robot_environment": {
+      "mm": 70.09,
+      "pair": [
+       "r07_closed_door_1_1",
+       "R_geom_enc2_fa_1"
+      ]
+     },
+     "self": {
+      "mm": 2.01,
+      "pair": [
+       "R_geom_enc2_w1_0",
+       "R_geom_enc2_w3_0"
+      ]
+     }
+    },
+    "min_plume_mm": 94.03,
+    "min_plume_geom": "R_base_plate",
+    "plume_violations": 0
+   }
+  },
+  "std_scene": {
+   "rack": "keyed",
+   "spider": [
+    1.56,
+    0.2
+   ],
+   "plate_y": 0.15,
+   "spider_rest": [
+    1.56,
+    0.2
+   ],
+   "rack_geoms": 7,
+   "plate_c": [
+    0.43,
+    0.15,
+    0.85
+   ]
+  },
+  "checker": "Checker.check(full=True) + r19enc_check.one (10 / 5 / 0 mm, joint ranges, R11 held-box mesh rule), plume rule"
+ },
+ "line_comparison": {
+  "states": 112,
+  "tool_dev_mm": 1.86,
+  "ok": true,
+  "hit_states": 0,
+  "min_env_reserve_mm": 2.01,
+  "min_env_pair": [
+   "r15_wok_t2_10",
+   "R_gripper_spatula_blade1"
+  ],
+  "min_plume_mm": 94.03
+ },
+ "laws": {
+  "entry_A_UR_fastcart": {
+   "time_s": 1.284,
+   "peak_v": {
+    "cart_mps": 0.1311,
+    "joints_degps": [
+     5.4,
+     17.2,
+     11.5,
+     7.8,
+     0.6,
+     5.7
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.3063,
+    "joints_degps2": [
+     14.0,
+     40.4,
+     29.4,
+     21.4,
+     1.5,
+     14.8
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 3.722,
+    "joints_degps3": [
+     154.0,
+     490.0,
+     335.0,
+     230.0,
+     16.0,
+     164.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.5246,
+    "a": 0.6125,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "exit_A_UR_fastcart": {
+   "time_s": 1.284,
+   "peak_v": {
+    "cart_mps": 0.1311,
+    "joints_degps": [
+     5.4,
+     17.2,
+     11.5,
+     7.8,
+     0.6,
+     5.7
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.3063,
+    "joints_degps2": [
+     14.0,
+     40.4,
+     29.4,
+     21.4,
+     1.5,
+     14.8
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 3.722,
+    "joints_degps3": [
+     154.0,
+     489.0,
+     336.0,
+     230.0,
+     16.0,
+     164.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.5246,
+    "a": 0.6125,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "entry_A_UR_same": {
+   "time_s": 1.934,
+   "peak_v": {
+    "cart_mps": 0.0865,
+    "joints_degps": [
+     3.5,
+     11.3,
+     7.6,
+     5.1,
+     0.4,
+     3.8
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.1278,
+    "joints_degps2": [
+     6.0,
+     16.8,
+     12.1,
+     9.0,
+     0.7,
+     6.4
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 1.485,
+    "joints_degps3": [
+     65.0,
+     195.0,
+     137.0,
+     98.0,
+     7.0,
+     69.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.346,
+    "a": 0.852,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "exit_A_UR_same": {
+   "time_s": 1.934,
+   "peak_v": {
+    "cart_mps": 0.0865,
+    "joints_degps": [
+     3.5,
+     11.3,
+     7.6,
+     5.1,
+     0.4,
+     3.8
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.1278,
+    "joints_degps2": [
+     6.0,
+     16.8,
+     12.1,
+     9.0,
+     0.7,
+     6.4
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 1.485,
+    "joints_degps3": [
+     65.0,
+     195.0,
+     137.0,
+     98.0,
+     7.0,
+     69.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.346,
+    "a": 0.852,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "entry_A_R15_fastcart": {
+   "time_s": 1.284,
+   "peak_v": {
+    "cart_mps": 0.1311,
+    "joints_degps": [
+     5.4,
+     17.2,
+     11.5,
+     7.8,
+     0.6,
+     5.7
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.3063,
+    "joints_degps2": [
+     14.0,
+     40.4,
+     29.4,
+     21.4,
+     1.5,
+     14.8
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 3.722,
+    "joints_degps3": [
+     154.0,
+     490.0,
+     335.0,
+     230.0,
+     16.0,
+     164.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.5246,
+    "a": 0.6125,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "exit_A_R15_fastcart": {
+   "time_s": 1.284,
+   "peak_v": {
+    "cart_mps": 0.1311,
+    "joints_degps": [
+     5.4,
+     17.2,
+     11.5,
+     7.8,
+     0.6,
+     5.7
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.3063,
+    "joints_degps2": [
+     14.0,
+     40.4,
+     29.4,
+     21.4,
+     1.5,
+     14.8
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 3.722,
+    "joints_degps3": [
+     154.0,
+     489.0,
+     336.0,
+     230.0,
+     16.0,
+     164.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.5246,
+    "a": 0.6125,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "entry_A_R15_same": {
+   "time_s": 1.934,
+   "peak_v": {
+    "cart_mps": 0.0865,
+    "joints_degps": [
+     3.5,
+     11.3,
+     7.6,
+     5.1,
+     0.4,
+     3.8
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.1278,
+    "joints_degps2": [
+     6.0,
+     16.8,
+     12.1,
+     9.0,
+     0.7,
+     6.4
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 1.485,
+    "joints_degps3": [
+     65.0,
+     195.0,
+     137.0,
+     98.0,
+     7.0,
+     69.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.346,
+    "a": 0.852,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  },
+  "exit_A_R15_same": {
+   "time_s": 1.934,
+   "peak_v": {
+    "cart_mps": 0.0865,
+    "joints_degps": [
+     3.5,
+     11.3,
+     7.6,
+     5.1,
+     0.4,
+     3.8
+    ]
+   },
+   "peak_a": {
+    "cart_mps2": 0.1278,
+    "joints_degps2": [
+     6.0,
+     16.8,
+     12.1,
+     9.0,
+     0.7,
+     6.4
+    ]
+   },
+   "peak_j": {
+    "cart_mps3": 1.485,
+    "joints_degps3": [
+     65.0,
+     195.0,
+     137.0,
+     98.0,
+     7.0,
+     69.0
+    ]
+   },
+   "worst_ratio": {
+    "v": 0.346,
+    "a": 0.852,
+    "cap": 0.0
+   },
+   "converged": true,
+   "iters": 1,
+   "W_s": 0.2
+  }
+ },
+ "cycle_ramp_from_rest_s": {
+  "value": 0.243,
+  "note": "three_cycles_from_rest_s - 3 x period of the stored entry: the extra time to start the cycle from rest at H_stir0 and stop it there again"
+ },
+ "limits": {
+  "joint_v_degps": [
+   180.0,
+   180.0,
+   180.0,
+   180.0,
+   180.0,
+   180.0
+  ],
+  "joint_v_source": "as ur5e",
+  "A_UR": "800 deg/s^2: UR forum guidance (R19_STIR.md 1); ASSUMPTION for a non-UR arm",
+  "A_R15": "360 deg/s^2: R15 ASSUMPTION",
+  "cart": "v 0.25 m/s (r17chain CW); a 0.5 m/s^2 fastcart (R19_SMOOTH: tip-over model, r19smooth_cart.py) / 0.15 m/s^2 same (mobile.py design case); W 0.2 s keeps cart jerk <= 5 m/s^3 (R19_SMOOTH ASSUMPTION)",
+  "jerk_limit_degps3": null
+ },
+ "elapsed_s": 15
+}
