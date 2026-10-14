@@ -1,0 +1,151 @@
+{
+ "name": "chain_unfold_rt_fr5_j6_pgc_m2",
+ "geometry_md5": "a94215d52ef3053d98572370d6c3af43",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 464,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 1.97,
+ "min_self_reserve_mm": 2.0,
+ "min_plume_mm": 413.19,
+ "unchecked_by_rule": [],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_unfold_rt_fr5_j6_pgc_m2.json",
+    "kv": {
+     "RACK": "keyed",
+     "SPX": "1.56",
+     "SPY": ".20"
+    },
+    "part": [
+     "app",
+     0
+    ],
+    "type": "prep",
+    "verifier": "r19prep5_verify"
+   },
+   "model_md5": "e7fee2af4976af532f59000f5c7cd39a"
+  },
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_unfold_rt_fr5_j6_pgc_m2.json",
+    "kv": {
+     "RACK": "keyed",
+     "SPX": "1.56",
+     "SPY": ".20"
+    },
+    "part": "play",
+    "type": "prep",
+    "verifier": "r19prep5_verify"
+   },
+   "model_md5": "404e0d9d68c41f0fd37c29c5cfbb9625"
+  },
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_unfold_rt_fr5_j6_pgc_m2.json",
+    "kv": {
+     "RACK": "keyed",
+     "SPX": "1.56",
+     "SPY": ".20"
+    },
+    "part": [
+     "app",
+     1
+    ],
+    "type": "prep",
+    "verifier": "r19prep5_verify"
+   },
+   "model_md5": "074650fc38ddab6990b568c4ca761a00"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "prep:['app', 0]",
+   "states": 35,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 15.0,
+   "min_self_reserve_mm": 8.14,
+   "min_plume_mm": 413.19,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "folded (grasp) -> turned 75",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 73,
+   "max_step_bound_mm": 3.996,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.0,
+   "min_self_reserve_mm": 4.64,
+   "min_plume_mm": 413.19,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 3,
+   "name": "turned 75 -> turned 15",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 241,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 1.97,
+   "min_self_reserve_mm": 2.02,
+   "min_plume_mm": 413.19,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "turned 15 -> deployed (release)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 79,
+   "max_step_bound_mm": 3.994,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.0,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": 413.19,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 6,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "prep:['app', 1]",
+   "states": 36,
+   "max_step_bound_mm": 3.998,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 15.0,
+   "min_self_reserve_mm": 2.91,
+   "min_plume_mm": 413.19,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 18.4,
+ "date": "2026-10-14"
+}

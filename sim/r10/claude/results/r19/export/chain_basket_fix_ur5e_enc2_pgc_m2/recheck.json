@@ -1,0 +1,288 @@
+{
+ "name": "chain_basket_fix_ur5e_enc2_pgc_m2",
+ "geometry_md5": "6df6d19f167a531627f441023d840e43",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 4429,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 2.01,
+ "min_self_reserve_mm": 2.0,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [
+  [
+   2,
+   "seat lift"
+  ],
+  [
+   18,
+   "set down"
+  ]
+ ],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_basket_fix_ur5e_enc2_pgc_m2.json",
+    "kv": {},
+    "part": [
+     "app",
+     0
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "0fe43b8216c48c6c562590271b4b0306"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_basket_fix_ur5e_enc2_pgc_m2.json",
+    "kv": {},
+    "part": "play",
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "a9ac8fdfc9f0cce33227869a57dcc494"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_basket_fix_ur5e_enc2_pgc_m2.json",
+    "kv": {},
+    "part": [
+     "app",
+     1
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "0fe43b8216c48c6c562590271b4b0306"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "prep:['app', 0]",
+   "states": 51,
+   "max_step_bound_mm": 3.997,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.02,
+   "min_self_reserve_mm": 2.01,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "seat lift",
+   "checked": false,
+   "rule": "support contact window at the grasp (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 3,
+   "name": "pick (nested in the tub) -> lifted",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 84,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.03,
+   "min_self_reserve_mm": 2.05,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "lifted -> under the tap",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1726,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.03,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 6,
+   "name": "under the tap -> rinse, right",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 86,
+   "max_step_bound_mm": 3.998,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 7.47,
+   "min_self_reserve_mm": 2.04,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 8,
+   "name": "rinse, right -> rinse, left",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 176,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 7.47,
+   "min_self_reserve_mm": 2.05,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 10,
+   "name": "rinse, left -> drain (out of the stream)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 485,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 3.8,
+   "min_self_reserve_mm": 2.01,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 12,
+   "name": "drain (out of the stream) -> shake 1 up",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 118,
+   "max_step_bound_mm": 3.997,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 36.3,
+   "min_self_reserve_mm": 2.03,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 13,
+   "name": "shake 1 up -> shake 2 down",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 58,
+   "max_step_bound_mm": 3.97,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 36.57,
+   "min_self_reserve_mm": 2.01,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 14,
+   "name": "shake 2 down -> shake 2 up",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 58,
+   "max_step_bound_mm": 3.995,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 36.5,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 15,
+   "name": "shake 2 up -> shake 3 down",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 57,
+   "max_step_bound_mm": 3.995,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 36.57,
+   "min_self_reserve_mm": 2.01,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 16,
+   "name": "shake 3 down -> lowered",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1383,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.01,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 17,
+   "name": "lowered -> in the tub (8 mm)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 84,
+   "max_step_bound_mm": 3.999,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.08,
+   "min_self_reserve_mm": 2.06,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 18,
+   "name": "set down",
+   "checked": false,
+   "rule": "support contact window at the release (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 20,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "prep:['app', 1]",
+   "states": 63,
+   "max_step_bound_mm": 3.998,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.12,
+   "min_self_reserve_mm": 2.01,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 204.6,
+ "date": "2026-10-14"
+}

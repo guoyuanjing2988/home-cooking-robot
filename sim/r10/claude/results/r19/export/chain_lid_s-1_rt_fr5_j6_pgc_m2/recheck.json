@@ -1,0 +1,154 @@
+{
+ "name": "chain_lid_s-1_rt_fr5_j6_pgc_m2",
+ "geometry_md5": "498690bac27b1d6e0e618085fbf62dd3",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 2152,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 2.02,
+ "min_self_reserve_mm": 2.01,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [
+  [
+   2,
+   "seat lift"
+  ],
+  [
+   6,
+   "set down"
+  ]
+ ],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_lid_s-1_rt_fr5_j6_pgc_m2.json",
+    "part": [
+     "app",
+     0
+    ],
+    "type": "pot"
+   },
+   "model_md5": "9444762722534084c8af3a827195ef8b"
+  },
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_lid_s-1_rt_fr5_j6_pgc_m2.json",
+    "part": "play",
+    "type": "pot"
+   },
+   "model_md5": "65cddfa4e8b73f6964e170af36949b1c"
+  },
+  {
+   "spec": {
+    "arm": "fr5_j6_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_lid_s-1_rt_fr5_j6_pgc_m2.json",
+    "part": [
+     "app",
+     1
+    ],
+    "type": "pot"
+   },
+   "model_md5": "460692a7cfc700cbf4273495e8baccf3"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "pot",
+   "states": 53,
+   "max_step_bound_mm": 3.954,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 10.0,
+   "min_self_reserve_mm": 2.04,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "seat lift",
+   "checked": false,
+   "rule": "support contact window at the grasp (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 3,
+   "name": "lift off -> #1",
+   "checked": true,
+   "scene": "pot",
+   "states": 15,
+   "max_step_bound_mm": 3.942,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 3.0,
+   "min_self_reserve_mm": 6.86,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "#1 -> over the rack",
+   "checked": true,
+   "scene": "pot",
+   "states": 1881,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.06,
+   "min_self_reserve_mm": 2.01,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 5,
+   "name": "over the rack -> in the rack",
+   "checked": true,
+   "scene": "pot",
+   "states": 124,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.02,
+   "min_self_reserve_mm": 5.5,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 6,
+   "name": "set down",
+   "checked": false,
+   "rule": "support contact window at the release (4.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 8,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "pot",
+   "states": 79,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 6.04,
+   "min_self_reserve_mm": 5.27,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 82.2,
+ "date": "2026-10-14"
+}

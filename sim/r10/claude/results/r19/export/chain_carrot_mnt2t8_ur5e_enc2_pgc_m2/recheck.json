@@ -1,0 +1,198 @@
+{
+ "name": "chain_carrot_mnt2t8_ur5e_enc2_pgc_m2",
+ "geometry_md5": "932247268b14ea94d51044b82cd2f6f9",
+ "rule": "every motion piece of export.json (rebuilt from the JSON alone) cut so that consecutive states are <= 4 mm apart (r19smooth.sample_path: point_bound over sub-steps <= 0.5 mm); every state through the checker of its certificate (scene spec)",
+ "ok": true,
+ "states": 3379,
+ "hit_states": 0,
+ "max_step_bound_mm": 4.0,
+ "min_env_reserve_mm": 2.01,
+ "min_self_reserve_mm": 2.0,
+ "min_plume_mm": null,
+ "unchecked_by_rule": [
+  [
+   2,
+   "seat lift"
+  ]
+ ],
+ "cart_travel_ok": true,
+ "scenes": [
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_carrot_mnt2t8_ur5e_enc2_pgc_m2.json",
+    "kv": {},
+    "part": [
+     "app",
+     0
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "e29f89e7373b8961bb2e1cfbfe2912f1"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_carrot_mnt2t8_ur5e_enc2_pgc_m2.json",
+    "kv": {},
+    "part": "play",
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "4f56ba1dc2c88ee19b410818a5a2bc79"
+  },
+  {
+   "spec": {
+    "arm": "ur5e_enc2_pgc_m2c_yp_a-45_m2tc",
+    "file": "results/r19/mount/chain_carrot_mnt2t8_ur5e_enc2_pgc_m2.json",
+    "kv": {},
+    "part": [
+     "app",
+     1
+    ],
+    "type": "prep",
+    "verifier": "r19prep_verify"
+   },
+   "model_md5": "b40e2e22b82dc802a3964cd76bf80aea"
+  }
+ ],
+ "pieces": [
+  {
+   "element": 0,
+   "name": "grasp approach",
+   "checked": true,
+   "scene": "prep:['app', 0]",
+   "states": 46,
+   "max_step_bound_mm": 3.995,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 4.5,
+   "min_self_reserve_mm": 2.03,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 2,
+   "name": "seat lift",
+   "checked": false,
+   "rule": "support contact window at the grasp (8.0 mm TCP; along the support normal): not a checked state, as r17chain / r19prep_verify"
+  },
+  {
+   "element": 3,
+   "name": "pick -> lifted",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 38,
+   "max_step_bound_mm": 3.998,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 3.0,
+   "min_self_reserve_mm": 3.59,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 4,
+   "name": "lifted -> under the tap",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1036,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.14,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 6,
+   "name": "under the tap -> rinse right half",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 14,
+   "max_step_bound_mm": 3.989,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 28.71,
+   "min_self_reserve_mm": 6.18,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 8,
+   "name": "rinse right half -> rinse left half",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 27,
+   "max_step_bound_mm": 3.996,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 28.7,
+   "min_self_reserve_mm": 6.18,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 10,
+   "name": "rinse left half -> over the chute",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 1973,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.11,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 11,
+   "name": "over the chute -> in the chute (bottom 20 mm inside)",
+   "checked": true,
+   "scene": "prep:play",
+   "states": 119,
+   "max_step_bound_mm": 3.948,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 3.68,
+   "min_self_reserve_mm": 2.0,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  },
+  {
+   "element": 13,
+   "name": "release retreat",
+   "checked": true,
+   "scene": "prep:['app', 1]",
+   "states": 126,
+   "max_step_bound_mm": 4.0,
+   "hit_states": 0,
+   "out_of_range_states": 0,
+   "first_hits": [],
+   "min_env_reserve_mm": 2.01,
+   "min_self_reserve_mm": 2.02,
+   "min_plume_mm": null,
+   "cart_travel_ok": true,
+   "hit_s": []
+  }
+ ],
+ "elapsed_s_command": 157.9,
+ "date": "2026-10-14"
+}
