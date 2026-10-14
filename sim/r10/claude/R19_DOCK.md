@@ -113,7 +113,7 @@ Cross-section (world y-z; y = 0 is the cabinet door / plinth plane; the cart is 
   - y −45…−5 mm: 5 mm in front of the plinth / door plane; the doors open above it.
   - z 0…33 mm, including a ≤ 3 mm shim / adhesive bed.
   - x −1.82…+2.80: the cart's x travel ±0.27 m truck offset + 25 mm over-travel.
-  - It occupies the R10 toe-channel envelope (y −40…−10, z 0…30) and carries the tether in its bore.
+  - It occupies the R10 toe-channel envelope (y −40…−10, z 0…30) (**Corrected 2026-10-14, #18:** the rail cannot carry the moving tether in its bore; the tether route is in `research/r19_tether.md`.)
 - **Fixing (no damage beyond screws and adhesive).**
   - An MS-polymer bead and VHB tape on the floor tiles.
   - Six 30 × 30 × 3 angles from the rail's cabinet-face slot into the plinth / kickboard, 2 screws each (12 screws), under the cabinet run (x −1.65…+1.35 every 0.6 m). The alcove part is bonded only.

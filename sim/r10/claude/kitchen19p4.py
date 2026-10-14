@@ -43,14 +43,14 @@ def _reg_container(name,R,H,t):
  K.OBJ[name]=dict(parts=parts,grip=grip,a=np.array([-1.,0,0]),j=np.array([0,1.,0]),hax=np.array([-1.,0,0]),grip_part=[n for n,*_ in parts if n.endswith('_knob')][0])
  K19.JAW[name]=0.;K19.MASS[name]=MASS_EST[name]
 _reg_container('dbowl',DBOWL['R'],DBOWL['H'],DBOWL['t'])
-def dbh(dxk=.15,yk=.20,zk=.20,pd=0.):
+def dbh(dxk=.15,yk=.20,zk=.20,pd=0.,kyaw=0.):
  """'dbh_<dxk>_<yk>_<zk>_p<pd>': the drawer bowl with a CRANKED printed handle instead of the step-3 strut: a rim strut
  along +x to a post at x = dxk (beside the slicer's right face when the bowl is under the spout), the post up to zk
  (above the bowl bottom), a bar forward (-y) to a keyed 30 mm knob at y = -yk, facing the robot. Grasp: approach +y
  (toward the bowl), jaws horizontal across the knob (object x), pitched pd below horizontal; pour = roll about the
  approach axis through the knob. Probe round 1 (dbowl, knob +x at y 0.495): 0/96 everywhere (upper arm / forearm vs
  the upper cabinet), so the knob must come out from under the cabinet."""
- n=f'dbh_{dxk:g}_{yk:g}_{zk:g}_p{pd:g}'
+ n=f'dbh_{dxk:g}_{yk:g}_{zk:g}_p{pd:g}'+(f'_k{kyaw:g}' if kyaw else '')   # #38 round 4: kyaw = the knob turned about the vertical toward +x (deg)
  if n in K.OBJ:return n
  R,H,t=DBOWL['R'],DBOWL['H'],DBOWL['t'];pre='p4_dbh'
  parts=[(f'{pre}_floor','cylinder',[0,0,t/2],[R,t/2],I3)]+[(n_.replace('p3_dbh','p4_dbh'),*r) for n_,*r in P3._ring('p3_dbh',R,H,t)]
@@ -59,8 +59,9 @@ def dbh(dxk=.15,yk=.20,zk=.20,pd=0.):
   (f'{pre}_post','box',[dxk,0,(H-2*st+zk+st)/2],[sh/2+.003,sh,(zk+st-(H-2*st))/2],I3),
   (f'{pre}_bar','box',[dxk,-(yk-.02)/2,zk],[sh/2+.003,(yk-.02)/2+sh,st],I3)]
  th=np.radians(pd);Rk=np.array([[1,0,0],[0,np.cos(th),np.sin(th)],[0,-np.sin(th),np.cos(th)]])   # knob turned about the jaw axis (x) so the approach comes from above-front
+ ps=np.radians(kyaw);Ry=np.array([[np.cos(ps),-np.sin(ps),0],[np.sin(ps),np.cos(ps),0],[0,0,1]]);Rk=Ry@Rk   # yaw 0: unchanged
  g=np.array([dxk,-yk,zk]);parts.append((f'{pre}_knob','box',g.tolist(),[.015,.02,.015],Rk))
- K.OBJ[n]=dict(parts=parts,grip=g,a=np.array([0,np.cos(th),-np.sin(th)]),j=np.array([1.,0,0]),hax=np.array([0,np.cos(th),-np.sin(th)]),grip_part=f'{pre}_knob')
+ K.OBJ[n]=dict(parts=parts,grip=g,a=Ry@np.array([0,np.cos(th),-np.sin(th)]),j=Ry@np.array([1.,0,0]),hax=Ry@np.array([0,np.cos(th),-np.sin(th)]),grip_part=f'{pre}_knob')
  K19.JAW[n]=0.;K19.MASS[n]=MASS_EST['dbowl']+.06
  return n
 def drawer_seat(x=None):

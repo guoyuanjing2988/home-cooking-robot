@@ -86,6 +86,16 @@ def oem_pgc_drawing(tree,n=32):
  mesh('R_gripper_oem_envelope',x0,x1,ring)
  flat=np.c_[ring[:,0],np.clip(ring[:,1],-.0265,.0265)];mesh('R_gripper_oem_upper',x1,x2,flat)
  mesh('R_gripper_oem_jaws',x2,x3,[[sy*.0365,sz*.0182] for sy in (-1,1) for sz in (-1,1)])
+def meshlate(tree):
+ """R19 #7 (R19_MESHLATE.md): the R11 mesh rule for the tool-side boxes that kitchen14+ and arms.swap attach after the
+ mesh_tool pass in build (held R15+ parts). Exactly r19enc_check.meshheld (same names 'mb19_', same vertices), so a
+ scene that already applied it after build is unchanged (the later call finds no box)."""
+ asset=tree.getroot().find('asset');tool=tree.find(".//body[@name='R_tool']")
+ for g in tool.iter('geom'):
+  if g.get('type')!='box':continue
+  h=np.fromstring(g.get('size'),sep=' ');mn='mb19_'+g.get('name')
+  E.SubElement(asset,'mesh',name=mn,vertex=' '.join(fmt([sx*h[0],sy*h[1],sz*h[2]]) for sx in(-1,1) for sy in(-1,1) for sz in(-1,1)))
+  g.set('type','mesh');g.set('mesh',mn);g.attrib.pop('size',None)
 def build(cfg,held=None,mode='empty'):
  tree=E.parse(H/'models/base.xml');world=tree.find('worldbody')
  height=cfg.get('mount_height',.85)
@@ -333,6 +343,7 @@ def build(cfg,held=None,mode='empty'):
   import kitchen14;kitchen14.add(tree,cfg)  # R14 storage / dispensing / cooking stations
  import arms
  if arms.current(cfg)!='ur5e':arms.swap(tree,arms.current(cfg))  # R19: another arm (ARM=..); the UR5e default is untouched
+ if cfg.get('mesh_tool'):meshlate(tree)  # R19 #7: the R11 rule again for the tool-side boxes added after the pass above (held R15+ parts)
  return tree,dict(config=cfg,mount_height=height,mandoline_origin=mp.tolist(),mandoline_rotation=R.tolist(),peeler_origin=pp.tolist(),wash_bottom=bottom.tolist(),wash_mouth=mouth.tolist(),wash_normal=(wr@np.array([0,0,1])).tolist(),jet=[-.58,.33,.97] if cfg.get('long_spout') else [-.58,.43,.91],chute_top=chute_top,lever_origin=None if lever_origin is None else lever_origin.tolist(),held=held,mode=mode,raw_objects={n:dict(position=p,size=s,support='raw_tray') for n,p,s in raw})
 GRASP_W={'carrot':.035,'potato':.065,'tomato':.07,'greens':.10,'holder':.030,'catch_tray':.030,'pusher':.030}
 def jaw_q(cfg,held):

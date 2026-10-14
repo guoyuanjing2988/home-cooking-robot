@@ -19,3 +19,9 @@
 ## Files
 - `results/r19/export/<name>/` (export.json, states.npz, stream.csv, ur_servoj_500hz.csv or the FR5 file, recheck.json); `results/r19/export/summary.json`; logs in `results/r19/export/m2logs/`.
 - Lanes: `scratchpad/lanes/m2_export.sh` (exports) and `m2_recheck.sh` (re-checks).
+
+## Addendum (2026-10-14): the stir join exported (kind 'join', point 6 of `r19m2export.py`)
+- The STIR_JOIN library entries (`results/r19/stir/lib_stir_join_<arm>.json`) export as one motion piece: the stored certified geometry unchanged, checked in the stir scene (jaw −1, plume rule, cable option), timed by the export's own rest-to-rest law. `REVERSE=1` gives STIR_EXIT.
+- **4 exports, 0 hits:** UR5e m2 entry / exit 112 states each, 1.28 s (stored 1.284 s); FR5 m2 entry / exit 26 states each, 0.69 s (stored 0.69 s). State fit 0.0000 mm; min environment reserve 5.71 mm (blade vs wok); limit ratios ≤ 0.95.
+- Summary now 132 rows (`results/r19/export/summary.json`). Logs `results/r19/export/m2logs/exp_join_*`, `rc_join_*`.
+- #7 (R19_MESHLATE.md) re-checked 25 of these exports again on the exact held-box model: unchanged.

@@ -39,6 +39,12 @@ def probes():
      B=P4.dbh(dxk,round(.495-ky,3),round(kz-.863,3),pd)
      for tag,x,up in (('seat',-1.69,0.),('d15',-1.54,0.),('d20',-1.49,0.),('d20up',-1.49,.10)):
       R,p=P4.drawer_seat(x);add(f'dbh_{tag}_x{dxk:.2f}_ky{ky:.2f}_kz{kz:.2f}_p{pd}',B,R,p+[0,0,.008+up],p4=dict(drawer=dict(xo=max(x,-1.54)),drop_potato=True),desc=f'drawer bowl with cranked handle (knob x +{dxk}, y {ky}, z {kz}, pitch {pd}) held at {tag} (bowl x {x})')
+ # ---- (a) round 4 (#38, m2): the cranked handle with the knob turned toward +x by kyaw, so the arm can back off it
+ for ky in (.30,.25):
+  for kyaw in (30,45,60):
+   B=P4.dbh(.17,round(.495-ky,3),round(1.10-.863,3),0,kyaw)
+   for tag,x,up in (('seat',-1.69,0.),('d15',-1.54,0.),('d20',-1.49,0.),('d20up',-1.49,.10)):
+    R,p=P4.drawer_seat(x);add(f'dbk_{tag}_ky{ky:.2f}_k{kyaw}',B,R,p+[0,0,.008+up],p4=dict(drawer=dict(xo=max(x,-1.54)),drop_potato=True),desc=f'drawer bowl, cranked handle (knob x +0.17, y {ky}, z 1.10) turned {kyaw} deg toward +x, held at {tag} (bowl x {x})')
  # ---- (a) round 3: the cranked-handle bowl rolled over the T2L pan (mouth 6 cm over the pan rim), cart fixed ----
  B=P4.dbh(.17,.195,.237,0)
  for cx in (-1.25,-1.10):
