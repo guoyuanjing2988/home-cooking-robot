@@ -663,3 +663,10 @@ Nothing bought.
 - **Certified:** every adopted m2 set with the cable, 0 hits (UR5e 88,380 states, FR5 95,089).
 - **Rejected:** UR5e flat run (hood in the wok play); FR5 standard M12 plug (forearm on the spatula chain); FR5 end I/O port (door in the wok play, no RS485).
 - Nobody contacted; pigtail length depends on the arm choice.
+
+## 2026-10-14: Home type, kitchen door, supervision, meal count (user: "公寓，厨房有门，3可以接受 … 每天1-2顿")
+- **Condo, not HDB.** The HDB 15 A appliance limit does not apply. The 3.5 kW concave cooker on a hard-wired 20 A circuit stays, installed by a licensed electrical worker (LEW), with MCST renovation rules to check (#24, `research/r19_sg_compliance.md`).
+- **The kitchen has a door.** The door is the barrier that keeps children and pets out while the robot runs: the door is closed whenever heat or motion is armed (#21). A door switch as a start/pause interlock is proposed, not decided.
+- **Supervision accepted.** An adult is at home whenever heat is armed and acknowledges a prompt every 10 min; a missed prompt turns the heat off and parks the arm. No remote start of heat or motion (#19, #22).
+- **Meals: as many as possible, 1–2 robot meals a day** (7–14 a week). The workload/cost ledger (#28) uses 7–14 a week from now on, instead of the 5 a week it assumed.
+- Still open from the same questions: children / elderly / pets in the flat; the controller-on-cart question (#18).

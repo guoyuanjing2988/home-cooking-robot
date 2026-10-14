@@ -12,6 +12,8 @@ Date: 2026-10-14. Desk study, read-only. Inputs: project files and public web pa
 
 ## Answer first
 
+> **Update 2026-10-14 (user):** 1–2 robot meals a day, i.e. 7–14 a week (DECISIONS.md). With the per-meal table in §2.1 ("Per meal, cash only") that is **S$10–30 per meal** on the FR5 path (S$18–51 on the UR5e path), instead of the 5-a-week default used below.
+
 1. **User time.** With the current design, the user spends about **38–87 min per meal on robot-only tasks** [E]. Cooking the same meal by hand takes about **62–104 min of hands-on work** [E]. Both figures leave out the tasks that stay the same either way: shopping, rice, serving and clearing the table (18–33 min).
    - **Net saving: −25 to +66 min per meal, about 20 min at the midpoints.** The low end is a loss of time.
    - **With dishwasher automation (#31): 30–74 min, so the net saving is −12 to +74 min, about 31 min at the midpoints.**
