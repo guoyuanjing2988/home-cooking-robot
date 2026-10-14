@@ -9,8 +9,8 @@ Grasp entries (keyframe, cfg overrides {r19, r19p5}, 'cart'): the leaf is a CART
 the gripper approaches the knob along its approach axis (top knob: straight down) <= 50 mm with the jaws open."""
 import numpy as np
 import kitchen16 as K,kitchen19 as K19,kitchen19p4 as P4,kitchen19p5 as P5
-ACTS=('fold','unfold','ct2s')
-FOOD_ACTS=('fold','unfold','ct2s')   # sets that carry food: r19prep5_chain.py applies the cups' food join rule to them (as r19prep4 sets)
+ACTS=('fold','unfold','ct2s','dr2s')
+FOOD_ACTS=('fold','unfold','ct2s','dr2s')   # sets that carry food: r19prep5_chain.py applies the cups' food join rule to them (as r19prep4 sets)
 INFO={}
 FOOD_STG=.40   # [est] as r19prep4_actions: cut food for one wok dish staged in the pan
 def leaf_load(kind,knob,pan,food):
@@ -43,6 +43,29 @@ def action(ACT,KV,L,kf,scene_with,tray_objs):
   p5=dict(kind='swing',knob='top',state='folded',angle=ang,pan=True);w=dict(r19=scene_with('lever',objs=[car,tom]),r19p5=p5)
   INFO[ACT]=dict(fold_angle=ang,pour_cart=CP,pan_bottom_world=pan.tolist(),pour_deg=deg,mouth_over_pan_rim_m=mz,food_kg_est=A4.FOOD_CT,lane=ln.tolist(),note='prep time (cooker off): run with PLUME=0')
   return 'ctray',w,KF,[(0,w,True),(len(KF)-1,w,True)]
+ if ACT=='dr2s':   # #38 (R19_DRAWER5.md): the slicer drawer bowl (cranked handle, knob turned DKYAW toward +x) slid out, lifted and
+  # poured into the staging pan riding on the FOLDED swing cradle (prep time, cooker off: PLUME=0); keyframes as
+  # r19prep4_actions 'drawer' (no planned carry), target = the pan on the leaf at FANG deg as 'ct2s'; DCHAIN=1: the pick anchor is
+  # followed through the pour (no anchor over the pan, no meet at the first lane), the drawer anchor meets it at the return lane
+  import r19prep4_actions as A4
+  V=lambda key,d:np.array([float(v) for v in KV.get(key,d).split(',')])
+  B=P4.dbh(float(KV.get('DXK',.17)),float(KV.get('DYK',.195)),float(KV.get('DZK',.237)),float(KV.get('DPD',0.)),float(KV.get('DKYAW',0.)))
+  XO=float(KV.get('XO',-1.49));deg=float(KV.get('DEG',-130.));yaw=float(KV.get('DYAW',45.));mz=float(KV.get('MOUTHZ',.12))
+  ang=float(KV.get('FANG',90.));CP=float(KV.get('CP',-1.05))
+  I=np.eye(3);_,ps=P4.drawer_seat();_,po=P4.drawer_seat(XO);full=K19.MASS[B]+A4.FOOD_DB;e=K19.MASS[B];com=np.array([0,0,.03])
+  Rf,pf=P5.leaf_pose_world('swing',ang,CP);Rt,pt=P4.t2l_local();pan=Rf@(pt-P5.hinge_local())+pf   # pan bottom centre (world) at cart CP
+  (Rl,pl),(Rr,pr)=A4.mouth_pose(B,K.Rz(yaw),pan+[0,0,P4.STG_H+mz],deg)
+  up=po+[0,0,float(KV.get('DUP',.10))];ln=V('DLANE',','.join(str(round(v,3)) for v in (up+pl)/2+[0,0,.05]))
+  Rm=K.Rz(yaw/2) if KV.get('LYAW','half')=='half' else K.Rz(float(KV['LYAW']))
+  c_=lambda k:float(KV[k]) if k in KV else 'F'
+  KF=[K_(I,ps+[0,0,.008],c_('PICKC') if 'PICKC' in KV else 'A',0,'pick (under the spout, 8 mm)',full,com,anchor=True,seat=.008),K_(I,po+[0,0,.008],c_('SLC'),0,'slid out (8 mm over the plate)',full,com),
+   K_(I,up,c_('LIFTC'),0,'lifted',full,com),*([K_(I,V('DOUT',''),c_('OUTC'),0,'out from under the cabinet',full,com)] if 'DOUT' in KV else []),K_(Rm,ln,c_('LANEC'),0,'lane',full,com,meet=KV.get('DCHAIN')!='1'),K_(Rl,pl,CP,0,'over the pan on the folded cradle',full,com,anchor=KV.get('DCHAIN')!='1'),
+   K_(Rr,pr,CP,float(KV.get('POUR',3.)),f'rolled {deg:g} (poured)',full,com),K_(Rl,pl,CP,0,'level again',e,com),
+   K_(Rm,ln,c_('LANEC'),0,'lane',e,com,meet=True),*([K_(I,V('DOUT',''),c_('OUTC'),0,'out from under the cabinet',e,com)] if 'DOUT' in KV else []),K_(I,up,c_('LIFTC'),0,'over the drawer',e,com,anchor=True),K_(I,po+[0,0,.008],'A',0,'lowered (8 mm over the plate)',e,com),
+   K_(I,ps+[0,0,.008],'A',0,'slid in, set down (8 mm)',e,com,seat=.008)]
+  p5=dict(kind='swing',knob='top',state='folded',angle=ang,pan=True);w=dict(r19=scene_with(objs=[car,tom]),r19p4=dict(drawer=dict(xo=XO),drop_potato=True),r19p5=p5)
+  INFO[ACT]=dict(obj=B,fold_angle=ang,pour_cart=CP,pan_bottom_world=pan.tolist(),pour_deg=deg,pour_yaw=yaw,mouth_over_pan_rim_m=mz,food_kg_est=A4.FOOD_DB,lane=ln.tolist(),note='prep time (cooker off): run with PLUME=0')
+  return B,w,KF,[(0,w,True),(len(KF)-1,w,True)]
  kind=KV.get('KIND','swing');knob=KV.get('KNOB','top');pan=KV.get('PAN','0')=='1';food=float(KV.get('FOOD',FOOD_STG if pan else 0.))
  fd=float(KV.get('FOLD_DEG',P5.FOLD_DEG[kind]));st=float(KV.get('STEP',15.));C=float(KV.get('FC',.172))
  obj=P5._reg(kind,knob,None,pan);m,com=leaf_load(kind,knob,pan,food)
