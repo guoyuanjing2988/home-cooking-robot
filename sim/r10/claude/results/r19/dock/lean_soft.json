@@ -1,0 +1,615 @@
+{
+ "method": "R19 cart docking (GitHub #39): the cart's load lean on the docking rail, the registration budget of the design and its\nBOM. New file; reads stored paths only; writes only to results/r19/dock/.\n\nPART=lean   Load lean of the cart, [M] gravity moments of the arm + held payload along every adopted stored path x [E]\n            support stiffnesses. Static rigid-body cart on four vertical springs (small rotations): the support points\n            (cart frame) and stiffnesses are those of\n              rail    the design: two V-wheel trucks on the rail (+-0.27, +0.194, K_TRUCK each) + the two drive wheels\n                      (+-0.22, -0.22, K_TYRE each); the front castors are off the floor;\n              castors the R10 / #14 cart: front castors (+-0.22, +0.11, K_CASTOR) + drive wheels (as above), bumper off\n                      (R19_CART: a bumper on the doors carries no lean with swivel or fixed castors, see R19_DOCK.md 3.2).\n            For every state: the support reactions (all must stay > 0), the roll toward the counter (tilt_x, deg; + =\n            the top leans toward the counter), the pitch (tilt_y) and the drop of the J1 base point, relative to the\n            reference posture (the median of all states, i.e. the station tilt calibrated at a mid posture), and the\n            half-range. Payload at the TCP site (kg): wok 1.8 + food 1.15 (R19_CART / r19smooth.load_parts), spider 0.45\n            + 0.3 food [E], spatula 0.3, lid 0.8, lever 0 (closed chain), stir spatula 0.3, prep sets 1.0 [E].\n            Masses: the sim arm (menagerie, 21.0 kg; R19_CART table: DH 20.6 kg) and the R19_CART BOM cart (51.3 kg,\n            CoM (0.001, -0.102, 0.353) [D]); the gripper + fingers as modelled.\nPART=budget the per-axis registration budget of the design (R19_DOCK.md section 3) -> the cart budget boxes\n            (half-ranges) for the tolerance replays: dock_rail (mechanics, commissioning shims, no software map) and\n            dock_rail_map (+ the commissioning pose map used by the path certification).\nPART=bom    the BOM with rough prices.\npython r19dock_budget.py PART=lean|budget|bom ARM=ur5e_enc2_pgc PY=.15 [K_TYRE=2e5] [K_TRUCK=5e6] [K_CASTOR=2e5]",
+ "k": {
+  "K_TYRE": 100000.0,
+  "K_TRUCK": 2000000.0,
+  "K_CASTOR": 100000.0
+ },
+ "moving_mass_kg": 23.32,
+ "cart": {
+  "m": 51.3,
+  "c": [
+   0.001,
+   -0.102,
+   0.353
+  ]
+ },
+ "configs": {
+  "rail": {
+   "supports": [
+    [
+     -0.27,
+     0.194,
+     2000000.0
+    ],
+    [
+     0.27,
+     0.194,
+     2000000.0
+    ],
+    [
+     -0.22,
+     -0.22,
+     100000.0
+    ],
+    [
+     0.22,
+     -0.22,
+     100000.0
+    ]
+   ],
+   "reference_median": {
+    "tilt_x": 0.27430960910262847,
+    "tilt_y": 0.0019302156619683633,
+    "z": -0.6264410153398816
+   },
+   "tilt_x_halfrange_deg": 0.0753,
+   "tilt_x_max_dev_from_median_deg": 0.0896,
+   "tilt_y_halfrange_deg": 0.0135,
+   "z_base_halfrange_mm": 0.123,
+   "min_front_support_N": 54.2,
+   "min_front_pair_total_N": 238.6,
+   "min_rear_support_N": 143.8,
+   "cop_y_range_m": [
+    -0.0856,
+    0.0324
+   ],
+   "per_path": {
+    "wok": {
+     "states": 470,
+     "tilt_x_deg": [
+      0.2136,
+      0.2448
+     ],
+     "tilt_y_deg": [
+      0.0101,
+      0.0142
+     ],
+     "z_base_mm": [
+      -0.584,
+      -0.533
+     ],
+     "min_support_N": 62.4
+    },
+    "wok_plate2b": {
+     "states": 470,
+     "tilt_x_deg": [
+      0.2136,
+      0.2448
+     ],
+     "tilt_y_deg": [
+      0.0101,
+      0.0142
+     ],
+     "z_base_mm": [
+      -0.584,
+      -0.533
+     ],
+     "min_support_N": 62.4
+    },
+    "spatula": {
+     "states": 249,
+     "tilt_x_deg": [
+      0.2734,
+      0.3352
+     ],
+     "tilt_y_deg": [
+      0.0016,
+      0.0069
+     ],
+     "z_base_mm": [
+      -0.727,
+      -0.625
+     ],
+     "min_support_N": 83.2
+    },
+    "lever": {
+     "states": 16,
+     "tilt_x_deg": [
+      0.1939,
+      0.1958
+     ],
+     "tilt_y_deg": [
+      0.0082,
+      0.0083
+     ],
+     "z_base_mm": [
+      -0.497,
+      -0.493
+     ],
+     "min_support_N": 136.2
+    },
+    "lid": {
+     "states": 205,
+     "tilt_x_deg": [
+      0.263,
+      0.3099
+     ],
+     "tilt_y_deg": [
+      0.0048,
+      0.0095
+     ],
+     "z_base_mm": [
+      -0.686,
+      -0.609
+     ],
+     "min_support_N": 54.2
+    },
+    "spider": {
+     "states": 496,
+     "tilt_x_deg": [
+      0.249,
+      0.3025
+     ],
+     "tilt_y_deg": [
+      0.004,
+      0.0087
+     ],
+     "z_base_mm": [
+      -0.674,
+      -0.586
+     ],
+     "min_support_N": 82.1
+    },
+    "stir": {
+     "states": 4484,
+     "tilt_x_deg": [
+      0.2703,
+      0.284
+     ],
+     "tilt_y_deg": [
+      -0.0017,
+      0.0059
+     ],
+     "z_base_mm": [
+      -0.642,
+      -0.62
+     ],
+     "min_support_N": 100.0
+    },
+    "prep:bascarrot_full_ur5e_enc2_pgc": {
+     "states": 126,
+     "tilt_x_deg": [
+      0.2388,
+      0.2485
+     ],
+     "tilt_y_deg": [
+      -0.0113,
+      -0.007
+     ],
+     "z_base_mm": [
+      -0.586,
+      -0.57
+     ],
+     "min_support_N": 77.4
+    },
+    "prep:carrot_full_ur5e_enc2_pgc": {
+     "states": 362,
+     "tilt_x_deg": [
+      0.1996,
+      0.2722
+     ],
+     "tilt_y_deg": [
+      -0.0128,
+      -0.0076
+     ],
+     "z_base_mm": [
+      -0.625,
+      -0.505
+     ],
+     "min_support_N": 56.1
+    },
+    "prep:ctray_full_ur5e_enc2_pgc": {
+     "states": 409,
+     "tilt_x_deg": [
+      0.2399,
+      0.2726
+     ],
+     "tilt_y_deg": [
+      -0.0087,
+      -0.0061
+     ],
+     "z_base_mm": [
+      -0.625,
+      -0.571
+     ],
+     "min_support_N": 87.2
+    },
+    "prep:press_full_ur5e_enc2_pgc": {
+     "states": 23,
+     "tilt_x_deg": [
+      0.2347,
+      0.2352
+     ],
+     "tilt_y_deg": [
+      0.0086,
+      0.0092
+     ],
+     "z_base_mm": [
+      -0.564,
+      -0.563
+     ],
+     "min_support_N": 104.7
+    },
+    "prep:soak_full_ur5e_enc2_pgc": {
+     "states": 105,
+     "tilt_x_deg": [
+      0.2037,
+      0.2396
+     ],
+     "tilt_y_deg": [
+      -0.0073,
+      -0.0055
+     ],
+     "z_base_mm": [
+      -0.571,
+      -0.512
+     ],
+     "min_support_N": 123.1
+    },
+    "prep:tomato_full_ur5e_enc2_pgc": {
+     "states": 297,
+     "tilt_x_deg": [
+      0.1966,
+      0.2564
+     ],
+     "tilt_y_deg": [
+      -0.0113,
+      -0.0049
+     ],
+     "z_base_mm": [
+      -0.599,
+      -0.5
+     ],
+     "min_support_N": 70.0
+    },
+    "prep:tubempty_full_ur5e_enc2_pgc": {
+     "states": 275,
+     "tilt_x_deg": [
+      0.1847,
+      0.2122
+     ],
+     "tilt_y_deg": [
+      -0.0046,
+      0.0024
+     ],
+     "z_base_mm": [
+      -0.526,
+      -0.481
+     ],
+     "min_support_N": 143.8
+    },
+    "prep:tubfill_full_ur5e_enc2_pgc": {
+     "states": 220,
+     "tilt_x_deg": [
+      0.1885,
+      0.2313
+     ],
+     "tilt_y_deg": [
+      -0.002,
+      0.0072
+     ],
+     "z_base_mm": [
+      -0.557,
+      -0.487
+     ],
+     "min_support_N": 129.8
+    },
+    "prep:stgwok_m5_ur5e_enc2_pgc": {
+     "states": 237,
+     "tilt_x_deg": [
+      0.2532,
+      0.3104
+     ],
+     "tilt_y_deg": [
+      -0.0087,
+      -0.0059
+     ],
+     "z_base_mm": [
+      -0.688,
+      -0.593
+     ],
+     "min_support_N": 75.6
+    }
+   }
+  },
+  "castors": {
+   "supports": [
+    [
+     -0.22,
+     0.11,
+     100000.0
+    ],
+    [
+     0.22,
+     0.11,
+     100000.0
+    ],
+    [
+     -0.22,
+     -0.22,
+     100000.0
+    ],
+    [
+     0.22,
+     -0.22,
+     100000.0
+    ]
+   ],
+   "reference_median": {
+    "tilt_x": -0.0644484473964815,
+    "tilt_y": 0.03003798422716056,
+    "z": -1.9896432062594736
+   },
+   "tilt_x_halfrange_deg": 0.2298,
+   "tilt_x_max_dev_from_median_deg": 0.2769,
+   "tilt_y_halfrange_deg": 0.2103,
+   "z_base_halfrange_mm": 0.55,
+   "min_front_support_N": 121.4,
+   "min_front_pair_total_N": 299.4,
+   "min_rear_support_N": 44.3,
+   "cop_y_range_m": [
+    -0.0856,
+    0.0324
+   ],
+   "per_path": {
+    "wok": {
+     "states": 470,
+     "tilt_x_deg": [
+      -0.2778,
+      -0.1842
+     ],
+     "tilt_y_deg": [
+      0.1579,
+      0.2206
+     ],
+     "z_base_mm": [
+      -2.557,
+      -2.337
+     ],
+     "min_support_N": 46.4
+    },
+    "wok_plate2b": {
+     "states": 470,
+     "tilt_x_deg": [
+      -0.2778,
+      -0.1842
+     ],
+     "tilt_y_deg": [
+      0.1579,
+      0.2206
+     ],
+     "z_base_mm": [
+      -2.557,
+      -2.337
+     ],
+     "min_support_N": 46.4
+    },
+    "spatula": {
+     "states": 249,
+     "tilt_x_deg": [
+      -0.0672,
+      0.1183
+     ],
+     "tilt_y_deg": [
+      0.0256,
+      0.1081
+     ],
+     "z_base_mm": [
+      -1.996,
+      -1.559
+     ],
+     "min_support_N": 130.2
+    },
+    "lever": {
+     "states": 16,
+     "tilt_x_deg": [
+      -0.3019,
+      -0.2961
+     ],
+     "tilt_y_deg": [
+      0.127,
+      0.1285
+     ],
+     "z_base_mm": [
+      -2.541,
+      -2.528
+     ],
+     "min_support_N": 47.3
+    },
+    "lid": {
+     "states": 205,
+     "tilt_x_deg": [
+      -0.1041,
+      0.0366
+     ],
+     "tilt_y_deg": [
+      0.0751,
+      0.1473
+     ],
+     "z_base_mm": [
+      -2.095,
+      -1.764
+     ],
+     "min_support_N": 100.1
+    },
+    "spider": {
+     "states": 496,
+     "tilt_x_deg": [
+      -0.1455,
+      0.0148
+     ],
+     "tilt_y_deg": [
+      0.062,
+      0.1357
+     ],
+     "z_base_mm": [
+      -2.191,
+      -1.814
+     ],
+     "min_support_N": 99.4
+    },
+    "stir": {
+     "states": 4484,
+     "tilt_x_deg": [
+      -0.0763,
+      -0.0354
+     ],
+     "tilt_y_deg": [
+      -0.0272,
+      0.092
+     ],
+     "z_base_mm": [
+      -2.017,
+      -1.921
+     ],
+     "min_support_N": 133.6
+    },
+    "prep:bascarrot_full_ur5e_enc2_pgc": {
+     "states": 126,
+     "tilt_x_deg": [
+      -0.1792,
+      -0.1499
+     ],
+     "tilt_y_deg": [
+      -0.1764,
+      -0.1086
+     ],
+     "z_base_mm": [
+      -2.277,
+      -2.208
+     ],
+     "min_support_N": 72.1
+    },
+    "prep:carrot_full_ur5e_enc2_pgc": {
+     "states": 362,
+     "tilt_x_deg": [
+      -0.2966,
+      -0.079
+     ],
+     "tilt_y_deg": [
+      -0.1999,
+      -0.1185
+     ],
+     "z_base_mm": [
+      -2.554,
+      -2.041
+     ],
+     "min_support_N": 49.7
+    },
+    "prep:ctray_full_ur5e_enc2_pgc": {
+     "states": 409,
+     "tilt_x_deg": [
+      -0.1757,
+      -0.0778
+     ],
+     "tilt_y_deg": [
+      -0.1349,
+      -0.0947
+     ],
+     "z_base_mm": [
+      -2.269,
+      -2.038
+     ],
+     "min_support_N": 86.5
+    },
+    "prep:press_full_ur5e_enc2_pgc": {
+     "states": 23,
+     "tilt_x_deg": [
+      -0.1915,
+      -0.1899
+     ],
+     "tilt_y_deg": [
+      0.1341,
+      0.1438
+     ],
+     "z_base_mm": [
+      -2.306,
+      -2.302
+     ],
+     "min_support_N": 75.1
+    },
+    "prep:soak_full_ur5e_enc2_pgc": {
+     "states": 105,
+     "tilt_x_deg": [
+      -0.2842,
+      -0.1766
+     ],
+     "tilt_y_deg": [
+      -0.113,
+      -0.0858
+     ],
+     "z_base_mm": [
+      -2.524,
+      -2.271
+     ],
+     "min_support_N": 68.4
+    },
+    "prep:tomato_full_ur5e_enc2_pgc": {
+     "states": 297,
+     "tilt_x_deg": [
+      -0.3057,
+      -0.1263
+     ],
+     "tilt_y_deg": [
+      -0.1764,
+      -0.0763
+     ],
+     "z_base_mm": [
+      -2.575,
+      -2.152
+     ],
+     "min_support_N": 44.3
+    },
+    "prep:tubempty_full_ur5e_enc2_pgc": {
+     "states": 275,
+     "tilt_x_deg": [
+      -0.3413,
+      -0.259
+     ],
+     "tilt_y_deg": [
+      -0.0721,
+      0.0378
+     ],
+     "z_base_mm": [
+      -2.659,
+      -2.465
+     ],
+     "min_support_N": 69.5
+    },
+    "prep:tubfill_full_ur5e_enc2_pgc": {
+     "states": 220,
+     "tilt_x_deg": [
+      -0.3298,
+      -0.2016
+     ],
+     "tilt_y_deg": [
+      -0.0316,
+      0.1126
+     ],
+     "z_base_mm": [
+      -2.632,
+      -2.33
+     ],
+     "min_support_N": 70.1
+    },
+    "prep:stgwok_m5_ur5e_enc2_pgc": {
+     "states": 237,
+     "tilt_x_deg": [
+      -0.1359,
+      0.0357
+     ],
+     "tilt_y_deg": [
+      -0.1355,
+      -0.0915
+     ],
+     "z_base_mm": [
+      -2.175,
+      -1.771
+     ],
+     "min_support_N": 102.3
+    }
+   }
+  }
+ }
+}

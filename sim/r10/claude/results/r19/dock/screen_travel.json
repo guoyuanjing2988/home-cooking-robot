@@ -1,0 +1,322 @@
+{
+ "design": {
+  "apex_z_m": 0.0432,
+  "wheel_centre_z_m": 0.0623,
+  "wheel_top_z_m": 0.0852,
+  "wheel_flange_bottom_z_m": 0.0394,
+  "pin_up_bottom_z_m": 0.046,
+  "pin_down_bottom_z_m": 0.0305,
+  "pin_travel_mm": 15.5,
+  "vblock_capture_mm": 5.0,
+  "truck_spacing_m": 0.54,
+  "keeper_x_m": 0.11,
+  "keeper_clearance_mm": 1.0,
+  "pin_preload_N": 50.0,
+  "rail_x": [
+   -1.82,
+   2.8
+  ],
+  "stations": {
+   "SPAT": -1.48,
+   "PRESS": -1.274,
+   "LEVER": -0.7398,
+   "SINK": -0.68,
+   "WOK": 0.172,
+   "STIR": 0.55,
+   "LID_POT": 0.8863,
+   "POT": 1.093,
+   "STGWOK": 1.21,
+   "LID_RACK": 1.3256,
+   "PARK": 2.4
+  }
+ },
+ "run_clearance_required_mm": 5.0,
+ "step_m": 0.01,
+ "method": "R19 cart docking (GitHub #39): screens of the kitchen19dock hardware. New file; r19prep5_screen.py (and through it\nr19prep4_screen.py / r19pot_screen.py) is imported for its scene builders, stored-path lists, sampling and exact\npair measurement and is not changed. Writes only to results/r19/dock/.\n\nPART=travel   the cart's own travel (single process, static): with the cart at every x of its travel (R_carriage_x\n              -1.48..2.46, step STEP m, default 5 mm; docked y -0.21 and y +-0.5 mm), the exact distance (checker\n              distance.Bounds.pair: GJK dual lower bound; plane analytic) of\n              (a) every CART geom (chassis, drive wheels, castors and their spindles, bumper, electrics, mast, beam and\n                  the new dock parts) vs every FIXED dock part (rail, V track, scale, V-blocks, plinth angles, end stops);\n              (b) every NEW cart dock part vs every environment geom (floor, cabinets, toe channel ...);\n              except the declared contacts (V wheels on the V track; the seated pin on its V-block) and the running gap\n              (read head over the scale, ride height). The criterion is a mechanical running clearance RUN (default\n              5 mm [D]) for cart vs fixed parts; the read head must keep > 0 at its ride height.\n              Also: PIN=down at every station (pin + nose vs every fixed part except its own V-block; the cart is stationary,\n              so the requirement is no contact with STATIC = 1 mm margin), the V wheel /\n              track geometry, the travel ends vs the end buffers.\nPART=arm      every adopted stored path replayed (as r19prep5_screen: 2pi-unwrapped, joint-linear, <= 4 mm; pot-zone\n              layer RACK=keyed SPX 1.56 SPY 0.20) with the dock parts in its scene; only the pairs (moving robot / held\n              geom) x (dock part) are measured, exactly; gate = distance - the checker's required gap (ch.required:\n              10 mm arm / 5 mm gripper + held vs the fixed parts; 10 mm arm vs a CART part). Paths: KINDS=prep,play,app,\n              edge,other,stir (default all): the cooking chains + approaches, the 22 hub edges, the cup chains, the stir\n              cycle, the 10 certified prep sets of r19prep5_screen + fold / unfold / stgwok (SETS= to override).\npython r19dock_screen.py PART=travel [STEP=.005] [RUN=.005] ARM=ur5e_enc2_pgc PY=.15\npython r19dock_screen.py PART=arm [PIN=up|down] [KINDS=..] [WORKERS=16] [TLIM=280] [TAG=..] ARM=ur5e_enc2_pgc PY=.15\n -> results/r19/dock/screen_travel.json, results/r19/dock/screen_arm[_<PIN>][_<TAG>].json",
+ "pin_up": {
+  "states": 1185,
+  "min_by_category": {
+   "cart_vs_fixed_dock": {
+    "dist_mm": 5.5,
+    "pair": [
+     "R_cart_dock_keeper_r",
+     "dock_vblock_PARK"
+    ],
+    "cart_x": 2.32,
+    "cart_y": -0.2095
+   },
+   "new_cart_part_vs_environment": {
+    "dist_mm": 7.56,
+    "pair": [
+     "R_cart_dock_wheel_l",
+     "north_cabinet_left"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.2095
+   }
+  },
+  "declared": {
+   "contact (V wheel on V track)": {
+    "dist_mm": 0.0,
+    "pair": [
+     "R_cart_dock_wheel_l",
+     "dock_vtrack"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   },
+   "keeper T-head vs the scale tape (must exceed the 1 mm keeper clearance)": {
+    "dist_mm": 2.5,
+    "pair": [
+     "R_cart_dock_keeper_l",
+     "dock_scale"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   },
+   "keeper in the aisle-face slot (slot not modelled: 1 mm all round by design)": {
+    "dist_mm": 0.0,
+    "pair": [
+     "R_cart_dock_keeper_l",
+     "dock_rail"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   },
+   "read head over the scale (ride 0.7 mm nominal; must stay > 0 at y +-0.5 mm)": {
+    "dist_mm": 0.2,
+    "pair": [
+     "R_cart_dock_head",
+     "dock_scale"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.2095
+   },
+   "superseded R10 toe channel (inside the rail)": {
+    "dist_mm": 0.0,
+    "pair": [
+     "R_cart_dock_keeper_l",
+     "floor_cable_guide"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   }
+  },
+  "end_buffers_mm": {
+   "-1.48": [
+    25.0,
+    "R_cart_dock_plate_l",
+    "dock_stop_l"
+   ],
+   "2.46": [
+    25.0,
+    "R_cart_dock_plate_r",
+    "dock_stop_r"
+   ]
+  },
+  "original_cart_parts": {
+   "R_cart_chassis": {
+    "min_mm": 33.54,
+    "closest": "dock_stop_l"
+   },
+   "R_cart_electrics": {
+    "min_mm": 257.64,
+    "closest": "dock_scale"
+   },
+   "R_cart_mast": {
+    "min_mm": 324.56,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_drive_-0.22": {
+    "min_mm": 339.0,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_caster_-0.22": {
+    "min_mm": 9.0,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_drive_+0.22": {
+    "min_mm": 339.0,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_caster_+0.22": {
+    "min_mm": 9.0,
+    "closest": "dock_scale"
+   },
+   "R_dock_bumper": {
+    "min_mm": 182.0,
+    "closest": "dock_stop_l"
+   },
+   "R_cart_beam": {
+    "min_mm": 1018.5,
+    "closest": "dock_vtrack"
+   },
+   "R_cart_wheel_drive_-0.22_spindle": {
+    "min_mm": 279.91,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_caster_-0.22_spindle": {
+    "min_mm": 9.8,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_drive_+0.22_spindle": {
+    "min_mm": 279.91,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_caster_+0.22_spindle": {
+    "min_mm": 9.8,
+    "closest": "dock_scale"
+   }
+  },
+  "required_mm": 5.0,
+  "clearance_ok": true
+ },
+ "pin_down": {
+  "states": 11,
+  "min_by_category": {
+   "cart_vs_fixed_dock": {
+    "dist_mm": 3.171,
+    "pair": [
+     "R_cart_dock_pin_nose",
+     "dock_scale"
+    ],
+    "cart_x": 0.55,
+    "cart_y": -0.21
+   },
+   "new_cart_part_vs_environment": {
+    "dist_mm": 8.06,
+    "pair": [
+     "R_cart_dock_wheel_l",
+     "north_cabinet_left"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   }
+  },
+  "declared": {
+   "contact (V wheel on V track)": {
+    "dist_mm": 0.0,
+    "pair": [
+     "R_cart_dock_wheel_l",
+     "dock_vtrack"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   },
+   "contact (seated pin in its V-block, let into the rail top)": {
+    "dist_mm": 0.0,
+    "pair": [
+     "R_cart_dock_pin_nose",
+     "dock_rail"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   },
+   "keeper T-head vs the scale tape (must exceed the 1 mm keeper clearance)": {
+    "dist_mm": 2.5,
+    "pair": [
+     "R_cart_dock_keeper_l",
+     "dock_scale"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   },
+   "keeper in the aisle-face slot (slot not modelled: 1 mm all round by design)": {
+    "dist_mm": 0.0,
+    "pair": [
+     "R_cart_dock_keeper_l",
+     "dock_rail"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   },
+   "read head over the scale (ride 0.7 mm nominal; must stay > 0 at y +-0.5 mm)": {
+    "dist_mm": 0.7,
+    "pair": [
+     "R_cart_dock_head",
+     "dock_scale"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   },
+   "superseded R10 toe channel (inside the rail)": {
+    "dist_mm": 0.0,
+    "pair": [
+     "R_cart_dock_keeper_l",
+     "floor_cable_guide"
+    ],
+    "cart_x": -1.48,
+    "cart_y": -0.21
+   }
+  },
+  "end_buffers_mm": {
+   "-1.48": [
+    25.0,
+    "R_cart_dock_plate_l",
+    "dock_stop_l"
+   ],
+   "2.46": [
+    25.0,
+    "R_cart_dock_plate_r",
+    "dock_stop_r"
+   ]
+  },
+  "original_cart_parts": {
+   "R_cart_chassis": {
+    "min_mm": 33.54,
+    "closest": "dock_stop_l"
+   },
+   "R_cart_electrics": {
+    "min_mm": 257.64,
+    "closest": "dock_scale"
+   },
+   "R_cart_mast": {
+    "min_mm": 324.56,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_drive_-0.22": {
+    "min_mm": 339.0,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_caster_-0.22": {
+    "min_mm": 9.0,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_drive_+0.22": {
+    "min_mm": 339.0,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_caster_+0.22": {
+    "min_mm": 9.0,
+    "closest": "dock_scale"
+   },
+   "R_dock_bumper": {
+    "min_mm": 182.0,
+    "closest": "dock_stop_l"
+   },
+   "R_cart_beam": {
+    "min_mm": 1018.5,
+    "closest": "dock_vtrack"
+   },
+   "R_cart_wheel_drive_-0.22_spindle": {
+    "min_mm": 279.91,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_caster_-0.22_spindle": {
+    "min_mm": 9.8,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_drive_+0.22_spindle": {
+    "min_mm": 279.91,
+    "closest": "dock_scale"
+   },
+   "R_cart_wheel_caster_+0.22_spindle": {
+    "min_mm": 9.8,
+    "closest": "dock_scale"
+   }
+  },
+  "required_mm": 1.0,
+  "clearance_ok": true
+ },
+ "elapsed_s": 155.9
+}

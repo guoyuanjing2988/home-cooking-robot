@@ -1,0 +1,139 @@
+{
+ "target": {
+  "x": 1.0,
+  "y": 0.5,
+  "z": 0.5,
+  "yaw": 0.05,
+  "tilt_x": 0.11,
+  "tilt_y": 0.03
+ },
+ "boxes": {
+  "dock_rail": {
+   "rss": {
+    "x": 0.1688,
+    "y": 0.23,
+    "z": 1.0074,
+    "yaw": 0.0114,
+    "tilt_x": 0.0623,
+    "tilt_y": 0.0195
+   },
+   "box": {
+    "x": 0.2,
+    "y": 0.25,
+    "z": 1.05,
+    "yaw": 0.015,
+    "tilt_x": 0.065,
+    "tilt_y": 0.02
+   },
+   "meets_target": {
+    "x": true,
+    "y": true,
+    "z": false,
+    "yaw": true,
+    "tilt_x": true,
+    "tilt_y": true
+   }
+  },
+  "dock_rail_map": {
+   "rss": {
+    "x": 0.1688,
+    "y": 0.23,
+    "z": 0.1815,
+    "yaw": 0.0114,
+    "tilt_x": 0.0267,
+    "tilt_y": 0.0187
+   },
+   "box": {
+    "x": 0.2,
+    "y": 0.25,
+    "z": 0.2,
+    "yaw": 0.015,
+    "tilt_x": 0.03,
+    "tilt_y": 0.02
+   },
+   "meets_target": {
+    "x": true,
+    "y": true,
+    "z": true,
+    "yaw": true,
+    "tilt_x": true,
+    "tilt_y": true
+   }
+  }
+ },
+ "load_lean": {
+  "rail": {
+   "halfrange_deg": 0.0373,
+   "maxdev_deg": 0.0444,
+   "min_front_truck_N": 53.7,
+   "min_front_pair_N": 238.6
+  },
+  "castors": {
+   "halfrange_deg": 0.1149,
+   "maxdev_deg": 0.1384
+  },
+  "sensitivity": {
+   "soft": {
+    "k": {
+     "K_TYRE": 100000.0,
+     "K_TRUCK": 2000000.0,
+     "K_CASTOR": 100000.0
+    },
+    "rail_halfrange_deg": 0.0753,
+    "rail_maxdev_deg": 0.0896,
+    "castors_halfrange_deg": 0.2298,
+    "castors_maxdev_deg": 0.2769
+   },
+   "stiff": {
+    "k": {
+     "K_TYRE": 500000.0,
+     "K_TRUCK": 20000000.0,
+     "K_CASTOR": 500000.0
+    },
+    "rail_halfrange_deg": 0.0147,
+    "rail_maxdev_deg": 0.0175,
+    "castors_halfrange_deg": 0.046,
+    "castors_maxdev_deg": 0.0554
+   }
+  },
+  "dynamic_factor": 1.1
+ },
+ "scenario_halfranges_m_rad": {
+  "dock_rail": [
+   0.0002,
+   0.00025,
+   0.0010500000000000002,
+   0.0002617993877991494,
+   0.0011344640137963143,
+   0.00034906585039886593
+  ],
+  "dock_rail_map": [
+   0.0002,
+   0.00025,
+   0.0002,
+   0.0002617993877991494,
+   0.0005235987755982988,
+   0.00034906585039886593
+  ]
+ }
+}
+| x | station index: 12 mm ball-nose pin in a hardened 90 deg V-block (50 N preload, then held by the self-locking actuator) | 0.02 | 0.02 | [E] kinematic ball-in-V contact: couplings repeat to sub-micron when clean and preloaded (Slocum 2010) [S]; 0.02 mm for finish, debris, cart compliance |
+| x | magnetic scale over the in-set travel and between stations (re-zeroed at every docking) | 0.04 | 0.04 | [S] RLS LM10 accuracy grade +-40 um over the measured length (+-20 / +-10 um grades exist) [S] |
+| x | tape bonding / read head (hysteresis < 3 um at 0.3 mm ride height [S]) / head-to-arm-base calibration | 0.03 | 0.03 | [E]  |
+| x | rail thermal growth vs the building (Al 23e-6/K vs ~10e-6/K, +-5 K, up to 2.4 m from the anchor) | 0.16 | 0.16 | [E] anchor at the centre plinth angle; a steel extrusion or a floating steel tape would halve it |
+| y | V track straightness after installation (laser line / taut line, shims, plinth angles) | 0.2 | 0.2 | [E] DualVee track needs no precision mounting surface [S]; +-0.2 mm over 4.6 m by alignment |
+| y | V wheel radial play / runout (double-row angular contact, eccentric preload) | 0.02 | 0.02 | [E] no runout figure published |
+| y | rail lateral deflection under the arm reactions (<= 50 N per truck) | 0.05 | 0.05 | [E] extrusion bonded to the floor + angles every 0.6 m |
+| y | creep / settling of the bonded rail between re-checks | 0.1 | 0.1 | [E] re-checked at service |
+| z | rail top level at the trucks (shims) | 0.1 | 0.1 | [E] shim resolution 0.05-0.1 mm |
+| z | rear drive wheels on the tile floor: tier 1 the rail follows it (cart kept level), tier 2 mapped | 1 | 0.15 | [S/E] GB 50209: 2 mm under a 2 m straightedge [S] -> +-1 mm long-wave; mapped residual 0.15 mm |
+| z | load: tyre compression at the J1 base (PART=lean, rail, x1.1 dynamic) | 0.0693 | 0.0208 | [M/E] tier 2: 30 % residual of the stiffness-predicted value |
+| yaw | V track local straightness over the 0.54 m truck base (+-0.05 mm at each truck) | 0.0106 | 0.0106 | [E] atan(0.1 / 540) |
+| yaw | V wheel runout at both trucks (+-0.02 mm) | 0.0042 | 0.0042 | [E] atan(0.04 / 540) |
+| tilt_x | load lean toward the counter (PART=lean, rail: max deviation from a mid-posture zero, x1.1 dynamic) | 0.0488 | 0.0147 | [M/E] [M] arm + payload moments over every stored state x [E] tyre 2e5 N/m, truck 5e6 N/m |
+| tilt_x | rear floor under the drive wheels: tier 1 short-wave residual after the rail follows the floor (tile lippage), tier 2 mapped | 0.035 | 0.015 | [S/E] GB 50209 joint height difference 0.5 mm [S]: ~0.25 mm effective after 2-wheel averaging / 414 mm |
+| tilt_x | commissioning measurement (MEMS inclinometer, SCL3300 class: 0.001 deg/rtHz, offset +-0.005 deg/K [S], +-3 K) | 0.015 | 0.015 | [S/E] relative to the reference station at the same temperature |
+| tilt_x | tyre wear / temperature between re-maps (PU radius +-0.05 mm) | 0.007 | 0.007 | [E] 0.05 / 414 mm |
+| tilt_y | rail top level between the trucks (+-0.05 mm over 0.54 m) | 0.011 | 0.011 | [E]  |
+| tilt_y | load pitch (PART=lean, rail, x1.1 dynamic) | 0.0059 | 0.0018 | [M/E]  |
+| tilt_y | commissioning measurement | 0.015 | 0.015 | [S/E] as tilt_x |
