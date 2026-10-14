@@ -64,6 +64,8 @@ for _b in ('ur5e_enc2_pgc','fr5_j6_pgc_sp20'):
 import r19mount as _mnt
 for _k in _mnt.MOUNTS:
  for _b in ('ur5e_enc2_pgc','fr5_j6_pgc'):ARMS[_b+'_'+_k]=dict(ARMS[_b],name=ARMS[_b]['name']+', mount '+_k+': '+_mnt.MOUNTS[_k]['label'],mount=_k,mount_source='r19mount.py, R19_MOUNT.md')
+# R19 #36 / #42 (r19m2cable.py, R19_M2CABLE.md): the cable options of the m2 mount, <m2 base>c_<routing>
+import r19m2cable as _m2c;_m2c.register(ARMS)
 def _cli():
  for a in sys.argv[1:]:
   if a.startswith('ARM='):return a[4:]

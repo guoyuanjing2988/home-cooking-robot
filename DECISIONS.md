@@ -654,3 +654,12 @@ Nothing bought.
   - the hub on both arms;
   - the cable route (#36).
 - **Checker gap:** the tool vs wrist 3 and tool vs wrist 2 pairs are never tested in paths. For mount options they are certified statically (`results/r19/mount/static.json`). Adding them to the checker is planned in the re-certification.
+
+## 2026-10-14: Cable run on the m2 mount (#36, #42; Claude's call under "都你定")
+- **Decision:** routing `yp_a-45_m2tc`: the #36 first section continued as one flexible cable to the arm's tool connector. Options `ur5e_enc2_pgc_m2c_yp_a-45_m2tc` / `fr5_j6_pgc_m2c_yp_a-45_m2tc` (`sim/r10/claude/R19_M2CABLE.md`).
+  - UR5e: UR tool connector, pigtail ≈ 380 mm from the boot tip.
+  - FR5: RS485 port with a compact right-angle plug (M8-size envelope), pigtail ≈ 497 mm. **Holds only if such a plug mates with the FR5's unpublished 5-pin connector: confirm before ordering.**
+- **Motion cost:** ct2s re-planned on both arms with the cable modelled (UR5e pick cart fixed at −0.62; +0.8 s / +0.5 s).
+- **Certified:** every adopted m2 set with the cable, 0 hits (UR5e 88,380 states, FR5 95,089).
+- **Rejected:** UR5e flat run (hood in the wok play); FR5 standard M12 plug (forearm on the spatula chain); FR5 end I/O port (door in the wok play, no RS485).
+- Nobody contacted; pigtail length depends on the arm choice.
