@@ -1,0 +1,33 @@
+[fr5_j6_pgc_m2] 10:47:41 manifest
+[fr5_j6_pgc_m2] 10:47:41 stations
+[fr5_j6_pgc_m2] 10:47:42 arm-path screen
+[fr5_j6_pgc_m2] 10:48:23 travel screen
+[fr5_j6_pgc_m2] 10:53:16 lean + budget
+[fr5_j6_pgc_m2] 10:53:28 replays: actions + edges
+[fr5_j6_pgc_m2] 11:00:16 replays: lid / spider
+[fr5_j6_pgc_m2] 11:03:29 replays: lid play (6 chunks x 3 boxes)
+[fr5_j6_pgc_m2] 11:32:11 report
+[fr5_j6_pgc_m2] 11:32:12 done
+### fr5_j6_pgc_m2
+| Path | target box (dock_stops) | dock_rail (tier 1) | dock_rail_map (tier 2) |
+|---|---|---|---|
+| play:wok | +2.32 | +2.15 | +3.32 |
+| app:wok:0 | >=10 | >=10 | >=10 |
+| app:wok:1 | >=10 | >=10 | >=10 |
+| play:spatula | +2.86 | +3.76 | +4.16 |
+| app:spatula:0 | >=10 | >=10 | >=10 |
+| play:lever | +5.17 | +6.08 | +7.51 |
+| app:lever:0 | >=10 | >=10 | >=10 |
+| app:lever:1 | >=10 | >=10 | >=10 |
+| play:lid19 | +4.05 | +3.88 | +4.93 |
+| app:lid19:0 | >=10 | >=10 | >=10 |
+| app:lid19:1 | >=10 | >=10 | >=10 |
+| play:spider19 | +3.13 | +4.37 | +4.37 |
+| app:spider19:0 | >=10 | >=10 | >=10 |
+| app:spider19:1 | >=10 | >=10 | >=10 |
+| 22 hub edges (min) | +0.31 | +1.78 | +3.18 |
+stations {"stations": {"H_SPAT": -1.48, "SPAT": -1.3429, "PRESS": -1.2854, "H_SINK": -0.68, "LEVER": -0.6056, "LEV": -0.5456, "WOK_SET": 0.0986, "WOK": 0.1453, "FOLD": 0.172, "STIR": 0.45, "SPIDER": 0.8654, "LID_POT": 0.8863, "H_POT": 1.093, "LID_RACK": 1.4205, "PARK": 2.4}, "inserts": [["H_SPAT"], ["SPAT"], ["PRESS"], ["H_SINK"], ["LEVER"], ["LEV"], ["WOK_SET"], ["WOK", "FOLD"], ["STIR"], ["SPIDER", "LID_POT"], ["H_POT"], ["LID_RACK"], ["PARK"]], "scale_only": []}
+budget {"dock_rail": {"rss": {"x": 0.1688, "y": 0.23, "z": 1.0099, "yaw": 0.0114, "tilt_x": 0.0726, "tilt_y": 0.0199}, "box": {"x": 0.2, "y": 0.25, "z": 1.05, "yaw": 0.015, "tilt_x": 0.075, "tilt_y": 0.02}, "meets_target": {"x": true, "y": true, "z": false, "yaw": true, "tilt_x": true, "tilt_y": true}}, "dock_rail_map": {"rss": {"x": 0.1688, "y": 0.23, "z": 0.1827, "yaw": 0.0114, "tilt_x": 0.0289, "tilt_y": 0.0187}, "box": {"x": 0.2, "y": 0.25, "z": 0.2, "yaw": 0.015, "tilt_x": 0.03, "tilt_y": 0.02}, "meets_target": {"x": true, "y": true, "z": true, "yaw": true, "tilt_x": true, "tilt_y": true}}}
+travel {"pin_up": {"min": {"cart_vs_fixed_dock": {"dist_mm": 5.5, "pair": ["R_cart_dock_keeper_r", "dock_vblock_PARK"], "cart_x": 2.32, "cart_y": -0.2095}, "new_cart_part_vs_environment": {"dist_mm": 7.56, "pair": ["R_cart_dock_wheel_l", "north_cabinet_left"], "cart_x": -1.48, "cart_y": -0.2095}}, "ok": true}, "pin_down": {"min": {"cart_vs_fixed_dock": {"dist_mm": 3.171, "pair": ["R_cart_dock_pin_nose", "dock_scale"], "cart_x": 1.093, "cart_y": -0.21}, "new_cart_part_vs_environment": {"dist_mm": 8.06, "pair": ["R_cart_dock_wheel_l", "north_cabinet_left"], "cart_x": -1.48, "cart_y": -0.21}}, "ok": true}}
+lean {"rail": {"tilt_x_halfrange_deg": 0.0525, "tilt_x_max_dev_from_median_deg": 0.0558, "min_front_support_N": 0.8, "min_front_pair_total_N": 197.9}, "castors": {"tilt_x_halfrange_deg": 0.1559, "tilt_x_max_dev_from_median_deg": 0.1668, "min_front_support_N": 66.7, "min_front_pair_total_N": 248.3}}
+arm_screen {"paths": 79, "states": 89677, "errors": 0, "hit_paths": [], "worst": {"kind": "edge", "name": "SPIDER__H_WOK", "min_gate_mm": 715.33, "min_dist_mm": 725.33, "pair": ["R_geom_enc2_fa_0", "R_cart_dock_pin_housing"]}, "by_kind": {"prep": 768.1, "play": 763.24, "app": 772.14, "edge": 715.33, "other": null, "stir": 845.34}}

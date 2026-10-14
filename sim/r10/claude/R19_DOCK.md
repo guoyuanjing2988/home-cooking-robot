@@ -455,3 +455,76 @@ Move the old `tol/main` and `tol/pot` result files aside before re-running. If a
 - AGV docking with tapered positioning pins and guide surfaces, ±3 mm: [US patent 12242275](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12242275) (search summary). Precision indexing plungers with tapered pins: [norelem](https://norelem.co.uk/en/Product-overview/Flexible-standard-component-system/03000/Indexing-plungers/Indexing-plungers---Precision-with-tapered-pin/Precision-indexing-plungers-with-tapered-indexing-pin-Form-A-standard/p/agid.2709).
 - Taobao search result pages, read-only on 2026-10-14 (no login, no item pages): 磁栅尺 读数头, V型导轮 V型导轨, 微型电动推杆 24V. Listing prices only, not quotes.
 - Project: `R19_TOLERANCE.md` (#13 budget, boxes, method), `R19_CART.md` (#14 BOM masses, tyre stiffness basis, arm reactions), `R19_POTZONE.md` (#37 / #8 windows and spider rest), `R19_PREP_T2L.md` (screen method).
+
+## 10. The adopted m2 mount (#42): re-run set-up and smoke (2026-10-14)
+
+**Inputs.**
+- Options: `ARM=ur5e_enc2_pgc_m2` and `ARM=fr5_j6_pgc_m2`.
+- Files: the adopted ones of R19_MOUNT.md §4 and R19_M2FIX.md, the m2 hubs (`results/r19/fr5/hub_py.15_<arm>/`), and the stir libraries of R19_M2JOIN.md (#41 `short01_u06_j8000`, join). All of them are `ok` with an `ok` ≤ 4 mm re-check.
+- UR5e: 6 chains + 13 prep sets, with **20 of 22 hub edges ok**; `SPAT__H_SPAT` and `SPAT__LEV_C` are not ok and are skipped.
+- FR5: 6 chains + 12 prep sets, with 22 of 22 edges ok.
+- New wrappers only (`r19dock_m2.py`, `r19dock_m2_screen.py`, `r19dock_m2_tol.py`). The r19dock / r19*_m2* / r19m2* files are unchanged.
+
+### 10.1 Station lists (`r19dock_m2.py stations` → `results/r19/dock/m2/<arm>/stations.json`)
+
+**Rule.** One V-groove for each of:
+- every action endpoint of the m2 hub graph;
+- every anchor where the cart is parked for a seat, a closed chain, or forceful or static work;
+- parking.
+
+Grooves closer than 35 mm share one **twin-V insert**, machined at their exact spacing; the 10 mm V mouths leave a land. A transit hub gets a groove only if it is ≥ 35 mm from every other groove; otherwise it is scale-only. **The two arms need different stations** [M]. The inserts slide in the T-slot.
+
+| Station | UR5e m2 x | FR5 m2 x | Base design x |
+|---|---|---|---|
+| H_SPAT (hub) | = SPAT | −1.4800 | — |
+| SPAT (spatula pick) | −1.4800 | **−1.3429** | −1.480 |
+| PRESS | −1.2742 | −1.2854 | −1.274 |
+| H_SINK (hub) | −0.6800 | −0.6800 | −0.680 |
+| LEVER (lever play) | **−0.6056** | −0.6056 | −0.740 |
+| LEV (LEV_C / LEV_O endpoint) | −0.5456 | −0.5456 | (at −0.680, in SINK) |
+| WOK_SET (wok set-down) | = WOK | **+0.0986** | = WOK |
+| WOK (wok pick) | +0.1720 (with FOLD, H_WOK) | +0.1453 **twin-V with FOLD +0.1720** | +0.172 |
+| STIR | +0.5500 | **+0.4500** | +0.550 |
+| LID_POT (lid lift-off) | +0.8863 | +0.8863 **twin-V with SPIDER +0.8654** | +0.886 |
+| SPIDER (pick / rest) | **+1.0776** (H_POT +1.093 is 15 mm away → H_POT scale-only) | +0.8654 | +1.093 (= POT) |
+| H_POT (hub) | scale-only | +1.0930 | (= POT) |
+| STGWOK | +1.2100 | — (no FR5 m2 stgwok) | +1.210 |
+| LID_RACK (drop into the rack: cart parked for the last 9 states) | +1.3256 | **+1.4205** | +1.326 |
+| PARK | +2.4000 | +2.4000 | +2.400 |
+| **Total** | **12 grooves / 12 inserts** | **15 grooves / 13 inserts (2 twin-V)** | 11 |
+
+### 10.2 Smoke results [M] (each run < 5 min, ≤ 8 workers, WMI shim)
+
+| Check | UR5e m2 | FR5 m2 |
+|---|---|---|
+| **Arm-path screen**, complete m2 set (chains + approaches, ok edges, prep + approaches, #41 stir, stir join) | 80 paths, 82,448 states, **0 hits**, min gate **680.7 mm** (wrist 1 / left truck plate, carrot approach) | 79 paths, 89,677 states, **0 hits**, min **715.3 mm** (forearm / pin housing, SPIDER→H_WOK) |
+| **Travel**, 20 mm step: pin up / docked at every m2 station | ≥ 5.5 mm / ≥ 3.17 mm: **ok** | ≥ 5.5 mm / ≥ 3.17 mm: **ok** |
+| **Load lean, rail** (half-range; soft–stiff) | 0.041° (0.016–0.084°) | 0.053° (0.021–0.106°) |
+| Load lean, castor cart | 0.125° | 0.156° |
+| **Budget box, Tier 1 / Tier 2** | as the base: x 0.2, y 0.25, z 1.05 / 0.2 mm, yaw 0.015°, tilt_x 0.065 / 0.03°, tilt_y 0.02° | the same, but **tilt_x 0.075°** in Tier 1 |
+| **Corner replays** (target box / Tier 1 / Tier 2), mm | lever +5.18 / +6.30 / +7.51; **wok play +2.36 / +2.25 / +3.35; spatula +2.87 / +3.87 / +4.17**; wok, lid and spider approaches and LEV_C→H_SINK ≥ +10 | lever +5.18 / +6.08 / +7.51; wok, lid and spider approaches and LEV_C→H_SINK ≥ +10 |
+
+- **The UR5e m2 wok and spatula numbers equal the base ones to the micron.** These chains are exact re-targets: the held-object path, where those corners bind, is unchanged. This is a consistency check of the wrapper.
+- **New finding (FR5 m2): one front V-wheel truck is nearly unloaded during ct2s, 0.8 N** [M moments × D masses]. The tray is poured at the cart's left rear, at cart x −0.64…−0.30.
+  - The pair still carries ≥ 198 N, so there is no lift.
+  - But that wheel's V seating, and so its lateral and yaw hold, falls to almost nothing. Only the 1 mm keeper clearance remains, which is worth ≈ 0.1° of yaw.
+  - The UR5e minimum is 40.7 N (fold / unfold).
+  - **Design change [D]:** spring-preload the two keepers (≈ 60 N each). A small roller in the T-head bears up on the slot lip, pulling the front down. That adds ≈ 40–60 N to each truck. The geometry and the sim model are unchanged.
+  - **Pin rule:** the pin preload (50 N) must stay below the lighter truck's load at the docked state. No station lies in the ct2s cart range, so the pin is never down there.
+
+### 10.3 The full lane: `scratchpad/lanes/m2_dock.sh` (controller, background)
+
+- **One place to edit.** Every adopted file sits in the two blocks at its top (`UR=` / `FR=`, one key per file). The lane writes the manifests from them and checks that every file exists and is `ok`.
+- **Structure.** UR5e and FR5 run as two parallel groups of ≤ 16 workers each. Each group runs:
+  1. manifest and stations;
+  2. arm-path screen;
+  3. travel (10 mm);
+  4. lean ×3 and budget;
+  5. replays with three boxes each (`dock_stops`, the #39 target; `dock_rail`; `dock_rail_map`):
+     - wok, spatula and lever plays + approaches + all ok edges;
+     - lid and spider approaches + the spider play;
+     - the lid play in 6 chunks per box, then merged;
+  6. report: `results/r19/dock/m2/<arm>/summary.json` and the tables.
+- **Time and output.** About 30–45 min [E]. It ends with `M2_DOCK_DONE`. Earlier outputs of an arm are moved to `*.bak_<time>`, never deleted.
+- **Not in the lane:** plate 2 (`wok_plate2`) replays. #13 never replayed it either; it is in the arm-path screen.
+- **If the cable check changes a path,** edit its key at the top of the lane and re-run it.

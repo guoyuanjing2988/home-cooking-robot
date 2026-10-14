@@ -1,0 +1,16 @@
+fr5_j6_pgc_m2 grooves 15 inserts 13
+  H_SPAT         x -1.4800 hub   groove=True  pin=True  insert=0 single V aliases=[] | hub graph hub H_SPAT
+  SPAT           x -1.3429 work  groove=True  pin=True  insert=1 single V aliases=[] | hub graph endpoint SPAT
+  PRESS          x -1.2854 work  groove=True  pin=True  insert=2 single V aliases=[] | press set: cart range 0.0 mm
+  H_SINK         x -0.6800 hub   groove=True  pin=True  insert=3 single V aliases=[] | hub graph hub H_SINK
+  LEVER          x -0.6056 work  groove=True  pin=True  insert=4 single V aliases=[] | lever play (closed chain), cart fixed
+  LEV            x -0.5456 work  groove=True  pin=True  insert=5 single V aliases=[] | hub graph endpoint LEV_C; hub graph endpoint LEV_O
+  WOK_SET        x +0.0986 work  groove=True  pin=True  insert=6 single V aliases=[] | wok set-down into the cooker (last state)
+  WOK            x +0.1453 work  groove=True  pin=True  insert=7 twin-V aliases=[] | hub graph endpoint WOK
+  FOLD           x +0.1720 work  groove=True  pin=True  insert=7 twin-V aliases=['H_WOK'] | fold set: cart range 0.0 mm; hub graph hub H_WOK
+  STIR           x +0.4500 work  groove=True  pin=True  insert=8 single V aliases=[] | stir cycle (parked)
+  SPIDER         x +0.8654 work  groove=True  pin=True  insert=9 twin-V aliases=[] | hub graph endpoint SPIDER
+  LID_POT        x +0.8863 work  groove=True  pin=True  insert=9 twin-V aliases=[] | hub graph endpoint LID_POT
+  H_POT          x +1.0930 hub   groove=True  pin=True  insert=10 single V aliases=[] | hub graph hub H_POT
+  LID_RACK       x +1.4205 work  groove=True  pin=True  insert=11 single V aliases=['LID_RACK_SEAT'] | hub graph endpoint LID_RACK; lid into the rack: the cart is parked for the last 9 states (the straight drop)
+  PARK           x +2.4000 park  groove=True  pin=True  insert=12 single V aliases=[] | parking / charging

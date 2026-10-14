@@ -1,0 +1,100 @@
+m2 tol ur5e_enc2_pgc_m2 chains {'wok': 'results/r19/mount/chain_wok_s-1_rt_ur5e_enc2_pgc_m2.json', 'spatula': 'results/r19/mount/chain_spatula_s-1_rt_ur5e_enc2_pgc_m2.json', 'lever': 'results/r19/mount/chain_lever_s+1_mnt_ur5e_enc2_pgc_m2.json', 'lid19': 'results/r19/mount/chain_lid_s-1_rt_ur5e_enc2_pgc_m2.json', 'spider19': 'results/r19/mount/chain_spider_s+1_mnt_ur5e_enc2_pgc_m2.json'} hub results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2
+boxes {'dock_stops': [0.0010400000000000001, 0.0005, 0.0005, 0.0009424777960769379, 0.0019198621771937625, 0.0005235987755982988], 'dock_rail': [0.0002, 0.00025, 0.0010500000000000002, 0.0002617993877991494, 0.0011344640137963143, 0.00034906585039886593], 'dock_rail_map': [0.0002, 0.00025, 0.0002, 0.0002617993877991494, 0.0005235987755982988, 0.00034906585039886593]} out results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot
+tasks 18 deadline 5400.0 s
+FAILED ('play:lid19', 'scen-dock_stops+c2of6') Traceback (most recent call last):
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 125, in run
+    try:return _run(task)
+               ^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 133, in _run
+    ev=C.Ev(ch);noms,cached=load_nominal(key,ch,Q,ev);tn=time.monotonic()-t0
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19dock_tol.py", line 34, in load_nominal
+    return _ln(key,ch,Q,ev)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 122, in load_nominal
+    noms=[ev.nominal(q) for q in Q];tmp=f+f'.{os.getpid()}';pickle.dump(noms,open(tmp,'wb'),protocol=4);os.replace(tmp,f);return noms,False
+                                                                                                        ^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/cache/nom_play_lid19_0de0f9f00a99d21a.pkl.57156' -> 'results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/cache/nom_play_lid19_0de0f9f00a99d21a.pkl'
+
+FAILED ('play:lid19', 'scen-dock_rail_map+c2of6') Traceback (most recent call last):
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 125, in run
+    try:return _run(task)
+               ^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 133, in _run
+    ev=C.Ev(ch);noms,cached=load_nominal(key,ch,Q,ev);tn=time.monotonic()-t0
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19dock_tol.py", line 34, in load_nominal
+    return _ln(key,ch,Q,ev)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 122, in load_nominal
+    noms=[ev.nominal(q) for q in Q];tmp=f+f'.{os.getpid()}';pickle.dump(noms,open(tmp,'wb'),protocol=4);os.replace(tmp,f);return noms,False
+                                                                                                        ^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/cache/nom_play_lid19_0de0f9f00a99d21a.pkl.62396' -> 'results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/cache/nom_play_lid19_0de0f9f00a99d21a.pkl'
+
+FAILED ('play:lid19', 'scen-dock_stops+c1of6') Traceback (most recent call last):
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 125, in run
+    try:return _run(task)
+               ^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 133, in _run
+    ev=C.Ev(ch);noms,cached=load_nominal(key,ch,Q,ev);tn=time.monotonic()-t0
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19dock_tol.py", line 34, in load_nominal
+    return _ln(key,ch,Q,ev)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\YJGames\robot_rail\sim\r10\claude\r19tol_replay.py", line 122, in load_nominal
+    noms=[ev.nominal(q) for q in Q];tmp=f+f'.{os.getpid()}';pickle.dump(noms,open(tmp,'wb'),protocol=4);os.replace(tmp,f);return noms,False
+                                                                                                        ^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/cache/nom_play_lid19_0de0f9f00a99d21a.pkl.34784' -> 'results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/cache/nom_play_lid19_0de0f9f00a99d21a.pkl'
+
+done FAILED ('play:lid19', 'scen-dock_rail_map+c2of6'): PermissionError(13, 'Access is denied') 92s
+done FAILED ('play:lid19', 'scen-dock_stops+c2of6'): PermissionError(13, 'Access is denied') 92s
+done FAILED ('play:lid19', 'scen-dock_stops+c1of6'): PermissionError(13, 'Access is denied') 92s
+play:lid19 scenario dock_rail gate 8.148 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c3of6.json 539.6 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c3of6.json 542s
+play:lid19 scenario dock_rail_map gate 8.948 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c3of6.json 539.8 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c3of6.json 542s
+play:lid19 scenario dock_rail_map gate 8.948 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c0of6.json 542.8 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c0of6.json 545s
+play:lid19 scenario dock_rail gate 8.148 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c1of6.json 545.7 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c1of6.json 548s
+play:lid19 scenario dock_rail_map gate 8.948 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c5of6.json 478.9 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c5of6.json 572s
+play:lid19 scenario dock_rail_map gate 8.948 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c4of6.json 486.1 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c4of6.json 579s
+play:lid19 scenario dock_stops gate 6.588 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_stops+c0of6.json 587.6 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_stops+c0of6.json 589s
+play:lid19 scenario dock_rail_map gate 8.948 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c1of6.json 588.2 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail_map+c1of6.json 591s
+play:lid19 scenario dock_rail gate 8.148 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c5of6.json 588.3 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c5of6.json 591s
+play:lid19 scenario dock_stops gate 6.588 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_stops+c4of6.json 588.8 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_stops+c4of6.json 591s
+play:lid19 scenario dock_rail gate 8.148 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c4of6.json 589.2 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c4of6.json 591s
+play:lid19 scenario dock_rail gate 8.148 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c0of6.json 590.0 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c0of6.json 592s
+play:lid19 scenario dock_rail gate 8.148 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c2of6.json 593.6 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_rail+c2of6.json 596s
+play:lid19 scenario dock_stops gate 6.588 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_stops+c5of6.json 618.0 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_stops+c5of6.json 620s
+play:lid19 scenario dock_stops gate 6.588 contact >=10
+saved results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_stops+c3of6.json 621.7 s
+done results/r19/dock/m2/ur5e_enc2_pgc_m2/tol/pot/scene_play_lid19__scen-dock_stops+c3of6.json 624s
+all done 624s
+play:lid19 dock_rail chunks [0, 1, 2, 3, 4, 5] of 6 gate 8.148 ['R_gripper_r16_lid_rim', 'r14_hood'] [0.2, 0.25, 1.05, 0.015, -0.065, -0.02] contact >=10
+play:lid19 dock_rail_map chunks [0, 1, 3, 4, 5] of 6 gate 8.948 ['R_gripper_r16_lid_rim', 'r14_hood'] [0.2, 0.25, 0.2, 0.015, -0.03, -0.02] contact >=10
+play:lid19 dock_stops chunks [0, 3, 4, 5] of 6 gate 6.588 ['R_gripper_r16_lid_rim', 'r14_hood'] [1.04, 0.5, 0.5, 0.054, -0.11, -0.03] contact >=10

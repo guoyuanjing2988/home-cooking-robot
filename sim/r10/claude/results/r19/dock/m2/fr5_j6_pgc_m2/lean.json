@@ -1,0 +1,443 @@
+{
+ "method": "r19dock_budget.lean on the m2 manifest paths",
+ "manifest": {
+  "arm": "fr5_j6_pgc_m2",
+  "py": ".15",
+  "pot": {
+   "RACK": "keyed",
+   "SPX": "1.56",
+   "SPY": ".20"
+  },
+  "hubdir": "results/r19/fr5/hub_py.15_fr5_j6_pgc_m2",
+  "stir": "results/r19/stir/lib_stir_cycle_fr5_j6_pgc_m2_short01_u06_j8000.json",
+  "stir_base": "results/r19/stir/lib_stir_cycle_fr5_j6_pgc_m2.json",
+  "stirjoin": "results/r19/stir/lib_stir_join_fr5_j6_pgc_m2.json",
+  "chains": {
+   "wok": "results/r19/mount/chain_wok_s-1_rt_fr5_j6_pgc_m2.json",
+   "wok_plate2": "results/r19/mount/chain_wok_s-1_rtplate2_fr5_j6_pgc_m2.json",
+   "lever": "results/r19/mount/chain_lever_s+1_mnt_fr5_j6_pgc_m2.json",
+   "lid": "results/r19/mount/chain_lid_s-1_rt_fr5_j6_pgc_m2.json",
+   "spider": "results/r19/mount/chain_spider_s+1_rt_fr5_j6_pgc_m2.json",
+   "spatula": "results/r19/mount/chain_spatula_s-1_mnt_fr5_j6_pgc_m2.json"
+  },
+  "prep": {
+   "carrot": "results/r19/mount/chain_carrot_mnt5v3_fr5_j6_pgc_m2.json",
+   "press": "results/r19/mount/chain_press_rt_fr5_j6_pgc_m2.json",
+   "ctray": "results/r19/mount/chain_ctray_rt_fr5_j6_pgc_m2.json",
+   "soak": "results/r19/mount/chain_soak_rt_fr5_j6_pgc_m2.json",
+   "tubempty": "results/r19/mount/chain_tubempty_rt_fr5_j6_pgc_m2.json",
+   "tubfill": "results/r19/mount/chain_tubfill_rt_fr5_j6_pgc_m2.json",
+   "fold": "results/r19/mount/chain_fold_rt_fr5_j6_pgc_m2.json",
+   "unfold": "results/r19/mount/chain_unfold_rt_fr5_j6_pgc_m2.json",
+   "bascarrot": "results/r19/mount/chain_bascarrot_mnt_fr5_j6_pgc_m2.json",
+   "basket": "results/r19/mount/chain_basket_fix_fr5_j6_pgc_m2.json",
+   "ct2s": "results/r19/mount/chain_ct2s_fix_fr5_j6_pgc_m2.json",
+   "tomato": "results/r19/mount/chain_tomato_fix_fr5_j6_pgc_m2.json"
+  },
+  "park": 2.4
+ },
+ "k": {
+  "K_TYRE": 200000.0,
+  "K_TRUCK": 5000000.0,
+  "K_CASTOR": 200000.0
+ },
+ "moving_mass_kg": 25.19,
+ "cart": {
+  "m": 51.3,
+  "c": [
+   0.001,
+   -0.102,
+   0.353
+  ]
+ },
+ "configs": {
+  "rail": {
+   "supports": [
+    [
+     -0.27,
+     0.194,
+     5000000.0
+    ],
+    [
+     0.27,
+     0.194,
+     5000000.0
+    ],
+    [
+     -0.22,
+     -0.22,
+     200000.0
+    ],
+    [
+     0.22,
+     -0.22,
+     200000.0
+    ]
+   ],
+   "reference_median": {
+    "tilt_x": 0.14253514885328805,
+    "tilt_y": 0.0017483444823769984,
+    "z": -0.31645545676380293
+   },
+   "tilt_x_halfrange_deg": 0.0525,
+   "tilt_x_max_dev_from_median_deg": 0.0558,
+   "tilt_y_halfrange_deg": 0.0065,
+   "z_base_halfrange_mm": 0.09,
+   "min_front_support_N": 0.8,
+   "min_front_pair_total_N": 197.9,
+   "min_rear_support_N": 132.0,
+   "cop_y_range_m": [
+    -0.1122,
+    0.045
+   ],
+   "per_path": {
+    "wok": {
+     "states": 464,
+     "tilt_x_deg": [
+      0.1063,
+      0.1283
+     ],
+     "min_support_N": 33.4
+    },
+    "wok_plate2": {
+     "states": 464,
+     "tilt_x_deg": [
+      0.1063,
+      0.1283
+     ],
+     "min_support_N": 33.4
+    },
+    "lever": {
+     "states": 16,
+     "tilt_x_deg": [
+      0.0868,
+      0.0889
+     ],
+     "min_support_N": 132.0
+    },
+    "lid": {
+     "states": 205,
+     "tilt_x_deg": [
+      0.1429,
+      0.1705
+     ],
+     "min_support_N": 27.7
+    },
+    "spider": {
+     "states": 499,
+     "tilt_x_deg": [
+      0.1387,
+      0.1556
+     ],
+     "min_support_N": 41.7
+    },
+    "spatula": {
+     "states": 245,
+     "tilt_x_deg": [
+      0.1387,
+      0.1843
+     ],
+     "min_support_N": 82.3
+    },
+    "stir": {
+     "states": 4231,
+     "tilt_x_deg": [
+      0.1369,
+      0.1516
+     ],
+     "min_support_N": 52.5
+    },
+    "prep:carrot": {
+     "states": 383,
+     "tilt_x_deg": [
+      0.0986,
+      0.1317
+     ],
+     "min_support_N": 55.9
+    },
+    "prep:press": {
+     "states": 23,
+     "tilt_x_deg": [
+      0.1194,
+      0.1195
+     ],
+     "min_support_N": 80.5
+    },
+    "prep:ctray": {
+     "states": 412,
+     "tilt_x_deg": [
+      0.1279,
+      0.1511
+     ],
+     "min_support_N": 71.1
+    },
+    "prep:soak": {
+     "states": 105,
+     "tilt_x_deg": [
+      0.0951,
+      0.124
+     ],
+     "min_support_N": 134.2
+    },
+    "prep:tubempty": {
+     "states": 245,
+     "tilt_x_deg": [
+      0.0942,
+      0.1163
+     ],
+     "min_support_N": 142.9
+    },
+    "prep:tubfill": {
+     "states": 200,
+     "tilt_x_deg": [
+      0.0942,
+      0.1167
+     ],
+     "min_support_N": 124.2
+    },
+    "prep:fold": {
+     "states": 49,
+     "tilt_x_deg": [
+      0.1473,
+      0.1685
+     ],
+     "min_support_N": 45.7
+    },
+    "prep:unfold": {
+     "states": 49,
+     "tilt_x_deg": [
+      0.1473,
+      0.1685
+     ],
+     "min_support_N": 45.7
+    },
+    "prep:bascarrot": {
+     "states": 126,
+     "tilt_x_deg": [
+      0.1233,
+      0.1325
+     ],
+     "min_support_N": 41.9
+    },
+    "prep:basket": {
+     "states": 193,
+     "tilt_x_deg": [
+      0.0971,
+      0.1178
+     ],
+     "min_support_N": 149.0
+    },
+    "prep:ct2s": {
+     "states": 355,
+     "tilt_x_deg": [
+      0.1278,
+      0.1918
+     ],
+     "min_support_N": 0.8
+    },
+    "prep:tomato": {
+     "states": 280,
+     "tilt_x_deg": [
+      0.098,
+      0.13
+     ],
+     "min_support_N": 45.3
+    }
+   }
+  },
+  "castors": {
+   "supports": [
+    [
+     -0.22,
+     0.11,
+     200000.0
+    ],
+    [
+     0.22,
+     0.11,
+     200000.0
+    ],
+    [
+     -0.22,
+     -0.22,
+     200000.0
+    ],
+    [
+     0.22,
+     -0.22,
+     200000.0
+    ]
+   ],
+   "reference_median": {
+    "tilt_x": -0.030690329682244333,
+    "tilt_y": 0.03379109186032156,
+    "z": -1.0144771642732318
+   },
+   "tilt_x_halfrange_deg": 0.1559,
+   "tilt_x_max_dev_from_median_deg": 0.1668,
+   "tilt_y_halfrange_deg": 0.1264,
+   "z_base_halfrange_mm": 0.361,
+   "min_front_support_N": 66.7,
+   "min_front_pair_total_N": 248.3,
+   "min_rear_support_N": 16.8,
+   "cop_y_range_m": [
+    -0.1122,
+    0.045
+   ],
+   "per_path": {
+    "wok": {
+     "states": 464,
+     "tilt_x_deg": [
+      -0.156,
+      -0.0894
+     ],
+     "min_support_N": 25.9
+    },
+    "wok_plate2": {
+     "states": 464,
+     "tilt_x_deg": [
+      -0.156,
+      -0.0894
+     ],
+     "min_support_N": 26.0
+    },
+    "lever": {
+     "states": 16,
+     "tilt_x_deg": [
+      -0.1975,
+      -0.1909
+     ],
+     "min_support_N": 16.8
+    },
+    "lid": {
+     "states": 205,
+     "tilt_x_deg": [
+      -0.0322,
+      0.0511
+     ],
+     "min_support_N": 99.3
+    },
+    "spider": {
+     "states": 499,
+     "tilt_x_deg": [
+      -0.0449,
+      0.0062
+     ],
+     "min_support_N": 102.0
+    },
+    "spatula": {
+     "states": 245,
+     "tilt_x_deg": [
+      -0.042,
+      0.096
+     ],
+     "min_support_N": 118.1
+    },
+    "stir": {
+     "states": 4231,
+     "tilt_x_deg": [
+      -0.0474,
+      -0.0029
+     ],
+     "min_support_N": 118.6
+    },
+    "prep:carrot": {
+     "states": 383,
+     "tilt_x_deg": [
+      -0.1675,
+      -0.0673
+     ],
+     "min_support_N": 52.6
+    },
+    "prep:press": {
+     "states": 23,
+     "tilt_x_deg": [
+      -0.1048,
+      -0.1043
+     ],
+     "min_support_N": 54.6
+    },
+    "prep:ctray": {
+     "states": 412,
+     "tilt_x_deg": [
+      -0.0788,
+      -0.0086
+     ],
+     "min_support_N": 88.4
+    },
+    "prep:soak": {
+     "states": 105,
+     "tilt_x_deg": [
+      -0.1781,
+      -0.0908
+     ],
+     "min_support_N": 52.9
+    },
+    "prep:tubempty": {
+     "states": 245,
+     "tilt_x_deg": [
+      -0.1809,
+      -0.114
+     ],
+     "min_support_N": 33.4
+    },
+    "prep:tubfill": {
+     "states": 200,
+     "tilt_x_deg": [
+      -0.1809,
+      -0.1129
+     ],
+     "min_support_N": 52.7
+    },
+    "prep:fold": {
+     "states": 49,
+     "tilt_x_deg": [
+      -0.0202,
+      0.0439
+     ],
+     "min_support_N": 113.7
+    },
+    "prep:unfold": {
+     "states": 49,
+     "tilt_x_deg": [
+      -0.0202,
+      0.0439
+     ],
+     "min_support_N": 113.7
+    },
+    "prep:bascarrot": {
+     "states": 126,
+     "tilt_x_deg": [
+      -0.0929,
+      -0.0651
+     ],
+     "min_support_N": 56.8
+    },
+    "prep:basket": {
+     "states": 193,
+     "tilt_x_deg": [
+      -0.1721,
+      -0.1095
+     ],
+     "min_support_N": 80.2
+    },
+    "prep:ct2s": {
+     "states": 355,
+     "tilt_x_deg": [
+      -0.0794,
+      0.1144
+     ],
+     "min_support_N": 66.7
+    },
+    "prep:tomato": {
+     "states": 280,
+     "tilt_x_deg": [
+      -0.1695,
+      -0.0727
+     ],
+     "min_support_N": 40.5
+    }
+   }
+  }
+ }
+}

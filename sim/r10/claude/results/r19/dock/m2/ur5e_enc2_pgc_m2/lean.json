@@ -1,0 +1,460 @@
+{
+ "method": "r19dock_budget.lean on the m2 manifest paths",
+ "manifest": {
+  "arm": "ur5e_enc2_pgc_m2",
+  "py": ".15",
+  "pot": {
+   "RACK": "keyed",
+   "SPX": "1.56",
+   "SPY": ".20"
+  },
+  "hubdir": "results/r19/fr5/hub_py.15_ur5e_enc2_pgc_m2",
+  "stir": "results/r19/stir/lib_stir_cycle_ur5e_enc2_pgc_m2_short01_u06_j8000.json",
+  "stir_base": "results/r19/stir/lib_stir_cycle_ur5e_enc2_pgc_m2.json",
+  "stirjoin": "results/r19/stir/lib_stir_join_ur5e_enc2_pgc_m2.json",
+  "chains": {
+   "wok": "results/r19/mount/chain_wok_s-1_rt_ur5e_enc2_pgc_m2.json",
+   "wok_plate2": "results/r19/mount/chain_wok_s-1_rtplate2_ur5e_enc2_pgc_m2.json",
+   "lever": "results/r19/mount/chain_lever_s+1_mnt_ur5e_enc2_pgc_m2.json",
+   "lid": "results/r19/mount/chain_lid_s-1_rt_ur5e_enc2_pgc_m2.json",
+   "spider": "results/r19/mount/chain_spider_s+1_mnt_ur5e_enc2_pgc_m2.json",
+   "spatula": "results/r19/mount/chain_spatula_s-1_rt_ur5e_enc2_pgc_m2.json"
+  },
+  "prep": {
+   "carrot": "results/r19/mount/chain_carrot_mnt2t8_ur5e_enc2_pgc_m2.json",
+   "press": "results/r19/mount/chain_press_rt_ur5e_enc2_pgc_m2.json",
+   "tomato": "results/r19/mount/chain_tomato_rt_ur5e_enc2_pgc_m2.json",
+   "ctray": "results/r19/mount/chain_ctray_rt_ur5e_enc2_pgc_m2.json",
+   "tubfill": "results/r19/mount/chain_tubfill_rt_ur5e_enc2_pgc_m2.json",
+   "soak": "results/r19/mount/chain_soak_mnt_ur5e_enc2_pgc_m2.json",
+   "stgwok": "results/r19/mount/chain_stgwok_rt_ur5e_enc2_pgc_m2.json",
+   "fold": "results/r19/mount/chain_fold_rt_ur5e_enc2_pgc_m2.json",
+   "unfold": "results/r19/mount/chain_unfold_rt_ur5e_enc2_pgc_m2.json",
+   "basket": "results/r19/mount/chain_basket_fix_ur5e_enc2_pgc_m2.json",
+   "tubempty": "results/r19/mount/chain_tubempty_fix_ur5e_enc2_pgc_m2.json",
+   "ct2s": "results/r19/mount/chain_ct2s_fixs2_ur5e_enc2_pgc_m2.json",
+   "bascarrot": "results/r19/mount/chain_bascarrot_full_ur5e_enc2_pgc_m2.json"
+  },
+  "park": 2.4
+ },
+ "k": {
+  "K_TYRE": 200000.0,
+  "K_TRUCK": 5000000.0,
+  "K_CASTOR": 200000.0
+ },
+ "moving_mass_kg": 23.65,
+ "cart": {
+  "m": 51.3,
+  "c": [
+   0.001,
+   -0.102,
+   0.353
+  ]
+ },
+ "configs": {
+  "rail": {
+   "supports": [
+    [
+     -0.27,
+     0.194,
+     5000000.0
+    ],
+    [
+     0.27,
+     0.194,
+     5000000.0
+    ],
+    [
+     -0.22,
+     -0.22,
+     200000.0
+    ],
+    [
+     0.22,
+     -0.22,
+     200000.0
+    ]
+   ],
+   "reference_median": {
+    "tilt_x": 0.1397570827535583,
+    "tilt_y": 0.0008242192196898182,
+    "z": -0.3102995201646976
+   },
+   "tilt_x_halfrange_deg": 0.0414,
+   "tilt_x_max_dev_from_median_deg": 0.0443,
+   "tilt_y_halfrange_deg": 0.0057,
+   "z_base_halfrange_mm": 0.071,
+   "min_front_support_N": 40.7,
+   "min_front_pair_total_N": 221.2,
+   "min_rear_support_N": 145.3,
+   "cop_y_range_m": [
+    -0.0971,
+    0.0307
+   ],
+   "per_path": {
+    "wok": {
+     "states": 470,
+     "tilt_x_deg": [
+      0.1106,
+      0.1285
+     ],
+     "min_support_N": 50.5
+    },
+    "wok_plate2": {
+     "states": 470,
+     "tilt_x_deg": [
+      0.1106,
+      0.1285
+     ],
+     "min_support_N": 50.5
+    },
+    "lever": {
+     "states": 16,
+     "tilt_x_deg": [
+      0.0975,
+      0.0986
+     ],
+     "min_support_N": 142.9
+    },
+    "lid": {
+     "states": 205,
+     "tilt_x_deg": [
+      0.1421,
+      0.1684
+     ],
+     "min_support_N": 51.6
+    },
+    "spider": {
+     "states": 492,
+     "tilt_x_deg": [
+      0.1309,
+      0.1536
+     ],
+     "min_support_N": 69.9
+    },
+    "spatula": {
+     "states": 249,
+     "tilt_x_deg": [
+      0.1385,
+      0.1756
+     ],
+     "min_support_N": 79.3
+    },
+    "stir": {
+     "states": 4404,
+     "tilt_x_deg": [
+      0.1347,
+      0.1471
+     ],
+     "min_support_N": 86.1
+    },
+    "prep:carrot": {
+     "states": 389,
+     "tilt_x_deg": [
+      0.1047,
+      0.1401
+     ],
+     "min_support_N": 45.8
+    },
+    "prep:press": {
+     "states": 23,
+     "tilt_x_deg": [
+      0.1219,
+      0.122
+     ],
+     "min_support_N": 91.2
+    },
+    "prep:tomato": {
+     "states": 297,
+     "tilt_x_deg": [
+      0.1039,
+      0.1363
+     ],
+     "min_support_N": 57.3
+    },
+    "prep:ctray": {
+     "states": 409,
+     "tilt_x_deg": [
+      0.1282,
+      0.1453
+     ],
+     "min_support_N": 74.3
+    },
+    "prep:tubfill": {
+     "states": 189,
+     "tilt_x_deg": [
+      0.0973,
+      0.1073
+     ],
+     "min_support_N": 149.3
+    },
+    "prep:soak": {
+     "states": 105,
+     "tilt_x_deg": [
+      0.1045,
+      0.124
+     ],
+     "min_support_N": 120.2
+    },
+    "prep:stgwok": {
+     "states": 237,
+     "tilt_x_deg": [
+      0.1349,
+      0.1631
+     ],
+     "min_support_N": 66.2
+    },
+    "prep:fold": {
+     "states": 49,
+     "tilt_x_deg": [
+      0.1528,
+      0.1718
+     ],
+     "min_support_N": 40.7
+    },
+    "prep:unfold": {
+     "states": 49,
+     "tilt_x_deg": [
+      0.1528,
+      0.1718
+     ],
+     "min_support_N": 40.7
+    },
+    "prep:basket": {
+     "states": 227,
+     "tilt_x_deg": [
+      0.1027,
+      0.1133
+     ],
+     "min_support_N": 156.2
+    },
+    "prep:tubempty": {
+     "states": 255,
+     "tilt_x_deg": [
+      0.0954,
+      0.109
+     ],
+     "min_support_N": 145.3
+    },
+    "prep:ct2s": {
+     "states": 316,
+     "tilt_x_deg": [
+      0.1293,
+      0.1782
+     ],
+     "min_support_N": 51.8
+    },
+    "prep:bascarrot": {
+     "states": 126,
+     "tilt_x_deg": [
+      0.1237,
+      0.1322
+     ],
+     "min_support_N": 52.9
+    }
+   }
+  },
+  "castors": {
+   "supports": [
+    [
+     -0.22,
+     0.11,
+     200000.0
+    ],
+    [
+     0.22,
+     0.11,
+     200000.0
+    ],
+    [
+     -0.22,
+     -0.22,
+     200000.0
+    ],
+    [
+     0.22,
+     -0.22,
+     200000.0
+    ]
+   ],
+   "reference_median": {
+    "tilt_x": -0.02990208017125566,
+    "tilt_y": 0.015930079939232244,
+    "z": -0.9935067069409531
+   },
+   "tilt_x_halfrange_deg": 0.1253,
+   "tilt_x_max_dev_from_median_deg": 0.1381,
+   "tilt_y_halfrange_deg": 0.1099,
+   "z_base_halfrange_mm": 0.295,
+   "min_front_support_N": 101.7,
+   "min_front_pair_total_N": 277.4,
+   "min_rear_support_N": 47.3,
+   "cop_y_range_m": [
+    -0.0971,
+    0.0307
+   ],
+   "per_path": {
+    "wok": {
+     "states": 470,
+     "tilt_x_deg": [
+      -0.1338,
+      -0.0796
+     ],
+     "min_support_N": 47.3
+    },
+    "wok_plate2": {
+     "states": 470,
+     "tilt_x_deg": [
+      -0.1338,
+      -0.0796
+     ],
+     "min_support_N": 47.3
+    },
+    "lever": {
+     "states": 16,
+     "tilt_x_deg": [
+      -0.1558,
+      -0.1524
+     ],
+     "min_support_N": 48.1
+    },
+    "lid": {
+     "states": 205,
+     "tilt_x_deg": [
+      -0.0257,
+      0.0539
+     ],
+     "min_support_N": 115.5
+    },
+    "spider": {
+     "states": 492,
+     "tilt_x_deg": [
+      -0.0593,
+      0.0096
+     ],
+     "min_support_N": 104.7
+    },
+    "spatula": {
+     "states": 249,
+     "tilt_x_deg": [
+      -0.0335,
+      0.0789
+     ],
+     "min_support_N": 119.2
+    },
+    "stir": {
+     "states": 4404,
+     "tilt_x_deg": [
+      -0.045,
+      -0.0075
+     ],
+     "min_support_N": 136.1
+    },
+    "prep:carrot": {
+     "states": 389,
+     "tilt_x_deg": [
+      -0.1399,
+      -0.0328
+     ],
+     "min_support_N": 59.9
+    },
+    "prep:press": {
+     "states": 23,
+     "tilt_x_deg": [
+      -0.0878,
+      -0.0877
+     ],
+     "min_support_N": 74.3
+    },
+    "prep:tomato": {
+     "states": 297,
+     "tilt_x_deg": [
+      -0.1423,
+      -0.0443
+     ],
+     "min_support_N": 48.1
+    },
+    "prep:ctray": {
+     "states": 409,
+     "tilt_x_deg": [
+      -0.0687,
+      -0.0171
+     ],
+     "min_support_N": 94.1
+    },
+    "prep:tubfill": {
+     "states": 189,
+     "tilt_x_deg": [
+      -0.1623,
+      -0.1322
+     ],
+     "min_support_N": 74.1
+    },
+    "prep:soak": {
+     "states": 105,
+     "tilt_x_deg": [
+      -0.1406,
+      -0.0815
+     ],
+     "min_support_N": 71.5
+    },
+    "prep:stgwok": {
+     "states": 237,
+     "tilt_x_deg": [
+      -0.0487,
+      0.0368
+     ],
+     "min_support_N": 110.3
+    },
+    "prep:fold": {
+     "states": 49,
+     "tilt_x_deg": [
+      0.0056,
+      0.0631
+     ],
+     "min_support_N": 103.5
+    },
+    "prep:unfold": {
+     "states": 49,
+     "tilt_x_deg": [
+      0.0056,
+      0.0631
+     ],
+     "min_support_N": 103.5
+    },
+    "prep:basket": {
+     "states": 227,
+     "tilt_x_deg": [
+      -0.1459,
+      -0.114
+     ],
+     "min_support_N": 83.9
+    },
+    "prep:tubempty": {
+     "states": 255,
+     "tilt_x_deg": [
+      -0.168,
+      -0.1269
+     ],
+     "min_support_N": 57.3
+    },
+    "prep:ct2s": {
+     "states": 316,
+     "tilt_x_deg": [
+      -0.0656,
+      0.0826
+     ],
+     "min_support_N": 99.7
+    },
+    "prep:bascarrot": {
+     "states": 126,
+     "tilt_x_deg": [
+      -0.0824,
+      -0.0567
+     ],
+     "min_support_N": 70.0
+    }
+   }
+  }
+ }
+}
